@@ -1,0 +1,178 @@
+:root {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: initial;
+}
+
+[data-prefers-color-scheme='dark'] {
+  --color-background-0: hsl(228, 1%, 06%);
+  --color-background-1: hsl(228, 1%, 10%);
+  --color-background-2: hsl(228, 1%, 14%);
+  --color-background-3: hsl(228, 1%, 18%);
+  --color-background-4: hsl(228, 1%, 22%);
+
+  --color-background-0-hover: hsl(228, 1%, 09%);
+  --color-background-1-hover: hsl(228, 1%, 13%);
+  --color-background-2-hover: hsl(228, 1%, 17%);
+  --color-background-3-hover: hsl(228, 1%, 21%);
+  --color-background-4-hover: hsl(228, 1%, 25%);
+
+  --color-text-A0: hsl(228, 1%, 96%, 0.96);
+  --color-text-A1: hsl(228, 1%, 96%, 0.85);
+  --color-text-A2: hsl(228, 1%, 96%, 0.74);
+  --color-text-A3: hsl(228, 1%, 96%, 0.63);
+
+  --color-background-0-invert: hsl(228, 1%, 98%);
+  --color-background-1-invert: hsl(228, 1%, 96%);
+  --color-background-2-invert: hsl(228, 1%, 92%);
+  --color-background-3-invert: hsl(228, 1%, 90%);
+  --color-background-4-invert: hsl(228, 1%, 88%);
+
+  --color-background-0-invert-hover: hsl(228, 1%, 95%);
+  --color-background-1-invert-hover: hsl(228, 1%, 93%);
+  --color-background-2-invert-hover: hsl(228, 1%, 89%);
+  --color-background-3-invert-hover: hsl(228, 1%, 87%);
+  --color-background-4-invert-hover: hsl(228, 1%, 85%);
+
+  --color-text-invert-A0: hsl(228, 1%, 04%, 0.96);
+  --color-text-invert-A1: hsl(228, 1%, 04%, 0.85);
+  --color-text-invert-A2: hsl(228, 1%, 04%, 0.74);
+  --color-text-invert-A3: hsl(228, 1%, 04%, 0.63);
+}
+
+[data-prefers-color-scheme='light'] {
+  --color-background-0: hsl(228, 1%, 98%);
+  --color-background-1: hsl(228, 1%, 96%);
+  --color-background-2: hsl(228, 1%, 92%);
+  --color-background-3: hsl(228, 1%, 90%);
+  --color-background-4: hsl(228, 1%, 88%);
+
+  --color-background-0-hover: hsl(228, 1%, 95%);
+  --color-background-1-hover: hsl(228, 1%, 93%);
+  --color-background-2-hover: hsl(228, 1%, 89%);
+  --color-background-3-hover: hsl(228, 1%, 87%);
+  --color-background-4-hover: hsl(228, 1%, 85%);
+
+  --color-text-A0: hsl(228, 1%, 04%, 0.96);
+  --color-text-A1: hsl(228, 1%, 04%, 0.85);
+  --color-text-A2: hsl(228, 1%, 04%, 0.74);
+  --color-text-A3: hsl(228, 1%, 04%, 0.63);
+
+  --color-background-invert-0: hsl(228, 1%, 06%);
+  --color-background-invert-1: hsl(228, 1%, 10%);
+  --color-background-invert-2: hsl(228, 1%, 14%);
+  --color-background-invert-3: hsl(228, 1%, 18%);
+  --color-background-invert-4: hsl(228, 1%, 22%);
+
+  --color-background-invert-0-hover: hsl(228, 1%, 09%);
+  --color-background-invert-1-hover: hsl(228, 1%, 13%);
+  --color-background-invert-2-hover: hsl(228, 1%, 17%);
+  --color-background-invert-3-hover: hsl(228, 1%, 21%);
+  --color-background-invert-4-hover: hsl(228, 1%, 25%);
+
+  --color-text-invert-A0: hsl(228, 1%, 96%, 0.96);
+  --color-text-invert-A1: hsl(228, 1%, 96%, 0.85);
+  --color-text-invert-A2: hsl(228, 1%, 96%, 0.74);
+  --color-text-invert-A3: hsl(228, 1%, 96%, 0.63);
+}
+
+[data-prefers-color-scheme='dark'],
+[data-prefers-color-scheme='light'] {
+  background-color: var(--color-background-0);
+  color: var(--color-text-A0);
+}
+
+html,
+body {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  display: block;
+  min-height: 200vh;
+}
+
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a,
+button {
+  --cursor: pointer;
+  --outline-color: transparent;
+
+  cursor: var(--cursor);
+  border: var(--border-sm);
+  outline: var(--border-sm);
+  outline-color: var(--outline-color);
+
+  &:disabled,
+  &[data-disabled] {
+    --cursor: default;
+  }
+  &:focus:not(:focus-visible) {
+    --outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    --outline-color: dodgerblue;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.page {
+  background-color: var(--color-background-1);
+  color: var(--color-text-A0);
+
+  &-section {
+    display: block;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    max-width: 1400px;
+  }
+
+  &-hero {
+    display: block;
+    padding-block: var(--spacing-4);
+    padding-inline: var(--spacing-2);
+    background-color: var(--color-background-2);
+    color: var(--color-text-A0);
+  }
+
+  &-title {
+    display: block;
+    line-height: 1;
+    font-weight: 200;
+    font-size: var(--font-size-12);
+    padding-top: var(--spacing-12);
+  }
+
+  &-content {
+    display: block;
+    padding-block: var(--spacing-4);
+    padding-inline: var(--spacing-2);
+    background-color: var(--color-background-1);
+    color: var(--color-text-A0);
+  }
+}
