@@ -1,6 +1,9 @@
 export type Store = {
   error?: string;
   loading?: boolean;
+};
+
+export type ThemeStore = {
   mode?: ModeKey;
   accent?: AccentKey;
   avatar?: AvatarKey;

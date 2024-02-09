@@ -23,8 +23,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/common/*": ["./src/common/*"],
-      "@/assets/*": ["./src/assets/*"]
+      "@/pages/*": ["./src/pages/*"],
+      "@/tests/*": ["./src/tests/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/store/*": ["./src/store/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/common/*": ["./src/common/*"]
     }
   },
   "include": ["src"],
