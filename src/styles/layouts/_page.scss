@@ -9,7 +9,7 @@
   z-index: 0;
 }
 
-.page-header {
+.page > .header {
   top: 0;
   left: 0;
   right: 0;
@@ -22,27 +22,28 @@
   padding-inline: var(--page-gutter);
   // border: solid 1px limegreen;
 
-  &-nav {
-    // height: 100%;
+  .header-nav {
     height: var(--page-header-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
     // border-inline: solid 1px indianred;
-  }
 
-  &-logo-box {
-  }
-  &-logo-link {
-  }
+    .logo-box {
+      &-link {
+      }
+    }
 
-  &-action-box {
-  }
-  &-action-avatar {
+    .action-box {
+      &--avatar {
+      }
+      &--avatar-icon {
+      }
+    }
   }
 }
 
-.page-hero {
+.page > .hero {
   margin: 0;
   padding: 0;
   display: block;
@@ -58,14 +59,14 @@
   }
 }
 
-.page-content {
+.page > .content {
   margin: 0;
   padding: 0;
   display: block;
   box-sizing: border-box;
 }
 
-.page-footer {
+.page > .footer {
   margin: 0;
   padding: 0;
   display: block;

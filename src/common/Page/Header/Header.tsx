@@ -2,6 +2,7 @@ import { Factory, createFactory } from '@/factory';
 import { HeaderActionBox } from './HeaderActionBox';
 import { HeaderLogoBox } from './HeaderLogoBox';
 import { HeaderNav } from './HeaderNav';
+import { PageContainer } from '../Container';
 
 export type PageHeaderProps = {};
 
@@ -19,7 +20,12 @@ export const PageHeader = createFactory<PageHeaderFactory>((props) => {
   const { children, component: Component = 'header', ...otherProps } = props;
   return (
     <Component {...otherProps} className="header">
-      {children}
+      <PageContainer>
+        <PageHeader.Nav>
+          <PageHeader.LogoBox />
+          <PageHeader.ActionBox />
+        </PageHeader.Nav>
+      </PageContainer>
     </Component>
   );
 });

@@ -11,10 +11,8 @@ export type HeaderLogoBoxFactory = Factory.Config<{
 export const HeaderLogoBox = createFactory<HeaderLogoBoxFactory>((props) => {
   const { component: Component = 'div', ...otherProps } = props;
   return (
-    <Component {...otherProps} className="page-header-logo-box">
-      <Link to="/" className="page-header-logo-link">
-        Logo
-      </Link>
+    <Component {...otherProps} className="logo-box">
+      <Link to="/" className="logo-box-link" children="Logo" />
     </Component>
   );
 });

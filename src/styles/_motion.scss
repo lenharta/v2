@@ -1,5 +1,5 @@
 .page,
-.page-header {
+.page > header {
   transition-property: background-color;
   transition-timing-function: var(--easing-standard-expressive);
   transition-duration: var(--easing-duration-5);

@@ -10,7 +10,7 @@ export type HeaderNavFactory = Factory.Config<{
 export const HeaderNav = createFactory<HeaderNavFactory>((props) => {
   const { children, component: Component = 'nav', ...otherProps } = props;
   return (
-    <Component {...otherProps} className="page-header-nav">
+    <Component {...otherProps} className="header-nav">
       {children}
     </Component>
   );

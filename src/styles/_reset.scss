@@ -37,12 +37,11 @@ button {
 a,
 button {
   --cursor: pointer;
-  --outline-color: transparent;
 
   cursor: var(--cursor);
   border: var(--border-sm);
   outline: var(--border-sm);
-  outline-color: var(--outline-color);
+  outline-color: transparent;
 
   &:disabled,
   &[data-disabled] {

@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import { Icon } from '@/common';
-import { Factory, createFactory } from '@/factory';
 import { useThemeCTX } from '@/store';
+import { Factory, createFactory } from '@/factory';
 
 export type HeaderActionBoxProps = {};
 
@@ -13,10 +14,10 @@ export const HeaderActionBox = createFactory<HeaderActionBoxFactory>((props) => 
   const { component: Component = 'div', ...otherProps } = props;
   const { state } = useThemeCTX();
   return (
-    <Component {...otherProps} className="page-header-action-box">
-      <div className="page-header-action-avatar">
-        <Icon name={state.avatar} className="page-header-action-avatar-icon" />
-      </div>
+    <Component {...otherProps} className="action-box">
+      <Link to="/" className="action-box-avatar">
+        <Icon name={state.avatar} className="action-box-avatar-icon" />
+      </Link>
     </Component>
   );
 });
