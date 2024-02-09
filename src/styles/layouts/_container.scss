@@ -1,0 +1,27 @@
+.container {
+  margin: 0;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+}
+
+.page-header > .container {
+  height: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  // border: solid 2px orange;
+}
+
+.page-hero > .container {
+  height: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  // border: solid 2px red;
+}
+
+.page-content > .section > .container {
+  height: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  // border: solid 2px purple;
+}

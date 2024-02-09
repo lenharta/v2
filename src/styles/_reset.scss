@@ -1,0 +1,62 @@
+:root {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: initial;
+}
+
+html,
+body {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  display: block;
+  min-height: 200vh;
+}
+
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a,
+button {
+  --cursor: pointer;
+  --outline-color: transparent;
+
+  cursor: var(--cursor);
+  border: var(--border-sm);
+  outline: var(--border-sm);
+  outline-color: var(--outline-color);
+
+  &:disabled,
+  &[data-disabled] {
+    --cursor: default;
+  }
+  &:focus:not(:focus-visible) {
+    --outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    --outline-color: dodgerblue;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

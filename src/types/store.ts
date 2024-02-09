@@ -1,3 +1,5 @@
+import { IconName } from '@/common';
+
 export type Store = {
   error?: string;
   loading?: boolean;
@@ -54,4 +56,4 @@ export enum SETTINGS_THEME_AVATAR {
 
 export type ModeKey = keyof typeof SETTINGS_THEME_MODE;
 export type AccentKey = keyof typeof SETTINGS_THEME_ACCENT;
-export type AvatarKey = keyof typeof SETTINGS_THEME_AVATAR;
+export type AvatarKey = IconName;

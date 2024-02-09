@@ -28,7 +28,8 @@
       "@/types/*": ["./src/types/*"],
       "@/store/*": ["./src/store/*"],
       "@/assets/*": ["./src/assets/*"],
-      "@/common/*": ["./src/common/*"]
+      "@/common/*": ["./src/common/*"],
+      "@/factory/*": ["./src/factory/*"]
     }
   },
   "include": ["src"],

@@ -56,17 +56,17 @@
 }
 
 .button--solid-primary {
-  background-color: var(--color-background-2);
+  background-color: var(--color-background-1);
   color: inherit;
   &:hover {
-    background-color: var(--color-background-2-hover);
+    background-color: var(--color-background-1-hover);
   }
 }
 
 .button--solid-secondary {
-  background-color: var(--color-background-2-invert);
+  background-color: var(--color-background-1-invert);
   color: inherit;
   &:hover {
-    background-color: var(--color-background-2-invert-hover);
+    background-color: var(--color-background-1-invert-hover);
   }
 }

@@ -22,10 +22,10 @@
 [data-prefers-color-scheme='dim'],
 [data-prefers-color-scheme='dark'],
 [data-prefers-color-scheme='light'] {
-  --color-text-A0: color-mix(in srgb, var(--c-sec) 99%, var(--c-on-sec));
-  --color-text-A1: color-mix(in srgb, var(--c-sec) 90%, var(--c-on-sec));
-  --color-text-A2: color-mix(in srgb, var(--c-sec) 80%, var(--c-on-sec));
-  --color-text-A3: color-mix(in srgb, var(--c-sec) 70%, var(--c-on-sec));
+  --color-text-0: color-mix(in srgb, var(--c-sec) 99%, var(--c-on-sec));
+  --color-text-1: color-mix(in srgb, var(--c-sec) 90%, var(--c-on-sec));
+  --color-text-2: color-mix(in srgb, var(--c-sec) 80%, var(--c-on-sec));
+  --color-text-3: color-mix(in srgb, var(--c-sec) 70%, var(--c-on-sec));
 
   --color-background-0: color-mix(in srgb, var(--c-pri) 99%, var(--c-on-pri));
   --color-background-1: color-mix(in srgb, var(--c-pri) 93%, var(--c-on-pri));
@@ -41,10 +41,10 @@
   --color-background-4-hover: color-mix(in srgb, var(--c-pri) 72%, var(--c-on-pri));
   --color-background-5-hover: color-mix(in srgb, var(--c-pri) 66%, var(--c-on-pri));
 
-  --color-text-A0-invert: color-mix(in srgb, var(--c-pri) 99%, var(--c-on-pri));
-  --color-text-A1-invert: color-mix(in srgb, var(--c-pri) 90%, var(--c-on-pri));
-  --color-text-A2-invert: color-mix(in srgb, var(--c-pri) 80%, var(--c-on-pri));
-  --color-text-A3-invert: color-mix(in srgb, var(--c-pri) 70%, var(--c-on-pri));
+  --color-text-0-invert: color-mix(in srgb, var(--c-pri) 99%, var(--c-on-pri));
+  --color-text-1-invert: color-mix(in srgb, var(--c-pri) 90%, var(--c-on-pri));
+  --color-text-2-invert: color-mix(in srgb, var(--c-pri) 80%, var(--c-on-pri));
+  --color-text-3-invert: color-mix(in srgb, var(--c-pri) 70%, var(--c-on-pri));
 
   --color-background-0-invert: color-mix(in srgb, var(--c-sec) 99%, var(--c-on-sec));
   --color-background-1-invert: color-mix(in srgb, var(--c-sec) 93%, var(--c-on-sec));
@@ -61,12 +61,12 @@
   --color-background-5-invert-hover: color-mix(in srgb, var(--c-sec) 66%, var(--c-on-sec));
 
   background-color: var(--color-background-0);
-  color: var(--color-text-A0);
+  color: var(--color-text-0);
 }
 
 .page {
   background-color: var(--color-background-0);
-  color: var(--color-text-A0);
+  color: var(--color-text-0);
 
   &-header {
     [data-prefers-color-scheme='dim'] & {

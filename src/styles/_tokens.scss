@@ -1,0 +1,86 @@
+:root {
+  --scale: 1;
+  --cursor: default;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-rd: 1000px;
+
+  --border-sm: solid 1.5px transparent;
+  --border-md: solid 2.5px transparent;
+  --border-lg: solid 3.5px transparent;
+
+  --font-size-1: calc(4px * var(--scale));
+  --font-size-2: calc(8px * var(--scale));
+  --font-size-3: calc(12px * var(--scale));
+  --font-size-4: calc(16px * var(--scale));
+  --font-size-5: calc(20px * var(--scale));
+  --font-size-6: calc(24px * var(--scale));
+  --font-size-7: calc(28px * var(--scale));
+  --font-size-8: calc(32px * var(--scale));
+  --font-size-9: calc(36px * var(--scale));
+  --font-size-10: calc(40px * var(--scale));
+  --font-size-11: calc(44px * var(--scale));
+  --font-size-12: calc(48px * var(--scale));
+
+  --spacing-1: calc(4px * var(--scale));
+  --spacing-2: calc(8px * var(--scale));
+  --spacing-3: calc(16px * var(--scale));
+  --spacing-4: calc(24px * var(--scale));
+  --spacing-5: calc(36px * var(--scale));
+  --spacing-6: calc(48px * var(--scale));
+  --spacing-7: calc(60px * var(--scale));
+  --spacing-8: calc(76px * var(--scale));
+  --spacing-9: calc(92px * var(--scale));
+  --spacing-10: calc(116px * var(--scale));
+  --spacing-11: calc(140px * var(--scale));
+  --spacing-12: calc(172px * var(--scale));
+
+  --easing-duration-1: 70ms;
+  --easing-duration-2: 110ms;
+  --easing-duration-3: 150ms;
+  --easing-duration-4: 240ms;
+  --easing-duration-5: 400ms;
+  --easing-duration-6: 700ms;
+
+  --easing-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --easing-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
+  --easing-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
+
+  --easing-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --easing-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
+  --easing-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
+
+  --page-gutter: var(--spacing-2);
+  --page-hero-height: calc(96px * var(--scale));
+  --page-title-height: calc(40px * var(--scale));
+  --page-header-height: calc(40px * var(--scale));
+
+  @media (min-width: 20rem) {
+    --page-hero-height: calc(144px * var(--scale));
+    --page-title-height: calc(48px * var(--scale));
+    --page-header-height: calc(48px * var(--scale));
+  }
+
+  @media (min-width: 40rem) {
+    --page-gutter: var(--spacing-3);
+    --page-hero-height: calc(288px * var(--scale));
+    --page-title-height: calc(48px * var(--scale));
+    --page-header-height: calc(48px * var(--scale));
+  }
+
+  @media (min-width: 60rem) {
+    --page-gutter: var(--spacing-4);
+  }
+
+  @media (min-width: 80rem) {
+    --page-gutter: var(--spacing-5);
+  }
+}
+
+// @media (min-width: 20rem) {}
+// @media (min-width: 40rem) {}
+// @media (min-width: 60rem) {}
+// @media (min-width: 80rem) {}
+// @media (min-width: 100rem) {}

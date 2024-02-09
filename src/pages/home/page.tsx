@@ -1,23 +1,24 @@
-import { Button, Page } from '@/common';
 import { useThemeCTX } from '@/store';
+import { Button, Page } from '@/common';
 
 const ModeController = () => {
-  const { setMode } = useThemeCTX();
+  const { state, setMode } = useThemeCTX();
+  console.log({ state });
   return (
     <div>
-      <Button onClick={() => setMode('light')}>Light Mode</Button>
-      <Button onClick={() => setMode('dark')}>Dark Mode</Button>
-      <Button onClick={() => setMode('dim')}>Dim Mode</Button>
+      <div>CURRENT MODE: {state.mode}</div>
+      <div>
+        <Button onClick={() => setMode('light')}>Light Mode</Button>
+        <Button onClick={() => setMode('dark')}>Dark Mode</Button>
+        <Button onClick={() => setMode('dim')}>Dim Mode</Button>
+      </div>
     </div>
   );
 };
-
 export function Home() {
   return (
     <Page className="page">
-      <Page.Header>
-        <span>Page Header</span>
-      </Page.Header>
+      <Page.Header />
       <Page.Hero title="Home" />
       <Page.Content>
         <Page.Section>
@@ -26,6 +27,7 @@ export function Home() {
           </Page.Container>
         </Page.Section>
       </Page.Content>
+      <Page.Footer />
     </Page>
   );
 }

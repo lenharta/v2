@@ -38,6 +38,7 @@ export default defineConfig(({ mode, command }) => {
           '@/store': path.resolve(__dirname, './src/store/'),
           '@/assets': path.resolve(__dirname, './src/assets/'),
           '@/common': path.resolve(__dirname, './src/common/'),
+          '@/factory': path.resolve(__dirname, './src/factory/'),
         },
       },
       define: {
