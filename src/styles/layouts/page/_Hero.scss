@@ -1,0 +1,15 @@
+.PageHero {
+  margin: 0;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+  padding-block: var(--page-gutter);
+  padding-inline: var(--page-gutter);
+
+  &-title {
+    font-weight: 200;
+    font-size: var(--page-title-height);
+    line-height: var(--page-title-height);
+    margin-top: calc(var(--page-header-height) + var(--page-hero-height));
+  }
+}

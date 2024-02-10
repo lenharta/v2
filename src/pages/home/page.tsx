@@ -1,5 +1,5 @@
 import { ThemeContextValue, useThemeCTX } from '@/store';
-import { Button, Page } from '@/common';
+import { Button, Page, Stack } from '@/common';
 import { AccentKey, AvatarKey } from '@/types';
 import React from 'react';
 
@@ -123,17 +123,17 @@ const ThemeDemoControl = (props: DemoThemeProps) => {
 };
 
 export function Home() {
+  const ref = React.useRef<HTMLDivElement>(null);
   return (
     <Page>
       <Page.Hero title="Home" />
       <Page.Content>
-        <Page.Section>
-          <Page.Container>
-            <ModeController />
-            <ThemeDemoControl data={DATA_ACCENT_COLORS} type="accent" />
-            <ThemeDemoControl data={DATA_AVATAR_ICONS} type="avatar" />
-          </Page.Container>
-        </Page.Section>
+        <Page.Container>
+          <ModeController />
+          <ThemeDemoControl data={DATA_ACCENT_COLORS} type="accent" />
+          <ThemeDemoControl data={DATA_AVATAR_ICONS} type="avatar" />
+          <Stack ref={ref}></Stack>
+        </Page.Container>
       </Page.Content>
     </Page>
   );

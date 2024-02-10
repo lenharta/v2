@@ -1,3 +1,12 @@
+@keyframes scroll-progress-timeline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 .page,
 .page > header {
   transition-property: background-color;
