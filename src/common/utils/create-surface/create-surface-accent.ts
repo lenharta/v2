@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { AccentKey } from '@/types';
 
-const defaultAccentSurface: SurfaceAccentConfig = {
+const defaultAccentSurface: SurfaceAccentOptions = {
   colorAlpha: 0.9,
-  borderColorAlpha: 0.9,
-  backgroundColorAlpha: 0.1,
+  borderAlpha: 0.9,
+  backgroundAlpha: 0.1,
 };
 
-type SurfaceAccentConfig = {
+type SurfaceAccentOptions = {
   colorAlpha?: number;
-  borderColorAlpha?: number;
-  backgroundColorAlpha?: number;
+  borderAlpha?: number;
+  backgroundAlpha?: number;
 };
 
-const mergeConfig = (config?: SurfaceAccentConfig): SurfaceAccentConfig => ({
+const mergeConfig = (config?: SurfaceAccentOptions): SurfaceAccentOptions => ({
   ...defaultAccentSurface,
   ...config,
 });
@@ -21,23 +21,23 @@ const mergeConfig = (config?: SurfaceAccentConfig): SurfaceAccentConfig => ({
 export type SurfaceAccentProps = {
   accent?: AccentKey;
   hovered?: boolean;
-  config?: SurfaceAccentConfig;
+  disabled?: boolean;
+  options?: SurfaceAccentOptions;
 };
 
-export const createSurfaceAccent = ({ accent, hovered, config }: SurfaceAccentProps) => {
+export const createSurfaceAccent = (props: SurfaceAccentProps): React.CSSProperties => {
+  const { accent, hovered, disabled, options } = props;
+
   if (!accent) return {};
 
-  const _config = mergeConfig(config);
-  const backgroundCalculated = Number(_config.backgroundColorAlpha) + 0.1;
-  const backgroundCalculatedAlpha = !hovered ? _config.backgroundColorAlpha : backgroundCalculated;
+  const merged = mergeConfig(options);
+  const tokenColor = disabled ? 'disabled' : accent;
+  const backgroundCalculated = Number(merged.backgroundAlpha) + 0.1;
+  const backgroundCalculatedAlpha = !hovered ? merged.backgroundAlpha : backgroundCalculated;
 
-  const result = React.useMemo(
-    () => ({
-      color: `hsl(var(--c-hsl-${accent}), ${_config.colorAlpha})`,
-      borderColor: `hsl(var(--c-hsl-${accent}), ${_config.borderColorAlpha})`,
-      backgroundColor: `hsl(var(--c-hsl-${accent}), ${backgroundCalculatedAlpha})`,
-    }),
-    [accent, hovered, config]
-  );
-  return result;
+  return {
+    color: `hsl(var(--c-hsl-${tokenColor}), ${merged.colorAlpha})`,
+    borderColor: `hsl(var(--c-hsl-${tokenColor}), ${merged.borderAlpha})`,
+    backgroundColor: `hsl(var(--c-hsl-${tokenColor}), ${backgroundCalculatedAlpha})`,
+  };
 };

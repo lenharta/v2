@@ -1,10 +1,20 @@
-import { Size } from '@/types';
-import { LinkProps } from 'react-router-dom';
+import * as React from 'react';
+import { Link, LinkProps } from 'react-router-dom';
 
-export type AvatarProps = LinkProps & { component?: 'a'; size?: Size };
+export type AvatarRootProps = LinkProps & {
+  component?: 'a' | typeof Link;
+};
 
-export type AvatarBaseProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>;
+export type AvatarBaseProps = {
+  Root: React.JSX.IntrinsicElements['a'] & AvatarRootProps;
+};
 
-export type AvatarComponent = React.ForwardRefExoticComponent<
-  AvatarBaseProps & AvatarProps & React.RefAttributes<HTMLAnchorElement>
->;
+export type AvatarRefProps = {
+  Root: AvatarBaseProps['Root'] & React.RefAttributes<HTMLAnchorElement>;
+};
+
+export type AvatarComponents = {
+  Root: React.ForwardRefExoticComponent<AvatarRefProps['Root']>;
+};
+
+export type AvatarRootComponent = AvatarComponents['Root'];

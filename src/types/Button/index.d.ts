@@ -1,12 +1,24 @@
-export type ButtonProps = {};
+import * as React from 'react';
+import { AccentKey } from '@/types';
 
-export type ButtonBaseProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->;
+export type ButtonRootProps = {
+  accent?: AccentKey;
+  readonly?: boolean;
+  component?: 'button';
+  leftContent?: React.ReactNode;
+  rightContent?: React.ReactNode;
+};
 
-export type ButtonExoticComponent = React.ForwardRefExoticComponent<
-  ButtonBaseProps & ButtonProps & React.RefAttributes<HTMLButtonElement>
->;
+export type ButtonBaseProps = {
+  Root: React.JSX.IntrinsicElements['button'] & ButtonRootProps;
+};
 
-export type ButtonComponent = ButtonExoticComponent;
+export type ButtonRefProps = {
+  Root: ButtonBaseProps['Root'] & React.RefAttributes<HTMLButtonElement>;
+};
+
+export type ButtonComponents = {
+  Root: React.ForwardRefExoticComponent<ButtonRefProps['Root']>;
+};
+
+export type ButtonRootComponent = ButtonComponents['Root'];
