@@ -1,4 +1,6 @@
 import { Factory, createFactory } from '@/factory';
+import { Link } from 'react-router-dom';
+import { PageContainer } from '../Container';
 
 export type PageFooterProps = {};
 
@@ -11,7 +13,11 @@ export const PageFooter = createFactory<PageFooterFactory>((props) => {
   const { children, component: Component = 'footer', ...otherProps } = props;
   return (
     <Component {...otherProps} className="footer">
-      {children}
+      <PageContainer>
+        <Link to="/">Home</Link>
+        <Link to="/toolbox">Toolbox</Link>
+        <Link to="/settings">Settings</Link>
+      </PageContainer>
     </Component>
   );
 });

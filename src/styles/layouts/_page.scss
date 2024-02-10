@@ -7,6 +7,9 @@
   isolation: isolate;
   position: relative;
   z-index: 0;
+
+  // TEMPORARY
+  min-height: 200vh;
 }
 
 .page > .header {
@@ -20,26 +23,46 @@
   box-sizing: border-box;
   height: var(--page-header-height);
   padding-inline: var(--page-gutter);
-  // border: solid 1px limegreen;
 
   .header-nav {
     height: var(--page-header-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // border-inline: solid 1px indianred;
+  }
+}
 
-    .logo-box {
-      &-link {
-      }
-    }
+@keyframes progress-scroll-timeline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
 
-    .action-box {
-      &--avatar {
-      }
-      &--avatar-icon {
-      }
-    }
+.page > .scrollprogress {
+  background-color: black;
+
+  @supports (animation-timeline: scroll()) {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    z-index: 100;
+    position: fixed;
+
+    animation-name: progress-scroll-timeline;
+    animation-timing-function: var(--easing-standard-expressive);
+    animation-timeline: scroll();
+    animation-duration: auto;
+    // animation-duration: var(--easing-duration-1);
+
+    transform-origin: left;
+    transition-duration: var(--easing-duration-1);
+    transition-timing-function: var(--easing-standard-expressive);
+    transition-property: transform;
   }
 }
 

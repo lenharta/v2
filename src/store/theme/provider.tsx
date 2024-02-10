@@ -1,62 +1,78 @@
 import * as React from 'react';
+import { ThemeCTX } from './context';
 import { type ThemeStore } from '@/types';
-import { ThemeCTXProvider } from './context';
-import { localStorageManager } from '../local/manager';
 
-export const ThemeProvider = (props: { children: React.ReactNode }) => {
+interface ThemeProviderProps {
+  children?: React.ReactNode;
+}
+
+export const ThemeProvider = (props: ThemeProviderProps) => {
   const { children } = props;
 
-  const THEME_STORAGE_KEY = 'theme-storage';
+  const STORAGE_KEY = 'theme-store';
 
-  const INITIAL_THEME_STATE: ThemeStore = {
-    avatar: 'robot',
+  const storage = window.localStorage;
+
+  const INITIAL_STATE: ThemeStore = {
+    avatar: 'person',
     accent: 'blue',
     mode: 'dark',
   };
 
-  const storage = localStorageManager<ThemeStore>(THEME_STORAGE_KEY);
-
-  const themeReducer = (current: ThemeStore, update: Partial<ThemeStore>) => ({
-    ...current,
-    ...update,
-  });
-
-  const [state, dispatch] = React.useReducer(themeReducer, INITIAL_THEME_STATE);
-
-  const setMode = React.useCallback((value: ThemeStore['mode']) => {
-    storage.set({ ...state, mode: value });
-    dispatch({ mode: value });
+  const readValue = React.useCallback((): ThemeStore => {
+    try {
+      const raw = storage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : INITIAL_STATE;
+    } catch (error: any) {
+      console.log('[@v2/ThemeProvider]: Failed to update `mode` store.');
+      return INITIAL_STATE;
+    }
   }, []);
 
-  const setAccent = React.useCallback((value: ThemeStore['accent']) => {
-    storage.set({ ...state, accent: value });
-    dispatch({ accent: value });
-  }, []);
+  const [store, dispatch] = React.useReducer(
+    (current: ThemeStore, update: Partial<ThemeStore>) => ({
+      ...current,
+      ...update,
+    }),
+    INITIAL_STATE,
+    readValue
+  );
 
-  const setAvatar = React.useCallback((value: ThemeStore['avatar']) => {
-    storage.set({ ...state, avatar: value });
-    dispatch({ avatar: value });
-  }, []);
+  const setMode = async (value: ThemeStore['mode']) => {
+    try {
+      storage.setItem(STORAGE_KEY, JSON.stringify({ ...store, mode: value }));
+      dispatch({ mode: value });
+    } catch (error: any) {
+      console.log('[@v2/ThemeProvider]: Failed to update `mode` store.');
+    }
+  };
 
-  React.useLayoutEffect(() => {
+  const setAccent = async (value: ThemeStore['accent']) => {
+    try {
+      storage.setItem(STORAGE_KEY, JSON.stringify({ ...store, accent: value }));
+      dispatch({ accent: value });
+    } catch (error: any) {
+      console.log('[@v2/ThemeProvider]: Failed to update `accent` store.');
+    }
+  };
+
+  const setAvatar = async (value: ThemeStore['avatar']) => {
+    try {
+      storage.setItem(STORAGE_KEY, JSON.stringify({ ...store, avatar: value }));
+      dispatch({ avatar: value });
+    } catch (error: any) {
+      console.log('[@v2/ThemeProvider]: Failed to update `avatar` store.');
+    }
+  };
+
+  React.useEffect(() => {
     const root = document.getElementById('root')!;
-    root.setAttribute('data-prefers-color-scheme', String(state.mode));
-    root.setAttribute('data-prefers-color-accent', String(state.accent));
-  }, [state]);
-
-  React.useLayoutEffect(() => {
-    const update = async () => {
-      try {
-        const current = await storage.get();
-        dispatch(current);
-      } catch (error: any) {
-        console.error('[@v2/ThemeProvider]: Theme `dispatch()` method unsuccessful');
-      }
-    };
-    void update();
-  }, []);
+    root.setAttribute('data-prefers-color-scheme', String(store.mode));
+  }, [store]);
 
   return (
-    <ThemeCTXProvider value={{ state, setMode, setAccent, setAvatar }}>{children}</ThemeCTXProvider>
+    <ThemeCTX.Provider value={{ state: store, setMode, setAccent, setAvatar }}>
+      {children}
+    </ThemeCTX.Provider>
   );
 };

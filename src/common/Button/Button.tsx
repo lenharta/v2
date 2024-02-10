@@ -24,16 +24,21 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
     justify = 'center',
     variant = 'solid-primary',
     children,
+    className,
     leftContent,
     rightContent,
     ...otherProps
   } = props;
 
-  const clxss = clsx(`button button--${variant}`, {
-    [`button--size-${size}`]: size,
-    [`button--align-${align}`]: align,
-    [`button--justify-${justify}`]: justify,
-  });
+  const clxss = clsx(
+    `button button--${variant}`,
+    {
+      [`button--size-${size}`]: size,
+      [`button--align-${align}`]: align,
+      [`button--justify-${justify}`]: justify,
+    },
+    className
+  );
 
   return (
     <button {...otherProps} ref={ref} className={clxss}>

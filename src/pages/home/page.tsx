@@ -1,6 +1,7 @@
-import { useThemeCTX } from '@/store';
+import { ThemeContextValue, useThemeCTX } from '@/store';
 import { Button, Page } from '@/common';
-import { AccentKey } from '@/types';
+import { AccentKey, AvatarKey } from '@/types';
+import React from 'react';
 
 const ModeController = () => {
   const { state, setMode } = useThemeCTX();
@@ -30,38 +31,91 @@ const DATA_ACCENT_COLORS: AccentKey[] = [
   'red',
 ];
 
-const AccentController = () => {
-  const { state, setAccent } = useThemeCTX();
-  console.log(state.accent);
+const DATA_AVATAR_ICONS: AvatarKey[] = [
+  'baseball',
+  'basketball',
+  'beer',
+  'bolt',
+  'code',
+  'coffee',
+  'dog',
+  'film',
+  'football',
+  'heart',
+  'music',
+  'palette',
+  'person',
+  'pizza',
+  'puzzle',
+  'robot',
+  'shield',
+  'smiley',
+  'soccer',
+  'star',
+  'trophy',
+];
+
+const findAlphaValue = (alpha?: number, hover?: boolean) => {
+  if (alpha && !hover) {
+    return alpha;
+  }
+  if (alpha && hover) {
+    return alpha + 0.1;
+  }
+  return 1;
+};
+
+const createTokenHSL = (accent?: AccentKey, alpha?: number, hover?: boolean) => {
+  return `hsl(var(--c-hsl-${accent}), ${findAlphaValue(alpha, hover)})`;
+};
+
+type DemoThemeProps = {
+  data: AccentKey[] | AvatarKey[];
+  type?: keyof ThemeContextValue['state'];
+};
+
+const ThemeDemoControl = (props: DemoThemeProps) => {
+  const { data, type = 'accent' } = props;
+  const { state, setAccent, setAvatar } = useThemeCTX();
+  const [hovered, setHovered] = React.useState(false);
+  const [hoverIndex, setHoverIndex] = React.useState<string | null>(null);
+
+  const title = type === 'accent' ? 'Accent' : 'Avatar';
+  const handler = type === 'accent' ? setAccent : setAvatar;
+  const _value = (v: string) => (type === 'accent' ? v : state.accent);
+
   return (
     <div>
       <div
         className="accent-color-swatch"
-        data-accent-color-text={state.accent}
-        data-int-accent-color-bkgd={state.accent}
-        data-accent-color-border={state.accent}
-      >
-        Current Accent Color: {state.accent?.toUpperCase()}
-      </div>
+        children={`Current ${title}: ${state.accent?.toUpperCase()}`}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          color: createTokenHSL(state.accent, 1),
+          borderColor: createTokenHSL(state.accent, 0.6),
+          backgroundColor: createTokenHSL(state.accent, 0.15, hovered),
+        }}
+      />
       <div>
-        {DATA_ACCENT_COLORS.map((value) => (
-          <Button key={value} data-accent-color-text={value} onClick={() => setAccent(value)}>
-            Set Accent{' '}
-            <span
-              style={{
-                color: `var(--c-text-${value})`,
-                backgroundColor: `var(--c-bkgd-${value})`,
-                border: 'var(--border-sm)',
-                borderRadius: 'var(--radius-rd)',
-                borderColor: `var(--c-border-${value})`,
-                marginLeft: '8px',
-                paddingInline: '10px',
-                paddingBlock: '4px',
-              }}
-            >
-              {value.toUpperCase()}
-            </span>
-          </Button>
+        {data.map((value) => (
+          <Button
+            key={value}
+            onClick={() => handler(value as any)}
+            children={type === 'accent' ? null : value.toUpperCase()}
+            className={`accent-color-swatch-button-${type}`}
+            onMouseEnter={() => setHoverIndex(value)}
+            onMouseLeave={() => setHoverIndex(null)}
+            style={{
+              color: createTokenHSL(_value(value) as AccentKey, 1),
+              borderColor: createTokenHSL(_value(value) as AccentKey, 0.6),
+              backgroundColor: createTokenHSL(
+                _value(value) as AccentKey,
+                0.15,
+                value === hoverIndex
+              ),
+            }}
+          />
         ))}
       </div>
     </div>
@@ -71,17 +125,16 @@ const AccentController = () => {
 export function Home() {
   return (
     <Page>
-      <Page.Header />
       <Page.Hero title="Home" />
       <Page.Content>
         <Page.Section>
           <Page.Container>
             <ModeController />
-            <AccentController />
+            <ThemeDemoControl data={DATA_ACCENT_COLORS} type="accent" />
+            <ThemeDemoControl data={DATA_AVATAR_ICONS} type="avatar" />
           </Page.Container>
         </Page.Section>
       </Page.Content>
-      <Page.Footer />
     </Page>
   );
 }

@@ -15,8 +15,14 @@ export const HeaderActionBox = createFactory<HeaderActionBoxFactory>((props) => 
   const { state } = useThemeCTX();
   return (
     <Component {...otherProps} className="action-box">
-      <Link to="/" className="action-box-avatar">
-        <Icon name={state.avatar} className="action-box-avatar-icon" />
+      <Link
+        to="/"
+        className="avatar"
+        data-accent-color-text={state.accent}
+        data-accent-color-border={state.accent}
+        data-int-accent-color-bkgd={state.accent}
+      >
+        <Icon name={state.avatar} />
       </Link>
     </Component>
   );

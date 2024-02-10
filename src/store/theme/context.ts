@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { ThemeStore } from '@/types';
 
-type ThemeContextValue = {
+export type ThemeContextValue = {
   state: ThemeStore;
   setMode(value: ThemeStore['mode']): void;
   setAccent(value: ThemeStore['accent']): void;

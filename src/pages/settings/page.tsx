@@ -1,10 +1,10 @@
 import { Page } from '@/common';
 
-export function Toolbox() {
+export function Settings() {
   return (
     <Page>
       <Page.Header />
-      <Page.Hero title="Toolbox" />
+      <Page.Hero title="Settings" />
       <Page.Content></Page.Content>
     </Page>
   );

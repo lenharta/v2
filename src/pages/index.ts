@@ -3,3 +3,4 @@ export * from './error';
 
 export * from './home';
 export * from './toolbox';
+export * from './settings';
