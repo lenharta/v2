@@ -1,6 +1,6 @@
 @use '../modifiers' as modifiers;
 
-.button {
+.Button {
   --button-height-xs: calc(30px * var(--scale));
   --button-height-sm: calc(36px * var(--scale));
   --button-height-md: calc(42px * var(--scale));

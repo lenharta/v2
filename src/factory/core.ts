@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export declare namespace Factory {
   interface Payload {
+    ref?: any;
     props?: Record<string, any>;
     component: any;
     components?: Record<string, any>;
@@ -28,8 +29,14 @@ export declare namespace Factory {
 
   type BaseRefProps<T, U, P = {}> = T extends React.ElementType
     ? P extends Record<string, any>
-      ? Omit<DeepMerge<React.ComponentPropsWithoutRef<T>, P>, U extends keyof any ? U : never>
-      : Omit<React.ComponentPropsWithoutRef<T>, U extends keyof any ? U : never>
+      ? Omit<
+          DeepMerge<React.ComponentPropsWithoutRef<T> & React.RefAttributes<T>, P>,
+          U extends keyof any ? U : never
+        >
+      : Omit<
+          React.ComponentPropsWithoutRef<T> & React.RefAttributes<T>,
+          U extends keyof any ? U : never
+        >
     : {};
 }
 
@@ -38,7 +45,9 @@ export function createFactory<FactoryPayload extends Factory.Payload>(
     Factory.BaseProps<
       FactoryPayload['component'],
       FactoryPayload['omittedProps'],
-      FactoryPayload['props'] & { component?: FactoryPayload['component'] }
+      FactoryPayload['props'] & {
+        component?: FactoryPayload['component'];
+      }
     >
   >
 ) {
@@ -47,27 +56,30 @@ export function createFactory<FactoryPayload extends Factory.Payload>(
       Factory.BaseProps<
         FactoryPayload['component'],
         FactoryPayload['omittedProps'],
-        FactoryPayload['props'] & { component?: FactoryPayload['component'] }
+        FactoryPayload['props'] & {
+          component?: FactoryPayload['component'];
+        }
       >
     >;
 }
 
-export function createRefFactory<FactoryPayload extends Factory.Payload>(
+// type ComponentProp<Payload extends Factory.Payload> = { component?: Payload['component'] }
+// type InputComponentProps<Payload extends Factory.Payload> =
+
+// export declare const NavLink: React.ForwardRefExoticComponent<NavLinkProps & React.RefAttributes<HTMLAnchorElement>>;
+
+export function createRefFactory<Payload extends Factory.Payload>(
   ui: React.ForwardRefRenderFunction<
-    Factory.BaseComponentRef<FactoryPayload['component']>,
-    Factory.BaseRefProps<
-      FactoryPayload['component'],
-      FactoryPayload['omittedProps'],
-      FactoryPayload['props'] & { component?: FactoryPayload['component'] }
-    >
+    Payload['ref'],
+    React.ComponentPropsWithoutRef<Payload['component']> &
+      Payload['props'] & { component?: Payload['component'] }
   >
 ) {
-  return ui as Factory.BaseComponents<FactoryPayload['components']> &
-    React.ForwardRefExoticComponent<
-      Factory.BaseProps<
-        FactoryPayload['component'],
-        FactoryPayload['omittedProps'],
-        FactoryPayload['props'] & { component?: FactoryPayload['component'] }
-      >
-    >;
+  type ComponentProps<E extends React.ElementType = Payload['component']> =
+    React.ComponentPropsWithRef<E> & Payload['props'] & { component?: Payload['component'] };
+
+  type ComponentType = React.ForwardRefExoticComponent<ComponentProps> & Payload['components'];
+
+  const Component = ui as unknown as ComponentType;
+  return Component as ComponentType;
 }
