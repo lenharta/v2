@@ -9,7 +9,7 @@ import type { PageHeaderComponent } from '@/types';
 export const PageHeader: PageHeaderComponent = (props) => {
   const { ...otherProps } = props;
   return (
-    <div {...otherProps} className="header">
+    <div {...otherProps} className="PageHeader">
       <PageHeader.Nav>
         <PageHeader.LogoBox />
         <PageHeader.ActionBox />

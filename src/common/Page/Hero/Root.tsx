@@ -6,7 +6,7 @@ import { PageHeroComponent } from '@/types';
 export const PageHero: PageHeroComponent = React.forwardRef((props, ref) => {
   const { title, ...otherProps } = props;
   return (
-    <div {...otherProps} ref={ref} className="Page-hero">
+    <div {...otherProps} ref={ref} className="PageHero">
       <PageContainer>{title && <Title as="h1">{title}</Title>}</PageContainer>
     </div>
   );

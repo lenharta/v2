@@ -4,7 +4,7 @@ import { PageContainerComponent } from '@/types';
 const PageContainer: PageContainerComponent = React.forwardRef((props, ref) => {
   const { children, ...otherProps } = props;
   return (
-    <div {...otherProps} ref={ref} className="container">
+    <div {...otherProps} ref={ref} className="PageContainer">
       {children}
     </div>
   );

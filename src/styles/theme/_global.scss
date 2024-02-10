@@ -1,0 +1,48 @@
+.accent-color-swatch {
+  width: 300px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-sm);
+  transition-property: color, background-color, border, outline;
+  transition-timing-function: var(--easing-standard-productive);
+  transition-duration: var(--easing-duration-1);
+}
+
+.accent-color-swatch-button-accent {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-rd);
+}
+
+.accent-color-swatch-button-avatar {
+  border-radius: var(--radius-lg);
+  padding-block: 0.2rem;
+  padding-inline: 0.8rem;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  flex: 0 1 33%;
+  gap: 0.4rem;
+}
+
+.Page {
+  background-color: var(--color-background-0);
+  color: var(--color-text-0);
+}
+
+.PageHeader {
+  [data-prefers-color-scheme='dim'] & {
+    background-color: hsla(220, 6%, 11%, 0.65);
+    backdrop-filter: blur(16px);
+  }
+  [data-prefers-color-scheme='dark'] & {
+    background-color: hsla(0, 0%, 5%, 0.65);
+    backdrop-filter: blur(16px);
+  }
+  [data-prefers-color-scheme='light'] & {
+    background-color: hsla(0, 0%, 96%, 0.65);
+    backdrop-filter: blur(16px);
+  }
+}
