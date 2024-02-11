@@ -1,4 +1,4 @@
-@use '../modifiers' as modifiers;
+@use '../mixins' as mixins;
 
 .Button {
   --button-height-xs: calc(30px * var(--scale));
@@ -25,8 +25,8 @@
   font-size: var(--button-font-size, var(--button-font-size-xs));
   line-height: 1;
 
-  @include modifiers.flex-align;
-  @include modifiers.flex-justify;
+  @include mixins.flex-align;
+  @include mixins.flex-justify;
 
   &--size-xs {
     --button-height: var(--button-height-xs);

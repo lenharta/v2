@@ -1,0 +1,33 @@
+:root {
+  --page-gutter: var(--spacing-2);
+  --page-hero-height: calc(96px * var(--scale));
+  --page-title-height: calc(40px * var(--scale));
+  --page-header-height: calc(48px * var(--scale));
+
+  @media (min-width: 20rem) {
+    --page-hero-height: calc(144px * var(--scale));
+    --page-title-height: calc(48px * var(--scale));
+    --page-header-height: calc(56px * var(--scale));
+  }
+
+  @media (min-width: 40rem) {
+    --page-gutter: var(--spacing-3);
+    --page-hero-height: calc(144px * var(--scale));
+    --page-title-height: calc(48px * var(--scale));
+    --page-header-height: calc(56px * var(--scale));
+  }
+
+  @media (min-width: 60rem) {
+    --page-gutter: var(--spacing-4);
+  }
+
+  @media (min-width: 80rem) {
+    --page-gutter: var(--spacing-5);
+  }
+}
+
+// @media (min-width: 20rem) {}
+// @media (min-width: 40rem) {}
+// @media (min-width: 60rem) {}
+// @media (min-width: 80rem) {}
+// @media (min-width: 100rem) {}

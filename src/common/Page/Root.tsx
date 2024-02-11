@@ -11,7 +11,9 @@ export const Page: PageRootComponent = (props) => {
   const { children, ...otherProps } = props;
   return (
     <div {...otherProps} className="Page">
+      <Page.Header />
       {children}
+      <Page.Footer />
     </div>
   );
 };

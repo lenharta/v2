@@ -1,12 +1,17 @@
-export type PageFooterProps = {};
+import React from 'react';
 
-export type PageFooterBaseProps = React.DetailedHTMLProps<
-  Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>,
-  HTMLDivElement
->;
+export type PageFooterRootProps = {};
 
-export type PageFooterExoticComponent = React.ForwardRefExoticComponent<
-  PageFooterBaseProps & PageFooterProps & React.RefAttributes<HTMLDivElement>
->;
+export type PageFooterBaseProps = {
+  Root: React.JSX.IntrinsicElements['footer'] & PageFooterRootProps;
+};
 
-export type PageFooterComponent = PageFooterExoticComponent;
+export type PageFooterProps = {
+  Root: PageFooterBaseProps['Root'] & React.RefAttributes<HTMLElement>;
+};
+
+export type PageFooterComponents = {
+  Root: React.ForwardRefExoticComponent<PageFooterProps['Root']>;
+};
+
+export type PageFooterRootComponent = PageFooterComponents['Root'];

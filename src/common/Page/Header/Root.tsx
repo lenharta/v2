@@ -1,67 +1,42 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-
-import { Icon } from '@/common';
-import { useThemeCTX } from '@/store';
-import { createSurfaceAccent } from '@/common/utils';
+import { createSurface } from '@/common/utils';
 import type { PageHeaderComponent } from '@/types';
+
+import { PageHeaderNav } from './Nav';
+import { PageContainer } from '../Container';
+import { PageHeaderLogoBox } from './LogoBox';
+import { PageHeaderActionBox } from './ActionBox';
 
 export const PageHeader: PageHeaderComponent = (props) => {
   const { ...otherProps } = props;
+
+  const surface = React.useCallback(
+    () =>
+      createSurface({
+        scheme: 'primary',
+        values: [
+          { type: 'backgroundColor', alpha: 0.65, scheme: 'secondary' },
+          { type: 'borderColor', alpha: 0.3 },
+          { type: 'color', alpha: 1 },
+        ],
+      }),
+    []
+  );
+
   return (
-    <div {...otherProps} className="header">
-      <PageHeader.Nav>
-        <PageHeader.LogoBox />
-        <PageHeader.ActionBox />
-      </PageHeader.Nav>
+    <div {...otherProps} className="PageHeader" style={{ ...surface }}>
+      <PageContainer>
+        <PageHeader.Nav>
+          <PageHeader.LogoBox />
+          <PageHeader.ActionBox />
+        </PageHeader.Nav>
+      </PageContainer>
     </div>
   );
 };
 
 PageHeader.displayName = 'v2/Page.Header';
 
-const PageHeaderActionBox: PageHeaderComponent['ActionBox'] = React.forwardRef((props, ref) => {
-  const { ...otherProps } = props;
-  const [hovered, setHovered] = React.useState(false);
-  const { state } = useThemeCTX();
-
-  return (
-    <div {...otherProps} ref={ref}>
-      <Link
-        to="/preferences"
-        className="avatar"
-        aria-label="g"
-        onMouseOver={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        children={<Icon name={state.avatar} />}
-        style={createSurfaceAccent({ accent: state.accent, hovered })}
-      />
-    </div>
-  );
-});
-
 PageHeader.ActionBox = PageHeaderActionBox;
-
-const PageHeaderLogoBox: PageHeaderComponent['LogoBox'] = React.forwardRef((props, ref) => {
-  const { ...otherProps } = props;
-  return (
-    <div {...otherProps} ref={ref} className="HeaderLogoBox">
-      <Link to="/" className="HeaderLogoBox-link">
-        Logo
-      </Link>
-    </div>
-  );
-});
-
 PageHeader.LogoBox = PageHeaderLogoBox;
-
-const PageHeaderNav: PageHeaderComponent['Nav'] = React.forwardRef((props, ref) => {
-  const { children, ...otherProps } = props;
-  return (
-    <div {...otherProps} ref={ref} className="HeaderNav">
-      {children}
-    </div>
-  );
-});
-
 PageHeader.Nav = PageHeaderNav;

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import type { PageContentComponent } from '@/types';
+import type { PageContentRootComponent } from '@/types';
 
-export const PageContent: PageContentComponent = React.forwardRef((props, ref) => {
+export const PageContent: PageContentRootComponent = React.forwardRef((props, ref) => {
   const { id, children, ...otherProps } = props;
   const contentId = 'main_content' || id;
   return (
-    <main {...otherProps} ref={ref} id={contentId} className="content">
+    <main {...otherProps} ref={ref} id={contentId} className="PageContent">
       {children}
     </main>
   );

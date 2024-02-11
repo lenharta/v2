@@ -1,12 +1,17 @@
-export type PageContentProps = {};
+import React from 'react';
 
-export type PageContentBaseProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->;
+export type PageContentRootProps = {};
 
-export type PageContentExoticComponent = React.ForwardRefExoticComponent<
-  PageContentBaseProps & PageContentProps & React.RefAttributes<HTMLDivElement>
->;
+export type PageContentBaseProps = {
+  Root: React.JSX.IntrinsicElements['div'] & PageContentRootProps;
+};
 
-export type PageContentComponent = PageContentExoticComponent;
+export type PageContentProps = {
+  Root: PageContentBaseProps['Root'] & React.RefAttributes<HTMLDivElement>;
+};
+
+export type PageContentComponents = {
+  Root: React.ForwardRefExoticComponent<PageContentProps['Root']>;
+};
+
+export type PageContentRootComponent = PageContentComponents['Root'];

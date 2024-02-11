@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { PageContainer } from '../Container/Root';
-import type { PageFooterComponent } from '@/types';
+import type { PageFooterRootComponent } from '@/types';
 
-const PageFooter: PageFooterComponent = React.forwardRef((props, ref) => {
+const PageFooter: PageFooterRootComponent = React.forwardRef((props, ref) => {
   const { ...otherProps } = props;
   return (
-    <footer {...otherProps} ref={ref} className="footer">
+    <footer {...otherProps} ref={ref} className="PageFooter">
       <PageContainer>
         <Link to="/">Home</Link>
         <Link to="/toolbox">Toolbox</Link>
