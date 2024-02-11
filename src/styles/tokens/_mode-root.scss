@@ -1,62 +1,6 @@
 [data-prefers-color-scheme='dim'],
 [data-prefers-color-scheme='dark'],
 [data-prefers-color-scheme='light'] {
-  // BASE
-
-  --color-text-0: color-mix(in srgb, var(--c-sec) 99%, var(--c-on-sec));
-  --color-text-1: color-mix(in srgb, var(--c-sec) 90%, var(--c-on-sec));
-  --color-text-2: color-mix(in srgb, var(--c-sec) 80%, var(--c-on-sec));
-  --color-text-3: color-mix(in srgb, var(--c-sec) 70%, var(--c-on-sec));
-
-  --color-background-0: color-mix(in srgb, var(--c-pri) 99%, var(--c-on-pri));
-  --color-background-1: color-mix(in srgb, var(--c-pri) 93%, var(--c-on-pri));
-  --color-background-2: color-mix(in srgb, var(--c-pri) 87%, var(--c-on-pri));
-  --color-background-3: color-mix(in srgb, var(--c-pri) 81%, var(--c-on-pri));
-  --color-background-4: color-mix(in srgb, var(--c-pri) 75%, var(--c-on-pri));
-  --color-background-5: color-mix(in srgb, var(--c-pri) 69%, var(--c-on-pri));
-
-  --color-background-0-hover: color-mix(in srgb, var(--c-pri) 96%, var(--c-on-pri));
-  --color-background-1-hover: color-mix(in srgb, var(--c-pri) 90%, var(--c-on-pri));
-  --color-background-2-hover: color-mix(in srgb, var(--c-pri) 84%, var(--c-on-pri));
-  --color-background-3-hover: color-mix(in srgb, var(--c-pri) 78%, var(--c-on-pri));
-  --color-background-4-hover: color-mix(in srgb, var(--c-pri) 72%, var(--c-on-pri));
-  --color-background-5-hover: color-mix(in srgb, var(--c-pri) 66%, var(--c-on-pri));
-
-  --color-border-0: color-mix(in srgb, var(--c-pri) 83%, var(--c-on-pri));
-  --color-border-1: color-mix(in srgb, var(--c-pri) 77%, var(--c-on-pri));
-  --color-border-2: color-mix(in srgb, var(--c-pri) 71%, var(--c-on-pri));
-  --color-border-3: color-mix(in srgb, var(--c-pri) 65%, var(--c-on-pri));
-  --color-border-4: color-mix(in srgb, var(--c-pri) 59%, var(--c-on-pri));
-  --color-border-5: color-mix(in srgb, var(--c-pri) 53%, var(--c-on-pri));
-
-  // INVERTED
-
-  --color-text-0-invert: color-mix(in srgb, var(--c-pri) 99%, var(--c-on-pri));
-  --color-text-1-invert: color-mix(in srgb, var(--c-pri) 90%, var(--c-on-pri));
-  --color-text-2-invert: color-mix(in srgb, var(--c-pri) 80%, var(--c-on-pri));
-  --color-text-3-invert: color-mix(in srgb, var(--c-pri) 70%, var(--c-on-pri));
-
-  --color-background-0-invert: color-mix(in srgb, var(--c-sec) 99%, var(--c-on-sec));
-  --color-background-1-invert: color-mix(in srgb, var(--c-sec) 93%, var(--c-on-sec));
-  --color-background-2-invert: color-mix(in srgb, var(--c-sec) 87%, var(--c-on-sec));
-  --color-background-3-invert: color-mix(in srgb, var(--c-sec) 81%, var(--c-on-sec));
-  --color-background-4-invert: color-mix(in srgb, var(--c-sec) 75%, var(--c-on-sec));
-  --color-background-5-invert: color-mix(in srgb, var(--c-sec) 69%, var(--c-on-sec));
-
-  --color-background-0-invert-hover: color-mix(in srgb, var(--c-sec) 96%, var(--c-on-sec));
-  --color-background-1-invert-hover: color-mix(in srgb, var(--c-sec) 90%, var(--c-on-sec));
-  --color-background-2-invert-hover: color-mix(in srgb, var(--c-sec) 84%, var(--c-on-sec));
-  --color-background-3-invert-hover: color-mix(in srgb, var(--c-sec) 78%, var(--c-on-sec));
-  --color-background-4-invert-hover: color-mix(in srgb, var(--c-sec) 72%, var(--c-on-sec));
-  --color-background-5-invert-hover: color-mix(in srgb, var(--c-sec) 66%, var(--c-on-sec));
-
-  --color-border-0-invert: color-mix(in srgb, var(--c-sec) 83%, var(--c-on-sec));
-  --color-border-1-invert: color-mix(in srgb, var(--c-sec) 77%, var(--c-on-sec));
-  --color-border-2-invert: color-mix(in srgb, var(--c-sec) 71%, var(--c-on-sec));
-  --color-border-3-invert: color-mix(in srgb, var(--c-sec) 65%, var(--c-on-sec));
-  --color-border-4-invert: color-mix(in srgb, var(--c-sec) 59%, var(--c-on-sec));
-  --color-border-5-invert: color-mix(in srgb, var(--c-sec) 53%, var(--c-on-sec));
-
-  background-color: var(--color-background-0);
-  color: var(--color-text-0);
+  background-color: hsl(var(--c-hsl-primary));
+  color: hsl(var(--c-hsl-on-primary));
 }

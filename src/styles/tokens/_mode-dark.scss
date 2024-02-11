@@ -1,10 +1,4 @@
 [data-prefers-color-scheme='dark'] {
-  --c-pri: #0a0a0a;
-  --c-sec: #f5f5f5;
-  --c-on-pri: #f5f5f5;
-  --c-on-sec: #0a0a0a;
-}
-[data-prefers-color-scheme='dark'] {
   --c-hsl-orange: 25, 95%, 57%;
   --c-hsl-yellow: 38, 92%, 69%;
   --c-hsl-green: 142, 71%, 49%;
@@ -16,5 +10,10 @@
   --c-hsl-magenta: 292, 84%, 65%;
   --c-hsl-pink: 330, 81%, 64%;
   --c-hsl-red: 0, 84%, 64%;
-  --c-hsl-disabled: 0, 0%, 60%;
+
+  --c-hsl-primary: 230, 1%, 04%;
+  --c-hsl-secondary: 230, 1%, 96%;
+
+  --c-hsl-on-primary: 230, 1%, 96%;
+  --c-hsl-on-secondary: 230, 1%, 04%;
 }

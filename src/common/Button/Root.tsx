@@ -16,7 +16,7 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
 
   const [hovered, setHovered] = React.useState(false);
 
-  const surface = React.useMemo(
+  const surface = React.useCallback(
     () =>
       createSurfaceAccent({
         accent,
@@ -35,7 +35,7 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
     <Component
       {...otherProps}
       ref={ref}
-      style={{ ...surface }}
+      style={{ ...surface() }}
       disabled={disabled}
       className="Button"
       data-disabled={disabled}

@@ -1,15 +1,18 @@
-import * as React from 'react';
-import { Title } from '@/common';
-import { PageContainer } from '../Container/Root';
-import { PageHeroComponent } from '@/types';
+import { PageHeroTitle } from './Title';
+import { PageContainer } from '../Container';
+import { PageHeroRootComponent } from '@/types';
 
-export const PageHero: PageHeroComponent = React.forwardRef((props, ref) => {
+export const PageHero: PageHeroRootComponent = (props) => {
   const { title, ...otherProps } = props;
   return (
-    <div {...otherProps} ref={ref} className="PageHero">
-      <PageContainer>{title && <Title as="h1">{title}</Title>}</PageContainer>
+    <div {...otherProps} className="PageHero">
+      <PageContainer>
+        <PageHero.Title title={title} />
+      </PageContainer>
     </div>
   );
-});
+};
 
 PageHero.displayName = 'v2/Page.PageHero';
+
+PageHero.Title = PageHeroTitle;
