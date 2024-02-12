@@ -7,7 +7,6 @@ export const Text: TextRootComponent = React.forwardRef((props, ref) => {
 
   const clxss = clsx(
     'Text',
-    { [`Text--${Component}`]: Component },
     { [`Text--size-${size}`]: size },
     { [`Text--align-${align}`]: align },
     className
