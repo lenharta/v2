@@ -1,0 +1,68 @@
+.Switch {
+  --switch-root-height-xs: calc(24px * var(--scale));
+  --switch-root-height-sm: calc(24px * var(--scale));
+  --switch-root-height-md: calc(24px * var(--scale));
+  --switch-root-height-lg: calc(24px * var(--scale));
+  --switch-root-height-xl: calc(24px * var(--scale));
+
+  --switch-icon-size-xs: calc(20px * var(--scale));
+  --switch-icon-size-sm: calc(20px * var(--scale));
+  --switch-icon-size-md: calc(20px * var(--scale));
+  --switch-icon-size-lg: calc(20px * var(--scale));
+  --switch-icon-size-xl: calc(20px * var(--scale));
+
+  display: var(--switch-display, inline-flex);
+  justify-items: var(--switch-justify, start);
+  align-items: var(--switch-align, start);
+  height: var(--switch-root-height, var(--switch-root-height-xs));
+
+  svg {
+    width: var(--switch-icon-size, var(--switch-icon-size-xs));
+    height: var(--switch-icon-size, var(--switch-icon-size-xs));
+  }
+
+  &--size-xs {
+    --switch-icon-size: var(--switch-icon-size-xs);
+    --switch-root-height: var(--switch-root-height-xs);
+  }
+  &--size-sm {
+    --switch-icon-size: var(--switch-icon-size-sm);
+    --switch-root-height: var(--switch-root-height-sm);
+  }
+  &--size-md {
+    --switch-icon-size: var(--switch-icon-size-md);
+    --switch-root-height: var(--switch-root-height-md);
+  }
+  &--size-lg {
+    --switch-icon-size: var(--switch-icon-size-lg);
+    --switch-root-height: var(--switch-root-height-lg);
+  }
+  &--size-xl {
+    --switch-icon-size: var(--switch-icon-size-xl);
+    --switch-root-height: var(--switch-root-height-xl);
+  }
+
+  [data-block] {
+    --switch-display: block;
+  }
+
+  &--align-center {
+    --switch-align: center;
+  }
+  &--align-start {
+    --switch-align: flex-start;
+  }
+  &--align-end {
+    --switch-align: flex-end;
+  }
+
+  &--justify-center {
+    --switch-justify: center;
+  }
+  &--justify-start {
+    --switch-justify: flex-start;
+  }
+  &--justify-end {
+    --switch-justify: flex-end;
+  }
+}

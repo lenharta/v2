@@ -1,20 +1,29 @@
+import clsx from 'clsx';
 import * as React from 'react';
-import type { Align, Justify, Size } from '@/types';
+import { StackRootComponent } from '@/types';
 
-export type StackProps = React.JSX.IntrinsicElements['div'] & {
-  justify?: Justify;
-  align?: Align;
-  gap?: Size;
-};
+export const Stack: StackRootComponent = React.forwardRef((props, ref) => {
+  const {
+    gap = 'xs',
+    align = 'start',
+    justify = 'start',
+    children,
+    className,
+    component: Component = 'div',
+    ...otherProps
+  } = props;
 
-export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) => {
-  const { gap = 'xs', align = 'start', justify = 'start', children, ...otherProps } = props;
-
-  const clxss = `stack stack--gap-${gap} stack--align-${align} stack--justify-${justify}`;
+  const clxss = clsx(
+    'Stack',
+    `Stack--gap-${gap}`,
+    `Stack--align-${align}`,
+    `Stack--justify-${justify}`,
+    className
+  );
 
   return (
-    <div {...otherProps} ref={ref} className={clxss}>
+    <Component {...otherProps} aria-orientation="vertical" ref={ref} className={clxss}>
       {children}
-    </div>
+    </Component>
   );
 });
