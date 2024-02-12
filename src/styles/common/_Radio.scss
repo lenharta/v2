@@ -19,6 +19,9 @@
 
   width: 100%;
   height: var(--radio-root-height, var(--radio-root-height-xs));
+  position: relative;
+  isolation: isolate;
+
   display: var(--radio-display, inline-flex);
   align-items: var(--radio-align, center);
   justify-items: var(--radio-justify, start);

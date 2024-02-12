@@ -1,5 +1,5 @@
 export const createEventCallback = <T extends Element, E extends Event>(props: {
-  state?: { disabled?: boolean; readonly?: boolean };
+  state?: { disabled?: boolean; readOnly?: boolean };
   handler?: React.EventHandler<React.SyntheticEvent<T, E>> | (() => void);
   callback?: React.EventHandler<React.SyntheticEvent<T, E>>;
 }) => {

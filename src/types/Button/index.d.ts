@@ -7,7 +7,7 @@ export type ButtonRootProps = {
   scheme?: Scheme;
   accent?: Accent;
   justify?: Justify;
-  readonly?: boolean;
+  readOnly?: boolean;
   component?: 'button';
   leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;

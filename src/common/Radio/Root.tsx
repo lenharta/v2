@@ -16,7 +16,7 @@ export const Radio: RadioRootComponent = React.forwardRef((props, ref) => {
     label,
     style,
     disabled,
-    readonly,
+    readOnly,
     children,
     className,
     leftContent,
@@ -29,7 +29,7 @@ export const Radio: RadioRootComponent = React.forwardRef((props, ref) => {
 
   const isHovered = hover !== false;
   const isDisabled = disabled !== undefined;
-  const isReadonly = readonly !== undefined;
+  const isReadOnly = readOnly !== undefined;
 
   const clxss = clsx(
     'Radio',
@@ -58,23 +58,23 @@ export const Radio: RadioRootComponent = React.forwardRef((props, ref) => {
       className={clxss}
       data-hovered={isHovered}
       data-disabled={isDisabled}
-      data-readonly={isReadonly}
+      data-readonly={isReadOnly}
       aria-disabled={isDisabled}
-      aria-readonly={isReadonly}
+      aria-readonly={isReadOnly}
       style={{ ...style, ...surface() }}
       onMouseLeave={createEventCallback<HTMLButtonElement, MouseEvent>({
         callback: otherProps.onMouseLeave,
         handler: () => setHover(false),
-        state: { disabled, readonly },
+        state: { disabled, readOnly },
       })}
       onMouseEnter={createEventCallback<HTMLButtonElement, MouseEvent>({
         callback: otherProps.onMouseEnter,
         handler: () => setHover(true),
-        state: { disabled, readonly },
+        state: { disabled, readOnly },
       })}
     >
       {children}
-      <div className="Radio-content">
+      <div className="Radio-inner">
         <Label htmlFor={id}>{label}</Label>
         <div>{error}</div>
         <div>{info}</div>

@@ -11,7 +11,7 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
     scheme = 'secondary',
     justify = 'start',
     accent,
-    readonly,
+    readOnly,
     disabled,
     children,
     className,
@@ -52,16 +52,18 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
       disabled={disabled}
       className={clxss}
       data-disabled={disabled}
-      data-readonly={readonly}
+      data-readonly={readOnly}
+      aria-disabled={disabled}
+      aria-readonly={readOnly}
       onMouseLeave={createEventCallback<HTMLButtonElement, MouseEvent>({
         callback: otherProps.onMouseLeave,
         handler: () => setHover(false),
-        state: { disabled, readonly },
+        state: { disabled, readOnly },
       })}
       onMouseOver={createEventCallback<HTMLButtonElement, MouseEvent>({
         callback: otherProps.onMouseOver,
         handler: () => setHover(true),
-        state: { disabled, readonly },
+        state: { disabled, readOnly },
       })}
     >
       {children}

@@ -4,6 +4,7 @@ import { Label } from '../Label';
 import { useSurface } from '@/hooks';
 import { CheckboxRootComponent } from '@/types';
 import { createEventCallback } from '../utils';
+import { CheckboxIndicator } from './Indicator';
 
 export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => {
   const {
@@ -16,7 +17,7 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
     label,
     style,
     disabled,
-    readonly,
+    readOnly,
     children,
     className,
     leftContent,
@@ -26,10 +27,6 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
   } = props;
 
   const [hover, setHover] = React.useState(false);
-
-  const isHovered = hover !== false;
-  const isDisabled = disabled !== undefined;
-  const isReadonly = readonly !== undefined;
 
   const clxss = clsx(
     'Checkbox',
@@ -56,25 +53,31 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
       {...otherProps}
       ref={ref}
       className={clxss}
-      data-hovered={isHovered}
-      data-disabled={isDisabled}
-      data-readonly={isReadonly}
-      aria-disabled={isDisabled}
-      aria-readonly={isReadonly}
+      data-error={error !== undefined}
+      data-hovered={hover !== undefined}
+      data-disabled={disabled}
+      data-readonly={readOnly}
+      aria-disabled={disabled}
+      aria-readonly={readOnly}
       style={{ ...style, ...surface() }}
       onMouseLeave={createEventCallback<HTMLButtonElement, MouseEvent>({
         callback: otherProps.onMouseLeave,
         handler: () => setHover(false),
-        state: { disabled, readonly },
+        state: { disabled, readOnly },
       })}
       onMouseEnter={createEventCallback<HTMLButtonElement, MouseEvent>({
         callback: otherProps.onMouseEnter,
         handler: () => setHover(true),
-        state: { disabled, readonly },
+        state: { disabled, readOnly },
       })}
     >
-      {children}
-      <div className="Checkbox-content">
+      <CheckboxIndicator
+        error={error ? true : false}
+        size={size}
+        disabled={disabled}
+        readOnly={readOnly}
+      />
+      <div className="Checkbox-inner">
         <Label htmlFor={id}>{label}</Label>
         <div>{error}</div>
         <div>{info}</div>

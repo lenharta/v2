@@ -1,5 +1,5 @@
 import { useThemeCTX } from '@/store';
-import { Button, Checkbox, Page, Radio, Stack, Switch } from '@/common';
+import { Button, Checkbox, Page, Radio, Section, Stack, Switch, Title } from '@/common';
 
 const ModeController = () => {
   const { state, setMode } = useThemeCTX();
@@ -15,15 +15,36 @@ const ModeController = () => {
   );
 };
 
-const CheckboxDemo = () => {
-  return <Checkbox label="Checkbox Label" />;
-};
-const SwitchDemo = () => {
-  return <Switch label="Switch Label" />;
-};
-const RadioDemo = () => {
-  return <Radio label="Radio Label" />;
-};
+const DemoSection = () => (
+  <Section>
+    <Section.Container>
+      <Section.Header>
+        <Title>Section Header</Title>
+      </Section.Header>
+      <Section.Content>
+        <Title>Section Content</Title>
+      </Section.Content>
+    </Section.Container>
+  </Section>
+);
+
+const DemoInputComponents = () => (
+  <Section>
+    <Section.Container>
+      <Section.Header>
+        <Title>Component Demos</Title>
+      </Section.Header>
+      <Section.Content>
+        <ModeController />
+        <Stack>
+          <Checkbox label="Checkbox Label" />
+          <Switch label="Switch Label" />
+          <Radio label="Radio Label" />
+        </Stack>
+      </Section.Content>
+    </Section.Container>
+  </Section>
+);
 
 export function Toolbox() {
   return (
@@ -31,15 +52,8 @@ export function Toolbox() {
       <Page.Header />
       <Page.Hero title="Toolbox" />
       <Page.Content>
-        <Page.Container>
-          <ModeController />
-
-          <Stack>
-            <CheckboxDemo />
-            <SwitchDemo />
-            <RadioDemo />
-          </Stack>
-        </Page.Container>
+        <DemoSection />
+        <DemoInputComponents />
       </Page.Content>
     </Page>
   );

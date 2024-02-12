@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Align, Justify, Size } from '../common';
+import { Align, Justify } from '../common';
 
-export type RadioRootProps = {
+export type CheckboxRootProps = {
   /** Specifies the size of the input  */
   size?: Size;
 
@@ -11,13 +11,13 @@ export type RadioRootProps = {
   /** Specifies the `justify-items` property for the inputs' elements  */
   justify?: Justify;
 
-  /** Defines a `disabled` state for the input  */
+  /** Indicates a `disabled` state for the input  */
   disabled?: boolean;
 
-  /** Defines a `readOnly` state for the input  */
+  /** Indicates a `readOnly` state for the input  */
   readOnly?: boolean;
 
-  /** Defines the JSX tag for the root element that will be rendered */
+  /** Defines the tag name for the rendered root element */
   component?: 'button';
 
   /** Defines content that will be rendered to the `left` of the input label */
@@ -26,7 +26,7 @@ export type RadioRootProps = {
   /** Defines content that will be rendered to the `right` of the input label */
   rightContent?: React.ReactNode;
 
-  /** Defines the text for the input error label, if provided the input will have an `error` state */
+  /** Defines the text for the input error label, if provided this indicates the `error` state */
   error?: string;
 
   /** Defines the text for the input label */
@@ -36,16 +36,16 @@ export type RadioRootProps = {
   info?: string;
 };
 
-export type RadioBaseProps = {
-  Root: React.JSX.IntrinsicElements['button'] & RadioRootProps;
+export type CheckboxBaseProps = {
+  Root: React.JSX.IntrinsicElements['button'] & CheckboxRootProps;
 };
 
-export type RadioRefProps = {
-  Root: RadioBaseProps['Root'] & React.RefAttributes<HTMLButtonElement>;
+export type CheckboxRefProps = {
+  Root: CheckboxBaseProps['Root'] & React.RefAttributes<HTMLButtonElement>;
 };
 
-export type RadioComponents = {
-  Root: React.ForwardRefExoticComponent<RadioRefProps['Root']>;
+export type CheckboxComponents = {
+  Root: React.ForwardRefExoticComponent<CheckboxRefProps['Root']>;
 };
 
-export type RadioRootComponent = RadioComponents['Root'];
+export type CheckboxRootComponent = CheckboxComponents['Root'];
