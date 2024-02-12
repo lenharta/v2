@@ -1,6 +1,6 @@
-import { LabelRootComponent } from '@/types';
 import clsx from 'clsx';
-import React from 'react';
+import * as React from 'react';
+import { LabelRootComponent } from '@/types';
 
 export const Label: LabelRootComponent = React.forwardRef((props, ref) => {
   const { size, align, component: Component = 'label', className, children, ...otherProps } = props;

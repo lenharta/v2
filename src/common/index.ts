@@ -5,6 +5,7 @@ export * from './Icon';
 export * from './Label';
 export * from './Page';
 export * from './Radio';
+export * from './Section';
 export * from './Stack';
 export * from './Switch';
 export * from './Text';
