@@ -1,6 +1,4 @@
 .Radio {
-  --cursor: pointer;
-
   --radio-root-height-xs: calc(28px * var(--scale));
   --radio-root-height-sm: calc(34px * var(--scale));
   --radio-root-height-md: calc(40px * var(--scale));
@@ -18,8 +16,6 @@
   --radio-icon-size-md: calc(28px * var(--scale));
   --radio-icon-size-lg: calc(32px * var(--scale));
   --radio-icon-size-xl: calc(36px * var(--scale));
-
-  cursor: var(--cursor);
 
   width: 100%;
   height: var(--radio-root-height, var(--radio-root-height-xs));

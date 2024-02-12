@@ -1,6 +1,4 @@
 .Switch {
-  --cursor: pointer;
-
   --switch-root-height-xs: calc(28px * var(--scale));
   --switch-root-height-sm: calc(34px * var(--scale));
   --switch-root-height-md: calc(40px * var(--scale));
@@ -18,8 +16,6 @@
   --switch-icon-size-md: calc(28px * var(--scale));
   --switch-icon-size-lg: calc(32px * var(--scale));
   --switch-icon-size-xl: calc(36px * var(--scale));
-
-  cursor: var(--cursor);
 
   width: 100%;
   height: var(--switch-root-height, var(--switch-root-height-xs));

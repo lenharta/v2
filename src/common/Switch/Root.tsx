@@ -33,9 +33,9 @@ export const Switch: SwitchRootComponent = React.forwardRef((props, ref) => {
 
   const clxss = clsx(
     'Switch',
-    `Switch--size-${size}`,
-    `Switch--align-${align}`,
-    `Switch--justify-${justify}`,
+    { [`Switch--size-${size}`]: size },
+    { [`Switch--align-${align}`]: align },
+    { [`Switch--justify-${justify}`]: justify },
     className
   );
 

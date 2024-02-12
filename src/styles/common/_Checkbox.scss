@@ -1,6 +1,4 @@
 .Checkbox {
-  --cursor: pointer;
-
   --checkbox-root-height-xs: calc(28px * var(--scale));
   --checkbox-root-height-sm: calc(34px * var(--scale));
   --checkbox-root-height-md: calc(40px * var(--scale));
@@ -18,8 +16,6 @@
   --checkbox-icon-size-md: calc(28px * var(--scale));
   --checkbox-icon-size-lg: calc(32px * var(--scale));
   --checkbox-icon-size-xl: calc(36px * var(--scale));
-
-  cursor: var(--cursor);
 
   width: 100%;
   height: var(--checkbox-root-height, var(--checkbox-root-height-xs));

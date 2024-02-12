@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { Align, Size } from '../common';
 
 export type LabelRootProps = {
   component?: 'label';
+  align?: Align;
+  size?: Size;
 };
 
 export type LabelBaseProps = {

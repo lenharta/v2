@@ -38,11 +38,9 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
 
   const clxss = clsx(
     'Button',
-    {
-      [`Button--size-${size}`]: size,
-      [`Button--align-${align}`]: align,
-      [`Button--justify-${justify}`]: justify,
-    },
+    { [`Button--size-${size}`]: size },
+    { [`Button--align-${align}`]: align },
+    { [`Button--justify-${justify}`]: justify },
     className
   );
 

@@ -1,3 +1,60 @@
 .Title {
+  --title-size-xs: var(--font-size-5);
+  --title-size-sm: var(--font-size-6);
+  --title-size-md: var(--font-size-7);
+  --title-size-lg: var(--font-size-8);
+  --title-size-xl: var(--font-size-9);
+
+  --title-height-xs: var(--font-size-6);
+  --title-height-sm: var(--font-size-7);
+  --title-height-md: var(--font-size-8);
+  --title-height-lg: var(--font-size-9);
+  --title-height-xl: var(--font-size-10);
+
   display: block;
+  font-size: var(--title-size, var(--title-size-xs));
+  line-height: var(--title-height, var(--title-height-xs));
+  text-justify: var(--title-justify);
+  text-align: var(--title-align);
+
+  &--size-xs {
+    --title-size: var(--title-size-xs);
+    --title-height: var(--title-height-xs);
+  }
+  &--size-sm {
+    --title-size: var(--title-size-sm);
+    --title-height: var(--title-height-sm);
+  }
+  &--size-md {
+    --title-size: var(--title-size-md);
+    --title-height: var(--title-height-md);
+  }
+  &--size-lg {
+    --title-size: var(--title-size-lg);
+    --title-height: var(--title-height-lg);
+  }
+  &--size-xl {
+    --title-size: var(--title-size-xl);
+    --title-height: var(--title-height-xl);
+  }
+
+  &--align-center {
+    --title-align: center;
+  }
+  &--align-start {
+    --title-align: flex-start;
+  }
+  &--align-end {
+    --title-align: flex-end;
+  }
+
+  &--justify-center {
+    --title-justify: center;
+  }
+  &--justify-start {
+    --title-justify: flex-start;
+  }
+  &--justify-end {
+    --title-justify: flex-end;
+  }
 }

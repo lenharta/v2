@@ -33,9 +33,9 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
 
   const clxss = clsx(
     'Checkbox',
-    `Checkbox--size-${size}`,
-    `Checkbox--align-${align}`,
-    `Checkbox--justify-${justify}`,
+    { [`Checkbox--size-${size}`]: size },
+    { [`Checkbox--align-${align}`]: align },
+    { [`Checkbox--justify-${justify}`]: justify },
     className
   );
 

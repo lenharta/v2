@@ -1,0 +1,60 @@
+.Text {
+  --text-size-xs: var(--font-size-3);
+  --text-size-sm: var(--font-size-4);
+  --text-size-md: var(--font-size-5);
+  --text-size-lg: var(--font-size-6);
+  --text-size-xl: var(--font-size-7);
+
+  --text-height-xs: var(--font-size-4);
+  --text-height-sm: var(--font-size-5);
+  --text-height-md: var(--font-size-6);
+  --text-height-lg: var(--font-size-7);
+  --text-height-xl: var(--font-size-8);
+
+  display: block;
+  font-size: var(--text-size, var(--text-size-xs));
+  line-height: var(--text-height, var(--text-height-xs));
+  text-justify: var(--text-justify);
+  text-align: var(--text-align);
+
+  &--size-xs {
+    --text-size: var(--text-size-xs);
+    --text-height: var(--text-height-xs);
+  }
+  &--size-sm {
+    --text-size: var(--text-size-sm);
+    --text-height: var(--text-height-sm);
+  }
+  &--size-md {
+    --text-size: var(--text-size-md);
+    --text-height: var(--text-height-md);
+  }
+  &--size-lg {
+    --text-size: var(--text-size-lg);
+    --text-height: var(--text-height-lg);
+  }
+  &--size-xl {
+    --text-size: var(--text-size-xl);
+    --text-height: var(--text-height-xl);
+  }
+
+  &--align-center {
+    --text-align: center;
+  }
+  &--align-start {
+    --text-align: flex-start;
+  }
+  &--align-end {
+    --text-align: flex-end;
+  }
+
+  &--justify-center {
+    --text-justify: center;
+  }
+  &--justify-start {
+    --text-justify: flex-start;
+  }
+  &--justify-end {
+    --text-justify: flex-end;
+  }
+}

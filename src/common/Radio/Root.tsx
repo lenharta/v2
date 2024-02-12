@@ -33,9 +33,9 @@ export const Radio: RadioRootComponent = React.forwardRef((props, ref) => {
 
   const clxss = clsx(
     'Radio',
-    `Radio--size-${size}`,
-    `Radio--align-${align}`,
-    `Radio--justify-${justify}`,
+    { [`Radio--size-${size}`]: size },
+    { [`Radio--align-${align}`]: align },
+    { [`Radio--justify-${justify}`]: justify },
     className
   );
 
