@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { AccentKey, Scheme } from '@/types';
+import { AccentKey, Align, Justify, Scheme, Size } from '@/types';
 
 export type ButtonRootProps = {
+  size?: Size;
+  align?: Align;
   scheme?: Scheme;
-  // accent?: AccentKey;
+  accent?: Accent;
+  justify?: Justify;
   readonly?: boolean;
   component?: 'button';
   leftContent?: React.ReactNode;

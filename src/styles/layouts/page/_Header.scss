@@ -7,14 +7,15 @@
   display: block;
   position: fixed;
   box-sizing: border-box;
-  padding-inline: var(--page-gutter);
   height: var(--page-header-height);
+  backdrop-filter: blur(16px);
 
   &-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: var(--page-header-height);
+    background-color: inherit;
   }
 
   &-logo-box {

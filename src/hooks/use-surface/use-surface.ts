@@ -1,10 +1,12 @@
-import React from 'react';
+import * as React from 'react';
+import { Accent } from '@/types';
 
-export type SurfaceToken = 'accent' | 'primary' | 'secondary' | 'disabled';
+export type SurfaceToken = 'primary' | 'secondary' | 'disabled' | 'readonly' | Accent;
 export type SurfaceProperty = keyof React.CSSProperties;
 
 export type SurfaceState = {
   hover?: boolean | undefined;
+  readonly?: boolean | undefined;
   disabled?: boolean | undefined;
 };
 
@@ -38,18 +40,28 @@ export const findSurfaceAlpha = (alpha: number): number => {
   return isMax ?? isMin ?? alpha;
 };
 
+export const findSurfaceToken = (token: SurfaceToken, state?: SurfaceState): SurfaceToken => {
+  const isDisabled = state?.disabled === true ? 'disabled' : undefined;
+  const isReadonly = state?.readonly === true ? 'readonly' : undefined;
+  return isDisabled ?? isReadonly ?? token;
+};
+
 export const parseSurfaceValue = ({ value, state }: SurfaceValueInput): React.CSSProperties => {
-  const _value = {
+  const input = {
     prop: value?.prop || 'backgroundColor',
     token: value?.token || 'primary',
     alpha: value?.alpha || 0.1,
   };
 
-  const _alpha = findSurfaceAlpha(_value.alpha);
+  const isDisabled = state?.disabled || state?.readonly;
+  const isHovered = state?.hover === true && !isDisabled;
 
-  const prop = _value.prop;
-  const token = state?.disabled ? 'disabled' : _value.token;
-  const alpha = state?.hover && !state.disabled ? _alpha + HOVER_STEP : _alpha;
+  const baseAlpha = findSurfaceAlpha(input.alpha);
+  const hoverAlpha = baseAlpha + HOVER_STEP;
+
+  const prop = input.prop;
+  const token = findSurfaceToken(input.token, state);
+  const alpha = isHovered ? hoverAlpha : baseAlpha;
 
   return { [prop]: createToken(token, alpha) };
 };

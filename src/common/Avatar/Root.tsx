@@ -1,55 +1,54 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+
 import { Icon } from '../Icon';
-import { createEventCallback, createSurfaceAccent } from '../utils';
+import { useSurface } from '@/hooks';
+import { createEventCallback } from '../utils';
 import type { AvatarRootComponent } from '@/types';
-import { useThemeCTX } from '@/store';
 
 export const Avatar: AvatarRootComponent = React.forwardRef((props, ref) => {
   const {
     to = '/',
     style,
-    // accent = 'blue',
+    accent = 'blue',
     avatar = 'person',
     component: Component = Link,
     children,
     ...otherProps
   } = props;
 
-  const [hovered, setHovered] = React.useState(false);
-  const { state } = useThemeCTX();
+  const [hover, setHover] = React.useState(false);
 
-  // const surface = React.useCallback(
-  //   () =>
-  //     createSurfaceAccent({
-  //       accent,
-  //       hovered,
-  //       options: {
-  //         backgroundAlpha: 0.1,
-  //         borderAlpha: 0.7,
-  //         colorAlpha: 0.9,
-  //       },
-  //     }),
-  //   [hovered, accent]
-  // );
+  const surface = React.useCallback(
+    () =>
+      useSurface({
+        state: { hover },
+        values: [
+          { prop: 'backgroundColor', token: accent, alpha: 0.1 },
+          { prop: 'borderColor', token: accent, alpha: 0.7 },
+          { prop: 'color', token: accent, alpha: 0.9 },
+        ],
+      }),
+    [hover]
+  );
 
   return (
     <Component
       {...otherProps}
       to={to}
       ref={ref}
-      // style={{ ...style, ...surface() }}
       className="Avatar"
+      style={{ ...style, ...surface() }}
+      onMouseEnter={createEventCallback<HTMLAnchorElement, MouseEvent>({
+        callback: otherProps.onMouseOver,
+        handler: () => setHover(true),
+      })}
       onMouseLeave={createEventCallback<HTMLAnchorElement, MouseEvent>({
         callback: otherProps.onMouseLeave,
-        handler: () => setHovered(false),
-      })}
-      onMouseOver={createEventCallback<HTMLAnchorElement, MouseEvent>({
-        callback: otherProps.onMouseOver,
-        handler: () => setHovered(true),
+        handler: () => setHover(false),
       })}
     >
-      <Icon name={state.avatar || avatar} className="Avatar-icon" />
+      <Icon name={avatar} className="Avatar-icon" />
     </Component>
   );
 });

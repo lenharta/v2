@@ -1,8 +1,4 @@
 .Page {
-  background-color: hsl(var(--c-hsl-primary));
-  color: hsl(var(--c-hsl-secondary));
-}
-
-.PageHeader {
-  backdrop-filter: blur(16px);
+  background-color: hsla(var(--c-hsl-primary), 1);
+  color: hsla(var(--c-hsl-secondary), 1);
 }

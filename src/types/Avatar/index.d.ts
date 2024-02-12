@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
-import { AccentKey, AvatarKey } from '../store';
+import { Accent } from '../store';
 
 export type AvatarRootProps = LinkProps & {
   component?: 'a' | typeof Link;
-  // accent?: AccentKey;
-  avatar?: AvatarKey;
+  accent?: Accent;
+  avatar?: Avatar;
 };
 
 export type AvatarBaseProps = {

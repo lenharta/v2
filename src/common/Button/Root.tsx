@@ -1,43 +1,59 @@
 import * as React from 'react';
+import { useSurface } from '@/hooks';
 import { ButtonRootComponent } from '@/types';
-import { createEventCallback, createSurface } from '../utils';
+import { createEventCallback } from '../utils';
+import clsx from 'clsx';
 
 export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
   const {
-    // accent,
-    scheme,
+    size = 'sm',
+    align = 'center',
+    scheme = 'secondary',
+    justify = 'start',
+    accent,
     readonly,
     disabled,
     children,
+    className,
     leftContent,
     rightContent,
     component: Component = 'button',
     ...otherProps
   } = props;
 
+  const token = scheme || accent;
+
   const [hover, setHover] = React.useState(false);
 
-  // const surface = React.useCallback(
-  //   () =>
-  //     createSurface({
-  //       scheme: accent ? accent : scheme,
-  //       state: { hover },
-  //       values: [
-  //         { type: 'backgroundColor', alpha: accent ? 0.15 : 0.05 },
-  //         { type: 'borderColor', alpha: accent ? 0.7 : 0.3 },
-  //         { type: 'color', alpha: 1 },
-  //       ],
-  //     }),
-  //   [hover, disabled, scheme, accent]
-  // );
+  const surface = React.useCallback(
+    () =>
+      useSurface({
+        state: { hover, disabled },
+        values: [
+          { prop: 'backgroundColor', token, alpha: 0.05 },
+          { prop: 'color', token, alpha: 0.9 },
+        ],
+      }),
+    [hover, disabled]
+  );
+
+  const clxss = clsx(
+    'Button',
+    {
+      [`Button--size-${size}`]: size,
+      [`Button--align-${align}`]: align,
+      [`Button--justify-${justify}`]: justify,
+    },
+    className
+  );
 
   return (
     <Component
       {...otherProps}
       ref={ref}
-      // style={{ ...surface() }}
+      style={{ ...surface() }}
       disabled={disabled}
-      className="Button"
+      className={clxss}
       data-disabled={disabled}
       data-readonly={readonly}
       onMouseLeave={createEventCallback<HTMLButtonElement, MouseEvent>({
