@@ -11,6 +11,24 @@
   --border-md: solid 2.5px transparent;
   --border-lg: solid 3.5px transparent;
 
+  --font-weight-lgt: 300;
+  --font-weight-reg: 400;
+  --font-weight-med: 500;
+  --font-weight-bld: 600;
+  --font-weight-xbd: 700;
+
+  --font-family-lgt: 'Satoshi-Light';
+  --font-family-reg: 'Satoshi-Regular';
+  --font-family-med: 'Satoshi-Medium';
+  --font-family-bld: 'Satoshi-Bold';
+  --font-family-xbd: 'Satoshi-Black';
+
+  --font-family-lgt-italic: 'Satoshi-LightItalic';
+  --font-family-reg-italic: 'Satoshi-Italic';
+  --font-family-med-italic: 'Satoshi-MediumItalic';
+  --font-family-bld-italic: 'Satoshi-BoldItalic';
+  --font-family-xbd-italic: 'Satoshi-BlackItalic';
+
   --font-size-1: calc(4px * var(--scale));
   --font-size-2: calc(8px * var(--scale));
   --font-size-3: calc(12px * var(--scale));
