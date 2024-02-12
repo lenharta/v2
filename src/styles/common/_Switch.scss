@@ -1,49 +1,69 @@
 .Switch {
-  --switch-root-height-xs: calc(24px * var(--scale));
-  --switch-root-height-sm: calc(24px * var(--scale));
-  --switch-root-height-md: calc(24px * var(--scale));
-  --switch-root-height-lg: calc(24px * var(--scale));
-  --switch-root-height-xl: calc(24px * var(--scale));
+  --cursor: pointer;
+
+  --switch-root-height-xs: calc(28px * var(--scale));
+  --switch-root-height-sm: calc(34px * var(--scale));
+  --switch-root-height-md: calc(40px * var(--scale));
+  --switch-root-height-lg: calc(46px * var(--scale));
+  --switch-root-height-xl: calc(52px * var(--scale));
+
+  --switch-font-size-xs: calc(14px * var(--scale));
+  --switch-font-size-sm: calc(16px * var(--scale));
+  --switch-font-size-md: calc(18px * var(--scale));
+  --switch-font-size-lg: calc(20px * var(--scale));
+  --switch-font-size-xl: calc(22px * var(--scale));
 
   --switch-icon-size-xs: calc(20px * var(--scale));
-  --switch-icon-size-sm: calc(20px * var(--scale));
-  --switch-icon-size-md: calc(20px * var(--scale));
-  --switch-icon-size-lg: calc(20px * var(--scale));
-  --switch-icon-size-xl: calc(20px * var(--scale));
+  --switch-icon-size-sm: calc(24px * var(--scale));
+  --switch-icon-size-md: calc(28px * var(--scale));
+  --switch-icon-size-lg: calc(32px * var(--scale));
+  --switch-icon-size-xl: calc(36px * var(--scale));
 
-  display: var(--switch-display, inline-flex);
-  justify-items: var(--switch-justify, start);
-  align-items: var(--switch-align, start);
+  cursor: var(--cursor);
+
+  width: 100%;
   height: var(--switch-root-height, var(--switch-root-height-xs));
+  display: var(--switch-display, inline-flex);
+  align-items: var(--switch-align, center);
+  justify-items: var(--switch-justify, start);
+  padding-inline: 0.4rem;
+  font-size: var(--switch-font-size, var(--switch-font-size-xs));
+  font-weight: 500;
+  line-height: 1;
 
-  svg {
+  &[data-block] {
+    --switch-display: block;
+  }
+
+  &-icon {
     width: var(--switch-icon-size, var(--switch-icon-size-xs));
     height: var(--switch-icon-size, var(--switch-icon-size-xs));
   }
 
   &--size-xs {
+    --switch-font-size: var(--switch-font-size-xs);
     --switch-icon-size: var(--switch-icon-size-xs);
     --switch-root-height: var(--switch-root-height-xs);
   }
   &--size-sm {
+    --switch-font-size: var(--switch-font-size-sm);
     --switch-icon-size: var(--switch-icon-size-sm);
     --switch-root-height: var(--switch-root-height-sm);
   }
   &--size-md {
+    --switch-font-size: var(--switch-font-size-md);
     --switch-icon-size: var(--switch-icon-size-md);
     --switch-root-height: var(--switch-root-height-md);
   }
   &--size-lg {
+    --switch-font-size: var(--switch-font-size-lg);
     --switch-icon-size: var(--switch-icon-size-lg);
     --switch-root-height: var(--switch-root-height-lg);
   }
   &--size-xl {
+    --switch-font-size: var(--switch-font-size-xl);
     --switch-icon-size: var(--switch-icon-size-xl);
     --switch-root-height: var(--switch-root-height-xl);
-  }
-
-  [data-block] {
-    --switch-display: block;
   }
 
   &--align-center {

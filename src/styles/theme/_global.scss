@@ -2,3 +2,35 @@
   background-color: hsla(var(--c-hsl-primary), 1);
   color: hsla(var(--c-hsl-secondary), 1);
 }
+
+.Radio,
+.Button,
+.Switch,
+.Checkbox {
+  --cursor: pointer;
+  --c-border: transparent;
+  --c-outline: transparent;
+
+  cursor: var(--cursor);
+  border: var(--border-md);
+  outline: var(--border-md);
+  border-color: var(--c-border);
+  outline-color: var(--c-outline);
+
+  &:disabled,
+  &[data-disabled] {
+    --cursor: default;
+  }
+
+  &[data-hovered]:not([data-disabled]),
+  &[data-hovered]:not([data-disabled]) .Label {
+    --cursor: pointer;
+  }
+
+  &:focus:not(:focus-visible) {
+    --c-outline: transparent;
+  }
+  &:focus:focus-visible {
+    --c-outline: hsl(var(--c-hsl-focus));
+  }
+}
