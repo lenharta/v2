@@ -54,19 +54,3 @@
     --button-font-size: var(--button-font-size-xl);
   }
 }
-
-.button--solid-primary {
-  background-color: var(--color-background-1);
-  color: inherit;
-  &:hover {
-    background-color: var(--color-background-1-hover);
-  }
-}
-
-.button--solid-secondary {
-  background-color: var(--color-background-1-invert);
-  color: inherit;
-  &:hover {
-    background-color: var(--color-background-1-invert-hover);
-  }
-}

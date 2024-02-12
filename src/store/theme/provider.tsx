@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { ThemeCTX } from './context';
 import { type ThemeStore } from '@/types';
+import { localManager } from '../storage/local-manager';
+import { STORAGE_KEYS } from '..';
 
 interface ThemeProviderProps {
   children?: React.ReactNode;
@@ -9,9 +11,7 @@ interface ThemeProviderProps {
 export const ThemeProvider = (props: ThemeProviderProps) => {
   const { children } = props;
 
-  const STORAGE_KEY = 'theme-store';
-
-  const storage = window.localStorage;
+  const local = localManager<ThemeStore>(STORAGE_KEYS.LOCAL_STORE_THEME);
 
   const INITIAL_STATE: ThemeStore = {
     avatar: 'person',
@@ -19,18 +19,23 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     mode: 'dark',
   };
 
-  const readValue = React.useCallback((): ThemeStore => {
-    try {
-      const raw = storage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : INITIAL_STATE;
-    } catch (error: any) {
-      console.log('[@v2/ThemeProvider]: Failed to update `mode` store.');
-      return INITIAL_STATE;
-    }
+  const readValue = React.useCallback(() => {
+    const get = () => {
+      try {
+        const payload = local.fetch();
+        return payload ? payload : INITIAL_STATE;
+      } catch {
+        console.error(
+          `ERROR:[@v2/storage/local]: Check 'INITIALIZER' method @ ${STORAGE_KEYS.LOCAL_STORE_THEME}`
+        );
+        return INITIAL_STATE;
+      }
+    };
+    return get();
   }, []);
 
   const [store, dispatch] = React.useReducer(
-    (current: ThemeStore, update: Partial<ThemeStore>) => ({
+    (current: ThemeStore, update: ThemeStore) => ({
       ...current,
       ...update,
     }),
@@ -38,30 +43,30 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     readValue
   );
 
-  const setMode = async (value: ThemeStore['mode']) => {
+  const setMode = (value: ThemeStore['mode']) => {
     try {
-      storage.setItem(STORAGE_KEY, JSON.stringify({ ...store, mode: value }));
+      local.write({ ...store, mode: value });
       dispatch({ mode: value });
     } catch (error: any) {
-      console.log('[@v2/ThemeProvider]: Failed to update `mode` store.');
+      console.error(`ERROR:[@v2/storage/local]: Check 'SET-MODE' method @ ${value}`);
     }
   };
 
-  const setAccent = async (value: ThemeStore['accent']) => {
+  const setAccent = (value: ThemeStore['accent']) => {
     try {
-      storage.setItem(STORAGE_KEY, JSON.stringify({ ...store, accent: value }));
+      local.write({ ...store, accent: value });
       dispatch({ accent: value });
     } catch (error: any) {
-      console.log('[@v2/ThemeProvider]: Failed to update `accent` store.');
+      console.error(`ERROR:[@v2/storage/local]: Check 'SET-ACCENT' method @ ${value}`);
     }
   };
 
-  const setAvatar = async (value: ThemeStore['avatar']) => {
+  const setAvatar = (value: ThemeStore['avatar']) => {
     try {
-      storage.setItem(STORAGE_KEY, JSON.stringify({ ...store, avatar: value }));
+      local.write({ ...store, avatar: value });
       dispatch({ avatar: value });
     } catch (error: any) {
-      console.log('[@v2/ThemeProvider]: Failed to update `avatar` store.');
+      console.error(`ERROR:[@v2/storage/local]: Check 'SET-AVATAR' method @ ${value}`);
     }
   };
 

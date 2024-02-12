@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useSurface } from '@/hooks';
-import { useThemeCTX } from '@/store';
+import { STORAGE_KEYS, useStore, useStoreDispatch, useThemeCTX } from '@/store';
 import { Button, Page } from '@/common';
+import { deserializeJSON, generateRandomId, serializeJSON } from '@/utils';
 
 const ModeController = () => {
   const { state, setMode } = useThemeCTX();
