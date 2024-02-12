@@ -6,9 +6,9 @@ export type Store = {
 };
 
 export type ThemeStore = {
-  mode?: ModeKey;
-  accent?: AccentKey;
-  avatar?: AvatarKey;
+  mode?: Mode;
+  accent?: Accent;
+  avatar?: Avatar;
 };
 
 export enum SETTINGS_THEME_MODE {
@@ -54,6 +54,6 @@ export enum SETTINGS_THEME_AVATAR {
   soccer = 'avatar-soccer',
 }
 
-export type ModeKey = keyof typeof SETTINGS_THEME_MODE;
-export type AccentKey = keyof typeof SETTINGS_THEME_ACCENT;
-export type AvatarKey = IconName;
+export type Mode = keyof typeof SETTINGS_THEME_MODE;
+export type Accent = keyof typeof SETTINGS_THEME_ACCENT;
+export type Avatar = IconName;

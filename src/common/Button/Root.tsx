@@ -1,34 +1,50 @@
 import * as React from 'react';
+import { useSurface } from '@/hooks';
 import { ButtonRootComponent } from '@/types';
-import { createEventCallback, createSurfaceAccent } from '../utils';
+import { createEventCallback } from '../utils';
+import clsx from 'clsx';
 
 export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
   const {
+    size = 'sm',
+    align = 'center',
+    scheme = 'secondary',
+    justify = 'start',
     accent,
     readonly,
     disabled,
     children,
+    className,
     leftContent,
     rightContent,
     component: Component = 'button',
     ...otherProps
   } = props;
 
-  const [hovered, setHovered] = React.useState(false);
+  const token = scheme || accent;
+
+  const [hover, setHover] = React.useState(false);
 
   const surface = React.useCallback(
     () =>
-      createSurfaceAccent({
-        accent,
-        hovered,
-        disabled,
-        options: {
-          backgroundAlpha: 0.1,
-          borderAlpha: 0.7,
-          colorAlpha: 0.9,
-        },
+      useSurface({
+        state: { hover, disabled },
+        values: [
+          { prop: 'backgroundColor', token, alpha: 0.05 },
+          { prop: 'color', token, alpha: 0.9 },
+        ],
       }),
-    [hovered, disabled]
+    [hover, disabled]
+  );
+
+  const clxss = clsx(
+    'Button',
+    {
+      [`Button--size-${size}`]: size,
+      [`Button--align-${align}`]: align,
+      [`Button--justify-${justify}`]: justify,
+    },
+    className
   );
 
   return (
@@ -37,17 +53,17 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
       ref={ref}
       style={{ ...surface() }}
       disabled={disabled}
-      className="Button"
+      className={clxss}
       data-disabled={disabled}
       data-readonly={readonly}
       onMouseLeave={createEventCallback<HTMLButtonElement, MouseEvent>({
         callback: otherProps.onMouseLeave,
-        handler: () => setHovered(false),
+        handler: () => setHover(false),
         state: { disabled, readonly },
       })}
       onMouseOver={createEventCallback<HTMLButtonElement, MouseEvent>({
         callback: otherProps.onMouseOver,
-        handler: () => setHovered(true),
+        handler: () => setHover(true),
         state: { disabled, readonly },
       })}
     >

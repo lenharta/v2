@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createSurface } from '@/common/utils';
+import { useSurface } from '@/hooks';
 import type { PageHeaderComponent } from '@/types';
 
 import { PageHeaderNav } from './Nav';
@@ -12,19 +12,17 @@ export const PageHeader: PageHeaderComponent = (props) => {
 
   const surface = React.useCallback(
     () =>
-      createSurface({
-        scheme: 'primary',
+      useSurface({
         values: [
-          { type: 'backgroundColor', alpha: 0.65, scheme: 'secondary' },
-          { type: 'borderColor', alpha: 0.3 },
-          { type: 'color', alpha: 1 },
+          { prop: 'backgroundColor', token: 'primary', alpha: 0.65 },
+          { prop: 'color', token: 'secondary', alpha: 0.9 },
         ],
       }),
     []
   );
 
   return (
-    <div {...otherProps} className="PageHeader" style={{ ...surface }}>
+    <div {...otherProps} style={{ ...surface() }} className="PageHeader">
       <PageContainer>
         <PageHeader.Nav>
           <PageHeader.LogoBox />
