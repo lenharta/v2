@@ -1,0 +1,68 @@
+.Checkbox {
+  --checkbox-root-height-xs: calc(24px * var(--scale));
+  --checkbox-root-height-sm: calc(24px * var(--scale));
+  --checkbox-root-height-md: calc(24px * var(--scale));
+  --checkbox-root-height-lg: calc(24px * var(--scale));
+  --checkbox-root-height-xl: calc(24px * var(--scale));
+
+  --checkbox-icon-size-xs: calc(20px * var(--scale));
+  --checkbox-icon-size-sm: calc(20px * var(--scale));
+  --checkbox-icon-size-md: calc(20px * var(--scale));
+  --checkbox-icon-size-lg: calc(20px * var(--scale));
+  --checkbox-icon-size-xl: calc(20px * var(--scale));
+
+  display: var(--checkbox-display, inline-flex);
+  justify-items: var(--checkbox-justify, start);
+  align-items: var(--checkbox-align, start);
+  height: var(--checkbox-root-height, var(--checkbox-root-height-xs));
+
+  svg {
+    width: var(--checkbox-icon-size, var(--checkbox-icon-size-xs));
+    height: var(--checkbox-icon-size, var(--checkbox-icon-size-xs));
+  }
+
+  &--size-xs {
+    --checkbox-icon-size: var(--checkbox-icon-size-xs);
+    --checkbox-root-height: var(--checkbox-root-height-xs);
+  }
+  &--size-sm {
+    --checkbox-icon-size: var(--checkbox-icon-size-sm);
+    --checkbox-root-height: var(--checkbox-root-height-sm);
+  }
+  &--size-md {
+    --checkbox-icon-size: var(--checkbox-icon-size-md);
+    --checkbox-root-height: var(--checkbox-root-height-md);
+  }
+  &--size-lg {
+    --checkbox-icon-size: var(--checkbox-icon-size-lg);
+    --checkbox-root-height: var(--checkbox-root-height-lg);
+  }
+  &--size-xl {
+    --checkbox-icon-size: var(--checkbox-icon-size-xl);
+    --checkbox-root-height: var(--checkbox-root-height-xl);
+  }
+
+  [data-block] {
+    --checkbox-display: block;
+  }
+
+  &--align-center {
+    --checkbox-align: center;
+  }
+  &--align-start {
+    --checkbox-align: flex-start;
+  }
+  &--align-end {
+    --checkbox-align: flex-end;
+  }
+
+  &--justify-center {
+    --checkbox-justify: center;
+  }
+  &--justify-start {
+    --checkbox-justify: flex-start;
+  }
+  &--justify-end {
+    --checkbox-justify: flex-end;
+  }
+}

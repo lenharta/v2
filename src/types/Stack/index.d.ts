@@ -1,12 +1,23 @@
-export type StackProps = {};
+import * as React from 'react';
+import { Align, Justify, Size } from '../common';
 
-export type StackBaseProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->;
+export type StackRootProps = {
+  component?: 'div';
+  justify?: Justify;
+  align?: Align;
+  gap?: Size;
+};
 
-export type StackExoticComponent = React.ForwardRefExoticComponent<
-  StackBaseProps & StackProps & React.RefAttributes<HTMLDivElement>
->;
+export type StackBaseProps = {
+  Root: React.JSX.IntrinsicElements['div'] & StackRootProps;
+};
 
-export type StackComponent = StackExoticComponent;
+export type StackRefProps = {
+  Root: StackBaseProps['Root'] & React.RefAttributes<HTMLDivElement>;
+};
+
+export type StackComponents = {
+  Root: React.ForwardRefExoticComponent<StackRefProps['Root']>;
+};
+
+export type StackRootComponent = StackComponents['Root'];

@@ -1,4 +1,26 @@
 .Stack {
   display: flex;
   flex-direction: column;
+  align-items: var(--stack-align, start);
+  justify-items: var(--stack-justify, start);
+
+  &--align-center {
+    --stack-align: center;
+  }
+  &--align-start {
+    --stack-align: flex-start;
+  }
+  &--align-end {
+    --stack-align: flex-end;
+  }
+
+  &--justify-center {
+    --stack-justify: center;
+  }
+  &--justify-start {
+    --stack-justify: flex-start;
+  }
+  &--justify-end {
+    --stack-justify: flex-end;
+  }
 }
