@@ -38,20 +38,28 @@ button {
   --cursor: pointer;
 
   cursor: var(--cursor);
+
   border: var(--border-sm);
+  border-color: transparent;
+
   outline: var(--border-sm);
   outline-color: transparent;
+}
+
+label {
+  --cursor: pointer;
+
+  cursor: var(--cursor);
 
   &:disabled,
   &[data-disabled] {
     --cursor: default;
   }
-  &:focus:not(:focus-visible) {
-    --outline-color: transparent;
-  }
-  &:focus:focus-visible {
-    --outline-color: dodgerblue;
-  }
+}
+
+button {
+  background-color: inherit;
+  color: inherit;
 }
 
 a {

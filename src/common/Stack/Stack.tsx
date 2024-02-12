@@ -4,7 +4,7 @@ import { StackRootComponent } from '@/types';
 
 export const Stack: StackRootComponent = React.forwardRef((props, ref) => {
   const {
-    gap = 'xs',
+    gap,
     align = 'start',
     justify = 'start',
     children,
@@ -15,9 +15,9 @@ export const Stack: StackRootComponent = React.forwardRef((props, ref) => {
 
   const clxss = clsx(
     'Stack',
-    `Stack--gap-${gap}`,
-    `Stack--align-${align}`,
-    `Stack--justify-${justify}`,
+    { [`Stack--gap-${gap}`]: gap },
+    { [`Stack--align-${align}`]: align },
+    { [`Stack--justify-${justify}`]: justify },
     className
   );
 

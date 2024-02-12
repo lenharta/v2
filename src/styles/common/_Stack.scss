@@ -1,8 +1,31 @@
 .Stack {
+  --stack-gap-xs: calc(4px * var(--scale));
+  --stack-gap-sm: calc(12px * var(--scale));
+  --stack-gap-md: calc(20px * var(--scale));
+  --stack-gap-lg: calc(28px * var(--scale));
+  --stack-gap-xl: calc(36px * var(--scale));
+
   display: flex;
   flex-direction: column;
   align-items: var(--stack-align, start);
   justify-items: var(--stack-justify, start);
+  gap: var(--stack-gap);
+
+  &--gap-xs {
+    --stack-gap: var(--stack-gap-xs);
+  }
+  &--gap-sm {
+    --stack-gap: var(--stack-gap-sm);
+  }
+  &--gap-md {
+    --stack-gap: var(--stack-gap-md);
+  }
+  &--gap-lg {
+    --stack-gap: var(--stack-gap-lg);
+  }
+  &--gap-xl {
+    --stack-gap: var(--stack-gap-xl);
+  }
 
   &--align-center {
     --stack-align: center;

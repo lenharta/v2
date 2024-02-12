@@ -21,17 +21,16 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
     ...otherProps
   } = props;
 
-  const token = scheme || accent;
-
   const [hover, setHover] = React.useState(false);
+  const token = scheme || accent;
 
   const surface = React.useCallback(
     () =>
       useSurface({
         state: { hover, disabled },
         values: [
-          { prop: 'backgroundColor', token, alpha: 0.05 },
-          { prop: 'color', token, alpha: 0.9 },
+          { prop: 'backgroundColor', token, alpha: 0.05, step: 0.03 },
+          { prop: 'color', token, alpha: 0.9, step: 0 },
         ],
       }),
     [hover, disabled]
@@ -39,11 +38,9 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
 
   const clxss = clsx(
     'Button',
-    {
-      [`Button--size-${size}`]: size,
-      [`Button--align-${align}`]: align,
-      [`Button--justify-${justify}`]: justify,
-    },
+    { [`Button--size-${size}`]: size },
+    { [`Button--align-${align}`]: align },
+    { [`Button--justify-${justify}`]: justify },
     className
   );
 

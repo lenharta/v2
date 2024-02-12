@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Accent } from '@/types';
 
-export type SurfaceToken = 'primary' | 'secondary' | 'disabled' | 'readonly' | Accent;
+export type SurfaceToken =
+  | 'primary'
+  | 'secondary'
+  | 'disabled'
+  | 'readonly'
+  | Accent
+  | (string & {});
 export type SurfaceProperty = keyof React.CSSProperties;
 
 export type SurfaceState = {
@@ -14,6 +20,7 @@ export type SurfaceValue = {
   prop?: SurfaceProperty | undefined;
   token?: SurfaceToken | undefined;
   alpha?: number | undefined;
+  step?: number | undefined;
 };
 
 export type SurfaceOptions = {
@@ -26,15 +33,14 @@ export type SurfaceValueInput = {
   state?: SurfaceState | undefined;
 };
 
-const HOVER_STEP = 0.05;
 const MAX_ALPHA = 0.95;
-const MIN_ALPHA = 0.01;
+const MIN_ALPHA = 0;
 
 export const createToken = (token: SurfaceToken, alpha: number): string => {
   return `hsla(var(--c-hsl-${token}), ${alpha})`;
 };
 
-export const findSurfaceAlpha = (alpha: number): number => {
+export const findValidAlpha = (alpha: number): number => {
   const isMax = alpha >= MAX_ALPHA ? MAX_ALPHA : undefined;
   const isMin = alpha <= MIN_ALPHA ? MIN_ALPHA : undefined;
   return isMax ?? isMin ?? alpha;
@@ -48,16 +54,18 @@ export const findSurfaceToken = (token: SurfaceToken, state?: SurfaceState): Sur
 
 export const parseSurfaceValue = ({ value, state }: SurfaceValueInput): React.CSSProperties => {
   const input = {
+    step: value?.step || 0.05,
     prop: value?.prop || 'backgroundColor',
     token: value?.token || 'primary',
-    alpha: value?.alpha || 0.1,
+    alpha: value?.alpha || 0,
   };
 
   const isDisabled = state?.disabled || state?.readonly;
   const isHovered = state?.hover === true && !isDisabled;
 
-  const baseAlpha = findSurfaceAlpha(input.alpha);
-  const hoverAlpha = baseAlpha + HOVER_STEP;
+  const baseAlpha = findValidAlpha(input.alpha);
+  const hoverStep = findValidAlpha(input.step);
+  const hoverAlpha = baseAlpha + hoverStep;
 
   const prop = input.prop;
   const token = findSurfaceToken(input.token, state);

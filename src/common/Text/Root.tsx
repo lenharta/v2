@@ -1,15 +1,15 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { TitleRootComponent } from '@/types';
+import { TextRootComponent } from '@/types';
 
-export const Title: TitleRootComponent = React.forwardRef((props, ref) => {
+export const Text: TextRootComponent = React.forwardRef((props, ref) => {
   const { size, align, component: Component = 'h2', children, className, ...otherProps } = props;
 
   const clxss = clsx(
-    'Title',
-    { [`Title--${Component}`]: Component },
-    { [`Title--size-${size}`]: size },
-    { [`Title--align-${align}`]: align },
+    'Text',
+    { [`Text--${Component}`]: Component },
+    { [`Text--size-${size}`]: size },
+    { [`Text--align-${align}`]: align },
     className
   );
 
