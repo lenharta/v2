@@ -1,20 +1,5 @@
-import React from 'react';
-
-export type StoreState = {
-  error?: string;
-  loading?: boolean;
-  sessionId?: string;
-  isMenuOpen?: boolean;
-  isToastOpen?: boolean;
-};
-
-export type Store = StoreState;
-export type StoreDispatch = React.Dispatch<StoreState>;
-
-export enum STORAGE_KEYS {
-  SESSION_STORE_ID = 'session-id',
-  LOCAL_STORE_THEME = 'local-theme',
-}
+import * as React from 'react';
+import { Store, StoreState } from '@/types';
 
 export const INITIAL_STORE: Store = {};
 

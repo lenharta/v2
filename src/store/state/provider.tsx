@@ -1,8 +1,8 @@
 import {
-  StoreDispatchProvider,
-  StoreStateProvider,
-  useStoreReducer,
   INITIAL_STORE,
+  useStoreReducer,
+  StoreStateProvider,
+  StoreDispatchProvider,
 } from './context';
 
 export const StoreProvider = ({ children }: { children: React.ReactNode }) => {

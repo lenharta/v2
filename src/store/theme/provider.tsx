@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ThemeCTX } from './context';
-import { type ThemeStore } from '@/types';
+import { STORAGE_KEYS } from '../config';
 import { localManager } from '../storage/local-manager';
-import { STORAGE_KEYS } from '..';
+import type { ThemeStore } from '@/types';
 
 interface ThemeProviderProps {
   children?: React.ReactNode;

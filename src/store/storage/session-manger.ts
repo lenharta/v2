@@ -1,13 +1,11 @@
 import { generateRandomId } from '@/utils';
 
 export const sessionManager = (key: string) => {
-  const storage = window.sessionStorage;
-
   const connect = () => generateRandomId(16);
 
-  const read = async (): Promise<boolean> => {
+  const read = (): boolean => {
     try {
-      const res = storage.getItem(key);
+      const res = window.sessionStorage.getItem(key);
       return !!res;
     } catch (error: any) {
       console.error(`ERROR:[@v2/storage/session]: Check 'READ' method @ ${key}`);
@@ -15,9 +13,9 @@ export const sessionManager = (key: string) => {
     }
   };
 
-  const write = async (): Promise<boolean> => {
+  const write = (): boolean => {
     try {
-      storage.setItem(key, connect());
+      window.sessionStorage.setItem(key, connect());
       return true;
     } catch (error: any) {
       console.error(`ERROR:[@v2/storage/session]: Check 'WRITE' method @ ${key}`);
@@ -25,10 +23,9 @@ export const sessionManager = (key: string) => {
     }
   };
 
-  const fetch = async (): Promise<string | null> => {
+  const fetch = (): string | null => {
     try {
-      const res = await read();
-      return res ? storage.getItem(key) : null;
+      return window.sessionStorage.getItem(key);
     } catch (error: any) {
       console.error(`ERROR:[@v2/storage/session]: Check 'FETCH' method @ ${key}`);
       return null;

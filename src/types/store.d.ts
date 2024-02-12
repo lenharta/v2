@@ -1,15 +1,19 @@
 import { IconName } from '@/common';
 import { Position } from './common';
 
-export type Data<T> = {};
-
 export type StoreState = {
   error?: string;
   loading?: boolean;
-  tunnel?: any;
-  toast?: { open?: boolean; message: string };
-  menu?: { open?: boolean; side: 'left' | 'right' };
+  sessionId?: string;
+  isMenuOpen?: boolean;
+  isToastOpen?: boolean;
+  // tunnel?: any;
+  // toast?: { open?: boolean; message: string };
+  // menu?: { open?: boolean; side: 'left' | 'right' };
 };
+
+export type Store = StoreState;
+export type StoreDispatch = React.Dispatch<StoreState>;
 
 export type ThemeStore = {
   mode?: Mode;
