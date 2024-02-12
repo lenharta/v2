@@ -1,7 +1,10 @@
+import { Page } from '@/common';
+
 export function RootError() {
   return (
-    <div>
-      <p>[ERROR 404]: Page Not Found</p>
-    </div>
+    <Page>
+      <Page.Hero title="[ERROR-404]: Page Not Found." />
+      <Page.Content></Page.Content>
+    </Page>
   );
 }

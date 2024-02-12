@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AccentKey, Align, Justify, Scheme, Size } from '@/types';
+import { Accent, Align, Justify, Scheme, Size } from '@/types';
 
 export type ButtonRootProps = {
   size?: Size;

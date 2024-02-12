@@ -5,11 +5,13 @@ export const Preferences = () => {
     <Page>
       <Page.Hero title="Preferences" />
       <Page.Content>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi ut consequuntur sit error
-          aliquid tenetur dolorem eos, eius nisi veritatis, non recusandae perferendis laudantium!
-          Maiores, aliquam. Voluptate sapiente quasi dolores!
-        </p>
+        <Page.Container>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi ut consequuntur sit error
+            aliquid tenetur dolorem eos, eius nisi veritatis, non recusandae perferendis laudantium!
+            Maiores, aliquam. Voluptate sapiente quasi dolores!
+          </p>
+        </Page.Container>
       </Page.Content>
     </Page>
   );
