@@ -1,16 +1,8 @@
 .Page {
-  background-color: var(--color-background-0);
-  color: var(--color-text-0);
+  background-color: hsl(var(--c-hsl-primary));
+  color: hsl(var(--c-hsl-secondary));
 }
 
 .PageHeader {
-  [data-prefers-color-scheme='dim'] & {
-    backdrop-filter: blur(16px);
-  }
-  [data-prefers-color-scheme='dark'] & {
-    backdrop-filter: blur(16px);
-  }
-  [data-prefers-color-scheme='light'] & {
-    backdrop-filter: blur(16px);
-  }
+  backdrop-filter: blur(16px);
 }

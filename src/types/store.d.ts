@@ -7,7 +7,7 @@ export type Store = {
 
 export type ThemeStore = {
   mode?: ModeKey;
-  accent?: AccentKey;
+  // accent?: AccentKey;
   avatar?: AvatarKey;
 };
 

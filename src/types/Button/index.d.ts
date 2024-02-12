@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { AccentKey } from '@/types';
+import { AccentKey, Scheme } from '@/types';
 
 export type ButtonRootProps = {
-  accent?: AccentKey;
+  scheme?: Scheme;
+  // accent?: AccentKey;
   readonly?: boolean;
   component?: 'button';
   leftContent?: React.ReactNode;

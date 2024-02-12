@@ -9,7 +9,7 @@ export const Avatar: AvatarRootComponent = React.forwardRef((props, ref) => {
   const {
     to = '/',
     style,
-    accent = 'blue',
+    // accent = 'blue',
     avatar = 'person',
     component: Component = Link,
     children,
@@ -19,26 +19,26 @@ export const Avatar: AvatarRootComponent = React.forwardRef((props, ref) => {
   const [hovered, setHovered] = React.useState(false);
   const { state } = useThemeCTX();
 
-  const surface = React.useCallback(
-    () =>
-      createSurfaceAccent({
-        accent,
-        hovered,
-        options: {
-          backgroundAlpha: 0.1,
-          borderAlpha: 0.7,
-          colorAlpha: 0.9,
-        },
-      }),
-    [hovered, accent]
-  );
+  // const surface = React.useCallback(
+  //   () =>
+  //     createSurfaceAccent({
+  //       accent,
+  //       hovered,
+  //       options: {
+  //         backgroundAlpha: 0.1,
+  //         borderAlpha: 0.7,
+  //         colorAlpha: 0.9,
+  //       },
+  //     }),
+  //   [hovered, accent]
+  // );
 
   return (
     <Component
       {...otherProps}
       to={to}
       ref={ref}
-      style={{ ...style, ...surface() }}
+      // style={{ ...style, ...surface() }}
       className="Avatar"
       onMouseLeave={createEventCallback<HTMLAnchorElement, MouseEvent>({
         callback: otherProps.onMouseLeave,

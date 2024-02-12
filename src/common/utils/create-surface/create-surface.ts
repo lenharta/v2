@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Scheme } from '@/types';
-import { isHovered, isReadonly, isDisabled } from '../helpers';
+import { AccentKey, Scheme } from '@/types';
+import { isHovered } from '../helpers';
 
 export type SurfaceState = 'hover' | 'disabled' | 'readonly' | undefined | (string & {});
 
@@ -30,12 +30,12 @@ export type SurfaceType =
 type SurfaceValue = {
   type?: SurfaceType;
   alpha?: number;
-  scheme?: Scheme;
+  scheme?: Scheme | AccentKey;
 };
 
 type SurfaceConfigObject = {
   state?: SurfaceStateProps;
-  scheme?: Scheme;
+  scheme?: Scheme | AccentKey;
   values?: SurfaceValue[];
 };
 
@@ -48,7 +48,10 @@ export const surfaceMiddlewares = () => {
       return `hsla(${value})`;
     },
     getScheme(scheme: Scheme): string {
-      return `var(--c-hsl-on-${scheme})`;
+      if (scheme === 'primary' || scheme === 'secondary') {
+        return `var(--c-hsl-on-${scheme})`;
+      }
+      return `var(--c-hsl-${scheme})`;
     },
     getAlpha(
       type: SurfaceType = 'backgroundColor',

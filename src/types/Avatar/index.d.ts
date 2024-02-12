@@ -4,7 +4,7 @@ import { AccentKey, AvatarKey } from '../store';
 
 export type AvatarRootProps = LinkProps & {
   component?: 'a' | typeof Link;
-  accent?: AccentKey;
+  // accent?: AccentKey;
   avatar?: AvatarKey;
 };
 

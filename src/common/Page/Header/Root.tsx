@@ -10,21 +10,23 @@ import { PageHeaderActionBox } from './ActionBox';
 export const PageHeader: PageHeaderComponent = (props) => {
   const { ...otherProps } = props;
 
-  const surface = React.useCallback(
-    () =>
-      createSurface({
-        scheme: 'primary',
-        values: [
-          { type: 'backgroundColor', alpha: 0.65, scheme: 'secondary' },
-          { type: 'borderColor', alpha: 0.3 },
-          { type: 'color', alpha: 1 },
-        ],
-      }),
-    []
-  );
+  // const surface = React.useCallback(
+  //   () =>
+  //     createSurface({
+  //       scheme: 'primary',
+  //       values: [
+  //         { type: 'backgroundColor', alpha: 0.65, scheme: 'secondary' },
+  //         { type: 'borderColor', alpha: 0.3 },
+  //         { type: 'color', alpha: 1 },
+  //       ],
+  //     }),
+  //   []
+  // );
+
+  // style={{ ...surface() }}
 
   return (
-    <div {...otherProps} className="PageHeader" style={{ ...surface }}>
+    <div {...otherProps} className="PageHeader">
       <PageContainer>
         <PageHeader.Nav>
           <PageHeader.LogoBox />
