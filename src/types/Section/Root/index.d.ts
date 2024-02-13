@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { SectionContainerComponents } from '../Container';
+
+import { SectionContainerRootComponent } from '../Container';
+import { SectionContentRootComponent } from '../Content';
+import { SectionHeaderRootComponent } from '../Header';
 
 export type SectionRootProps = {
   component?: 'section';
@@ -18,7 +21,7 @@ export type SectionComponents = {
 };
 
 export type SectionRootComponent = SectionComponents['Root'] & {
-  Container: SectionContainerComponents['Root'];
-  Content: SectionContentComponents['Root'];
-  Header: SectionHeaderComponents['Root'];
+  Container: SectionContainerRootComponent;
+  Content: SectionContentRootComponent;
+  Header: SectionHeaderRootComponent;
 };

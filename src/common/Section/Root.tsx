@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { SectionRootComponent } from '@/types/Section';
+import { SectionRootComponent } from '@/types';
 import { SectionContainer } from './Container';
 import { SectionContent } from './Content';
 import { SectionHeader } from './Header';

@@ -9,12 +9,12 @@ export const PageHeaderActionBox: PageHeaderComponent['ActionBox'] = React.forwa
     const { state } = useThemeCTX();
 
     return (
-      <div {...otherProps} ref={ref} className="PageHeader-actionbox">
+      <div {...otherProps} ref={ref} className="PageHeaderActionBox">
         <Avatar
           to="/preferences"
           accent={state.accent}
           aria-label="go to preferences"
-          className="PageHeader-actionbox-avatar"
+          className="PageHeaderActionBox-avatar"
           children={<Icon name={state.avatar} />}
         />
       </div>

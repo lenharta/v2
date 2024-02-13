@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Align, Justify } from '../common';
+import { CheckboxIndicatorRootComponent } from '..';
 
 export type CheckboxRootProps = {
   /** Specifies the size of the input  */
@@ -10,6 +11,9 @@ export type CheckboxRootProps = {
 
   /** Specifies the `justify-items` property for the inputs' elements  */
   justify?: Justify;
+
+  /** Indicates the `checked` state of the input  */
+  checked?: boolean;
 
   /** Indicates a `disabled` state for the input  */
   disabled?: boolean;

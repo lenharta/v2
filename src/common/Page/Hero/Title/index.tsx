@@ -7,7 +7,7 @@ export const PageHeroTitle: PageHeroComponents['Title'] = React.forwardRef((prop
   if (!title) return null;
 
   return (
-    <Title {...otherProps} ref={ref} className="PageHero-title">
+    <Title {...otherProps} ref={ref} className="PageHeroTitle" component="h1">
       {title}
     </Title>
   );

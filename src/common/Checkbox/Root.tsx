@@ -1,10 +1,11 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Label } from '../Label';
 import { useSurface } from '@/hooks';
 import { CheckboxRootComponent } from '@/types';
+
 import { createEventCallback } from '../utils';
 import { CheckboxIndicator } from './Indicator';
+import { CheckboxInner } from './Inner';
 
 export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => {
   const {
@@ -16,6 +17,7 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
     error,
     label,
     style,
+    checked,
     disabled,
     readOnly,
     children,
@@ -27,6 +29,9 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
   } = props;
 
   const [hover, setHover] = React.useState(false);
+
+  const hasHover = hover === true;
+  const hasError = error !== undefined;
 
   const clxss = clsx(
     'Checkbox',
@@ -53,8 +58,8 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
       {...otherProps}
       ref={ref}
       className={clxss}
-      data-error={error !== undefined}
-      data-hovered={hover !== undefined}
+      data-error={hasError}
+      data-hovered={hasHover}
       data-disabled={disabled}
       data-readonly={readOnly}
       aria-disabled={disabled}
@@ -72,16 +77,22 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
       })}
     >
       <CheckboxIndicator
-        error={error ? true : false}
         size={size}
+        error={hasError}
+        checked={checked}
         disabled={disabled}
         readOnly={readOnly}
       />
-      <div className="Checkbox-inner">
-        <Label htmlFor={id}>{label}</Label>
-        <div>{error}</div>
-        <div>{info}</div>
-      </div>
+      <CheckboxInner
+        id={id}
+        info={info}
+        label={label}
+        error={error}
+        checked={checked}
+        className="Checkbox-inner"
+      />
     </Component>
   );
 });
+
+Checkbox.displayName = '@v2/Checkbox';

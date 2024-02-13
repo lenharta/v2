@@ -17,14 +17,14 @@
     height: var(--page-header-height);
     background-color: inherit;
   }
+}
 
-  &-logo-box {
-    &-link {
-    }
+.PageHeaderLogoBox {
+  &-avatar {
   }
+}
 
-  &-action-box {
-    &-avatar {
-    }
+.PageHeaderActionBox {
+  &-link {
   }
 }
