@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Accent, Align, Justify, Scheme, Size } from '@/types';
+import { Align, Justify, Size, SurfaceToken } from '@/types';
 
 export type ButtonRootProps = {
   size?: Size;
   align?: Align;
-  scheme?: Scheme;
-  accent?: Accent;
+  border?: Border;
   justify?: Justify;
-  readonly?: boolean;
+  surface?: SurfaceToken;
+  readOnly?: boolean;
   component?: 'button';
   leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;

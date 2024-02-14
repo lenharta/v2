@@ -1,7 +1,15 @@
 import * as React from 'react';
-import { SectionContainerComponents } from '../Container';
+
+import { SectionContainerRootComponent } from '../Container';
+import { SectionContentRootComponent } from '../Content';
+import { SectionHeaderRootComponent } from '../Header';
+
+type SchemeMod = 'static' | 'interactive';
+type SchemeType = 'primary' | 'secondary';
+type SchemeLevel = 0 | 1 | 2 | 3 | 4;
 
 export type SectionRootProps = {
+  surface?: { type?: SchemeType; level?: SchemeLevel; mod?: SchemeMod };
   component?: 'section';
 };
 
@@ -18,7 +26,7 @@ export type SectionComponents = {
 };
 
 export type SectionRootComponent = SectionComponents['Root'] & {
-  Container: SectionContainerComponents['Root'];
-  Content: SectionContentComponents['Root'];
-  Header: SectionHeaderComponents['Root'];
+  Container: SectionContainerRootComponent;
+  Content: SectionContentRootComponent;
+  Header: SectionHeaderRootComponent;
 };

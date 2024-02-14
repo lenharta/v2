@@ -5,14 +5,14 @@ export type SurfaceToken =
   | 'primary'
   | 'secondary'
   | 'disabled'
-  | 'readonly'
+  | 'readOnly'
   | Accent
   | (string & {});
 export type SurfaceProperty = keyof React.CSSProperties;
 
 export type SurfaceState = {
   hover?: boolean | undefined;
-  readonly?: boolean | undefined;
+  readOnly?: boolean | undefined;
   disabled?: boolean | undefined;
 };
 
@@ -48,8 +48,8 @@ export const findValidAlpha = (alpha: number): number => {
 
 export const findSurfaceToken = (token: SurfaceToken, state?: SurfaceState): SurfaceToken => {
   const isDisabled = state?.disabled === true ? 'disabled' : undefined;
-  const isReadonly = state?.readonly === true ? 'readonly' : undefined;
-  return isDisabled ?? isReadonly ?? token;
+  const isReadOnly = state?.readOnly === true ? 'readOnly' : undefined;
+  return isDisabled ?? isReadOnly ?? token;
 };
 
 export const parseSurfaceValue = ({ value, state }: SurfaceValueInput): React.CSSProperties => {
@@ -60,7 +60,7 @@ export const parseSurfaceValue = ({ value, state }: SurfaceValueInput): React.CS
     alpha: value?.alpha || 0,
   };
 
-  const isDisabled = state?.disabled || state?.readonly;
+  const isDisabled = state?.disabled || state?.readOnly;
   const isHovered = state?.hover === true && !isDisabled;
 
   const baseAlpha = findValidAlpha(input.alpha);

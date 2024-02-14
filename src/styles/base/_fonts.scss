@@ -1,0 +1,47 @@
+// STANDARD-FONTS
+
+// Satoshi-Light
+// Satoshi-Regular
+// Satoshi-Medium
+// Satoshi-Bold
+// Satoshi-Black
+
+// ITALIC-FONTS
+
+// Satoshi-LightItalic
+// Satoshi-Italic
+// Satoshi-MediumItalic
+// Satoshi-BoldItalic
+// Satoshi-BlackItalic
+
+$font-map: (
+  'standard': (
+    300: 'Satoshi-Light',
+    400: 'Satoshi-Regular',
+    500: 'Satoshi-Medium',
+    600: 'Satoshi-Bold',
+    700: 'Satoshi-Black',
+  ),
+  'italic': (
+    300: 'Satoshi-LightItalic',
+    400: 'Satoshi-Italic',
+    500: 'Satoshi-MediumItalic',
+    600: 'Satoshi-BoldItalic',
+    700: 'Satoshi-BlackItalic',
+  ),
+);
+
+@each $font-type, $family-map in $font-map {
+  @each $weight, $family in $family-map {
+    @font-face {
+      font-family: $family;
+      src:
+        url('/fonts/Satoshi/eot/#{$family}.eot') format('eot'),
+        url('/fonts/Satoshi/ttf/#{$family}.ttf') format('ttf'),
+        url('/fonts/Satoshi/woff/#{$family}.woff') format('woff'),
+        url('/fonts/Satoshi/woff2/#{$family}.woff2') format('woff2');
+      font-weight: $weight;
+      display: swap;
+    }
+  }
+}

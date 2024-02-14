@@ -1,0 +1,24 @@
+@use './global' as global;
+@use '../tokens' as tokens;
+
+[data-prefers-color-scheme='light'] {
+  --c-primary: 223, 3%, 99%;
+  --c-secondary-: 223, 3%, 04%;
+  --c-surface-primary: 223, 3%, 04%;
+  --c-surface-secondary: 223, 3%, 99%;
+
+  --c-surface-disabled: 223, 3%, 40%;
+  --c-surface-readOnly: 223, 3%, 50%;
+
+  --c-surface-orange: 25, 95%, 57%;
+  --c-surface-yellow: 38, 92%, 50%;
+  --c-surface-green: 142, 71%, 40%;
+  --c-surface-cyan: 173, 80%, 40%;
+  --c-surface-blue: 199, 89%, 40%;
+  --c-surface-indigo: 217, 91%, 50%;
+  --c-surface-purple: 258, 90%, 70%;
+  --c-surface-violet: 271, 91%, 69%;
+  --c-surface-magenta: 292, 84%, 65%;
+  --c-surface-pink: 330, 81%, 64%;
+  --c-surface-red: 0, 84%, 64%;
+}

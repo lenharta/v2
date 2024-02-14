@@ -11,12 +11,6 @@
   --checkbox-font-size-lg: calc(20px * var(--scale));
   --checkbox-font-size-xl: calc(22px * var(--scale));
 
-  --checkbox-icon-size-xs: calc(20px * var(--scale));
-  --checkbox-icon-size-sm: calc(24px * var(--scale));
-  --checkbox-icon-size-md: calc(28px * var(--scale));
-  --checkbox-icon-size-lg: calc(32px * var(--scale));
-  --checkbox-icon-size-xl: calc(36px * var(--scale));
-
   width: 100%;
   height: var(--checkbox-root-height, var(--checkbox-root-height-xs));
   display: var(--checkbox-display, inline-flex);
@@ -29,11 +23,6 @@
 
   &[data-block] {
     --checkbox-display: block;
-  }
-
-  &-icon {
-    width: var(--checkbox-icon-size, var(--checkbox-icon-size-xs));
-    height: var(--checkbox-icon-size, var(--checkbox-icon-size-xs));
   }
 
   &--size-xs {
@@ -80,5 +69,32 @@
   }
   &--justify-end {
     --checkbox-justify: flex-end;
+  }
+}
+
+.CheckboxIndicator {
+  --checkbox-icon-size-xs: calc(20px * var(--scale));
+  --checkbox-icon-size-sm: calc(24px * var(--scale));
+  --checkbox-icon-size-md: calc(28px * var(--scale));
+  --checkbox-icon-size-lg: calc(32px * var(--scale));
+  --checkbox-icon-size-xl: calc(36px * var(--scale));
+
+  width: var(--checkbox-icon-size, var(--checkbox-icon-size-xs));
+  height: var(--checkbox-icon-size, var(--checkbox-icon-size-xs));
+
+  &--size-xs {
+    --checkbox-icon-size: var(--checkbox-icon-size-xs);
+  }
+  &--size-sm {
+    --checkbox-icon-size: var(--checkbox-icon-size-sm);
+  }
+  &--size-md {
+    --checkbox-icon-size: var(--checkbox-icon-size-md);
+  }
+  &--size-lg {
+    --checkbox-icon-size: var(--checkbox-icon-size-lg);
+  }
+  &--size-xl {
+    --checkbox-icon-size: var(--checkbox-icon-size-xl);
   }
 }

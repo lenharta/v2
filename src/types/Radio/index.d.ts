@@ -14,8 +14,8 @@ export type RadioRootProps = {
   /** Defines a `disabled` state for the input  */
   disabled?: boolean;
 
-  /** Defines a `readonly` state for the input  */
-  readonly?: boolean;
+  /** Defines a `readOnly` state for the input  */
+  readOnly?: boolean;
 
   /** Defines the JSX tag for the root element that will be rendered */
   component?: 'button';

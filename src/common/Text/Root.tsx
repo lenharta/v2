@@ -3,7 +3,14 @@ import * as React from 'react';
 import { TextRootComponent } from '@/types';
 
 export const Text: TextRootComponent = React.forwardRef((props, ref) => {
-  const { size, align, component: Component = 'h2', children, className, ...otherProps } = props;
+  const {
+    size = 'sm',
+    align = 'start',
+    children,
+    className,
+    component: Component = 'p',
+    ...otherProps
+  } = props;
 
   const clxss = clsx(
     'Text',

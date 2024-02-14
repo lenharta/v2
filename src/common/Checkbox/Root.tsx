@@ -1,9 +1,8 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Label } from '../Label';
-import { useSurface } from '@/hooks';
+import { CheckboxInner } from './Inner';
+import { CheckboxIndicator } from './Indicator';
 import { CheckboxRootComponent } from '@/types';
-import { createEventCallback } from '../utils';
 
 export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => {
   const {
@@ -15,8 +14,9 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
     error,
     label,
     style,
+    checked,
     disabled,
-    readonly,
+    readOnly,
     children,
     className,
     leftContent,
@@ -25,11 +25,7 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
     ...otherProps
   } = props;
 
-  const [hover, setHover] = React.useState(false);
-
-  const isHovered = hover !== false;
-  const isDisabled = disabled !== undefined;
-  const isReadonly = readonly !== undefined;
+  const hasError = error !== undefined;
 
   const clxss = clsx(
     'Checkbox',
@@ -39,46 +35,34 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
     className
   );
 
-  const surface = React.useCallback(
-    () =>
-      useSurface({
-        state: { hover, disabled },
-        values: [
-          { prop: 'backgroundColor', token: 'secondary', alpha: 0, step: 0.03 },
-          { prop: 'color', token: 'secondary', alpha: 0.95, step: 0 },
-        ],
-      }),
-    [hover, disabled]
-  );
-
   return (
     <Component
       {...otherProps}
       ref={ref}
       className={clxss}
-      data-hovered={isHovered}
-      data-disabled={isDisabled}
-      data-readonly={isReadonly}
-      aria-disabled={isDisabled}
-      aria-readonly={isReadonly}
-      style={{ ...style, ...surface() }}
-      onMouseLeave={createEventCallback<HTMLButtonElement, MouseEvent>({
-        callback: otherProps.onMouseLeave,
-        handler: () => setHover(false),
-        state: { disabled, readonly },
-      })}
-      onMouseEnter={createEventCallback<HTMLButtonElement, MouseEvent>({
-        callback: otherProps.onMouseEnter,
-        handler: () => setHover(true),
-        state: { disabled, readonly },
-      })}
+      data-error={hasError}
+      data-disabled={disabled}
+      data-readonly={readOnly}
+      aria-disabled={disabled}
+      aria-readonly={readOnly}
     >
-      {children}
-      <div className="Checkbox-content">
-        <Label htmlFor={id}>{label}</Label>
-        <div>{error}</div>
-        <div>{info}</div>
-      </div>
+      <CheckboxIndicator
+        size={size}
+        error={hasError}
+        checked={checked}
+        disabled={disabled}
+        readOnly={readOnly}
+      />
+      <CheckboxInner
+        id={id}
+        info={info}
+        label={label}
+        error={error}
+        checked={checked}
+        className="Checkbox-inner"
+      />
     </Component>
   );
 });
+
+Checkbox.displayName = '@v2/Checkbox';

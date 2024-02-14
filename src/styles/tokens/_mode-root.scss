@@ -1,6 +1,0 @@
-[data-prefers-color-scheme='dim'],
-[data-prefers-color-scheme='dark'],
-[data-prefers-color-scheme='light'] {
-  background-color: hsl(var(--c-hsl-primary), 1);
-  color: hsl(var(--c-hsl-secondary), 1);
-}

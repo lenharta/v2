@@ -1,0 +1,22 @@
+export type InlineCSSRootProps = {
+  /** Defines the css selector for the DOM Element of which the styles will be assigned */
+  selector: string;
+
+  /** Defines the base inline style configuration. */
+  styles: React.CSSProperties;
+
+  /**
+   * A content attribute defining a cryptographic nonce ("number used once") which can be used
+   * by Content Security Policy to determine whether or not a given fetch will be allowed to
+   * proceed for a given element.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce
+   */
+  nonce?: () => string;
+};
+
+export type InlineCSSBaseProps = {
+  Root: React.JSX.IntrinsicElements['style'] & InlineCSSRootProps;
+};
+
+export type InlineCSSRootComponent = React.FC<InlineCSSBaseProps['Root']>;
