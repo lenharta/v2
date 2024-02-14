@@ -1,9 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Label } from '../Label';
-import { useSurface } from '@/hooks';
 import { SwitchRootComponent } from '@/types';
-import { createEventCallback } from '../utils';
 
 export const Switch: SwitchRootComponent = React.forwardRef((props, ref) => {
   const {
@@ -25,12 +23,6 @@ export const Switch: SwitchRootComponent = React.forwardRef((props, ref) => {
     ...otherProps
   } = props;
 
-  const [hover, setHover] = React.useState(false);
-
-  const isHovered = hover !== false;
-  const isDisabled = disabled !== undefined;
-  const isReadOnly = readOnly !== undefined;
-
   const clxss = clsx(
     'Switch',
     { [`Switch--size-${size}`]: size },
@@ -39,39 +31,15 @@ export const Switch: SwitchRootComponent = React.forwardRef((props, ref) => {
     className
   );
 
-  const surface = React.useCallback(
-    () =>
-      useSurface({
-        state: { hover, disabled },
-        values: [
-          { prop: 'backgroundColor', token: 'secondary', alpha: 0, step: 0.03 },
-          { prop: 'color', token: 'secondary', alpha: 0.95, step: 0 },
-        ],
-      }),
-    [hover, disabled]
-  );
-
   return (
     <Component
       {...otherProps}
       ref={ref}
       className={clxss}
-      data-hovered={isHovered}
-      data-disabled={isDisabled}
-      data-readonly={isReadOnly}
-      aria-disabled={isDisabled}
-      aria-readonly={isReadOnly}
-      style={{ ...style, ...surface() }}
-      onMouseLeave={createEventCallback<HTMLButtonElement, MouseEvent>({
-        callback: otherProps.onMouseLeave,
-        handler: () => setHover(false),
-        state: { disabled, readOnly },
-      })}
-      onMouseEnter={createEventCallback<HTMLButtonElement, MouseEvent>({
-        callback: otherProps.onMouseEnter,
-        handler: () => setHover(true),
-        state: { disabled, readOnly },
-      })}
+      data-disabled={disabled}
+      data-readonly={readOnly}
+      aria-disabled={disabled}
+      aria-readonly={readOnly}
     >
       {children}
       <div className="Switch-inner">

@@ -4,7 +4,12 @@ import { SectionContainerRootComponent } from '../Container';
 import { SectionContentRootComponent } from '../Content';
 import { SectionHeaderRootComponent } from '../Header';
 
+type SchemeMod = 'static' | 'interactive';
+type SchemeType = 'primary' | 'secondary';
+type SchemeLevel = 0 | 1 | 2 | 3 | 4;
+
 export type SectionRootProps = {
+  surface?: { type?: SchemeType; level?: SchemeLevel; mod?: SchemeMod };
   component?: 'section';
 };
 

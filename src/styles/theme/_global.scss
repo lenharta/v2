@@ -1,7 +1,5 @@
-.Page {
-  background-color: hsla(var(--c-hsl-primary), 1);
-  color: hsla(var(--c-hsl-secondary), 1);
-}
+@use 'sass:color';
+@use 'sass:meta';
 
 .Radio,
 .Button,
@@ -30,5 +28,14 @@
   }
   &:focus:focus-visible {
     --c-outline: hsl(var(--c-hsl-focus));
+  }
+}
+
+[data-prefers-color-scheme='dim'],
+[data-prefers-color-scheme='dark'],
+[data-prefers-color-scheme='light'] {
+  .Page {
+    color: hsla(var(--c-secondary), 1);
+    background-color: hsla(var(--c-primary), 1);
   }
 }

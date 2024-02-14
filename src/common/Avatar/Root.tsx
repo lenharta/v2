@@ -1,54 +1,51 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Icon } from '../Icon';
-import { useSurface } from '@/hooks';
-import { createEventCallback } from '../utils';
-import type { AvatarRootComponent } from '@/types';
+import { Surface } from '../Surface';
+import { useThemeCTX } from '@/store';
+import { surfaceToken } from '../utils';
+import { generateRandomId } from '@/utils';
+import type { AvatarRootComponent, SurfaceToken } from '@/types';
 
 export const Avatar: AvatarRootComponent = React.forwardRef((props, ref) => {
   const {
     to = '/',
     style,
-    accent = 'blue',
     avatar = 'person',
-    component: Component = Link,
+    surface = 'blue',
     children,
+    className,
+    component: Component = Link,
     ...otherProps
   } = props;
 
-  const [hover, setHover] = React.useState(false);
+  const theme = useThemeCTX();
+  const { accent } = theme.state;
 
-  const surface = React.useCallback(
-    () =>
-      useSurface({
-        state: { hover },
-        values: [
-          { prop: 'backgroundColor', token: accent, alpha: 0.1 },
-          { prop: 'borderColor', token: accent, alpha: 0.7 },
-          { prop: 'color', token: accent, alpha: 0.9 },
-        ],
-      }),
-    [hover]
-  );
+  const tokenValue = accent as SurfaceToken;
+  const tokenClxss = `Avatar--${generateRandomId(8)}`;
+  const clxss = clsx('Avatar', tokenClxss, className);
 
   return (
-    <Component
-      {...otherProps}
-      to={to}
-      ref={ref}
-      className="Avatar"
-      style={{ ...style, ...surface() }}
-      onMouseEnter={createEventCallback<HTMLAnchorElement, MouseEvent>({
-        callback: otherProps.onMouseOver,
-        handler: () => setHover(true),
-      })}
-      onMouseLeave={createEventCallback<HTMLAnchorElement, MouseEvent>({
-        callback: otherProps.onMouseLeave,
-        handler: () => setHover(false),
-      })}
-    >
-      <Icon name={avatar} className="Avatar-icon" />
-    </Component>
+    <>
+      <Surface
+        selector={tokenClxss}
+        baseConfig={{
+          color: surfaceToken(tokenValue, 1),
+          borderColor: surfaceToken(tokenValue, 0.5),
+          backgroundColor: surfaceToken(tokenValue, 0.1),
+        }}
+        hoverConfig={{
+          color: surfaceToken(tokenValue, 1),
+          borderColor: surfaceToken(tokenValue, 0.5),
+          backgroundColor: surfaceToken(tokenValue, 0.15),
+        }}
+      />
+      <Component {...otherProps} to={to} ref={ref} className={clxss}>
+        <Icon name={avatar} className="Avatar-icon" />
+      </Component>
+    </>
   );
 });

@@ -7,6 +7,7 @@ export * from './Page';
 export * from './Radio';
 export * from './Section';
 export * from './Stack';
+export * from './Surface';
 export * from './Switch';
 export * from './Text';
 export * from './Title';

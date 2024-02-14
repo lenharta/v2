@@ -1,11 +1,8 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { useSurface } from '@/hooks';
-import { CheckboxRootComponent } from '@/types';
-
-import { createEventCallback } from '../utils';
-import { CheckboxIndicator } from './Indicator';
 import { CheckboxInner } from './Inner';
+import { CheckboxIndicator } from './Indicator';
+import { CheckboxRootComponent } from '@/types';
 
 export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => {
   const {
@@ -28,9 +25,6 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
     ...otherProps
   } = props;
 
-  const [hover, setHover] = React.useState(false);
-
-  const hasHover = hover === true;
   const hasError = error !== undefined;
 
   const clxss = clsx(
@@ -41,40 +35,16 @@ export const Checkbox: CheckboxRootComponent = React.forwardRef((props, ref) => 
     className
   );
 
-  const surface = React.useCallback(
-    () =>
-      useSurface({
-        state: { hover, disabled },
-        values: [
-          { prop: 'backgroundColor', token: 'secondary', alpha: 0, step: 0.03 },
-          { prop: 'color', token: 'secondary', alpha: 0.95, step: 0 },
-        ],
-      }),
-    [hover, disabled]
-  );
-
   return (
     <Component
       {...otherProps}
       ref={ref}
       className={clxss}
       data-error={hasError}
-      data-hovered={hasHover}
       data-disabled={disabled}
       data-readonly={readOnly}
       aria-disabled={disabled}
       aria-readonly={readOnly}
-      style={{ ...style, ...surface() }}
-      onMouseLeave={createEventCallback<HTMLButtonElement, MouseEvent>({
-        callback: otherProps.onMouseLeave,
-        handler: () => setHover(false),
-        state: { disabled, readOnly },
-      })}
-      onMouseEnter={createEventCallback<HTMLButtonElement, MouseEvent>({
-        callback: otherProps.onMouseEnter,
-        handler: () => setHover(true),
-        state: { disabled, readOnly },
-      })}
     >
       <CheckboxIndicator
         size={size}

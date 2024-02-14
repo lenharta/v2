@@ -1,16 +1,18 @@
-import * as React from 'react';
-import { useSurface } from '@/hooks';
-import { ButtonRootComponent } from '@/types';
-import { createEventCallback } from '../utils';
 import clsx from 'clsx';
+import * as React from 'react';
+
+import { Surface } from '../Surface';
+import { generateRandomId } from '@/utils';
+import { findTokenState, surfaceToken } from '../utils';
+import { ButtonRootComponent } from '@/types';
 
 export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
   const {
     size = 'sm',
     align = 'center',
-    scheme = 'secondary',
+    border,
     justify = 'start',
-    accent,
+    surface = 'primary',
     readOnly,
     disabled,
     children,
@@ -21,52 +23,50 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
     ...otherProps
   } = props;
 
-  const [hover, setHover] = React.useState(false);
-  const token = scheme || accent;
-
-  const surface = React.useCallback(
-    () =>
-      useSurface({
-        state: { hover, disabled },
-        values: [
-          { prop: 'backgroundColor', token, alpha: 0.05, step: 0.03 },
-          { prop: 'color', token, alpha: 0.9, step: 0 },
-        ],
-      }),
-    [hover, disabled]
-  );
+  const token = {
+    value: findTokenState({ token: surface, disabled, readOnly }),
+    clxss: `Button--${generateRandomId(8)}`,
+    alpha: {
+      bdr: border !== undefined ? 0.4 : 0,
+      bg: surface !== ('primary' || 'secondary') ? 0.2 : 0.08,
+    },
+  };
 
   const clxss = clsx(
     'Button',
     { [`Button--size-${size}`]: size },
     { [`Button--align-${align}`]: align },
     { [`Button--justify-${justify}`]: justify },
+    token.clxss,
     className
   );
 
   return (
-    <Component
-      {...otherProps}
-      ref={ref}
-      style={{ ...surface() }}
-      disabled={disabled}
-      className={clxss}
-      data-disabled={disabled}
-      data-readonly={readOnly}
-      aria-disabled={disabled}
-      aria-readonly={readOnly}
-      onMouseLeave={createEventCallback<HTMLButtonElement, MouseEvent>({
-        callback: otherProps.onMouseLeave,
-        handler: () => setHover(false),
-        state: { disabled, readOnly },
-      })}
-      onMouseOver={createEventCallback<HTMLButtonElement, MouseEvent>({
-        callback: otherProps.onMouseOver,
-        handler: () => setHover(true),
-        state: { disabled, readOnly },
-      })}
-    >
-      {children}
-    </Component>
+    <>
+      <Surface
+        selector={token.clxss}
+        baseConfig={{
+          color: surfaceToken(token.value, 1),
+          borderColor: surfaceToken(token.value, token.alpha.bdr),
+          backgroundColor: surfaceToken(token.value, token.alpha.bg),
+        }}
+        hoverConfig={{
+          color: surfaceToken(token.value, 1),
+          borderColor: surfaceToken(token.value, token.alpha.bdr),
+          backgroundColor: surfaceToken(token.value, token.alpha.bg + 0.05),
+        }}
+      />
+      <Component
+        {...otherProps}
+        ref={ref}
+        className={clxss}
+        data-disabled={disabled}
+        data-readonly={readOnly}
+        aria-disabled={disabled}
+        aria-readonly={readOnly}
+      >
+        {children}
+      </Component>
+    </>
   );
 });

@@ -36,6 +36,7 @@ $font-map: (
     @font-face {
       font-family: $family;
       src:
+        url('/fonts/Satoshi/eot/#{$family}.eot') format('eot'),
         url('/fonts/Satoshi/ttf/#{$family}.ttf') format('ttf'),
         url('/fonts/Satoshi/woff/#{$family}.woff') format('woff'),
         url('/fonts/Satoshi/woff2/#{$family}.woff2') format('woff2');

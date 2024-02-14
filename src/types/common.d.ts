@@ -1,4 +1,8 @@
+import { Accent } from './store';
+
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | (string & {});
+
+export type Border = 'sm' | 'md' | 'lg' | (string & {});
 
 export type Align = 'center' | 'start' | 'end' | (string & {});
 
@@ -12,4 +16,4 @@ export type Direction = 'up' | 'down' | 'left' | 'right' | (string & {});
 
 export type Orientation = 'vertical' | 'horizontal' | (string & {});
 
-export type Scheme = 'primary' | 'secondary' | (string & {});
+export type SurfaceToken = 'primary' | 'secondary' | Accent | 'disabled' | 'readOnly';
