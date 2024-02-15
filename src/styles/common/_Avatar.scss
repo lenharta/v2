@@ -1,11 +1,11 @@
 .Avatar {
-  --avatar-size-xs: calc(28px * var(--scale));
-  --avatar-size-sm: calc(28px * var(--scale));
-  --avatar-size-md: calc(28px * var(--scale));
-  --avatar-size-lg: calc(28px * var(--scale));
-  --avatar-size-xl: calc(28px * var(--scale));
+  --avatar-size-xs: calc(32px * var(--scale));
+  --avatar-size-sm: calc(36px * var(--scale));
+  --avatar-size-md: calc(40px * var(--scale));
+  --avatar-size-lg: calc(44px * var(--scale));
+  --avatar-size-xl: calc(48px * var(--scale));
 
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   height: var(--avatar-size, var(--avatar-size-xs));
@@ -16,8 +16,7 @@
   border-color: inherit;
 
   svg {
-    width: 60%;
-    height: 60%;
+    width: 55%;
     display: flex;
     align-items: center;
     justify-content: center;

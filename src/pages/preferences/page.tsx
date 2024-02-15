@@ -1,17 +1,20 @@
-import { Page } from '@/common';
+import { Page, Section, Title } from '@/common';
 
 export const Preferences = () => {
   return (
     <Page>
       <Page.Hero title="Preferences" />
       <Page.Content>
-        <Page.Container>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi ut consequuntur sit error
-            aliquid tenetur dolorem eos, eius nisi veritatis, non recusandae perferendis laudantium!
-            Maiores, aliquam. Voluptate sapiente quasi dolores!
-          </p>
-        </Page.Container>
+        <Section>
+          <Title component="h3">Theme Mode</Title>
+        </Section>
+        <Section>
+          <Title component="h3">Accent Color</Title>
+        </Section>
+        <Section>
+          <Title component="h3">Avatar Icon</Title>
+        </Section>
+        <Section></Section>
       </Page.Content>
     </Page>
   );

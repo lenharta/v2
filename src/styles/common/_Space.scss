@@ -1,0 +1,25 @@
+.Space {
+  --space-height-xs: 80px;
+  --space-height-sm: 120px;
+  --space-height-md: 160px;
+  --space-height-lg: 180px;
+  --space-height-xl: 200px;
+
+  height: var(--space-height);
+
+  &--size-xs {
+    --space-height: var(--space-height-xs);
+  }
+  &--size-sm {
+    --space-height: var(--space-height-sm);
+  }
+  &--size-md {
+    --space-height: var(--space-height-md);
+  }
+  &--size-lg {
+    --space-height: var(--space-height-lg);
+  }
+  &--size-xl {
+    --space-height: var(--space-height-xl);
+  }
+}

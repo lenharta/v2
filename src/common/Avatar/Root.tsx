@@ -1,19 +1,30 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, LinkProps } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { Surface } from '../Surface';
-import { useThemeCTX } from '@/store';
 import { surfaceToken } from '../utils';
+import { useThemeCTX } from '@/store';
 import { generateRandomId } from '@/utils';
-import type { AvatarRootComponent, SurfaceToken } from '@/types';
+import { Core } from '@/types/core';
+import type { Size, SurfaceToken } from '@/types/common';
 
-export const Avatar: AvatarRootComponent = React.forwardRef((props, ref) => {
+export type AvatarProps = LinkProps & {
+  surface?: SurfaceToken;
+  size?: Size;
+};
+
+export type AvatarFactory = Core.RefFactory<{
+  ref: HTMLAnchorElement;
+  props: AvatarProps;
+  component: typeof Link;
+}>;
+
+export const Avatar: AvatarFactory = React.forwardRef((props, ref) => {
   const {
     to = '/',
+    size,
     style,
-    avatar = 'person',
     surface = 'blue',
     children,
     className,
@@ -22,12 +33,10 @@ export const Avatar: AvatarRootComponent = React.forwardRef((props, ref) => {
   } = props;
 
   const theme = useThemeCTX();
-  const { accent } = theme.state;
-
+  const { accent, avatar } = theme.state;
   const tokenValue = accent as SurfaceToken;
   const tokenClxss = `Avatar--${generateRandomId(8)}`;
-  const clxss = clsx('Avatar', tokenClxss, className);
-
+  const clxss = clsx('Avatar', { [`Avatar--size-${size}`]: size }, tokenClxss, className);
   return (
     <>
       <Surface

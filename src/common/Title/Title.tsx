@@ -1,8 +1,20 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { TitleRootComponent } from '@/types';
+import { Core } from '@/types/core';
+import { Align, Size } from '@/types/common';
 
-export const Title: TitleRootComponent = React.forwardRef((props, ref) => {
+export type TitleProps = {
+  size?: Size;
+  align?: Align;
+};
+
+export type TitleFactory = Core.RefFactory<{
+  ref: HTMLHeadingElement;
+  props: TitleProps;
+  component: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+}>;
+
+export const Title: TitleFactory = React.forwardRef((props, ref) => {
   const {
     size,
     align = 'start',

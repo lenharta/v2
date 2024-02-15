@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
-import { SurfaceToken } from '../common';
-import { Accent } from '../store';
+import { Size, SurfaceToken } from '../common';
 
 export type AvatarRootProps = LinkProps & {
   component?: 'a' | typeof Link;
   surface?: SurfaceToken;
-  avatar?: Avatar;
+  size?: Size;
 };
 
 export type AvatarBaseProps = {

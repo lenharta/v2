@@ -15,15 +15,14 @@
     justify-content: space-between;
     height: var(--page-header-height);
     background-color: inherit;
+    // border: solid 2px indianred;
   }
 }
 
 .PageHeaderLogoBox {
-  &-avatar {
+  &-link {
   }
 }
 
 .PageHeaderActionBox {
-  &-link {
-  }
 }

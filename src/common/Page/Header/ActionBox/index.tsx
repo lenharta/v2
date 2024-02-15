@@ -12,7 +12,7 @@ export const PageHeaderActionBox: PageHeaderComponent['ActionBox'] = React.forwa
       <div {...otherProps} ref={ref} className="PageHeaderActionBox">
         <Avatar
           to="/preferences"
-          accent={state.accent}
+          size="sm"
           aria-label="go to preferences"
           className="PageHeaderActionBox-avatar"
           children={<Icon name={state.avatar} />}

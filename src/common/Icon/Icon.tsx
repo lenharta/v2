@@ -1,13 +1,27 @@
 import * as React from 'react';
 import { DATA_ICON_LOOKUP } from '@/data';
-import type { IconRootComponent, IconRootProps } from '@/types';
+import type { Core } from '@/types/core';
 
-function findIcon(props: IconRootProps) {
+export type IconType = keyof typeof DATA_ICON_LOOKUP;
+export type IconName = keyof (typeof DATA_ICON_LOOKUP)['filled'];
+
+export type IconProps = {
+  type?: IconType;
+  name?: IconName;
+};
+
+export type IconFactory = Core.RefFactory<{
+  ref: SVGSVGElement;
+  props: IconProps;
+  component: 'svg';
+}>;
+
+function findIcon(props: IconProps) {
   const { type = 'filled', name = 'person' } = props;
   return DATA_ICON_LOOKUP[type][name];
 }
 
-export const Icon: IconRootComponent = React.forwardRef((props, ref) => {
+export const Icon: IconFactory = React.forwardRef((props, ref) => {
   const { type, name, component: Component = 'svg' } = props;
   const path = findIcon({ type, name });
   return (
