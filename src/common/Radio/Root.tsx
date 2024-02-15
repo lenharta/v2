@@ -1,23 +1,40 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Label } from '../Label';
-import { RadioRootComponent } from '@/types';
+import { Core } from '@/types/core';
+import { Size, Align, Justify } from '@/types/common';
 
-export const Radio: RadioRootComponent = React.forwardRef((props, ref) => {
+export type RadioProps = {
+  size?: Size;
+  align?: Align;
+  justify?: Justify;
+  info?: string;
+  label?: string;
+  error?: string;
+  checked?: boolean;
+  readOnly?: boolean;
+  disabled?: boolean;
+};
+
+export type RadioFactory = Core.RefFactory<{
+  ref: HTMLButtonElement;
+  props: RadioProps;
+  component: 'button';
+}>;
+
+export const Radio: RadioFactory = React.forwardRef((props, ref) => {
   const {
     id,
     size = 'sm',
     align = 'center',
     justify = 'start',
     info,
-    error,
     label,
+    error,
     disabled,
     readOnly,
     children,
     className,
-    leftContent,
-    rightContent,
     component: Component = 'button',
     ...otherProps
   } = props;

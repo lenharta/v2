@@ -1,24 +1,40 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Label } from '../Label';
-import { SwitchRootComponent } from '@/types';
+import { Core } from '@/types/core';
+import { Size, Align, Justify } from '@/types/common';
 
-export const Switch: SwitchRootComponent = React.forwardRef((props, ref) => {
+export type SwitchProps = {
+  size?: Size;
+  align?: Align;
+  justify?: Justify;
+  info?: string;
+  label?: string;
+  error?: string;
+  checked?: boolean;
+  readOnly?: boolean;
+  disabled?: boolean;
+};
+
+export type SwitchFactory = Core.RefFactory<{
+  ref: HTMLButtonElement;
+  props: SwitchProps;
+  component: 'button';
+}>;
+
+export const Switch: SwitchFactory = React.forwardRef((props, ref) => {
   const {
     id,
     size = 'sm',
     align = 'center',
     justify = 'start',
     info,
-    error,
     label,
-    style,
+    error,
     disabled,
     readOnly,
     children,
     className,
-    leftContent,
-    rightContent,
     component: Component = 'button',
     ...otherProps
   } = props;

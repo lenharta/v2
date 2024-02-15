@@ -1,8 +1,21 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { StackRootComponent } from '@/types';
+import type { Core } from '@/types/core';
+import type { Align, Justify, Size } from '@/types';
 
-export const Stack: StackRootComponent = React.forwardRef((props, ref) => {
+export type StackProps = {
+  gap?: Size;
+  align?: Align;
+  justify?: Justify;
+};
+
+export type StackFactory = Core.RefFactory<{
+  component: 'div';
+  props: StackProps;
+  ref: HTMLDivElement;
+}>;
+
+export const Stack: StackFactory = React.forwardRef((props, ref) => {
   const {
     gap,
     align = 'start',

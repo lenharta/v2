@@ -1,8 +1,20 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { TextRootComponent } from '@/types';
+import { Core } from '@/types/core';
+import { Align, Size } from '@/types/common';
 
-export const Text: TextRootComponent = React.forwardRef((props, ref) => {
+export type TextProps = {
+  size?: Size;
+  align?: Align;
+};
+
+export type TextFactory = Core.RefFactory<{
+  ref: HTMLParagraphElement;
+  props: TextProps;
+  component: 'p';
+}>;
+
+export const Text: TextFactory = React.forwardRef((props, ref) => {
   const {
     size = 'sm',
     align = 'start',

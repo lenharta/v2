@@ -1,7 +1,32 @@
+import * as React from 'react';
 import { createInlineCSS } from '@/utils';
-import { InlineCSSRootComponent } from '@/types';
+import type { Core } from '@/types/core';
 
-export const InlineCSS: InlineCSSRootComponent = ({ selector, styles, nonce = () => '' }) => {
-  const createStyles = createInlineCSS(selector, styles ?? ({} as React.CSSProperties));
-  return <style dangerouslySetInnerHTML={{ __html: createStyles }} nonce={nonce()} />;
+type InlineCSSProps = {
+  selector: string;
+  styles?: React.CSSProperties;
+  nonce?: () => string;
+};
+
+type InlineCSSFactory = Core.BaseFactory<{
+  props: InlineCSSProps;
+  component: 'style';
+}>;
+
+export const InlineCSS: InlineCSSFactory = (props) => {
+  const {
+    selector,
+    styles,
+    nonce = () => '',
+    component: Component = 'style',
+    ...otherProps
+  } = props;
+
+  return (
+    <Component
+      dangerouslySetInnerHTML={{ __html: createInlineCSS(selector, styles) }}
+      nonce={nonce()}
+      {...otherProps}
+    />
+  );
 };

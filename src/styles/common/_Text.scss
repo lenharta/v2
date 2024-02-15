@@ -1,15 +1,15 @@
 .Text {
-  --text-size-xs: var(--font-size-2);
-  --text-size-sm: var(--font-size-3);
-  --text-size-md: var(--font-size-4);
-  --text-size-lg: var(--font-size-5);
-  --text-size-xl: var(--font-size-6);
+  --text-size-xs: calc(14px * var(--scale));
+  --text-size-sm: calc(16px * var(--scale));
+  --text-size-md: calc(18px * var(--scale));
+  --text-size-lg: calc(20px * var(--scale));
+  --text-size-xl: calc(22px * var(--scale));
 
-  --text-height-xs: var(--font-size-4);
-  --text-height-sm: var(--font-size-5);
-  --text-height-md: var(--font-size-6);
-  --text-height-lg: var(--font-size-7);
-  --text-height-xl: var(--font-size-8);
+  --text-height-xs: calc(20px * var(--scale));
+  --text-height-sm: calc(22px * var(--scale));
+  --text-height-md: calc(24px * var(--scale));
+  --text-height-lg: calc(26px * var(--scale));
+  --text-height-xl: calc(28px * var(--scale));
 
   display: block;
   font-size: var(--text-size, var(--text-size-xs));

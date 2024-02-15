@@ -5,6 +5,14 @@ import './styles/main.scss';
 
 import { Home, Preferences, RootError, RootLayout, Settings, Toolbox } from './pages';
 
+const OnboardScreen = (props: {}) => {
+  return <div className="Screen"></div>;
+};
+
+const SplashScreen = (props: {}) => {
+  return <div className="Screen SplashScreen"></div>;
+};
+
 const router = createBrowserRouter([
   {
     path: '/',

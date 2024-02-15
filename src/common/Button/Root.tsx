@@ -1,12 +1,30 @@
 import clsx from 'clsx';
 import * as React from 'react';
-
 import { Surface } from '../Surface';
-import { generateRandomId } from '@/utils';
 import { findTokenState, surfaceToken } from '../utils';
-import { ButtonRootComponent } from '@/types';
+import { generateRandomId } from '@/utils';
+import type { Core } from '@/types/core';
+import type { SurfaceToken, Align, Justify, Size, Border } from '@/types/common';
 
-export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
+export type ButtonProps = {
+  size?: Size;
+  align?: Align;
+  border?: Border;
+  justify?: Justify;
+  surface?: SurfaceToken;
+  readOnly?: boolean;
+  disabled?: boolean;
+  leftContent?: React.ReactNode;
+  rightContent?: React.ReactNode;
+};
+
+export type ButtonFactory = Core.RefFactory<{
+  ref: HTMLButtonElement;
+  props: ButtonProps;
+  component: 'button';
+}>;
+
+export const Button: ButtonFactory = React.forwardRef((props, ref) => {
   const {
     size = 'sm',
     align = 'center',
@@ -24,12 +42,11 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
   } = props;
 
   const token = {
-    value: findTokenState({ token: surface, disabled, readOnly }),
     clxss: `Button--${generateRandomId(8)}`,
-    alpha: {
-      bdr: border !== undefined ? 0.4 : 0,
-      bg: surface !== ('primary' || 'secondary') ? 0.2 : 0.08,
-    },
+    value: findTokenState({ token: surface, disabled, readOnly }),
+    alphaStep: surface !== ('primary' || 'secondary') ? 0.06 : 0.03,
+    alphaBgd: surface !== ('primary' || 'secondary') ? 0.2 : 0.05,
+    alphaBdr: border !== undefined ? 0.4 : 0,
   };
 
   const clxss = clsx(
@@ -47,13 +64,13 @@ export const Button: ButtonRootComponent = React.forwardRef((props, ref) => {
         selector={token.clxss}
         baseConfig={{
           color: surfaceToken(token.value, 1),
-          borderColor: surfaceToken(token.value, token.alpha.bdr),
-          backgroundColor: surfaceToken(token.value, token.alpha.bg),
+          borderColor: surfaceToken(token.value, token.alphaBdr),
+          backgroundColor: surfaceToken(token.value, token.alphaBgd),
         }}
         hoverConfig={{
           color: surfaceToken(token.value, 1),
-          borderColor: surfaceToken(token.value, token.alpha.bdr),
-          backgroundColor: surfaceToken(token.value, token.alpha.bg + 0.05),
+          borderColor: surfaceToken(token.value, token.alphaBdr),
+          backgroundColor: surfaceToken(token.value, token.alphaBgd + token.alphaStep),
         }}
       />
       <Component

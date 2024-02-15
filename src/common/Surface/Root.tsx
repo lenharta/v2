@@ -1,18 +1,38 @@
 import { createInlineCSS } from '@/utils';
-import { SurfaceRootComponent } from '@/types';
+import { Core } from '@/types/core';
 
-export const Surface: SurfaceRootComponent = (props) => {
-  const { selector, baseConfig, hoverConfig, nonce = () => '' } = props;
+export type SurfaceProps = {
+  nonce: () => string;
+  selector: string;
+  baseConfig: React.CSSProperties;
+  hoverConfig: React.CSSProperties;
+};
 
-  const buildStyleConfiguration = (): string => {
-    const styles: string[] = [createInlineCSS(`${selector}`, baseConfig)];
+export type SurfaceFactory = Core.BaseFactory<{
+  component: 'style';
+  props: SurfaceProps;
+}>;
 
-    if (hoverConfig) {
-      styles.push(createInlineCSS(`${selector}:hover`, hoverConfig));
-    }
+export const Surface: SurfaceFactory = (props) => {
+  const {
+    selector,
+    baseConfig,
+    hoverConfig,
+    nonce = () => '',
+    component: Component = 'style',
+  } = props;
 
-    return styles.join('');
-  };
+  const mergeConfigs = (configs: string[]) => configs.join('');
 
-  return <style dangerouslySetInnerHTML={{ __html: buildStyleConfiguration() }} nonce={nonce()} />;
+  return (
+    <Component
+      dangerouslySetInnerHTML={{
+        __html: mergeConfigs([
+          createInlineCSS(`${selector}`, baseConfig),
+          createInlineCSS(`${selector}:hover`, hoverConfig),
+        ]),
+      }}
+      nonce={nonce()}
+    />
+  );
 };
