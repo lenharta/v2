@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Core } from '@/types/core';
-import { Align, Size } from '@/types/common';
+import { Align, Justify, Size } from '@/types/common';
 
 export type TitleProps = {
   size?: Size;
   align?: Align;
+  justify?: Justify;
 };
 
 export type TitleFactory = Core.RefFactory<{
@@ -18,6 +19,7 @@ export const Title: TitleFactory = React.forwardRef((props, ref) => {
   const {
     size,
     align = 'start',
+    justify = 'center',
     children,
     className,
     component: Component = 'h2',
@@ -29,6 +31,7 @@ export const Title: TitleFactory = React.forwardRef((props, ref) => {
     { [`Title--${Component}`]: Component },
     { [`Title--size-${size}`]: size },
     { [`Title--align-${align}`]: align },
+    { [`Title--justify-${justify}`]: justify },
     className
   );
 

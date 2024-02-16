@@ -1,3 +1,4 @@
+export * from './capitalize-string';
 export * from './create-inline-css';
 export * from './format-camel-to-kebab';
 export * from './generate-random-id';

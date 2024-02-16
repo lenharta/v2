@@ -1,8 +1,9 @@
 import * as React from 'react';
-import type { ThemeStore } from '@/types';
+import type { ThemeStore } from '@/types/store';
 
 export type ThemeContextValue = {
   state: ThemeStore;
+  setDir(value: ThemeStore['dir']): void;
   setMode(value: ThemeStore['mode']): void;
   setAccent(value: ThemeStore['accent']): void;
   setAvatar(value: ThemeStore['avatar']): void;

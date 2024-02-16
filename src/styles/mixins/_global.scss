@@ -1,0 +1,11 @@
+@mixin ltr {
+  [data-prefers-script-dir='ltr'] & {
+    @content;
+  }
+}
+
+@mixin rtl {
+  [data-prefers-script-dir='rtl'] & {
+    @content;
+  }
+}

@@ -16,6 +16,7 @@ export type Store = StoreState;
 export type StoreDispatch = React.Dispatch<StoreState>;
 
 export type ThemeStore = {
+  dir?: Dir;
   mode?: Mode;
   accent?: Accent;
   avatar?: Avatar;
@@ -67,3 +68,4 @@ export enum SETTINGS_THEME_AVATAR {
 export type Mode = keyof typeof SETTINGS_THEME_MODE;
 export type Accent = keyof typeof SETTINGS_THEME_ACCENT;
 export type Avatar = IconName;
+export type Dir = 'ltr' | 'rtl';

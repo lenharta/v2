@@ -1,3 +1,5 @@
+@use '../mixins/global' as mixins;
+
 .Title {
   --title-size-xs: var(--font-size-5);
   --title-size-sm: var(--font-size-6);
@@ -45,11 +47,11 @@
     --title-size-h1: var(--font-size-12);
   }
 
+  width: 100%;
   display: block;
   font-size: var(--title-size);
   line-height: var(--title-height);
-  text-justify: var(--title-justify);
-  text-align: var(--title-align);
+  text-align: var(--title-align, start);
 
   &--h6 {
     --title-size: var(--title-size-h6);
@@ -91,16 +93,6 @@
     --title-height: var(--title-height-xl);
   }
 
-  &--align-center {
-    --title-align: center;
-  }
-  &--align-start {
-    --title-align: flex-start;
-  }
-  &--align-end {
-    --title-align: flex-end;
-  }
-
   &--justify-center {
     --title-justify: center;
   }
@@ -109,5 +101,27 @@
   }
   &--justify-end {
     --title-justify: flex-end;
+  }
+
+  &--align-center {
+    --title-align: center;
+  }
+
+  @include mixins.ltr {
+    &--align-start {
+      --title-align: end;
+    }
+    &--align-end {
+      --title-align: start;
+    }
+  }
+
+  @include mixins.rtl {
+    &--align-start {
+      --title-align: start;
+    }
+    &--align-end {
+      --title-align: end;
+    }
   }
 }

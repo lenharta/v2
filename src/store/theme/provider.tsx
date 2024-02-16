@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ThemeCTX } from './context';
 import { STORAGE_KEYS } from '../config';
 import { localManager } from '../storage/local-manager';
-import type { ThemeStore } from '@/types';
+import type { ThemeStore } from '@/types/store';
 
 interface ThemeProviderProps {
   children?: React.ReactNode;
@@ -17,6 +17,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     avatar: 'person',
     accent: 'blue',
     mode: 'dark',
+    dir: 'ltr',
   };
 
   const readValue = React.useCallback(() => {
@@ -70,13 +71,23 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     }
   };
 
+  const setDir = (value: ThemeStore['dir']) => {
+    try {
+      local.write({ ...store, dir: value });
+      dispatch({ dir: value });
+    } catch (error: any) {
+      console.error(`ERROR:[@v2/storage/local]: Check 'SET-DIR' method @ ${value}`);
+    }
+  };
+
   React.useEffect(() => {
     const root = document.getElementById('root')!;
+    root.setAttribute('data-prefers-script-dir', String(store.dir));
     root.setAttribute('data-prefers-color-scheme', String(store.mode));
   }, [store]);
 
   return (
-    <ThemeCTX.Provider value={{ state: store, setMode, setAccent, setAvatar }}>
+    <ThemeCTX.Provider value={{ state: store, setMode, setAccent, setAvatar, setDir }}>
       {children}
     </ThemeCTX.Provider>
   );
