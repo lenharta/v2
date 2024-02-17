@@ -16,10 +16,10 @@ export type Store = StoreState;
 export type StoreDispatch = React.Dispatch<StoreState>;
 
 export type ThemeStore = {
-  dir?: Dir;
-  mode?: Mode;
-  accent?: Accent;
-  avatar?: Avatar;
+  dir: Dir;
+  mode: Mode;
+  accent: Accent;
+  avatar: Avatar;
 };
 
 export enum SETTINGS_THEME_MODE {

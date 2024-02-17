@@ -7,14 +7,17 @@ export declare namespace Core {
     components?: Record<string, any>;
   };
 
+  type DataAttributes = Record<`data-${string}`, any>;
+
   type Component<T> = T extends keyof React.JSX.IntrinsicElements ? { component?: T } : { component?: any };
 
   type Components<C extends Record<string, any>> = C extends Record<string, any> ? C : Record<string, never>;
 
   type BaseFactory<Payload extends BaseFactoryPayload> = React.FC<
-    Payload['props']
-    & Component<Payload['component']>
+   Component<Payload['component']>
     & React.ComponentPropsWithRef<Payload['component']> 
+    & Payload['props']
+    & DataAttributes
   > & Payload['components'];
 
   interface RefFactoryPayload {
@@ -24,9 +27,10 @@ export declare namespace Core {
   };
 
   type RefFactory<Payload extends RefFactoryPayload> = React.ForwardRefExoticComponent<
-    Payload['props']
-    & Component<Payload['component']>
+    Component<Payload['component']>
     & React.RefAttributes<Payload['ref']>
     & React.ComponentPropsWithoutRef<Payload['component']>
+    & Payload['props']
+    & DataAttributes
   >;
 }
