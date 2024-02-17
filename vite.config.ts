@@ -32,6 +32,7 @@ export default defineConfig(({ mode, command }) => {
       resolve: {
         alias: {
           '@/*': path.resolve(__dirname, './src/'),
+          '@/app': path.resolve(__dirname, './src/app/'),
           '@/data': path.resolve(__dirname, './src/data/'),
           '@/utils': path.resolve(__dirname, './src/utils/'),
           '@/hooks': path.resolve(__dirname, './src/hooks/'),

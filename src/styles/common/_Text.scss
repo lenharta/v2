@@ -1,3 +1,5 @@
+@use '../mixins/global' as mixin;
+
 .Text {
   --text-size-xs: calc(14px * var(--scale));
   --text-size-sm: calc(16px * var(--scale));
@@ -11,6 +13,7 @@
   --text-height-lg: calc(26px * var(--scale));
   --text-height-xl: calc(28px * var(--scale));
 
+  width: 100%;
   display: block;
   font-size: var(--text-size, var(--text-size-xs));
   line-height: var(--text-height, var(--text-height-xs));
@@ -38,16 +41,6 @@
     --text-height: var(--text-height-xl);
   }
 
-  &--align-center {
-    --text-align: center;
-  }
-  &--align-start {
-    --text-align: flex-start;
-  }
-  &--align-end {
-    --text-align: flex-end;
-  }
-
   &--justify-center {
     --text-justify: center;
   }
@@ -56,5 +49,29 @@
   }
   &--justify-end {
     --text-justify: flex-end;
+  }
+
+  @include mixin.ltr {
+    &--align-center {
+      --text-align: center;
+    }
+    &--align-start {
+      --text-align: start;
+    }
+    &--align-end {
+      --text-align: end;
+    }
+  }
+
+  @include mixin.rtl {
+    &--align-center {
+      --text-align: center;
+    }
+    &--align-start {
+      --text-align: end;
+    }
+    &--align-end {
+      --text-align: start;
+    }
   }
 }

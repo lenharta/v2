@@ -2,7 +2,7 @@ import { createInlineCSS } from '@/utils';
 import { Core } from '@/types/core';
 
 export type SurfaceProps = {
-  nonce: () => string;
+  nonce?: () => string;
   selector: string;
   baseConfig: React.CSSProperties;
   hoverConfig: React.CSSProperties;

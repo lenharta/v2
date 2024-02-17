@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Store, StoreState } from '@/types';
+import { Store, StoreState } from '@/types/store';
 
 export const INITIAL_STORE: Store = {};
 

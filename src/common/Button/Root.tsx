@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Surface } from '../Surface';
-import { findTokenState, surfaceToken } from '../utils';
-import { generateRandomId } from '@/utils';
+import { useToken } from '@/hooks';
+import { mergeProps } from '@/utils';
+import { useThemeCTX } from '@/store';
 import type { Core } from '@/types/core';
 import type { SurfaceToken, Align, Justify, Size, Border } from '@/types/common';
 
@@ -24,13 +25,20 @@ export type ButtonFactory = Core.RefFactory<{
   component: 'button';
 }>;
 
+const defaultProps: Partial<ButtonProps> = {
+  size: 'sm',
+  align: 'center',
+  justify: 'start',
+  surface: 'primary',
+};
+
 export const Button: ButtonFactory = React.forwardRef((props, ref) => {
   const {
-    size = 'sm',
-    align = 'center',
+    size,
+    align,
     border,
-    justify = 'start',
-    surface = 'primary',
+    justify,
+    surface,
     readOnly,
     disabled,
     children,
@@ -41,19 +49,29 @@ export const Button: ButtonFactory = React.forwardRef((props, ref) => {
     ...otherProps
   } = props;
 
-  const token = {
-    clxss: `Button--${generateRandomId(8)}`,
-    value: findTokenState({ token: surface, disabled, readOnly }),
-    alphaStep: surface !== ('primary' || 'secondary') ? 0.06 : 0.03,
-    alphaBgd: surface !== ('primary' || 'secondary') ? 0.2 : 0.05,
-    alphaBdr: border !== undefined ? 0.4 : 0,
-  };
+  const theme = useThemeCTX();
+
+  const mergedProps = mergeProps(
+    { size, align, justify, surface, readOnly, disabled },
+    defaultProps
+  );
+
+  const token = useToken({
+    surfaceId: 'Button',
+    surface: mergedProps.surface,
+    disabled: mergedProps.disabled,
+    readOnly: mergedProps.readOnly,
+    mode: theme.state.mode,
+  });
+
+  const baseSurfaceConfig = token.base(border !== undefined);
+  const hoverSurfaceConfig = token.hover(border !== undefined);
 
   const clxss = clsx(
     'Button',
-    { [`Button--size-${size}`]: size },
-    { [`Button--align-${align}`]: align },
-    { [`Button--justify-${justify}`]: justify },
+    { [`Button--size-${mergedProps.size}`]: mergedProps.size },
+    { [`Button--align-${mergedProps.align}`]: mergedProps.align },
+    { [`Button--justify-${mergedProps.justify}`]: mergedProps.justify },
     token.clxss,
     className
   );
@@ -62,16 +80,8 @@ export const Button: ButtonFactory = React.forwardRef((props, ref) => {
     <>
       <Surface
         selector={token.clxss}
-        baseConfig={{
-          color: surfaceToken(token.value, 1),
-          borderColor: surfaceToken(token.value, token.alphaBdr),
-          backgroundColor: surfaceToken(token.value, token.alphaBgd),
-        }}
-        hoverConfig={{
-          color: surfaceToken(token.value, 1),
-          borderColor: surfaceToken(token.value, token.alphaBdr),
-          backgroundColor: surfaceToken(token.value, token.alphaBgd + token.alphaStep),
-        }}
+        baseConfig={baseSurfaceConfig}
+        hoverConfig={hoverSurfaceConfig}
       />
       <Component
         {...otherProps}
@@ -81,8 +91,11 @@ export const Button: ButtonFactory = React.forwardRef((props, ref) => {
         data-readonly={readOnly}
         aria-disabled={disabled}
         aria-readonly={readOnly}
+        data-direction={theme.state.dir}
       >
+        {leftContent && <div data-position="left">{leftContent}</div>}
         {children}
+        {rightContent && <div data-position="right">{rightContent}</div>}
       </Component>
     </>
   );

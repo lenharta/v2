@@ -20,13 +20,42 @@
   --button-font-size-xl: calc(18px * var(--scale));
 
   display: inline-flex;
-  height: var(--button-height, var(--button-height-xs));
+  align-items: var(--button-align, center);
+  justify-content: var(--button-justify, flex-start);
   padding-inline: var(--button-padding-x, var(--button-padding-x-xs));
+  height: var(--button-height, var(--button-height-xs));
   font-size: var(--button-font-size, var(--button-font-size-xs));
   line-height: 1;
 
-  @include mixins.flex-align;
-  @include mixins.flex-justify;
+  &--align-center {
+    --button-align: center;
+  }
+  &--align-start {
+    --button-align: flex-start;
+  }
+  &--align-end {
+    --button-align: flex-end;
+  }
+
+  &--justify-center {
+    --button-justify: center;
+  }
+
+  &--justify-start {
+    --button-justify: flex-start;
+
+    &[data-direction='ltr'] {
+      --button-justify: flex-end;
+    }
+  }
+
+  &--justify-end {
+    --button-justify: flex-end;
+
+    &[data-direction='rtl'] {
+      --button-justify: flex-start;
+    }
+  }
 
   &--size-xs {
     --button-height: var(--button-height-xs);
