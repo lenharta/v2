@@ -2,13 +2,13 @@ import * as React from 'react';
 import { createInlineCSS } from '@/utils';
 import type { Core } from '@/types/core';
 
-type InlineCSSProps = {
+export type InlineCSSProps = {
   selector: string;
   styles?: React.CSSProperties;
   nonce?: () => string;
 };
 
-type InlineCSSFactory = Core.BaseFactory<{
+export type InlineCSSFactory = Core.BaseFactory<{
   props: InlineCSSProps;
   component: 'style';
 }>;
@@ -24,9 +24,9 @@ export const InlineCSS: InlineCSSFactory = (props) => {
 
   return (
     <Component
+      {...otherProps}
       dangerouslySetInnerHTML={{ __html: createInlineCSS(selector, styles) }}
       nonce={nonce()}
-      {...otherProps}
     />
   );
 };

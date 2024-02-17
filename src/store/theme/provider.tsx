@@ -36,7 +36,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
   }, []);
 
   const [store, dispatch] = React.useReducer(
-    (current: ThemeStore, update: ThemeStore) => ({
+    (current: ThemeStore, update: Partial<ThemeStore>) => ({
       ...current,
       ...update,
     }),

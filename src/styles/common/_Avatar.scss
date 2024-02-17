@@ -15,8 +15,9 @@
   border-radius: var(--radius-rd);
   border-color: inherit;
 
-  svg {
-    width: 55%;
+  &-icon {
+    width: calc(var(--avatar-size) * 0.5);
+    height: calc(var(--avatar-size) * 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
