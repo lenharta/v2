@@ -1,9 +1,11 @@
-import * as React from 'react';
-import { Core } from '@/types/core';
-import { Orientation } from '@/types/common';
-import { TabsPlacement, TabsVariant, useTabsContext } from '../context';
-import { mergeProps } from '@/utils';
 import clsx from 'clsx';
+import * as React from 'react';
+
+import { mergeProps } from '@/utils';
+import { TabsPlacement, TabsVariant, useTabsContext } from '../context';
+
+import type { Core } from '@/types/core';
+import type { Orientation, Size } from '@/types/common';
 
 export type TabsListProps = {
   variant?: TabsVariant;
@@ -17,6 +19,8 @@ export type TabsListFactory = Core.RefFactory<{
   component: 'div';
 }>;
 
+const defaultProps: Partial<TabsListProps> = {};
+
 export const TabsList: TabsListFactory = React.forwardRef((props, ref) => {
   const {
     variant = 'default',
@@ -29,12 +33,12 @@ export const TabsList: TabsListFactory = React.forwardRef((props, ref) => {
   } = props;
 
   const ctx = useTabsContext();
-  const mergedProps = mergeProps({ variant, placement, orientation }, ctx);
+  const mergedProps = mergeProps({ variant, placement, orientation }, defaultProps, ctx);
 
   const clxss = clsx(
-    'Tab-list',
-    { [`Tab-item--variant-${mergedProps.variant}`]: mergedProps.variant },
-    { [`Tab-item--placement-${mergedProps.placement}`]: mergedProps.placement },
+    'Tabs-list',
+    { [`Tabs-list--variant-${mergedProps.variant}`]: mergedProps.variant },
+    { [`Tabs-list--placement-${mergedProps.placement}`]: mergedProps.placement },
     className
   );
 

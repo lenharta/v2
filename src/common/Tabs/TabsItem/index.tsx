@@ -1,10 +1,14 @@
-import * as React from 'react';
-import { Core } from '@/types/core';
-import { Align, Justify, Size, SurfaceToken } from '@/types/common';
-import { TabsPlacement, TabsVariant, useTabsContext } from '../context';
 import clsx from 'clsx';
+import * as React from 'react';
+
+import { Surface } from '@/common';
+import { useToken } from '@/hooks';
 import { mergeProps } from '@/utils';
-import { findTokenState } from '@/common/utils';
+import { useThemeCTX } from '@/store';
+import { TabsPlacement, TabsVariant, useTabsContext } from '../context';
+
+import type { Core } from '@/types/core';
+import type { Align, Justify, Size, SurfaceToken } from '@/types/common';
 
 export type TabsItemProps = {
   label: string;
@@ -27,27 +31,58 @@ export type TabsItemFactory = Core.RefFactory<{
   component: 'button';
 }>;
 
+const defaultProps: Partial<TabsItemProps> = {
+  surface: 'primary',
+  size: 'xl',
+};
+
 export const TabsItem: TabsItemFactory = React.forwardRef((props, ref) => {
   const {
     size,
     align,
     label,
-    surface = 'primary',
+    surface,
     justify,
     variant,
     placement,
+    selected,
     leftContent,
     rightContent,
     component: Component = 'button',
     readOnly,
     className,
     disabled,
+    style,
     ...otherProps
   } = props;
 
+  const theme = useThemeCTX();
   const ctx = useTabsContext();
-  const mergedProps = mergeProps({ size, align, justify, variant }, ctx);
-  const token = findTokenState({ surface });
+
+  const mergedProps = mergeProps(
+    { size, align, justify, variant, surface, disabled, readOnly },
+    defaultProps,
+    ctx
+  );
+
+  const token = useToken({
+    surfaceId: 'TabsItem',
+    surface: mergedProps.surface,
+    disabled: mergedProps.disabled,
+    readOnly: mergedProps.readOnly,
+    mode: theme.state.mode,
+  });
+
+  const baseSurfaceConfig = token.base();
+  const hoverSurfaceConfig = token.hover();
+
+  const borderTokenMod = () => {
+    if (selected) {
+      return token.createToken(theme.state.accent);
+    } else {
+      return token.createToken(theme.state.accent, 0.3);
+    }
+  };
 
   const clxss = clsx(
     'Tabs-item',
@@ -55,22 +90,36 @@ export const TabsItem: TabsItemFactory = React.forwardRef((props, ref) => {
     { [`Tabs-item--align-${mergedProps.align}`]: mergedProps.align },
     { [`Tabs-item--justify-${mergedProps.justify}`]: mergedProps.justify },
     { [`Tabs-item--variant-${mergedProps.variant}`]: mergedProps.variant },
+    token.clxss,
     className
   );
 
   return (
-    <Component
-      {...otherProps}
-      ref={ref}
-      className={clxss}
-      disabled={mergedProps.disabled}
-      data-disabled={mergedProps.disabled}
-      data-readonly={mergedProps.readOnly}
-      aria-readonly={mergedProps.readOnly}
-    >
-      {leftContent && <div data-position="left">{leftContent}</div>}
-      {label}
-      {rightContent && <div data-position="right">{rightContent}</div>}
-    </Component>
+    <>
+      <Surface
+        selector={token.clxss}
+        baseConfig={baseSurfaceConfig}
+        hoverConfig={hoverSurfaceConfig}
+      />
+      <Component
+        {...otherProps}
+        ref={ref}
+        className={clxss}
+        disabled={mergedProps.disabled}
+        data-disabled={mergedProps.disabled}
+        data-readonly={mergedProps.readOnly}
+        aria-readonly={mergedProps.readOnly}
+        style={{
+          borderBottomColor: borderTokenMod(),
+          borderBottomStyle: 'solid',
+          borderBottomWidth: '2px',
+          ...style,
+        }}
+      >
+        {leftContent && <div data-position="left">{leftContent}</div>}
+        {label}
+        {rightContent && <div data-position="right">{rightContent}</div>}
+      </Component>
+    </>
   );
 });

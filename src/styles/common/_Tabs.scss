@@ -1,0 +1,70 @@
+.Tabs {
+  --tabs-item-height-xs: calc(34px * var(--scale));
+  --tabs-item-height-sm: calc(40px * var(--scale));
+  --tabs-item-height-md: calc(46px * var(--scale));
+  --tabs-item-height-lg: calc(52px * var(--scale));
+  --tabs-item-height-xl: calc(58px * var(--scale));
+
+  --tabs-item-padding-x-xs: calc(10px * var(--scale));
+  --tabs-item-padding-x-sm: calc(12px * var(--scale));
+  --tabs-item-padding-x-md: calc(16px * var(--scale));
+  --tabs-item-padding-x-lg: calc(18px * var(--scale));
+  --tabs-item-padding-x-xl: calc(20px * var(--scale));
+
+  --tabs-item-font-size-xs: calc(12px * var(--scale));
+  --tabs-item-font-size-sm: calc(13px * var(--scale));
+  --tabs-item-font-size-md: calc(14px * var(--scale));
+  --tabs-item-font-size-lg: calc(15px * var(--scale));
+  --tabs-item-font-size-xl: calc(16px * var(--scale));
+
+  &-list {
+    display: flex;
+    gap: var(--spacing-1);
+
+    &[data-orientation='vertical'] {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    &[data-orientation='horizontal'] {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+
+  &-item {
+    padding-inline: var(--tabs-item-padding-x, var(--tabs-item-padding-x-xs));
+    height: var(--tabs-item-height, var(--tabs-item-height-xs));
+    font-size: var(--tabs-item-font-size, var(--tabs-item-font-size-xs));
+    font-weight: var(--font-weight-med);
+    line-height: 1;
+
+    &--size-xs {
+      --tabs-item-height: var(--tabs-item-height-xs);
+      --tabs-item-padding-x: var(--tabs-item-padding-x-xs);
+      --tabs-item-font-size: var(--tabs-item-font-size-xs);
+    }
+    &--size-sm {
+      --tabs-item-height: var(--tabs-item-height-sm);
+      --tabs-item-padding-x: var(--tabs-item-padding-x-sm);
+      --tabs-item-font-size: var(--tabs-item-font-size-sm);
+    }
+    &--size-md {
+      --tabs-item-height: var(--tabs-item-height-md);
+      --tabs-item-padding-x: var(--tabs-item-padding-x-md);
+      --tabs-item-font-size: var(--tabs-item-font-size-md);
+    }
+    &--size-lg {
+      --tabs-item-height: var(--tabs-item-height-lg);
+      --tabs-item-padding-x: var(--tabs-item-padding-x-lg);
+      --tabs-item-font-size: var(--tabs-item-font-size-lg);
+    }
+    &--size-xl {
+      --tabs-item-height: var(--tabs-item-height-xl);
+      --tabs-item-padding-x: var(--tabs-item-padding-x-xl);
+      --tabs-item-font-size: var(--tabs-item-font-size-xl);
+    }
+  }
+}

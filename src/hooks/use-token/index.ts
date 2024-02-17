@@ -11,19 +11,20 @@ export type UseTokenProps = {
   mode?: Mode;
 };
 
-export type UseTokenReturnType = {
+export type UseTokenReturn = {
   clxss: string;
   surface: SurfaceToken;
   base(border?: boolean): React.CSSProperties;
   hover(border?: boolean, step?: number): React.CSSProperties;
+  createToken(surface?: SurfaceToken, alpha?: number, step?: number): string;
 };
 
-export const useToken = (props: UseTokenProps): UseTokenReturnType => {
+export const useToken = (props: UseTokenProps): UseTokenReturn => {
   const { surface = 'primary', disabled, readOnly, surfaceId, mode = 'dark' } = props;
 
   const clxss = [surfaceId, generateRandomId(12)].join('--');
 
-  const getToken = (alpha: number = 1, step?: number) => {
+  const createToken: UseTokenReturn['createToken'] = (surface = 'primary', alpha = 1, step) => {
     const _alpha = !step ? alpha.toFixed(2) : Number(alpha + step).toFixed(2);
 
     if (disabled === true || surface === 'disabled') {
@@ -103,29 +104,31 @@ export const useToken = (props: UseTokenProps): UseTokenReturnType => {
     }[mode];
   };
 
-  const base = React.useCallback(
-    (border?: boolean): React.CSSProperties => {
+  const base: UseTokenReturn['base'] = React.useCallback(
+    (border) => {
       const alpha = getAlpha();
+      const payload = border ? { borderColor: createToken(surface, alpha[1]) } : {};
       return {
-        color: getToken(alpha[1]),
-        backgroundColor: getToken(alpha[0]),
-        borderColor: border ? getToken(alpha[1]) : undefined,
+        color: createToken(surface, alpha[1]),
+        backgroundColor: createToken(surface, alpha[0]),
+        ...payload,
       };
     },
     [surface, disabled, readOnly, surfaceId, mode]
   );
 
-  const hover = React.useCallback(
-    (border?: boolean, step?: number): React.CSSProperties => {
+  const hover: UseTokenReturn['hover'] = React.useCallback(
+    (border, step) => {
       const alpha = getAlpha();
+      const payload = border ? { borderColor: createToken(surface, alpha[1], getStep(step)) } : {};
       return {
-        color: getToken(alpha[1], getStep(step)),
-        backgroundColor: getToken(alpha[0], getStep(step)),
-        borderColor: border ? getToken(alpha[1], getStep(step)) : undefined,
+        color: createToken(surface, alpha[1], getStep(step)),
+        backgroundColor: createToken(surface, alpha[0], getStep(step)),
+        ...payload,
       };
     },
     [surface, disabled, readOnly, surfaceId, mode]
   );
 
-  return { clxss, surface, base, hover };
+  return { clxss, surface, base, hover, createToken };
 };

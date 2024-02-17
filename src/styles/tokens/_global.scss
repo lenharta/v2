@@ -83,6 +83,7 @@
   --page-hero-height: calc(96px * var(--scale));
   --page-title-height: calc(40px * var(--scale));
   --page-header-height: calc(48px * var(--scale));
+  --nav-content-height: calc(var(--page-header-height) * 0.6);
 
   @media (min-width: 20rem) {
     --page-hero-height: calc(144px * var(--scale));
@@ -104,6 +105,9 @@
   @media (min-width: 80rem) {
     --page-gutter: var(--spacing-5);
   }
+}
+
+.Page-header {
 }
 
 // @media (min-width: 20rem) {}

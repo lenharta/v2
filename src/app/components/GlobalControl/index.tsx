@@ -58,9 +58,6 @@ function ControlOptionGroup(props: ControlGroupProps) {
 
 const GlobalControlTheme = () => {
   const { state, setMode, setAccent, setAvatar, setDir } = useThemeCTX();
-  const { accent, avatar, dir, mode } = state;
-  console.log({ accent, avatar, dir, mode });
-
   return (
     <div className="GlobalControl-theme">
       <ControlOptionGroup

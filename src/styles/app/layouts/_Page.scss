@@ -28,6 +28,8 @@
     position: fixed;
     box-sizing: border-box;
     height: var(--page-header-height);
+    background-color: hsla(var(--c-primary), 0.65);
+    backdrop-filter: blur(16px);
   }
 
   &-nav {
@@ -35,7 +37,15 @@
     align-items: center;
     justify-content: space-between;
     height: var(--page-header-height);
-    background-color: inherit;
+
+    &-logo {
+      line-height: var(--nav-content-height);
+    }
+
+    &-avatar {
+      width: var(--nav-content-height);
+      height: var(--nav-content-height);
+    }
   }
 
   &-hero {

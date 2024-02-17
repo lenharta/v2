@@ -20,14 +20,14 @@ export const PageHeader: PageHeaderFactory = React.forwardRef((props, ref) => {
     <div {...otherProps} className="Page-header" ref={ref}>
       <div className="Page-container">
         <nav className="Page-nav">
-          <Link to="/" className="PageHeader-logo" children="Logo" />
+          <Link to="/" className="Page-nav-logo" children="Logo" />
           <div>
             <Avatar
               to="/preferences"
               children={<Icon name={state.avatar} />}
               aria-label="go to preferences"
-              className="PageHeader-avatar"
-              size="xs"
+              className="Page-nav-avatar"
+              size="md"
             />
           </div>
         </nav>
