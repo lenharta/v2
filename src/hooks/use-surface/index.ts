@@ -3,7 +3,7 @@ import { generateRandomId } from '@/utils';
 import { SurfaceToken } from '@/types/common';
 import { Mode } from '@/types/store';
 
-export type UseTokenProps = {
+export type UseSurfaceProps = {
   surfaceId: string;
   surface?: SurfaceToken;
   readOnly?: boolean;
@@ -11,7 +11,7 @@ export type UseTokenProps = {
   mode?: Mode;
 };
 
-export type UseTokenReturn = {
+export type UseSurfaceReturn = {
   clxss: string;
   surface: SurfaceToken;
   base(border?: boolean): React.CSSProperties;
@@ -19,12 +19,12 @@ export type UseTokenReturn = {
   createToken(surface?: SurfaceToken, alpha?: number, step?: number): string;
 };
 
-export const useToken = (props: UseTokenProps): UseTokenReturn => {
+export const useSurface = (props: UseSurfaceProps): UseSurfaceReturn => {
   const { surface = 'primary', disabled, readOnly, surfaceId, mode = 'dark' } = props;
 
   const clxss = [surfaceId, generateRandomId(12)].join('--');
 
-  const createToken: UseTokenReturn['createToken'] = (surface = 'primary', alpha = 1, step) => {
+  const createToken: UseSurfaceReturn['createToken'] = (surface = 'primary', alpha = 1, step) => {
     const _alpha = !step ? alpha.toFixed(2) : Number(alpha + step).toFixed(2);
 
     if (disabled === true || surface === 'disabled') {
@@ -104,7 +104,7 @@ export const useToken = (props: UseTokenProps): UseTokenReturn => {
     }[mode];
   };
 
-  const base: UseTokenReturn['base'] = React.useCallback(
+  const base: UseSurfaceReturn['base'] = React.useCallback(
     (border) => {
       const alpha = getAlpha();
       const payload = border ? { borderColor: createToken(surface, alpha[1]) } : {};
@@ -117,7 +117,7 @@ export const useToken = (props: UseTokenProps): UseTokenReturn => {
     [surface, disabled, readOnly, surfaceId, mode]
   );
 
-  const hover: UseTokenReturn['hover'] = React.useCallback(
+  const hover: UseSurfaceReturn['hover'] = React.useCallback(
     (border, step) => {
       const alpha = getAlpha();
       const payload = border ? { borderColor: createToken(surface, alpha[1], getStep(step)) } : {};

@@ -1,156 +1,144 @@
-import * as React from 'react';
-import { Link, LinkProps } from 'react-router-dom';
+import { Page } from '@/app/layouts';
+import { Button, Space, Title } from '@/common';
+import {
+  DATA_GLOBAL_CONTROL_GROUP_ACCENT,
+  DATA_GLOBAL_CONTROL_GROUP_AVATAR,
+  DATA_GLOBAL_CONTROL_GROUP_DIRECTION,
+  DATA_GLOBAL_CONTROL_GROUP_THEME,
+} from '@/data/common/data-global-control';
 import { useThemeCTX } from '@/store';
-import { Button, Title } from '@/common';
 import { capitalizeString } from '@/utils';
-import type { SurfaceToken } from '@/types/common';
-import type { Accent, Avatar, Dir, Mode } from '@/types/store';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-type ControlOptionProps = {
-  value: Mode | Accent | Avatar | Dir;
-  onChange(value: Mode | Accent | Avatar | Dir): void;
-  surface?: SurfaceToken;
+type ControlOption<T> = {
+  value: T;
+  surface?: any;
   label?: string;
 };
 
-function ControlOption(props: ControlOptionProps) {
-  const { label, value, onChange, surface = 'primary' } = props;
-  return (
-    <Button
-      onClick={() => onChange(value)}
-      className="GlobalControlGroup-option"
-      children={label || capitalizeString(value)}
-      surface={surface}
-    />
-  );
-}
-
-type ControlGroupProps = {
+type ControlGroup<T> = {
+  options: ControlOption<T>[];
+  surface?: any;
   label?: string;
-  options: ControlOptionProps[];
-  surface?: SurfaceToken;
 };
 
-function ControlOptionGroup(props: ControlGroupProps) {
-  const { label, options } = props;
-  return (
-    <div className="GlobalControlGroup">
-      {label && (
-        <Title className="GlobalControlGroup-title" size="xs">
-          {label}
-        </Title>
-      )}
+type ControlTabKey = 'mode' | 'accent' | 'avatar' | 'dir' | 'nav';
 
-      <div className="GlobalControlGroup-options">
+type ControlPanel = { isMounted?: boolean; children?: React.ReactNode };
+
+type ControlTabs = {
+  keys: ControlTabKey[];
+  activeKey: ControlTabKey | null;
+  setActiveKey: (key: ControlTabKey | null) => void;
+};
+
+const GlobalControlGroup = <T extends string>(
+  props: ControlGroup<T> & { onChange: (value: T) => void | (() => void) }
+) => {
+  const { label, options, surface, onChange } = props;
+  return (
+    <div className="GlobalControl-group">
+      {label && <Title size="sm">{label}</Title>}
+
+      <div className="GlobalControl-options">
         {options?.map((option) => (
-          <ControlOption
-            key={option.value}
-            label={option.label}
-            value={option.value}
-            surface={option.surface}
-            onChange={option.onChange}
+          <Button
+            onClick={() => onChange(option.value)}
+            children={option.label || capitalizeString(option.value)}
+            surface={option.surface || surface}
+            size="xs"
           />
         ))}
       </div>
     </div>
   );
-}
-
-const GlobalControlTheme = () => {
-  const { state, setMode, setAccent, setAvatar, setDir } = useThemeCTX();
-  return (
-    <div className="GlobalControl-theme">
-      <ControlOptionGroup
-        label="Mode"
-        options={[
-          { value: 'light', label: 'Light Mode', onChange: () => setMode('light') },
-          { value: 'dark', label: 'Dark Mode', onChange: () => setMode('dark') },
-          { value: 'dim', label: 'Dim Mode', onChange: () => setMode('dim') },
-        ]}
-      />
-      <ControlOptionGroup
-        label="Direction"
-        options={[
-          { value: 'ltr', label: 'Right-to-Left', onChange: () => setDir('ltr') },
-          { value: 'rtl', label: 'Left-to-Right', onChange: () => setDir('rtl') },
-        ]}
-      />
-      <ControlOptionGroup
-        label="Accent Color"
-        options={[
-          { value: 'orange', surface: 'orange', onChange: () => setAccent('orange') },
-          { value: 'yellow', surface: 'yellow', onChange: () => setAccent('yellow') },
-          { value: 'green', surface: 'green', onChange: () => setAccent('green') },
-          { value: 'cyan', surface: 'cyan', onChange: () => setAccent('cyan') },
-          { value: 'blue', surface: 'blue', onChange: () => setAccent('blue') },
-          { value: 'indigo', surface: 'indigo', onChange: () => setAccent('indigo') },
-          { value: 'purple', surface: 'purple', onChange: () => setAccent('purple') },
-          { value: 'violet', surface: 'violet', onChange: () => setAccent('violet') },
-          { value: 'magenta', surface: 'magenta', onChange: () => setAccent('magenta') },
-          { value: 'pink', surface: 'pink', onChange: () => setAccent('pink') },
-          { value: 'red', surface: 'red', onChange: () => setAccent('red') },
-        ]}
-      />
-      <ControlOptionGroup
-        label="Avatar Icon"
-        options={[
-          { value: 'baseball', surface: state.accent, onChange: () => setAvatar('baseball') },
-          { value: 'basketball', surface: state.accent, onChange: () => setAvatar('basketball') },
-          { value: 'beer', surface: state.accent, onChange: () => setAvatar('beer') },
-          { value: 'bolt', surface: state.accent, onChange: () => setAvatar('bolt') },
-          { value: 'code', surface: state.accent, onChange: () => setAvatar('code') },
-          { value: 'coffee', surface: state.accent, onChange: () => setAvatar('coffee') },
-          { value: 'dog', surface: state.accent, onChange: () => setAvatar('dog') },
-          { value: 'film', surface: state.accent, onChange: () => setAvatar('film') },
-          { value: 'football', surface: state.accent, onChange: () => setAvatar('football') },
-          { value: 'heart', surface: state.accent, onChange: () => setAvatar('heart') },
-          { value: 'music', surface: state.accent, onChange: () => setAvatar('music') },
-          { value: 'palette', surface: state.accent, onChange: () => setAvatar('palette') },
-          { value: 'person', surface: state.accent, onChange: () => setAvatar('person') },
-          { value: 'pizza', surface: state.accent, onChange: () => setAvatar('pizza') },
-          { value: 'puzzle', surface: state.accent, onChange: () => setAvatar('puzzle') },
-          { value: 'robot', surface: state.accent, onChange: () => setAvatar('robot') },
-          { value: 'shield', surface: state.accent, onChange: () => setAvatar('shield') },
-          { value: 'smiley', surface: state.accent, onChange: () => setAvatar('smiley') },
-          { value: 'soccer', surface: state.accent, onChange: () => setAvatar('soccer') },
-          { value: 'star', surface: state.accent, onChange: () => setAvatar('star') },
-          { value: 'trophy', surface: state.accent, onChange: () => setAvatar('trophy') },
-        ]}
-      />
-    </div>
-  );
 };
 
-const GlobalControlNav = ({ links }: { links: LinkProps[] }) => {
+const GlobalControlPanel = (props: ControlPanel) => {
+  const { children, isMounted } = props;
+  if (!isMounted) return null;
+  return <div className="GlobalControl-panel">{children}</div>;
+};
+
+const GlobalControlTabs = (props: ControlTabs) => {
+  const { keys, setActiveKey } = props;
   return (
-    <div className="GlobalControl-nav">
-      {links.map((link) => (
-        <Link className="GlobalControl-nav-item" key={link?.id} to={link.to}>
-          {link.children}
-        </Link>
+    <div className="GlobalControl-tabs">
+      {keys.map((tabKey) => (
+        <Button
+          key={tabKey}
+          onClick={() => setActiveKey(tabKey)}
+          children={capitalizeString(tabKey)}
+          size="xs"
+        />
       ))}
+      <Button children="Close" onClick={() => setActiveKey(null)} size="xs" />
     </div>
   );
 };
 
 export const GlobalControl = () => {
-  const [showContent, setShowContent] = React.useState<'theme' | 'nav' | null>(null);
+  const { state, setAccent, setAvatar, setMode, setDir } = useThemeCTX();
+  const [activeKey, setActiveKey] = React.useState<ControlTabKey | null>(null);
+  const navigate = useNavigate();
+
   return (
-    <div className="Page-container">
-      <div className="GlobalControl-tabs">
-        <Button onClick={() => setShowContent('nav')} children="Navigation" />
-        <Button onClick={() => setShowContent('theme')} children="Theme" />
-      </div>
-      {showContent === 'theme' && <GlobalControlTheme />}
-      {showContent === 'nav' && (
-        <GlobalControlNav
-          links={[
-            { id: 'link-home', to: '/', children: 'Home' },
-            { id: 'link-tool', to: '/toolbox', children: 'Toolbox' },
-            { id: 'link-pref', to: '/preferences', children: 'Preferences' },
-          ]}
+    <Page.Container>
+      <Title size="md">Global Controls</Title>
+
+      <div className="GlobalControl">
+        <GlobalControlTabs
+          activeKey={activeKey}
+          setActiveKey={setActiveKey}
+          keys={['mode', 'accent', 'dir', 'avatar', 'nav']}
         />
-      )}
-    </div>
+
+        <GlobalControlPanel isMounted={activeKey === 'nav'}>
+          <GlobalControlGroup
+            label="Navigation"
+            surface={state.accent}
+            onChange={navigate}
+            options={[
+              { value: '/', label: 'Home' },
+              { value: '/toolbox', label: 'Toolbox' },
+              { value: '/preferences', label: 'Preferences' },
+            ]}
+          />
+        </GlobalControlPanel>
+
+        <GlobalControlPanel isMounted={activeKey === 'mode'}>
+          <GlobalControlGroup
+            {...DATA_GLOBAL_CONTROL_GROUP_THEME}
+            surface={state.accent}
+            onChange={setMode}
+          />
+        </GlobalControlPanel>
+
+        <GlobalControlPanel isMounted={activeKey === 'accent'}>
+          <GlobalControlGroup
+            {...DATA_GLOBAL_CONTROL_GROUP_ACCENT}
+            surface={state.accent}
+            onChange={setAccent}
+          />
+        </GlobalControlPanel>
+
+        <GlobalControlPanel isMounted={activeKey === 'dir'}>
+          <GlobalControlGroup
+            {...DATA_GLOBAL_CONTROL_GROUP_DIRECTION}
+            surface={state.accent}
+            onChange={setDir}
+          />
+        </GlobalControlPanel>
+
+        <GlobalControlPanel isMounted={activeKey === 'avatar'}>
+          <GlobalControlGroup
+            {...DATA_GLOBAL_CONTROL_GROUP_AVATAR}
+            surface={state.accent}
+            onChange={setAvatar}
+          />
+        </GlobalControlPanel>
+      </div>
+    </Page.Container>
   );
 };

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Surface } from '../Surface';
-import { useToken } from '@/hooks';
+import { useSurface } from '@/hooks';
 import { mergeProps } from '@/utils';
 import { useThemeCTX } from '@/store';
 import type { Core } from '@/types/core';
@@ -26,7 +26,7 @@ export type ButtonFactory = Core.RefFactory<{
 }>;
 
 const defaultProps: Partial<ButtonProps> = {
-  size: 'sm',
+  size: 'xs',
   align: 'center',
   justify: 'start',
   surface: 'primary',
@@ -56,7 +56,7 @@ export const Button: ButtonFactory = React.forwardRef((props, ref) => {
     defaultProps
   );
 
-  const token = useToken({
+  const token = useSurface({
     surfaceId: 'Button',
     surface: mergedProps.surface,
     disabled: mergedProps.disabled,

@@ -1,17 +1,28 @@
 .Page {
+  --page-nav: var(--spacing-10);
+  --page-gutter: var(--spacing-7);
+
+  z-index: 0;
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+
   margin: 0;
   padding: 0;
   display: block;
-  box-sizing: border-box;
   overflow-x: hidden;
-  isolation: isolate;
-  position: relative;
-  z-index: 0;
+  overflow-y: auto;
+  max-width: 100%;
+
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  line-height: var(--line-height-sm);
 
   // TEMPORARY
   min-height: 200vh;
 
   &-container {
+    width: 100%;
     height: 100%;
     max-width: 1400px;
     margin-inline: auto;
@@ -24,28 +35,22 @@
     right: 0;
     margin: 0;
     padding: 0;
-    display: block;
     position: fixed;
+
+    width: 100%;
+    display: inline-flex;
     box-sizing: border-box;
-    height: var(--page-header-height);
-    background-color: hsla(var(--c-primary), 0.65);
+
     backdrop-filter: blur(16px);
+    background-color: hsla(var(--c-primary), 0.65);
   }
 
   &-nav {
+    width: 100%;
+    height: var(--page-nav);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: var(--page-header-height);
-
-    &-logo {
-      line-height: var(--nav-content-height);
-    }
-
-    &-avatar {
-      width: var(--nav-content-height);
-      height: var(--nav-content-height);
-    }
   }
 
   &-hero {
@@ -56,9 +61,10 @@
     padding-block: var(--page-gutter);
 
     &-title {
-      margin-top: calc(var(--page-header-height) + var(--page-hero-height));
+      margin-top: calc(var(--spacing-16) * 1.5);
     }
   }
+
   &-footer {
     margin: 0;
     padding: 0;
@@ -74,7 +80,28 @@
   }
 }
 
+.GlobalControl {
+  width: 100%;
+  display: grid;
+
+  &-tabs {
+    display: grid;
+    gap: var(--spacing-1);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &-group {
+  }
+  &-options {
+    display: grid;
+    gap: var(--spacing-1);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &-panel {
+  }
+}
+
 .GlobalControl-tabs {
+  display: inline-flex;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;

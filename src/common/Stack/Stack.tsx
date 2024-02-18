@@ -1,12 +1,10 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import type { Core } from '@/types/core';
-import type { Align, Justify, Size } from '@/types';
+import { SizeExpanded } from '@/types/common';
 
 export type StackProps = {
-  gap?: Size;
-  align?: Align;
-  justify?: Justify;
+  gap?: SizeExpanded;
 };
 
 export type StackFactory = Core.RefFactory<{
@@ -16,23 +14,9 @@ export type StackFactory = Core.RefFactory<{
 }>;
 
 export const Stack: StackFactory = React.forwardRef((props, ref) => {
-  const {
-    gap,
-    align = 'start',
-    justify = 'start',
-    children,
-    className,
-    component: Component = 'div',
-    ...otherProps
-  } = props;
+  const { gap, children, className, component: Component = 'div', ...otherProps } = props;
 
-  const clxss = clsx(
-    'Stack',
-    { [`Stack--gap-${gap}`]: gap },
-    { [`Stack--align-${align}`]: align },
-    { [`Stack--justify-${justify}`]: justify },
-    className
-  );
+  const clxss = clsx('Stack', { [`Stack--gap-${gap}`]: gap }, className);
 
   return (
     <Component {...otherProps} aria-orientation="vertical" ref={ref} className={clxss}>

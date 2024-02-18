@@ -1,85 +1,28 @@
 @use '../mixins' as mixins;
 
 .Button {
-  --button-height-xs: calc(30px * var(--scale));
-  --button-height-sm: calc(36px * var(--scale));
-  --button-height-md: calc(42px * var(--scale));
-  --button-height-lg: calc(48px * var(--scale));
-  --button-height-xl: calc(54px * var(--scale));
-
-  --button-padding-x-xs: calc(10px * var(--scale));
-  --button-padding-x-sm: calc(12px * var(--scale));
-  --button-padding-x-md: calc(16px * var(--scale));
-  --button-padding-x-lg: calc(18px * var(--scale));
-  --button-padding-x-xl: calc(20px * var(--scale));
-
-  --button-font-size-xs: calc(14px * var(--scale));
-  --button-font-size-sm: calc(15px * var(--scale));
-  --button-font-size-md: calc(16px * var(--scale));
-  --button-font-size-lg: calc(17px * var(--scale));
-  --button-font-size-xl: calc(18px * var(--scale));
-
+  width: 100%;
+  height: var(--button-height);
   display: inline-flex;
-  align-items: var(--button-align, center);
-  justify-content: var(--button-justify, flex-start);
-  padding-inline: var(--button-padding-x, var(--button-padding-x-xs));
-  height: var(--button-height, var(--button-height-xs));
-  font-size: var(--button-font-size, var(--button-font-size-xs));
-  line-height: 1;
 
-  &--align-center {
-    --button-align: center;
-  }
-  &--align-start {
-    --button-align: flex-start;
-  }
-  &--align-end {
-    --button-align: flex-end;
-  }
-
-  &--justify-center {
-    --button-justify: center;
-  }
-
-  &--justify-start {
-    --button-justify: flex-start;
-
-    &[data-direction='ltr'] {
-      --button-justify: flex-end;
-    }
-  }
-
-  &--justify-end {
-    --button-justify: flex-end;
-
-    &[data-direction='rtl'] {
-      --button-justify: flex-start;
-    }
+  svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
   }
 
   &--size-xs {
-    --button-height: var(--button-height-xs);
-    --button-font-size: var(--button-font-size-xs);
-    --button-padding-x: var(--button-padding-x-xs);
+    --button-height: var(--spacing-7);
   }
   &--size-sm {
-    --button-height: var(--button-height-sm);
-    --button-font-size: var(--button-font-size-sm);
-    --button-padding-x: var(--button-padding-x-sm);
+    --button-height: var(--spacing-8);
   }
   &--size-md {
-    --button-height: var(--button-height-md);
-    --button-font-size: var(--button-font-size-md);
-    --button-padding-x: var(--button-padding-x-md);
+    --button-height: var(--spacing-9);
   }
   &--size-lg {
-    --button-height: var(--button-height-lg);
-    --button-font-size: var(--button-font-size-lg);
-    --button-padding-x: var(--button-padding-x-lg);
+    --button-height: var(--spacing-10);
   }
   &--size-xl {
-    --button-height: var(--button-height-xl);
-    --button-padding-x: var(--button-padding-x-xl);
-    --button-font-size: var(--button-font-size-xl);
+    --button-height: var(--spacing-11);
   }
 }

@@ -1,127 +1,78 @@
-@use '../mixins/global' as mixins;
-
 .Title {
-  --title-size-xs: var(--font-size-5);
-  --title-size-sm: var(--font-size-6);
-  --title-size-md: var(--font-size-7);
-  --title-size-lg: var(--font-size-8);
-  --title-size-xl: var(--font-size-9);
-
-  --title-size-h6: var(--font-size-4);
-  --title-size-h5: var(--font-size-5);
-  --title-size-h4: var(--font-size-6);
-  --title-size-h3: var(--font-size-7);
-  --title-size-h2: var(--font-size-8);
-  --title-size-h1: var(--font-size-9);
-
-  --title-height-xs: var(--font-size-6);
-  --title-height-sm: var(--font-size-7);
-  --title-height-md: var(--font-size-8);
-  --title-height-lg: var(--font-size-9);
-  --title-height-xl: var(--font-size-10);
-
-  @media (min-width: 20em) {
-    --title-size-h6: var(--font-size-5);
-    --title-size-h5: var(--font-size-6);
-    --title-size-h4: var(--font-size-7);
-    --title-size-h3: var(--font-size-8);
-    --title-size-h2: var(--font-size-9);
-    --title-size-h1: var(--font-size-10);
-  }
-
-  @media (min-width: 40em) {
-    --title-size-h6: var(--font-size-6);
-    --title-size-h5: var(--font-size-7);
-    --title-size-h4: var(--font-size-8);
-    --title-size-h3: var(--font-size-9);
-    --title-size-h2: var(--font-size-10);
-    --title-size-h1: var(--font-size-11);
-  }
-
-  @media (min-width: 60em) {
-    --title-size-h6: var(--font-size-7);
-    --title-size-h5: var(--font-size-8);
-    --title-size-h4: var(--font-size-9);
-    --title-size-h3: var(--font-size-10);
-    --title-size-h2: var(--font-size-11);
-    --title-size-h1: var(--font-size-12);
-  }
-
   width: 100%;
-  display: block;
+  flex: 0 1 100%;
+  // display: inline-flex;
+  text-align: start;
   font-size: var(--title-size);
-  line-height: var(--title-height);
-  text-align: var(--title-align, start);
+  font-weight: var(--title-weight);
+  line-height: var(--title-lead);
 
-  &--h6 {
-    --title-size: var(--title-size-h6);
+  &--level-h1 {
+    --title-size: var(--h1-font-size);
+    --title-lead: var(--h1-line-height);
   }
-  &--h5 {
-    --title-size: var(--title-size-h5);
+  &--level-h2 {
+    --title-size: var(--h2-font-size);
+    --title-lead: var(--h2-line-height);
   }
-  &--h4 {
-    --title-size: var(--title-size-h4);
+  &--level-h3 {
+    --title-size: var(--h3-font-size);
+    --title-lead: var(--h3-line-height);
   }
-  &--h3 {
-    --title-size: var(--title-size-h3);
+  &--level-h4 {
+    --title-size: var(--h4-font-size);
+    --title-lead: var(--h4-line-height);
   }
-  &--h2 {
-    --title-size: var(--title-size-h2);
+  &--level-h5 {
+    --title-size: var(--h5-font-size);
+    --title-lead: var(--h5-line-height);
   }
-  &--h1 {
-    --title-size: var(--title-size-h1);
+  &--level-h6 {
+    --title-size: var(--h6-font-size);
+    --title-lead: var(--h6-line-height);
   }
 
+  &--size-xxs {
+    --title-size: var(--title-size-xxs);
+  }
   &--size-xs {
     --title-size: var(--title-size-xs);
-    --title-height: var(--title-height-xs);
   }
   &--size-sm {
     --title-size: var(--title-size-sm);
-    --title-height: var(--title-height-sm);
   }
   &--size-md {
     --title-size: var(--title-size-md);
-    --title-height: var(--title-height-md);
   }
   &--size-lg {
     --title-size: var(--title-size-lg);
-    --title-height: var(--title-height-lg);
   }
   &--size-xl {
     --title-size: var(--title-size-xl);
-    --title-height: var(--title-height-xl);
+  }
+  &--size-xxl {
+    --title-size: var(--title-size-xxl);
   }
 
-  &--justify-center {
-    --title-justify: center;
+  &--lead-xxs {
+    --title-lead: var(--title-lead-xxs);
   }
-  &--justify-start {
-    --title-justify: flex-start;
+  &--lead-xs {
+    --title-lead: var(--title-lead-xs);
   }
-  &--justify-end {
-    --title-justify: flex-end;
+  &--lead-sm {
+    --title-lead: var(--title-lead-sm);
   }
-
-  &--align-center {
-    --title-align: center;
+  &--lead-md {
+    --title-lead: var(--title-lead-md);
   }
-
-  @include mixins.ltr {
-    &--align-start {
-      --title-align: end;
-    }
-    &--align-end {
-      --title-align: start;
-    }
+  &--lead-lg {
+    --title-lead: var(--title-lead-lg);
   }
-
-  @include mixins.rtl {
-    &--align-start {
-      --title-align: start;
-    }
-    &--align-end {
-      --title-align: end;
-    }
+  &--lead-xl {
+    --title-lead: var(--title-lead-xl);
+  }
+  &--lead-xxl {
+    --title-lead: var(--title-lead-xxl);
   }
 }

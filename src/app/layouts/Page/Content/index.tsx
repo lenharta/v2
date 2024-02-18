@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { Core } from '@/types/core';
+import { PageContainer } from '../Container';
 
 export type PageContentProps = {};
 
@@ -12,10 +13,10 @@ export type PageContentFactory = Core.RefFactory<{
 export const PageContent: PageContentFactory = React.forwardRef((props, ref) => {
   const { children, component: Component = 'main', ...otherProps } = props;
   return (
-    <div {...otherProps} className="Page-content" ref={ref}>
-      <div className="Page-container">{children}</div>
-    </div>
+    <Component {...otherProps} className="Page-content" ref={ref}>
+      <PageContainer>{children}</PageContainer>
+    </Component>
   );
 });
 
-PageContent.displayName = '@v2/PageContent';
+PageContent.displayName = '@v2/Page.Content';
