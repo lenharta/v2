@@ -1,87 +1,9 @@
 .Radio {
-  --radio-root-height-xs: calc(28px * var(--scale));
-  --radio-root-height-sm: calc(34px * var(--scale));
-  --radio-root-height-md: calc(40px * var(--scale));
-  --radio-root-height-lg: calc(46px * var(--scale));
-  --radio-root-height-xl: calc(52px * var(--scale));
-
-  --radio-font-size-xs: calc(14px * var(--scale));
-  --radio-font-size-sm: calc(16px * var(--scale));
-  --radio-font-size-md: calc(18px * var(--scale));
-  --radio-font-size-lg: calc(20px * var(--scale));
-  --radio-font-size-xl: calc(22px * var(--scale));
-
-  --radio-icon-size-xs: calc(20px * var(--scale));
-  --radio-icon-size-sm: calc(24px * var(--scale));
-  --radio-icon-size-md: calc(28px * var(--scale));
-  --radio-icon-size-lg: calc(32px * var(--scale));
-  --radio-icon-size-xl: calc(36px * var(--scale));
-
   width: 100%;
-  height: var(--radio-root-height, var(--radio-root-height-xs));
-  position: relative;
-  isolation: isolate;
-
-  display: var(--radio-display, inline-flex);
-  align-items: var(--radio-align, center);
-  justify-items: var(--radio-justify, start);
-  padding-inline: 0.4rem;
-  font-size: var(--radio-font-size, var(--radio-font-size-xs));
-  font-weight: 500;
-  line-height: 1;
-
-  &[data-block] {
-    --radio-display: block;
-  }
+  display: block;
 
   &-icon {
-    width: var(--radio-icon-size, var(--radio-icon-size-xs));
-    height: var(--radio-icon-size, var(--radio-icon-size-xs));
-  }
-
-  &--size-xs {
-    --radio-font-size: var(--radio-font-size-xs);
-    --radio-icon-size: var(--radio-icon-size-xs);
-    --radio-root-height: var(--radio-root-height-xs);
-  }
-  &--size-sm {
-    --radio-font-size: var(--radio-font-size-sm);
-    --radio-icon-size: var(--radio-icon-size-sm);
-    --radio-root-height: var(--radio-root-height-sm);
-  }
-  &--size-md {
-    --radio-font-size: var(--radio-font-size-md);
-    --radio-icon-size: var(--radio-icon-size-md);
-    --radio-root-height: var(--radio-root-height-md);
-  }
-  &--size-lg {
-    --radio-font-size: var(--radio-font-size-lg);
-    --radio-icon-size: var(--radio-icon-size-lg);
-    --radio-root-height: var(--radio-root-height-lg);
-  }
-  &--size-xl {
-    --radio-font-size: var(--radio-font-size-xl);
-    --radio-icon-size: var(--radio-icon-size-xl);
-    --radio-root-height: var(--radio-root-height-xl);
-  }
-
-  &--align-center {
-    --radio-align: center;
-  }
-  &--align-start {
-    --radio-align: flex-start;
-  }
-  &--align-end {
-    --radio-align: flex-end;
-  }
-
-  &--justify-center {
-    --radio-justify: center;
-  }
-  &--justify-start {
-    --radio-justify: flex-start;
-  }
-  &--justify-end {
-    --radio-justify: flex-end;
+    width: var(--icon-size);
+    height: var(--icon-size);
   }
 }

@@ -1,36 +1,3 @@
-@use 'sass:color';
-@use 'sass:meta';
-
-// .Radio,
-// .Button,
-// .Switch,
-// .Checkbox {
-//   --c-border: transparent;
-//   --c-outline: transparent;
-
-//   cursor: var(--cursor, pointer);
-//   border: var(--border-md);
-//   outline: var(--border-md);
-//   border-color: var(--c-border);
-//   outline-color: var(--c-outline);
-
-//   &:disabled,
-//   &[data-disabled] {
-//     --cursor: default;
-//   }
-
-//   &[data-hovered] {
-//     --cursor: pointer;
-//   }
-
-//   &:focus:focus-visible {
-//     outline: solid 2px hsl(var(--c-surface-indigo));
-//   }
-//   &:focus:not(:focus:focus-visible) {
-//     outline: solid 2px transparent;
-//   }
-// }
-
 [data-prefers-color-scheme='dim'],
 [data-prefers-color-scheme='dark'],
 [data-prefers-color-scheme='light'] {

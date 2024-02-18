@@ -1,41 +1,8 @@
 .Avatar {
-  --avatar-size-xs: calc(32px * var(--scale));
-  --avatar-size-sm: calc(36px * var(--scale));
-  --avatar-size-md: calc(40px * var(--scale));
-  --avatar-size-lg: calc(44px * var(--scale));
-  --avatar-size-xl: calc(48px * var(--scale));
-
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: var(--avatar-size, var(--avatar-size-xs));
-  width: var(--avatar-size, var(--avatar-size-xs));
-
-  border: var(--border-sm);
+  padding: var(--spacing-2);
   border-radius: var(--radius-rd);
-  border-color: inherit;
-
-  &-icon {
-    width: calc(var(--avatar-size) * 0.5);
-    height: calc(var(--avatar-size) * 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &--size-xs {
-    --avatar-size: var(--avatar-size-xs);
-  }
-  &--size-sm {
-    --avatar-size: var(--avatar-size-sm);
-  }
-  &--size-md {
-    --avatar-size: var(--avatar-size-md);
-  }
-  &--size-lg {
-    --avatar-size: var(--avatar-size-lg);
-  }
-  &--size-xl {
-    --avatar-size: var(--avatar-size-xl);
-  }
+  border: var(--border-sm);
 }

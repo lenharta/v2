@@ -17,11 +17,15 @@ export const PageHero: PageHeroFactory = React.forwardRef((props, ref) => {
   return (
     <Component {...otherProps} className="Page-hero" ref={ref}>
       <div className="Page-container">
-        {title && <Title className="Page-hero-title">{title}</Title>}
+        {title && (
+          <Title size="xl" className="Page-hero-title">
+            {title}
+          </Title>
+        )}
         {children}
       </div>
     </Component>
   );
 });
 
-PageHero.displayName = '@v2/PageHero';
+PageHero.displayName = '@v2/Page.Hero';

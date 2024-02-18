@@ -1,6 +1,3 @@
-@use './global' as global;
-@use '../tokens' as tokens;
-
 [data-prefers-color-scheme='dim'] {
   --c-primary: 223, 3%, 10%;
   --c-secondary: 223, 3%, 99%;

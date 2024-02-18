@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import * as React from 'react';
 
 import { Surface } from '@/common';
-import { useToken } from '@/hooks';
+import { useSurface } from '@/hooks';
 import { mergeProps } from '@/utils';
 import { useThemeCTX } from '@/store';
 import { TabsPlacement, TabsVariant, useTabsContext } from '../context';
@@ -41,18 +41,18 @@ export const TabsItem: TabsItemFactory = React.forwardRef((props, ref) => {
     size,
     align,
     label,
+    style,
     surface,
     justify,
     variant,
-    placement,
+    disabled,
+    readOnly,
     selected,
+    placement,
+    className,
     leftContent,
     rightContent,
     component: Component = 'button',
-    readOnly,
-    className,
-    disabled,
-    style,
     ...otherProps
   } = props;
 
@@ -65,7 +65,7 @@ export const TabsItem: TabsItemFactory = React.forwardRef((props, ref) => {
     ctx
   );
 
-  const token = useToken({
+  const token = useSurface({
     surfaceId: 'TabsItem',
     surface: mergedProps.surface,
     disabled: mergedProps.disabled,

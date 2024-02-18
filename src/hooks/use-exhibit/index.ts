@@ -36,5 +36,5 @@ export const useExhibit: UseEhxhibit = (initialState = false, options = {}) => {
     state ? remove() : show();
   }, [show, remove, state]);
 
-  return [state, { show, remove, toggle }] as const;
+  return [state, { show, remove, toggle }] as UseExhibitReturn;
 };
