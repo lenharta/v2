@@ -1,5 +1,5 @@
-import { Core } from '@/types/core';
-import React from 'react';
+import * as React from 'react';
+import type { Core } from '@/types/core';
 
 export type ProgressProps = {
   max?: number;

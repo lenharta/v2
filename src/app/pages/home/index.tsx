@@ -1,7 +1,5 @@
 import { Page } from '@/app/layouts';
-import { Button, Space, Stack, Text, Title } from '@/common';
-import { Size, SizeExpanded } from '@/types/common';
-import React from 'react';
+import { Space, Stack, Text, Title } from '@/common';
 
 const HomeOverview = () => (
   <section className="Section" id="Section-home-overview">
@@ -26,33 +24,6 @@ const HomeOverview = () => (
   </section>
 );
 
-const useSizeControls = () => {
-  const [size, setSize] = React.useState<SizeExpanded | undefined>();
-  const data: SizeExpanded[] = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
-  return [size, { setSize, data }] as const;
-};
-
-const DemoStackComponent = () => {
-  const [size, { setSize, data }] = useSizeControls();
-  return (
-    <div style={{ width: '100%' }}>
-      <div style={{ width: '50%', display: 'flex' }}>
-        <Button onClick={() => setSize(undefined)} children="RESET" />
-        {data.map((size) => (
-          <Button key={size} onClick={() => setSize(size)} children={size} />
-        ))}
-      </div>
-      <Stack gap={size}>
-        <div style={{ height: 100, width: 200, backgroundColor: 'palegoldenrod' }} />
-        <div style={{ height: 100, width: 200, backgroundColor: 'palegoldenrod' }} />
-        <div style={{ height: 100, width: 200, backgroundColor: 'palegoldenrod' }} />
-        <div style={{ height: 100, width: 200, backgroundColor: 'palegoldenrod' }} />
-        <div style={{ height: 100, width: 200, backgroundColor: 'palegoldenrod' }} />
-      </Stack>
-    </div>
-  );
-};
-
 export const Home = () => {
   return (
     <Page>
@@ -60,7 +31,6 @@ export const Home = () => {
       <Page.Content>
         <HomeOverview />
         <Space size="sm" />
-        <DemoStackComponent />
       </Page.Content>
     </Page>
   );

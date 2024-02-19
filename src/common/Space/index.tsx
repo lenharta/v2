@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Core } from '@/types/core';
-import { Size } from '@/types/common';
+import type { Core } from '@/types/core';
+import type { Size } from '@/types/common';
 
 export type SpaceProps = {
   size?: Size;

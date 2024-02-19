@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Core } from '@/types/core';
+import type { Core } from '@/types/core';
 
 export type UnstyledButtonProps = {};
 

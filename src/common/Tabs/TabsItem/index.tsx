@@ -1,10 +1,6 @@
 import clsx from 'clsx';
 import * as React from 'react';
-
-import { Surface } from '@/common';
-import { useSurface } from '@/hooks';
 import { mergeProps } from '@/utils';
-import { useThemeCTX } from '@/store';
 import { TabsPlacement, TabsVariant, useTabsContext } from '../context';
 
 import type { Core } from '@/types/core';
