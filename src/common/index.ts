@@ -7,7 +7,7 @@ export * from './Label';
 export * from './Radio';
 export * from './Space';
 export * from './Stack';
-export * from './Surface';
 export * from './Switch';
+export * from './Tabs';
 export * from './Text';
 export * from './Title';

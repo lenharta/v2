@@ -84,6 +84,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     const root = document.getElementById('root')!;
     root.setAttribute('data-prefers-script-dir', String(store.dir));
     root.setAttribute('data-prefers-color-scheme', String(store.mode));
+    root.setAttribute('data-prefers-color-accent', String(store.accent));
   }, [store]);
 
   return (

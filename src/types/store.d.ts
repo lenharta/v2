@@ -32,13 +32,14 @@ export enum SETTINGS_THEME_ACCENT {
   orange = 'color-accent-orange',
   yellow = 'color-accent-yellow',
   green = 'color-accent-green',
+  mint = 'color-accent-mint',
+  teal = 'color-accent-teal',
   cyan = 'color-accent-cyan',
   blue = 'color-accent-blue',
   indigo = 'color-accent-indigo',
   purple = 'color-accent-purple',
-  violet = 'color-accent-violet',
-  magenta = 'color-accent-magenta',
   pink = 'color-accent-pink',
+  brown = 'color-accent-brown',
   red = 'color-accent-red',
 }
 

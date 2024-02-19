@@ -1,5 +1,5 @@
+import * as React from 'react';
 import { Core } from '@/types/core';
-import React, { useCallback } from 'react';
 
 export type UnstyledButtonProps = {};
 

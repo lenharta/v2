@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import * as React from 'react';
+import { mergeProps } from '@/utils';
 import { ButtonProvider } from '../context';
 import type { Core } from '@/types/core';
 import type { Align, Justify, Orientation, Size } from '@/types/common';
-import { mergeProps } from '@/utils';
 
 export type ButtonGroupProps = {
   size?: Size;

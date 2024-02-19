@@ -37,7 +37,6 @@ export const Title: TitleFactory = React.forwardRef((props, ref) => {
   } = props;
 
   const mergedProps = mergeProps({ lead, size, weight }, defaultProps);
-  console.log(mergedProps);
 
   const theme = useThemeCTX();
   const token = accented ? theme.state.accent : undefined;

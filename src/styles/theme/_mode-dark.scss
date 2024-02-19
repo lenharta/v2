@@ -1,22 +1,22 @@
 [data-prefers-color-scheme='dark'] {
-  --c-primary: 225, 3%, 04%;
-  --c-secondary: 225, 3%, 99%;
+  --rgb-primary-base: 28, 28, 30;
+  --rgb-primary-text: 255, 255, 255;
+  --rgb-primary-surface: 255, 255, 255;
 
-  --c-surface-primary: 225, 3%, 99%;
-  --c-surface-secondary: 225, 3%, 04%;
+  --rgb-secondary-base: 255, 255, 255;
+  --rgb-secondary-text: 28, 28, 30;
+  --rgb-secondary-surface: 0, 0, 0;
 
-  --c-surface-disabled: 223, 3%, 50%;
-  --c-surface-readOnly: 223, 3%, 60%;
-
-  --c-surface-orange: 25, 95%, 57%;
-  --c-surface-yellow: 38, 92%, 69%;
-  --c-surface-green: 142, 71%, 49%;
-  --c-surface-cyan: 173, 80%, 44%;
-  --c-surface-blue: 199, 89%, 52%;
-  --c-surface-indigo: 217, 91%, 64%;
-  --c-surface-purple: 258, 90%, 70%;
-  --c-surface-violet: 271, 91%, 69%;
-  --c-surface-magenta: 292, 84%, 65%;
-  --c-surface-pink: 330, 81%, 64%;
-  --c-surface-red: 0, 84%, 64%;
+  --rgb-orange: 255, 159, 10;
+  --rgb-yellow: 255, 214, 10;
+  --rgb-green: 48, 209, 88;
+  --rgb-mint: 99, 230, 226;
+  --rgb-teal: 64, 203, 224;
+  --rgb-cyan: 100, 210, 255;
+  --rgb-blue: 10, 132, 255;
+  --rgb-indigo: 94, 92, 230;
+  --rgb-purple: 191, 90, 242;
+  --rgb-pink: 255, 55, 95;
+  --rgb-brown: 172, 142, 104;
+  --rgb-red: 255, 69, 58;
 }
