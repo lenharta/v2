@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Align, Justify, Orientation, Size } from '@/types/common';
+import type { Align, Justify, Orientation, Size } from '@/types/common';
 
 export type ButtonContextValue = {
   size?: Size;

@@ -1,11 +1,9 @@
 import clsx from 'clsx';
 import * as React from 'react';
-
 import { mergeProps } from '@/utils';
 import { TabsPlacement, TabsVariant, useTabsContext } from '../context';
-
 import type { Core } from '@/types/core';
-import type { Orientation, Size } from '@/types/common';
+import type { Orientation } from '@/types/common';
 
 export type TabsListProps = {
   variant?: TabsVariant;

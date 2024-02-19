@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import type { Core } from '@/types/core';
-import { SizeExpanded } from '@/types/common';
+import type { SizeExpanded } from '@/types/common';
 
 export type StackProps = {
   gap?: SizeExpanded;

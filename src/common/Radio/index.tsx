@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Label } from '../Label';
-import { Core } from '@/types/core';
-import { Size, Align, Justify } from '@/types/common';
+import type { Core } from '@/types/core';
+import type { Size, Align, Justify } from '@/types/common';
 
 export type RadioProps = {
   size?: Size;
