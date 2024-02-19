@@ -5,4 +5,10 @@
   padding: var(--spacing-2);
   border-radius: var(--radius-rd);
   border: var(--border-sm);
+
+  color: rgba(var(--rgb-accent), 1);
+  background-color: rgba(var(--rgb-accent), 0.2);
+  &:hover {
+    background-color: rgba(var(--rgb-accent), 0.25);
+  }
 }

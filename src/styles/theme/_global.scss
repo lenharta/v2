@@ -1,8 +1,45 @@
 [data-prefers-color-scheme='dim'],
 [data-prefers-color-scheme='dark'],
 [data-prefers-color-scheme='light'] {
+  &[data-prefers-color-accent='orange'] {
+    --rgb-accent: var(--rgb-orange);
+  }
+  &[data-prefers-color-accent='yellow'] {
+    --rgb-accent: var(--rgb-yellow);
+  }
+  &[data-prefers-color-accent='green'] {
+    --rgb-accent: var(--rgb-green);
+  }
+  &[data-prefers-color-accent='mint'] {
+    --rgb-accent: var(--rgb-mint);
+  }
+  &[data-prefers-color-accent='teal'] {
+    --rgb-accent: var(--rgb-teal);
+  }
+  &[data-prefers-color-accent='cyan'] {
+    --rgb-accent: var(--rgb-cyan);
+  }
+  &[data-prefers-color-accent='blue'] {
+    --rgb-accent: var(--rgb-blue);
+  }
+  &[data-prefers-color-accent='indigo'] {
+    --rgb-accent: var(--rgb-indigo);
+  }
+  &[data-prefers-color-accent='purple'] {
+    --rgb-accent: var(--rgb-purple);
+  }
+  &[data-prefers-color-accent='pink'] {
+    --rgb-accent: var(--rgb-pink);
+  }
+  &[data-prefers-color-accent='brown'] {
+    --rgb-accent: var(--rgb-brown);
+  }
+  &[data-prefers-color-accent='red'] {
+    --rgb-accent: var(--rgb-red);
+  }
+
   .Page {
-    color: hsla(var(--c-secondary), 1);
-    background-color: hsla(var(--c-primary), 1);
+    color: rgba(var(--rgb-primary-text), 1);
+    background-color: rgba(var(--rgb-primary-base), 1);
   }
 }

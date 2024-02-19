@@ -1,6 +1,5 @@
-import { Tabs } from '@/common/Tabs';
 import { Page } from '@/app/layouts';
-import { Space } from '@/common';
+import { Button, Space, Tabs } from '@/common';
 
 export const Toolbox = () => {
   return (
@@ -8,9 +7,13 @@ export const Toolbox = () => {
       <Page.Hero title="Toolbox" />
       <Page.Content>
         <Space size="xs" />
-        <Tabs size="xl">
+        <Button scheme="accent-low">Button 1</Button>
+        <Button scheme="accent-med">Button 2</Button>
+        <Button scheme="accent-high">Button 3</Button>
+        <Space size="xs" />
+        <Tabs>
           <Tabs.List>
-            <Tabs.Item label="Tab Item #1" size="xl" />
+            <Tabs.Item label="Tab Item #1" />
             <Tabs.Item label="Tab Item #2" />
             <Tabs.Item label="Tab Item #3" />
             <Tabs.Item label="Tab Item #4" selected />

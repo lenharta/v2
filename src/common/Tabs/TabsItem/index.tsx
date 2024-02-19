@@ -33,7 +33,7 @@ export type TabsItemFactory = Core.RefFactory<{
 
 const defaultProps: Partial<TabsItemProps> = {
   surface: 'primary',
-  size: 'xl',
+  size: 'sm',
 };
 
 export const TabsItem: TabsItemFactory = React.forwardRef((props, ref) => {
@@ -41,7 +41,6 @@ export const TabsItem: TabsItemFactory = React.forwardRef((props, ref) => {
     size,
     align,
     label,
-    style,
     surface,
     justify,
     variant,
@@ -56,7 +55,6 @@ export const TabsItem: TabsItemFactory = React.forwardRef((props, ref) => {
     ...otherProps
   } = props;
 
-  const theme = useThemeCTX();
   const ctx = useTabsContext();
 
   const mergedProps = mergeProps(
@@ -65,61 +63,29 @@ export const TabsItem: TabsItemFactory = React.forwardRef((props, ref) => {
     ctx
   );
 
-  const token = useSurface({
-    surfaceId: 'TabsItem',
-    surface: mergedProps.surface,
-    disabled: mergedProps.disabled,
-    readOnly: mergedProps.readOnly,
-    mode: theme.state.mode,
-  });
-
-  const baseSurfaceConfig = token.base();
-  const hoverSurfaceConfig = token.hover();
-
-  const borderTokenMod = () => {
-    if (selected) {
-      return token.createToken(theme.state.accent);
-    } else {
-      return token.createToken(theme.state.accent, 0.3);
-    }
-  };
-
   const clxss = clsx(
     'Tabs-item',
     { [`Tabs-item--size-${mergedProps.size}`]: mergedProps.size },
     { [`Tabs-item--align-${mergedProps.align}`]: mergedProps.align },
     { [`Tabs-item--justify-${mergedProps.justify}`]: mergedProps.justify },
     { [`Tabs-item--variant-${mergedProps.variant}`]: mergedProps.variant },
-    token.clxss,
+    { [`Tabs-item--selected`]: selected !== undefined },
     className
   );
 
   return (
-    <>
-      <Surface
-        selector={token.clxss}
-        baseConfig={baseSurfaceConfig}
-        hoverConfig={hoverSurfaceConfig}
-      />
-      <Component
-        {...otherProps}
-        ref={ref}
-        className={clxss}
-        disabled={mergedProps.disabled}
-        data-disabled={mergedProps.disabled}
-        data-readonly={mergedProps.readOnly}
-        aria-readonly={mergedProps.readOnly}
-        style={{
-          borderBottomColor: borderTokenMod(),
-          borderBottomStyle: 'solid',
-          borderBottomWidth: '2px',
-          ...style,
-        }}
-      >
-        {leftContent && <div data-position="left">{leftContent}</div>}
-        {label}
-        {rightContent && <div data-position="right">{rightContent}</div>}
-      </Component>
-    </>
+    <Component
+      {...otherProps}
+      ref={ref}
+      className={clxss}
+      disabled={mergedProps.disabled}
+      data-disabled={mergedProps.disabled}
+      data-readonly={mergedProps.readOnly}
+      aria-readonly={mergedProps.readOnly}
+    >
+      {leftContent && <div data-position="left">{leftContent}</div>}
+      {label}
+      {rightContent && <div data-position="right">{rightContent}</div>}
+    </Component>
   );
 });

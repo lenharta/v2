@@ -26,8 +26,8 @@ export const Page: PageFactory = (props) => {
     <div {...otherProps} className="Page">
       <Page.Header />
       {children}
-      <Page.Footer />
       <GlobalControl />
+      <Page.Footer />
     </div>
   );
 };

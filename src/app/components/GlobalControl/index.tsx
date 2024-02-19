@@ -1,144 +1,95 @@
-import { Page } from '@/app/layouts';
-import { Button, Space, Title } from '@/common';
-import {
-  DATA_GLOBAL_CONTROL_GROUP_ACCENT,
-  DATA_GLOBAL_CONTROL_GROUP_AVATAR,
-  DATA_GLOBAL_CONTROL_GROUP_DIRECTION,
-  DATA_GLOBAL_CONTROL_GROUP_THEME,
-} from '@/data/common/data-global-control';
+import * as React from 'react';
+import { Button } from '@/common';
 import { useThemeCTX } from '@/store';
-import { capitalizeString } from '@/utils';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-type ControlOption<T> = {
-  value: T;
-  surface?: any;
-  label?: string;
-};
-
-type ControlGroup<T> = {
-  options: ControlOption<T>[];
-  surface?: any;
-  label?: string;
-};
-
-type ControlTabKey = 'mode' | 'accent' | 'avatar' | 'dir' | 'nav';
-
-type ControlPanel = { isMounted?: boolean; children?: React.ReactNode };
-
-type ControlTabs = {
-  keys: ControlTabKey[];
-  activeKey: ControlTabKey | null;
-  setActiveKey: (key: ControlTabKey | null) => void;
-};
-
-const GlobalControlGroup = <T extends string>(
-  props: ControlGroup<T> & { onChange: (value: T) => void | (() => void) }
-) => {
-  const { label, options, surface, onChange } = props;
+export const GlobalControlPanelMode = () => {
+  const { setMode } = useThemeCTX();
   return (
-    <div className="GlobalControl-group">
-      {label && <Title size="sm">{label}</Title>}
-
-      <div className="GlobalControl-options">
-        {options?.map((option) => (
-          <Button
-            onClick={() => onChange(option.value)}
-            children={option.label || capitalizeString(option.value)}
-            surface={option.surface || surface}
-            size="xs"
-          />
-        ))}
-      </div>
+    <div className="GlobalControl-panel">
+      <Button onClick={() => setMode('light')}>Light</Button>
+      <Button onClick={() => setMode('dark')}>Dark</Button>
+      <Button onClick={() => setMode('dim')}>Dim</Button>
     </div>
   );
 };
 
-const GlobalControlPanel = (props: ControlPanel) => {
-  const { children, isMounted } = props;
-  if (!isMounted) return null;
-  return <div className="GlobalControl-panel">{children}</div>;
+export const GlobalControlPanelDir = () => {
+  const { setDir } = useThemeCTX();
+  return (
+    <div className="GlobalControl-panel">
+      <Button onClick={() => setDir('ltr')}>Left-to-Right</Button>
+      <Button onClick={() => setDir('rtl')}>Right-to-Left</Button>
+    </div>
+  );
 };
 
-const GlobalControlTabs = (props: ControlTabs) => {
-  const { keys, setActiveKey } = props;
+export const GlobalControlPanelAccent = () => {
+  const { setAccent } = useThemeCTX();
   return (
-    <div className="GlobalControl-tabs">
-      {keys.map((tabKey) => (
-        <Button
-          key={tabKey}
-          onClick={() => setActiveKey(tabKey)}
-          children={capitalizeString(tabKey)}
-          size="xs"
-        />
-      ))}
-      <Button children="Close" onClick={() => setActiveKey(null)} size="xs" />
+    <div className="GlobalControl-panel">
+      <Button onClick={() => setAccent('orange')}>Orange</Button>
+      <Button onClick={() => setAccent('yellow')}>Yellow</Button>
+      <Button onClick={() => setAccent('green')}>Green</Button>
+      <Button onClick={() => setAccent('mint')}>Mint</Button>
+      <Button onClick={() => setAccent('teal')}>Teal</Button>
+      <Button onClick={() => setAccent('cyan')}>Cyan</Button>
+      <Button onClick={() => setAccent('blue')}>Blue</Button>
+      <Button onClick={() => setAccent('indigo')}>Indigo</Button>
+      <Button onClick={() => setAccent('purple')}>Purple</Button>
+      <Button onClick={() => setAccent('pink')}>Pink</Button>
+      <Button onClick={() => setAccent('brown')}>Brown</Button>
+      <Button onClick={() => setAccent('red')}>Red</Button>
+    </div>
+  );
+};
+
+export const GlobalControlPanelAvatar = () => {
+  const { setAvatar } = useThemeCTX();
+  return (
+    <div className="GlobalControl-panel">
+      <Button onClick={() => setAvatar('baseball')}>Baseball</Button>
+      <Button onClick={() => setAvatar('basketball')}>Basketball</Button>
+      <Button onClick={() => setAvatar('beer')}>Beer</Button>
+      <Button onClick={() => setAvatar('bolt')}>Bolt</Button>
+      <Button onClick={() => setAvatar('code')}>Code</Button>
+      <Button onClick={() => setAvatar('coffee')}>Coffee</Button>
+      <Button onClick={() => setAvatar('dog')}>Dog</Button>
+      <Button onClick={() => setAvatar('film')}>Film</Button>
+      <Button onClick={() => setAvatar('football')}>Football</Button>
+      <Button onClick={() => setAvatar('heart')}>Heart</Button>
+      <Button onClick={() => setAvatar('music')}>Music</Button>
+      <Button onClick={() => setAvatar('palette')}>Palette</Button>
+      <Button onClick={() => setAvatar('person')}>Person</Button>
+      <Button onClick={() => setAvatar('pizza')}>Pizza</Button>
+      <Button onClick={() => setAvatar('puzzle')}>Puzzle</Button>
+      <Button onClick={() => setAvatar('robot')}>Robot</Button>
+      <Button onClick={() => setAvatar('shield')}>Shield</Button>
+      <Button onClick={() => setAvatar('smiley')}>Smiley</Button>
+      <Button onClick={() => setAvatar('soccer')}>Soccer</Button>
+      <Button onClick={() => setAvatar('star')}>Star</Button>
+      <Button onClick={() => setAvatar('trophy')}>Trophy</Button>
     </div>
   );
 };
 
 export const GlobalControl = () => {
-  const { state, setAccent, setAvatar, setMode, setDir } = useThemeCTX();
-  const [activeKey, setActiveKey] = React.useState<ControlTabKey | null>(null);
-  const navigate = useNavigate();
-
+  const [activePanel, setActivePanel] = React.useState('mode');
   return (
-    <Page.Container>
-      <Title size="md">Global Controls</Title>
-
-      <div className="GlobalControl">
-        <GlobalControlTabs
-          activeKey={activeKey}
-          setActiveKey={setActiveKey}
-          keys={['mode', 'accent', 'dir', 'avatar', 'nav']}
-        />
-
-        <GlobalControlPanel isMounted={activeKey === 'nav'}>
-          <GlobalControlGroup
-            label="Navigation"
-            surface={state.accent}
-            onChange={navigate}
-            options={[
-              { value: '/', label: 'Home' },
-              { value: '/toolbox', label: 'Toolbox' },
-              { value: '/preferences', label: 'Preferences' },
-            ]}
-          />
-        </GlobalControlPanel>
-
-        <GlobalControlPanel isMounted={activeKey === 'mode'}>
-          <GlobalControlGroup
-            {...DATA_GLOBAL_CONTROL_GROUP_THEME}
-            surface={state.accent}
-            onChange={setMode}
-          />
-        </GlobalControlPanel>
-
-        <GlobalControlPanel isMounted={activeKey === 'accent'}>
-          <GlobalControlGroup
-            {...DATA_GLOBAL_CONTROL_GROUP_ACCENT}
-            surface={state.accent}
-            onChange={setAccent}
-          />
-        </GlobalControlPanel>
-
-        <GlobalControlPanel isMounted={activeKey === 'dir'}>
-          <GlobalControlGroup
-            {...DATA_GLOBAL_CONTROL_GROUP_DIRECTION}
-            surface={state.accent}
-            onChange={setDir}
-          />
-        </GlobalControlPanel>
-
-        <GlobalControlPanel isMounted={activeKey === 'avatar'}>
-          <GlobalControlGroup
-            {...DATA_GLOBAL_CONTROL_GROUP_AVATAR}
-            surface={state.accent}
-            onChange={setAvatar}
-          />
-        </GlobalControlPanel>
+    <div className="GlobalControl">
+      <div className="GlobalControl-display">
+        <Button scheme="primary" onClick={() => setActivePanel('mode')}>
+          Mode
+        </Button>
+        <Button scheme="primary" onClick={() => setActivePanel('accent')}>
+          Accent
+        </Button>
+        <Button scheme="primary" onClick={() => setActivePanel('avatar')}>
+          Avatar
+        </Button>
       </div>
-    </Page.Container>
+      {activePanel === 'mode' ? <GlobalControlPanelMode /> : null}
+      {activePanel === 'accent' ? <GlobalControlPanelAccent /> : null}
+      {activePanel === 'avatar' ? <GlobalControlPanelAvatar /> : null}
+    </div>
   );
 };

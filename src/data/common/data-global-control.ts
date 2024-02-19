@@ -2,13 +2,13 @@ import { Accent, Avatar, Dir, Mode } from "@/types/store";
 
 type ControlOption<T> = {
   value: T;
-  surface?: any;
+  scheme?: any;
   label?: string;
 };
 
 type ControlGroup<T> = {
   options: ControlOption<T>[];
-  surface?: any;
+  scheme?: any;
   label?: string;
 };
 
@@ -32,17 +32,18 @@ export const DATA_GLOBAL_CONTROL_GROUP_DIRECTION: ControlGroup<Dir> = {
 export const DATA_GLOBAL_CONTROL_GROUP_ACCENT: ControlGroup<Accent> = {
   label: 'Accent',
   options: [
-    { value: 'orange', surface: 'orange' },
-    { value: 'yellow', surface: 'yellow' },
-    { value: 'green', surface: 'green' },
-    { value: 'cyan', surface: 'cyan' },
-    { value: 'blue', surface: 'blue' },
-    { value: 'indigo', surface: 'indigo' },
-    { value: 'purple', surface: 'purple' },
-    { value: 'violet', surface: 'violet' },
-    { value: 'magenta', surface: 'magenta' },
-    { value: 'pink', surface: 'pink' },
-    { value: 'red', surface: 'red' },
+    { value: 'orange', scheme: 'orange' },
+    { value: 'yellow', scheme: 'yellow' },
+    { value: 'green', scheme: 'green' },
+    { value: 'mint', scheme: 'mint' },
+    { value: 'teal', scheme: 'teal' },
+    { value: 'cyan', scheme: 'cyan' },
+    { value: 'blue', scheme: 'blue' },
+    { value: 'indigo', scheme: 'indigo' },
+    { value: 'purple', scheme: 'purple' },
+    { value: 'pink', scheme: 'pink' },
+    { value: 'red', scheme: 'red' },
+    { value: 'brown', scheme: 'brown' },
   ],
 };
 
