@@ -1,6 +1,7 @@
 export * from './Avatar';
 export * from './Button';
 export * from './Checkbox';
+export * from './Chip';
 export * from './Icon';
 export * from './InlineCSS';
 export * from './Label';

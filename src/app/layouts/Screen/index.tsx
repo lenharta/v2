@@ -13,7 +13,11 @@ export type ScreenFactory = Core.BaseFactory<{
 
 export const Screen: ScreenFactory = (props) => {
   const { children, component: Component = 'div', ...otherProps } = props;
-  return <Component {...otherProps}>{children}</Component>;
+  return (
+    <Component {...otherProps} className="Screen">
+      {children}
+    </Component>
+  );
 };
 
 Screen.displayName = '@v2/Screen';

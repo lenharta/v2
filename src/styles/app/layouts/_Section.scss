@@ -1,3 +1,67 @@
 .Section {
   display: block;
+
+  &--py-xxs {
+    padding-block: var(--spacing-6);
+  }
+  &--py-xs {
+    padding-block: var(--spacing-7);
+  }
+  &--py-sm {
+    padding-block: var(--spacing-8);
+  }
+  &--py-md {
+    padding-block: var(--spacing-9);
+  }
+  &--py-lg {
+    padding-block: var(--spacing-10);
+  }
+  &--py-xl {
+    padding-block: var(--spacing-11);
+  }
+  &--py-xxl {
+    padding-block: var(--spacing-12);
+  }
+
+  &.primary {
+    color: rgba(var(--rgb-primary-text), 1);
+    background-color: rgba(var(--rgb-primary-base), 1);
+
+    .Text,
+    .Title {
+      &--scheme-max {
+        color: rgba(var(--rgb-primary-text), 0.99);
+      }
+      &--scheme-high {
+        color: rgba(var(--rgb-primary-text), 0.87);
+      }
+      &--scheme-med {
+        color: rgba(var(--rgb-primary-text), 0.67);
+      }
+      &--scheme-low {
+        color: rgba(var(--rgb-primary-text), 0.47);
+      }
+    }
+  }
+
+  &.secondary {
+    color: rgba(var(--rgb-secondary-text), 1);
+    background-color: rgba(var(--rgb-secondary-base), 1);
+
+    .Text,
+    .Title {
+      &--scheme-max {
+        color: rgba(var(--rgb-secondary-text), 0.99);
+      }
+      &--scheme-high {
+        color: rgba(var(--rgb-secondary-text), 0.87);
+      }
+      &--scheme-med {
+        color: rgba(var(--rgb-secondary-text), 0.67);
+      }
+      &--scheme-low {
+        color: rgba(var(--rgb-secondary-text), 0.47);
+      }
+    }
+  }
 }

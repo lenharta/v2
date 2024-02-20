@@ -38,7 +38,8 @@
     --rgb-accent: var(--rgb-red);
   }
 
-  .Page {
+  .Page,
+  .Screen {
     color: rgba(var(--rgb-primary-text), 1);
     background-color: rgba(var(--rgb-primary-base), 1);
   }

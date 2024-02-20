@@ -1,21 +1,4 @@
 .Tabs {
-  &-list {
-    display: flex;
-    gap: var(--spacing-1);
-
-    &[data-orientation='vertical'] {
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    &[data-orientation='horizontal'] {
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-    }
-  }
-
   &-item {
     margin: 0;
     padding: 0;
@@ -38,26 +21,31 @@
       content: '';
       position: absolute;
       height: 2px;
-      background-color: rgba(var(--rgb-accent), 0.4);
+      background-color: rgba(var(--rgb-accent), 0.3);
       bottom: -2px;
       right: -2px;
       left: -2px;
     }
-
     &:hover {
       background-color: rgba(var(--rgb-primary-surface), 0.08);
-      &::after {
-        height: 3px;
-        bottom: -2px;
-      }
+    }
+    &:hover::after {
+      background-color: rgba(var(--rgb-accent), 0.5);
+      bottom: -2px;
+      height: 3px;
     }
 
-    &--selected {
-      &::after {
-        height: 3px;
-        bottom: -2px;
-        background-color: rgba(var(--rgb-accent), 1);
-      }
+    &--selected:hover {
+      background-color: rgba(var(--rgb-primary-surface), 0.08);
+    }
+    &--selected:hover::after {
+      background-color: rgba(var(--rgb-accent), 1);
+    }
+
+    &--selected::after {
+      background-color: rgba(var(--rgb-accent), 1);
+      bottom: -2px;
+      height: 3px;
     }
 
     &--size-xs {
@@ -80,5 +68,19 @@
       --tab-height: calc(60px * var(--scale));
       --tab-padding-x: var(--spacing-7);
     }
+  }
+}
+
+.TabsGroup {
+  width: 100%;
+  display: flex;
+  flex: 0 1 100%;
+  gap: calc(var(--unit) * 1);
+
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+  }
+  &[data-orientation='vertical'] {
+    flex-direction: column;
   }
 }

@@ -6,6 +6,7 @@
   display: inline-flex;
   align-items: center;
   padding-inline: var(--spacing-2);
+  outline: solid 2px transparent;
 
   svg {
     width: var(--icon-size);
@@ -28,36 +29,60 @@
     --button-height: var(--spacing-11);
   }
 
+  &:focus:not(:focus:focus-visible) {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: rgba(var(--rgb-indigo), 1);
+  }
+
   &--scheme-primary {
     background-color: rgba(var(--rgb-primary-surface), 0.08);
-    &:hover {
-      background-color: rgba(var(--rgb-primary-surface), 0.12);
-    }
+  }
+  &--scheme-primary:hover {
+    background-color: rgba(var(--rgb-primary-surface), 0.12);
+  }
+  &--scheme-primary:active {
+    background-color: rgba(var(--rgb-primary-surface), 0.16);
   }
 
   &--scheme-secondary {
     background-color: rgba(var(--rgb-secondary-surface), 0.08);
-    &:hover {
-      background-color: rgba(var(--rgb-secondary-surface), 0.12);
-    }
+  }
+  &--scheme-secondary:hover {
+    background-color: rgba(var(--rgb-secondary-surface), 0.12);
+  }
+  &--scheme-secondary:active {
+    background-color: rgba(var(--rgb-secondary-surface), 0.16);
   }
 
   &--scheme-accent-low {
+    background-color: rgba(var(--rgb-accent), 0.15);
+  }
+  &--scheme-accent-low:hover {
     background-color: rgba(var(--rgb-accent), 0.2);
-    &:hover {
-      background-color: rgba(var(--rgb-accent), 0.25);
-    }
   }
+  &--scheme-accent-low:active {
+    background-color: rgba(var(--rgb-accent), 0.25);
+  }
+
   &--scheme-accent-med {
-    background-color: rgba(var(--rgb-accent), 0.3);
-    &:hover {
-      background-color: rgba(var(--rgb-accent), 0.35);
-    }
+    background-color: rgba(var(--rgb-accent), 0.25);
   }
+  &--scheme-accent-med:hover {
+    background-color: rgba(var(--rgb-accent), 0.3);
+  }
+  &--scheme-accent-med:active {
+    background-color: rgba(var(--rgb-accent), 0.35);
+  }
+
   &--scheme-accent-high {
+    background-color: rgba(var(--rgb-accent), 0.35);
+  }
+  &--scheme-accent-high:hover {
     background-color: rgba(var(--rgb-accent), 0.4);
-    &:hover {
-      background-color: rgba(var(--rgb-accent), 0.45);
-    }
+  }
+  &--scheme-accent-high:active {
+    background-color: rgba(var(--rgb-accent), 0.45);
   }
 }

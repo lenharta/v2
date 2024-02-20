@@ -4,11 +4,13 @@
   justify-content: center;
   padding: var(--spacing-2);
   border-radius: var(--radius-rd);
-  border: var(--border-sm);
+  border: var(--border-xs);
 
   color: rgba(var(--rgb-accent), 1);
-  background-color: rgba(var(--rgb-accent), 0.2);
+  border-color: rgba(var(--rgb-accent), 1);
+  background-color: rgba(var(--rgb-accent), 0.1);
+
   &:hover {
-    background-color: rgba(var(--rgb-accent), 0.25);
+    background-color: rgba(var(--rgb-accent), 0.2);
   }
 }

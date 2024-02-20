@@ -2,18 +2,24 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { Label } from '../Label';
 import type { Core } from '@/types/core';
-import type { Align, Justify, Size } from '@/types/common';
+import type { Size } from '@/types/common';
+import { mergeProps } from '@/utils';
+import { useCheckboxCTX } from './context';
+import { CheckboxIndicator } from './Indicator';
+
+export type CheckboxScheme = 'default' | 'elevated';
 
 export type CheckboxProps = {
   size?: Size;
-  align?: Align;
-  justify?: Justify;
   info?: string;
   label?: string;
   error?: string;
-  checked?: boolean;
   readOnly?: boolean;
   disabled?: boolean;
+  scheme?: CheckboxScheme;
+  checked?: boolean;
+  indeterminate?: boolean;
+  onChange?(event: React.FormEvent<HTMLButtonElement>): void;
 };
 
 export type CheckboxFactory = Core.RefFactory<{
@@ -22,32 +28,43 @@ export type CheckboxFactory = Core.RefFactory<{
   component: 'button';
 }>;
 
+const defaultProps: Partial<CheckboxProps> = {
+  size: 'sm',
+  scheme: 'default',
+};
+
 export const Checkbox: CheckboxFactory = React.forwardRef((props, ref) => {
   const {
     id,
-    size = 'sm',
-    align = 'center',
-    justify = 'start',
+    size,
     info,
     error,
     label,
-    style,
-    checked,
+    scheme,
     disabled,
     readOnly,
     children,
     className,
+    checked,
+    onChange,
+    indeterminate,
     component: Component = 'button',
     ...otherProps
   } = props;
 
   const hasError = error !== undefined;
+  const ctx = useCheckboxCTX();
+
+  const mergedProps = mergeProps(
+    { size, scheme, onChange, checked, indeterminate },
+    defaultProps,
+    ctx
+  );
 
   const clxss = clsx(
     'Checkbox',
-    { [`Checkbox--size-${size}`]: size },
-    { [`Checkbox--align-${align}`]: align },
-    { [`Checkbox--justify-${justify}`]: justify },
+    { [`Checkbox--size-${mergedProps.size}`]: mergedProps.size },
+    { [`Checkbox--scheme-${mergedProps.scheme}`]: mergedProps.scheme },
     className
   );
 
@@ -62,8 +79,8 @@ export const Checkbox: CheckboxFactory = React.forwardRef((props, ref) => {
       aria-disabled={disabled}
       aria-readonly={readOnly}
     >
-      {children}
-      <div className="Radio-inner">
+      <CheckboxIndicator checked={checked} size={mergedProps.size} indeterminate={indeterminate} />
+      <div className="Checkbox-inner">
         <Label htmlFor={id}>{label}</Label>
         <div>{error}</div>
         <div>{info}</div>

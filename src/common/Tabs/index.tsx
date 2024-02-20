@@ -2,8 +2,8 @@ import { Core } from '@/types/core';
 import { Align, Justify, Orientation, Size } from '@/types/common';
 import { TabsPlacement, TabsProvider, TabsVariant } from './context';
 import { TabsPanel } from './TabsPanel';
-import { TabsList } from './TabsList';
 import { TabsItem } from './TabsItem';
+import { TabsGroup } from './TabsGroup';
 
 export type TabsProps = {
   size?: Size;
@@ -22,7 +22,7 @@ export type TabsFactory = Core.BaseFactory<{
   component: 'div';
   components: {
     Item: typeof TabsItem;
-    List: typeof TabsList;
+    Group: typeof TabsGroup;
     Panel: typeof TabsPanel;
   };
 }>;
@@ -54,5 +54,5 @@ export const Tabs: TabsFactory = (props) => {
 };
 
 Tabs.Panel = TabsPanel;
-Tabs.List = TabsList;
+Tabs.Group = TabsGroup;
 Tabs.Item = TabsItem;
