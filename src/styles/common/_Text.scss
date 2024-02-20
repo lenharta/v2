@@ -3,4 +3,43 @@
 .Text {
   width: 100%;
   display: block;
+
+  &--scheme-primary-max {
+    color: rgba(var(--rgb-primary-text), 0.99);
+  }
+  &--scheme-primary-high {
+    color: rgba(var(--rgb-primary-text), 0.87);
+  }
+  &--scheme-primary-med {
+    color: rgba(var(--rgb-primary-text), 0.67);
+  }
+  &--scheme-primary-low {
+    color: rgba(var(--rgb-primary-text), 0.47);
+  }
+
+  &--scheme-secondary-max {
+    color: rgba(var(--rgb-secondary-text), 0.99);
+  }
+  &--scheme-secondary-high {
+    color: rgba(var(--rgb-secondary-text), 0.87);
+  }
+  &--scheme-secondary-med {
+    color: rgba(var(--rgb-secondary-text), 0.67);
+  }
+  &--scheme-secondary-low {
+    color: rgba(var(--rgb-secondary-text), 0.47);
+  }
+
+  &--scheme-accent-max {
+    color: rgba(var(--rgb-accent), 0.87);
+  }
+  &--scheme-accent-high {
+    color: rgba(var(--rgb-accent), 0.87);
+  }
+  &--scheme-accent-med {
+    color: rgba(var(--rgb-accent), 0.67);
+  }
+  &--scheme-accent-low {
+    color: rgba(var(--rgb-accent), 0.47);
+  }
 }

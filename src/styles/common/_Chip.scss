@@ -1,0 +1,51 @@
+.ChipItem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--chip-height);
+  padding-inline: calc(var(--unit) * 4);
+  border: var(--border-sm);
+  outline: var(--border-sm);
+  border-radius: var(--radius-rd);
+
+  &:focus:not(:focus:focus-visible) {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: rgba(var(--rgb-indigo), 1);
+  }
+
+  &--scheme-tonal {
+    color: rgba(var(--rgb-accent), 1);
+    background-color: rgba(var(--rgb-accent), 0.15);
+  }
+  &--scheme-tonal:hover {
+    background-color: rgba(var(--rgb-accent), 0.2);
+  }
+  &--scheme-tonal:active {
+    background-color: rgba(var(--rgb-accent), 0.25);
+  }
+
+  &--size-xs {
+    --chip-height: calc(var(--unit) * 12);
+  }
+  &--size-sm {
+    --chip-height: calc(var(--unit) * 13);
+  }
+  &--size-md {
+    --chip-height: calc(var(--unit) * 14);
+  }
+  &--size-lg {
+    --chip-height: calc(var(--unit) * 15);
+  }
+  &--size-xl {
+    --chip-height: calc(var(--unit) * 16);
+  }
+}
+
+.ChipGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex: 1 0 100%;
+  gap: calc(var(--unit) * 1);
+}

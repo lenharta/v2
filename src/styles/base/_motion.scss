@@ -1,5 +1,6 @@
 .Page,
-.Page-header {
+.Page-header,
+.Section {
   transition-property: background-color;
   transition-timing-function: var(--easing-standard-expressive);
   transition-duration: var(--easing-duration-5);

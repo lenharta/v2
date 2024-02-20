@@ -5,25 +5,29 @@ import { TabsPlacement, TabsVariant, useTabsContext } from '../context';
 import type { Core } from '@/types/core';
 import type { Orientation } from '@/types/common';
 
-export type TabsListProps = {
+export type TabsGroupProps = {
   variant?: TabsVariant;
   placement?: TabsPlacement;
   orientation?: Orientation;
 };
 
-export type TabsListFactory = Core.RefFactory<{
+export type TabsGroupFactory = Core.RefFactory<{
   ref: HTMLDivElement;
-  props: TabsListProps;
+  props: TabsGroupProps;
   component: 'div';
 }>;
 
-const defaultProps: Partial<TabsListProps> = {};
+const defaultProps: Partial<TabsGroupProps> = {
+  variant: 'default',
+  placement: 'above',
+  orientation: 'horizontal',
+};
 
-export const TabsList: TabsListFactory = React.forwardRef((props, ref) => {
+export const TabsGroup: TabsGroupFactory = React.forwardRef((props, ref) => {
   const {
-    variant = 'default',
-    placement = 'above',
-    orientation = 'horizontal',
+    variant,
+    placement,
+    orientation,
     component: Component = 'div',
     className,
     children,
@@ -34,9 +38,9 @@ export const TabsList: TabsListFactory = React.forwardRef((props, ref) => {
   const mergedProps = mergeProps({ variant, placement, orientation }, defaultProps, ctx);
 
   const clxss = clsx(
-    'Tabs-list',
-    { [`Tabs-list--variant-${mergedProps.variant}`]: mergedProps.variant },
-    { [`Tabs-list--placement-${mergedProps.placement}`]: mergedProps.placement },
+    'TabsGroup',
+    { [`TabsGroup--variant-${mergedProps.variant}`]: mergedProps.variant },
+    { [`TabsGroup--placement-${mergedProps.placement}`]: mergedProps.placement },
     className
   );
 
@@ -44,9 +48,9 @@ export const TabsList: TabsListFactory = React.forwardRef((props, ref) => {
     <Component
       {...otherProps}
       ref={ref}
-      className={clxss}
       data-orientation={mergedProps.orientation}
       aria-orientation={mergedProps.orientation}
+      className={clxss}
     >
       {children}
     </Component>

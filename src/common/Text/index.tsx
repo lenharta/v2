@@ -4,10 +4,11 @@ import { mergeProps } from '@/utils';
 import type { Core } from '@/types/core';
 import type { SizeExpanded, Weight } from '@/types/common';
 
-// TODO: ADD ACCENT CLASS-NAME
+type TextLevel = 'low' | 'med' | 'high' | 'max';
+type TextScheme = TextLevel | `accent-${TextLevel}`;
 
 export type TextProps = {
-  accented?: boolean;
+  scheme?: TextScheme;
   weight?: Weight;
   lead?: SizeExpanded;
   size?: SizeExpanded;
@@ -30,19 +31,20 @@ export const Text: TextFactory = React.forwardRef((props, ref) => {
     size,
     lead,
     weight,
-    accented,
+    scheme,
     children,
     className,
     component: Component = 'p',
     ...otherProps
   } = props;
 
-  const mergedProps = mergeProps({ lead, size, weight }, defaultProps);
+  const mergedProps = mergeProps({ lead, size, scheme, weight }, defaultProps);
 
   const clxss = clsx(
     'Text',
     { [`Text--size-${mergedProps.size}`]: mergedProps.size },
     { [`Text--lead-${mergedProps.lead}`]: mergedProps.lead },
+    { [`Text--scheme-${mergedProps.scheme}`]: mergedProps.scheme },
     { [`Text--weight-${mergedProps.weight}`]: mergedProps.weight },
     className
   );

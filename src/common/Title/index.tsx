@@ -4,10 +4,11 @@ import { mergeProps } from '@/utils';
 import type { Core } from '@/types/core';
 import type { SizeExpanded, Weight } from '@/types/common';
 
-// TODO: ADD ACCENT CLASS-NAME
+type TitleLevel = 'low' | 'med' | 'high' | 'max';
+type TitleScheme = TitleLevel | `accent-${TitleLevel}`;
 
 export type TitleProps = {
-  accented?: boolean;
+  scheme?: TitleScheme;
   weight?: Weight;
   lead?: SizeExpanded;
   size?: SizeExpanded;
@@ -28,20 +29,21 @@ export const Title: TitleFactory = React.forwardRef((props, ref) => {
     size,
     lead,
     weight,
-    accented,
+    scheme,
     children,
     className,
     component: Component = 'h2',
     ...otherProps
   } = props;
 
-  const mergedProps = mergeProps({ lead, size, weight }, defaultProps);
+  const mergedProps = mergeProps({ lead, size, scheme, weight }, defaultProps);
 
   const clxss = clsx(
     `Title Title--level-${Component}`,
     { [`Title--size-${mergedProps.size}`]: mergedProps.size },
     { [`Title--lead-${mergedProps.lead}`]: mergedProps.lead },
     { [`Title--weight-${mergedProps.weight}`]: mergedProps.weight },
+    { [`Title--scheme-${mergedProps.scheme}`]: mergedProps.scheme },
     className
   );
 

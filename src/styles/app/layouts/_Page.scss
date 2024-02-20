@@ -42,7 +42,8 @@
     box-sizing: border-box;
 
     backdrop-filter: blur(16px);
-    background-color: hsla(var(--c-primary), 0.65);
+    background-color: rgba(var(--rgb-primary-base), 0.9);
+    z-index: var(--z-index-overlay);
   }
 
   &-nav {
@@ -80,12 +81,6 @@
   }
 }
 
-// width: 500px;
-// display: grid;
-// grid-template-rows: auto;
-// grid-template-columns: repeat(3, 1fr);
-// gap: var(--spacing-1);
-
 .GlobalControl {
   margin: 0;
   padding: 0;
@@ -97,7 +92,8 @@
   left: 0;
 
   padding: var(--spacing-4);
-  outline: solid 2px rgba(var(--rgb-accent), 1);
+  // outline: solid 2px rgba(var(--rgb-accent), 1);
+  background-color: rgba(var(--rgb-primary-base), 0.9);
 }
 .GlobalControl-display {
   display: flex;
@@ -107,9 +103,7 @@
 }
 .GlobalControl-panel {
   gap: var(--spacing-1);
+  flex: 0 1 100%;
   display: flex;
   margin-inline: var(--spacing-4);
-  // max-width: 100%;
-  // flex-wrap: wrap;
-  flex: 0 1 100%;
 }
