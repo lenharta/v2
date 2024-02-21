@@ -82,28 +82,58 @@
 }
 
 .GlobalControl {
+  left: 0;
+  right: 0;
+  bottom: 0;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   position: fixed;
+  box-sizing: border-box;
   display: flex;
-  bottom: 0;
-  right: 0;
-  left: 0;
-
-  padding: var(--spacing-4);
-  // outline: solid 2px rgba(var(--rgb-accent), 1);
+  flex: 1 0 100%;
+  gap: calc(var(--unit) * 1);
   background-color: rgba(var(--rgb-primary-base), 0.9);
+
+  &-buttons {
+    display: flex;
+    flex: 0 1 25%;
+    flex-direction: column;
+    gap: calc(var(--unit) * 1);
+  }
+  &-panel {
+    width: 100%;
+    display: grid;
+    place-content: start;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(6, 1fr);
+    gap: calc(var(--unit) * 1);
+  }
 }
-.GlobalControl-display {
+
+.DragDropDemo {
   display: flex;
+  justify-content: space-between;
+  width: 600px;
 }
-.GlobalControl-options {
+
+.DropZone,
+.DragTarget {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 100px;
+  font-size: 1rem;
+  padding-block: calc(var(--unit) * 4);
+  padding-inline: calc(var(--unit) * 4);
 }
-.GlobalControl-panel {
-  gap: var(--spacing-1);
-  flex: 0 1 100%;
-  display: flex;
-  margin-inline: var(--spacing-4);
+
+.DropZone {
+  background-color: hsl(205, 99%, 99%, 0.1);
+  color: hsl(205, 99%, 99%);
+}
+
+.DragTarget {
+  background-color: hsl(205, 99%, 99%, 0.6);
+  color: hsl(205, 0%, 0%);
 }

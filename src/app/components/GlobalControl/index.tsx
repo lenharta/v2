@@ -5,28 +5,28 @@ import { useThemeCTX } from '@/store';
 export const GlobalControlPanelMode = () => {
   const { setMode } = useThemeCTX();
   return (
-    <div className="GlobalControl-panel">
+    <>
       <Button onClick={() => setMode('light')}>Light</Button>
       <Button onClick={() => setMode('dark')}>Dark</Button>
       <Button onClick={() => setMode('dim')}>Dim</Button>
-    </div>
+    </>
   );
 };
 
 export const GlobalControlPanelDir = () => {
   const { setDir } = useThemeCTX();
   return (
-    <div className="GlobalControl-panel">
+    <>
       <Button onClick={() => setDir('ltr')}>Left-to-Right</Button>
       <Button onClick={() => setDir('rtl')}>Right-to-Left</Button>
-    </div>
+    </>
   );
 };
 
 export const GlobalControlPanelAccent = () => {
   const { setAccent } = useThemeCTX();
   return (
-    <div className="GlobalControl-panel">
+    <>
       <Button onClick={() => setAccent('orange')}>Orange</Button>
       <Button onClick={() => setAccent('yellow')}>Yellow</Button>
       <Button onClick={() => setAccent('green')}>Green</Button>
@@ -39,14 +39,14 @@ export const GlobalControlPanelAccent = () => {
       <Button onClick={() => setAccent('pink')}>Pink</Button>
       <Button onClick={() => setAccent('brown')}>Brown</Button>
       <Button onClick={() => setAccent('red')}>Red</Button>
-    </div>
+    </>
   );
 };
 
 export const GlobalControlPanelAvatar = () => {
   const { setAvatar } = useThemeCTX();
   return (
-    <div className="GlobalControl-panel">
+    <>
       <Button onClick={() => setAvatar('baseball')}>Baseball</Button>
       <Button onClick={() => setAvatar('basketball')}>Basketball</Button>
       <Button onClick={() => setAvatar('beer')}>Beer</Button>
@@ -68,7 +68,7 @@ export const GlobalControlPanelAvatar = () => {
       <Button onClick={() => setAvatar('soccer')}>Soccer</Button>
       <Button onClick={() => setAvatar('star')}>Star</Button>
       <Button onClick={() => setAvatar('trophy')}>Trophy</Button>
-    </div>
+    </>
   );
 };
 
@@ -76,9 +76,12 @@ export const GlobalControl = () => {
   const [activePanel, setActivePanel] = React.useState('mode');
   return (
     <div className="GlobalControl">
-      <div className="GlobalControl-display">
+      <div className="GlobalControl-buttons">
         <Button scheme="primary" onClick={() => setActivePanel('mode')}>
           Mode
+        </Button>
+        <Button scheme="primary" onClick={() => setActivePanel('dir')}>
+          Direction
         </Button>
         <Button scheme="primary" onClick={() => setActivePanel('accent')}>
           Accent
@@ -87,9 +90,12 @@ export const GlobalControl = () => {
           Avatar
         </Button>
       </div>
-      {activePanel === 'mode' ? <GlobalControlPanelMode /> : null}
-      {activePanel === 'accent' ? <GlobalControlPanelAccent /> : null}
-      {activePanel === 'avatar' ? <GlobalControlPanelAvatar /> : null}
+      <div className="GlobalControl-panel">
+        {activePanel === 'dir' ? <GlobalControlPanelDir /> : null}
+        {activePanel === 'mode' ? <GlobalControlPanelMode /> : null}
+        {activePanel === 'accent' ? <GlobalControlPanelAccent /> : null}
+        {activePanel === 'avatar' ? <GlobalControlPanelAvatar /> : null}
+      </div>
     </div>
   );
 };
