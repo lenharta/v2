@@ -17,7 +17,6 @@
 
   svg {
     fill: rgba(var(--rgb-accent), 0.4);
-    // background-color: rgba(var(--rgb-accent), 0.4);
   }
 
   &-indicator {
@@ -38,7 +37,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    // outline: solid 2px orange;
   }
 
   &--scheme-elevated::after {
@@ -108,15 +106,6 @@
       background-color: rgba(var(--rgb-accent), 0.6);
     }
   }
-
-  // .CheckboxGroup & {
-  //   &--scheme-elevated::after {
-  //     background-color: rgba(var(--rgb-accent), 0);
-  //   }
-  //   &--scheme-elevated:hover::after {
-  //     background-color: rgba(var(--rgb-accent), 0);
-  //   }
-  // }
 
   &--size-xs {
     --checkbox-height: calc(var(--unit) * 18);
