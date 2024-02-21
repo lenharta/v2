@@ -4,13 +4,25 @@ import { Button, Checkbox, Chip, Control, Space, Stack, Tabs, Title } from '@/co
 import { CheckboxGroup } from '@/common/Checkbox/Group';
 
 export const DemoComponentControl = () => {
-  const [value, setValue] = React.useState('item-3');
+  const [value, setValue] = React.useState('item-1');
+  const [value2, setValue2] = React.useState('item-1');
   return (
-    <Control
-      value={value}
-      onValueChange={setValue}
-      data={['item-1', 'item-2', 'item-3', 'item-4', 'item-5']}
-    />
+    <>
+      <Control
+        value={value}
+        size="lg"
+        orientation="horizontal"
+        onValueChange={setValue}
+        data={['item-1', 'item-2', 'item-3', 'item-4', 'item-5']}
+      />
+      <Space size="sm" />
+      <Control
+        value={value2}
+        onValueChange={setValue2}
+        orientation="vertical"
+        data={['item-1', 'item-2', 'item-3', 'item-4', 'item-5']}
+      />
+    </>
   );
 };
 
