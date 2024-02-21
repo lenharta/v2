@@ -1,33 +1,18 @@
+import * as React from 'react';
 import { Page, Section } from '@/app/layouts';
-import { Button, Checkbox, Chip, Space, Stack, Tabs, Title } from '@/common';
+import { Button, Checkbox, Chip, Control, Space, Stack, Tabs, Title } from '@/common';
 import { CheckboxGroup } from '@/common/Checkbox/Group';
 
-const DATA_DEMO_CHEMICAL_DATA = [
-  { symbol: 'H', name: 'Hydrogen', mass: 1.008 },
-  { symbol: 'He', name: 'Helium', mass: 4.0026 },
-  { symbol: 'Li', name: 'Lithium', mass: 6.94 },
-  { symbol: 'Be', name: 'Beryllium', mass: 9.0122 },
-  { symbol: 'B', name: 'Boron', mass: 10.81 },
-  { symbol: 'C', name: 'Carbon', mass: 12.01 },
-  { symbol: 'N', name: 'Nitrogen', mass: 14.01 },
-  { symbol: 'O', name: 'Oxygen', mass: 16.0 },
-  { symbol: 'F', name: 'Fluorine', mass: 19.0 },
-  { symbol: 'Ne', name: 'Neon', mass: 20.18 },
-  { symbol: 'Na', name: 'Sodium', mass: 22.99 },
-  { symbol: 'Mg', name: 'Magnesium', mass: 24.31 },
-  { symbol: 'Al', name: 'Aluminum', mass: 26.98 },
-  { symbol: 'Si', name: 'Silicon', mass: 28.09 },
-  { symbol: 'P', name: 'Phosphorus', mass: 30.97 },
-  { symbol: 'S', name: 'Sulfur', mass: 32.07 },
-  { symbol: 'Cl', name: 'Chlorine', mass: 35.45 },
-  { symbol: 'Ar', name: 'Argon', mass: 39.95 },
-  { symbol: 'K', name: 'Potassium', mass: 39.1 },
-  { symbol: 'Ca', name: 'Calcium', mass: 40.08 },
-];
-
-const DATA_DEMO_CHECKBOX_OPTIONS = [{}];
-
-const useFormState = () => {};
+export const DemoComponentControl = () => {
+  const [value, setValue] = React.useState('item-3');
+  return (
+    <Control
+      value={value}
+      onValueChange={setValue}
+      data={['item-1', 'item-2', 'item-3', 'item-4', 'item-5']}
+    />
+  );
+};
 
 export const Toolbox = () => {
   return (
@@ -80,6 +65,9 @@ export const Toolbox = () => {
               <Checkbox label="Option 5" scheme="elevated" />
             </CheckboxGroup>
           </Stack>
+        </Section>
+        <Section py="lg" scheme="primary">
+          <DemoComponentControl />
         </Section>
       </Page.Content>
     </Page>

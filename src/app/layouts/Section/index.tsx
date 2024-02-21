@@ -6,7 +6,7 @@ import { SectionContent } from './Content';
 import type { SizeExpanded } from '@/types/common';
 import type { Core } from '@/types/core';
 
-export type SectionScheme = 'primary' | 'secondary';
+export type SectionScheme = 'primary' | 'secondary' | 'accent';
 
 export type SectionProps = {
   py?: SizeExpanded;

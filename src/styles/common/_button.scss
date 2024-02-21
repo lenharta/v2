@@ -5,7 +5,7 @@
   height: var(--button-height);
   display: inline-flex;
   align-items: center;
-  padding-inline: var(--spacing-2);
+  padding-inline: calc(var(--unit) * 4);
   outline: solid 2px transparent;
 
   svg {
@@ -14,19 +14,19 @@
   }
 
   &--size-xs {
-    --button-height: var(--spacing-7);
+    --button-height: calc(var(--unit) * 14);
   }
   &--size-sm {
-    --button-height: var(--spacing-8);
+    --button-height: calc(var(--unit) * 16);
   }
   &--size-md {
-    --button-height: var(--spacing-9);
+    --button-height: calc(var(--unit) * 18);
   }
   &--size-lg {
-    --button-height: var(--spacing-10);
+    --button-height: calc(var(--unit) * 20);
   }
   &--size-xl {
-    --button-height: var(--spacing-11);
+    --button-height: calc(var(--unit) * 22);
   }
 
   &:focus:not(:focus:focus-visible) {
@@ -84,5 +84,20 @@
   }
   &--scheme-accent-high:active {
     background-color: rgba(var(--rgb-accent), 0.45);
+  }
+}
+
+.ButtonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: calc(var(--unit) * 1);
+  min-width: 25%;
+
+  [data-orientation='vertical'] {
+    flex-direction: column;
+  }
+  [data-orientation='horizontal'] {
+    flex-direction: row;
   }
 }

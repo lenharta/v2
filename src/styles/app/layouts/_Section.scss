@@ -23,6 +23,10 @@
     padding-block: var(--spacing-12);
   }
 
+  &.accent {
+    background-color: rgba(var(--rgb-accent), 0.1);
+  }
+
   &.primary {
     color: rgba(var(--rgb-primary-text), 1);
     background-color: rgba(var(--rgb-primary-base), 1);
