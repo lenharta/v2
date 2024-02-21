@@ -82,7 +82,7 @@ export const Control: ControlFactory = React.forwardRef((props, ref) => {
   const theme = useThemeCTX();
   const dir = theme.state.dir;
 
-  const controlData = React.useMemo(() => parseControlData(data), []);
+  const controlData = React.useMemo(() => parseControlData(data), [data, dir]);
   const mergedProps = mergeProps({ size, radius, scheme, orientation }, defaultProps);
 
   const clxss = clsx(
@@ -92,24 +92,45 @@ export const Control: ControlFactory = React.forwardRef((props, ref) => {
     { [`Control--scheme-${mergedProps.scheme}`]: mergedProps.scheme }
   );
 
-  const [transform, setTransform] = React.useState({ transform: '' });
+  const [indicator, setIndicator] = React.useState({ transform: '', height: 0, width: 0 });
   const trackRef = React.useRef<HTMLDivElement>(null);
   const indexRef = React.useRef<number>(0);
+
+  const BORDER_WIDTH = 0.666667;
+  const TRACK_PADDING = 4 - BORDER_WIDTH;
+  const TRACK_PADDING_OFFSET = TRACK_PADDING * 2;
+
+  const translate = (axis: string, px: number) => `translate${axis}(${px}px)`;
 
   React.useEffect(() => {
     const node = trackRef.current!;
     const rect = node.getBoundingClientRect();
-    const axis = mergedProps.orientation === 'horizontal' ? 'x' : 'y';
-    const prop = mergedProps.orientation === 'horizontal' ? 'width' : 'height';
 
-    const segmentSize = rect[prop] / controlData.length;
-    const segmentOrigin = Number((segmentSize * indexRef.current).toFixed(0));
+    if (mergedProps.orientation === 'horizontal') {
+      const segmentPos = rect.width - TRACK_PADDING_OFFSET;
+      const segmentSize = segmentPos / controlData.length;
+      const activePos = segmentSize * (indexRef.current - 1) - segmentSize;
 
-    const transformAxis = axis.toUpperCase();
-    const transformValue = dir === 'ltr' ? segmentOrigin : segmentOrigin * -1;
-    const transformProperty = `translate${transformAxis}(${transformValue}px)`;
-    setTransform({ transform: transformProperty });
-    console.log(transform);
+      setIndicator((current) => ({
+        ...current,
+        height: rect.height - TRACK_PADDING_OFFSET,
+        width: segmentSize,
+        transform: translate('X', activePos),
+      }));
+    }
+
+    if (mergedProps.orientation === 'vertical') {
+      const segmentPos = rect.height - TRACK_PADDING_OFFSET;
+      const segmentSize = segmentPos / controlData.length;
+      const activePos = segmentSize * (indexRef.current - 1) + segmentSize;
+
+      setIndicator((current) => ({
+        ...current,
+        height: segmentSize,
+        width: rect.width - TRACK_PADDING_OFFSET,
+        transform: translate('Y', activePos),
+      }));
+    }
   }, [value]);
 
   return (
@@ -117,23 +138,18 @@ export const Control: ControlFactory = React.forwardRef((props, ref) => {
       {...otherProps}
       ref={ref}
       className={clxss}
-      aria-orientation={orientation}
-      data-orientation={orientation}
-      data-segment-track
+      aria-orientation={mergedProps.orientation}
+      data-orientation={mergedProps.orientation}
     >
-      <div
-        className="Control-indicator"
-        style={{
-          ...transform,
-          position: 'absolute',
-          height: 24,
-          width: 50,
-          transition: 'ease 400ms all',
-          backgroundColor: 'rgba(var(--rgb-accent), 0.2)',
-        }}
-      />
-      <div ref={trackRef} className="Control-track" style={{ position: 'relative' }}>
-        {controlData?.map((option, index) => {
+      <div ref={trackRef} className="Control-track" style={{ padding: TRACK_PADDING }}>
+        <div
+          className="Control-indicator"
+          style={{
+            ...indicator,
+            top: TRACK_PADDING - BORDER_WIDTH,
+          }}
+        />
+        {(dir === 'rtl' ? controlData.reverse() : controlData)?.map((option, index) => {
           const isActive = option.value === value;
 
           if (isActive) {
@@ -144,12 +160,11 @@ export const Control: ControlFactory = React.forwardRef((props, ref) => {
             <button
               key={option.value}
               className="Control-segment"
+              disabled={disabled || option.disabled}
+              style={{ paddingBlock: TRACK_PADDING, paddingInline: TRACK_PADDING_OFFSET }}
               data-disabled={disabled || option.disabled}
               aria-disabled={disabled || option.disabled}
-              disabled={disabled || option.disabled}
-              onClick={() => {
-                onValueChange(option.value);
-              }}
+              onClick={() => onValueChange(option.value)}
             >
               {option.label}
             </button>
@@ -159,27 +174,3 @@ export const Control: ControlFactory = React.forwardRef((props, ref) => {
     </Component>
   );
 });
-
-// <Component
-// {...otherProps}
-// ref={ref}
-// className={clxss}
-// aria-orientation={orientation}
-// data-orientation={orientation}
-// data-segment-track
-// >
-// <div ref={trackRef} className="Control-track">
-//   {memoData?.map((option) => {
-//     return (
-//       <ControlSegment
-//         key={option.value}
-//         value={value}
-//         option={option}
-//         disabled={disabled}
-//         onValueChange={onValueChange}
-//         {...mergedProps}
-//       />
-//     );
-//   })}
-// </div>
-// </Component>

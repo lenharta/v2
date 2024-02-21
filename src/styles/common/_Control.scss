@@ -1,46 +1,69 @@
 .Control {
-  display: inline-flex;
-
-  &[data-orientation='vertical'] {
-    justify-content: center;
-    flex-direction: column;
-  }
-  &[data-orientation='horizontal'] {
-    flex-direction: row;
-    align-items: center;
-  }
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  line-height: 1;
+  isolation: isolate;
+  z-index: 0;
+  border-radius: var(--segment-radius);
+  border: var(--border-xs);
 
   &--scheme-default {
-    border-color: rgba(var(--rgb-primary-surface), 0.05);
     background-color: rgba(var(--rgb-primary-surface), 0.05);
   }
 
-  &-segment {
-    height: var(--segment-height);
-    padding-inline: calc(var(--unit) * 4);
+  &-track {
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
 
-    &--size-xs {
-      --segment-height: calc(var(--unit) * 12);
+    [data-orientation='vertical'] & {
+      flex-direction: column;
     }
-    &--size-sm {
-      --segment-height: calc(var(--unit) * 14);
-    }
-    &--size-md {
-      --segment-height: calc(var(--unit) * 16);
-    }
-    &--size-lg {
-      --segment-height: calc(var(--unit) * 18);
-    }
-    &--size-xl {
-      --segment-height: calc(var(--unit) * 20);
+    [data-orientation='horizontal'] & {
+      flex-direction: row;
     }
   }
-}
 
-.Control,
-.Control-segment {
-  border-radius: var(--segment-radius);
-  border: var(--border-xs);
+  &-indicator {
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    position: absolute;
+    background-color: rgba(var(--rgb-accent), 0.2);
+    transition-property: transform;
+    transition-timing-function: var(--easing-standard-expressive);
+    transition-duration: var(--easing-duration-5);
+    border-radius: var(--segment-radius);
+    border: var(--border-xs);
+  }
+
+  &-segment {
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+    border: none;
+    box-sizing: border-box;
+    line-height: 1;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: var(--segment-height);
+  }
 
   &--radius-xs {
     --segment-radius: var(--radius-xs);
@@ -56,5 +79,21 @@
   }
   &--radius-xl {
     --segment-radius: var(--radius-xl);
+  }
+
+  &--size-xs {
+    --segment-height: calc(var(--unit) * 12);
+  }
+  &--size-sm {
+    --segment-height: calc(var(--unit) * 14);
+  }
+  &--size-md {
+    --segment-height: calc(var(--unit) * 16);
+  }
+  &--size-lg {
+    --segment-height: calc(var(--unit) * 18);
+  }
+  &--size-xl {
+    --segment-height: calc(var(--unit) * 20);
   }
 }
