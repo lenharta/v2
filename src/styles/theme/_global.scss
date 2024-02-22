@@ -43,4 +43,90 @@
     color: rgba(var(--rgb-primary-text), 1);
     background-color: rgba(var(--rgb-primary-base), 1);
   }
+
+  .Section.accent {
+    background-color: rgba(var(--rgb-accent), 0.1);
+  }
+
+  .Section.primary {
+    .Text--scheme-accent-max,
+    .Title--scheme-accent-max {
+      color: rgba(var(--rgb-accent), 0.99);
+    }
+    .Text--scheme-accent-high,
+    .Title--scheme-accent-high {
+      color: rgba(var(--rgb-accent), 0.87);
+    }
+    .Text--scheme-accent-med,
+    .Title--scheme-accent-med {
+      color: rgba(var(--rgb-accent), 0.67);
+    }
+    .Text--scheme-accent-low,
+    .Title--scheme-accent-low {
+      color: rgba(var(--rgb-accent), 0.47);
+    }
+  }
+
+  .Section.secondary {
+    .Text--scheme-accent-max,
+    .Title--scheme-accent-max {
+      color: rgba(var(--rgb-accent), 0.99);
+    }
+    .Text--scheme-accent-high,
+    .Title--scheme-accent-high {
+      color: rgba(var(--rgb-accent), 0.87);
+    }
+    .Text--scheme-accent-med,
+    .Title--scheme-accent-med {
+      color: rgba(var(--rgb-accent), 0.67);
+    }
+    .Text--scheme-accent-low,
+    .Title--scheme-accent-low {
+      color: rgba(var(--rgb-accent), 0.47);
+    }
+  }
+
+  .Section.primary {
+    color: rgba(var(--rgb-primary-text), 1);
+    background-color: rgba(var(--rgb-primary-base), 1);
+
+    .Text--scheme-max,
+    .Title--scheme-max {
+      color: rgba(var(--rgb-primary-text), 0.99);
+    }
+    .Text--scheme-high,
+    .Title--scheme-high {
+      color: rgba(var(--rgb-primary-text), 0.87);
+    }
+    .Text--scheme-med,
+    .Title--scheme-med {
+      color: rgba(var(--rgb-primary-text), 0.67);
+    }
+    .Text--scheme-low,
+    .Title--scheme-low {
+      color: rgba(var(--rgb-primary-text), 0.47);
+    }
+  }
+
+  .Section.secondary {
+    color: rgba(var(--rgb-secondary-text), 1);
+    background-color: rgba(var(--rgb-secondary-base), 1);
+
+    .Text--scheme-max,
+    .Title--scheme-max {
+      color: rgba(var(--rgb-secondary-text), 0.99);
+    }
+    .Text--scheme-high,
+    .Title--scheme-high {
+      color: rgba(var(--rgb-secondary-text), 0.87);
+    }
+    .Text--scheme-med,
+    .Title--scheme-med {
+      color: rgba(var(--rgb-secondary-text), 0.67);
+    }
+    .Text--scheme-low,
+    .Title--scheme-low {
+      color: rgba(var(--rgb-secondary-text), 0.47);
+    }
+  }
 }

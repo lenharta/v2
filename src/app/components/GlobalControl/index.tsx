@@ -1,6 +1,18 @@
 import * as React from 'react';
 import { Button } from '@/common';
 import { useThemeCTX } from '@/store';
+import { useNavigate } from 'react-router-dom';
+
+export const GlobalControlPanelNav = () => {
+  const navigate = useNavigate();
+  return (
+    <>
+      <Button onClick={() => navigate('/')}>Home</Button>
+      <Button onClick={() => navigate('/toolbox')}>Toolbox</Button>
+      <Button onClick={() => navigate('/preferences')}>Preferences</Button>
+    </>
+  );
+};
 
 export const GlobalControlPanelMode = () => {
   const { setMode } = useThemeCTX();
@@ -77,6 +89,9 @@ export const GlobalControl = () => {
   return (
     <div className="GlobalControl">
       <div className="GlobalControl-buttons">
+        <Button scheme="primary" onClick={() => setActivePanel('nav')}>
+          Nav
+        </Button>
         <Button scheme="primary" onClick={() => setActivePanel('mode')}>
           Mode
         </Button>
@@ -91,6 +106,7 @@ export const GlobalControl = () => {
         </Button>
       </div>
       <div className="GlobalControl-panel">
+        {activePanel === 'nav' ? <GlobalControlPanelNav /> : null}
         {activePanel === 'dir' ? <GlobalControlPanelDir /> : null}
         {activePanel === 'mode' ? <GlobalControlPanelMode /> : null}
         {activePanel === 'accent' ? <GlobalControlPanelAccent /> : null}
