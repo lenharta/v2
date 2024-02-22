@@ -1,7 +1,10 @@
 import * as React from 'react';
 import type { Core } from '@/types/core';
+import clsx from 'clsx';
 
-export type PageContentProps = {};
+export type PageContentProps = {
+  variant?: 'default';
+};
 
 export type PageContentFactory = Core.RefFactory<{
   ref: HTMLDivElement;
@@ -10,9 +13,10 @@ export type PageContentFactory = Core.RefFactory<{
 }>;
 
 export const PageContent: PageContentFactory = React.forwardRef((props, ref) => {
-  const { children, component: Component = 'main', ...otherProps } = props;
+  const { variant = 'default', children, component: Component = 'main', ...otherProps } = props;
+  const clxss = clsx('Page-content', { [`Page-content--${variant}`]: variant });
   return (
-    <Component {...otherProps} className="Page-content" ref={ref}>
+    <Component {...otherProps} className={clxss} ref={ref}>
       {children}
     </Component>
   );

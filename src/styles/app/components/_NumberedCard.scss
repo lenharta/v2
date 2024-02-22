@@ -1,0 +1,23 @@
+.NumberedCard {
+  display: grid;
+  grid-template-rows: auto;
+  place-content: start;
+  grid-template-columns: repeat(1, 1fr);
+  border-left: solid 2px transparent;
+  border-left-color: rgba(var(--rgb-accent), 1);
+  padding-inline: calc(var(--unit) * 6);
+
+  &-integer {
+    font-size: var(--title-size-xl);
+    color: rgba(var(--rgb-accent), 1);
+    margin-bottom: calc(var(--unit) * 12);
+  }
+  &-title {
+    font-size: var(--title-size-sm);
+  }
+  &-content {
+    .Text {
+      margin-top: calc(var(--unit) * 6);
+    }
+  }
+}
