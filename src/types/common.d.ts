@@ -22,6 +22,4 @@ export type Direction = 'up' | 'down' | 'left' | 'right';
 
 export type Orientation = 'horizontal' | 'vertical';
 
-export type SurfaceToken = 'primary' | 'secondary' | Accent | 'disabled' | 'readOnly';
-
-export type SurfaceType = 'state' | 'neutral' | 'accent';
+export type IndexLevel = 'app' | 'modal' | 'popover' | 'overlay' | 'max';

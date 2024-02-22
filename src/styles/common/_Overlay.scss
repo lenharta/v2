@@ -1,0 +1,14 @@
+.Overlay {
+  inset: 0;
+  position: absolute;
+
+  &:where([data-fixed]) {
+    position: fixed;
+  }
+
+  &:where([data-center]) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

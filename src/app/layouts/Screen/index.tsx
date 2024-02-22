@@ -1,22 +1,22 @@
-import { Core } from '@/types/core';
+import * as React from 'react';
 import { ScreenContent } from './Content';
 
-export type ScreenProps = {};
+export type ScreenBaseProps = React.JSX.IntrinsicElements['div'];
 
-export type ScreenFactory = Core.BaseFactory<{
-  props: ScreenProps;
-  component: 'div';
-  components: {
-    Content: typeof ScreenContent;
-  };
-}>;
+export interface ScreenProps extends ScreenBaseProps {}
 
-export const Screen: ScreenFactory = (props) => {
-  const { children, component: Component = 'div', ...otherProps } = props;
+export interface ScreenComponent {
+  (props: ScreenProps): JSX.Element | null;
+  displayName: string;
+  Content: typeof ScreenContent;
+}
+
+export const Screen: ScreenComponent = (props) => {
+  const { children, ...otherProps } = props;
   return (
-    <Component {...otherProps} className="Screen">
+    <div className="Screen" {...otherProps}>
       {children}
-    </Component>
+    </div>
   );
 };
 

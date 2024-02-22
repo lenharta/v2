@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { Core } from '@/types/core';
 
-export type SplashProps = {};
+export type SplashScreenBaseProps = React.JSX.IntrinsicElements['div'];
 
-export type SplashFactory = Core.RefFactory<{
-  ref: HTMLDivElement;
-  props: SplashProps;
-  component: 'div';
-}>;
+export interface SplashScreenProps extends SplashScreenBaseProps {}
 
-export const SplashScreen: SplashFactory = React.forwardRef((props, ref) => {
-  const { component: Component = 'div', ...otherProps } = props;
-  return <Component ref={ref} {...otherProps}></Component>;
-});
+export interface SplashScreenComponent {
+  (props: SplashScreenProps): JSX.Element | null;
+  displayName: string;
+}
+
+export const SplashScreen: SplashScreenComponent = (props) => {
+  const {} = props;
+  return <div className="SplashScreen"></div>;
+};
+
+SplashScreen.displayName = '@v2/SplashScreen';

@@ -1,11 +1,12 @@
 .NumberedCard {
   display: grid;
-  grid-template-rows: auto;
   place-content: start;
+  grid-template-rows: auto;
   grid-template-columns: repeat(1, 1fr);
+  padding-inline: calc(var(--unit) * 6);
+
   border-left: solid 2px transparent;
   border-left-color: rgba(var(--rgb-accent), 1);
-  padding-inline: calc(var(--unit) * 6);
 
   &-integer {
     font-size: var(--title-size-xl);
@@ -17,7 +18,7 @@
   }
   &-content {
     .Text {
-      margin-top: calc(var(--unit) * 6);
+      margin-block: calc(var(--unit) * 6);
     }
   }
 }

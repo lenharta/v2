@@ -1,14 +1,16 @@
 import { Page } from '@/app/layouts';
-import { SectionHomeOverview } from './sections/overview';
-import { SectionHomeExperience } from './sections/experience';
+
+import { HomeHero } from './sections/hero';
+import { HomeOverview } from './sections/overview';
+import { HomeExperience } from './sections/experience';
 
 export const Home = () => {
   return (
     <Page>
-      <Page.Hero title="Home" />
+      <Page.Hero children={<HomeHero />} />
       <Page.Content>
-        <SectionHomeOverview />
-        <SectionHomeExperience />
+        <HomeOverview />
+        <HomeExperience />
       </Page.Content>
     </Page>
   );

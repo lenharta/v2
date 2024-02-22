@@ -2,10 +2,10 @@ import { NumberedCard } from '@/app/components';
 import { Section } from '@/app/layouts';
 import { Text } from '@/common';
 
-export const SectionHomeExperience = () => {
+export const HomeExperience = () => {
   return (
-    <Section py="md" scheme="secondary">
-      <div className="sec-home-experience">
+    <Section py="md" gap="md" scheme="secondary">
+      <Section.Content className="sec-home-experience">
         <NumberedCard integer="01" title="Expertise">
           <Text scheme="med">
             In crafting beautiful, repsonsive, and intuitive user interfaces across various global
@@ -28,7 +28,7 @@ export const SectionHomeExperience = () => {
             eius optio. Voluptas iste reiciendis voluptatibus laudantium.
           </Text>
         </NumberedCard>
-      </div>
+      </Section.Content>
     </Section>
   );
 };

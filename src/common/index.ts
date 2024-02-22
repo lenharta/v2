@@ -6,6 +6,8 @@ export * from './Control';
 export * from './Icon';
 export * from './InlineCSS';
 export * from './Label';
+export * from './Overlay';
+export * from './Portal';
 export * from './Radio';
 export * from './Space';
 export * from './Stack';
