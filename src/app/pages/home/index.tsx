@@ -7,7 +7,7 @@ import { HomeExperience } from './sections/experience';
 export const Home = () => {
   return (
     <Page>
-      <Page.Hero children={<HomeHero />} />
+      <HomeHero />
       <Page.Content>
         <HomeOverview />
         <HomeExperience />

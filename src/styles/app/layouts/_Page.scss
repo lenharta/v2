@@ -40,11 +40,9 @@
     margin: 0;
     padding: 0;
     position: fixed;
-
     width: 100%;
     display: inline-flex;
     box-sizing: border-box;
-
     backdrop-filter: blur(16px);
     background-color: rgba(var(--rgb-primary-base), 0.9);
     z-index: var(--z-index-overlay);

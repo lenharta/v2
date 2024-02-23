@@ -1,12 +1,20 @@
+import * as React from 'react';
 import { Stack, Title } from '@/common';
 
-export interface NumberedCardProps {
-  title?: string;
-  integer?: string;
+export type NumberedCardBaseProps = React.JSX.IntrinsicElements['div'];
+
+export interface NumberedCardProps extends NumberedCardBaseProps {
   children?: React.ReactNode;
+  integer?: string;
+  title?: string;
 }
 
-export const NumberedCard = (props: NumberedCardProps) => {
+export interface NumberedCardComponent {
+  (props: NumberedCardProps): JSX.Element | null;
+  displayName: string;
+}
+
+export const NumberedCard: NumberedCardComponent = (props) => {
   const { integer = '01', title, children } = props;
   return (
     <article className="NumberedCard">
@@ -18,3 +26,5 @@ export const NumberedCard = (props: NumberedCardProps) => {
     </article>
   );
 };
+
+NumberedCard.displayName = '@v2/NumberedCard';

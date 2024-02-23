@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button } from '@/common';
 import { useThemeCTX } from '@/store';
 import { useNavigate } from 'react-router-dom';
+import { useExhibit } from '@/hooks';
 
 export const GlobalControlPanelNav = () => {
   const navigate = useNavigate();
@@ -29,8 +30,8 @@ export const GlobalControlPanelDir = () => {
   const { setDir } = useThemeCTX();
   return (
     <>
-      <Button onClick={() => setDir('ltr')}>Left-to-Right</Button>
-      <Button onClick={() => setDir('rtl')}>Right-to-Left</Button>
+      <Button onClick={() => setDir('ltr')}>L-2-R</Button>
+      <Button onClick={() => setDir('rtl')}>R-2-L</Button>
     </>
   );
 };
@@ -86,32 +87,38 @@ export const GlobalControlPanelAvatar = () => {
 
 export const GlobalControl = () => {
   const [activePanel, setActivePanel] = React.useState('mode');
+  const [mounted, { toggle }] = useExhibit(false);
   return (
     <div className="GlobalControl">
-      <div className="GlobalControl-buttons">
-        <Button scheme="primary" onClick={() => setActivePanel('nav')}>
-          Nav
-        </Button>
-        <Button scheme="primary" onClick={() => setActivePanel('mode')}>
-          Mode
-        </Button>
-        <Button scheme="primary" onClick={() => setActivePanel('dir')}>
-          Direction
-        </Button>
-        <Button scheme="primary" onClick={() => setActivePanel('accent')}>
-          Accent
-        </Button>
-        <Button scheme="primary" onClick={() => setActivePanel('avatar')}>
-          Avatar
-        </Button>
-      </div>
-      <div className="GlobalControl-panel">
-        {activePanel === 'nav' ? <GlobalControlPanelNav /> : null}
-        {activePanel === 'dir' ? <GlobalControlPanelDir /> : null}
-        {activePanel === 'mode' ? <GlobalControlPanelMode /> : null}
-        {activePanel === 'accent' ? <GlobalControlPanelAccent /> : null}
-        {activePanel === 'avatar' ? <GlobalControlPanelAvatar /> : null}
-      </div>
+      <Button onClick={toggle}>Global Controls</Button>
+      {!mounted ? null : (
+        <div className="GlobalControl-tools">
+          <div className="GlobalControl-categories">
+            <Button scheme="primary" onClick={() => setActivePanel('nav')}>
+              Nav
+            </Button>
+            <Button scheme="primary" onClick={() => setActivePanel('mode')}>
+              Mode
+            </Button>
+            <Button scheme="primary" onClick={() => setActivePanel('dir')}>
+              Direction
+            </Button>
+            <Button scheme="primary" onClick={() => setActivePanel('accent')}>
+              Accent
+            </Button>
+            <Button scheme="primary" onClick={() => setActivePanel('avatar')}>
+              Avatar
+            </Button>
+          </div>
+          <div className="GlobalControl-panel">
+            {activePanel === 'nav' ? <GlobalControlPanelNav /> : null}
+            {activePanel === 'dir' ? <GlobalControlPanelDir /> : null}
+            {activePanel === 'mode' ? <GlobalControlPanelMode /> : null}
+            {activePanel === 'accent' ? <GlobalControlPanelAccent /> : null}
+            {activePanel === 'avatar' ? <GlobalControlPanelAvatar /> : null}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

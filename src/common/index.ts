@@ -3,6 +3,7 @@ export * from './Button';
 export * from './Checkbox';
 export * from './Chip';
 export * from './Control';
+export * from './Dropdown';
 export * from './Icon';
 export * from './InlineCSS';
 export * from './Label';

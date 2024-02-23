@@ -8,3 +8,52 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.Home {
+  &-hero {
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 100vh;
+    z-index: 0;
+
+    h1 {
+      line-height: 1.2;
+      font-weight: var(--font-weight-med);
+      font-size: calc(var(--unit) * 20);
+    }
+
+    h2 {
+      line-height: 1.2;
+      font-weight: var(--font-weight-lgt);
+      font-size: calc(var(--unit) * 16);
+    }
+
+    &-filter {
+      width: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      background-color: rgba(var(--rgb-primary-base), 0.8);
+      backdrop-filter: blur(20px);
+    }
+
+    &-content {
+      width: 100%;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding-block: calc(var(--unit) * 200);
+    }
+  }
+}
