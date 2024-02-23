@@ -1,9 +1,9 @@
 import { Section } from '@/app/layouts';
 import { Stack, Text, Title } from '@/common';
 
-export const SectionHomeOverview = () => {
+export const HomeOverview = () => {
   return (
-    <Section py="lg">
+    <Section py="xl">
       <Stack gap="md">
         <Title component="h2" size="xxs" scheme="accent-high">
           Overview

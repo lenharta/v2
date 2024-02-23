@@ -1,14 +1,9 @@
 import * as React from 'react';
 
-export type UseExhibitOptions = { onRemove?: () => void; onShow?: () => void };
-
-export type UseExhibitActions = { toggle(): void; remove(): void; show(): void };
-
-export type UseExhibitReturn = [boolean, UseExhibitActions];
-
-export type UseEhxhibit = (initialState: boolean, options?: UseExhibitOptions) => UseExhibitReturn;
-
-export const useExhibit: UseEhxhibit = (initialState = false, options = {}) => {
+export const useExhibit = (
+  initialState: boolean = false,
+  options: { onRemove?: () => void; onShow?: () => void } = {}
+): [boolean, { toggle(): void; remove(): void; show(): void }] => {
   const { onShow, onRemove } = options;
   const [state, dispatch] = React.useState(initialState);
 
@@ -36,5 +31,5 @@ export const useExhibit: UseEhxhibit = (initialState = false, options = {}) => {
     state ? remove() : show();
   }, [show, remove, state]);
 
-  return [state, { show, remove, toggle }] as UseExhibitReturn;
+  return [state, { show, remove, toggle }] as const;
 };
