@@ -3,12 +3,12 @@ import { Stack, Text, Title } from '@/common';
 
 export const HomeOverview = () => {
   return (
-    <Section py="xl">
+    <Section>
       <Stack gap="md">
-        <Title component="h2" size="xxs" scheme="accent-high">
+        <Title h2 scheme="accent-high">
           Overview
         </Title>
-        <Title component="h3">Front-end Software Engineer, Human-Centered Problem Solver.</Title>
+        <Title h3>Front-end Software Engineer, Human-Centered Problem Solver.</Title>
         <Stack gap="md">
           <Text scheme="med">
             Striving to improve the human relationship with technology by designing and building

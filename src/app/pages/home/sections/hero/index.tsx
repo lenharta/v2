@@ -1,17 +1,15 @@
 import * as React from 'react';
-import { useExhibit } from '@/hooks';
 import { Title } from '@/common';
 import { Page } from '@/app/layouts';
 
-const cellProps: React.CSSProperties = {
-  color: 'rgba(var(--rgb-accent), 0.2)',
-  height: 40,
-  width: 40,
-};
+const HeroContent = () => (
+  <div className="Home-hero-content">
+    <Title h1>Andrew Lenhart</Title>
+    <Title h2>Software Engineer</Title>
+  </div>
+);
 
-const test: KeyframeAnimationOptions = {
-  duration: '1000ms',
-};
+const HeroBlurFilter = () => <div className="Home-hero-filter" />;
 
 const HeroAnimation = () => {
   const ref1 = React.useRef<HTMLDivElement>(null);
@@ -23,15 +21,13 @@ const HeroAnimation = () => {
     const node2 = ref2.current!;
     const node3 = ref3.current!;
 
-    const PI = 3.14159265;
+    // const PI = 3.14159265;
     const ANIMATE_DELAY = -200;
     const ANIMATE_EASING = 'ease-in-out';
     const ANIMATE_DURATION = 10000;
     const ANIMATE_ITERATIONS = Infinity;
 
     const transformUnit = (value: number, index: number = 1) => Number((value * index).toFixed(0));
-
-    console.log(`translateX(${transformUnit(60, -1)}%) translateY(${transformUnit(60, 1)}%)`);
 
     node1.animate(
       {
@@ -81,8 +77,6 @@ const HeroAnimation = () => {
         iterations: ANIMATE_ITERATIONS,
       }
     );
-
-    console.log(node1);
   }, []);
 
   return (
@@ -93,7 +87,7 @@ const HeroAnimation = () => {
           zIndex: -2,
           width: 500,
           height: 500,
-          backgroundColor: 'rgba(var(--rgb-accent), 0.4)',
+          backgroundColor: 'var(--c-accent-background)',
           borderRadius: '1000px',
           position: 'absolute',
           left: 0,
@@ -106,7 +100,7 @@ const HeroAnimation = () => {
           zIndex: -2,
           width: 300,
           height: 300,
-          backgroundColor: 'rgba(var(--rgb-accent), 0.4)',
+          backgroundColor: 'var(--c-accent-background)',
           borderRadius: '1000px',
           position: 'absolute',
           left: 0,
@@ -119,7 +113,7 @@ const HeroAnimation = () => {
           zIndex: -2,
           width: 200,
           height: 200,
-          backgroundColor: 'rgba(var(--rgb-accent), 0.4)',
+          backgroundColor: 'var(--c-accent-background)',
           borderRadius: '1000px',
           position: 'absolute',
           left: 0,
@@ -130,19 +124,12 @@ const HeroAnimation = () => {
   );
 };
 
-export const HomeHero = () => {
-  const [mounted, { toggle }] = useExhibit();
-  return (
-    <div className="Home-hero">
-      <Page.Container>
-        <div className="Home-hero-content">
-          <Title component="h1">Andrew Lenhart</Title>
-          <Title component="h2">Software Engineer</Title>
-          {/* <Button onClick={toggle}>Toggle</Button> */}
-        </div>
-        <div className="Home-hero-filter" />
-        <HeroAnimation />
-      </Page.Container>
-    </div>
-  );
-};
+export const HomeHero = () => (
+  <div className="Home-hero">
+    <Page.Container>
+      <HeroContent />
+      <HeroBlurFilter />
+      <HeroAnimation />
+    </Page.Container>
+  </div>
+);

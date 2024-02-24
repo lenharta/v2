@@ -1,25 +1,40 @@
+import clsx from 'clsx';
 import * as React from 'react';
-import type { Core } from '@/types/core';
-import { Title, type TitleProps } from '@/common';
+import { Title } from '@/common';
+import { mergeProps } from '@/utils';
+import { type SizeExpanded } from '@/types/common';
 
-export type SectionHeaderProps = {
+export type SectionHeaderBaseProps = React.JSX.IntrinsicElements['header'];
+
+export interface SectionHeaderProps extends SectionHeaderBaseProps {
+  size?: SizeExpanded;
   title?: string;
-  titleProps?: TitleProps;
+}
+
+const defaultProps: Partial<SectionHeaderProps> = {
+  size: 'sm',
 };
 
-export type SectionHeaderFactory = Core.RefFactory<{
-  ref: HTMLDivElement;
-  props: SectionHeaderProps;
-  component: 'header';
-}>;
+export const SectionHeader = React.forwardRef<HTMLElement, SectionHeaderProps>((props, ref) => {
+  const { size, title, children, className, ...otherProps } = props;
 
-export const SectionHeader: SectionHeaderFactory = React.forwardRef((props, ref) => {
-  const { title, titleProps, children, component: Component = 'header', ...otherProps } = props;
+  const mergedProps = mergeProps({ size }, defaultProps);
+
+  const clxss = clsx('Section-header', {
+    [`Section-header--size-${mergedProps.size}`]: mergedProps.size,
+    className,
+  });
+
   return (
-    <div {...otherProps} className="Section-header" ref={ref}>
-      {title && <Title {...titleProps}>{title}</Title>}
+    <header {...otherProps} ref={ref} className={clxss}>
+      {title && (
+        <Title className="Section-header-title" h2>
+          {title}
+        </Title>
+      )}
+
       {children}
-    </div>
+    </header>
   );
 });
 

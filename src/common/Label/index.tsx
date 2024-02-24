@@ -1,32 +1,32 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import type { Core } from '@/types/core';
+import { mergeProps } from '@/utils';
 import type { Align, Size } from '@/types/common';
 
-export type LabelProps = {
+export type LabelBaseProps = React.JSX.IntrinsicElements['label'];
+
+export interface LabelProps extends LabelBaseProps {
   size?: Size;
   align?: Align;
-};
+}
 
-export type LabelFactory = Core.RefFactory<{
-  ref: HTMLLabelElement;
-  props: LabelProps;
-  component: 'label';
-}>;
+const defaultProps: Partial<LabelProps> = {};
 
-export const Label: LabelFactory = React.forwardRef((props, ref) => {
-  const { size, align, component: Component = 'label', className, children, ...otherProps } = props;
+export const Label = React.forwardRef<HTMLLabelElement, LabelProps>((props, ref) => {
+  const { size, align, className, children, ...otherProps } = props;
+
+  const mergedProps = mergeProps({ size, align }, defaultProps);
 
   const clxss = clsx(
     'Label',
-    { [`Label--size-${size}`]: size },
-    { [`Label--align-${align}`]: align },
+    { [`Label--size-${mergedProps.size}`]: mergedProps.size },
+    { [`Label--align-${mergedProps.align}`]: mergedProps.align },
     className
   );
 
   return (
-    <Component {...otherProps} ref={ref} className={clxss}>
+    <label {...otherProps} ref={ref} className={clxss}>
       {children}
-    </Component>
+    </label>
   );
 });

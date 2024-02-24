@@ -14,3 +14,4 @@ LICENSE
 
 data
 src/types/core.d.ts
+src/types/common.d.ts

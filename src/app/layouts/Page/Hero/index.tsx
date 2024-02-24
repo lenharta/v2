@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Title } from '@/common';
+import { PageContainer } from '../Container';
 
 export type PageHeroBaseProps = React.JSX.IntrinsicElements['div'];
 
@@ -16,14 +17,14 @@ export const PageHero: PageHeroComponent = (props) => {
   const { title, children, ...otherProps } = props;
   return (
     <div {...otherProps} className="Page-hero">
-      <div className="Page-container">
+      <PageContainer>
         {title && (
-          <Title size="xxl" className="Page-hero-title">
+          <Title size="xxl" className="Page-hero-title" h1>
             {title}
           </Title>
         )}
         {children}
-      </div>
+      </PageContainer>
     </div>
   );
 };

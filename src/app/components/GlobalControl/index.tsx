@@ -9,6 +9,7 @@ export const GlobalControlPanelNav = () => {
   return (
     <>
       <Button onClick={() => navigate('/')}>Home</Button>
+      <Button onClick={() => navigate('/demo')}>Demo</Button>
       <Button onClick={() => navigate('/toolbox')}>Toolbox</Button>
       <Button onClick={() => navigate('/preferences')}>Preferences</Button>
     </>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ThemeStore } from '@/types/store';
+import { type ThemeStore } from '@/types/store';
 
 export type ThemeContextValue = {
   state: ThemeStore;

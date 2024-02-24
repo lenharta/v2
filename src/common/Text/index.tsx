@@ -1,57 +1,44 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
-import type { Core } from '@/types/core';
-import type { SizeExpanded, Weight } from '@/types/common';
+import { Scheme, type Emphasis, type SizeExpanded, type Weight } from '@/types/common';
 
-type TextLevel = 'low' | 'med' | 'high' | 'max';
-type TextScheme = TextLevel | `accent-${TextLevel}`;
+export type TextBaseProps = React.JSX.IntrinsicElements['p'];
 
-export type TextProps = {
-  scheme?: TextScheme;
-  weight?: Weight;
-  lead?: SizeExpanded;
+export interface TextProps extends TextBaseProps {
   size?: SizeExpanded;
-};
-
-export type TextFactory = Core.RefFactory<{
-  ref: HTMLParagraphElement;
-  props: TextProps;
-  component: 'p';
-}>;
+  lead?: SizeExpanded;
+  weight?: Weight;
+  scheme?: Scheme;
+  emphasis?: Emphasis;
+}
 
 const defaultProps: Partial<TextProps> = {
+  emphasis: 'med',
+  scheme: 'primary',
   weight: 'reg',
-  size: 'md',
-  lead: 'md',
+  lead: 'sm',
+  size: 'sm',
 };
 
-export const Text: TextFactory = React.forwardRef((props, ref) => {
-  const {
-    size,
-    lead,
-    weight,
-    scheme,
-    children,
-    className,
-    component: Component = 'p',
-    ...otherProps
-  } = props;
+export const Text = React.forwardRef<HTMLParagraphElement, TextProps>((props, ref) => {
+  const { size, lead, weight, scheme, emphasis, children, className, ...otherProps } = props;
 
-  const mergedProps = mergeProps({ lead, size, scheme, weight }, defaultProps);
+  const mergedProps = mergeProps({ size, lead, weight, scheme, emphasis }, defaultProps);
 
   const clxss = clsx(
     'Text',
     { [`Text--size-${mergedProps.size}`]: mergedProps.size },
     { [`Text--lead-${mergedProps.lead}`]: mergedProps.lead },
-    { [`Text--scheme-${mergedProps.scheme}`]: mergedProps.scheme },
     { [`Text--weight-${mergedProps.weight}`]: mergedProps.weight },
+    { [`Text--emphasis-${mergedProps.emphasis}`]: mergedProps.emphasis },
+    mergedProps.scheme,
     className
   );
 
   return (
-    <Component {...otherProps} ref={ref} className={clxss}>
+    <p {...otherProps} ref={ref} className={clxss}>
       {children}
-    </Component>
+    </p>
   );
 });

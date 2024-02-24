@@ -1,82 +1,80 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
-import { useThemeCTX } from '@/store';
-import type { Core } from '@/types/core';
-import type { Align, Justify, Size, Border } from '@/types/common';
+import { type Size } from '@/types/common';
+import { type UnstyledButtonProps, UnstyledButton } from './Unstyled';
 
-export type ButtonProps = {
+// TODO: Properties - align & justify
+// TODO: Properties - <Loader /> & loadingProps
+// TODO: Properties - allowDisabledFocus?: boolean;
+
+export type ButtonScheme = 'default' | 'inverted' | 'accent';
+
+export interface ButtonProps extends UnstyledButtonProps {
   size?: Size;
-  align?: Align;
-  border?: Border;
-  justify?: Justify;
-  readOnly?: boolean;
+  scheme?: ButtonScheme;
+  loading?: boolean;
   disabled?: boolean;
-  scheme?: 'primary' | 'secondary' | 'accent-low' | 'accent-med' | 'accent-high';
   leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
-};
-
-export type ButtonFactory = Core.RefFactory<{
-  ref: HTMLButtonElement;
-  props: ButtonProps;
-  component: 'button';
-}>;
+}
 
 const defaultProps: Partial<ButtonProps> = {
+  scheme: 'default',
   size: 'sm',
-  align: 'center',
-  scheme: 'primary',
-  justify: 'start',
 };
 
-export const Button: ButtonFactory = React.forwardRef((props, ref) => {
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     size,
-    align,
-    border,
     scheme,
-    justify,
-    readOnly,
+    loading,
     disabled,
     children,
     className,
     leftContent,
     rightContent,
-    component: Component = 'button',
     ...otherProps
   } = props;
 
-  const theme = useThemeCTX();
+  const hasContentLeft = !!leftContent;
+  const hasContentRight = !!rightContent;
 
-  const mergedProps = mergeProps(
-    { size, align, justify, scheme, readOnly, disabled },
-    defaultProps
-  );
+  const mergedProps = mergeProps({ size, scheme }, defaultProps);
 
   const clxss = clsx(
     'Button',
     { [`Button--size-${mergedProps.size}`]: mergedProps.size },
-    { [`Button--align-${mergedProps.align}`]: mergedProps.align },
-    { [`Button--scheme-${mergedProps.scheme}`]: mergedProps.scheme },
-    { [`Button--justify-${mergedProps.justify}`]: mergedProps.justify },
+    mergedProps.scheme,
     className
   );
 
   return (
-    <Component
+    <UnstyledButton
       {...otherProps}
       ref={ref}
       className={clxss}
-      data-disabled={disabled}
-      data-readonly={readOnly}
-      aria-disabled={disabled}
-      aria-readonly={readOnly}
-      data-direction={theme.state.dir}
+      tabIndex={disabled ? undefined : 0}
+      aria-disabled={!disabled || !loading ? undefined : disabled}
+      data-disabled={!disabled || !loading ? undefined : disabled}
     >
-      {leftContent && <div data-position="left">{leftContent}</div>}
-      {children}
-      {rightContent && <div data-position="right">{rightContent}</div>}
-    </Component>
+      {loading && <div>Loading...</div>}
+
+      <span className="Button-inner">
+        {hasContentLeft && (
+          <div className="Button-content" data-position="left">
+            {leftContent}
+          </div>
+        )}
+
+        <div className="Button-label">{children}</div>
+
+        {hasContentRight && (
+          <div className="Button-content" data-position="right">
+            {rightContent}
+          </div>
+        )}
+      </span>
+    </UnstyledButton>
   );
 });

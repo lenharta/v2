@@ -1,28 +1,16 @@
-import clsx from 'clsx';
 import * as React from 'react';
-import type { Core } from '@/types/core';
-import type { ChipItemProps } from '../Item';
-import { Chip } from '..';
 
-export type ChipGroupProps = {
-  items: ChipItemProps[];
-};
+export type ChipGroupBaseProps = React.JSX.IntrinsicElements['div'];
 
-export type ChipGroupFactory = Core.RefFactory<{
-  component: 'div';
-  props: ChipGroupProps;
-  ref: HTMLDivElement;
-}>;
+export interface ChipGroupProps extends ChipGroupBaseProps {}
 
-export const ChipGroup: ChipGroupFactory = React.forwardRef((props, ref) => {
-  const { items, children, component: Component = 'div', className, ...otherProps } = props;
-  const clxss = clsx('ChipGroup', className);
-
+export const ChipGroup = React.forwardRef<HTMLDivElement, ChipGroupProps>((props, ref) => {
+  const { children, ...otherProps } = props;
   return (
-    <Component {...otherProps} ref={ref} className={clxss}>
-      {items.map((item) => (
-        <Chip.Item key={item.id} id={item.id} {...item} />
-      ))}
-    </Component>
+    <div {...otherProps} ref={ref}>
+      {children}
+    </div>
   );
 });
+
+ChipGroup.displayName = '@v2/Chip.Group';

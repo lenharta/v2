@@ -1,26 +1,27 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import type { Core } from '@/types/core';
 import type { SizeExpanded } from '@/types/common';
 
-export type StackProps = {
+export type StackBaseProps = React.JSX.IntrinsicElements['div'];
+
+export interface StackProps extends StackBaseProps {
   gap?: SizeExpanded;
-};
+}
 
-export type StackFactory = Core.RefFactory<{
-  component: 'div';
-  props: StackProps;
-  ref: HTMLDivElement;
-}>;
-
-export const Stack: StackFactory = React.forwardRef((props, ref) => {
-  const { gap, children, className, component: Component = 'div', ...otherProps } = props;
+export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) => {
+  const { gap, children, className, ...otherProps } = props;
 
   const clxss = clsx('Stack', { [`Stack--gap-${gap}`]: gap }, className);
 
   return (
-    <Component {...otherProps} aria-orientation="vertical" ref={ref} className={clxss}>
+    <div
+      {...otherProps}
+      ref={ref}
+      className={clxss}
+      aria-orientation="vertical"
+      data-orientation="vertical"
+    >
       {children}
-    </Component>
+    </div>
   );
 });

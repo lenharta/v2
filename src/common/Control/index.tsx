@@ -95,8 +95,6 @@ export const Control: ControlComponent<any> = <T extends string>(props: ControlP
       data-orientation={mergedProps.orientation}
       aria-orientation={mergedProps.orientation}
       style={{
-        // [mergedProps.orientation === 'horizontal' ? 'left']
-
         gap: wrapperOffset,
         padding: wrapperOffset,
         borderRadius: radiusStyle,

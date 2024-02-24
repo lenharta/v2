@@ -1,68 +1,43 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Label } from '../Label';
-import type { Core } from '@/types/core';
-import type { Size, Align, Justify } from '@/types/common';
+import { mergeProps } from '@/utils';
+import type { Size, Align } from '@/types/common';
 
-export type RadioProps = {
+export type RadioBaseProps = React.JSX.IntrinsicElements['button'];
+
+export interface RadioProps extends RadioBaseProps {
   size?: Size;
   align?: Align;
-  justify?: Justify;
-  info?: string;
   label?: string;
   error?: string;
   checked?: boolean;
-  readOnly?: boolean;
-  disabled?: boolean;
+}
+
+const defaultProps: Partial<RadioProps> = {
+  size: 'sm',
 };
 
-export type RadioFactory = Core.RefFactory<{
-  ref: HTMLButtonElement;
-  props: RadioProps;
-  component: 'button';
-}>;
+export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>((props, ref) => {
+  const { size, align, label, error, checked, disabled, children, ...otherProps } = props;
 
-export const Radio: RadioFactory = React.forwardRef((props, ref) => {
-  const {
-    id,
-    size = 'sm',
-    align = 'center',
-    justify = 'start',
-    info,
-    label,
-    error,
-    disabled,
-    readOnly,
-    children,
-    className,
-    component: Component = 'button',
-    ...otherProps
-  } = props;
+  const mergedProps = mergeProps({ size, align }, defaultProps);
 
   const clxss = clsx(
     'Radio',
-    { [`Radio--size-${size}`]: size },
-    { [`Radio--align-${align}`]: align },
-    { [`Radio--justify-${justify}`]: justify },
-    className
+    { [`Radio--size-${mergedProps.size}`]: mergedProps.size },
+    { [`Radio--align-${mergedProps.align}`]: mergedProps.align }
   );
 
   return (
-    <Component
+    <button
       {...otherProps}
       ref={ref}
+      role="radio"
       className={clxss}
       data-disabled={disabled}
-      data-readonly={readOnly}
       aria-disabled={disabled}
-      aria-readonly={readOnly}
     >
       {children}
-      <div className="Radio-inner">
-        <Label htmlFor={id}>{label}</Label>
-        <div>{error}</div>
-        <div>{info}</div>
-      </div>
-    </Component>
+    </button>
   );
 });

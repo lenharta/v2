@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { createInlineCSS } from '@/utils';
-import type { Core } from '@/types/core';
 
 export type InlineCSSProps = {
   selector: string;
@@ -8,25 +7,20 @@ export type InlineCSSProps = {
   nonce?: () => string;
 };
 
-export type InlineCSSFactory = Core.BaseFactory<{
-  props: InlineCSSProps;
-  component: 'style';
-}>;
+export interface InlineCSSComponent {
+  (props: InlineCSSProps): JSX.Element | null;
+  displayName?: string;
+}
 
-export const InlineCSS: InlineCSSFactory = (props) => {
-  const {
-    selector,
-    styles,
-    nonce = () => '',
-    component: Component = 'style',
-    ...otherProps
-  } = props;
-
+export const InlineCSS: InlineCSSComponent = (props) => {
+  const { selector, styles, nonce = () => '', ...otherProps } = props;
   return (
-    <Component
+    <style
       {...otherProps}
       dangerouslySetInnerHTML={{ __html: createInlineCSS(selector, styles) }}
       nonce={nonce()}
     />
   );
 };
+
+InlineCSS.displayName = '@v2/InlineCSS';

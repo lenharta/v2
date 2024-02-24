@@ -1,50 +1,53 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { Icon } from '../Icon';
 import { mergeProps } from '@/utils';
-import { useThemeCTX } from '@/store';
-import { Avatar as AvatarIcon } from '@/types/store';
-import type { LinkProps } from 'react-router-dom';
-import type { Size } from '@/types/common';
-import type { Core } from '@/types/core';
+import { useNavigate } from 'react-router-dom';
+import { type IconName, Icon } from '../Icon';
+import { type Size } from '@/types/common';
 
-export type AvatarProps = LinkProps & {
-  avatar?: AvatarIcon;
+export type AvatarBaseProps = React.JSX.IntrinsicElements['button'];
+
+export interface AvatarProps extends AvatarBaseProps {
+  to?: string;
   size?: Size;
-};
-
-export type AvatarFactory = Core.RefFactory<{
-  ref: HTMLAnchorElement;
-  props: AvatarProps;
-  component: typeof Link;
-}>;
+  icon?: IconName;
+}
 
 const defaultProps: Partial<AvatarProps> = {
-  avatar: 'person',
+  icon: 'person',
   size: 'sm',
   to: '/',
 };
 
-export const Avatar: AvatarFactory = React.forwardRef((props, ref) => {
-  const {
-    to,
-    size,
-    avatar,
-    children,
-    className,
-    component: Component = Link,
-    ...otherProps
-  } = props;
+export const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>((props, ref) => {
+  const { size, icon, to, onClick, className, disabled, ...otherProps } = props;
 
-  const mergedProps = mergeProps({ to, size, avatar }, defaultProps);
+  const navigate = useNavigate();
+  const mergedProps = mergeProps({ to, size }, defaultProps);
 
-  const theme = useThemeCTX();
-  const clxss = clsx('Avatar', className);
+  const clxss = clsx(
+    'Avatar',
+    { [`Avatar--size-${mergedProps.size}`]: mergedProps.size },
+    className
+  );
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigate(mergedProps.to || '/');
+    onClick?.(e);
+  };
 
   return (
-    <Component {...otherProps} to={to} ref={ref} className={clxss}>
-      <Icon name={theme.state.avatar || mergedProps.avatar} size={mergedProps.size} />
-    </Component>
+    <button
+      {...otherProps}
+      ref={ref}
+      role="button"
+      className={clxss}
+      tabIndex={disabled ? undefined : 0}
+      data-disabled={!disabled ? undefined : disabled}
+      aria-disabled={!disabled ? undefined : disabled}
+      onClick={handleClick}
+    >
+      <Icon name={icon} size={mergedProps.size} />
+    </button>
   );
 });

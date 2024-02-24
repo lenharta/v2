@@ -1,19 +1,12 @@
 import * as React from 'react';
-import type { Core } from '@/types/core';
 
-export type UnstyledButtonProps = {};
+type UnstyledButtonBaseProps = React.JSX.IntrinsicElements['button'];
 
-export type UnstyledButtonFactory = Core.RefFactory<{
-  ref: HTMLButtonElement;
-  props: UnstyledButtonProps;
-  component: 'button';
-}>;
+export interface UnstyledButtonProps extends UnstyledButtonBaseProps {}
 
-export const UnstyledButton: UnstyledButtonFactory = React.forwardRef((props, ref) => {
-  const { children, component: Component = 'button', ...otherProps } = props;
-  return (
-    <Component {...otherProps} ref={ref}>
-      {children}
-    </Component>
-  );
-});
+export const UnstyledButton = React.forwardRef<HTMLButtonElement, UnstyledButtonBaseProps>(
+  (props, ref) => {
+    const { ...otherProps } = props;
+    return <button {...otherProps} ref={ref} />;
+  }
+);
