@@ -10,13 +10,6 @@
 
     outline: solid 2px transparent;
 
-    &:focus:not(:focus:focus-visible) {
-      outline-color: transparent;
-    }
-    &:focus:focus-visible {
-      outline-color: rgba(var(--rgb-indigo), 1);
-    }
-
     &::after {
       content: '';
       position: absolute;
@@ -26,9 +19,11 @@
       right: -2px;
       left: -2px;
     }
+
     &:hover {
       background-color: rgba(var(--rgb-primary-surface), 0.08);
     }
+
     &:hover::after {
       background-color: rgba(var(--rgb-accent), 0.5);
       bottom: -2px;

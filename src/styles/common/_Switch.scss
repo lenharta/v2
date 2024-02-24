@@ -1,9 +1,16 @@
 .Switch {
-  width: 100%;
-  display: block;
+  --switch-padding-x-xs: calc(var(--unit) * 4);
+  --switch-padding-x-sm: calc(var(--unit) * 4);
+  --switch-padding-x-md: calc(var(--unit) * 6);
+  --switch-padding-x-lg: calc(var(--unit) * 6);
+  --switch-padding-x-xl: calc(var(--unit) * 8);
 
-  &-icon {
-    width: var(--icon-size);
-    height: var(--icon-size);
-  }
+  --switch-height-xs: calc(var(--unit) * 18);
+  --switch-height-sm: calc(var(--unit) * 20);
+  --switch-height-md: calc(var(--unit) * 22);
+  --switch-height-lg: calc(var(--unit) * 24);
+  --switch-height-xl: calc(var(--unit) * 26);
+
+  height: var(--switch-height, var(--switch-height-xs));
+  padding-inline: var(--switch-padding-x, var(--switch-padding-x-xs));
 }

@@ -1,20 +1,15 @@
 import * as React from 'react';
-import type { Core } from '@/types/core';
 
-export type PageContainerProps = {};
+export type PageContainerBaseProps = React.JSX.IntrinsicElements['div'];
 
-export type PageContainerFactory = Core.RefFactory<{
-  ref: HTMLDivElement;
-  props: PageContainerProps;
-  component: 'div';
-}>;
+export interface PageContainerProps extends PageContainerBaseProps {}
 
-export const PageContainer: PageContainerFactory = React.forwardRef((props, ref) => {
-  const { children, component: Component = 'div', ...otherProps } = props;
+export const PageContainer = React.forwardRef<HTMLDivElement, PageContainerProps>((props, ref) => {
+  const { children } = props;
   return (
-    <Component {...otherProps} className="Page-container" ref={ref}>
+    <div className="Page-container" ref={ref}>
       {children}
-    </Component>
+    </div>
   );
 });
 

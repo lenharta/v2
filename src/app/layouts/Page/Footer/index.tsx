@@ -1,21 +1,16 @@
 import * as React from 'react';
 import { PageContainer } from '../Container';
-import type { Core } from '@/types/core';
 
-export type PageFooterProps = {};
+export type PageFooterBaseProps = React.JSX.IntrinsicElements['footer'];
 
-export type PageFooterFactory = Core.RefFactory<{
-  ref: HTMLDivElement;
-  props: PageFooterProps;
-  component: 'footer';
-}>;
+export interface PageFooterProps extends PageFooterBaseProps {}
 
-export const PageFooter: PageFooterFactory = React.forwardRef((props, ref) => {
-  const { children, component: Component = 'footer', ...otherProps } = props;
+export const PageFooter = React.forwardRef<HTMLDivElement, PageFooterProps>((props, ref) => {
+  const { children } = props;
   return (
-    <Component {...otherProps} className="Page-footer" ref={ref}>
+    <footer className="Page-footer" ref={ref}>
       <PageContainer>{children}</PageContainer>
-    </Component>
+    </footer>
   );
 });
 

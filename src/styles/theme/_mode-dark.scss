@@ -1,22 +1,26 @@
 [data-prefers-color-scheme='dark'] {
-  --rgb-primary-base: 28, 28, 30;
-  --rgb-primary-text: 250, 250, 250;
-  --rgb-primary-surface: 250, 250, 250;
+  --c-primary: 28, 28, 30;
+  --c-secondary: 255, 255, 255;
+  --c-tertiary: 80, 80, 80;
 
-  --rgb-secondary-base: 250, 250, 250;
-  --rgb-secondary-text: 28, 28, 30;
-  --rgb-secondary-surface: 0, 0, 0;
+  --c-orange: 255, 159, 10;
+  --c-yellow: 255, 214, 10;
+  --c-green: 48, 209, 88;
+  --c-mint: 99, 230, 226;
+  --c-teal: 64, 203, 224;
+  --c-cyan: 100, 210, 255;
+  --c-blue: 10, 132, 255;
+  --c-indigo: 94, 92, 230;
+  --c-purple: 191, 90, 242;
+  --c-pink: 255, 55, 95;
+  --c-brown: 172, 142, 104;
+  --c-red: 255, 69, 58;
 
-  --rgb-orange: 255, 159, 10;
-  --rgb-yellow: 255, 214, 10;
-  --rgb-green: 48, 209, 88;
-  --rgb-mint: 99, 230, 226;
-  --rgb-teal: 64, 203, 224;
-  --rgb-cyan: 100, 210, 255;
-  --rgb-blue: 10, 132, 255;
-  --rgb-indigo: 94, 92, 230;
-  --rgb-purple: 191, 90, 242;
-  --rgb-pink: 255, 55, 95;
-  --rgb-brown: 172, 142, 104;
-  --rgb-red: 255, 69, 58;
+  // --rgb-primary-base: 28, 28, 30;
+  // --rgb-primary-text: 250, 250, 250;
+  // --rgb-primary-surface: 250, 250, 250;
+
+  // --rgb-secondary-base: 250, 250, 250;
+  // --rgb-secondary-text: 28, 28, 30;
+  // --rgb-secondary-surface: 0, 0, 0;
 }

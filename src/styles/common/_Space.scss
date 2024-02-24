@@ -1,21 +1,13 @@
 .Space {
-  width: 100%;
-  display: block;
-  height: var(--space-height);
+  --space-height-xxs: calc(var(--unit) * 12);
+  --space-height-xs: calc(var(--unit) * 18);
+  --space-height-sm: calc(var(--unit) * 24);
+  --space-height-md: calc(var(--unit) * 30);
+  --space-height-lg: calc(var(--unit) * 36);
+  --space-height-xl: calc(var(--unit) * 42);
+  --space-height-xxl: calc(var(--unit) * 48);
 
-  &--size-xs {
-    --space-height: var(--spacing-7);
-  }
-  &--size-sm {
-    --space-height: var(--spacing-8);
-  }
-  &--size-md {
-    --space-height: var(--spacing-9);
-  }
-  &--size-lg {
-    --space-height: var(--spacing-10);
-  }
-  &--size-xl {
-    --space-height: var(--spacing-11);
-  }
+  width: 100%;
+  height: var(--space-height);
+  display: block;
 }

@@ -1,4 +1,28 @@
 .Section {
+  --section-gap-xxs: calc(var(--unit) * 10);
+  --section-gap-xs: calc(var(--unit) * 14);
+  --section-gap-sm: calc(var(--unit) * 18);
+  --section-gap-md: calc(var(--unit) * 22);
+  --section-gap-lg: calc(var(--unit) * 26);
+  --section-gap-xl: calc(var(--unit) * 30);
+  --section-gap-xxl: calc(var(--unit) * 34);
+
+  --section-padding-y-xxs: calc(var(--unit) * 10);
+  --section-padding-y-xs: calc(var(--unit) * 12);
+  --section-padding-y-sm: calc(var(--unit) * 16);
+  --section-padding-y-md: calc(var(--unit) * 22);
+  --section-padding-y-lg: calc(var(--unit) * 30);
+  --section-padding-y-xl: calc(var(--unit) * 40);
+  --section-padding-y-xxl: calc(var(--unit) * 52);
+
+  --section-padding-y-xxs: calc(var(--unit) * 10);
+  --section-padding-y-xs: calc(var(--unit) * 12);
+  --section-padding-y-sm: calc(var(--unit) * 16);
+  --section-padding-y-md: calc(var(--unit) * 22);
+  --section-padding-y-lg: calc(var(--unit) * 30);
+  --section-padding-y-xl: calc(var(--unit) * 40);
+  --section-padding-y-xxl: calc(var(--unit) * 52);
+
   width: 100%;
   display: block;
   max-width: 100%;
@@ -11,23 +35,4 @@
     flex-direction: column;
     max-width: 100%;
   }
-}
-
-.Section,
-.Section-content {
-  --section-gap-xxs: calc(var(--unit) * 10);
-  --section-gap-xs: calc(var(--unit) * 14);
-  --section-gap-sm: calc(var(--unit) * 18);
-  --section-gap-md: calc(var(--unit) * 22);
-  --section-gap-lg: calc(var(--unit) * 26);
-  --section-gap-xl: calc(var(--unit) * 30);
-  --section-gap-xxl: calc(var(--unit) * 34);
-
-  --section-padding-xxs: calc(var(--unit) * 10);
-  --section-padding-xs: calc(var(--unit) * 12);
-  --section-padding-sm: calc(var(--unit) * 16);
-  --section-padding-md: calc(var(--unit) * 22);
-  --section-padding-lg: calc(var(--unit) * 30);
-  --section-padding-xl: calc(var(--unit) * 40);
-  --section-padding-xxl: calc(var(--unit) * 52);
 }

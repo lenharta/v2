@@ -1,23 +1,22 @@
-import { ChipItem } from './Item';
+import * as React from 'react';
 import { ChipGroup } from './Group';
-import type { Core } from '@/types/core';
+import { ChipItem } from './Item';
 
-export type ChipProps = {};
+export interface ChipProps {
+  children?: React.ReactNode;
+}
 
-export type ChipFactory = Core.BaseFactory<{
-  component: 'div';
-  props: ChipProps;
-  components: {
-    Item: typeof ChipItem;
-    Group: typeof ChipGroup;
-  };
-}>;
+export interface ChipComponent {
+  (props: ChipProps): JSX.Element | null;
+  displayName?: string;
+  Group: typeof ChipGroup;
+  Item: typeof ChipItem;
+}
 
-export const Chip: ChipFactory = (props) => {
-  const { component: Component = 'div', ...otherProps } = props;
-  return <Component {...otherProps} />;
+export const Chip: ChipComponent = (props) => {
+  return <React.Fragment>{props.children}</React.Fragment>;
 };
 
-Chip.displayName = '@v2/Chip.Root';
+Chip.displayName = '@v2/Chip';
 Chip.Group = ChipGroup;
 Chip.Item = ChipItem;

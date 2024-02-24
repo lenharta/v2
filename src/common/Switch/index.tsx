@@ -1,68 +1,43 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Label } from '../Label';
-import { Core } from '@/types/core';
-import { Size, Align, Justify } from '@/types/common';
+import { mergeProps } from '@/utils';
+import type { Size, Align } from '@/types/common';
 
-export type SwitchProps = {
+export type SwtichBaseProps = React.JSX.IntrinsicElements['button'];
+
+export interface SwtichProps extends SwtichBaseProps {
   size?: Size;
   align?: Align;
-  justify?: Justify;
-  info?: string;
   label?: string;
   error?: string;
   checked?: boolean;
-  readOnly?: boolean;
-  disabled?: boolean;
+}
+
+const defaultProps: Partial<SwtichProps> = {
+  size: 'sm',
 };
 
-export type SwitchFactory = Core.RefFactory<{
-  ref: HTMLButtonElement;
-  props: SwitchProps;
-  component: 'button';
-}>;
+export const Swtich = React.forwardRef<HTMLButtonElement, SwtichProps>((props, ref) => {
+  const { size, align, label, error, checked, disabled, children, ...otherProps } = props;
 
-export const Switch: SwitchFactory = React.forwardRef((props, ref) => {
-  const {
-    id,
-    size = 'sm',
-    align = 'center',
-    justify = 'start',
-    info,
-    label,
-    error,
-    disabled,
-    readOnly,
-    children,
-    className,
-    component: Component = 'button',
-    ...otherProps
-  } = props;
+  const mergedProps = mergeProps({ size, align }, defaultProps);
 
   const clxss = clsx(
-    'Switch',
-    { [`Switch--size-${size}`]: size },
-    { [`Switch--align-${align}`]: align },
-    { [`Switch--justify-${justify}`]: justify },
-    className
+    'Swtich',
+    { [`Swtich--size-${mergedProps.size}`]: mergedProps.size },
+    { [`Swtich--align-${mergedProps.align}`]: mergedProps.align }
   );
 
   return (
-    <Component
+    <button
       {...otherProps}
       ref={ref}
+      role="checkbox"
       className={clxss}
       data-disabled={disabled}
-      data-readonly={readOnly}
       aria-disabled={disabled}
-      aria-readonly={readOnly}
     >
       {children}
-      <div className="Switch-inner">
-        <Label htmlFor={id}>{label}</Label>
-        <div>{error}</div>
-        <div>{info}</div>
-      </div>
-    </Component>
+    </button>
   );
 });
