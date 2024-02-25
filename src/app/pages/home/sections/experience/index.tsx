@@ -4,7 +4,7 @@ import { NumberedCard } from '@/app/components';
 
 export const HomeExperience = () => {
   return (
-    <Section scheme="secondary">
+    <Section scheme="secondary" py="xl">
       <Section.Content className="sec-home-experience">
         <NumberedCard integer="01" title="Expertise">
           <Text>

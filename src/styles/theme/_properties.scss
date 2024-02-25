@@ -159,8 +159,7 @@
   }
 }
 
-.Stack,
-.Section {
+.Stack {
   &--gap-xxs {
     --section-gap: var(--section-gap-xxs);
     --stack-gap: var(--stack-gap-xxs);
@@ -268,7 +267,7 @@
 .Switch,
 .Section,
 .Checkbox {
-  &--size-xxs {
+  &--px-xxs {
     --button-padding-x: var(--button-padding-x-xxs);
     --checkbox-padding-x: var(--checkbox-padding-x-xxs);
     --chip-padding-x: var(--chip-padding-x-xxs);
@@ -277,7 +276,7 @@
     --space-padding-x: var(--space-padding-x-xxs);
     --switch-padding-x: var(--switch-padding-x-xxs);
   }
-  &--size-xs {
+  &--px-xs {
     --button-padding-x: var(--button-padding-x-xs);
     --checkbox-padding-x: var(--checkbox-padding-x-xs);
     --chip-padding-x: var(--chip-padding-x-xs);
@@ -286,7 +285,7 @@
     --space-padding-x: var(--space-padding-x-xs);
     --switch-padding-x: var(--switch-padding-x-xs);
   }
-  &--size-sm {
+  &--px-sm {
     --button-padding-x: var(--button-padding-x-sm);
     --checkbox-padding-x: var(--checkbox-padding-x-sm);
     --chip-padding-x: var(--chip-padding-x-sm);
@@ -295,7 +294,7 @@
     --space-padding-x: var(--space-padding-x-sm);
     --switch-padding-x: var(--switch-padding-x-sm);
   }
-  &--size-md {
+  &--px-md {
     --button-padding-x: var(--button-padding-x-md);
     --checkbox-padding-x: var(--checkbox-padding-x-md);
     --chip-padding-x: var(--chip-padding-x-md);
@@ -304,7 +303,7 @@
     --space-padding-x: var(--space-padding-x-md);
     --switch-padding-x: var(--switch-padding-x-md);
   }
-  &--size-lg {
+  &--px-lg {
     --button-padding-x: var(--button-padding-x-lg);
     --checkbox-padding-x: var(--checkbox-padding-x-lg);
     --chip-padding-x: var(--chip-padding-x-lg);
@@ -313,7 +312,7 @@
     --space-padding-x: var(--space-padding-x-lg);
     --switch-padding-x: var(--switch-padding-x-lg);
   }
-  &--size-xl {
+  &--px-xl {
     --button-padding-x: var(--button-padding-x-xl);
     --checkbox-padding-x: var(--checkbox-padding-x-xl);
     --chip-padding-x: var(--chip-padding-x-xl);
@@ -322,7 +321,7 @@
     --space-padding-x: var(--space-padding-x-xl);
     --switch-padding-x: var(--switch-padding-x-xl);
   }
-  &--size-xxl {
+  &--px-xxl {
     --button-padding-x: var(--button-padding-x-xxl);
     --checkbox-padding-x: var(--checkbox-padding-x-xxl);
     --chip-padding-x: var(--chip-padding-x-xxl);
@@ -330,6 +329,28 @@
     --section-padding-x: var(--section-padding-x-xxl);
     --space-padding-x: var(--space-padding-x-xxl);
     --switch-padding-x: var(--switch-padding-x-xxl);
+  }
+
+  &--py-xxs {
+    --section-padding-y: var(--section-padding-y-xxs);
+  }
+  &--py-xs {
+    --section-padding-y: var(--section-padding-y-xs);
+  }
+  &--py-sm {
+    --section-padding-y: var(--section-padding-y-sm);
+  }
+  &--py-md {
+    --section-padding-y: var(--section-padding-y-md);
+  }
+  &--py-lg {
+    --section-padding-y: var(--section-padding-y-lg);
+  }
+  &--py-xl {
+    --section-padding-y: var(--section-padding-y-xl);
+  }
+  &--py-xxl {
+    --section-padding-y: var(--section-padding-y-xxl);
   }
 }
 

@@ -10,7 +10,9 @@ export type SectionBaseProps = React.JSX.IntrinsicElements['section'];
 
 export interface SectionProps extends SectionBaseProps {
   scheme?: Scheme;
-  size?: SizeExpanded;
+  gap?: SizeExpanded;
+  px?: SizeExpanded;
+  py?: SizeExpanded;
 }
 
 export interface SectionComponent {
@@ -22,17 +24,18 @@ export interface SectionComponent {
 
 const defaultProps: Partial<SectionProps> = {
   scheme: 'primary',
-  size: 'sm',
 };
 
 export const Section: SectionComponent = (props) => {
-  const { size, scheme, children, className, ...otherProps } = props;
+  const { px, py, gap, scheme, children, className, ...otherProps } = props;
 
-  const mergedProps = mergeProps({ size, scheme }, defaultProps);
+  const mergedProps = mergeProps({ px, py, gap, scheme }, defaultProps);
 
   const clxss = clsx(
     'Section',
-    { [`Section--size-${mergedProps.size}`]: mergedProps.size },
+    { [`Section--gap-${mergedProps.gap}`]: mergedProps.gap },
+    { [`Section--px-${mergedProps.px}`]: mergedProps.px },
+    { [`Section--py-${mergedProps.py}`]: mergedProps.py },
     mergedProps.scheme,
     className
   );

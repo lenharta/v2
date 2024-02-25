@@ -2,16 +2,18 @@ import * as React from 'react';
 import { Title } from '@/common';
 import { Page } from '@/app/layouts';
 
-const HeroContent = () => (
-  <div className="Home-hero-content">
+const HomeHeroContent = () => (
+  <div className="sec-home-hero-content">
     <Title h1>Andrew Lenhart</Title>
     <Title h2>Software Engineer</Title>
   </div>
 );
 
-const HeroBlurFilter = () => <div className="Home-hero-filter" />;
+const HomeHeroFilter = () => {
+  return <div className="sec-home-hero-filter" />;
+};
 
-const HeroAnimation = () => {
+const HomeHeroAnimation = () => {
   const ref1 = React.useRef<HTMLDivElement>(null);
   const ref2 = React.useRef<HTMLDivElement>(null);
   const ref3 = React.useRef<HTMLDivElement>(null);
@@ -125,11 +127,11 @@ const HeroAnimation = () => {
 };
 
 export const HomeHero = () => (
-  <div className="Home-hero">
+  <div className="sec-home-hero">
     <Page.Container>
-      <HeroContent />
-      <HeroBlurFilter />
-      <HeroAnimation />
+      <HomeHeroContent />
+      <HomeHeroFilter />
+      <HomeHeroAnimation />
     </Page.Container>
   </div>
 );

@@ -1,22 +1,24 @@
 import { Section } from '@/app/layouts';
-import { Stack, Text, Title } from '@/common';
+import { Text, Title } from '@/common';
 
 export const HomeOverview = () => {
   return (
-    <Section>
-      <Stack gap="md">
-        <Title h2 scheme="accent-high">
+    <Section className="sec-home-overview">
+      <Section.Header className="sec-home-overview-header">
+        <Title scheme="accent" size="xxs" h2>
           Overview
         </Title>
-        <Title h3>Front-end Software Engineer, Human-Centered Problem Solver.</Title>
-        <Stack gap="md">
-          <Text scheme="med">
-            Striving to improve the human relationship with technology by designing and building
-            meaningful digital experiences for the modern world. wealth of expertise in modern
-            front-end technologies such as TypeScript, React.js, CSS, and more.
-          </Text>
-        </Stack>
-      </Stack>
+        <Title size="md" h3>
+          Front-end Software Engineer, Human-Centered Problem Solver.
+        </Title>
+      </Section.Header>
+      <Section.Content className="sec-home-overview-content">
+        <Text lead="sm">
+          Striving to improve the human relationship with technology by designing and building
+          meaningful digital experiences for the modern world. wealth of expertise in modern
+          front-end technologies such as TypeScript, React.js, CSS, and more.
+        </Text>
+      </Section.Content>
     </Section>
   );
 };

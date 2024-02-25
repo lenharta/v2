@@ -7,32 +7,29 @@ import { type SizeExpanded } from '@/types/common';
 export type SectionHeaderBaseProps = React.JSX.IntrinsicElements['header'];
 
 export interface SectionHeaderProps extends SectionHeaderBaseProps {
-  size?: SizeExpanded;
   title?: string;
+  gap?: SizeExpanded;
+  px?: SizeExpanded;
+  py?: SizeExpanded;
 }
 
-const defaultProps: Partial<SectionHeaderProps> = {
-  size: 'sm',
-};
+const defaultProps: Partial<SectionHeaderProps> = {};
 
 export const SectionHeader = React.forwardRef<HTMLElement, SectionHeaderProps>((props, ref) => {
-  const { size, title, children, className, ...otherProps } = props;
+  const { px, py, gap, title, children, className, ...otherProps } = props;
 
-  const mergedProps = mergeProps({ size }, defaultProps);
+  const mergedProps = mergeProps({ px, py, gap }, defaultProps);
 
-  const clxss = clsx('Section-header', {
-    [`Section-header--size-${mergedProps.size}`]: mergedProps.size,
-    className,
-  });
+  const clxss = clsx(
+    'Section-header',
+    { [`Section-header--gap-${mergedProps.gap}`]: mergedProps.gap },
+    { [`Section-header--px-${mergedProps.px}`]: mergedProps.px },
+    { [`Section-header--py-${mergedProps.py}`]: mergedProps.py },
+    className
+  );
 
   return (
     <header {...otherProps} ref={ref} className={clxss}>
-      {title && (
-        <Title className="Section-header-title" h2>
-          {title}
-        </Title>
-      )}
-
       {children}
     </header>
   );

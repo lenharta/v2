@@ -1,19 +1,21 @@
 .NumberedCard {
+  min-height: 100%;
   display: grid;
   place-content: start;
   grid-template-rows: auto;
-  grid-template-columns: repeat(1, 1fr);
-  padding-inline: calc(var(--unit) * 6);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   border-left: solid 2px transparent;
+  border-left-color: rgba(var(--c-accent), 1);
+  padding-inline: calc(var(--unit) * 8);
 
   &-integer {
-    font-size: var(--title-font-size-xl);
     margin-bottom: calc(var(--unit) * 12);
+    font-size: calc(var(--unit) * 16);
+    color: rgba(var(--c-accent), 1);
   }
-  &-title {
-    font-size: var(--title-font-size-sm);
-  }
+
   &-content .Text {
     margin-block: calc(var(--unit) * 6);
+    color: rgba(var(--c-primary), 0.76);
   }
 }

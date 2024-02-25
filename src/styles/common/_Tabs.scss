@@ -6,39 +6,31 @@
     box-sizing: border-box;
     height: var(--tab-height);
     padding-inline: var(--tab-padding-x, var(--spacing-3));
-    background-color: rgba(var(--rgb-primary-surface), 0.05);
-
     outline: solid 2px transparent;
 
     &::after {
       content: '';
       position: absolute;
       height: 2px;
-      background-color: rgba(var(--rgb-accent), 0.3);
       bottom: -2px;
       right: -2px;
       left: -2px;
     }
 
     &:hover {
-      background-color: rgba(var(--rgb-primary-surface), 0.08);
     }
 
     &:hover::after {
-      background-color: rgba(var(--rgb-accent), 0.5);
       bottom: -2px;
       height: 3px;
     }
 
     &--selected:hover {
-      background-color: rgba(var(--rgb-primary-surface), 0.08);
     }
     &--selected:hover::after {
-      background-color: rgba(var(--rgb-accent), 1);
     }
 
     &--selected::after {
-      background-color: rgba(var(--rgb-accent), 1);
       bottom: -2px;
       height: 3px;
     }
