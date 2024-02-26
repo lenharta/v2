@@ -17,7 +17,7 @@ const defaultProps: Partial<TextProps> = {
   emphasis: 'med',
   scheme: 'primary',
   weight: 'reg',
-  lead: 'sm',
+  lead: 'md',
   size: 'sm',
 };
 

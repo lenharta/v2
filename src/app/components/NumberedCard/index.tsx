@@ -18,10 +18,8 @@ export const NumberedCard: NumberedCardComponent = (props) => {
   const { integer = '01', title, children } = props;
   return (
     <article className="NumberedCard">
-      <span className="NumberedCard-integer">{integer}</span>
-      <Title component="h3" className="NumberedCard-title">
-        {title}
-      </Title>
+      <span className="NumberedCard-integer" children={integer} />
+      <Title className="NumberedCard-title" size="sm" children={title} h3 />
       <Stack className="NumberedCard-content">{children}</Stack>
     </article>
   );

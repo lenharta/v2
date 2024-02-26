@@ -13,7 +13,6 @@
   font-size: var(--control-font-size);
   font-family: var(--font-weight-lgt);
   border-radius: var(--control-radius);
-  background-color: rgba(var(--rgb-primary-surface), 0.05);
 
   &[data-orientation='horizontal'] {
     flex-direction: row;
@@ -35,7 +34,6 @@
     isolation: isolate;
     box-sizing: border-box;
     vertical-align: baseline;
-    background-color: rgba(var(--rgb-accent), 0.15);
     transition-property: transform;
     transition-duration: var(--easing-duration-5);
     transition-timing-function: var(--easing-standard-productive);
@@ -72,14 +70,11 @@
     }
 
     &[data-activated] {
-      color: rgba(var(--rgb-primary-surface), 1);
     }
     &:not([data-activated]) {
-      color: rgba(var(--rgb-primary-surface), 0.6);
     }
 
     &:hover {
-      color: rgba(var(--rgb-primary-surface), 0.8);
     }
 
     &:focus:not(:focus:focus-visible) {
@@ -87,7 +82,6 @@
       outline-offset: 4px;
     }
     &:focus:focus-visible {
-      outline-color: rgba(var(--rgb-indigo), 1);
       outline-offset: 4px;
     }
   }

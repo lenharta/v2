@@ -19,6 +19,9 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+
+  width: 100%;
+  display: flex;
   line-height: var(--title-line-height, var(--line-height-xs));
   font-weight: var(--title-font-weight, var(--font-weight-reg));
   font-size: var(--title-font-size, var(--title-font-size-xs));
