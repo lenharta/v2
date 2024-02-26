@@ -30,12 +30,10 @@ export const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>((pro
   const theme = useThemeCTX();
   return (
     <div {...otherProps} ref={ref} className="Page-header">
-      <PageContainer>
-        <nav className="Page-nav">
-          <HeaderLogo />
-          <HeaderAvatar {...theme.state} />
-        </nav>
-      </PageContainer>
+      <nav className="Page-nav">
+        <HeaderLogo />
+        <HeaderAvatar {...theme.state} />
+      </nav>
     </div>
   );
 });

@@ -1,48 +1,30 @@
 .Section {
-  --section-gap-xxs: calc(var(--unit) * 6);
-  --section-gap-xs: calc(var(--unit) * 10);
-  --section-gap-sm: calc(var(--unit) * 14);
-  --section-gap-md: calc(var(--unit) * 18);
-  --section-gap-lg: calc(var(--unit) * 22);
-  --section-gap-xl: calc(var(--unit) * 26);
-  --section-gap-xxl: calc(var(--unit) * 30);
-
-  --section-padding-x-xxs: calc(var(--unit) * 10);
-  --section-padding-x-xs: calc(var(--unit) * 12);
-  --section-padding-x-sm: calc(var(--unit) * 16);
-  --section-padding-x-md: calc(var(--unit) * 22);
-  --section-padding-x-lg: calc(var(--unit) * 30);
-  --section-padding-x-xl: calc(var(--unit) * 40);
-  --section-padding-x-xxl: calc(var(--unit) * 52);
-
-  --section-padding-y-xxs: calc(var(--unit) * 10);
-  --section-padding-y-xs: calc(var(--unit) * 12);
-  --section-padding-y-sm: calc(var(--unit) * 16);
-  --section-padding-y-md: calc(var(--unit) * 22);
-  --section-padding-y-lg: calc(var(--unit) * 30);
-  --section-padding-y-xl: calc(var(--unit) * 40);
-  --section-padding-y-xxl: calc(var(--unit) * 52);
-
   width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-block: var(--section-padding-y);
-  padding-inline: var(--section-padding-x);
+  display: block;
+  // display: flex;
+  // align-items: flex-start;
+  // justify-content: flex-start;
+  // flex-direction: column;
 
   &-header {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
+    // width: 100%;
+    height: 100%;
+    display: block;
+    max-width: var(--page-width);
+    margin-inline: auto;
+    padding-inline: var(--page-gutter);
+
+    // border: solid 2px green;
   }
 
   &-content {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
+    // width: 100%;
+    height: 100%;
+    display: block;
+    max-width: var(--page-width);
+    margin-inline: auto;
+    padding-inline: var(--page-gutter);
+
+    // border: solid 2px blue;
   }
 }

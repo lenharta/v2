@@ -4,17 +4,14 @@
 }
 
 html,
-body {
+body,
+#root {
   display: block;
   font-size: 16px;
   box-sizing: border-box;
   overflow-x: hidden;
   padding: 0;
   margin: 0;
-}
-
-main {
-  display: block;
 }
 
 p,

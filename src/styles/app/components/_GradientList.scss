@@ -1,0 +1,6 @@
+.GradientList {
+  display: grid;
+  place-content: start;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
