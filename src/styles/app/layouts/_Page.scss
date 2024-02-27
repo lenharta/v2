@@ -66,10 +66,13 @@
   }
 
   &-hero {
+    width: 100%;
     display: block;
+    margin-inline: auto;
     padding-block: var(--page-gutter);
+    max-width: var(--page-width);
 
-    &-title {
+    h1 {
       margin-top: calc(var(--page-nav-height) * 4);
     }
   }

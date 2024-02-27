@@ -1,13 +1,11 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
 import { ScreenContent } from './Content';
+import { ThemeProvider } from '@/store';
 
 export type ScreenBaseProps = React.JSX.IntrinsicElements['div'];
 
-export interface ScreenProps extends ScreenBaseProps {
-  variant?: 'default';
-}
+export interface ScreenProps extends ScreenBaseProps {}
 
 export interface ScreenComponent {
   (props: ScreenProps): JSX.Element | null;
@@ -15,21 +13,15 @@ export interface ScreenComponent {
   Content: typeof ScreenContent;
 }
 
-const defaultProps: Partial<ScreenProps> = {
-  variant: 'default',
-};
-
 export const Screen: ScreenComponent = (props) => {
-  const { variant, children, className, ...otherProps } = props;
-
-  const mergedProps = mergeProps({ variant }, defaultProps);
-
-  const clxss = clsx('Screen', { [`Screen--variant-${variant}`]: mergedProps.variant }, className);
-
+  const { children, className, ...otherProps } = props;
+  const clxss = clsx('Screen', className);
   return (
-    <div {...otherProps} className={clxss}>
-      {children}
-    </div>
+    <ThemeProvider>
+      <div {...otherProps} className={clxss}>
+        {children}
+      </div>
+    </ThemeProvider>
   );
 };
 

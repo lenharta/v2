@@ -7,9 +7,6 @@ export type StoreState = {
   sessionId?: string;
   isMenuOpen?: boolean;
   isToastOpen?: boolean;
-  // tunnel?: any;
-  // toast?: { open?: boolean; message: string };
-  // menu?: { open?: boolean; side: 'left' | 'right' };
 };
 
 export type Store = StoreState;

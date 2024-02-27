@@ -11,16 +11,15 @@
   h2 {
     display: block;
     line-height: 1.2;
-  }
-
-  h1 {
-    padding-inline: var(--page-gutter);
-    font-weight: var(--font-weight-med);
-    font-size: calc(var(--unit) * 16);
-
     transition-property: color;
     transition-timing-function: var(--easing-standard-expressive);
     transition-duration: var(--easing-duration-5);
+    padding-inline: var(--page-gutter);
+  }
+
+  h1 {
+    font-weight: var(--font-weight-med);
+    font-size: calc(var(--unit) * 16);
 
     @media (min-width: 40em) {
       font-size: calc(var(--unit) * 20);
@@ -31,14 +30,9 @@
   }
 
   h2 {
-    padding-inline: var(--page-gutter);
     font-weight: var(--font-weight-reg);
     font-size: calc(var(--unit) * 14);
     color: rgba(var(--c-accent), 1);
-
-    transition-property: color;
-    transition-timing-function: var(--easing-standard-expressive);
-    transition-duration: var(--easing-duration-5);
 
     @media (min-width: 40em) {
       font-size: calc(var(--unit) * 16);
@@ -58,7 +52,6 @@
 
   &-filter {
     z-index: -1;
-    backdrop-filter: blur(2px);
     margin-top: var(--page-nav-height);
   }
 
@@ -102,9 +95,6 @@
       0% {
         opacity: 1;
       }
-      50% {
-        opacity: 0.5;
-      }
       100% {
         opacity: 1;
       }
@@ -115,9 +105,15 @@
       --box-percentage: calc(var(--box-index) / 12);
       --row-percentage: calc(var(--row-index) / 12);
 
+      animation-name: pattern-row-animation;
+      animation-duration: var(--ANIMATION-DURATION);
+      animation-fill-mode: var(--ANIMATION-FILL-MODE);
+      animation-timing-function: var(--ANIMATION-BEZIER);
+      animation-iteration-count: var(--ANIMATION-ITERATION);
+
       transition-duration: var(--easing-duration-5);
       transition-property: background-color, opacity;
-      transition-timing-function: var(--easing-standard-productive);
+      transition-timing-function: var(--easing-standard-expressive);
       transition-delay: calc(
         40ms * calc(calc(calc(var(--box-index) + 1) * var(--row-index)) / 3.1415926539)
       );
@@ -167,12 +163,6 @@
     }
 
     &-box {
-      animation-name: pattern-row-animation;
-      animation-duration: var(--ANIMATION-DURATION);
-      animation-fill-mode: var(--ANIMATION-FILL-MODE);
-      animation-timing-function: var(--ANIMATION-BEZIER);
-      animation-iteration-count: var(--ANIMATION-ITERATION);
-
       background-color: rgba(var(--c-accent), calc(var(--box-percentage) * var(--row-percentage)));
 
       &:nth-of-type(1) {
@@ -231,10 +221,13 @@
   padding-block: calc(var(--unit) * 32);
 
   &-header h3 {
+    font-size: calc(var(--unit) * 20);
     margin-top: calc(var(--unit) * 16);
   }
   &-content .Text {
+    font-size: calc(var(--unit) * 12);
     margin-top: calc(var(--unit) * 16);
+    color: rgba(var(--c-secondary), 0.76);
   }
 }
 

@@ -35,7 +35,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     return get();
   }, []);
 
-  const [store, dispatch] = React.useReducer(
+  const [theme, dispatch] = React.useReducer(
     (current: ThemeStore, update: Partial<ThemeStore>) => ({
       ...current,
       ...update,
@@ -46,7 +46,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 
   const setMode = (value: ThemeStore['mode']) => {
     try {
-      local.write({ ...store, mode: value });
+      local.write({ ...theme, mode: value });
       dispatch({ mode: value });
     } catch (error: any) {
       console.error(`ERROR:[@v2/storage/local]: Check 'SET-MODE' method @ ${value}`);
@@ -55,7 +55,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 
   const setAccent = (value: ThemeStore['accent']) => {
     try {
-      local.write({ ...store, accent: value });
+      local.write({ ...theme, accent: value });
       dispatch({ accent: value });
     } catch (error: any) {
       console.error(`ERROR:[@v2/storage/local]: Check 'SET-ACCENT' method @ ${value}`);
@@ -64,7 +64,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 
   const setAvatar = (value: ThemeStore['avatar']) => {
     try {
-      local.write({ ...store, avatar: value });
+      local.write({ ...theme, avatar: value });
       dispatch({ avatar: value });
     } catch (error: any) {
       console.error(`ERROR:[@v2/storage/local]: Check 'SET-AVATAR' method @ ${value}`);
@@ -73,7 +73,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 
   const setDir = (value: ThemeStore['dir']) => {
     try {
-      local.write({ ...store, dir: value });
+      local.write({ ...theme, dir: value });
       dispatch({ dir: value });
     } catch (error: any) {
       console.error(`ERROR:[@v2/storage/local]: Check 'SET-DIR' method @ ${value}`);
@@ -82,13 +82,13 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 
   React.useEffect(() => {
     const root = document.getElementById('root')!;
-    root.setAttribute('data-prefers-script-dir', String(store.dir));
-    root.setAttribute('data-prefers-color-scheme', String(store.mode));
-    root.setAttribute('data-prefers-color-accent', String(store.accent));
-  }, [store]);
+    root.setAttribute('data-prefers-script-dir', String(theme.dir));
+    root.setAttribute('data-prefers-color-scheme', String(theme.mode));
+    root.setAttribute('data-prefers-color-accent', String(theme.accent));
+  }, [theme]);
 
   return (
-    <ThemeCTX.Provider value={{ state: store, setMode, setAccent, setAvatar, setDir }}>
+    <ThemeCTX.Provider value={{ state: theme, setMode, setAccent, setAvatar, setDir }}>
       {children}
     </ThemeCTX.Provider>
   );

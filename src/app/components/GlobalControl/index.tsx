@@ -95,21 +95,11 @@ export const GlobalControl = () => {
       {!mounted ? null : (
         <div className="GlobalControl-tools">
           <div className="GlobalControl-categories">
-            <Button scheme="primary" onClick={() => setActivePanel('nav')}>
-              Nav
-            </Button>
-            <Button scheme="primary" onClick={() => setActivePanel('mode')}>
-              Mode
-            </Button>
-            <Button scheme="primary" onClick={() => setActivePanel('dir')}>
-              Direction
-            </Button>
-            <Button scheme="primary" onClick={() => setActivePanel('accent')}>
-              Accent
-            </Button>
-            <Button scheme="primary" onClick={() => setActivePanel('avatar')}>
-              Avatar
-            </Button>
+            <Button onClick={() => setActivePanel('nav')}>Nav</Button>
+            <Button onClick={() => setActivePanel('mode')}>Mode</Button>
+            <Button onClick={() => setActivePanel('dir')}>Direction</Button>
+            <Button onClick={() => setActivePanel('accent')}>Accent</Button>
+            <Button onClick={() => setActivePanel('avatar')}>Avatar</Button>
           </div>
           <div className="GlobalControl-panel">
             {activePanel === 'nav' ? <GlobalControlPanelNav /> : null}
