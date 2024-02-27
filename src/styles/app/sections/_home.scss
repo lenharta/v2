@@ -100,16 +100,27 @@
       }
     }
 
+    &-box {
+      [data-animation-enter] & {
+        background-color: rgba(
+          var(--c-accent),
+          calc(var(--box-percentage) * var(--row-percentage))
+        );
+      }
+    }
+
     &-row,
     &-box {
       --box-percentage: calc(var(--box-index) / 12);
       --row-percentage: calc(var(--row-index) / 12);
 
-      animation-name: pattern-row-animation;
-      animation-duration: var(--ANIMATION-DURATION);
-      animation-fill-mode: var(--ANIMATION-FILL-MODE);
-      animation-timing-function: var(--ANIMATION-BEZIER);
-      animation-iteration-count: var(--ANIMATION-ITERATION);
+      [data-animation-enter] & {
+        animation-name: pattern-row-animation;
+        animation-duration: var(--ANIMATION-DURATION);
+        animation-fill-mode: var(--ANIMATION-FILL-MODE);
+        animation-timing-function: var(--ANIMATION-BEZIER);
+        animation-iteration-count: var(--ANIMATION-ITERATION);
+      }
 
       transition-duration: var(--easing-duration-5);
       transition-property: background-color, opacity;
@@ -163,8 +174,6 @@
     }
 
     &-box {
-      background-color: rgba(var(--c-accent), calc(var(--box-percentage) * var(--row-percentage)));
-
       &:nth-of-type(1) {
         --box-index: 1;
         --box-opacity: var(--box-opacity-1);

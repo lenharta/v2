@@ -7,6 +7,7 @@ export type StoreState = {
   sessionId?: string;
   isMenuOpen?: boolean;
   isToastOpen?: boolean;
+  isTransition?: boolean;
 };
 
 export type Store = StoreState;

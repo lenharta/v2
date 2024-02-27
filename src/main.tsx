@@ -6,7 +6,7 @@ import './styles/main.scss';
 import { Root } from '@/app';
 import { Home, Preferences, Toolbox, Demo } from '@/app/pages';
 
-import { OnBoardScreen, PageError404 } from './app/screens';
+import { OnBoardScreen, PageError404, SplashScreen } from './app/screens';
 
 import {
   DemoAnimation,
@@ -23,8 +23,9 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <PageError404 />,
     children: [
-      { index: true, element: <OnBoardScreen /> },
+      { index: true, element: <SplashScreen /> },
       { path: '/home', element: <Home /> },
+      { path: '/onboard', element: <OnBoardScreen /> },
       { path: '/toolbox', element: <Toolbox /> },
       { path: '/preferences', element: <Preferences /> },
       {
