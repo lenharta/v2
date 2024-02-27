@@ -1,6 +1,14 @@
 import { Title } from '@/common';
+import React from 'react';
 
 export const HomeHero = () => {
+  const [isAnimating, setAnimating] = React.useState<boolean>();
+
+  React.useLayoutEffect(() => {
+    setTimeout(() => setAnimating(true), 500);
+    return () => setAnimating(undefined);
+  }, []);
+
   return (
     <div className="sec-home-hero">
       <div className="sec-home-hero-content">
@@ -8,7 +16,7 @@ export const HomeHero = () => {
         <Title h2>Software Engineer</Title>
       </div>
       <HomeHeroFilter />
-      <div className="sec-home-hero-pattern">
+      <div className="sec-home-hero-pattern" data-animation-enter={isAnimating}>
         <HomeHeroPatternRow />
         <HomeHeroPatternRow />
         <HomeHeroPatternRow />
