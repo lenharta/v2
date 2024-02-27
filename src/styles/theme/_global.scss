@@ -38,6 +38,28 @@
     --c-accent: var(--c-red);
   }
 
+  #root {
+    color: rgba(var(--c-secondary), 1);
+    background-color: rgba(var(--c-primary), 1);
+  }
+
+  .Page,
+  .Screen,
+  .GlobalControl {
+    color: rgba(var(--c-secondary), 1);
+    background-color: rgba(var(--c-primary), 1);
+  }
+
+  .Page-header {
+    backdrop-filter: blur(16px);
+    background-color: rgba(var(--c-primary), 0.9);
+  }
+
+  .Text.accent,
+  .Title.accent {
+    color: rgba(var(--c-accent), 1);
+  }
+
   .Button {
     background-color: rgba(var(--c-secondary), 0.08);
   }
@@ -82,6 +104,25 @@
   }
 
   .Section.primary {
+    .Tile {
+      background-color: rgba(var(--c-secondary), 0.04);
+
+      &[data-interactive='true'] {
+        &:focus:not(:focus-visible) {
+          outline-color: transparent;
+        }
+        &:focus:focus-visible {
+          outline-color: rgba(var(--c-indigo), 1);
+        }
+        &:hover {
+          background-color: rgba(var(--c-secondary), 0.08);
+        }
+        &:active {
+          background-color: rgba(var(--c-secondary), 0.12);
+        }
+      }
+    }
+
     .Button {
       background-color: rgba(var(--c-secondary), 0.08);
     }
@@ -125,6 +166,25 @@
   }
 
   .Section.secondary {
+    .Tile {
+      background-color: rgba(var(--c-primary), 0.04);
+
+      &[data-interactive='true'] {
+        &:focus:not(:focus-visible) {
+          outline-color: transparent;
+        }
+        &:focus:focus-visible {
+          outline-color: rgba(var(--c-indigo), 1);
+        }
+        &:hover {
+          background-color: rgba(var(--c-primary), 0.08);
+        }
+        &:active {
+          background-color: rgba(var(--c-primary), 0.12);
+        }
+      }
+    }
+
     .Button {
       background-color: rgba(var(--c-primary), 0.08);
     }
@@ -165,22 +225,5 @@
     .Button.inverted:active {
       background-color: rgba(var(--c-primary), 0.8);
     }
-  }
-
-  .Text.accent,
-  .Title.accent {
-    color: rgba(var(--c-accent), 1);
-  }
-
-  .Page,
-  .Screen,
-  .GlobalControl {
-    color: rgba(var(--c-secondary), 1);
-    background-color: rgba(var(--c-primary), 1);
-  }
-
-  .Page-header {
-    backdrop-filter: blur(16px);
-    background-color: rgba(var(--c-primary), 0.9);
   }
 }

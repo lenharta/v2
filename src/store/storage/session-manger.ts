@@ -1,8 +1,6 @@
-import { generateRandomId } from '@/utils';
+import { generateRandomId, serializeJSON, deserializeJSON } from '@/utils';
 
-export const sessionManager = (key: string) => {
-  const connect = () => generateRandomId(16);
-
+export const sessionManager = <T extends Record<string, any>>(key: string) => {
   const read = (): boolean => {
     try {
       const res = window.sessionStorage.getItem(key);
@@ -13,9 +11,9 @@ export const sessionManager = (key: string) => {
     }
   };
 
-  const write = (): boolean => {
+  const write = (data: T): boolean => {
     try {
-      window.sessionStorage.setItem(key, connect());
+      window.sessionStorage.setItem(key, serializeJSON(data));
       return true;
     } catch (error: any) {
       console.error(`ERROR:[@v2/storage/session]: Check 'WRITE' method @ ${key}`);
@@ -23,9 +21,9 @@ export const sessionManager = (key: string) => {
     }
   };
 
-  const fetch = (): string | null => {
+  const fetch = (): T | null => {
     try {
-      return window.sessionStorage.getItem(key);
+      return deserializeJSON<T>(window.sessionStorage.getItem(key)!) as T;
     } catch (error: any) {
       console.error(`ERROR:[@v2/storage/session]: Check 'FETCH' method @ ${key}`);
       return null;

@@ -3,18 +3,28 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './styles/main.scss';
 
-import { Root, Error } from '@/app';
+import { Root } from '@/app';
 import { Home, Preferences, Toolbox, Demo } from '@/app/pages';
-import { DemoAnimation } from './app/demo/animation';
-import { DemoCheckbox, DemoControl, DemoDropdown, DemoOverlay, DemoSummary } from './app/demo';
+
+import { OnBoardScreen, PageError404 } from './app/screens';
+
+import {
+  DemoAnimation,
+  DemoCheckbox,
+  DemoControl,
+  DemoDropdown,
+  DemoOverlay,
+  DemoSummary,
+} from './app/demo';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <Error />,
+    errorElement: <PageError404 />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <OnBoardScreen /> },
+      { path: '/home', element: <Home /> },
       { path: '/toolbox', element: <Toolbox /> },
       { path: '/preferences', element: <Preferences /> },
       {

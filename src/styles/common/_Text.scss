@@ -1,29 +1,18 @@
 @use '../mixins' as mixins;
 
 .Text {
-  --text-font-size-xxs: calc(var(--unit) * 6);
-  --text-font-size-xs: calc(var(--unit) * 7);
-  --text-font-size-sm: calc(var(--unit) * 8);
-  --text-font-size-md: calc(var(--unit) * 9);
-  --text-font-size-lg: calc(var(--unit) * 10);
-  --text-font-size-xl: calc(var(--unit) * 11);
-  --text-font-size-xxl: calc(var(--unit) * 12);
-
-  --text-line-height-xxs: 1;
-  --text-line-height-xs: 1.1;
-  --text-line-height-sm: 1.2;
-  --text-line-height-md: 1.4;
-  --text-line-height-lg: 1.6;
-  --text-line-height-xl: 1.8;
-  --text-line-height-xxl: 2;
-
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  line-height: var(--text-line-height, var(--text-line-height-xs));
-  font-weight: var(--text-font-weight, var(--font-weight-reg));
-  font-size: var(--text-font-size, var(--text-font-size-xs));
+  display: block;
+  line-height: 1.2;
+  font-weight: var(--font-weight-reg);
+  text-align: start;
+
+  @include mixins.rtl {
+    text-align: end;
+  }
 
   &[data-variant='gradient'] {
     background-image: var(--text-gradient);

@@ -1,0 +1,29 @@
+.Tile {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-block: calc(var(--unit) * 8);
+  padding-inline: calc(var(--unit) * 8);
+  outline: solid 2px transparent;
+  border: solid 2px transparent;
+
+  &[data-interactive='true'] {
+    user-select: none;
+  }
+}
+
+.Tile-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--unit) * 1);
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+  }
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+  }
+}

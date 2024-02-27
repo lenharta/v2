@@ -1,8 +1,7 @@
 import { Page } from '@/app/layouts';
-
 import { HomeHero } from './sections/hero';
 import { HomeOverview } from './sections/overview';
-import { HomeExperience } from './sections/experience';
+import { GradientDivider } from '@/app/components/GradientDivider';
 
 export const Home = () => {
   return (
@@ -10,7 +9,7 @@ export const Home = () => {
       <HomeHero />
       <Page.Content>
         <HomeOverview />
-        <HomeExperience />
+        <GradientDivider />
       </Page.Content>
     </Page>
   );
