@@ -23,8 +23,7 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <PageError404 />,
     children: [
-      { index: true, element: <SplashScreen /> },
-      { path: '/home', element: <Home /> },
+      { index: true, element: <Home /> },
       { path: '/onboard', element: <OnBoardScreen /> },
       { path: '/toolbox', element: <Toolbox /> },
       { path: '/preferences', element: <Preferences /> },

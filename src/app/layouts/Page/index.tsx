@@ -25,19 +25,18 @@ export type PageFactory = Core.BaseFactory<{
 
 export const Page: PageFactory = (props) => {
   const { children, ...otherProps } = props;
+
   const store = useStore();
-  const dispatch = useStoreDispatch();
   const location = useLocation();
+  const dispatch = useStoreDispatch();
 
   React.useLayoutEffect(() => {
     dispatch({ isTransition: true });
-    setTimeout(() => dispatch({ isTransition: undefined }), 1500);
+    setTimeout(() => dispatch({ isTransition: undefined }), 1800);
   }, [location]);
 
-  console.log(store.isTransition);
-
   return (
-    <div {...otherProps} className="Page" data-transition={store.isTransition ? true : undefined}>
+    <div {...otherProps} className="Page" data-transition={store.isTransition}>
       <Page.Header />
       {children}
       <GlobalControl />

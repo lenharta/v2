@@ -14,9 +14,11 @@
 @keyframes page-transition {
   0% {
     opacity: 1;
+    background-color: rgba(var(--c-primary, 1));
   }
   100% {
     opacity: 0;
+    background-color: rgba(var(--c-primary, 0));
   }
 }
 
@@ -97,17 +99,18 @@
     bottom: 0;
     z-index: 100000;
     position: absolute;
-    background-color: rgba(var(--c-primary, 1));
 
-    // transition-property: background-color;
     // transition-timing-function: var(--easing-standard-expressive);
-    // transition-duration: var(--easing-duration-5);
+
+    transition-property: background-color;
+    transition-duration: 1600ms;
+    transition-timing-function: ease-in-out;
 
     animation-name: page-transition;
-    animation-duration: 1500ms;
+    animation-duration: 1600ms;
     animation-iteration-count: 1;
-    animation-timing-function: var(--easing-standard-expressive);
-    animation-fill-mode: both;
-    animation-delay: 250ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    // animation-delay: 250ms;
   }
 }

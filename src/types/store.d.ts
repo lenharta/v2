@@ -8,6 +8,7 @@ export type StoreState = {
   isMenuOpen?: boolean;
   isToastOpen?: boolean;
   isTransition?: boolean;
+  isAnimating?: boolean;
 };
 
 export type Store = StoreState;
