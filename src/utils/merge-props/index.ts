@@ -7,7 +7,7 @@ export type MergePropsReturn<T extends Record<string, any>, U extends Partial<T>
 export function mergeProps<T extends Record<string, any>, U extends Partial<T> = {}>(
   props: T,
   defaultProps: U = {} as U,
-  contextProps: U = {} as U
+  contextProps: any = {} as U
 ): MergePropsReturn<T> {
   return { ...defaultProps, ...filterProps(contextProps), ...filterProps(props) };
 }

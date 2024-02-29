@@ -1,63 +1,367 @@
+@use '../mixins' as mixins;
+
+.InputLabel {
+  --label-font-size-xs: calc(var(--unit) * 5);
+  --label-font-size-sm: calc(var(--unit) * 6);
+  --label-font-size-md: calc(var(--unit) * 7);
+  --label-font-size-lg: calc(var(--unit) * 8);
+  --label-font-size-xl: calc(var(--unit) * 9);
+
+  display: var(--label-display, inline-flex);
+  align-items: var(--label-align, center);
+  flex-direction: var(--label-direction, row);
+
+  font-size: var(--label-font-size, var(--label-font-size-xs));
+  font-weight: var(--label-font-weight, var(--font-weight-med));
+  line-height: var(--label-line-height, 1);
+  text-align: var(--label-text-align, start);
+
+  color: var(--label-color, inherit);
+  transition-property: color, background-color, border, outline;
+  transition-timing-function: var(--easing-standard-productive);
+  transition-duration: var(--easing-duration-1);
+
+  .primary & {
+    --label-color: rgba(var(--c-secondary), 0.87);
+  }
+  .secondary & {
+    --label-color: rgba(var(--c-primary), 0.87);
+  }
+
+  &:not([data-disabled]),
+  &:not([data-loading]) {
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+  &[data-loading] {
+    cursor: progress;
+  }
+
+  @include mixins.rtl {
+    --label-text-align: end;
+  }
+
+  &--size-xs {
+    --label-font-size: var(--label-font-size-xs);
+  }
+  &--size-sm {
+    --label-font-size: var(--label-font-size-sm);
+  }
+  &--size-md {
+    --label-font-size: var(--label-font-size-md);
+  }
+  &--size-lg {
+    --label-font-size: var(--label-font-size-lg);
+  }
+  &--size-xl {
+    --label-font-size: var(--label-font-size-xl);
+  }
+}
+
+.InputDescription {
+  --description-font-size-xs: calc(var(--unit) * 5);
+  --description-font-size-sm: calc(var(--unit) * 6);
+  --description-font-size-md: calc(var(--unit) * 7);
+  --description-font-size-lg: calc(var(--unit) * 8);
+  --description-font-size-xl: calc(var(--unit) * 9);
+
+  display: var(--description-display, inline-flex);
+  align-items: var(--description-align, center);
+  flex-direction: var(--description-direction, row);
+
+  font-size: var(--description-font-size, var(--description-font-size-xs));
+  font-weight: var(--description-font-weight, var(--font-weight-reg));
+  line-height: var(--description-line-height, 1);
+  text-align: var(--description-text-align, start);
+
+  color: var(--description-color, inherit);
+  transition-property: color, background-color, border, outline;
+  transition-timing-function: var(--easing-standard-productive);
+  transition-duration: var(--easing-duration-1);
+
+  .primary & {
+    --description-color: rgba(var(--c-secondary), 0.64);
+  }
+  .secondary & {
+    --description-color: rgba(var(--c-primary), 0.64);
+  }
+
+  &:not([data-disabled]),
+  &:not([data-loading]) {
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+  &[data-loading] {
+    cursor: progress;
+  }
+
+  @include mixins.rtl {
+    --description-text-align: end;
+  }
+
+  &--size-xs {
+    --description-font-size: var(--description-font-size-xs);
+  }
+  &--size-sm {
+    --description-font-size: var(--description-font-size-sm);
+  }
+  &--size-md {
+    --description-font-size: var(--description-font-size-md);
+  }
+  &--size-lg {
+    --description-font-size: var(--description-font-size-lg);
+  }
+  &--size-xl {
+    --description-font-size: var(--description-font-size-xl);
+  }
+}
+
 .Checkbox {
-  --checkbox-padding-x-xs: calc(var(--unit) * 4);
-  --checkbox-padding-x-sm: calc(var(--unit) * 4);
-  --checkbox-padding-x-md: calc(var(--unit) * 6);
-  --checkbox-padding-x-lg: calc(var(--unit) * 6);
-  --checkbox-padding-x-xl: calc(var(--unit) * 8);
+  --cbx-gap-xs: calc(var(--unit) * 3);
+  --cbx-gap-sm: calc(var(--unit) * 4);
+  --cbx-gap-md: calc(var(--unit) * 5);
+  --cbx-gap-lg: calc(var(--unit) * 6);
+  --cbx-gap-xl: calc(var(--unit) * 7);
 
-  --checkbox-height-xs: calc(var(--unit) * 18);
-  --checkbox-height-sm: calc(var(--unit) * 20);
-  --checkbox-height-md: calc(var(--unit) * 22);
-  --checkbox-height-lg: calc(var(--unit) * 24);
-  --checkbox-height-xl: calc(var(--unit) * 26);
+  --cbx-height-xs: calc(var(--unit) * 16);
+  --cbx-height-sm: calc(var(--unit) * 18);
+  --cbx-height-md: calc(var(--unit) * 20);
+  --cbx-height-lg: calc(var(--unit) * 22);
+  --cbx-height-xl: calc(var(--unit) * 24);
 
-  width: 100%;
-  display: inline-flex;
+  --cbx-padding-x-xs: calc(var(--unit) * 1);
+  --cbx-padding-x-sm: calc(var(--unit) * 2);
+  --cbx-padding-x-md: calc(var(--unit) * 3);
+  --cbx-padding-x-lg: calc(var(--unit) * 4);
+  --cbx-padding-x-xl: calc(var(--unit) * 5);
+
+  user-select: none;
   position: relative;
-  align-items: center;
-  gap: calc(var(--unit) * 4);
-  height: var(--checkbox-height);
-  padding-inline: calc(var(--unit) * 4);
+  isolation: isolate;
+  z-index: 0;
+
+  display: var(--cbx-display, inline-flex);
+  align-items: var(--cbx-align, center);
+  justify-content: var(--cbx-justify, flex-start);
+  flex-direction: var(--cbx-direction, row);
+
+  padding-inline: var(--cbx-padding-x, var(--cbx-padding-x-xs));
+  height: var(--cbx-height, var(--cbx-height-xs));
+  gap: var(--cbx-gap, var(--cbx-gap-xs));
+
+  border: solid 2px transparent;
+  outline: solid 2px transparent;
+  transition-property: color, background-color, border, outline;
+  transition-timing-function: var(--easing-standard-productive);
+  transition-duration: var(--easing-duration-1);
+
+  @include mixins.rtl {
+    --cbx-direction: row-reverse;
+  }
+
+  &-input,
+  &-label,
+  &-indicator {
+    &:not([data-disabled]),
+    &:not([data-loading]) {
+      cursor: pointer;
+    }
+    &[data-disabled] {
+      cursor: not-allowed;
+    }
+    &[data-loading] {
+      cursor: progress;
+    }
+  }
 
   &-indicator {
-    height: 100%;
+    height: var(--cbx-height, var(--cbx-height-xs));
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  &-indicator,
   &-indicator svg {
-    width: var(--icon-size);
-    height: var(--icon-size);
+    width: 75%;
+    height: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: inherit;
   }
 
-  &-inner {
+  &-input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     width: 100%;
-    height: 100%;
-    display: flex;
+    height: var(--cbx-height, var(--cbx-height-xs));
+    appearance: none;
+    position: absolute;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    outline: solid 2px transparent;
+    border: solid 2px transparent;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+
+    &:focus:not(:focus:focus-visible) {
+      outline-color: transparent;
+    }
+    &:focus:focus-visible {
+      outline-color: rgba(var(--c-blue), 0.87);
+    }
   }
 
-  &::after {
-    width: 2px;
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: -2px;
-    top: -2px;
+  &-content {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: var(--cbx-direction, row);
+    height: var(--cbx-height, var(--cbx-height-xs));
+    align-items: var(--cbx-align, center);
+    gap: var(--cbx-gap, var(--cbx-gap-xs));
   }
 
-  &:hover::after {
-    width: 3px;
-    left: -2px;
+  &--size-xs {
+    --cbx-gap: var(--cbx-gap-xs);
+    --cbx-height: var(--cbx-height-xs);
+    --cbx-padding-x: var(--cbx-padding-x-xs);
+  }
+  &--size-sm {
+    --cbx-gap: var(--cbx-gap-sm);
+    --cbx-height: var(--cbx-height-sm);
+    --cbx-padding-x: var(--cbx-padding-x-sm);
+  }
+  &--size-md {
+    --cbx-gap: var(--cbx-gap-md);
+    --cbx-height: var(--cbx-height-md);
+    --cbx-padding-x: var(--cbx-padding-x-md);
+  }
+  &--size-lg {
+    --cbx-gap: var(--cbx-gap-lg);
+    --cbx-height: var(--cbx-height-lg);
+    --cbx-padding-x: var(--cbx-padding-x-lg);
+  }
+  &--size-xl {
+    --cbx-gap: var(--cbx-gap-xl);
+    --cbx-height: var(--cbx-height-xl);
+    --cbx-padding-x: var(--cbx-padding-x-xl);
+  }
+
+  --cbx-background: var(--c-secondary);
+
+  .secondary & {
+    --cbx-background: var(--c-primary);
+  }
+
+  &--scheme-default {
+    background-color: rgba(var(--cbx-background), 0);
+  }
+  &--scheme-default:hover {
+    background-color: rgba(var(--cbx-background), 0.04);
+  }
+  &--scheme-default:active {
+    background-color: rgba(var(--cbx-background), 0.06);
+  }
+  &--scheme-accent {
+    background-color: rgba(var(--cbx-background), 0);
+  }
+  &--scheme-accent svg {
+    color: rgba(var(--c-accent), 1);
+  }
+  &--scheme-accent:hover {
+    background-color: rgba(var(--cbx-background), 0.04);
+  }
+  &--scheme-accent:active {
+    background-color: rgba(var(--cbx-background), 0.06);
+  }
+  &--scheme-default-elevated {
+    background-color: rgba(var(--cbx-background), 0.04);
+  }
+  &--scheme-default-elevated:hover {
+    background-color: rgba(var(--cbx-background), 0.08);
+  }
+  &--scheme-default-elevated:active {
+    background-color: rgba(var(--cbx-background), 0.12);
+  }
+  &--scheme-accent-elevated {
+    background-color: rgba(var(--cbx-background), 0.04);
+  }
+  &--scheme-accent-elevated svg {
+    color: rgba(var(--c-accent), 1);
+  }
+  &--scheme-accent-elevated:hover {
+    background-color: rgba(var(--cbx-background), 0.08);
+  }
+  &--scheme-accent-elevated:active {
+    background-color: rgba(var(--cbx-background), 0.12);
+  }
+
+  &--scheme-default,
+  &--scheme-accent,
+  &--scheme-default-elevated,
+  &--scheme-accent-elevated {
+    &[data-disabled] {
+      background-color: rgba(var(--cbx-background), 0.2);
+    }
+    &[data-disabled] label {
+      color: rgba(var(--cbx-background), 0.3);
+    }
+    &[data-disabled] svg {
+      color: rgba(var(--cbx-background), 0.4);
+    }
+    &[data-disabled] p {
+      color: rgba(var(--cbx-background), 0.3);
+    }
   }
 }
 
 .Checkbox-group {
-  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   display: flex;
-  flex: 0 1 100%;
-  gap: calc(var(--unit) * 1);
+  outline: solid 2px transparent;
+  border: solid 2px transparent;
+  gap: 2px;
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+  }
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+  }
+
+  [data-orientation='vertical'] & {
+    @include mixins.rtl {
+      --cbx-direction: row-reverse;
+    }
+  }
+  [data-orientation='horizontal'] & {
+    @include mixins.rtl {
+      --cbx-direction: column-reverse;
+    }
+  }
 }
+
+// [data-orientation='vertical'] & {
+//   @include mixins.rtl {
+//     --checkbox-direction: row-reverse;
+//   }
+// }
+
+// [data-orientation='horizontal'] & {
+//   @include mixins.rtl {
+//     --checkbox-direction: column-reverse;
+//   }
+// }

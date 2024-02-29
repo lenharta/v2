@@ -1,18 +1,74 @@
+import * as React from 'react';
 import { Page, Section } from '@/app/layouts';
-import { Button, Text, Tile, Title } from '@/common';
-import React from 'react';
+import { Button, Checkbox, Text, Tile, Title } from '@/common';
+import { Orientation, Size } from '@/types/common';
 
-export interface Point2D {
-  x: number;
-  y: number;
-}
+export const Toolbox = () => {
+  return (
+    <Page>
+      <Page.Hero title="Toolbox" />
+      <Page.Content>
+        <Section>
+          <div style={{ paddingBlock: 75 }}>
+            <Section.Header>
+              <Title>Checkbox (primary)</Title>
+            </Section.Header>
+            <Section.Content>
+              <DemoCheckboxStates />
+              <DemoCheckboxSingle />
+              <DemoCheckboxGroup size="sm" />
+              <DemoCheckboxGroup size="sm" orientation="horizontal" />
+            </Section.Content>
+          </div>
+        </Section>
+        <Section scheme="secondary">
+          <div style={{ paddingBlock: 75 }}>
+            <Section.Header>
+              <Title>Checkbox (secondary)</Title>
+            </Section.Header>
+            <Section.Content>
+              <DemoCheckboxStates />
+              <DemoCheckboxSingle />
+              <DemoCheckboxGroup size="md" />
+              <DemoCheckboxGroup size="md" orientation="horizontal" />
+            </Section.Content>
+          </div>
+        </Section>
+      </Page.Content>
+    </Page>
+  );
+};
 
-export const distance = (a: number, b: number) => Math.abs(a - b);
+const DemoCheckboxStates = () => {
+  return (
+    <div style={{ paddingBlock: 25 }}>
+      <Checkbox label="Label (loading)" description="Example description here." loading />
+      <Checkbox label="Label (disabled)" description="Example description here." disabled />
+    </div>
+  );
+};
 
-export const distance2D = (a: Point2D, b: Point2D) => {
-  const xDelta = distance(a.x, b.x);
-  const yDelta = distance(a.y, b.y);
-  return Math.sqrt(xDelta ** 2 + yDelta ** 2);
+const DemoCheckboxSingle = () => {
+  return (
+    <div style={{ paddingBlock: 25 }}>
+      <Checkbox label="Label (enabled)" description="Example description here." />
+      <Checkbox label="Label (enabled)" description="Example description here." />
+      <Checkbox label="Label (enabled)" description="Example description here." />
+    </div>
+  );
+};
+
+const DemoCheckboxGroup = (props: { size?: Size; orientation?: Orientation }) => {
+  const { size = 'xs', orientation = 'vertical' } = props;
+  return (
+    <div style={{ paddingBlock: 25 }}>
+      <Checkbox.Group orientation={orientation}>
+        <Checkbox size={size} label="Label (enabled)" description="Example description here." />
+        <Checkbox size={size} label="Label (enabled)" description="Example description here." />
+        <Checkbox size={size} label="Label (enabled)" description="Example description here." />
+      </Checkbox.Group>
+    </div>
+  );
 };
 
 export const GridPatternRow = () => {
@@ -37,30 +93,13 @@ export const GridPatternRow = () => {
   );
 };
 
-// const [isAnimating, setAnimating] = React.useState<boolean>();
-// <div className="animated-grid-pattern-controls">
-//   <Button onClick={() => setAnimating((c) => !c)}>TOGGLE</Button>
-//   <Button onClick={() => setAnimating(true)}>ENTER</Button>
-//   <Button onClick={() => setAnimating(false)}>EXIT</Button>
-//   <Button onClick={() => setAnimating(undefined)}>RESET</Button>
-// </div>
-
 interface GridPatternAnimationPropss {
   isAnimating?: boolean;
   shouldExit?: boolean;
 }
 
-function useCSSAnimation(options: { duration: number }) {}
-
 export const GridPattern = (props: GridPatternAnimationPropss) => {
   const { isAnimating, shouldExit } = props;
-
-  console.log('isAnimating', isAnimating);
-  console.log('shouldExit', shouldExit);
-
-  // const handleExit = React.useCallback(() => {
-  //   return ;
-  // }, [shouldExit]);
 
   return (
     <>
@@ -89,19 +128,16 @@ export const GridPattern = (props: GridPatternAnimationPropss) => {
   );
 };
 
-export const Toolbox = () => {
+export const DemoGridPattern = () => {
   return (
-    <Page>
-      <Page.Hero title="Toolbox" />
-      <Page.Content>
-        <Section>
-          <Section.Header>
-            <Title>Grid Pattern Demo</Title>
-          </Section.Header>
-          <Section.Content></Section.Content>
-        </Section>
-      </Page.Content>
-    </Page>
+    <Section>
+      <Section.Header>
+        <Title>Demo | Grid Pattern</Title>
+      </Section.Header>
+      <Section.Content>
+        <GridPattern />
+      </Section.Content>
+    </Section>
   );
 };
 

@@ -1,33 +1,53 @@
 import * as React from 'react';
-import { CheckboxProvider } from '../context';
-import type { Core } from '@/types/core';
-import type { Orientation } from '@/types/common';
+import { mergeProps } from '@/utils';
+import { CheckboxProvider, CheckboxScheme } from '../context';
+import { Orientation, Size } from '@/types/common';
+import { useInputIds } from '@/hooks';
 
-export type CheckboxGroupProps = {
-  checked?: boolean;
-  indeterminate?: boolean;
-  onChange?(event: React.FormEvent<HTMLButtonElement>): void;
+type CheckboxGroupElementProps = Omit<React.ComponentPropsWithoutRef<'fieldset'>, 'onChange'>;
+type CheckboxGroupAttributeProps = React.RefAttributes<HTMLFieldSetElement>;
+type CheckboxGroupBaseProps = CheckboxGroupElementProps & CheckboxGroupAttributeProps;
+
+export interface CheckboxGroupProps extends CheckboxGroupBaseProps {
+  size?: Size;
+  scheme?: CheckboxScheme;
   orientation?: Orientation;
+  onChange?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  legend?: string;
+  value?: string[];
+}
+
+const defaultProps: Partial<CheckboxGroupProps> = {
+  orientation: 'vertical',
+  scheme: 'accent-elevated',
+  size: 'sm',
 };
 
-export type CheckboxGroupFactory = Core.RefFactory<{
-  component: 'div';
-  props: CheckboxGroupProps;
-  ref: HTMLDivElement;
-}>;
+const _CheckboxGroup = (
+  props: CheckboxGroupProps,
+  ref: React.ForwardedRef<HTMLFieldSetElement>
+) => {
+  const { legend, value, onChange, orientation, scheme, size, children, ...otherProps } = props;
 
-export const CheckboxGroup: CheckboxGroupFactory = React.forwardRef((props, ref) => {
-  const {
-    checked,
-    onChange,
-    orientation = 'vertical',
-    children,
-    component: Component = 'div',
-    ...otherProps
-  } = props;
+  const uids = useInputIds(legend, ['legend']);
+  const _props = mergeProps({ size, scheme, orientation }, defaultProps);
+
   return (
-    <Component {...otherProps} ref={ref} className="CheckboxGroup" data-orientation={orientation}>
-      <CheckboxProvider value={{ checked, onChange, orientation }}>{children}</CheckboxProvider>
-    </Component>
+    <fieldset
+      {...otherProps}
+      ref={ref}
+      className="Checkbox-group"
+      data-orientation={_props.orientation}
+      aria-orientation={_props.orientation}
+    >
+      {legend && <legend>{legend}</legend>}
+      <CheckboxProvider value={{ ..._props, value, onChange, legend: uids.legend }}>
+        {children}
+      </CheckboxProvider>
+    </fieldset>
   );
-});
+};
+
+export type CheckboxGroupComponent = React.ForwardRefExoticComponent<CheckboxGroupProps>;
+export const CheckboxGroup = React.forwardRef(_CheckboxGroup) as CheckboxGroupComponent;
+CheckboxGroup.displayName = '@v2/Checkbox.Group';

@@ -40,12 +40,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
   const hasContentLeft = !!leftContent;
   const hasContentRight = !!rightContent;
 
-  const mergedProps = mergeProps({ size, scheme }, defaultProps);
+  const _props = mergeProps({ size, disabled, loading, scheme }, defaultProps);
 
   const clxss = clsx(
     'Button',
-    { [`Button--size-${mergedProps.size}`]: mergedProps.size },
-    mergedProps.scheme,
+    { [`Button--size-${_props.size}`]: _props.size },
+    _props.scheme,
     className
   );
 
@@ -54,9 +54,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
       {...otherProps}
       ref={ref}
       className={clxss}
-      tabIndex={disabled ? undefined : 0}
-      aria-disabled={!disabled || !loading ? undefined : disabled}
-      data-disabled={!disabled || !loading ? undefined : disabled}
+      tabIndex={_props.disabled ? undefined : 0}
+      aria-disabled={!_props.disabled || !_props.loading ? undefined : disabled}
+      data-disabled={!_props.disabled || !_props.loading ? undefined : disabled}
+      data-loading={_props.loading}
     >
       {loading && <div>Loading...</div>}
 
