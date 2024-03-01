@@ -6,17 +6,26 @@ type CheckboxIndicatorAttributeProps = React.RefAttributes<HTMLDivElement>;
 type CheckboxIndicatorBaseProps = CheckboxIndicatorElementProps & CheckboxIndicatorAttributeProps;
 
 export interface CheckboxIndicatorProps extends CheckboxIndicatorBaseProps {
-  icon: IconName;
+  value?: string;
+  checked?: boolean;
 }
 
 export const _CheckboxIndicator = (
   props: CheckboxIndicatorProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) => {
-  const { icon, ...otherProps } = props;
+  const { checked, value, ...otherProps } = props;
+
+  const icon = (): IconName => {
+    if (checked) {
+      return 'checkbox_checked';
+    }
+    return 'checkbox_unchecked';
+  };
+
   return (
     <div {...otherProps} ref={ref} className="Checkbox-indicator">
-      <Icon name={icon} />
+      <Icon name={icon()} />
     </div>
   );
 };

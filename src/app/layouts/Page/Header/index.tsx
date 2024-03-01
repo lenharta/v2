@@ -1,13 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Avatar, Icon } from '@/common';
 import { useThemeCTX } from '@/store';
-import { type ThemeStore } from '@/types/store';
-import { PageContainer } from '../Container';
-
-export type PageHeaderBaseProps = React.JSX.IntrinsicElements['div'];
-
-export interface PageHeaderProps extends PageHeaderBaseProps {}
+import { Avatar, Icon } from '@/common';
+import { ThemeStore } from '@/types/store';
 
 const HeaderLogo = () => {
   return (
@@ -25,17 +20,25 @@ const HeaderAvatar = (state: ThemeStore) => (
   />
 );
 
-export const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>((props, ref) => {
-  const { ...otherProps } = props;
+type PageHeaderElementProps = React.ComponentPropsWithoutRef<'header'>;
+type PageHeaderAttributeProps = React.RefAttributes<HTMLElement>;
+type PageHeaderBaseProps = PageHeaderElementProps & PageHeaderAttributeProps;
+
+export interface PageHeaderProps extends PageHeaderBaseProps {}
+
+export const _PageHeader = (props: PageHeaderProps, ref: React.ForwardedRef<HTMLElement>) => {
+  const { children, ...otherProps } = props;
   const theme = useThemeCTX();
   return (
-    <div {...otherProps} ref={ref} className="Page-header">
+    <header {...otherProps} className="Page-header" ref={ref}>
       <nav className="Page-nav">
         <HeaderLogo />
         <HeaderAvatar {...theme.state} />
       </nav>
-    </div>
+    </header>
   );
-});
+};
 
+export type PageHeaderComponent = React.ForwardRefExoticComponent<PageHeaderProps>;
+export const PageHeader = React.forwardRef(_PageHeader) as PageHeaderComponent;
 PageHeader.displayName = '@v2/Page.Header';

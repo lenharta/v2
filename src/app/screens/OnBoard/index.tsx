@@ -1,9 +1,5 @@
-import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Screen } from '@/app/layouts';
-import { useStore } from '@/store';
-import { useSession } from '@/hooks';
-import { Button, Title } from '@/common';
+import { Title } from '@/common';
 
 // Welcome
 // ThemeMode
@@ -12,26 +8,22 @@ import { Button, Title } from '@/common';
 // ThemeDirection
 
 export const OnBoardScreen = () => {
-  const store = useStore();
-  const session = useSession();
-  const navigate = useNavigate();
+  // React.useEffect(() => {
+  //   if (store.sessionId) {
+  //     navigate('/home');
+  //   }
+  // }, []);
 
-  React.useEffect(() => {
-    if (store.sessionId) {
-      navigate('/home');
-    }
-  }, []);
-
-  const createSession = () => {
-    session.write();
-    navigate('/home');
-  };
+  // const createSession = () => {
+  //   session.write();
+  //   navigate('/home');
+  // };
 
   return (
     <Screen>
       <Screen.Content>
         <Title h1>Color Your World</Title>
-        <Button onClick={createSession}>Procced</Button>
+        {/* <Button onClick={createSession}>Procced</Button> */}
       </Screen.Content>
     </Screen>
   );

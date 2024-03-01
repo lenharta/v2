@@ -28,34 +28,37 @@
 }
 
 .SplashScreen {
-  z-index: 0;
-  overflow: hidden;
+  z-index: 100000;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: fixed;
   isolation: isolate;
-  position: relative;
+  height: 100vh;
+  width: 100vw;
 
-  &-controls {
-    position: absolute;
-    z-index: 99999;
-  }
+  // &-controls {
+  //   position: absolute;
+  //   z-index: 99999;
+  // }
 
-  &-grid {
-    z-index: 1;
-    display: grid;
-    grid-template-rows: repeat(12, minmax(0, 1fr));
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    height: 100vh;
-    width: 100vw;
-  }
+  // &-grid {
+  //   z-index: 1;
+  //   display: grid;
+  //   grid-template-rows: repeat(12, minmax(0, 1fr));
+  //   grid-template-columns: repeat(12, minmax(0, 1fr));
+  //   height: 100vh;
+  //   width: 100vw;
+  // }
 
-  &-row,
-  &-cell {
-    height: 100%;
-  }
+  // &-row,
+  // &-cell {
+  //   height: 100%;
+  // }
 
-  &-cell {
-    outline: solid 2px transparent;
-    outline-color: rgba(var(--c-accent), 1);
-  }
+  // &-cell {
+  //   outline: solid 2px transparent;
+  //   outline-color: rgba(var(--c-accent), 1);
+  // }
 }
 
 // .slide-in-blurred-top {

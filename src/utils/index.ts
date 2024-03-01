@@ -7,3 +7,4 @@ export * from './json-deserialize';
 export * from './json-serialize';
 export * from './merge-props';
 export * from './object-keys';
+export * from './window-scroll';

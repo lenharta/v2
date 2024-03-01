@@ -7,9 +7,9 @@ export type CheckboxContextValue = {
   size?: Size;
   scheme?: CheckboxScheme;
   orientation?: Orientation;
-  onChange?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   legend?: string;
-  value?: string[];
+  value: string[];
 };
 
 export const CheckboxContext = React.createContext({} as CheckboxContextValue);

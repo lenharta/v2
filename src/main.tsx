@@ -8,15 +8,6 @@ import { Home, Preferences, Toolbox, Demo } from '@/app/pages';
 
 import { OnBoardScreen, PageError404, SplashScreen } from './app/screens';
 
-import {
-  DemoAnimation,
-  DemoCheckbox,
-  DemoControl,
-  DemoDropdown,
-  DemoOverlay,
-  DemoSummary,
-} from './app/demo';
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -30,14 +21,7 @@ const router = createBrowserRouter([
       {
         path: '/demo',
         element: <Demo />,
-        children: [
-          { index: true, element: <DemoSummary /> },
-          { path: '/demo/animation', element: <DemoAnimation /> },
-          { path: '/demo/Checkbox', element: <DemoCheckbox /> },
-          { path: '/demo/Control', element: <DemoControl /> },
-          { path: '/demo/Dropdown', element: <DemoDropdown /> },
-          { path: '/demo/Overlay', element: <DemoOverlay /> },
-        ],
+        children: [],
       },
     ],
   },

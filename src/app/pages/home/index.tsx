@@ -1,7 +1,25 @@
-import { Page } from '@/app/layouts';
+import { Page, Section } from '@/app/layouts';
 import { HomeHero } from './sections/hero';
 import { HomeOverview } from './sections/overview';
-import { GradientDivider } from '@/app/components/GradientDivider';
+import { Text, Title } from '@/common';
+
+const HomePrinciples = () => (
+  <Section className="sec-home-principles">
+    <Section.Header className="sec-home-principles-header">
+      <Title lead="sm" size="md" h3>
+        Think Freely, Open Minds, <span className="accent">Create With Courage,</span>
+      </Title>
+    </Section.Header>
+    <Section.Content className="sec-home-principles-content"></Section.Content>
+  </Section>
+);
+
+const HomeMomentum = () => (
+  <Section className="sec-home-principles">
+    <Section.Header className="sec-home-principles-header"></Section.Header>
+    <Section.Content className="sec-home-principles-content"></Section.Content>
+  </Section>
+);
 
 export const Home = () => {
   return (
@@ -9,7 +27,7 @@ export const Home = () => {
       <HomeHero />
       <Page.Content>
         <HomeOverview />
-        <GradientDivider />
+        <HomePrinciples />
       </Page.Content>
     </Page>
   );

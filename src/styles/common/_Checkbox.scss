@@ -11,10 +11,20 @@
   align-items: var(--label-align, center);
   flex-direction: var(--label-direction, row);
 
+  direction: ltr;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  @include mixins.rtl {
+    text-align: right;
+    direction: rtl;
+  }
+
   font-size: var(--label-font-size, var(--label-font-size-xs));
   font-weight: var(--label-font-weight, var(--font-weight-med));
-  line-height: var(--label-line-height, 1);
-  text-align: var(--label-text-align, start);
+  line-height: var(--label-line-height, 1.4);
 
   color: var(--label-color, inherit);
   transition-property: color, background-color, border, outline;
@@ -38,10 +48,6 @@
   }
   &[data-loading] {
     cursor: progress;
-  }
-
-  @include mixins.rtl {
-    --label-text-align: end;
   }
 
   &--size-xs {
@@ -72,10 +78,20 @@
   align-items: var(--description-align, center);
   flex-direction: var(--description-direction, row);
 
+  direction: ltr;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  @include mixins.rtl {
+    text-align: right;
+    direction: rtl;
+  }
+
   font-size: var(--description-font-size, var(--description-font-size-xs));
   font-weight: var(--description-font-weight, var(--font-weight-reg));
-  line-height: var(--description-line-height, 1);
-  text-align: var(--description-text-align, start);
+  line-height: var(--description-line-height, 1.4);
 
   color: var(--description-color, inherit);
   transition-property: color, background-color, border, outline;
@@ -99,10 +115,6 @@
   }
   &[data-loading] {
     cursor: progress;
-  }
-
-  @include mixins.rtl {
-    --description-text-align: end;
   }
 
   &--size-xs {
@@ -333,6 +345,7 @@
   display: flex;
   outline: solid 2px transparent;
   border: solid 2px transparent;
+  flex-wrap: wrap;
   gap: 2px;
 
   &[data-orientation='vertical'] {

@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { Page, Section } from '@/app/layouts';
-import { Button, Checkbox, Text, Tile, Title } from '@/common';
 import { Orientation, Size } from '@/types/common';
+import { Checkbox, Text, Tile, Title } from '@/common';
+import React from 'react';
 
 export const Toolbox = () => {
   return (
@@ -49,95 +49,48 @@ const DemoCheckboxStates = () => {
 };
 
 const DemoCheckboxSingle = () => {
+  const [checked, setChecked] = React.useState(false);
+  console.log('SINGLE-CHECKED', checked);
   return (
     <div style={{ paddingBlock: 25 }}>
-      <Checkbox label="Label (enabled)" description="Example description here." />
-      <Checkbox label="Label (enabled)" description="Example description here." />
-      <Checkbox label="Label (enabled)" description="Example description here." />
+      <Checkbox
+        label="Single Checkbox"
+        description="Example description here."
+        onChange={(e) => setChecked(!checked)}
+        indeterminate
+        checked={checked}
+      />
     </div>
   );
 };
 
 const DemoCheckboxGroup = (props: { size?: Size; orientation?: Orientation }) => {
   const { size = 'xs', orientation = 'vertical' } = props;
+  const [value, setValue] = React.useState<string[]>([]);
+  console.log(value);
   return (
     <div style={{ paddingBlock: 25 }}>
-      <Checkbox.Group orientation={orientation}>
-        <Checkbox size={size} label="Label (enabled)" description="Example description here." />
-        <Checkbox size={size} label="Label (enabled)" description="Example description here." />
-        <Checkbox size={size} label="Label (enabled)" description="Example description here." />
+      <Checkbox.Group orientation={orientation} value={value} onChange={setValue}>
+        <Checkbox
+          size={size}
+          value="option-1"
+          label="Group Checkbox 1"
+          description="Example description here."
+        />
+        <Checkbox
+          size={size}
+          value="option-2"
+          label="Group Checkbox 2"
+          description="Example description here."
+        />
+        <Checkbox
+          size={size}
+          value="option-3"
+          label="Group Checkbox 3"
+          description="Example description here."
+        />
       </Checkbox.Group>
     </div>
-  );
-};
-
-export const GridPatternRow = () => {
-  return (
-    <div className="animated-grid-pattern-row">
-      <div className="animated-grid-pattern-cell" />
-      <div className="animated-grid-pattern-cell" />
-      <div className="animated-grid-pattern-cell" />
-
-      <div className="animated-grid-pattern-cell" />
-      <div className="animated-grid-pattern-cell" />
-      <div className="animated-grid-pattern-cell" />
-
-      <div className="animated-grid-pattern-cell" />
-      <div className="animated-grid-pattern-cell" />
-      <div className="animated-grid-pattern-cell" />
-
-      <div className="animated-grid-pattern-cell" />
-      <div className="animated-grid-pattern-cell" />
-      <div className="animated-grid-pattern-cell" />
-    </div>
-  );
-};
-
-interface GridPatternAnimationPropss {
-  isAnimating?: boolean;
-  shouldExit?: boolean;
-}
-
-export const GridPattern = (props: GridPatternAnimationPropss) => {
-  const { isAnimating, shouldExit } = props;
-
-  return (
-    <>
-      <div
-        className="animated-grid-pattern"
-        data-animation-enter={isAnimating === true ? true : undefined}
-        {...(!shouldExit ? {} : { 'data-animation-exit': true })}
-      >
-        <GridPatternRow />
-        <GridPatternRow />
-        <GridPatternRow />
-
-        <GridPatternRow />
-        <GridPatternRow />
-        <GridPatternRow />
-
-        <GridPatternRow />
-        <GridPatternRow />
-        <GridPatternRow />
-
-        <GridPatternRow />
-        <GridPatternRow />
-        <GridPatternRow />
-      </div>
-    </>
-  );
-};
-
-export const DemoGridPattern = () => {
-  return (
-    <Section>
-      <Section.Header>
-        <Title>Demo | Grid Pattern</Title>
-      </Section.Header>
-      <Section.Content>
-        <GridPattern />
-      </Section.Content>
-    </Section>
   );
 };
 

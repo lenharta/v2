@@ -1,14 +1,10 @@
+import { AnimatedGrid } from '@/app/components';
 import { Screen } from '@/app/layouts';
-import { useStore, useStoreDispatch } from '@/store';
 
-export const SplashScreen = () => {
-  const store = useStore();
-  const dispatch = useStoreDispatch();
-
+export const SplashScreen = ({ animating }: { animating?: boolean }) => {
   return (
     <Screen className="SplashScreen">
-      <div className="SplashScreen-controls"></div>
-      <div className="SplashScreen-grid"></div>
+      <AnimatedGrid animating={animating} />
     </Screen>
   );
 };

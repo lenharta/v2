@@ -5,10 +5,11 @@ export type StoreState = {
   error?: string;
   loading?: boolean;
   sessionId?: string;
-  isMenuOpen?: boolean;
-  isToastOpen?: boolean;
-  isTransition?: boolean;
-  isAnimating?: boolean;
+  menuOpen?: boolean;
+  transitioning?: boolean;
+  animating?: boolean;
+  pageY?: number;
+  pageX?: number;
 };
 
 export type Store = StoreState;
