@@ -1,18 +1,15 @@
-import * as React from 'react';
-import { GridPattern } from '@/app/pages';
+import { AnimatedGrid } from '@/app/components';
+import { Title } from '@/common';
 
 export const HomeHero = () => {
-  const [isAnimating, setAnimating] = React.useState<boolean>();
-
-  React.useEffect(() => {
-    setTimeout(() => setAnimating(true), 500);
-  }, []);
-
   return (
     <div className="sec-home-hero">
-      <div className="sec-home-content"></div>
+      <div className="sec-home-hero-content">
+        <Title h2>UI Engineer</Title>
+        <Title h1>Andrew Lenhart</Title>
+      </div>
       <div className="sec-home-hero-pattern">
-        <GridPattern isAnimating={isAnimating} />
+        <AnimatedGrid animating={true} />
       </div>
     </div>
   );

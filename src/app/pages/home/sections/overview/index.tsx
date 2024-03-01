@@ -14,8 +14,9 @@ export const HomeOverview = () => {
       </Section.Header>
       <Section.Content className="sec-home-overview-content">
         <Text lead="md" size="md">
-          Striving to improve the human relationship with technology by devloping meaningful and
-          accessible digital experiences for the modern world.
+          Looking to join a team of engineers that drive transformative thinking and improve the
+          human relationship with technology through developing accessible digital experiences for
+          the modern world.
         </Text>
       </Section.Content>
     </Section>

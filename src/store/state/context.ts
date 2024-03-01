@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Store, StoreState } from '@/types/store';
 
-export const INITIAL_STORE: Store = {};
+export const INITIAL_STORE: Store = {
+  pageX: 0,
+  pageY: 0,
+};
 
 export function useStoreReducer<T extends StoreState>(initialState: T, initializer: (arg: T) => T) {
   return React.useReducer(
@@ -21,4 +24,4 @@ export const StoreStateProvider = StoreStateCTX.Provider;
 export const StoreDispatchProvider = StoreDispatchCTX.Provider;
 
 export const useStore = () => React.useContext(StoreStateCTX);
-export const useStoreDispatch = () => React.useContext(StoreDispatchCTX);
+export const useDispatch = () => React.useContext(StoreDispatchCTX);

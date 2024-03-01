@@ -1,37 +1,39 @@
+import { Scheme } from '@/types/common';
+import { mergeProps } from '@/utils';
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
 import { SectionHeader } from './Header';
 import { SectionContent } from './Content';
-import { type Scheme } from '@/types/common';
 
-export type SectionBaseProps = React.JSX.IntrinsicElements['section'];
+export type SectionElementProps = React.ComponentPropsWithRef<'section'>;
+export type SectionAttributeProps = React.RefAttributes<HTMLDivElement>;
+export type SectionBaseProps = SectionElementProps & SectionAttributeProps;
 
 export interface SectionProps extends SectionBaseProps {
   scheme?: Scheme;
 }
 
-export interface SectionComponent {
-  (props: SectionProps): JSX.Element | null;
-  Header: typeof SectionHeader;
-  Content: typeof SectionContent;
-  displayName?: string;
-}
-
-const defaultProps: Partial<SectionProps> = {
+export const defaultProps: Partial<SectionProps> = {
   scheme: 'primary',
 };
 
-export const Section: SectionComponent = (props) => {
+export const _Section = (props: SectionProps, ref: React.ForwardedRef<HTMLDivElement>) => {
   const { scheme, children, className, ...otherProps } = props;
   const mergedProps = mergeProps({ scheme }, defaultProps);
   const clxss = clsx('Section', mergedProps.scheme, className);
   return (
-    <section {...otherProps} className={clxss}>
+    <div {...otherProps} ref={ref} className={clxss}>
       {children}
-    </section>
+    </div>
   );
 };
+
+export type SectionComponent = React.ForwardRefExoticComponent<SectionProps> & {
+  Content: typeof SectionContent;
+  Header: typeof SectionHeader;
+};
+
+export const Section = React.forwardRef(_Section) as SectionComponent;
 
 Section.displayName = '@v2/Section';
 Section.Content = SectionContent;

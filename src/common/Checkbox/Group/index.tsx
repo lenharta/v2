@@ -12,9 +12,9 @@ export interface CheckboxGroupProps extends CheckboxGroupBaseProps {
   size?: Size;
   scheme?: CheckboxScheme;
   orientation?: Orientation;
-  onChange?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onChange: (value: string[]) => void;
   legend?: string;
-  value?: string[];
+  value: string[];
 }
 
 const defaultProps: Partial<CheckboxGroupProps> = {
@@ -32,6 +32,14 @@ const _CheckboxGroup = (
   const uids = useInputIds(legend, ['legend']);
   const _props = mergeProps({ size, scheme, orientation }, defaultProps);
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const itemValue = event.currentTarget.value!;
+    const clone = [...value];
+    onChange(
+      clone.includes(itemValue) ? clone.filter((item) => item !== itemValue) : [...clone, itemValue]
+    );
+  };
+
   return (
     <fieldset
       {...otherProps}
@@ -41,7 +49,7 @@ const _CheckboxGroup = (
       aria-orientation={_props.orientation}
     >
       {legend && <legend>{legend}</legend>}
-      <CheckboxProvider value={{ ..._props, value, onChange, legend: uids.legend }}>
+      <CheckboxProvider value={{ ..._props, value, onChange: handleChange, legend: uids.legend }}>
         {children}
       </CheckboxProvider>
     </fieldset>

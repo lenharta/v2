@@ -1,2 +1,2 @@
 export * from './GlobalControl';
-export * from './NumberedCard';
+export * from './AnimatedGrid';
