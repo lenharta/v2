@@ -4,6 +4,7 @@ import { type ThemeStore } from '@/types/store';
 export type ThemeContextValue = {
   state: ThemeStore;
   setDir(value: ThemeStore['dir']): void;
+  setLang(value: ThemeStore['lang']): void;
   setMode(value: ThemeStore['mode']): void;
   setAccent(value: ThemeStore['accent']): void;
   setAvatar(value: ThemeStore['avatar']): void;

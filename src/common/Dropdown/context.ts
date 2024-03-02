@@ -3,7 +3,7 @@ import * as React from 'react';
 export interface DropdownContextValue {
   isOpen?: boolean;
   disabled?: boolean;
-  onOpenChange?(isOpen: boolean): void;
+  onChange?(isOpen: boolean): void;
   onClose?(): void;
   onOpen?(): void;
   targetRef?: React.RefObject<HTMLElement>;
@@ -14,7 +14,7 @@ export interface DropdownProps {
   isOpen?: boolean;
   disabled?: boolean;
   children: React.ReactNode;
-  onOpenChange?(isOpen: boolean): void;
+  onChange?(isOpen: boolean): void;
   onClose?(): void;
   onOpen?(): void;
 }

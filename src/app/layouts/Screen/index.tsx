@@ -1,29 +1,30 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { ScreenContent } from './Content';
 import { ThemeProvider } from '@/store';
+import { ScreenContent } from './Content';
 
-export type ScreenBaseProps = React.JSX.IntrinsicElements['div'];
+type ScreenElementProps = React.ComponentPropsWithoutRef<'div'>;
+type ScreenAttributeProps = React.RefAttributes<HTMLDivElement>;
+type ScreenBaseProps = ScreenElementProps & ScreenAttributeProps;
 
 export interface ScreenProps extends ScreenBaseProps {}
 
-export interface ScreenComponent {
-  (props: ScreenProps): JSX.Element | null;
-  displayName?: string;
-  Content: typeof ScreenContent;
-}
-
-export const Screen: ScreenComponent = (props) => {
-  const { children, className, ...otherProps } = props;
+const _Screen = (props: ScreenProps, ref: React.ForwardedRef<HTMLDivElement>) => {
+  const { className, children, ...otherProps } = props;
   const clxss = clsx('Screen', className);
   return (
     <ThemeProvider>
-      <div {...otherProps} className={clxss}>
+      <div {...otherProps} ref={ref} className={clxss}>
         {children}
       </div>
     </ThemeProvider>
   );
 };
 
+export type ScreenComponent = React.ForwardRefExoticComponent<ScreenProps> & {
+  Content: typeof ScreenContent;
+};
+
+export const Screen = React.forwardRef(_Screen) as ScreenComponent;
 Screen.displayName = '@v2/Screen';
 Screen.Content = ScreenContent;

@@ -8,10 +8,13 @@
   display: block;
   line-height: 1.2;
   font-weight: var(--font-weight-reg);
-  text-align: start;
+
+  direction: ltr;
+  text-align: left;
 
   @include mixins.rtl {
-    text-align: end;
+    text-align: right;
+    direction: rtl;
   }
 
   &[data-variant='gradient'] {

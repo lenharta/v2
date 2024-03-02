@@ -1,0 +1,25 @@
+.Dropdown-target {
+  min-width: 0;
+  width: max-content;
+  position: relative;
+}
+.Dropdown-box {
+  position: absolute;
+  border: solid 2px #cd5c5c;
+}
+
+.demo-dropdown-target {
+  display: inline-flex;
+}
+
+.demo-dropdown-box {
+  width: 300px;
+  display: grid;
+  place-content: start;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  padding: calc(var(--unit) * 6);
+  gap: calc(var(--unit) * 4);
+  border: solid 2px transparent;
+  height: 40vh;
+}

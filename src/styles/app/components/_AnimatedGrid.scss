@@ -34,12 +34,13 @@
   grid-template-rows: repeat(1, 1fr);
   grid-template-columns: repeat(12, 1fr);
 
-  --row-percentage: sin(var(--grid-row-index) * 0.06);
-  --row-duration: calc(var(--grid-total-duration) * sin(var(--grid-row-index) * 0.05));
-  --row-delay: calc(var(--row-percentage) * calc(var(--grid-total-duration) / 2));
+  --row-percentage: sin(var(--grid-row-index) * 0.03);
+  --row-duration: calc(var(--grid-total-duration) * sin(var(--grid-row-index) * 0.1));
+  --row-delay: calc(var(--row-percentage) * calc(var(--grid-total-duration) / pi));
+  // --row-delay: calc(var(--row-percentage) * calc(var(--grid-total-duration) / 2));
 
   transition-property: opacity, background-color, transform;
-  transition-timing-function: ease;
+  transition-timing-function: ease-in-out;
   transition-duration: var(--row-duration);
   transition-delay: var(--row-delay);
 
@@ -94,12 +95,12 @@
   width: 100%;
   height: 100%;
 
-  --cell-percentage: sin(var(--grid-cell-index) * 0.06);
-  --cell-duration: calc(var(--grid-total-duration) * sin(var(--grid-cell-index) * 0.06));
-  --cell-delay: calc(var(--cell-percentage) * calc(var(--grid-total-duration) / 2));
+  --cell-percentage: sin(var(--grid-cell-index) * 0.02);
+  --cell-duration: calc(var(--grid-total-duration) * sin(var(--grid-cell-index) * 0.1));
+  --cell-delay: calc(var(--cell-percentage) * calc(var(--grid-total-duration) / pi));
 
   transition-property: opacity, background-color, transform;
-  transition-timing-function: ease;
+  transition-timing-function: ease-in-out;
   transition-duration: var(--cell-duration);
   transition-delay: var(--cell-delay);
 

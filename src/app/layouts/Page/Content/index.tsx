@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 
 type PageContentElementProps = React.ComponentPropsWithoutRef<'main'>;
@@ -6,10 +7,11 @@ type PageContentBaseProps = PageContentElementProps & PageContentAttributeProps;
 
 export interface PageContentProps extends PageContentBaseProps {}
 
-export const _PageContent = (props: PageContentProps, ref: React.ForwardedRef<HTMLElement>) => {
-  const { children, ...otherProps } = props;
+const _PageContent = (props: PageContentProps, ref: React.ForwardedRef<HTMLElement>) => {
+  const { className, children, ...otherProps } = props;
+  const clxss = clsx('Page-content', className);
   return (
-    <main {...otherProps} className="Page-content" ref={ref}>
+    <main {...otherProps} className={clxss} ref={ref}>
       {children}
     </main>
   );

@@ -49,23 +49,3 @@ export const AnimatedGrid = ({ animating }: AnimatedGridAnimationPropss) => (
     <AnimatedGridRow />
   </div>
 );
-
-const Splash = () => {};
-
-// const exit = { 'data-animation-exit': true };
-// const enter = { 'data-animation-enter': true };
-
-// const [animating, setAnimating] = React.useState(false);
-
-// const handleAnimation = () => {
-//   const phase = animating ? 'enter' : 'exit';
-//   return { [`data-animation-${phase}`]: true };
-// };
-
-// React.useEffect(() => {
-//   setAnimating(true);
-//   const timeout = window.setTimeout(() => setAnimating(false), 2000);
-//   return () => window.clearTimeout(timeout);
-// }, []);
-
-// console.log(animating);

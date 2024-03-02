@@ -1,46 +1,49 @@
-import * as React from 'react';
-import { DropdownTargetProps, useDropdownCTX } from '../context';
 import clsx from 'clsx';
+import * as React from 'react';
+import { useDropdownCTX } from '../context';
+import { useMergeRefs } from '@/hooks';
 
-export const DropdownTarget = React.forwardRef<HTMLElement, DropdownTargetProps>((props, ref) => {
-  const { children, ...otherProps } = props;
+export type DropdownTargetElementProps = React.ComponentPropsWithoutRef<any>;
+export type DropdownTargetAttributeProps = React.RefAttributes<HTMLElement>;
+export type DropdownTargetBaseProps = DropdownTargetElementProps & DropdownTargetAttributeProps;
+
+export interface DropdownTargetProps extends DropdownTargetBaseProps {
+  children: React.ReactElement;
+}
+
+export const _DropdownTarget = (
+  props: DropdownTargetProps,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
+  const { children, className, ...otherProps } = props;
 
   const ctx = useDropdownCTX();
+  const refs = useMergeRefs(ctx.targetRef, ref);
+  const clxss = clsx('Dropdown-target', className);
 
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    if (!ctx.isOpen) {
-      otherProps.onClick?.(e);
-      ctx.onOpenChange?.(true);
-      ctx.onOpen?.();
-    } else {
-      otherProps.onClick?.(e);
-      ctx.onOpenChange?.(false);
-      ctx.onClose?.();
-    }
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    otherProps.onClick?.(event);
+    ctx.onChange?.(ctx.isOpen ? false : true);
+    ctx.onOpen?.();
   };
 
-  const handleKeydown = (e: React.KeyboardEvent<HTMLElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (!ctx.isOpen) {
-      otherProps.onKeyDown?.(e);
-      ctx.onOpenChange?.(true);
-      ctx.onOpen?.();
-    } else {
-      otherProps.onKeyDown?.(e);
-      ctx.onOpenChange?.(false);
-      ctx.onClose?.();
-    }
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    otherProps.onKeyDown?.(event);
+    ctx.onChange?.(ctx.isOpen ? false : true);
+    ctx.onOpen?.();
   };
-
-  const clxss = clsx(otherProps.className, 'Dropdown-target');
 
   return React.cloneElement(children, {
-    ref,
+    ref: refs,
     onClick: handleClick,
-    onKeyDown: handleKeydown,
+    onKeyDown: handleKeyDown,
     className: clxss,
     ...otherProps,
   });
-});
+};
+
+export type DropdownTargetComponent = React.ForwardRefExoticComponent<DropdownTargetProps>;
+export const DropdownTarget = React.forwardRef(_DropdownTarget) as DropdownTargetComponent;
+DropdownTarget.displayName = '@v2/Dropdown.Target';
