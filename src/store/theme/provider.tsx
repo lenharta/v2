@@ -14,6 +14,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
   const local = localManager<ThemeStore>(STORAGE_KEYS.LOCAL_STORE_THEME);
 
   const INITIAL_STATE: ThemeStore = {
+    lang: 'english',
     avatar: 'person',
     accent: 'blue',
     mode: 'dark',
@@ -80,6 +81,15 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     }
   };
 
+  const setLang = (value: ThemeStore['lang']) => {
+    try {
+      local.write({ ...theme, lang: value });
+      dispatch({ lang: value });
+    } catch (error: any) {
+      console.error(`ERROR:[@v2/storage/local]: Check 'SET-LANG' method @ ${value}`);
+    }
+  };
+
   React.useEffect(() => {
     const root = document.getElementById('root')!;
     root.setAttribute('data-prefers-script-dir', String(theme.dir));
@@ -88,7 +98,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
   }, [theme]);
 
   return (
-    <ThemeCTX.Provider value={{ state: theme, setMode, setAccent, setAvatar, setDir }}>
+    <ThemeCTX.Provider value={{ state: theme, setMode, setAccent, setAvatar, setDir, setLang }}>
       {children}
     </ThemeCTX.Provider>
   );

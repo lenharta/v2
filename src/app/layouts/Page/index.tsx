@@ -1,18 +1,13 @@
 import * as React from 'react';
+import { GlobalControl } from '@/app/components';
+
 import { PageHero } from './Hero';
 import { PageHeader } from './Header';
 import { PageFooter } from './Footer';
 import { PageContent } from './Content';
-import { GlobalControl } from '@/app/components';
-import { useDispatch, useStore } from '@/store';
-import { useExhibit } from '@/hooks';
-import { StoreState } from '@/types/store';
-import { useLocation } from 'react-router-dom';
-import { SplashScreen } from '@/app/screens';
+import clsx from 'clsx';
 
-export type PageBaseProps = React.ComponentPropsWithoutRef<'div'>;
-
-export interface PageProps extends PageBaseProps {}
+export type PageProps = React.ComponentPropsWithoutRef<'div'>;
 
 export type PageComponent = React.FC<PageProps> & {
   Content: typeof PageContent;
@@ -21,44 +16,15 @@ export type PageComponent = React.FC<PageProps> & {
   Hero: typeof PageHero;
 };
 
-const PageInfo = (props: { store: StoreState }) => {
-  const { store } = props;
-  const { pageX, pageY } = store;
-  const [mounted, { toggle }] = useExhibit();
-
-  return (
-    <>
-      <div className="Page-info-panel" {...(mounted ? { 'data-mounted': true } : {})}>
-        <button
-          onClick={toggle}
-          children="Page Info"
-          className="Page-info-button"
-          {...(mounted ? { 'data-mounted': true } : {})}
-        />
-        <div>
-          <p className="Page-info-text">Scroll Y: {pageY?.toFixed(0)}</p>
-          <p className="Page-info-text">Scroll X: {pageX?.toFixed(0)}</p>
-        </div>
-      </div>
-    </>
-  );
-};
-
 export const Page: PageComponent = (props) => {
-  const { children, ...otherProps } = props;
-  const pageRef = React.useRef<HTMLDivElement>(null);
-  const dispatch = useDispatch();
-  const store = useStore();
-
-  console.log(store);
-
+  const { className, children, ...otherProps } = props;
+  const clxss = clsx('Page', className);
   return (
-    <div {...otherProps} className="Page" ref={pageRef}>
+    <div {...otherProps} className={clxss}>
       <Page.Header />
       {children}
       <GlobalControl />
       <Page.Footer />
-      <PageInfo store={store} />
     </div>
   );
 };

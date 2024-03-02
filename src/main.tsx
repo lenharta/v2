@@ -4,9 +4,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './styles/main.scss';
 
 import { Root } from '@/app';
-import { Home, Preferences, Toolbox, Demo } from '@/app/pages';
-
-import { OnBoardScreen, PageError404, SplashScreen } from './app/screens';
+import { Home, Demo, Toolbox, Sandbox } from '@/app/pages';
+import { OnBoardScreen, PageError404 } from './app/screens';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +15,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: '/onboard', element: <OnBoardScreen /> },
+      { path: '/sandbox', element: <Sandbox /> },
       { path: '/toolbox', element: <Toolbox /> },
-      { path: '/preferences', element: <Preferences /> },
       {
         path: '/demo',
         element: <Demo />,

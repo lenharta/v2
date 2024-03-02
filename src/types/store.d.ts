@@ -15,8 +15,11 @@ export type StoreState = {
 export type Store = StoreState;
 export type StoreDispatch = React.Dispatch<StoreState>;
 
+export type Language = 'english' | 'german' | 'spanish' | 'japanese' | 'arabic' | 'french';
+
 export type ThemeStore = {
   dir: Dir;
+  lang: Language;
   mode: Mode;
   accent: Accent;
   avatar: Avatar;

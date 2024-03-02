@@ -21,5 +21,5 @@ export function useScrollPosition() {
     setPosition(getScrollPosition());
   }, []);
 
-  return [position, scrollTo];
+  return [position, scrollTo] as const;
 }

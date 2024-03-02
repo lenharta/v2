@@ -2,23 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useThemeCTX } from '@/store';
 import { Avatar, Icon } from '@/common';
-import { ThemeStore } from '@/types/store';
-
-const HeaderLogo = () => {
-  return (
-    <Link to="/">
-      <Icon name="shield" type="filled" />
-    </Link>
-  );
-};
-
-const HeaderAvatar = (state: ThemeStore) => (
-  <Avatar
-    to="/preferences"
-    aria-label="go to preferences"
-    children={<Icon name={state.avatar} />}
-  />
-);
+import clsx from 'clsx';
 
 type PageHeaderElementProps = React.ComponentPropsWithoutRef<'header'>;
 type PageHeaderAttributeProps = React.RefAttributes<HTMLElement>;
@@ -26,14 +10,25 @@ type PageHeaderBaseProps = PageHeaderElementProps & PageHeaderAttributeProps;
 
 export interface PageHeaderProps extends PageHeaderBaseProps {}
 
-export const _PageHeader = (props: PageHeaderProps, ref: React.ForwardedRef<HTMLElement>) => {
-  const { children, ...otherProps } = props;
+const _PageHeader = (props: PageHeaderProps, ref: React.ForwardedRef<HTMLElement>) => {
+  const { className, children, ...otherProps } = props;
+  const clxss = clsx('Page-header', className);
   const theme = useThemeCTX();
   return (
-    <header {...otherProps} className="Page-header" ref={ref}>
+    <header {...otherProps} className={clxss} ref={ref}>
       <nav className="Page-nav">
-        <HeaderLogo />
-        <HeaderAvatar {...theme.state} />
+        <Link
+          to="/"
+          children={<Icon name="shield" type="filled" />}
+          aria-label="navigate to home page"
+          className="PageHeader-logo"
+        />
+        <Avatar
+          to="/"
+          children={<Icon name={theme.state.avatar} />}
+          aria-label="navigate to home page"
+          className="PageHeader-avatar"
+        />
       </nav>
     </header>
   );

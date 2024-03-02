@@ -36,6 +36,19 @@ export const GlobalControlPanelDir = () => {
     </>
   );
 };
+export const GlobalControlPanelLang = () => {
+  const { setLang } = useThemeCTX();
+  return (
+    <>
+      <Button onClick={() => setLang('arabic')}>Arabic</Button>
+      <Button onClick={() => setLang('english')}>English</Button>
+      <Button onClick={() => setLang('french')}>French</Button>
+      <Button onClick={() => setLang('german')}>German</Button>
+      <Button onClick={() => setLang('japanese')}>Japanese</Button>
+      <Button onClick={() => setLang('spanish')}>Spanish</Button>
+    </>
+  );
+};
 
 export const GlobalControlPanelAccent = () => {
   const { setAccent } = useThemeCTX();
@@ -97,6 +110,7 @@ export const GlobalControl = () => {
           <div className="GlobalControl-categories">
             <Button onClick={() => setActivePanel('nav')}>Nav</Button>
             <Button onClick={() => setActivePanel('mode')}>Mode</Button>
+            <Button onClick={() => setActivePanel('lang')}>Lang</Button>
             <Button onClick={() => setActivePanel('dir')}>Direction</Button>
             <Button onClick={() => setActivePanel('accent')}>Accent</Button>
             <Button onClick={() => setActivePanel('avatar')}>Avatar</Button>
@@ -104,6 +118,7 @@ export const GlobalControl = () => {
           <div className="GlobalControl-panel">
             {activePanel === 'nav' ? <GlobalControlPanelNav /> : null}
             {activePanel === 'dir' ? <GlobalControlPanelDir /> : null}
+            {activePanel === 'lang' ? <GlobalControlPanelLang /> : null}
             {activePanel === 'mode' ? <GlobalControlPanelMode /> : null}
             {activePanel === 'accent' ? <GlobalControlPanelAccent /> : null}
             {activePanel === 'avatar' ? <GlobalControlPanelAvatar /> : null}

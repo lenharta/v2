@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Title } from '@/common';
+import clsx from 'clsx';
 
 type PageHeroElementProps = React.ComponentPropsWithoutRef<'div'>;
 type PageHeroAttributeProps = React.RefAttributes<HTMLDivElement>;
@@ -10,9 +11,10 @@ export interface PageHeroProps extends PageHeroBaseProps {
 }
 
 export const _PageHero = (props: PageHeroProps, ref: React.ForwardedRef<HTMLDivElement>) => {
-  const { title, children, ...otherProps } = props;
+  const { title, className, children, ...otherProps } = props;
+  const clxss = clsx('Page-hero', className);
   return (
-    <div {...otherProps} className="Page-hero" ref={ref}>
+    <div {...otherProps} className={clxss} ref={ref}>
       <Title h1 className="page-hero-title" children={title} />
       {children}
     </div>
