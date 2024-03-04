@@ -23,6 +23,7 @@
 }
 
 .Page {
+  --cols: 12;
   --page-width: 1400px;
   --page-gutter: calc(var(--unit) * 8);
   --page-nav-height: calc(var(--unit) * 30);
@@ -39,9 +40,8 @@
   font-family: var(--font-family);
   font-size: var(--text-font-size-sm);
   line-height: var(--text-line-height-sm);
-
-  margin-right: -1rem;
   padding-right: 1rem;
+  margin-right: -1rem;
 
   // TEMPORARY
   min-height: 200vh;
@@ -58,11 +58,9 @@
   }
 
   &-header {
-    width: 100%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding-inline: var(--page-gutter);
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(calc(var(--cols) * 2), 1fr);
     position: fixed;
     z-index: var(--z-index-overlay);
     right: 0;
@@ -72,11 +70,34 @@
 
   &-nav {
     width: 100%;
-    height: var(--page-nav-height);
-    max-width: var(--page-width);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: var(--page-nav-height);
+    grid-column: 2 / 24;
+  }
+
+  &-hamburger {
+    cursor: pointer;
+    width: calc(var(--unit) * 10);
+    height: calc(var(--unit) * 10);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .slice {
+      width: 100%;
+      height: calc(var(--unit) * 1);
+      background-color: rgba(var(--c-secondary), 0.87);
+      margin-block: calc(var(--unit) * 1);
+    }
+
+    .slice-1 {
+      align-self: flex-start;
+    }
+    .slice-3 {
+      align-self: flex-end;
+    }
   }
 
   &-hero {
@@ -85,10 +106,6 @@
     margin-inline: auto;
     padding-block: var(--page-gutter);
     max-width: var(--page-width);
-
-    h1 {
-      margin-top: calc(var(--page-nav-height) * 4);
-    }
   }
 
   &[data-transition]::before {
@@ -145,5 +162,18 @@
     &[data-mounted] {
       transform: translateX(0%);
     }
+  }
+
+  @media (min-width: 30em) {
+    --page-gutter: calc(var(--unit) * 8);
+  }
+  @media (min-width: 40em) {
+    --page-gutter: calc(var(--unit) * 10);
+  }
+  @media (min-width: 50em) {
+    --page-gutter: calc(var(--unit) * 12);
+  }
+  @media (min-width: 60em) {
+    --page-gutter: calc(var(--unit) * 12);
   }
 }

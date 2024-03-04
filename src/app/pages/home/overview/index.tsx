@@ -1,22 +1,28 @@
-import { Section } from '@/app/layouts';
+import { useThemeCTX } from '@/store';
 import { Text, Title } from '@/common';
 import { DATA_HOME_SECTIONS } from '@/data/content';
-import { useThemeCTX } from '@/store';
 
 export const HomeOverview = () => {
   const { state } = useThemeCTX();
   const lang = state.lang || 'english';
   return (
-    <Section className="sec-home-overview">
-      <Section.Header className="sec-home-overview-header">
-        <Title h2 scheme="accent">
-          {DATA_HOME_SECTIONS[lang].overview.title}
-        </Title>
-        <Title h3>{DATA_HOME_SECTIONS[lang].overview.headline}</Title>
-      </Section.Header>
-      <Section.Content className="sec-home-overview-content">
-        <Text>{DATA_HOME_SECTIONS[lang].overview.content[0].copy}</Text>
-      </Section.Content>
-    </Section>
+    <section className="sec">
+      <div className="sec-left scheme-primary">
+        <div className="sec-content">
+          <Title h2 scheme="accent">
+            {DATA_HOME_SECTIONS[lang].overview.title}
+          </Title>
+          <Text emphasis="reg">{DATA_HOME_SECTIONS[lang].overview.content[0].copy}</Text>
+        </div>
+      </div>
+      <div className="sec-right scheme-secondary">
+        <div className="sec-content">
+          <Title h2 scheme="accent">
+            {DATA_HOME_SECTIONS[lang].overview.title}
+          </Title>
+          <Text emphasis="reg">{DATA_HOME_SECTIONS[lang].overview.content[0].copy}</Text>
+        </div>
+      </div>
+    </section>
   );
 };

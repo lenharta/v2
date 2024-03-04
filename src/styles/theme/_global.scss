@@ -38,11 +38,9 @@
     --c-accent: var(--c-red);
   }
 
-  #root {
-    color: rgba(var(--c-secondary), 1);
-    background-color: rgba(var(--c-primary), 1);
-  }
-
+  html,
+  body,
+  #root,
   .Page,
   .Screen,
   .Sandbox,
@@ -56,179 +54,217 @@
     background-color: rgba(var(--c-primary), 0.9);
   }
 
-  .Text.accent,
-  .Title.accent {
+  .scheme-accent-text {
     color: rgba(var(--c-accent), 1);
   }
-
-  span.accent {
-    color: rgba(var(--c-accent), 1);
+  .scheme-accent-bkgd {
+    background-color: rgba(var(--c-accent), 0.3);
+  }
+  .scheme-primary {
+    background-color: rgba(var(--c-primary), 1);
+    color: rgba(var(--c-secondary), 1);
+  }
+  .scheme-secondary {
+    background-color: rgba(var(--c-secondary), 1);
+    color: rgba(var(--c-primary), 1);
   }
 
   .Button {
-    background-color: rgba(var(--c-secondary), 0.08);
-  }
-  .Button:hover {
-    background-color: rgba(var(--c-secondary), 0.12);
-  }
-  .Button:active {
-    background-color: rgba(var(--c-secondary), 0.16);
+    color: var(--button-text, rgba(var(--primary), 1));
+    background-color: var(--button-bkgd, rgba(var(--secondary), 0.1));
   }
 
-  .Button.accent {
-    background-color: rgba(var(--c-accent), 0.5);
-  }
-  .Button.accent:hover {
-    background-color: rgba(var(--c-accent), 0.6);
-  }
-  .Button.accent:active {
-    background-color: rgba(var(--c-accent), 0.7);
-  }
+  // #root {
+  //   color: rgba(var(--c-secondary), 1);
+  //   background-color: rgba(var(--c-primary), 1);
+  // }
 
-  .Button.inverted {
-    color: rgba(var(--c-primary), 1);
-    background-color: rgba(var(--c-secondary), 1);
-  }
-  .Button.inverted:hover {
-    background-color: rgba(var(--c-secondary), 0.9);
-  }
-  .Button.inverted:active {
-    background-color: rgba(var(--c-secondary), 0.8);
-  }
+  // .Page,
+  // .Screen,
+  // .Sandbox,
+  // .GlobalControl {
+  //   color: rgba(var(--c-secondary), 1);
+  //   background-color: rgba(var(--c-primary), 1);
+  // }
 
-  .Section.accent {
-    background-color: rgba(var(--c-accent), 0.2);
-  }
-  .Section.primary {
-    color: rgba(var(--c-secondary), 1);
-    background-color: rgba(var(--c-primary), 1);
-  }
-  .Section.secondary {
-    color: rgba(var(--c-primary), 1);
-    background-color: rgba(var(--c-secondary), 1);
-  }
+  // .Page-header {
+  //   backdrop-filter: blur(16px);
+  //   background-color: rgba(var(--c-primary), 0.9);
+  // }
 
-  .Section.primary {
-    .Tile {
-      background-color: rgba(var(--c-secondary), 0.04);
+  // .Text.accent,
+  // .Title.accent {
+  //   color: rgba(var(--c-accent), 1);
+  // }
 
-      &[data-interactive='true'] {
-        &:focus:not(:focus-visible) {
-          outline-color: transparent;
-        }
-        &:focus:focus-visible {
-          outline-color: rgba(var(--c-indigo), 1);
-        }
-        &:hover {
-          background-color: rgba(var(--c-secondary), 0.08);
-        }
-        &:active {
-          background-color: rgba(var(--c-secondary), 0.12);
-        }
-      }
-    }
+  // span.accent {
+  //   color: rgba(var(--c-accent), 1);
+  // }
 
-    .Button {
-      background-color: rgba(var(--c-secondary), 0.08);
-    }
-    .Button:hover {
-      background-color: rgba(var(--c-secondary), 0.12);
-    }
-    .Button:active {
-      background-color: rgba(var(--c-secondary), 0.16);
-    }
+  // .Button {
+  //   background-color: rgba(var(--c-secondary), 0.08);
+  // }
+  // .Button:hover {
+  //   background-color: rgba(var(--c-secondary), 0.12);
+  // }
+  // .Button:active {
+  //   background-color: rgba(var(--c-secondary), 0.16);
+  // }
 
-    .Button.default {
-      background-color: rgba(var(--c-secondary), 0.08);
-    }
-    .Button.default:hover {
-      background-color: rgba(var(--c-secondary), 0.12);
-    }
-    .Button.default:active {
-      background-color: rgba(var(--c-secondary), 0.16);
-    }
+  // .Button.accent {
+  //   background-color: rgba(var(--c-accent), 0.5);
+  // }
+  // .Button.accent:hover {
+  //   background-color: rgba(var(--c-accent), 0.6);
+  // }
+  // .Button.accent:active {
+  //   background-color: rgba(var(--c-accent), 0.7);
+  // }
 
-    .Button.accent {
-      background-color: rgba(var(--c-accent), 0.5);
-    }
-    .Button.accent:hover {
-      background-color: rgba(var(--c-accent), 0.6);
-    }
-    .Button.accent:active {
-      background-color: rgba(var(--c-accent), 0.7);
-    }
+  // .Button.inverted {
+  //   color: rgba(var(--c-primary), 1);
+  //   background-color: rgba(var(--c-secondary), 1);
+  // }
+  // .Button.inverted:hover {
+  //   background-color: rgba(var(--c-secondary), 0.9);
+  // }
+  // .Button.inverted:active {
+  //   background-color: rgba(var(--c-secondary), 0.8);
+  // }
 
-    .Button.inverted {
-      color: rgba(var(--c-primary), 1);
-      background-color: rgba(var(--c-secondary), 1);
-    }
-    .Button.inverted:hover {
-      background-color: rgba(var(--c-secondary), 0.9);
-    }
-    .Button.inverted:active {
-      background-color: rgba(var(--c-secondary), 0.8);
-    }
-  }
+  // .Section.accent {
+  //   background-color: rgba(var(--c-accent), 0.2);
+  // }
+  // .Section.primary {
+  //   color: rgba(var(--c-secondary), 1);
+  //   background-color: rgba(var(--c-primary), 1);
+  // }
+  // .Section.secondary {
+  //   color: rgba(var(--c-primary), 1);
+  //   background-color: rgba(var(--c-secondary), 1);
+  // }
 
-  .Section.secondary {
-    .Tile {
-      background-color: rgba(var(--c-primary), 0.04);
+  // .Section.primary {
+  //   .Tile {
+  //     background-color: rgba(var(--c-secondary), 0.04);
 
-      &[data-interactive='true'] {
-        &:focus:not(:focus-visible) {
-          outline-color: transparent;
-        }
-        &:focus:focus-visible {
-          outline-color: rgba(var(--c-indigo), 1);
-        }
-        &:hover {
-          background-color: rgba(var(--c-primary), 0.08);
-        }
-        &:active {
-          background-color: rgba(var(--c-primary), 0.12);
-        }
-      }
-    }
+  //     &[data-interactive='true'] {
+  //       &:focus:not(:focus-visible) {
+  //         outline-color: transparent;
+  //       }
+  //       &:focus:focus-visible {
+  //         outline-color: rgba(var(--c-indigo), 1);
+  //       }
+  //       &:hover {
+  //         background-color: rgba(var(--c-secondary), 0.08);
+  //       }
+  //       &:active {
+  //         background-color: rgba(var(--c-secondary), 0.12);
+  //       }
+  //     }
+  //   }
 
-    .Button {
-      background-color: rgba(var(--c-primary), 0.08);
-    }
-    .Button:hover {
-      background-color: rgba(var(--c-primary), 0.12);
-    }
-    .Button:active {
-      background-color: rgba(var(--c-primary), 0.16);
-    }
+  //   .Button {
+  //     background-color: rgba(var(--c-secondary), 0.08);
+  //   }
+  //   .Button:hover {
+  //     background-color: rgba(var(--c-secondary), 0.12);
+  //   }
+  //   .Button:active {
+  //     background-color: rgba(var(--c-secondary), 0.16);
+  //   }
 
-    .Button.default {
-      background-color: rgba(var(--c-primary), 0.08);
-    }
-    .Button.default:hover {
-      background-color: rgba(var(--c-primary), 0.12);
-    }
-    .Button.default:active {
-      background-color: rgba(var(--c-primary), 0.16);
-    }
+  //   .Button.default {
+  //     background-color: rgba(var(--c-secondary), 0.08);
+  //   }
+  //   .Button.default:hover {
+  //     background-color: rgba(var(--c-secondary), 0.12);
+  //   }
+  //   .Button.default:active {
+  //     background-color: rgba(var(--c-secondary), 0.16);
+  //   }
 
-    .Button.accent {
-      background-color: rgba(var(--c-accent), 0.5);
-    }
-    .Button.accent:hover {
-      background-color: rgba(var(--c-accent), 0.6);
-    }
-    .Button.accent:active {
-      background-color: rgba(var(--c-accent), 0.7);
-    }
+  //   .Button.accent {
+  //     background-color: rgba(var(--c-accent), 0.5);
+  //   }
+  //   .Button.accent:hover {
+  //     background-color: rgba(var(--c-accent), 0.6);
+  //   }
+  //   .Button.accent:active {
+  //     background-color: rgba(var(--c-accent), 0.7);
+  //   }
 
-    .Button.inverted {
-      color: rgba(var(--c-secondary), 1);
-      background-color: rgba(var(--c-primary), 1);
-    }
-    .Button.inverted:hover {
-      background-color: rgba(var(--c-primary), 0.9);
-    }
-    .Button.inverted:active {
-      background-color: rgba(var(--c-primary), 0.8);
-    }
-  }
+  //   .Button.inverted {
+  //     color: rgba(var(--c-primary), 1);
+  //     background-color: rgba(var(--c-secondary), 1);
+  //   }
+  //   .Button.inverted:hover {
+  //     background-color: rgba(var(--c-secondary), 0.9);
+  //   }
+  //   .Button.inverted:active {
+  //     background-color: rgba(var(--c-secondary), 0.8);
+  //   }
+  // }
+
+  // .Section.secondary {
+  //   .Tile {
+  //     background-color: rgba(var(--c-primary), 0.04);
+
+  //     &[data-interactive='true'] {
+  //       &:focus:not(:focus-visible) {
+  //         outline-color: transparent;
+  //       }
+  //       &:focus:focus-visible {
+  //         outline-color: rgba(var(--c-indigo), 1);
+  //       }
+  //       &:hover {
+  //         background-color: rgba(var(--c-primary), 0.08);
+  //       }
+  //       &:active {
+  //         background-color: rgba(var(--c-primary), 0.12);
+  //       }
+  //     }
+  //   }
+
+  //   .Button {
+  //     background-color: rgba(var(--c-primary), 0.08);
+  //   }
+  //   .Button:hover {
+  //     background-color: rgba(var(--c-primary), 0.12);
+  //   }
+  //   .Button:active {
+  //     background-color: rgba(var(--c-primary), 0.16);
+  //   }
+
+  //   .Button.default {
+  //     background-color: rgba(var(--c-primary), 0.08);
+  //   }
+  //   .Button.default:hover {
+  //     background-color: rgba(var(--c-primary), 0.12);
+  //   }
+  //   .Button.default:active {
+  //     background-color: rgba(var(--c-primary), 0.16);
+  //   }
+
+  //   .Button.accent {
+  //     background-color: rgba(var(--c-accent), 0.5);
+  //   }
+  //   .Button.accent:hover {
+  //     background-color: rgba(var(--c-accent), 0.6);
+  //   }
+  //   .Button.accent:active {
+  //     background-color: rgba(var(--c-accent), 0.7);
+  //   }
+
+  //   .Button.inverted {
+  //     color: rgba(var(--c-secondary), 1);
+  //     background-color: rgba(var(--c-primary), 1);
+  //   }
+  //   .Button.inverted:hover {
+  //     background-color: rgba(var(--c-primary), 0.9);
+  //   }
+  //   .Button.inverted:active {
+  //     background-color: rgba(var(--c-primary), 0.8);
+  //   }
+  // }
 }

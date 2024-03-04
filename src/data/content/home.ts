@@ -1,6 +1,7 @@
 export const DATA_HOME_SECTIONS_ENGLISH = {
   hero: {
-    title: 'Software Engineer'
+    title: `Front-end Engineer, Human-Centered Problem Solver.`
+    // title: 'Software Engineer'
   },
   overview: {
     title: 'Overview',
@@ -15,7 +16,8 @@ export const DATA_HOME_SECTIONS_ENGLISH = {
 
 export const DATA_HOME_SECTIONS_ARABIC = {
   hero: {
-    title: 'مهندس برمجيات'
+    title: `مهندس الواجهة الأمامية، حل المشكلات التي تركز على الإنسان.`,
+    // title: 'مهندس برمجيات'
   },
   overview: {
     title: 'ملخص',
@@ -30,7 +32,8 @@ export const DATA_HOME_SECTIONS_ARABIC = {
 
 export const DATA_HOME_SECTIONS_SPANISH = {
   hero: {
-    title: 'Ingeniero de software'
+    title: `Ingeniero front-end, solucionador de problemas centrado en el ser humano.`,
+    // title: 'Ingeniero de software'
   },
   overview: {
     title: 'Descripción General',
@@ -45,7 +48,8 @@ export const DATA_HOME_SECTIONS_SPANISH = {
 
 export const DATA_HOME_SECTIONS_JAPANESE = {
   hero: {
-    title: 'ソフトウェアエンジニア'
+    title: `フロントエンドエンジニア、人間中心の問題解決者。`,
+    // title: 'ソフトウェアエンジニア'
   },
   overview: {
     title: '概要',
@@ -60,7 +64,8 @@ export const DATA_HOME_SECTIONS_JAPANESE = {
 
 export const DATA_HOME_SECTIONS_FRENCH = {
   hero: {
-    title: 'Ingénieur logiciel'
+    title: `Ingénieur front-end, solutionneur de problèmes centré sur l'humain.`,
+    // title: 'Ingénieur logiciel'
   },
   overview: {
     title: 'Aperçu',
@@ -75,7 +80,8 @@ export const DATA_HOME_SECTIONS_FRENCH = {
 
 export const DATA_HOME_SECTIONS_GERMAN = {
   hero: {
-    title: 'Benutzeroberflächeningenieur'
+    title: `Front-End-Ingenieur, menschzentrierter Problemlöser.`,
+    // title: 'Benutzeroberflächeningenieur'
   },
   overview: {
     title: 'Überblick',

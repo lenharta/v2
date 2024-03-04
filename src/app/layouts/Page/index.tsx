@@ -6,6 +6,7 @@ import { PageHeader } from './Header';
 import { PageFooter } from './Footer';
 import { PageContent } from './Content';
 import clsx from 'clsx';
+import { SideMenu } from '@/app/components';
 
 export type PageProps = React.ComponentPropsWithoutRef<'div'>;
 
@@ -20,12 +21,15 @@ export const Page: PageComponent = (props) => {
   const { className, children, ...otherProps } = props;
   const clxss = clsx('Page', className);
   return (
-    <div {...otherProps} className={clxss}>
-      <Page.Header />
-      {children}
-      <GlobalControl />
-      <Page.Footer />
-    </div>
+    <>
+      <div {...otherProps} className={clxss}>
+        <Page.Header />
+        {children}
+        <Page.Footer />
+        <GlobalControl />
+        <SideMenu />
+      </div>
+    </>
   );
 };
 

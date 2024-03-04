@@ -1,7 +1,6 @@
 import * as React from 'react';
+import { Text, Title, ToolButton } from '@/common';
 import { Page, Section } from '@/app/layouts';
-import { Orientation, Size } from '@/types/common';
-import { Checkbox, Text, Tile, Title } from '@/common';
 
 export const Toolbox = () => {
   return (
@@ -13,6 +12,7 @@ export const Toolbox = () => {
             <Title h2>Section (primary)</Title>
           </Section.Header>
           <Section.Content>
+            <ToolButton label="tool-button" />
             <Text>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam pariatur expedita
               quibusdam itaque alias vel recusandae ad ipsum cum! Ea eum cumque minima obcaecati
@@ -31,6 +31,7 @@ export const Toolbox = () => {
             <Title h2>Section (secondary)</Title>
           </Section.Header>
           <Section.Content>
+            <ToolButton label="tool-button" />
             <Text>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam pariatur expedita
               quibusdam itaque alias vel recusandae ad ipsum cum! Ea eum cumque minima obcaecati
