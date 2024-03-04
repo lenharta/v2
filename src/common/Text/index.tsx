@@ -7,31 +7,28 @@ export type TextBaseProps = React.JSX.IntrinsicElements['p'];
 
 export interface TextProps extends TextBaseProps {
   size?: SizeExpanded;
-  lead?: SizeExpanded;
   weight?: Weight;
   scheme?: Scheme;
-  emphasis?: Emphasis;
+  emphasis?: Weight;
 }
 
 const defaultProps: Partial<TextProps> = {
-  emphasis: 'med',
+  emphasis: 'bld',
   scheme: 'primary',
   weight: 'reg',
-  lead: 'md',
   size: 'sm',
 };
 
 export const Text = React.forwardRef<HTMLParagraphElement, TextProps>((props, ref) => {
-  const { size, lead, weight, scheme, emphasis, children, className, ...otherProps } = props;
+  const { size, weight, scheme, emphasis, children, className, ...otherProps } = props;
 
-  const mergedProps = mergeProps({ size, lead, weight, scheme, emphasis }, defaultProps);
+  const mergedProps = mergeProps({ size, weight, scheme, emphasis }, defaultProps);
 
   const clxss = clsx(
     'Text',
+    { [`Text--emp-${mergedProps.emphasis}`]: mergedProps.emphasis },
     { [`Text--size-${mergedProps.size}`]: mergedProps.size },
-    { [`Text--lead-${mergedProps.lead}`]: mergedProps.lead },
     { [`Text--weight-${mergedProps.weight}`]: mergedProps.weight },
-    { [`Text--emphasis-${mergedProps.emphasis}`]: mergedProps.emphasis },
     mergedProps.scheme,
     className
   );

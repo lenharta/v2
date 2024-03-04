@@ -17,3 +17,4 @@ export * from './Tabs';
 export * from './Text';
 export * from './Tile';
 export * from './Title';
+export * from './ToolButton';
