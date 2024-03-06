@@ -26,7 +26,6 @@
   --border-sm: solid 2px transparent;
   --border-md: solid 3px transparent;
   --border-lg: solid 4px transparent;
-  --border-lg: solid 5px transparent;
 
   --font-family: 'Satoshi';
 
@@ -36,55 +35,19 @@
   --font-weight-bld: 600;
   --font-weight-xbd: 700;
 
-  --font-size-xxs: calc(var(--unit) * 6);
-  --font-size-xs: calc(var(--unit) * 7);
-  --font-size-sm: calc(var(--unit) * 8);
-  --font-size-md: calc(var(--unit) * 9);
-  --font-size-lg: calc(var(--unit) * 10);
-  --font-size-xl: calc(var(--unit) * 11);
-  --font-size-xxl: calc(var(--unit) * 12);
-
-  --line-height-xxs: 1.4;
-  --line-height-xs: 1.45;
-  --line-height-sm: 1.5;
-  --line-height-md: 1.55;
-  --line-height-lg: 1.6;
-  --line-height-xl: 1.65;
-  --line-height-xxl: 1.7;
-
-  --h1-font-size: calc(var(--unit) * 22);
-  --h1-line-height: var(--line-height-xxs);
-
-  --h2-font-size: calc(var(--unit) * 18);
-  --h2-line-height: var(--line-height-xxs);
-
-  --h3-font-size: calc(var(--unit) * 16);
-  --h3-line-height: var(--line-height-xs);
-
-  --h4-font-size: calc(var(--unit) * 14);
-  --h4-line-height: var(--line-height-xs);
-
-  --h5-font-size: calc(var(--unit) * 12);
-  --h5-line-height: var(--line-height-sm);
-
-  --h6-font-size: calc(var(--unit) * 10);
-  --h6-line-height: var(--line-height-sm);
-
-  --title-size-xxl: calc(var(--unit) * 22);
-  --title-size-xl: calc(var(--unit) * 20);
+  --title-size-xxs: calc(var(--unit) * 8);
+  --title-size-xs: calc(var(--unit) * 10);
+  --title-size-sm: calc(var(--unit) * 12);
+  --title-size-md: calc(var(--unit) * 14);
   --title-size-lg: calc(var(--unit) * 18);
-  --title-size-md: calc(var(--unit) * 16);
-  --title-size-sm: calc(var(--unit) * 14);
-  --title-size-xs: calc(var(--unit) * 12);
-  --title-size-xxs: calc(var(--unit) * 10);
+  --title-size-xl: calc(var(--unit) * 22);
+  --title-size-xxl: calc(var(--unit) * 26);
 
-  --text-size-xxl: var(--font-size-xxl);
-  --text-size-xl: var(--font-size-xl);
-  --text-size-lg: var(--font-size-lg);
-  --text-size-md: var(--font-size-md);
-  --text-size-sm: var(--font-size-sm);
-  --text-size-xs: var(--font-size-xs);
-  --text-size-xxs: var(--font-size-xxs);
+  --icon-size-xs: calc(var(--unit) * 10);
+  --icon-size-sm: calc(var(--unit) * 12);
+  --icon-size-md: calc(var(--unit) * 14);
+  --icon-size-lg: calc(var(--unit) * 16);
+  --icon-size-xl: calc(var(--unit) * 18);
 
   --spacing-1: calc(var(--unit) * 1);
   --spacing-2: calc(var(--unit) * 2);
@@ -117,10 +80,4 @@
   --easing-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
   --easing-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
   --easing-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
-
-  --icon-size-xs: var(--spacing-7);
-  --icon-size-sm: var(--spacing-7);
-  --icon-size-md: var(--spacing-7);
-  --icon-size-lg: var(--spacing-7);
-  --icon-size-xl: var(--spacing-7);
 }

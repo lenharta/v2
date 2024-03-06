@@ -1,13 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
-import { type Emphasis, type SizeExpanded, type Weight } from '@/types/common';
 
 export type TitleBaseProps = React.JSX.IntrinsicElements['h1'];
-
-export type TextScheme = 'primary' | 'secondary' | 'accent';
-export type TitleLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-export type TextEmphasis = 'xlt' | 'lgt' | 'reg' | 'med' | 'bld' | 'xbd';
 
 export interface TitleProps extends TitleBaseProps {
   h1?: boolean;
@@ -16,15 +10,7 @@ export interface TitleProps extends TitleBaseProps {
   h4?: boolean;
   h5?: boolean;
   h6?: boolean;
-  size?: SizeExpanded;
-  weight?: Weight;
-  scheme?: `${TextScheme}-${TextEmphasis}`;
 }
-
-const defaultProps: Partial<TitleProps> = {
-  weight: 'reg',
-  size: 'sm',
-};
 
 const findTitleLevel = (props: Partial<TitleProps>) => {
   const { h1, h2, h3, h4, h5, h6 } = props;
@@ -38,20 +24,9 @@ const findTitleLevel = (props: Partial<TitleProps>) => {
 };
 
 export const Title = React.forwardRef<HTMLHeadingElement, TitleProps>((props, ref) => {
-  const { h1, h2, h3, h4, h5, h6, size, scheme, weight, children, className, ...otherProps } =
-    props;
-
+  const { h1, h2, h3, h4, h5, h6, children, className, ...otherProps } = props;
   const Component = findTitleLevel({ h1, h2, h3, h4, h5, h6 });
-  const mergedProps = mergeProps({ size, scheme, weight, h1, h2, h3, h4, h5, h6 }, defaultProps);
-
-  const clxss = clsx(
-    `Title`,
-    { [`Title--size-${mergedProps.size}`]: mergedProps.size },
-    { [`Title--weight-${mergedProps.weight}`]: mergedProps.weight },
-    { [`Title--scheme-${mergedProps.scheme}`]: mergedProps.scheme },
-    className
-  );
-
+  const clxss = clsx(`Title`, className);
   return (
     <Component {...otherProps} ref={ref} className={clxss}>
       {children}

@@ -1,24 +1,22 @@
-import { useThemeCTX } from '@/store';
 import { Text, Title } from '@/common';
-import { DATA_HOME_SECTIONS } from '@/data/content';
 
 export const HomeOverview = () => {
-  const { state } = useThemeCTX();
-  const lang = state.lang || 'english';
   return (
-    <section className="sec">
-      <div className="sec-left scheme-primary">
-        <div className="sec-content">
-          <Title h2 size="md" scheme="accent-xbd">
-            {DATA_HOME_SECTIONS[lang].overview.title}
-          </Title>
-          <Text scheme="primary-med">{DATA_HOME_SECTIONS[lang].overview.content[0].copy}</Text>
+    <section className="home-sec-overview-root">
+      <div className="home-sec-overview-left">
+        <div className="home-sec-overview-left-content">
+          <Title h2>Overview</Title>
+          <Text>
+            Actively looking to join a team of talented engineers that drive transformative thinking
+            and improve the human relationship with technology.
+          </Text>
         </div>
       </div>
-      <div className="sec-right scheme-secondary">
-        <div className="sec-content">
-          <Title h3 size="lg" scheme="secondary-xbd">
-            Shaping the future of the world’s biggest brands–and having fun while doing it.
+      <div className="home-sec-overview-right">
+        <div className="home-sec-overview-right-content">
+          <Title h3>
+            Shaping the future of the world{'\u2019'}s biggest brands{'\u2013'}and having fun while
+            doing it.
           </Title>
         </div>
       </div>
