@@ -8,6 +8,10 @@ export interface DropdownContextValue {
   onOpen?(): void;
   targetRef?: React.RefObject<HTMLElement>;
   boxRef?: React.RefObject<HTMLDivElement>;
+  // x: number;
+  // y: number;
+  // getBoxId: () => string;
+  // getTargetId: () => string;
 }
 
 export interface DropdownProps {

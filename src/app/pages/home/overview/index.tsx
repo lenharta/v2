@@ -9,18 +9,17 @@ export const HomeOverview = () => {
     <section className="sec">
       <div className="sec-left scheme-primary">
         <div className="sec-content">
-          <Title h2 scheme="accent">
+          <Title h2 size="md" scheme="accent-xbd">
             {DATA_HOME_SECTIONS[lang].overview.title}
           </Title>
-          <Text emphasis="reg">{DATA_HOME_SECTIONS[lang].overview.content[0].copy}</Text>
+          <Text scheme="primary-med">{DATA_HOME_SECTIONS[lang].overview.content[0].copy}</Text>
         </div>
       </div>
       <div className="sec-right scheme-secondary">
         <div className="sec-content">
-          <Title h2 scheme="accent">
-            {DATA_HOME_SECTIONS[lang].overview.title}
+          <Title h3 size="lg" scheme="secondary-xbd">
+            Shaping the future of the world’s biggest brands–and having fun while doing it.
           </Title>
-          <Text emphasis="reg">{DATA_HOME_SECTIONS[lang].overview.content[0].copy}</Text>
         </div>
       </div>
     </section>
