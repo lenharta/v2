@@ -37,7 +37,9 @@ export const HomeHero = () => {
     <div className="sec-home-hero" ref={heroRef}>
       <div className="sec-home-hero-content-container">
         <div className="sec-home-hero-content-copy">
-          <Title h1>{DATA_HOME_SECTIONS[lang].hero.title}</Title>
+          <Title h1 size="lg">
+            {DATA_HOME_SECTIONS[lang].hero.title}
+          </Title>
         </div>
       </div>
       <div className="sec-home-hero-pattern">

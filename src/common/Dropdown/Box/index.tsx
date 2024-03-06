@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { useMergeRefs } from '@/hooks';
 import { useDropdownCTX } from '../context';
-import { mergeRefs, useMergeRefs } from '@/hooks';
 
 export type DropdownBoxElementProps = React.ComponentPropsWithoutRef<'div'>;
 export type DropdownBoxAttributeProps = React.RefAttributes<HTMLDivElement>;

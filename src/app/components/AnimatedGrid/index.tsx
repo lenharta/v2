@@ -39,7 +39,13 @@ const AnimatedGridRow = ({ index }: { index: number }) => {
     <div className="animated-grid-row" ref={rowRef}>
       {new Array(12).fill(null).map((_, cell) => {
         const backgroundColor = `rgba(var(--c-accent), ${index * 0.02 + cell * 0.02})`;
-        return <div className="animated-grid-cell" style={{ backgroundColor }} />;
+        return (
+          <div
+            key={`r-${index}-c-${cell}`}
+            style={{ backgroundColor }}
+            className="animated-grid-cell"
+          />
+        );
       })}
     </div>
   );
