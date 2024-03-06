@@ -1,16 +1,8 @@
 .ToolButton {
-  --button-size-xs: calc(var(--unit) * 14);
-  --button-size-sm: calc(var(--unit) * 16);
-  --button-size-md: calc(var(--unit) * 18);
-  --button-size-lg: calc(var(--unit) * 20);
-  --button-size-xl: calc(var(--unit) * 22);
-
   user-select: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--button-size, var(--button-size-xs));
-  height: var(--button-size, var(--button-size-xs));
   outline: solid 2px transparent;
   border: solid 2px transparent;
 
@@ -35,107 +27,5 @@
   }
   &:focus:focus-visible {
     outline-color: rgba(var(--c-blue), 0.87);
-  }
-
-  &--size-xs {
-    --button-size: var(--button-size-xs);
-  }
-  &--size-sm {
-    --button-size: var(--button-size-sm);
-  }
-  &--size-md {
-    --button-size: var(--button-size-md);
-  }
-  &--size-lg {
-    --button-size: var(--button-size-lg);
-  }
-  &--size-xl {
-    --button-size: var(--button-size-xl);
-  }
-
-  .primary & {
-    &--scheme-default {
-      background-color: rgba(var(--c-secondary), 0);
-      &:hover {
-        background-color: rgba(var(--c-secondary), 0.06);
-      }
-      &:active {
-        background-color: rgba(var(--c-secondary), 0.12);
-      }
-    }
-
-    &--scheme-accent {
-      background-color: rgba(var(--c-secondary), 0);
-      color: rgba(var(--c-accent), 1);
-      &:hover {
-        background-color: rgba(var(--c-secondary), 0.06);
-      }
-      &:active {
-        background-color: rgba(var(--c-secondary), 0.12);
-      }
-    }
-
-    &--scheme-accent-elevated {
-      background-color: rgba(var(--c-secondary), 0.08);
-      color: rgba(var(--c-accent), 1);
-      &:hover {
-        background-color: rgba(var(--c-secondary), 0.12);
-      }
-      &:active {
-        background-color: rgba(var(--c-secondary), 0.16);
-      }
-    }
-
-    &--scheme-elevated {
-      background-color: rgba(var(--c-secondary), 0.08);
-      &:hover {
-        background-color: rgba(var(--c-secondary), 0.12);
-      }
-      &:active {
-        background-color: rgba(var(--c-secondary), 0.16);
-      }
-    }
-  }
-
-  .secondary & {
-    background-color: rgba(var(--c-primary), 0);
-    &:hover {
-      background-color: rgba(var(--c-primary), 0.06);
-    }
-    &:active {
-      background-color: rgba(var(--c-primary), 0.12);
-    }
-
-    &--scheme-accent {
-      background-color: rgba(var(--c-primary), 0);
-      color: rgba(var(--c-accent), 1);
-      &:hover {
-        background-color: rgba(var(--c-primary), 0.06);
-      }
-      &:active {
-        background-color: rgba(var(--c-primary), 0.12);
-      }
-    }
-
-    &--scheme-accent-elevated {
-      background-color: rgba(var(--c-primary), 0.08);
-      color: rgba(var(--c-accent), 1);
-      &:hover {
-        background-color: rgba(var(--c-primary), 0.12);
-      }
-      &:active {
-        background-color: rgba(var(--c-primary), 0.16);
-      }
-    }
-
-    &--scheme-elevated {
-      background-color: rgba(var(--c-primary), 0.08);
-      &:hover {
-        background-color: rgba(var(--c-primary), 0.12);
-      }
-      &:active {
-        background-color: rgba(var(--c-primary), 0.16);
-      }
-    }
   }
 }

@@ -1,52 +1,67 @@
 import { Page } from '@/app/layouts';
 import { HomeHero } from './hero';
 import { HomeOverview } from './overview';
-import { Text, Tile, Title } from '@/common';
 
 // Think Freely, Open Minds, <span className="accent">Create With Courage,</span>
 
-// OUTLINE
-// Overview
+// I develop accessible digital experiences for the modern world.
 
-//
+const HomeKeynote = () => {
+  return (
+    <section className="home-sec-keynote-root">
+      <div className="home-sec-keynote-left">
+        <div className="home-sec-keynote-left-content">
+          <span>01</span>
+          <h2>Keynote Title</h2>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus distinctio sint iste
+            incidunt pariatur, enim alias reiciendis consequatur possimus neque autem fugit at
+            ratione exercitationem sapiente officiis ipsum. Temporibus, itaque.
+          </p>
+        </div>
+      </div>
+      <div className="home-sec-keynote-center">
+        <div className="home-sec-keynote-center-content">
+          <span>02</span>
+          <h2>Keynote Title</h2>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus distinctio sint iste
+            incidunt pariatur, enim alias reiciendis consequatur possimus neque autem fugit at
+            ratione exercitationem sapiente officiis ipsum. Temporibus, itaque.
+          </p>
+        </div>
+      </div>
+      <div className="home-sec-keynote-right">
+        <div className="home-sec-keynote-right-content">
+          <span>03</span>
+          <h2>Keynote Title</h2>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus distinctio sint iste
+            incidunt pariatur, enim alias reiciendis consequatur possimus neque autem fugit at
+            ratione exercitationem sapiente officiis ipsum. Temporibus, itaque.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const HomeTimeline = () => {
+  return (
+    <section className="home-sec-timeline-root">
+      <div className="home-sec-timeline-left"></div>
+      <div className="home-sec-timeline-right"></div>
+    </section>
+  );
+};
 
 export const Home = () => {
   return (
     <Page>
       <HomeHero />
-      <Page.Content>
-        <HomeOverview />
-        <section className="sec">
-          <div className="sec-content">
-            <Tile.Group>
-              <Tile>
-                <Title>Tile Title 1</Title>
-                <Text>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia sit aperiam
-                  eius, ducimus dignissimos perferendis laboriosam molestiae facilis voluptas, illo
-                  quod illum sapiente aut. Vitae quasi minima explicabo totam soluta?
-                </Text>
-              </Tile>
-              <Tile>
-                <Title>Tile Title 2</Title>
-                <Text>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia sit aperiam
-                  eius, ducimus dignissimos perferendis laboriosam molestiae facilis voluptas, illo
-                  quod illum sapiente aut. Vitae quasi minima explicabo totam soluta?
-                </Text>
-              </Tile>
-              <Tile>
-                <Title>Tile Title 3</Title>
-                <Text>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia sit aperiam
-                  eius, ducimus dignissimos perferendis laboriosam molestiae facilis voluptas, illo
-                  quod illum sapiente aut. Vitae quasi minima explicabo totam soluta?
-                </Text>
-              </Tile>
-            </Tile.Group>
-          </div>
-        </section>
-      </Page.Content>
+      <HomeOverview />
+      {/* <Page.Content>
+      </Page.Content> */}
     </Page>
   );
 };

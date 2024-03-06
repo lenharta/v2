@@ -10,6 +10,7 @@ export * from './Label';
 export * from './Overlay';
 export * from './Portal';
 export * from './Radio';
+export * from './Section';
 export * from './Space';
 export * from './Stack';
 export * from './Switch';
