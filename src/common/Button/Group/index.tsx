@@ -1,29 +1,35 @@
-import { mergeProps } from '@/utils';
+import clsx from 'clsx';
 import * as React from 'react';
+import { mergeProps } from '@/utils';
+import { Orientation } from '@/types/common';
 
-type ButtonGroupBaseProps = React.JSX.IntrinsicElements['div'];
+type ButtonGroupElementProps = React.ComponentPropsWithoutRef<'div'>;
+type ButtonGroupRefProps = React.RefAttributes<HTMLDivElement>;
+type ButtonGroupBaseProps = ButtonGroupElementProps & ButtonGroupRefProps;
 
 export interface ButtonGroupProps extends ButtonGroupBaseProps {
-  orientation?: 'horizontal' | 'vertical';
+  orientation?: Orientation;
 }
 
 const defaultProps: Partial<ButtonGroupProps> = {
-  orientation: 'horizontal',
+  orientation: 'vertical',
 };
 
-export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
-  const { children, orientation, ...otherProps } = props;
-  const mergedProps = mergeProps({ orientation }, defaultProps);
+function _ButtonGroup(props: ButtonGroupProps, ref: React.ForwardedRef<HTMLDivElement>) {
+  const { orientation, className, ...otherProps } = props;
+  const clxss = clsx('button-group', className);
+  const _props = mergeProps({ orientation }, defaultProps);
   return (
     <div
       {...otherProps}
       ref={ref}
       role="group"
-      className="Button-group"
-      data-orientation={mergedProps.orientation}
-      aria-orientation={mergedProps.orientation}
-    >
-      {children}
-    </div>
+      data-orientation={_props.orientation}
+      aria-orientation={_props.orientation}
+      className={clxss}
+    />
   );
-});
+}
+
+export type ButtonGroupComponent = React.ForwardRefExoticComponent<ButtonGroupProps>;
+export const ButtonGroup = React.forwardRef(_ButtonGroup) as ButtonGroupComponent;

@@ -1,50 +1,52 @@
 import gsap from 'gsap';
-import React from 'react';
-import { useGSAP } from '@gsap/react';
+import * as React from 'react';
 import { Title } from '@/common';
-import { useThemeCTX } from '@/store';
+import { useGSAP } from '@gsap/react';
 import { AnimatedGrid } from '@/app/components';
-import { DATA_HOME_SECTIONS } from '@/data';
+import { UnstyledButton } from '@/common/Button/Unstyled';
 
 export const HomeHero = () => {
-  const { state } = useThemeCTX();
-  const lang = state.lang || 'english';
-  const heroRef = React.useRef<HTMLDivElement>(null);
+  const scopeRef = React.useRef<HTMLDivElement>(null);
   const timelineRef = React.useRef<gsap.core.Timeline>();
+
+  const baselineOptions: gsap.TweenVars = {
+    opacity: 1,
+    delay: 0,
+    ease: 'expo.out',
+    x: 0,
+    y: 0,
+  };
+
+  const steps: Record<string, [string, gsap.TweenVars]> = {
+    'name-from': ['.home-hero-title-name', { ...baselineOptions, opacity: 0, x: -200 }],
+    'intro-from': ['.home-hero-title-intro', { ...baselineOptions, opacity: 0, x: -200 }],
+    'name-to': ['.home-hero-title-name', { ...baselineOptions }],
+    'intro-to': ['.home-hero-title-intro', { ...baselineOptions }],
+  };
 
   useGSAP(
     () => {
       timelineRef.current = gsap
         .timeline()
-        .from('.sec-home-hero-content-copy', {
-          x: -200,
-          delay: 0.5,
-          opacity: 0,
-          duration: 1,
-          ease: 'expo.out',
-        })
-        .to('.sec-home-hero-content-copy', {
-          x: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'expo.out',
-        });
+        .from(...steps['name-from'])
+        .from(...steps['intro-from'])
+        .to(...steps['name-to'])
+        .to(...steps['intro-to']);
     },
-    { scope: heroRef }
+    { scope: scopeRef }
   );
 
   return (
-    <div className="sec-home-hero" ref={heroRef}>
-      <div className="sec-home-hero-content-container">
-        <div className="sec-home-hero-content-copy">
-          <Title h1 size="lg">
-            {DATA_HOME_SECTIONS[lang].hero.title}
-          </Title>
-        </div>
+    <div className="home-hero" ref={scopeRef}>
+      <div className="home-hero-content">
+        <Title h1 className="home-hero-title-name" children="Andrew Lenhart" />
+        <Title
+          h2
+          className="home-hero-title-intro"
+          children="Front-End Engineer, Human-Centered Problem Solver."
+        />
       </div>
-      <div className="sec-home-hero-pattern">
-        <AnimatedGrid />
-      </div>
+      <div className="home-hero-grid" children={<AnimatedGrid />} />
     </div>
   );
 };

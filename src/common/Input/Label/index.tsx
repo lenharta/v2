@@ -12,8 +12,8 @@ type InputLabelProps = InputLabelBaseProps &
     size: Size;
     text: string;
     disabled: boolean;
-    inputId: string;
     descriptionId: string;
+    inputId: string;
   }>;
 
 const _InputLabel = (props: InputLabelProps, ref: React.ForwardedRef<HTMLLabelElement>) => {

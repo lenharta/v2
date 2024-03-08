@@ -37,20 +37,26 @@
   &[data-prefers-color-accent='red'] {
     --c-accent: var(--c-red);
   }
+}
 
-  html,
-  body,
-  #root,
-  .Page,
-  .Screen,
-  .Sandbox,
-  .GlobalControl {
-    color: rgba(var(--c-secondary), 1);
-    background-color: rgba(var(--c-primary), 1);
-  }
+body,
+html,
+#root {
+  color: rgba(var(--c-secondary), 1);
+  background-color: rgba(var(--c-primary), 1);
+}
 
-  .Page-header {
+.page {
+  color: rgba(var(--c-secondary), 1);
+  background-color: rgba(var(--c-primary), 1);
+
+  &-header {
     backdrop-filter: blur(16px);
     background-color: rgba(var(--c-primary), 0.9);
   }
+}
+
+.global-control {
+  color: rgba(var(--c-secondary), 1);
+  background-color: rgba(var(--c-primary), 1);
 }

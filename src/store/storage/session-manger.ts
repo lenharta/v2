@@ -1,4 +1,4 @@
-import { generateRandomId, serializeJSON, deserializeJSON } from '@/utils';
+import { serializeJSON, deserializeJSON } from '@/utils';
 
 export const sessionManager = <T extends Record<string, any>>(key: string) => {
   const read = (): boolean => {
