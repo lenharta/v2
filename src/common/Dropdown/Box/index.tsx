@@ -2,9 +2,9 @@ import * as React from 'react';
 import { useMergeRefs } from '@/hooks';
 import { useDropdownCTX } from '../context';
 
-export type DropdownBoxElementProps = React.ComponentPropsWithoutRef<'div'>;
-export type DropdownBoxAttributeProps = React.RefAttributes<HTMLDivElement>;
-export type DropdownBoxBaseProps = DropdownBoxElementProps & DropdownBoxAttributeProps;
+type DropdownBoxElementProps = React.ComponentPropsWithoutRef<'div'>;
+type DropdownBoxAttributeProps = React.RefAttributes<HTMLDivElement>;
+type DropdownBoxBaseProps = DropdownBoxElementProps & DropdownBoxAttributeProps;
 
 export interface DropdownBoxProps extends DropdownBoxBaseProps {}
 
@@ -17,7 +17,7 @@ export const _DropdownBox = (props: DropdownBoxProps, ref: React.ForwardedRef<HT
   if (!ctx.isOpen) return null;
 
   return (
-    <div {...otherProps} className="Dropdown-box" role="listbox" ref={refs}>
+    <div {...otherProps} className="dropdown-box" role="listbox" ref={refs}>
       {children}
     </div>
   );
