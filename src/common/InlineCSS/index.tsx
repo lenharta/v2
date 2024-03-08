@@ -1,18 +1,13 @@
 import * as React from 'react';
 import { createInlineCSS } from '@/utils';
 
-export type InlineCSSProps = {
+export interface InlineCSSProps {
   selector: string;
-  styles?: React.CSSProperties;
   nonce?: () => string;
-};
-
-export interface InlineCSSComponent {
-  (props: InlineCSSProps): JSX.Element | null;
-  displayName?: string;
+  styles?: React.CSSProperties;
 }
 
-export const InlineCSS: InlineCSSComponent = (props) => {
+export const InlineCSS = (props: InlineCSSProps) => {
   const { selector, styles, nonce = () => '', ...otherProps } = props;
   return (
     <style
@@ -23,4 +18,4 @@ export const InlineCSS: InlineCSSComponent = (props) => {
   );
 };
 
-InlineCSS.displayName = '@v2/InlineCSS';
+InlineCSS.displayName = 'v2/InlineCSS';

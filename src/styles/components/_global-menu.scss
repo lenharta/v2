@@ -1,0 +1,29 @@
+.global-menu {
+  &-drawer {
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100vh;
+    display: block;
+    position: fixed;
+    isolation: isolate;
+    z-index: calc(var(--z-index-overlay) - 1);
+    border-right: solid 1px rgba(var(--c-secondary), 0.1);
+    backdrop-filter: blur(16px);
+    background-color: rgba(var(--c-primary), 0.9);
+    transition-timing-function: var(--easing-standard-expressive);
+    transition-duration: var(--easing-duration-5);
+    transition-delay: 50ms;
+    margin-top: var(--page-nav-height);
+
+    &:not([data-menu-open='true']) {
+      transform: translateX(-125%);
+    }
+    &[data-menu-open='true'] {
+      transform: translateX(0%);
+    }
+  }
+
+  &-button {
+  }
+}

@@ -1,15 +1,15 @@
-import React from 'react';
-import { useSession } from '@/hooks';
+import * as React from 'react';
 import { useLocation } from 'react-router-dom';
+import { useSession } from '@/hooks';
+import { StoreState } from '@/types/store';
 import { useStoreReducer, StoreStateProvider, StoreDispatchProvider } from './context';
-import { type StoreState } from '@/types/store';
 
 export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
-  const INITIAL_STATE: StoreState = {};
-
+  const INITIAL_STATE: StoreState = {
+    nonce: () => '',
+  };
   const session = useSession();
   const location = useLocation();
-
   const [store, dispatch] = useStoreReducer({}, () => INITIAL_STATE);
 
   React.useEffect(() => {

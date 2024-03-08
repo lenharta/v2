@@ -12,6 +12,7 @@ export const HomeOverview = () => {
           </Text>
         </div>
       </div>
+
       <div className="home-sec-overview-right">
         <div className="home-sec-overview-right-content">
           <Title h3>

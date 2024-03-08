@@ -4,24 +4,17 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './styles/main.scss';
 
 import { Root } from '@/app';
-import { Home, Demo, Toolbox, Sandbox } from '@/app/pages';
-import { OnBoardScreen, PageError404 } from './app/screens';
+import { Home, Toolbox, Sandbox } from '@/app/pages';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <PageError404 />,
+    errorElement: <h1>Page Error: 404</h1>,
     children: [
       { index: true, element: <Home /> },
-      { path: '/onboard', element: <OnBoardScreen /> },
       { path: '/sandbox', element: <Sandbox /> },
       { path: '/toolbox', element: <Toolbox /> },
-      {
-        path: '/demo',
-        element: <Demo />,
-        children: [],
-      },
     ],
   },
 ]);

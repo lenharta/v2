@@ -9,7 +9,7 @@ export interface PageFooterProps extends PageFooterBaseProps {}
 
 const _PageFooter = (props: PageFooterProps, ref: React.ForwardedRef<HTMLElement>) => {
   const { className, children, ...otherProps } = props;
-  const clxss = clsx('Page-footer', className);
+  const clxss = clsx('page-footer', className);
   return (
     <footer {...otherProps} className={clxss} ref={ref}>
       {children}

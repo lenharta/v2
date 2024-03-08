@@ -10,6 +10,7 @@ export type StoreState = {
   animating?: boolean;
   pageY?: number;
   pageX?: number;
+  nonce?: () => string;
 };
 
 export type Store = StoreState;
