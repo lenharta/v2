@@ -1,60 +1,10 @@
 import { Page } from '@/app/layouts';
 import { HomeHero } from './hero';
-import { camelToKebabCase, generateRandomId, objectKeys } from '@/utils';
-import { useStore } from '@/store';
+
 import clsx from 'clsx';
-import React from 'react';
-import { Text, Title } from '@/common';
-
-export interface InlineStylesMediaQuery {
-  query: string;
-  styles: React.CSSProperties;
-}
-
-export interface InlineStylesInput {
-  selector: string;
-  styles?: React.CSSProperties;
-  media?: InlineStylesMediaQuery[];
-}
-
-export function cssObjectToString(css: React.CSSProperties) {
-  return objectKeys(css)
-    .reduce(
-      (acc, rule) =>
-        css[rule] !== undefined ? `${acc}${camelToKebabCase(rule)}:${css[rule]};` : acc,
-      ''
-    )
-    .trim();
-}
-
-export function stylesToString({ selector, styles, media }: InlineStylesInput) {
-  const baseStyles = styles ? cssObjectToString(styles) : '';
-  const mediaQueryStyles = !Array.isArray(media)
-    ? []
-    : media.map((item) => `@media${item.query}{.${selector}{${cssObjectToString(item.styles)}}}`);
-
-  return `${baseStyles ? `.${selector}{${baseStyles}}` : ''}${mediaQueryStyles.join('')}`.trim();
-}
-
-export function useStyleNonce() {
-  return useStore().nonce;
-}
-
-const InlineCSS = (props: InlineStylesInput) => {
-  const { selector, styles, media } = props;
-  const nonce = useStyleNonce();
-  return (
-    <style
-      dangerouslySetInnerHTML={{ __html: stylesToString({ selector, styles, media }) }}
-      nonce={nonce?.()}
-    />
-  );
-};
-
-export function useRandomClassName() {
-  const id = React.useId().replace(/:/g, '');
-  return id;
-}
+import * as React from 'react';
+import { useRandomClassName } from '@/hooks';
+import { InlineCSS, Text, Title } from '@/common';
 
 export type SectionScheme = 'primary' | 'secondary' | 'accent';
 
