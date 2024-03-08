@@ -7,4 +7,4 @@ export type ButtonContextValue = {
 
 export const ButtonContext = React.createContext({} as ButtonContextValue);
 export const ButtonProvider = ButtonContext.Provider;
-export const useButtonContext = () => React.useContext(ButtonContext);
+export const useButtonCTX = () => React.useContext(ButtonContext);

@@ -1,6 +1,7 @@
 .page,
 .page-hero,
-.page-header {
+.page-header,
+.section {
   transition-property: background-color;
   transition-timing-function: var(--easing-standard-expressive);
   transition-duration: var(--easing-duration-5);

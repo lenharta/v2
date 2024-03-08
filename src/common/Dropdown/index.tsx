@@ -1,43 +1,55 @@
 import * as React from 'react';
-import { useScrollPosition } from '@/hooks';
-import { DropdownProps, DropdownProvider } from './context';
+import { DropdownProvider } from './context';
 import { DropdownTarget } from './Target';
 import { DropdownBox } from './Box';
 
-export type DropdownComponent = React.FC<DropdownProps> & {
+export interface DropdownStateOptions {
+  onOpen?: () => void;
+  onClose?: () => void;
+  initialOpen?: boolean;
+}
+
+export interface DropdownProps {
+  onOpen?: () => void;
+  onClose?: () => void;
+  initialOpen?: boolean;
+  children?: React.ReactNode;
+  disabled?: boolean;
+}
+
+function useDropdownState(options: DropdownStateOptions): [boolean, (value: boolean) => void] {
+  const { initialOpen, onOpen, onClose } = options;
+  const [isOpen, setOpen] = React.useState(initialOpen || false);
+
+  const onChange = React.useCallback(
+    (value: boolean) => {
+      if (isOpen) {
+        onClose?.();
+      } else {
+        onOpen?.();
+      }
+      setOpen?.(value);
+    },
+    [isOpen, initialOpen, onOpen, onClose]
+  );
+
+  return [isOpen, onChange] as const;
+}
+
+export type DropdownComponent = ((props: DropdownProps) => JSX.Element) & {
   Target: typeof DropdownTarget;
   Box: typeof DropdownBox;
 };
 
-export function useLatestRef<T>(value: T) {
-  const ref = React.useRef<T>(value);
-  React.useEffect(() => {
-    ref.current = value;
-  });
-  return ref;
-}
+export const Dropdown = (props: DropdownProps) => {
+  const { children, disabled, initialOpen, onOpen, onClose } = props;
+  const [isOpen, onChange] = useDropdownState({ initialOpen, onOpen, onClose });
 
-export const Dropdown: DropdownComponent = (props) => {
-  const { children, disabled, isOpen, onClose, onOpen, onChange } = props;
-
-  const targetRef = React.useRef<HTMLElement>(null);
   const boxRef = React.useRef<HTMLDivElement>(null);
-  const [position] = useScrollPosition();
-
-  const latest = useLatestRef(position);
-
-  React.useEffect(() => {
-    const boxNode = boxRef.current!;
-    const targetNode = targetRef.current!;
-
-    if (boxNode && targetNode) {
-      console.log(latest.current);
-      console.log(position);
-    }
-  }, [position]);
+  const targetRef = React.useRef<HTMLElement>(null);
 
   return (
-    <DropdownProvider value={{ disabled, isOpen, onClose, onOpen, onChange, boxRef, targetRef }}>
+    <DropdownProvider value={{ disabled, isOpen, onChange, boxRef, targetRef }}>
       {children}
     </DropdownProvider>
   );
@@ -46,3 +58,12 @@ export const Dropdown: DropdownComponent = (props) => {
 Dropdown.displayName = '@v2/Dropdown';
 Dropdown.Target = DropdownTarget;
 Dropdown.Box = DropdownBox;
+
+//   const [position] = useScrollPosition();
+//   React.useEffect(() => {
+//     const boxNode = boxRef.current!;
+//     const targetNode = targetRef.current!;
+//     if (boxNode && targetNode) {
+//       console.log(position);
+//     }
+//   }, [position]);

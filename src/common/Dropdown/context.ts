@@ -6,12 +6,12 @@ export interface DropdownContextValue {
   onChange?(isOpen: boolean): void;
   onClose?(): void;
   onOpen?(): void;
-  targetRef?: React.RefObject<HTMLElement>;
-  boxRef?: React.RefObject<HTMLDivElement>;
+  targetRef?: React.RefObject<any>;
+  boxRef?: React.RefObject<any>;
   // x: number;
   // y: number;
   // getBoxId: () => string;
-  // getTargetId: () => string;
+  // getTargetId: () => string;S
 }
 
 export interface DropdownProps {
@@ -21,16 +21,6 @@ export interface DropdownProps {
   onChange?(isOpen: boolean): void;
   onClose?(): void;
   onOpen?(): void;
-}
-
-export interface DropdownBoxProps {
-  children?: React.ReactNode;
-}
-
-type DropdownTargetBaseProps = React.AllHTMLAttributes<HTMLElement>;
-
-export interface DropdownTargetProps extends DropdownTargetBaseProps {
-  children: React.ReactElement;
 }
 
 export const DropdownContext = React.createContext({} as DropdownContextValue);
