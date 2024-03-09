@@ -10,14 +10,6 @@ export type Emphasis = 'low' | 'med' | 'hgh' | 'max';
 
 export type Border = 'sm' | 'md' | 'lg';
 
-export type Align = 'center' | 'start' | 'end';
-
-export type Justify = 'center' | 'start' | 'end';
-
-export type Position = 'top' | 'left' | 'right' | 'bottom';
-
-export type Placement = Position | `${Position}-${Align}`;
-
 export type Direction = 'up' | 'down' | 'left' | 'right';
 
 export type Orientation = 'horizontal' | 'vertical';
@@ -25,3 +17,25 @@ export type Orientation = 'horizontal' | 'vertical';
 export type IndexLevel = 'app' | 'modal' | 'popover' | 'overlay' | 'max';
 
 export type Scheme = 'primary' | 'secondary' | 'accent';
+
+export type Axis = 'x' | 'y';
+
+export type Side = 'top' | 'left' | 'right' | 'bottom';
+
+export type Length = 'width' | 'height';
+
+export type Alignment = 'start' | 'end';
+
+export type Position = `${Side}-${Alignment}`;
+
+export type Placement = Side | Position;
+
+export type Coords = { [key in Axis]: number };
+
+export type Dimensions = { [key in Length]: number };
+
+export type SideObject = { [key in Side]: number };
+
+export type ClientRect = Rect & SideObject;
+
+export type Rect = Coords & Dimensions;

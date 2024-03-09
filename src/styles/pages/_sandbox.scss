@@ -3,7 +3,6 @@
   place-content: start;
   grid-template-rows: auto;
   grid-template-columns: repeat(1, 1fr);
-  // min-height: calc(100vh - var(--page-height-header));
   height: 300vh;
 
   .Title:first-of-type {
@@ -19,16 +18,19 @@
   &-demo {
     display: grid;
   }
+}
 
-  &-demo-dropdown {
-    &-target {
-      display: inline-flex;
-      padding: 0.8rem 1.2rem;
-      align-items: center;
-      justify-content: flex-start;
-      background-color: rgba(var(--c-secondary), 0.04);
-    }
-    &-box {
-    }
+.sandbox-demo-popover {
+  display: block;
+  position: relative;
+  border: solid 2px indianred;
+  // display: grid;
+  // place-content: center;
+
+  &-floating {
+    display: grid;
+    place-content: center;
+    min-width: 250px;
+    min-height: 300px;
   }
 }

@@ -1,12 +1,15 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Scheme } from '@/types/common';
 import { mergeProps } from '@/utils';
 import { useButtonCTX } from './context';
+import { Scheme, Size } from '@/types/common';
 import { UnstyledButton, UnstyledButtonProps } from './Unstyled';
 
+export type ButtonScheme = 'default' | Scheme;
+
 export interface ButtonProps extends UnstyledButtonProps {
-  scheme?: Scheme;
+  size?: Size;
+  scheme?: ButtonScheme;
   loading?: boolean;
   disabled?: boolean;
   leftContent?: React.ReactNode;
@@ -14,11 +17,13 @@ export interface ButtonProps extends UnstyledButtonProps {
 }
 
 const defaultProps: Partial<ButtonProps> = {
-  scheme: 'primary',
+  scheme: 'default',
+  size: 'sm',
 };
 
 function _Button(props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) {
   const {
+    size,
     scheme,
     loading,
     disabled,
@@ -29,22 +34,23 @@ function _Button(props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>)
     ...otherProps
   } = props;
 
+  const ctx = useButtonCTX();
+  const _props = mergeProps({ size, scheme, loading, disabled }, defaultProps, ctx);
+
   const hasLeftContent = !!leftContent;
   const hasRightContent = !!rightContent;
 
-  const ctx = useButtonCTX();
-  const _props = mergeProps({ scheme, loading, disabled }, defaultProps, ctx);
-
-  const clxss = clsx('button', scheme, className);
   const isLoading = !_props.disabled && _props.loading;
   const isDisabled = _props.disabled || isLoading;
+
+  const clxss = clsx('button', `button--${_props.size}`, `button--${_props.scheme}`, className);
 
   return (
     <UnstyledButton
       {...otherProps}
       ref={ref}
       className={clxss}
-      tabIndex={!isDisabled ? 0 : -1}
+      tabIndex={isDisabled ? undefined : 0}
       aria-busy={isLoading}
       aria-disabled={!isDisabled ? undefined : isDisabled}
       data-disabled={!isDisabled ? undefined : isDisabled}
