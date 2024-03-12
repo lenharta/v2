@@ -1,3 +1,5 @@
+export type Promisable<T> = T | Promise<T>;
+
 export interface InlineStylesMediaQuery {
   query: string;
   styles: React.CSSProperties;

@@ -15,14 +15,15 @@ function _PopoverFloating(props: PopoverFloatingProps, ref: React.ForwardedRef<H
   const { ...otherProps } = props;
 
   const ctx = usePopoverCTX();
-  const refs = useMergeRefs(ref, ctx.floatingRef);
+  const refs = useMergeRefs(ctx.floatingRef, ref);
   const _props = mergeProps({}, defaultProps);
+  const visibility = ctx.isOpen ? 'visible' : 'hidden';
 
   return (
     <div
       {...otherProps}
       ref={refs}
-      style={{ left: `${ctx.x}px`, top: `${ctx.y}px` }}
+      style={{ top: `${ctx.y}px`, left: `${ctx.x}px`, visibility }}
       className="popover-floating"
     />
   );

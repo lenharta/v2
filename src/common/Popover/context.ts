@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Placement } from './types';
+import { Coords, Placement } from '@/types/common';
 
 export type PopoverBehaviorMethod = 'hover' | 'click';
 
@@ -7,9 +7,10 @@ export interface PopoverContextValue {
   isOpen: boolean;
   onChange: () => void;
   placement: Placement;
-  targetRef: React.Ref<Element>;
-  floatingRef: React.Ref<HTMLElement>;
+  targetRef: React.RefObject<Element>;
+  floatingRef: React.RefObject<HTMLElement>;
   behavior: PopoverBehaviorMethod;
+  // floatingStyles: { left: number; top: number };
   x: number;
   y: number;
 }

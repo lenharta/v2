@@ -1,13 +1,17 @@
 .popover-target {
-  min-width: 0;
   width: max-content;
   position: relative;
+  min-width: 0;
+  // border: solid 2px indianred;
 }
 
 .popover-floating {
   top: 0;
   left: 0;
-  width: max-content;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   position: absolute;
-  border: solid 2px dodgerblue;
+  width: max-content;
+  // border: solid 2px dodgerblue;
 }

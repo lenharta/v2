@@ -21,10 +21,14 @@
   min-height: var(--button-height, var(--button-height-xs));
   padding-inline: var(--button-padding-x, var(--button-padding-x));
 
+  display: inline-flex;
+  align-items: center;
+
   &-inner {
     height: 100%;
     display: inline-flex;
     white-space: nowrap;
+    align-items: center;
   }
 
   &--xs {
