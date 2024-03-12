@@ -4,7 +4,7 @@ import { getSide } from '../get-side';
 import { getSideAxis } from '../get-side-axis';
 import { getAlignmentAxis } from '../get-alignment-axis';
 import { getAxisLength } from '../get-axis-length';
-import { getAlignment } from '../get-alignment';
+import { getAlignment } from '..';
 
 export function computeCoords(
   { target, floating }: ElementRects,
@@ -19,22 +19,22 @@ export function computeCoords(
 
   let coords: Coords;
 
-  const sharedX = target.x + target.width / 2 - floating.width / 2;
-  const sharedY = target.y + target.height / 2 - floating.height / 2;
-  const sharedAlign = target[alignLength] / 2 - floating[alignLength] / 2;
+  const commonX = target.x + target.width / 2 - floating.width / 2;
+  const commonY = target.y + target.height / 2 - floating.height / 2;
+  const commonAlign = target[alignLength] / 2 - floating[alignLength] / 2;
 
   switch (side) {
     case 'top':
-      coords = { x: sharedX, y: target.y - floating.height };
+      coords = { x: target.x / 2, y: target.y / 2 };
       break;
     case 'bottom':
-      coords = { x: sharedX, y: target.y + target.height };
+      coords = { x: target.x / 2, y: target.y / 2 };
       break;
     case 'right':
-      coords = { x: target.x + target.width, y: sharedY };
+      coords = { x: target.x / 2, y: target.y / 2 };
       break;
     case 'left':
-      coords = { x: target.x - floating.width, y: sharedY };
+      coords = { x: target.x / 2, y: target.y / 2 };
       break;
     default:
       coords = { x: target.x, y: target.y };
@@ -42,10 +42,10 @@ export function computeCoords(
 
   switch (getAlignment(placement)) {
     case 'start':
-      coords[alignAxis] -= sharedAlign * (rtl && isVertical ? -1 : 1);
+      coords[alignAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
       break;
     case 'end':
-      coords[alignAxis] += sharedAlign * (rtl && isVertical ? -1 : 1);
+      coords[alignAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
       break;
     default:
   }

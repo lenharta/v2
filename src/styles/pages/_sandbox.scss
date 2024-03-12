@@ -21,16 +21,49 @@
 }
 
 .sandbox-demo-popover {
-  display: block;
+  display: grid;
+  place-content: center;
+  top: 0;
+  left: 0;
   position: relative;
-  border: solid 2px indianred;
-  // display: grid;
-  // place-content: center;
+  height: 500px;
+  width: 500px;
+  background-color: rgba(var(--c-red), 0.1);
+
+  &-target {
+    font-size: calc(var(--unit) * 8);
+    font-weight: 400;
+  }
 
   &-floating {
-    display: grid;
-    place-content: center;
-    min-width: 250px;
-    min-height: 300px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    // display: grid;
+    // place-content: center;
+    // min-width: 250px;
+    height: 300px;
+    width: max-content;
+    // height: 300px;
+    font-size: calc(var(--unit) * 8);
+    font-weight: 400;
+    background-color: rgba(var(--c-blue), 0.3);
+  }
+}
+
+.sandbox-controls {
+  display: grid;
+  place-content: start;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(6, 1fr);
+  gap: calc(var(--unit) * 1);
+
+  &-option {
+    height: 60px;
+    padding: calc(var(--unit) * 4);
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-transform: capitalize;
+    // padding: 0.8rem 1.2rem;
   }
 }
