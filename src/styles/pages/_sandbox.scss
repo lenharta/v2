@@ -23,14 +23,21 @@
 .sandbox-demo-popover {
   display: grid;
   place-content: center;
-  top: 0;
-  left: 0;
-  position: relative;
   height: 500px;
   width: 500px;
   background-color: rgba(var(--c-red), 0.1);
 
   &-target {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: solid 0px transparent;
+    border: solid 0px transparent;
+    // position: relative;
+    width: max-content;
+    display: inline-flex;
+    padding-block: calc(var(--unit) * 8);
+    padding-inline: calc(var(--unit) * 16);
     font-size: calc(var(--unit) * 8);
     font-weight: 400;
   }
@@ -38,16 +45,16 @@
   &-floating {
     top: 0;
     left: 0;
-    position: absolute;
-    // display: grid;
-    // place-content: center;
-    // min-width: 250px;
-    height: 300px;
     width: max-content;
-    // height: 300px;
-    font-size: calc(var(--unit) * 8);
-    font-weight: 400;
+    height: 300px;
+    width: 200px;
     background-color: rgba(var(--c-blue), 0.3);
+
+    p {
+      font-weight: 400;
+      font-size: calc(var(--unit) * 8);
+      padding-inline: calc(var(--unit) * 16);
+    }
   }
 }
 
