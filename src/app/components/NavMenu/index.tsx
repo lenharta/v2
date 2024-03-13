@@ -65,7 +65,9 @@ export type NavMenuComponent = React.FC<NavMenuProps> & {};
 
 export const NavMenu: NavMenuComponent = (props) => {
   const { items, activeItem, setActiveItem, ...otherProps } = props;
+
   const parsedItems = React.useMemo(() => parseItemData(items), [items]);
+
   console.log(parsedItems);
 
   const handleActiveItem = (value: string) => {
