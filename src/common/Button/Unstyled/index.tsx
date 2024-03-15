@@ -1,15 +1,19 @@
 import * as React from 'react';
+import { mergeProps } from '@/utils';
 
-type UnstyledButtonElementProps = React.ComponentPropsWithoutRef<'button'>;
-type UnstyledButtonRefProps = React.RefAttributes<HTMLButtonElement>;
-type UnstyledButtonBaseProps = UnstyledButtonElementProps & UnstyledButtonRefProps;
+type UnstyledButtonBaseProps = React.ComponentPropsWithoutRef<'button'>;
 
 export interface UnstyledButtonProps extends UnstyledButtonBaseProps {}
 
+const defaultProps: Partial<UnstyledButtonProps> = {};
+
 function _UnstyledButton(props: UnstyledButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) {
-  const { ...otherProps } = props;
+  const { ...otherProps } = mergeProps(defaultProps, props);
   return <button {...otherProps} ref={ref} />;
 }
 
-export type UnstyledButtonComponent = React.ForwardRefExoticComponent<UnstyledButtonProps>;
-export const UnstyledButton = React.forwardRef(_UnstyledButton) as UnstyledButtonComponent;
+export const UnstyledButton = React.forwardRef(_UnstyledButton) as React.ForwardRefExoticComponent<
+  UnstyledButtonProps & React.RefAttributes<HTMLButtonElement>
+>;
+
+UnstyledButton.displayName = '@v2/Button.Unstyled';

@@ -8,9 +8,7 @@ import { InputDescription, InputLabel } from '../Input';
 import { CheckboxScheme, useCheckboxCTX } from './context';
 import { CheckboxGroup } from './Group';
 
-type CheckboxElementProps = Omit<React.ComponentPropsWithoutRef<'input'>, 'size'>;
-type CheckboxAttributeProps = React.RefAttributes<HTMLInputElement>;
-type CheckboxBaseProps = CheckboxElementProps & CheckboxAttributeProps;
+type CheckboxBaseProps = Omit<React.ComponentPropsWithoutRef<'input'>, 'size'>;
 
 export interface CheckboxProps extends CheckboxBaseProps {
   /** Identifies the element */
@@ -70,25 +68,17 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
     indeterminate,
     onChange,
     ...otherProps
-  } = props;
+  } = mergeProps(defaultProps, props);
 
-  const _contextProps = useCheckboxCTX();
+  const ctx = useCheckboxCTX();
 
   const isLoading = loading !== undefined ? true : undefined;
+  const isChecked = (checked && !ctx.value) || ctx.value?.includes(value!);
   const isDisabled = (disabled || loading) !== undefined ? true : undefined;
+  const isIndeterminate = !ctx.value && indeterminate !== undefined;
 
   const uids = useInputIds(id, ['input', 'label', 'description']);
-  const _props = mergeProps({ size, scheme }, defaultProps, _contextProps);
-
-  const clxss = clsx(
-    'Checkbox',
-    `Checkbox--size-${_props.size}`,
-    `Checkbox--scheme-${_props.scheme}`,
-    className
-  );
-
-  const isChecked = (checked && !_contextProps.value) || _contextProps.value?.includes(value!);
-  const isIndeterminate = !_contextProps.value && indeterminate !== undefined;
+  const clxss = clsx('checkbox', `checkbox--size-${size}`, `checkbox--scheme-${scheme}`, className);
 
   return (
     <div ref={rootRef} className={clxss} data-loading={isLoading} data-disabled={isDisabled}>
@@ -99,53 +89,53 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
         id={uids.input}
         ref={ref}
         type="checkbox"
+        className="checkbox-input"
         {...(!value ? undefined : { value })}
-        className="Checkbox-input"
         tabIndex={isDisabled ? undefined : 0}
         data-checked={isChecked}
         data-loading={isLoading}
         data-disabled={isDisabled}
         data-indeterminate={isIndeterminate}
-        aria-labelledby={_contextProps.legend}
+        aria-labelledby={ctx.legend}
         aria-disabled={isDisabled}
         aria-checked={isIndeterminate ? 'mixed' : isChecked}
         aria-busy={isLoading}
         onChange={(event) => {
-          _contextProps.onChange?.(event);
+          ctx.onChange?.(event);
           onChange?.(event);
         }}
       />
 
-      <div className="Checkbox-content">
+      <div className="checkbox-content">
         {loading ? (
           <Checkbox.Description
             id={uids.description}
+            size={size}
             text="loading..."
-            size={_props.size}
             data-loading={isLoading}
             data-disabled={isDisabled}
-            className="Checkbox-description"
+            className="checkbox-description"
           />
         ) : (
           <Checkbox.Label
             id={uids.label}
+            size={size}
             text={label}
-            size={_props.size}
             htmlFor={uids.input}
             data-loading={isLoading}
             data-disabled={isDisabled}
-            className="Checkbox-label"
+            className="checkbox-label"
           />
         )}
 
         {loading ? null : (
           <Checkbox.Description
             id={uids.description}
+            size={size}
             text={description}
-            size={_props.size}
             data-loading={isLoading}
             data-disabled={isDisabled}
-            className="Checkbox-description"
+            className="checkbox-description"
           />
         )}
       </div>
@@ -153,15 +143,17 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
   );
 }
 
-export type CheckboxComponent = React.ForwardRefExoticComponent<CheckboxProps> & {
+export type CheckboxComponents = {
   Label: typeof InputLabel;
   Description: typeof InputDescription;
   Indicator: typeof CheckboxIndicator;
   Group: typeof CheckboxGroup;
 };
 
-export const Checkbox = React.forwardRef(_Checkbox) as CheckboxComponent;
+export const Checkbox = React.forwardRef(_Checkbox) as CheckboxComponents &
+  React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>>;
 
+Checkbox.displayName = '@v2/Checkbox';
 Checkbox.Label = InputLabel;
 Checkbox.Description = InputDescription;
 Checkbox.Indicator = CheckboxIndicator;

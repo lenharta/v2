@@ -1,35 +1,29 @@
+import { mergeProps, objectKeys } from '@/utils';
 import clsx from 'clsx';
 import * as React from 'react';
 
-export type TitleBaseProps = React.JSX.IntrinsicElements['h1'];
+export type TitleLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type TitleBaseProps = React.ComponentPropsWithoutRef<'h1'>;
+export type TitleLevelProps = Record<TitleLevel, boolean>;
+export interface TitleProps extends TitleBaseProps, Partial<TitleLevelProps> {}
 
-export interface TitleProps extends TitleBaseProps {
-  h1?: boolean;
-  h2?: boolean;
-  h3?: boolean;
-  h4?: boolean;
-  h5?: boolean;
-  h6?: boolean;
-}
-
-const findTitleLevel = (props: Partial<TitleProps>) => {
-  const { h1, h2, h3, h4, h5, h6 } = props;
-  if (h1) return 'h1';
-  if (h2) return 'h2';
-  if (h3) return 'h3';
-  if (h4) return 'h4';
-  if (h5) return 'h5';
-  if (h6) return 'h6';
-  return 'h3';
+const defaultProps: Partial<TitleProps> = {
+  h2: true,
 };
 
-export const Title = React.forwardRef<HTMLHeadingElement, TitleProps>((props, ref) => {
-  const { h1, h2, h3, h4, h5, h6, children, className, ...otherProps } = props;
-  const Component = findTitleLevel({ h1, h2, h3, h4, h5, h6 });
-  const clxss = clsx(`Title`, className);
-  return (
-    <Component {...otherProps} ref={ref} className={clxss}>
-      {children}
-    </Component>
-  );
-});
+const findComponent = (levels: Partial<TitleLevelProps>): TitleLevel => {
+  return objectKeys(levels).find((value) => levels[value] !== undefined)!;
+};
+
+function _Title(props: TitleProps, ref: React.ForwardedRef<HTMLHeadingElement>) {
+  const { h1, h2, h3, h4, h5, h6, className, ...otherProps } = mergeProps(defaultProps, props);
+  const Component = findComponent({ h1, h2, h3, h4, h5, h6 });
+  const clxss = clsx('title', className);
+  return <Component {...otherProps} ref={ref} className={clxss} />;
+}
+
+export const Title = React.forwardRef(_Title) as React.ForwardRefExoticComponent<
+  TitleProps & React.RefAttributes<HTMLHeadingElement>
+>;
+
+Title.displayName = '@v2/Title';

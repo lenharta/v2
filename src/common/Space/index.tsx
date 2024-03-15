@@ -1,27 +1,18 @@
 import clsx from 'clsx';
 import { mergeProps } from '@/utils';
-import type { Size } from '@/types/common';
+import { SizeExpanded } from '@/types/common';
 
-export type SpaceBaseProps = Omit<React.JSX.IntrinsicElements['div'], 'children'>;
+type SpaceBaseProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>;
 
 export interface SpaceProps extends SpaceBaseProps {
-  size?: Size;
-}
-
-export interface SpaceComponent {
-  (props: SpaceProps): JSX.Element | null;
-  displayName?: string;
+  size?: SizeExpanded;
 }
 
 const defaultProps: Partial<SpaceProps> = {};
 
-export const Space: SpaceComponent = (props) => {
-  const { size, className, ...otherProps } = props;
-
-  const mergedProps = mergeProps({ size }, defaultProps);
-
-  const clxss = clsx('Space', { [`Space--size-${mergedProps.size}`]: mergedProps.size }, className);
-
+export const Space = (props: SpaceProps) => {
+  const { size, className, ...otherProps } = mergeProps(defaultProps, props);
+  const clxss = clsx('space', `space--size-${size}`, className);
   return <div {...otherProps} className={clxss} />;
 };
 

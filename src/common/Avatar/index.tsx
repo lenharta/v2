@@ -6,11 +6,10 @@ import { UnstyledButton } from '../Button/Unstyled';
 import { Icon, IconName } from '../Icon';
 import { createEventCallback } from '../utils';
 
-type AvatarElementProps = React.ComponentPropsWithoutRef<'button'>;
-type AvatarRefProps = React.RefAttributes<HTMLButtonElement>;
-type AvatarBaseProps = AvatarElementProps & AvatarRefProps;
+type AvatarBaseProps = React.ComponentPropsWithoutRef<'button'>;
 
 export interface AvatarProps extends AvatarBaseProps {
+  imageSrc?: boolean;
   disabled?: boolean;
   label?: string;
   icon?: IconName;
@@ -24,14 +23,20 @@ const defaultProps: Partial<AvatarProps> = {
 };
 
 function _Avatar(props: AvatarProps, ref: React.ForwardedRef<HTMLButtonElement>) {
-  const { url, icon, value, label, disabled, className, onClick, onKeyDown, ...otherProps } = props;
-
   const navigate = useNavigate();
 
-  const _props = mergeProps(
-    { url, icon, value, label, disabled, className, onClick, onKeyDown },
-    defaultProps
-  );
+  const {
+    url,
+    icon,
+    label,
+    value,
+    disabled,
+    imageSrc,
+    className,
+    onKeyDown,
+    onClick,
+    ...otherProps
+  } = mergeProps(defaultProps, props);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (!event.currentTarget.value) return undefined;
@@ -46,18 +51,21 @@ function _Avatar(props: AvatarProps, ref: React.ForwardedRef<HTMLButtonElement>)
     <UnstyledButton
       {...otherProps}
       ref={ref}
-      value={_props.value || _props.url!}
-      tabIndex={_props.disabled ? -1 : 0}
-      aria-label={_props.label}
-      aria-disabled={_props.disabled}
-      data-disabled={_props.disabled}
-      className={clsx('avatar', _props.className)}
-      onKeyDown={createEventCallback(_props.onKeyDown, handleKeyDown)}
-      onClick={createEventCallback(_props.onClick, handleClick)}
-      children={<Icon name={_props.icon} aria-label={`${_props.label} icon`} />}
+      value={value || url}
+      tabIndex={disabled ? -1 : 0}
+      aria-label={label}
+      aria-disabled={disabled}
+      data-disabled={disabled}
+      className={clsx('avatar', className)}
+      onKeyDown={createEventCallback(onKeyDown, handleKeyDown)}
+      onClick={createEventCallback(onClick, handleClick)}
+      children={<Icon name={icon} aria-label={`${label} icon`} />}
     />
   );
 }
 
-export type AvatarComponent = React.ForwardRefExoticComponent<AvatarProps>;
-export const Avatar = React.forwardRef(_Avatar) as AvatarComponent;
+export const Avatar = React.forwardRef(_Avatar) as React.ForwardRefExoticComponent<
+  AvatarProps & React.RefAttributes<HTMLButtonElement>
+>;
+
+Avatar.displayName = '@v2/Avatar';

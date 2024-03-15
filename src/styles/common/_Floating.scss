@@ -1,0 +1,22 @@
+.floating {
+  top: 0;
+  left: 0;
+  width: max-content;
+  position: absolute;
+}
+
+.floating-test-container {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-test-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  padding: 3rem;
+  outline: solid 2px dodgerblue;
+}

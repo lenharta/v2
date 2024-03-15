@@ -1,58 +1,36 @@
-import { Core } from '@/types/core';
-import { Align, Justify, Orientation, Size } from '@/types/common';
-import { TabsPlacement, TabsProvider, TabsVariant } from './context';
-import { TabsPanel } from './TabsPanel';
+import * as React from 'react';
+import { mergeProps } from '@/utils';
+import { TabsProvider } from './context';
+import { Orientation, SizeExpanded } from '@/types/common';
 import { TabsItem } from './TabsItem';
-import { TabsGroup } from './TabsGroup';
+import { TabsPanel } from './TabsPanel';
+import { TabsList } from './TabsList';
 
-export type TabsProps = {
-  size?: Size;
-  align?: Align;
-  justify?: Justify;
-  readOnly?: boolean;
-  disabled?: boolean;
-  selected?: boolean;
-  variant?: TabsVariant;
-  placement?: TabsPlacement;
+export interface TabsProps {
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLButtonElement>) => void;
+  children: React.ReactNode;
   orientation?: Orientation;
+  size?: SizeExpanded;
+}
+
+interface TabsComponents {
+  Item: typeof TabsItem;
+  List: typeof TabsList;
+  Panel: typeof TabsPanel;
+}
+
+const defaultProps: Partial<TabsProps> = {
+  orientation: 'horizontal',
+  size: 'sm',
 };
 
-export type TabsFactory = Core.BaseFactory<{
-  props: TabsProps;
-  component: 'div';
-  components: {
-    Item: typeof TabsItem;
-    Group: typeof TabsGroup;
-    Panel: typeof TabsPanel;
-  };
-}>;
-
-export const Tabs: TabsFactory = (props) => {
-  const {
-    size,
-    align,
-    variant,
-    justify,
-    readOnly,
-    disabled,
-    orientation = 'horizontal',
-    placement,
-    children,
-    component: Component = 'div',
-    ...otherProps
-  } = props;
-
-  return (
-    <Component {...otherProps} className="Tabs">
-      <TabsProvider
-        value={{ size, align, justify, readOnly, disabled, orientation, placement, variant }}
-      >
-        {children}
-      </TabsProvider>
-    </Component>
-  );
+export const Tabs: React.FC<TabsProps> & TabsComponents = (props) => {
+  const { value, children, onChange, size, orientation } = mergeProps(defaultProps, props);
+  return <TabsProvider value={{ value, onChange, size, orientation }}>{children}</TabsProvider>;
 };
 
-Tabs.Panel = TabsPanel;
-Tabs.Group = TabsGroup;
+Tabs.displayName = '@v2/Tabs';
 Tabs.Item = TabsItem;
+Tabs.List = TabsList;
+Tabs.Panel = TabsPanel;

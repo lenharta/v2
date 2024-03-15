@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FloatingPosition } from '../../types';
 import { autoUpdate } from '@floating-ui/react';
 import { useDidUpdate } from '@/hooks';
+import { FloatingPosition } from '../../types';
 
 export interface Payload {
   opened?: boolean;

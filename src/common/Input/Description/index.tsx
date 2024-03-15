@@ -1,36 +1,38 @@
-import { Size } from '@/types/common';
 import clsx from 'clsx';
 import * as React from 'react';
+import { Size } from '@/types/common';
 
-type InputDescriptionElementProps = React.ComponentPropsWithoutRef<'p'>;
-type InputDescriptionAttributeProps = React.RefAttributes<HTMLParagraphElement>;
-type InputDescriptionBaseProps = InputDescriptionElementProps & InputDescriptionAttributeProps;
+type DescriptionBaseProps = React.ComponentPropsWithoutRef<'p'>;
 
-type InputDescriptionProps = InputDescriptionBaseProps &
-  Partial<{
-    id: string;
-    size: Size;
-    text: string;
-    disabled: boolean;
-  }>;
+export interface InputDescriptionProps extends DescriptionBaseProps {
+  id?: string;
+  size?: Size;
+  text?: string;
+  disabled?: boolean;
+}
 
 const _InputDescription = (
   props: InputDescriptionProps,
   ref: React.ForwardedRef<HTMLParagraphElement>
 ) => {
   const { id, text, size, disabled, className, ...otherProps } = props;
-  const clxss = clsx('InputDescription', `InputDescription--size-${size}`, className);
+  const clxss = clsx('input-description', `input-description--size-${size}`, className);
   return (
     <p
       {...otherProps}
-      className={clxss}
-      aria-describedby={id}
-      data-disabled={disabled}
-      children={text}
       ref={ref}
+      children={text}
+      className={clxss}
+      data-disabled={disabled}
+      aria-describedby={id}
     />
   );
 };
 
-export type InputDescriptionComponent = React.ForwardRefExoticComponent<InputDescriptionProps>;
-export const InputDescription = React.forwardRef(_InputDescription) as InputDescriptionComponent;
+export const InputDescription = React.forwardRef(
+  _InputDescription
+) as React.ForwardRefExoticComponent<
+  InputDescriptionProps & React.RefAttributes<HTMLParagraphElement>
+>;
+
+InputDescription.displayName = '@v2/Input.Description';

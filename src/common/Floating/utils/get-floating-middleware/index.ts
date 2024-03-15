@@ -1,9 +1,17 @@
-import { UseFloatingReturn, flip, inline, limitShift, offset, shift } from '@floating-ui/react';
 import { UseFloatingOptions } from '../use-floating';
+import {
+  size,
+  flip,
+  shift,
+  offset,
+  inline,
+  limitShift,
+  UseFloatingReturn,
+} from '@floating-ui/react';
 
 export function getFloatingMiddleware(
   options: UseFloatingOptions,
-  getFloating?: () => UseFloatingReturn<Element>
+  getFloating: () => UseFloatingReturn<Element>
 ) {
   const middlewares = [offset(options.offset)];
 
@@ -19,9 +27,29 @@ export function getFloatingMiddleware(
     middlewares.push(inline());
   }
 
-  // if (options.middleware?.size || options.width === 'target') {
-  //   middlewares.push(size({}));
-  // }
+  if (options.middleware?.size || options.width === 'target') {
+    middlewares.push(
+      size({
+        apply({ rects, availableWidth, availableHeight }) {
+          const floating = getFloating();
+          const styles = floating.refs.floating.current?.style ?? {};
+
+          if (options.middleware?.size) {
+            Object.assign(styles, {
+              maxWidth: `${availableWidth}px`,
+              maxHeight: `${availableHeight}px`,
+            });
+          }
+
+          if (options.width === 'target') {
+            Object.assign(styles, {
+              width: `${rects.reference.width}px`,
+            });
+          }
+        },
+      })
+    );
+  }
 
   return middlewares;
 }

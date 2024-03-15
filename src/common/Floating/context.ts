@@ -1,6 +1,5 @@
-import { Placement } from '@/types/common';
 import { createSafeContext } from '../utils';
-import { FloatingPosition, FloatingWidth } from './types';
+import { FloatingPosition, FloatingStrategy, FloatingWidth } from './types';
 
 export type FloatingContextValue = {
   x: number;
@@ -10,8 +9,10 @@ export type FloatingContextValue = {
   opened?: boolean;
   disabled?: boolean;
   position: FloatingPosition;
-  onClose?: () => void;
-  onChange?: (opened: boolean) => void;
+  strategy: FloatingStrategy;
+  onClose: () => void;
+  onToggle: () => void;
+  onChange: (opened: boolean) => void;
   floating: (node: HTMLElement) => void;
   reference: (node: HTMLElement) => void;
   getBoxId: () => string;

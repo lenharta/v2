@@ -11,7 +11,7 @@ import { OptionItem, parseItemData } from '../utils';
 export interface ControlProps<T> {
   data?: T[] | OptionItem<T>[];
   value?: T;
-  onChange?(value: T): void;
+  onChange(value: T): void;
   orientation?: Orientation;
   radius?: Size | 'rd';
   fullWidth?: boolean;
@@ -32,13 +32,16 @@ export interface ControlComponent<T> {
   Segment: typeof ControlSegment;
 }
 
-const defaultProps: Partial<ControlProps<unknown>> = {
-  orientation: 'horizontal',
-  radius: 'xs',
-};
-
 export const Control: ControlComponent<any> = <T extends string>(props: ControlProps<T>) => {
-  const { data, onChange, value, orientation, fullWidth, radius, size } = props;
+  const defaultProps: Partial<ControlProps<T>> = {
+    orientation: 'horizontal',
+    radius: 'xs',
+  };
+
+  const { data, onChange, value, orientation, fullWidth, radius, size } = mergeProps(
+    defaultProps,
+    props
+  );
 
   const theme = useThemeCTX();
   const direction = theme.state.dir;
