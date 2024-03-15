@@ -2,8 +2,7 @@ import gsap from 'gsap';
 import * as React from 'react';
 import { Title } from '@/common';
 import { useGSAP } from '@gsap/react';
-import { AnimatedGrid } from '@/app/components';
-import { UnstyledButton } from '@/common/Button/Unstyled';
+import { GradientGrid } from '@/app/components';
 
 export const HomeHero = () => {
   const scopeRef = React.useRef<HTMLDivElement>(null);
@@ -46,7 +45,7 @@ export const HomeHero = () => {
           children="Front-End Engineer, Human-Centered Problem Solver."
         />
       </div>
-      <div className="home-hero-grid" children={<AnimatedGrid />} />
+      <div className="home-hero-grid" children={<GradientGrid />} />
     </div>
   );
 };

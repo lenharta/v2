@@ -4,15 +4,15 @@ import { CheckboxProvider, CheckboxScheme } from '../context';
 import { Orientation, Size } from '@/types/common';
 import { useInputIds } from '@/hooks';
 
-type CheckboxGroupElementProps = Omit<React.ComponentPropsWithoutRef<'fieldset'>, 'onChange'>;
-type CheckboxGroupAttributeProps = React.RefAttributes<HTMLFieldSetElement>;
-type CheckboxGroupBaseProps = CheckboxGroupElementProps & CheckboxGroupAttributeProps;
+type CheckboxGroupBaseProps = Omit<React.ComponentPropsWithoutRef<'fieldset'>, 'onChange'>;
 
 export interface CheckboxGroupProps extends CheckboxGroupBaseProps {
   size?: Size;
   scheme?: CheckboxScheme;
   orientation?: Orientation;
   onChange: (value: string[]) => void;
+  disabled?: boolean;
+  readonly?: boolean;
   legend?: string;
   value: string[];
 }
@@ -27,10 +27,20 @@ const _CheckboxGroup = (
   props: CheckboxGroupProps,
   ref: React.ForwardedRef<HTMLFieldSetElement>
 ) => {
-  const { legend, value, onChange, orientation, scheme, size, children, ...otherProps } = props;
+  const {
+    size,
+    value,
+    scheme,
+    legend,
+    disabled,
+    readonly,
+    children,
+    orientation,
+    onChange,
+    ...otherProps
+  } = mergeProps(defaultProps, props);
 
   const uids = useInputIds(legend, ['legend']);
-  const _props = mergeProps({ size, scheme, orientation }, defaultProps);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const itemValue = event.currentTarget.value!;
@@ -45,17 +55,22 @@ const _CheckboxGroup = (
       {...otherProps}
       ref={ref}
       className="Checkbox-group"
-      data-orientation={_props.orientation}
-      aria-orientation={_props.orientation}
+      aria-orientation={orientation}
+      data-orientation={orientation}
+      data-diabled={disabled}
     >
       {legend && <legend>{legend}</legend>}
-      <CheckboxProvider value={{ ..._props, value, onChange: handleChange, legend: uids.legend }}>
+      <CheckboxProvider
+        value={{ value, size, scheme, orientation, legend: uids.legend, onChange: handleChange }}
+      >
         {children}
       </CheckboxProvider>
     </fieldset>
   );
 };
 
-export type CheckboxGroupComponent = React.ForwardRefExoticComponent<CheckboxGroupProps>;
-export const CheckboxGroup = React.forwardRef(_CheckboxGroup) as CheckboxGroupComponent;
+export const CheckboxGroup = React.forwardRef(_CheckboxGroup) as React.ForwardRefExoticComponent<
+  CheckboxGroupProps & React.RefAttributes<HTMLFieldSetElement>
+>;
+
 CheckboxGroup.displayName = '@v2/Checkbox.Group';

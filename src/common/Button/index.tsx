@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
+import { ButtonGroup } from './Group';
 import { useButtonCTX } from './context';
 import { Scheme, Size } from '@/types/common';
 import { UnstyledButton, UnstyledButtonProps } from './Unstyled';
@@ -32,18 +33,17 @@ function _Button(props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>)
     rightContent,
     children,
     ...otherProps
-  } = props;
+  } = mergeProps(defaultProps, props);
 
   const ctx = useButtonCTX();
-  const _props = mergeProps({ size, scheme, loading, disabled }, defaultProps, ctx);
+
+  const clxss = clsx('button', `button--${size}`, `button--${scheme}`, className);
 
   const hasLeftContent = !!leftContent;
   const hasRightContent = !!rightContent;
 
-  const isLoading = !_props.disabled && _props.loading;
-  const isDisabled = _props.disabled || isLoading;
-
-  const clxss = clsx('button', `button--${_props.size}`, `button--${_props.scheme}`, className);
+  const isLoading = !disabled && loading;
+  const isDisabled = disabled || isLoading;
 
   return (
     <UnstyledButton
@@ -71,9 +71,9 @@ function _Button(props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>)
   );
 }
 
-export type ButtonComponent = React.ForwardRefExoticComponent<ButtonProps>;
-export const Button = React.forwardRef(_Button) as ButtonComponent;
+export const Button = React.forwardRef(_Button) as React.ForwardRefExoticComponent<ButtonProps> & {
+  Group: typeof ButtonGroup;
+};
 
-// TODO: Props - align & justify
-// TODO: Props - <Loader /> & loadingProps
-// TODO: Props - allowDisabledFocus?: boolean;
+Button.displayName = '@v2/Button';
+Button.Group = ButtonGroup;

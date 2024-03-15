@@ -1,42 +1,89 @@
 import * as React from 'react';
 import { Button, Title } from '@/common';
-import { Placement } from '@/types/common';
 
-const placementData: Placement[] = [
-  'top',
-  'left',
-  'right',
-  'bottom',
-  'top-start',
-  'left-start',
-  'right-start',
-  'bottom-start',
-  'top-end',
-  'left-end',
-  'right-end',
-  'bottom-end',
-];
+interface SlotComponentProps extends React.ComponentPropsWithoutRef<'button'> {
+  radius?: React.CSSProperties['borderRadius'];
+  width?: React.CSSProperties['width'];
+}
+
+export const SlotComponent = (props: SlotComponentProps) => {
+  return <button {...props} className="slot-component" />;
+};
+
+type SandboxPlacement = 'start' | 'center' | 'end';
+
+type SandboxProps = {
+  placement?: SandboxPlacement;
+};
+
+type SandboxState = {
+  placement: SandboxPlacement;
+};
+
+type SandboxContextValue = {
+  state: SandboxState;
+  dispatch: (state: Partial<SandboxState>) => void;
+};
+
+const SandboxContext = React.createContext({} as SandboxContextValue);
+const SandboxProvider = SandboxContext.Provider;
+const useSandboxCTX = () => React.useContext(SandboxContext);
+
+const SandboxDisplayPanel = () => {
+  const ctx = useSandboxCTX();
+  console.log('ctx', ctx.state);
+  return (
+    <div className="sandbox-display-panel" data-placement={ctx.state.placement}>
+      <div className="sandbox-display-container">
+        <SlotComponent children="Slot Component" />
+      </div>
+    </div>
+  );
+};
+
+const SandboxControlPanel = () => {
+  const ctx = useSandboxCTX();
+  return (
+    <div className="sandbox-control-panel">
+      <div className="sandbox-control-container">
+        <p>Placement</p>
+        <Button onClick={() => ctx.dispatch({ placement: 'center' })}>Center</Button>
+        <Button onClick={() => ctx.dispatch({ placement: 'start' })}>Start</Button>
+        <Button onClick={() => ctx.dispatch({ placement: 'end' })}>End</Button>
+      </div>
+    </div>
+  );
+};
+
+const SandboxComponent = (props: SandboxProps) => {
+  const { placement = 'center' } = props;
+
+  const [state, dispatch] = React.useReducer(
+    (current: SandboxState, update: Partial<SandboxState>) => ({
+      ...current,
+      ...update,
+    }),
+    {
+      placement,
+    }
+  );
+
+  return (
+    <SandboxProvider value={{ state, dispatch }}>
+      <div className="sandbox-component">
+        <SandboxDisplayPanel />
+        <SandboxControlPanel />
+      </div>
+    </SandboxProvider>
+  );
+};
 
 export const Sandbox = () => {
-  const [isPlacement, setPlacement] = React.useState<Placement>('bottom');
-
   return (
     <div className="sandbox">
       <div className="sandbox-content">
         <Title>Sandbox</Title>
-        <div className="sandbox-controls">
-          {placementData.map((placement) => {
-            return (
-              <Button
-                key={placement}
-                onClick={() => setPlacement(placement)}
-                className="sandbox-controls-option"
-                aria-label={placement}
-                children={placement}
-              />
-            );
-          })}
-        </div>
+        <SandboxComponent placement="end" />
       </div>
     </div>
   );

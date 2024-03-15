@@ -1,24 +1,29 @@
-import { Size } from '@/types/common';
 import clsx from 'clsx';
 import * as React from 'react';
+import { Size } from '@/types/common';
+import { mergeProps } from '@/utils';
 
-type InputLabelElementProps = React.ComponentPropsWithoutRef<'label'>;
-type InputLabelAttributeProps = React.RefAttributes<HTMLLabelElement>;
-type InputLabelBaseProps = InputLabelElementProps & InputLabelAttributeProps;
+type InputLabelBaseProps = React.ComponentPropsWithoutRef<'label'>;
 
-type InputLabelProps = InputLabelBaseProps &
-  Partial<{
-    id: string;
-    size: Size;
-    text: string;
-    disabled: boolean;
-    descriptionId: string;
-    inputId: string;
-  }>;
+interface InputLabelProps extends InputLabelBaseProps {
+  id?: string;
+  size?: Size;
+  text?: string;
+  disabled?: boolean;
+  descriptionId?: string;
+  inputId?: string;
+}
+
+const defaultProps: Partial<InputLabelProps> = {};
 
 const _InputLabel = (props: InputLabelProps, ref: React.ForwardedRef<HTMLLabelElement>) => {
-  const { id, text, size, disabled, descriptionId, className, ...otherProps } = props;
-  const clxss = clsx('InputLabel', `InputLabel--size-${size}`, className);
+  const { id, text, size, disabled, descriptionId, className, ...otherProps } = mergeProps(
+    defaultProps,
+    props
+  );
+
+  const clxss = clsx('input-label', `input-label--size-${size}`, className);
+
   return (
     <label
       {...otherProps}
@@ -32,5 +37,8 @@ const _InputLabel = (props: InputLabelProps, ref: React.ForwardedRef<HTMLLabelEl
   );
 };
 
-export type InputLabelComponent = React.ForwardRefExoticComponent<InputLabelProps>;
-export const InputLabel = React.forwardRef(_InputLabel) as InputLabelComponent;
+export const InputLabel = React.forwardRef(_InputLabel) as React.ForwardRefExoticComponent<
+  InputLabelProps & React.RefAttributes<HTMLLabelElement>
+>;
+
+InputLabel.displayName = '@v2/Input.Label';

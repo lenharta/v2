@@ -1,13 +1,8 @@
-import {
-  size,
-  flip,
-  shift,
-  offset,
-  inline,
-  limitShift,
-  useFloating as useFloatingUI,
-  UseFloatingReturn,
-} from '@floating-ui/react';
+import * as React from 'react';
+import { useDidUpdate } from '@/hooks';
+import { useFloatingUpdate } from '../use-floating-update';
+import { getFloatingMiddleware } from '../get-floating-middleware';
+import { useFloating as useFloatingUI, UseFloatingReturn } from '@floating-ui/react';
 
 import {
   FloatingMiddleware,
@@ -16,9 +11,6 @@ import {
   FloatingStrategy,
   FloatingWidth,
 } from '../../types';
-import { getFloatingMiddleware } from '../get-floating-middleware';
-import React from 'react';
-import { useDidUpdate } from '@/hooks';
 
 export interface UseFloatingOptions {
   position: FloatingPosition;
@@ -42,7 +34,7 @@ export function useFloating(options: UseFloatingOptions) {
     }
   };
 
-  const onToggle = React.useCallback(() => {
+  const onToggle = () => {
     if (options.opened) {
       options.onChange?.(false);
       options.onClose?.();
@@ -50,12 +42,19 @@ export function useFloating(options: UseFloatingOptions) {
       options.onChange?.(true);
       options.onOpen?.();
     }
-  }, [options.onClose, options.onOpen]);
+  };
 
   const floating: UseFloatingReturn<Element> = useFloatingUI({
     strategy: options.strategy,
     placement: options.position,
     middleware: getFloatingMiddleware(options, () => floating),
+  });
+
+  useFloatingUpdate({
+    opened: options.opened,
+    position: options.position,
+    positionDependencies: options.positionDependencies || [],
+    floating,
   });
 
   useDidUpdate(() => {
@@ -72,7 +71,6 @@ export function useFloating(options: UseFloatingOptions) {
 
   return {
     floating,
-    controlled: typeof options.opened === 'boolean',
     opened: options.opened,
     onClose,
     onToggle,

@@ -1,25 +1,38 @@
+import clsx from 'clsx';
 import * as React from 'react';
-import { Core } from '@/types/core';
-import { Orientation } from '@/types/common';
-import { TabsPlacement, TabsVariant } from '../context';
+import { mergeProps } from '@/utils';
+import { useTabsCTX } from '../context';
 
-export type TabsPanelProps = {
-  orientation?: Orientation;
-  placement?: TabsPlacement;
-  variant?: TabsVariant;
-};
+type TabsPanelBaseProps = React.ComponentPropsWithoutRef<'div'>;
 
-export type TabsPanelFactory = Core.RefFactory<{
-  ref: HTMLDivElement;
-  props: TabsPanelProps;
-  component: 'div';
-}>;
+export interface TabsPanelProps extends TabsPanelBaseProps {
+  value: string;
+  keepMounted?: string;
+}
 
-export const TabsPanel: TabsPanelFactory = React.forwardRef((props, ref) => {
-  const { children, component: Component = 'div', ...otherProps } = props;
+const defaultProps: Partial<TabsPanelProps> = {};
+
+function _TabsPanel(props: TabsPanelProps, ref: React.ForwardedRef<HTMLDivElement>) {
+  const { value, keepMounted, className, ...otherProps } = mergeProps(defaultProps, props);
+
+  const ctx = useTabsCTX();
+  const clxss = clsx('tabs-panel', className);
+  const isActive = value === ctx.value;
+
+  if (!isActive && !keepMounted) return null;
+
   return (
-    <Component {...otherProps} className="Tabs-panel" ref={ref}>
-      {children}
-    </Component>
+    <div
+      {...otherProps}
+      ref={ref}
+      className={clxss}
+      style={{ ...(keepMounted ? { display: 'none' } : {}) }}
+    />
   );
-});
+}
+
+export const TabsPanel = React.forwardRef(_TabsPanel) as React.ForwardRefExoticComponent<
+  TabsPanelProps & React.RefAttributes<HTMLDivElement>
+>;
+
+TabsPanel.displayName = '@v2/Tabs.Panel';

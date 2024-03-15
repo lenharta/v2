@@ -1,27 +1,34 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import type { SizeExpanded } from '@/types/common';
+import { mergeProps } from '@/utils';
+import { SizeExpanded } from '@/types/common';
 
-export type StackBaseProps = React.JSX.IntrinsicElements['div'];
+type StackBaseProps = React.ComponentPropsWithoutRef<'div'>;
 
 export interface StackProps extends StackBaseProps {
-  gap?: SizeExpanded;
+  gap?: 'default' | SizeExpanded;
 }
 
-export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) => {
-  const { gap, children, className, ...otherProps } = props;
+const defaultProps: Partial<StackProps> = {
+  gap: 'default',
+};
 
-  const clxss = clsx('Stack', { [`Stack--gap-${gap}`]: gap }, className);
-
+export const _Stack = (props: StackProps, ref: React.ForwardedRef<HTMLDivElement>) => {
+  const { gap, className, ...otherProps } = mergeProps(defaultProps, props);
+  const clxss = clsx('stack', `stack--gap-${gap}`, className);
   return (
     <div
       {...otherProps}
       ref={ref}
       className={clxss}
-      aria-orientation="vertical"
       data-orientation="vertical"
-    >
-      {children}
-    </div>
+      aria-orientation="vertical"
+    />
   );
-});
+};
+
+export const Stack = React.forwardRef(_Stack) as React.ForwardRefExoticComponent<
+  StackProps & React.RefAttributes<HTMLDivElement>
+>;
+
+Stack.displayName = '@v2/Stack';
