@@ -92,47 +92,9 @@
     outline-color: rgba(var(--c-blue), 1);
     outline-offset: 2px;
   }
-
-  // min-width: 0;
-  // user-select: none;
-  // border: solid var(--border-sm);
-  // outline: solid var(--border-sm);
-  // outline-color: var(--button-outline-color, transparent);
-  // height: var(--button-height, var(--button-height-xs));
-  // display: var(--button-display, inline-flex);
-  // padding-inline: var(--button-padding-x, var(--button-padding-x-xs));
-  // align-items: center;
-
-  // &-inner {
-  //   height: 100%;
-  //   display: flex;
-  //   overflow: visible;
-  //   align-items: center;
-  //   justify-content: var(--button-justify, center);
-  //   transition-property: transform, opacity, color;
-  //   transition-timing-function: var(--easing-standard-productive);
-  //   transition-duration: var(--easing-duration-1);
-  // }
-
-  // &-label {
-  //   height: 100%;
-  //   display: flex;
-  //   overflow: hidden;
-  //   align-items: center;
-  //   white-space: nowrap;
-  //   opacity: var(--button-label-opacity, 1);
-
-  //   &[data-loading] {
-  //     --button-label-opacity: 0.2;
-  //   }
-  // }
-  // &-content {
-  //   display: flex;
-  //   align-items: center;
-  // }
 }
 
-.ButtonGroup {
+.button-group {
   display: flex;
   align-items: center;
   justify-content: flex-start;

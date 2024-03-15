@@ -1,4 +1,4 @@
-.Tile {
+.tile {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -23,7 +23,7 @@
   }
 }
 
-.Tile-group {
+.tile-group {
   --tile-direction: column;
 
   display: flex;

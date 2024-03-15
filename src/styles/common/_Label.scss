@@ -1,6 +1,6 @@
 @use '../mixins' as mixins;
 
-.Label {
+.label {
   --label-font-size-xxs: calc(var(--unit) * 5);
   --label-font-size-xs: calc(var(--unit) * 6);
   --label-font-size-sm: calc(var(--unit) * 7);

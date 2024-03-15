@@ -1,6 +1,6 @@
 @use '../mixins' as mixins;
 
-.Checkbox {
+.checkbox {
   --checkbox-gap-xs: calc(var(--unit) * 3);
   --checkbox-gap-sm: calc(var(--unit) * 4);
   --checkbox-gap-md: calc(var(--unit) * 5);
@@ -203,15 +203,15 @@
   }
 }
 
-.Checkbox-group {
+.checkbox-group {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   display: flex;
-  outline: solid 2px transparent;
-  border: solid 2px transparent;
   flex-wrap: wrap;
-  gap: 2px;
+  border: solid 2px transparent;
+  outline: solid 2px transparent;
+  gap: calc(var(--unit) * 1);
 
   &[data-orientation='vertical'] {
     flex-direction: column;

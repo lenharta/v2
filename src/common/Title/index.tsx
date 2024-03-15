@@ -1,6 +1,6 @@
-import { mergeProps, objectKeys } from '@/utils';
 import clsx from 'clsx';
 import * as React from 'react';
+import { mergeProps, objectKeys } from '@/utils';
 
 export type TitleLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type TitleBaseProps = React.ComponentPropsWithoutRef<'h1'>;
