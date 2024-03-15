@@ -23,8 +23,6 @@ const defaultProps: Partial<AvatarProps> = {
 };
 
 function _Avatar(props: AvatarProps, ref: React.ForwardedRef<HTMLButtonElement>) {
-  const navigate = useNavigate();
-
   const {
     url,
     icon,
@@ -37,6 +35,8 @@ function _Avatar(props: AvatarProps, ref: React.ForwardedRef<HTMLButtonElement>)
     onClick,
     ...otherProps
   } = mergeProps(defaultProps, props);
+
+  const navigate = useNavigate();
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (!event.currentTarget.value) return undefined;

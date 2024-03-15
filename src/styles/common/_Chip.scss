@@ -1,4 +1,4 @@
-.Chip {
+.chip {
   --chip-height-xs: calc(var(--unit) * 12);
   --chip-height-sm: calc(var(--unit) * 13);
   --chip-height-md: calc(var(--unit) * 14);
@@ -13,7 +13,7 @@
   padding-inline: calc(var(--unit) * 4);
 }
 
-.ChipGroup {
+.chip-group {
   display: inline-flex;
   flex-wrap: wrap;
   flex: 1 0 100%;

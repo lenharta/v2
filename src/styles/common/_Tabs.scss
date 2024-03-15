@@ -1,4 +1,4 @@
-.Tabs {
+.tabs {
   &-item {
     margin: 0;
     padding: 0;
@@ -16,19 +16,15 @@
       right: -2px;
       left: -2px;
     }
-
-    &:hover {
-    }
-
     &:hover::after {
       bottom: -2px;
       height: 3px;
     }
 
-    &--selected:hover {
-    }
-    &--selected:hover::after {
-    }
+    // &--selected:hover {
+    // }
+    // &--selected:hover::after {
+    // }
 
     &--selected::after {
       bottom: -2px;
@@ -58,7 +54,7 @@
   }
 }
 
-.TabsGroup {
+.tabs-group {
   width: 100%;
   display: flex;
   flex: 0 1 100%;

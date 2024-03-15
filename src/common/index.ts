@@ -4,6 +4,7 @@ export * from './Checkbox';
 export * from './Control';
 export * from './Floating';
 export * from './Icon';
+export * from './Image';
 export * from './InlineCSS';
 export * from './Space';
 export * from './Stack';
