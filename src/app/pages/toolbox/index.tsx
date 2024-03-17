@@ -1,5 +1,4 @@
-import React from 'react';
-import { Page } from '@/app/layouts';
+import * as React from 'react';
 import { Button, Title, Transition } from '@/common';
 
 const scaleY = {
@@ -9,9 +8,8 @@ const scaleY = {
   transitionProperty: 'transform, opacity',
 };
 
-const TransitionDemo = () => {
+export const TransitionDemo = () => {
   const [mounted, setMounted] = React.useState<boolean>(false);
-  console.log(mounted);
   return (
     <>
       <Transition
@@ -33,13 +31,8 @@ const TransitionDemo = () => {
 
 export const Toolbox = () => {
   return (
-    <Page>
-      <Page.Hero>
-        <Title h1>Toolbox</Title>
-      </Page.Hero>
-      <Page.Content>
-        <TransitionDemo />
-      </Page.Content>
-    </Page>
+    <div className="app-shell">
+      <Title h1>Toolbox</Title>
+    </div>
   );
 };

@@ -15,44 +15,33 @@ export interface IconProps extends IconBaseProps {
 }
 
 const defaultProps: Partial<IconProps> = {
-  type: 'filled',
+  type: 'outlined',
   name: 'placeholder',
-  fill: 'currentColor',
-  xmlns: 'http://www.w3.org/2000/svg',
-  viewBox: '0 0 24 24',
-  height: 24,
-  width: 24,
+};
+
+const getIconPath = (type: IconType = 'outlined', name: IconName = 'placeholder'): string => {
+  return DATA_ICON_LOOKUP[type][name];
 };
 
 function _Icon(props: IconProps, ref: React.ForwardedRef<SVGSVGElement>) {
-  const {
-    type,
-    name,
-    fill: pathColor,
-    label,
-    xmlns,
-    height,
-    width,
-    viewBox,
-    className,
-    ...otherProps
-  } = mergeProps(defaultProps, props);
+  const { type, name, fill, label, xmlns, className, ...otherProps } = mergeProps(
+    defaultProps,
+    props
+  );
 
   const clxss = clsx('icon', className);
-  const pathLookup = DATA_ICON_LOOKUP[type!][name!];
 
   return (
     <svg
       {...otherProps}
       ref={ref}
-      xmlns={xmlns}
-      width={width}
-      height={height}
-      viewBox={viewBox}
-      className={clxss}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
       aria-label={name || label}
-      children={<path d={pathLookup} fill={pathColor} />}
-    />
+      className={clxss}
+    >
+      <path d={getIconPath(type, name)} fill="currentColor" />
+    </svg>
   );
 }
 

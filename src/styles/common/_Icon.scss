@@ -6,6 +6,6 @@
   --icon-size-xl: calc(var(--unit) * 18);
 
   display: inline-flex;
-  width: var(--icon-size, var(--icon-size-xs));
-  height: var(--icon-size, var(--icon-size-xs));
+  width: var(--icon-size, var(--icon-size-sm));
+  height: var(--icon-size, var(--icon-size-sm));
 }

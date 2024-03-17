@@ -1,17 +1,24 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
+import { GridColumnProps } from '../types';
 
-type GridColumnBaseProps = React.ComponentPropsWithoutRef<'div'>;
+const defaultProps: Partial<GridColumnProps> = {
+  span: { base: 12 },
+};
 
-interface GridColumnProps extends GridColumnBaseProps {}
-
-const defaultProps: Partial<GridColumnProps> = {};
+const getBaseValue = (span: GridColumnProps['span']) => {
+  return span && span.base ? span.base : undefined;
+};
 
 function _GridColumn(props: GridColumnProps, ref: React.ForwardedRef<HTMLDivElement>) {
-  const { ...otherProps } = mergeProps(defaultProps, props);
-  return <div {...otherProps} ref={ref} />;
+  const { span, className, ...otherProps } = mergeProps(defaultProps, props);
+  const clxss = clsx('grid-column', className);
+  return <div {...otherProps} ref={ref} className={clxss} />;
 }
 
 export const GridColumn = React.forwardRef(_GridColumn) as React.ForwardRefExoticComponent<
   GridColumnProps & React.RefAttributes<HTMLDivElement>
 >;
+
+GridColumn.displayName = '@v2/Grid.Column';

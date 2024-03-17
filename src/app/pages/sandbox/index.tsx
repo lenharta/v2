@@ -80,11 +80,9 @@ const SandboxComponent = (props: SandboxProps) => {
 
 export const Sandbox = () => {
   return (
-    <div className="sandbox">
-      <div className="sandbox-content">
-        <Title>Sandbox</Title>
-        <SandboxComponent placement="end" />
-      </div>
+    <div className="app-shell">
+      <Title h1>Sandbox</Title>
+      <SandboxComponent placement="end" />
     </div>
   );
 };

@@ -1,9 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-type PageContentElementProps = React.ComponentPropsWithoutRef<'main'>;
-type PageContentAttributeProps = React.RefAttributes<HTMLElement>;
-type PageContentBaseProps = PageContentElementProps & PageContentAttributeProps;
+type PageContentBaseProps = React.ComponentPropsWithoutRef<'main'>;
 
 export interface PageContentProps extends PageContentBaseProps {}
 
@@ -17,6 +15,8 @@ const _PageContent = (props: PageContentProps, ref: React.ForwardedRef<HTMLEleme
   );
 };
 
-export type PageContentComponent = React.ForwardRefExoticComponent<PageContentProps>;
-export const PageContent = React.forwardRef(_PageContent) as PageContentComponent;
+export const PageContent = React.forwardRef(_PageContent) as React.ForwardRefExoticComponent<
+  PageContentProps & React.RefAttributes<HTMLElement>
+>;
+
 PageContent.displayName = '@v2/Page.Content';
