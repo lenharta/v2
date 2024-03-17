@@ -1,9 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-type PageHeroElementProps = React.ComponentPropsWithoutRef<'div'>;
-type PageHeroAttributeProps = React.RefAttributes<HTMLDivElement>;
-type PageHeroBaseProps = PageHeroElementProps & PageHeroAttributeProps;
+type PageHeroBaseProps = React.ComponentPropsWithoutRef<'div'>;
 
 export interface PageHeroProps extends PageHeroBaseProps {
   title?: string;
@@ -19,6 +17,8 @@ export const _PageHero = (props: PageHeroProps, ref: React.ForwardedRef<HTMLDivE
   );
 };
 
-export type PageHeroComponent = React.ForwardRefExoticComponent<PageHeroProps>;
-export const PageHero = React.forwardRef(_PageHero) as PageHeroComponent;
+export const PageHero = React.forwardRef(_PageHero) as React.ForwardRefExoticComponent<
+  PageHeroProps & React.RefAttributes<HTMLDivElement>
+>;
+
 PageHero.displayName = '@v2/Page.Hero';

@@ -1,7 +1,10 @@
-import * as React from 'react';
+import { createSafeContext } from '../utils';
 
-export type GridContextValue = {};
+export type GridContextValue = {
+  grow?: boolean;
+  columns: number;
+};
 
-export const GridContext = React.createContext({} as GridContextValue);
-export const GridProvider = GridContext.Provider;
-export const useGridCTX = () => React.useContext(GridContext);
+export const [GridProvider, useGridCTX] = createSafeContext(
+  '[@v2/Grid]: Component not found in tree.'
+);

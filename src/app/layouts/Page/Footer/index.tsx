@@ -1,9 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-type PageFooterElementProps = React.ComponentPropsWithoutRef<'footer'>;
-type PageFooterAttributeProps = React.RefAttributes<HTMLElement>;
-type PageFooterBaseProps = PageFooterElementProps & PageFooterAttributeProps;
+type PageFooterBaseProps = React.ComponentPropsWithoutRef<'footer'>;
 
 export interface PageFooterProps extends PageFooterBaseProps {}
 
@@ -17,6 +15,8 @@ const _PageFooter = (props: PageFooterProps, ref: React.ForwardedRef<HTMLElement
   );
 };
 
-export type PageFooterComponent = React.ForwardRefExoticComponent<PageFooterProps>;
-export const PageFooter = React.forwardRef(_PageFooter) as PageFooterComponent;
+export const PageFooter = React.forwardRef(_PageFooter) as React.ForwardRefExoticComponent<
+  PageFooterProps & React.RefAttributes<HTMLElement>
+>;
+
 PageFooter.displayName = '@v2/Page.Footer';

@@ -5,9 +5,10 @@ import { useRandomClassName } from '@/hooks';
 import { SectionColumn } from './Column';
 import { Scheme } from '@/types/common';
 
-type SectionElementProps = React.ComponentPropsWithoutRef<'section'>;
-type SectionRefProps = React.RefAttributes<HTMLDivElement>;
-type SectionBaseProps = SectionElementProps & SectionRefProps;
+export type SectionBaseProps = React.ComponentPropsWithoutRef<'section'>;
+export type SectionComponents = { Column: typeof SectionColumn };
+export type SectionComponentProps = SectionProps & React.RefAttributes<HTMLDivElement>;
+export type SectionComponent = React.ForwardRefExoticComponent<SectionComponentProps>;
 
 export interface SectionProps extends SectionBaseProps {
   scheme?: Scheme;
@@ -32,10 +33,6 @@ function _Section(props: SectionProps, ref: React.ForwardedRef<HTMLDivElement>) 
   );
 }
 
-export type SectionComponent = React.ForwardRefExoticComponent<SectionProps> & {
-  Column: typeof SectionColumn;
-};
-
-export const Section = React.forwardRef(_Section) as SectionComponent;
+export const Section = React.forwardRef(_Section) as SectionComponent & SectionComponents;
 Section.displayName = '@v2/Section';
 Section.Column = SectionColumn;
