@@ -1,13 +1,6 @@
+import { TransitionProps } from './types';
 import { useTransition } from './use-transition';
 import { getTransitionStyles } from './get-transition-styles';
-import { TransitionProps } from './types';
-import React from 'react';
-
-const defaultTransition = {
-  in: { opacity: 1 },
-  out: { opacity: 0 },
-  transitionProperty: 'opacity',
-};
 
 export const Transition = (props: TransitionProps) => {
   const {

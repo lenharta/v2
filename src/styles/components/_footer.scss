@@ -1,0 +1,60 @@
+.footer-layout {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 2px;
+  gap: 2px;
+}
+
+.footer-section {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-block: var(--gutter);
+  padding-inline: var(--gutter);
+}
+
+.footer-contact {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-block: var(--gutter);
+  padding-inline: var(--gutter);
+  gap: var(--gap);
+}
+
+.footer-nav {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2px;
+
+  &-item {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-block: calc(var(--gutter) / 4);
+    padding-inline: var(--gutter);
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: var(--gap);
+    }
+
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+}
