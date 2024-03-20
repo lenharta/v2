@@ -1,38 +1,22 @@
-import * as React from 'react';
-import { Button, Title, Transition } from '@/common';
+import { Page } from '@/app/components';
+import { Text, Title } from '@/common';
 
-const scaleY = {
-  in: { opacity: 1, transform: 'scaleY(1)' },
-  out: { opacity: 0, transform: 'scaleY(0)' },
-  common: { transformOrigin: 'top' },
-  transitionProperty: 'transform, opacity',
-};
-
-export const TransitionDemo = () => {
-  const [mounted, setMounted] = React.useState<boolean>(false);
-  return (
-    <>
-      <Transition
-        duration={200}
-        mounted={mounted}
-        transition={scaleY}
-        timingFunction="ease"
-        keepMounted
-      >
-        {(transitionStyle) => <div style={transitionStyle}>Test Box</div>}
-      </Transition>
-      <div>
-        <Button onClick={() => setMounted(true)}>Enter</Button>
-        <Button onClick={() => setMounted(false)}>Exit</Button>
-      </div>
-    </>
-  );
-};
-
-export const Toolbox = () => {
-  return (
-    <div className="app-shell">
-      <Title h1>Toolbox</Title>
-    </div>
-  );
-};
+export const Toolbox = () => (
+  <Page heroProps={{ title: 'Toolbox' }}>
+    <Page.Section className="demo-section-content">
+      <Title h2>Section Title</Title>
+      <Text>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla modi, incidunt maxime est
+        optio ratione obcaecati autem laborum neque corporis excepturi, iure mollitia aspernatur
+        alias quos delectus itaque dolorum doloribus.
+      </Text>
+      <Text>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo corrupti temporibus quisquam
+        dolores ex vero nam. Minima qui, sed ea sapiente quasi magnam modi quam repellendus
+        molestias sunt corporis placeat tempore eveniet! Consequuntur, eum ullam minima ipsum
+        dignissimos molestias porro animi maiores corporis exercitationem quis deleniti modi iste
+        soluta voluptatem.
+      </Text>
+    </Page.Section>
+  </Page>
+);

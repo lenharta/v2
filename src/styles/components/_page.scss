@@ -1,0 +1,66 @@
+.page-layout {
+  display: block;
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  isolation: isolate;
+  position: relative;
+}
+
+.page-hero {
+  display: flex;
+  min-height: 20vh;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: var(--app-header-height);
+  padding: var(--gutter);
+
+  h1.title {
+    font-size: 3.5rem;
+    font-family: var(--font-family);
+    font-weight: 300;
+    line-height: 1;
+  }
+}
+
+.page-section {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: var(--gutter);
+  padding-inline: var(--gutter);
+  padding-bottom: var(--spacing);
+}
+
+// TEMPORARY
+
+.demo-section-content {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: calc(var(--spacing) * 1.5);
+  gap: var(--gap);
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  p {
+    width: auto;
+    display: block;
+    text-wrap: wrap;
+    word-break: normal;
+    white-space-collapse: collapse;
+  }
+
+  h2.title {
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: var(--font-family);
+    margin-block: var(--gap);
+  }
+}
