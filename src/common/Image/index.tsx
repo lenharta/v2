@@ -1,12 +1,10 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
-import { Size } from '@/types/common';
+import { Size, ElementProps } from '@/types';
 import { createEventCallback } from '../utils';
 
-type ImageBaseProps = Omit<React.ComponentPropsWithoutRef<'img'>, 'alt'>;
-
-export interface ImageProps extends ImageBaseProps {
+export interface ImageProps extends Omit<ElementProps<'img'>, 'alt'> {
   alt?: string;
   src?: any;
   fit?: React.CSSProperties['objectFit'];
@@ -24,7 +22,7 @@ const defaultProps: Partial<ImageProps> = {
   alt: 'image',
 };
 
-function _Image(props: ImageProps, ref: React.ForwardedRef<HTMLImageElement>) {
+export const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const {
     alt,
     fit,
@@ -57,7 +55,6 @@ function _Image(props: ImageProps, ref: React.ForwardedRef<HTMLImageElement>) {
       />
     );
   }
-
   return (
     <img
       {...otherProps}
@@ -69,4 +66,6 @@ function _Image(props: ImageProps, ref: React.ForwardedRef<HTMLImageElement>) {
       onError={createEventCallback(onError, () => setError(true))}
     />
   );
-}
+});
+
+Image.displayName = '@v2/Image';

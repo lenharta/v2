@@ -1,0 +1,313 @@
+[data-prefers-color-scheme='light'] {
+  --c-neutral-01: #ffffff;
+  --c-neutral-02: #f3f3f3;
+  --c-neutral-03: #e8e8e8;
+  --c-neutral-04: #dcdcdc;
+  --c-neutral-05: #d0d0d0;
+  --c-neutral-06: #c5c5c5;
+  --c-neutral-07: #b9b9b9;
+  --c-neutral-08: #adadad;
+  --c-neutral-09: #a2a2a2;
+  --c-neutral-10: #969696;
+  --c-neutral-11: #8a8a8a;
+  --c-neutral-12: #7e7e7e;
+  --c-neutral-13: #737373;
+  --c-neutral-14: #676767;
+  --c-neutral-15: #5b5b5b;
+  --c-neutral-16: #505050;
+  --c-neutral-17: #444444;
+  --c-neutral-18: #383838;
+  --c-neutral-19: #2d2d2d;
+  --c-neutral-20: #212121;
+}
+
+[data-prefers-color-scheme='dark'] {
+  --c-neutral-01: #212121;
+  --c-neutral-02: #2d2d2d;
+  --c-neutral-03: #383838;
+  --c-neutral-04: #444444;
+  --c-neutral-05: #505050;
+  --c-neutral-06: #5b5b5b;
+  --c-neutral-07: #676767;
+  --c-neutral-08: #737373;
+  --c-neutral-09: #7e7e7e;
+  --c-neutral-10: #8a8a8a;
+  --c-neutral-11: #969696;
+  --c-neutral-12: #a2a2a2;
+  --c-neutral-13: #adadad;
+  --c-neutral-14: #b9b9b9;
+  --c-neutral-15: #c5c5c5;
+  --c-neutral-16: #d0d0d0;
+  --c-neutral-17: #dcdcdc;
+  --c-neutral-18: #e8e8e8;
+  --c-neutral-19: #f3f3f3;
+  --c-neutral-20: #ffffff;
+}
+
+[data-prefers-color-scheme='dim'] {
+  --c-neutral-01: #2e3440;
+  --c-neutral-02: #393f4a;
+  --c-neutral-03: #444954;
+  --c-neutral-04: #4f545e;
+  --c-neutral-05: #5a5f68;
+  --c-neutral-06: #656972;
+  --c-neutral-07: #70747c;
+  --c-neutral-08: #7b7f86;
+  --c-neutral-09: #868990;
+  --c-neutral-10: #91949a;
+  --c-neutral-11: #9c9fa5;
+  --c-neutral-12: #a7aaaf;
+  --c-neutral-13: #b2b4b9;
+  --c-neutral-14: #bdbfc3;
+  --c-neutral-15: #c8cacd;
+  --c-neutral-16: #d3d4d7;
+  --c-neutral-17: #dedfe1;
+  --c-neutral-18: #e9eaeb;
+  --c-neutral-19: #f4f4f5;
+  --c-neutral-20: #ffffff;
+}
+
+[data-prefers-color-scheme='light'] {
+  --c-orange-1: hsl(35, 100%, 12%);
+  --c-orange-2: hsl(35, 100%, 22%);
+  --c-orange-3: hsl(35, 100%, 32%);
+  --c-orange-4: hsl(35, 100%, 42%);
+  --c-orange-5: hsl(35, 100%, 52%);
+  --c-orange-6: hsl(35, 100%, 62%);
+  --c-orange-7: hsl(35, 100%, 72%);
+  --c-orange-8: hsl(35, 100%, 82%);
+  --c-orange-9: hsl(35, 100%, 92%);
+
+  --c-yellow-1: hsl(48, 100%, 12%);
+  --c-yellow-2: hsl(48, 100%, 22%);
+  --c-yellow-3: hsl(48, 100%, 32%);
+  --c-yellow-4: hsl(48, 100%, 42%);
+  --c-yellow-5: hsl(48, 100%, 52%);
+  --c-yellow-6: hsl(48, 100%, 62%);
+  --c-yellow-7: hsl(48, 100%, 72%);
+  --c-yellow-8: hsl(48, 100%, 82%);
+  --c-yellow-9: hsl(48, 100%, 92%);
+
+  --c-green-1: hsl(135, 59%, 10%);
+  --c-green-2: hsl(135, 59%, 20%);
+  --c-green-3: hsl(135, 59%, 30%);
+  --c-green-4: hsl(135, 59%, 40%);
+  --c-green-5: hsl(135, 59%, 50%);
+  --c-green-6: hsl(135, 59%, 60%);
+  --c-green-7: hsl(135, 59%, 70%);
+  --c-green-8: hsl(135, 59%, 80%);
+  --c-green-9: hsl(135, 59%, 90%);
+
+  --c-mint-1: hsl(177, 100%, 15%);
+  --c-mint-2: hsl(177, 100%, 25%);
+  --c-mint-3: hsl(177, 100%, 35%);
+  --c-mint-4: hsl(177, 100%, 45%);
+  --c-mint-5: hsl(177, 100%, 55%);
+  --c-mint-6: hsl(177, 100%, 65%);
+  --c-mint-7: hsl(177, 100%, 75%);
+  --c-mint-8: hsl(177, 100%, 85%);
+  --c-mint-9: hsl(177, 100%, 95%);
+
+  --c-teal-1: hsl(189, 61%, 16%);
+  --c-teal-2: hsl(189, 61%, 26%);
+  --c-teal-3: hsl(189, 61%, 36%);
+  --c-teal-4: hsl(189, 61%, 46%);
+  --c-teal-5: hsl(189, 61%, 56%);
+  --c-teal-6: hsl(189, 61%, 66%);
+  --c-teal-7: hsl(189, 61%, 76%);
+  --c-teal-8: hsl(189, 61%, 86%);
+  --c-teal-9: hsl(189, 61%, 96%);
+
+  --c-cyan-1: hsl(199, 78%, 10%);
+  --c-cyan-2: hsl(199, 78%, 20%);
+  --c-cyan-3: hsl(199, 78%, 30%);
+  --c-cyan-4: hsl(199, 78%, 40%);
+  --c-cyan-5: hsl(199, 78%, 50%);
+  --c-cyan-6: hsl(199, 78%, 60%);
+  --c-cyan-7: hsl(199, 78%, 70%);
+  --c-cyan-8: hsl(199, 78%, 80%);
+  --c-cyan-9: hsl(199, 78%, 90%);
+
+  --c-blue-1: hsl(211, 100%, 12%);
+  --c-blue-2: hsl(211, 100%, 22%);
+  --c-blue-3: hsl(211, 100%, 32%);
+  --c-blue-4: hsl(211, 100%, 42%);
+  --c-blue-5: hsl(211, 100%, 52%);
+  --c-blue-6: hsl(211, 100%, 62%);
+  --c-blue-7: hsl(211, 100%, 72%);
+  --c-blue-8: hsl(211, 100%, 82%);
+  --c-blue-9: hsl(211, 100%, 92%);
+
+  --c-indigo-1: hsl(241, 61%, 13%);
+  --c-indigo-2: hsl(241, 61%, 23%);
+  --c-indigo-3: hsl(241, 61%, 33%);
+  --c-indigo-4: hsl(241, 61%, 43%);
+  --c-indigo-5: hsl(241, 61%, 53%);
+  --c-indigo-6: hsl(241, 61%, 63%);
+  --c-indigo-7: hsl(241, 61%, 73%);
+  --c-indigo-8: hsl(241, 61%, 83%);
+  --c-indigo-9: hsl(241, 61%, 93%);
+
+  --c-purple-1: hsl(280, 68%, 15%);
+  --c-purple-2: hsl(280, 68%, 25%);
+  --c-purple-3: hsl(280, 68%, 35%);
+  --c-purple-4: hsl(280, 68%, 45%);
+  --c-purple-5: hsl(280, 68%, 55%);
+  --c-purple-6: hsl(280, 68%, 65%);
+  --c-purple-7: hsl(280, 68%, 75%);
+  --c-purple-8: hsl(280, 68%, 85%);
+  --c-purple-9: hsl(280, 68%, 95%);
+
+  --c-pink-1: hsl(349, 100%, 11%);
+  --c-pink-2: hsl(349, 100%, 21%);
+  --c-pink-3: hsl(349, 100%, 31%);
+  --c-pink-4: hsl(349, 100%, 41%);
+  --c-pink-5: hsl(349, 100%, 51%);
+  --c-pink-6: hsl(349, 100%, 61%);
+  --c-pink-7: hsl(349, 100%, 71%);
+  --c-pink-8: hsl(349, 100%, 81%);
+  --c-pink-9: hsl(349, 100%, 91%);
+
+  --c-brown-1: hsl(34, 27%, 14%);
+  --c-brown-2: hsl(34, 27%, 24%);
+  --c-brown-3: hsl(34, 27%, 34%);
+  --c-brown-4: hsl(34, 27%, 44%);
+  --c-brown-5: hsl(34, 27%, 54%);
+  --c-brown-6: hsl(34, 27%, 64%);
+  --c-brown-7: hsl(34, 27%, 74%);
+  --c-brown-8: hsl(34, 27%, 84%);
+  --c-brown-9: hsl(34, 27%, 94%);
+
+  --c-red-1: hsl(3, 100%, 11%);
+  --c-red-2: hsl(3, 100%, 21%);
+  --c-red-3: hsl(3, 100%, 31%);
+  --c-red-4: hsl(3, 100%, 41%);
+  --c-red-5: hsl(3, 100%, 51%);
+  --c-red-6: hsl(3, 100%, 61%);
+  --c-red-7: hsl(3, 100%, 71%);
+  --c-red-8: hsl(3, 100%, 81%);
+  --c-red-9: hsl(3, 100%, 91%);
+}
+
+[data-prefers-color-scheme='dim'],
+[data-prefers-color-scheme='dark'] {
+  --c-orange-1: hsl(36, 100%, 12%);
+  --c-orange-2: hsl(36, 100%, 22%);
+  --c-orange-3: hsl(36, 100%, 32%);
+  --c-orange-4: hsl(36, 100%, 42%);
+  --c-orange-5: hsl(36, 100%, 52%);
+  --c-orange-6: hsl(36, 100%, 62%);
+  --c-orange-7: hsl(36, 100%, 72%);
+  --c-orange-8: hsl(36, 100%, 82%);
+  --c-orange-9: hsl(36, 100%, 92%);
+
+  --c-yellow-1: hsl(50, 100%, 12%);
+  --c-yellow-2: hsl(50, 100%, 22%);
+  --c-yellow-3: hsl(50, 100%, 32%);
+  --c-yellow-4: hsl(50, 100%, 42%);
+  --c-yellow-5: hsl(50, 100%, 52%);
+  --c-yellow-6: hsl(50, 100%, 62%);
+  --c-yellow-7: hsl(50, 100%, 72%);
+  --c-yellow-8: hsl(50, 100%, 82%);
+  --c-yellow-9: hsl(50, 100%, 92%);
+
+  --c-green-1: hsl(135, 64%, 10%);
+  --c-green-2: hsl(135, 64%, 20%);
+  --c-green-3: hsl(135, 64%, 30%);
+  --c-green-4: hsl(135, 64%, 40%);
+  --c-green-5: hsl(135, 64%, 50%);
+  --c-green-6: hsl(135, 64%, 60%);
+  --c-green-7: hsl(135, 64%, 70%);
+  --c-green-8: hsl(135, 64%, 80%);
+  --c-green-9: hsl(135, 64%, 90%);
+
+  --c-mint-1: hsl(178, 72%, 15%);
+  --c-mint-2: hsl(178, 72%, 25%);
+  --c-mint-3: hsl(178, 72%, 35%);
+  --c-mint-4: hsl(178, 72%, 45%);
+  --c-mint-5: hsl(178, 72%, 55%);
+  --c-mint-6: hsl(178, 72%, 65%);
+  --c-mint-7: hsl(178, 72%, 75%);
+  --c-mint-8: hsl(178, 72%, 85%);
+  --c-mint-9: hsl(178, 72%, 95%);
+
+  --c-teal-1: hsl(188, 72%, 16%);
+  --c-teal-2: hsl(188, 72%, 26%);
+  --c-teal-3: hsl(188, 72%, 36%);
+  --c-teal-4: hsl(188, 72%, 46%);
+  --c-teal-5: hsl(188, 72%, 56%);
+  --c-teal-6: hsl(188, 72%, 66%);
+  --c-teal-7: hsl(188, 72%, 76%);
+  --c-teal-8: hsl(188, 72%, 86%);
+  --c-teal-9: hsl(188, 72%, 96%);
+
+  --c-cyan-1: hsl(197, 100%, 10%);
+  --c-cyan-2: hsl(197, 100%, 20%);
+  --c-cyan-3: hsl(197, 100%, 30%);
+  --c-cyan-4: hsl(197, 100%, 40%);
+  --c-cyan-5: hsl(197, 100%, 50%);
+  --c-cyan-6: hsl(197, 100%, 60%);
+  --c-cyan-7: hsl(197, 100%, 70%);
+  --c-cyan-8: hsl(197, 100%, 80%);
+  --c-cyan-9: hsl(197, 100%, 90%);
+
+  --c-blue-1: hsl(210, 100%, 12%);
+  --c-blue-2: hsl(210, 100%, 22%);
+  --c-blue-3: hsl(210, 100%, 32%);
+  --c-blue-4: hsl(210, 100%, 42%);
+  --c-blue-5: hsl(210, 100%, 52%);
+  --c-blue-6: hsl(210, 100%, 62%);
+  --c-blue-7: hsl(210, 100%, 72%);
+  --c-blue-8: hsl(210, 100%, 82%);
+  --c-blue-9: hsl(210, 100%, 92%);
+
+  --c-indigo-1: hsl(241, 73%, 13%);
+  --c-indigo-2: hsl(241, 73%, 23%);
+  --c-indigo-3: hsl(241, 73%, 33%);
+  --c-indigo-4: hsl(241, 73%, 43%);
+  --c-indigo-5: hsl(241, 73%, 53%);
+  --c-indigo-6: hsl(241, 73%, 63%);
+  --c-indigo-7: hsl(241, 73%, 73%);
+  --c-indigo-8: hsl(241, 73%, 83%);
+  --c-indigo-9: hsl(241, 73%, 93%);
+
+  --c-purple-1: hsl(280, 85%, 15%);
+  --c-purple-2: hsl(280, 85%, 25%);
+  --c-purple-3: hsl(280, 85%, 35%);
+  --c-purple-4: hsl(280, 85%, 45%);
+  --c-purple-5: hsl(280, 85%, 55%);
+  --c-purple-6: hsl(280, 85%, 65%);
+  --c-purple-7: hsl(280, 85%, 75%);
+  --c-purple-8: hsl(280, 85%, 85%);
+  --c-purple-9: hsl(280, 85%, 95%);
+
+  --c-pink-1: hsl(348, 100%, 11%);
+  --c-pink-2: hsl(348, 100%, 21%);
+  --c-pink-3: hsl(348, 100%, 31%);
+  --c-pink-4: hsl(348, 100%, 41%);
+  --c-pink-5: hsl(348, 100%, 51%);
+  --c-pink-6: hsl(348, 100%, 61%);
+  --c-pink-7: hsl(348, 100%, 71%);
+  --c-pink-8: hsl(348, 100%, 81%);
+  --c-pink-9: hsl(348, 100%, 91%);
+
+  --c-brown-1: hsl(34, 29%, 14%);
+  --c-brown-2: hsl(34, 29%, 24%);
+  --c-brown-3: hsl(34, 29%, 34%);
+  --c-brown-4: hsl(34, 29%, 44%);
+  --c-brown-5: hsl(34, 29%, 54%);
+  --c-brown-6: hsl(34, 29%, 64%);
+  --c-brown-7: hsl(34, 29%, 74%);
+  --c-brown-8: hsl(34, 29%, 84%);
+  --c-brown-9: hsl(34, 29%, 94%);
+
+  --c-red-1: hsl(3, 100%, 11%);
+  --c-red-2: hsl(3, 100%, 21%);
+  --c-red-3: hsl(3, 100%, 31%);
+  --c-red-4: hsl(3, 100%, 41%);
+  --c-red-5: hsl(3, 100%, 51%);
+  --c-red-6: hsl(3, 100%, 61%);
+  --c-red-7: hsl(3, 100%, 71%);
+  --c-red-8: hsl(3, 100%, 81%);
+  --c-red-9: hsl(3, 100%, 91%);
+}

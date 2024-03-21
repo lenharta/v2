@@ -3,14 +3,13 @@ import * as React from 'react';
 import { Size } from '@/types/common';
 import { mergeProps } from '@/utils';
 import { useInputIds } from '@/hooks';
+import { ElementProps } from '@/types/global';
 import { CheckboxIndicator } from './Indicator';
-import { InputDescription, InputLabel } from '../Input';
-import { CheckboxScheme, useCheckboxCTX } from './context';
+import { InputText, InputLabel } from '../Input';
+import { useCheckboxCTX } from './context';
 import { CheckboxGroup } from './Group';
 
-type CheckboxBaseProps = Omit<React.ComponentPropsWithoutRef<'input'>, 'size'>;
-
-export interface CheckboxProps extends CheckboxBaseProps {
+export interface CheckboxProps extends Omit<ElementProps<'input'>, 'size'> {
   /** Identifies the element */
   id?: string;
 
@@ -19,9 +18,6 @@ export interface CheckboxProps extends CheckboxBaseProps {
 
   /** Identifies an accessible label for the element */
   label?: string;
-
-  /** Specifies a theme scheme for the element */
-  scheme?: CheckboxScheme;
 
   /** Defines the elements `loading` state */
   loading?: boolean;
@@ -49,7 +45,6 @@ export interface CheckboxProps extends CheckboxBaseProps {
 
 const defaultProps: Partial<CheckboxProps> = {
   size: 'sm',
-  scheme: 'default',
 };
 
 function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElement>) {
@@ -58,7 +53,6 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
     size,
     value,
     label,
-    scheme,
     checked,
     rootRef,
     loading,
@@ -78,7 +72,7 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
   const isIndeterminate = !ctx.value && indeterminate !== undefined;
 
   const uids = useInputIds(id, ['input', 'label', 'description']);
-  const clxss = clsx('checkbox', `checkbox--size-${size}`, `checkbox--scheme-${scheme}`, className);
+  const clxss = clsx('checkbox', `checkbox--size-${size}`, className);
 
   return (
     <div ref={rootRef} className={clxss} data-loading={isLoading} data-disabled={isDisabled}>
@@ -108,7 +102,7 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
 
       <div className="checkbox-content">
         {loading ? (
-          <Checkbox.Description
+          <Checkbox.Text
             id={uids.description}
             size={size}
             text="loading..."
@@ -129,7 +123,7 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
         )}
 
         {loading ? null : (
-          <Checkbox.Description
+          <Checkbox.Text
             id={uids.description}
             size={size}
             text={description}
@@ -144,10 +138,10 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
 }
 
 export type CheckboxComponents = {
-  Label: typeof InputLabel;
-  Description: typeof InputDescription;
   Indicator: typeof CheckboxIndicator;
   Group: typeof CheckboxGroup;
+  Label: typeof InputLabel;
+  Text: typeof InputText;
 };
 
 export const Checkbox = React.forwardRef(_Checkbox) as CheckboxComponents &
@@ -155,6 +149,6 @@ export const Checkbox = React.forwardRef(_Checkbox) as CheckboxComponents &
 
 Checkbox.displayName = '@v2/Checkbox';
 Checkbox.Label = InputLabel;
-Checkbox.Description = InputDescription;
+Checkbox.Text = InputText;
 Checkbox.Indicator = CheckboxIndicator;
 Checkbox.Group = CheckboxGroup;

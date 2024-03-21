@@ -2,13 +2,12 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { DATA_ICON_LOOKUP } from '@/data';
+import { ElementProps } from '@/types';
 
 export type IconType = keyof typeof DATA_ICON_LOOKUP;
 export type IconName = keyof (typeof DATA_ICON_LOOKUP)['filled'];
 
-type IconBaseProps = React.ComponentPropsWithoutRef<'svg'>;
-
-export interface IconProps extends IconBaseProps {
+export interface IconProps extends ElementProps<'svg'> {
   type?: IconType;
   name?: IconName;
   label?: string;
@@ -23,7 +22,7 @@ const getIconPath = (type: IconType = 'outlined', name: IconName = 'placeholder'
   return DATA_ICON_LOOKUP[type][name];
 };
 
-function _Icon(props: IconProps, ref: React.ForwardedRef<SVGSVGElement>) {
+export const Icon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   const { type, name, fill, label, xmlns, className, ...otherProps } = mergeProps(
     defaultProps,
     props
@@ -37,16 +36,11 @@ function _Icon(props: IconProps, ref: React.ForwardedRef<SVGSVGElement>) {
       ref={ref}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      aria-label={name || label}
       className={clxss}
-    >
-      <path d={getIconPath(type, name)} fill="currentColor" />
-    </svg>
+      aria-label={name || label}
+      children={<path d={getIconPath(type, name)} fill="currentColor" />}
+    />
   );
-}
-
-export const Icon = React.forwardRef(_Icon) as React.ForwardRefExoticComponent<
-  IconProps & React.RefAttributes<SVGSVGElement>
->;
+});
 
 Icon.displayName = '@v2/Icon';

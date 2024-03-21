@@ -124,6 +124,9 @@
   @extend .secondary-base-5;
 }
 
+.primary-interactive-0:hover {
+  background-color: var(--c-primary-surface-0-hover);
+}
 .primary-interactive-1:hover {
   background-color: var(--c-primary-surface-1-hover);
 }
@@ -140,6 +143,9 @@
   background-color: var(--c-primary-surface-5-hover);
 }
 
+.secondary-interactive-0:hover {
+  background-color: var(--c-secondary-surface-0-hover);
+}
 .secondary-interactive-1:hover {
   background-color: var(--c-secondary-surface-1-hover);
 }

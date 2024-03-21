@@ -1,102 +1,53 @@
-[data-prefers-color-scheme='light'] {
-  --c-primary: 255, 255, 255;
-  --c-secondary: 28, 28, 30;
-  --c-tertiary: 200, 200, 200;
-  --c-orange: 255, 149, 0;
-  --c-yellow: 255, 204, 0;
-  --c-green: 52, 199, 89;
-  --c-mint: 0, 199, 190;
-  --c-teal: 48, 176, 199;
-  --c-cyan: 50, 173, 230;
-  --c-blue: 0, 122, 255;
-  --c-indigo: 88, 86, 214;
-  --c-purple: 175, 82, 222;
-  --c-pink: 255, 45, 85;
-  --c-brown: 162, 132, 94;
-  --c-red: 255, 59, 48;
-}
-
-[data-prefers-color-scheme='dim'] {
-  --c-primary: 44, 44, 46;
-  --c-secondary: 255, 255, 255;
-  --c-tertiary: 130, 130, 130;
-  --c-orange: 255, 159, 10;
-  --c-yellow: 255, 214, 10;
-  --c-green: 48, 209, 88;
-  --c-mint: 99, 230, 226;
-  --c-teal: 64, 203, 224;
-  --c-cyan: 100, 210, 255;
-  --c-blue: 10, 132, 255;
-  --c-indigo: 94, 92, 230;
-  --c-purple: 191, 90, 242;
-  --c-pink: 255, 55, 95;
-  --c-brown: 172, 142, 104;
-  --c-red: 255, 69, 58;
-}
-
-[data-prefers-color-scheme='dark'] {
-  --c-primary: 28, 28, 30;
-  --c-secondary: 255, 255, 255;
-  --c-tertiary: 80, 80, 80;
-  --c-orange: 255, 159, 10;
-  --c-yellow: 255, 214, 10;
-  --c-green: 48, 209, 88;
-  --c-mint: 99, 230, 226;
-  --c-teal: 64, 203, 224;
-  --c-cyan: 100, 210, 255;
-  --c-blue: 10, 132, 255;
-  --c-indigo: 94, 92, 230;
-  --c-purple: 191, 90, 242;
-  --c-pink: 255, 55, 95;
-  --c-brown: 172, 142, 104;
-  --c-red: 255, 69, 58;
-}
-
 [data-prefers-color-scheme='dim'],
 [data-prefers-color-scheme='dark'],
 [data-prefers-color-scheme='light'] {
-  --c-primary-text-0: rgba(var(--c-secondary), 0.99);
-  --c-primary-text-1: rgba(var(--c-secondary), 0.87);
-  --c-primary-text-2: rgba(var(--c-secondary), 0.75);
-  --c-primary-text-3: rgba(var(--c-secondary), 0.63);
+  --c-primary-text-0: var(--c-neutral-20);
+  --c-primary-text-1: var(--c-neutral-18);
+  --c-primary-text-2: var(--c-neutral-16);
+  --c-primary-text-3: var(--c-neutral-14);
 
-  --c-secondary-text-0: rgba(var(--c-primary), 0.99);
-  --c-secondary-text-1: rgba(var(--c-primary), 0.87);
-  --c-secondary-text-2: rgba(var(--c-primary), 0.75);
-  --c-secondary-text-3: rgba(var(--c-primary), 0.63);
+  --c-secondary-text-0: var(--c-neutral-01);
+  --c-secondary-text-1: var(--c-neutral-03);
+  --c-secondary-text-2: var(--c-neutral-05);
+  --c-secondary-text-3: var(--c-neutral-07);
 
-  --c-primary-surface-0: rgba(var(--c-primary), 1);
-  --c-primary-surface-1: rgba(var(--c-secondary), 0.02);
-  --c-primary-surface-2: rgba(var(--c-secondary), 0.03);
-  --c-primary-surface-3: rgba(var(--c-secondary), 0.04);
-  --c-primary-surface-4: rgba(var(--c-secondary), 0.05);
-  --c-primary-surface-5: rgba(var(--c-secondary), 0.06);
+  --c-primary-surface-0: var(--c-neutral-01);
+  --c-primary-surface-1: var(--c-neutral-02);
+  --c-primary-surface-2: var(--c-neutral-03);
+  --c-primary-surface-3: var(--c-neutral-04);
+  --c-primary-surface-4: var(--c-neutral-05);
+  --c-primary-surface-5: var(--c-neutral-06);
 
-  --c-secondary-surface-0: rgba(var(--c-secondary), 1);
-  --c-secondary-surface-1: rgba(var(--c-primary), 0.03);
-  --c-secondary-surface-2: rgba(var(--c-primary), 0.06);
-  --c-secondary-surface-3: rgba(var(--c-primary), 0.09);
-  --c-secondary-surface-4: rgba(var(--c-primary), 0.12);
-  --c-secondary-surface-5: rgba(var(--c-primary), 0.15);
+  --c-secondary-surface-0: var(--c-neutral-20);
+  --c-secondary-surface-1: var(--c-neutral-19);
+  --c-secondary-surface-2: var(--c-neutral-18);
+  --c-secondary-surface-3: var(--c-neutral-17);
+  --c-secondary-surface-4: var(--c-neutral-16);
+  --c-secondary-surface-5: var(--c-neutral-15);
 
-  --c-primary-surface-0-hover: rgba(var(--c-primary), 0.02);
-  --c-primary-surface-1-hover: rgba(var(--c-secondary), 0.03);
-  --c-primary-surface-2-hover: rgba(var(--c-secondary), 0.04);
-  --c-primary-surface-3-hover: rgba(var(--c-secondary), 0.05);
-  --c-primary-surface-4-hover: rgba(var(--c-secondary), 0.06);
-  --c-primary-surface-5-hover: rgba(var(--c-secondary), 0.07);
+  --c-primary-surface-0-hover: var(--c-neutral-02);
+  --c-primary-surface-1-hover: var(--c-neutral-03);
+  --c-primary-surface-2-hover: var(--c-neutral-04);
+  --c-primary-surface-3-hover: var(--c-neutral-05);
+  --c-primary-surface-4-hover: var(--c-neutral-06);
+  --c-primary-surface-5-hover: var(--c-neutral-07);
 
-  --c-secondary-surface-0-hover: rgba(var(--c-secondary), 0.03);
-  --c-secondary-surface-1-hover: rgba(var(--c-primary), 0.06);
-  --c-secondary-surface-2-hover: rgba(var(--c-primary), 0.09);
-  --c-secondary-surface-3-hover: rgba(var(--c-primary), 0.12);
-  --c-secondary-surface-4-hover: rgba(var(--c-primary), 0.15);
-  --c-secondary-surface-5-hover: rgba(var(--c-primary), 0.18);
+  --c-secondary-surface-0-hover: var(--c-neutral-19);
+  --c-secondary-surface-1-hover: var(--c-neutral-18);
+  --c-secondary-surface-2-hover: var(--c-neutral-17);
+  --c-secondary-surface-3-hover: var(--c-neutral-16);
+  --c-secondary-surface-4-hover: var(--c-neutral-15);
+  --c-secondary-surface-5-hover: var(--c-neutral-16);
 }
 
-html,
 body,
-#root,
+html,
+:root,
+#root {
+  color: var(--c-primary-text-0);
+  background-color: var(--c-primary-surface-0);
+}
+
 .page-layout {
   color: var(--c-primary-text-0);
   background-color: var(--c-primary-surface-0);
