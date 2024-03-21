@@ -1,13 +1,12 @@
 import * as React from 'react';
-import type { Align, Justify, Orientation, Size } from '@/types/common';
+import { Orientation } from '@/types/common';
 
 export type ButtonContextValue = {
-  size?: Size;
-  align?: Align;
-  justify?: Justify;
   orientation?: Orientation;
+  readOnly?: boolean;
+  disabled?: boolean;
 };
 
 export const ButtonContext = React.createContext({} as ButtonContextValue);
 export const ButtonProvider = ButtonContext.Provider;
-export const useButtonContext = () => React.useContext(ButtonContext);
+export const useButtonCTX = () => React.useContext(ButtonContext);

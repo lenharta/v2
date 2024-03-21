@@ -1,14 +1,12 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
-import { type Size } from '@/types/common';
-import { type UnstyledButtonProps, UnstyledButton } from './Unstyled';
+import { ButtonGroup } from './Group';
+import { useButtonCTX } from './context';
+import { Scheme, Size } from '@/types/common';
+import { UnstyledButton, UnstyledButtonProps } from './Unstyled';
 
-// TODO: Properties - align & justify
-// TODO: Properties - <Loader /> & loadingProps
-// TODO: Properties - allowDisabledFocus?: boolean;
-
-export type ButtonScheme = 'default' | 'inverted' | 'accent';
+export type ButtonScheme = 'default' | Scheme;
 
 export interface ButtonProps extends UnstyledButtonProps {
   size?: Size;
@@ -24,58 +22,58 @@ const defaultProps: Partial<ButtonProps> = {
   size: 'sm',
 };
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+function _Button(props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) {
   const {
     size,
     scheme,
     loading,
     disabled,
-    children,
     className,
     leftContent,
     rightContent,
+    children,
     ...otherProps
-  } = props;
+  } = mergeProps(defaultProps, props);
 
-  const hasContentLeft = !!leftContent;
-  const hasContentRight = !!rightContent;
+  const ctx = useButtonCTX();
 
-  const _props = mergeProps({ size, disabled, loading, scheme }, defaultProps);
+  const clxss = clsx('button', `button--${size}`, `button--${scheme}`, className);
 
-  const clxss = clsx(
-    'Button',
-    { [`Button--size-${_props.size}`]: _props.size },
-    _props.scheme,
-    className
-  );
+  const hasLeftContent = !!leftContent;
+  const hasRightContent = !!rightContent;
+
+  const isLoading = !disabled && loading;
+  const isDisabled = disabled || isLoading;
 
   return (
     <UnstyledButton
       {...otherProps}
       ref={ref}
       className={clxss}
-      tabIndex={_props.disabled ? undefined : 0}
-      aria-disabled={!_props.disabled || !_props.loading ? undefined : disabled}
-      data-disabled={!_props.disabled || !_props.loading ? undefined : disabled}
-      data-loading={_props.loading}
+      tabIndex={isDisabled ? undefined : 0}
+      aria-busy={isLoading}
+      aria-disabled={!isDisabled ? undefined : isDisabled}
+      data-disabled={!isDisabled ? undefined : isDisabled}
+      data-loading={isLoading}
     >
-      {loading && <div>Loading...</div>}
-
-      <span className="Button-inner">
-        {hasContentLeft && (
-          <div className="Button-content" data-position="left">
-            {leftContent}
-          </div>
-        )}
-
-        <div className="Button-label">{children}</div>
-
-        {hasContentRight && (
-          <div className="Button-content" data-position="right">
-            {rightContent}
-          </div>
+      <span className="inner">
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            {hasLeftContent && <div data-position="left">{leftContent}</div>}
+            {children && <div>{children}</div>}
+            {hasRightContent && <div data-position="right">{rightContent}</div>}
+          </>
         )}
       </span>
     </UnstyledButton>
   );
-});
+}
+
+export const Button = React.forwardRef(_Button) as React.ForwardRefExoticComponent<ButtonProps> & {
+  Group: typeof ButtonGroup;
+};
+
+Button.displayName = '@v2/Button';
+Button.Group = ButtonGroup;

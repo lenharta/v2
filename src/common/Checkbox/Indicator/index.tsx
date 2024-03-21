@@ -1,37 +1,32 @@
+import clsx from 'clsx';
 import * as React from 'react';
-import { Icon, IconName } from '@/common';
+import { Icon } from '@/common';
+import { mergeProps } from '@/utils';
+import { ElementProps } from '@/types';
 
-type CheckboxIndicatorElementProps = React.ComponentPropsWithoutRef<'div'>;
-type CheckboxIndicatorAttributeProps = React.RefAttributes<HTMLDivElement>;
-type CheckboxIndicatorBaseProps = CheckboxIndicatorElementProps & CheckboxIndicatorAttributeProps;
-
-export interface CheckboxIndicatorProps extends CheckboxIndicatorBaseProps {
-  value?: string;
+export interface CheckboxIndicatorProps extends ElementProps<'div'> {
   checked?: boolean;
+  value?: string;
 }
 
-export const _CheckboxIndicator = (
-  props: CheckboxIndicatorProps,
-  ref: React.ForwardedRef<HTMLDivElement>
-) => {
-  const { checked, value, ...otherProps } = props;
+const defaultProps: Partial<CheckboxIndicatorProps> = {};
 
-  const icon = (): IconName => {
-    if (checked) {
-      return 'checkbox_checked';
-    }
-    return 'checkbox_unchecked';
-  };
+export const CheckboxIndicator = React.forwardRef<HTMLDivElement, CheckboxIndicatorProps>(
+  (props, ref) => {
+    const { checked, value, className, ...otherProps } = mergeProps(defaultProps, props);
+    const clxss = clsx('checkbox-indicator', className);
+    const label = !checked ? 'checkbox unchecked' : 'checkbox checked';
+    const icon = !checked ? 'checkbox_unchecked' : 'checkbox_checked';
 
-  return (
-    <div {...otherProps} ref={ref} className="Checkbox-indicator">
-      <Icon name={icon()} />
-    </div>
-  );
-};
-
-export const CheckboxIndicator = React.forwardRef(
-  _CheckboxIndicator
-) as React.ForwardRefExoticComponent<CheckboxIndicatorProps>;
+    return (
+      <div
+        {...otherProps}
+        ref={ref}
+        className={clxss}
+        children={<Icon name={icon} aria-label={[label, 'icon'].join(' ')} />}
+      />
+    );
+  }
+);
 
 CheckboxIndicator.displayName = '@v2/Checkbox.Indicator';

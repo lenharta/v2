@@ -1,38 +1,44 @@
-import { useExhibit } from '@/hooks';
-import { Button, Dropdown } from '@/common';
+import { Page } from '@/app/components';
+import { Text, Title } from '@/common';
 
-const DemoDropdown = () => {
-  const [mounted, { toggle }] = useExhibit(false);
-  return (
-    <Dropdown isOpen={mounted} onChange={toggle}>
-      <Dropdown.Target>
-        <Button size="md">Dropdown Target</Button>
-      </Dropdown.Target>
-      <Dropdown.Box>
-        <div className="demo-dropdown-box">Dropdown Box</div>
-      </Dropdown.Box>
-    </Dropdown>
-  );
-};
-
-export const Sandbox = () => {
-  return (
-    <div className="Sandbox">
-      <div
-        style={{
-          paddingBlock: 700,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-          marginInline: 'auto',
-          outline: 'solid 2px indianred',
-        }}
-      >
-        <div>
-          <DemoDropdown />
-        </div>
-      </div>
-    </div>
-  );
-};
+export const Sandbox = () => (
+  <Page>
+    <Page.Hero>
+      <Title h1>Sandbox</Title>
+    </Page.Hero>
+    <Page.Content>
+      <Page.Section>
+        <Title h2>Section Title</Title>
+        <Text>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero assumenda ab, esse quam
+          dolores qui in delectus, dolorem doloribus dolorum voluptatibus incidunt, sapiente nulla
+          ea voluptate enim ducimus similique? Quo.
+        </Text>
+      </Page.Section>
+      <Page.Section>
+        <Title h2>Section Title</Title>
+        <Text>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero assumenda ab, esse quam
+          dolores qui in delectus, dolorem doloribus dolorum voluptatibus incidunt, sapiente nulla
+          ea voluptate enim ducimus similique? Quo.
+        </Text>
+      </Page.Section>
+      <Page.Section>
+        <Title h2>Section Title</Title>
+        <Text>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero assumenda ab, esse quam
+          dolores qui in delectus, dolorem doloribus dolorum voluptatibus incidunt, sapiente nulla
+          ea voluptate enim ducimus similique? Quo.
+        </Text>
+      </Page.Section>
+      <Page.Section>
+        <Title h2>Section Title</Title>
+        <Text>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero assumenda ab, esse quam
+          dolores qui in delectus, dolorem doloribus dolorum voluptatibus incidunt, sapiente nulla
+          ea voluptate enim ducimus similique? Quo.
+        </Text>
+      </Page.Section>
+    </Page.Content>
+  </Page>
+);

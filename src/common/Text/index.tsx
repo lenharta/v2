@@ -1,16 +1,21 @@
 import clsx from 'clsx';
 import * as React from 'react';
+import { mergeProps } from '@/utils';
 
-export type TextBaseProps = React.JSX.IntrinsicElements['p'];
+type TextBaseProps = React.ComponentPropsWithoutRef<'p'>;
 
 export interface TextProps extends TextBaseProps {}
 
-export const Text = React.forwardRef<HTMLParagraphElement, TextProps>((props, ref) => {
-  const { children, className, ...otherProps } = props;
-  const clxss = clsx('Text', className);
-  return (
-    <p {...otherProps} ref={ref} className={clxss}>
-      {children}
-    </p>
-  );
-});
+const defaultProps: Partial<TextProps> = {};
+
+function _Text(props: TextProps, ref: React.ForwardedRef<HTMLParagraphElement>) {
+  const { className, ...otherProps } = mergeProps(defaultProps, props);
+  const clxss = clsx('text', className);
+  return <p {...otherProps} ref={ref} className={clxss} />;
+}
+
+export const Text = React.forwardRef(_Text) as React.ForwardRefExoticComponent<
+  TextProps & React.RefAttributes<HTMLParagraphElement>
+>;
+
+Text.displayName = '@v2/Text';

@@ -1,6 +1,5 @@
 @use 'base';
-@use 'tokens';
-@use 'theme';
-
+@use 'global';
 @use 'common';
-@use 'app';
+@use 'components';
+@use 'pages';

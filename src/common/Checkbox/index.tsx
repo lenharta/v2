@@ -3,16 +3,13 @@ import * as React from 'react';
 import { Size } from '@/types/common';
 import { mergeProps } from '@/utils';
 import { useInputIds } from '@/hooks';
+import { ElementProps } from '@/types/global';
 import { CheckboxIndicator } from './Indicator';
-import { InputDescription, InputLabel } from '../Input';
-import { CheckboxScheme, useCheckboxCTX } from './context';
+import { InputText, InputLabel } from '../Input';
+import { useCheckboxCTX } from './context';
 import { CheckboxGroup } from './Group';
 
-type CheckboxElementProps = Omit<React.ComponentPropsWithoutRef<'input'>, 'size'>;
-type CheckboxAttributeProps = React.RefAttributes<HTMLInputElement>;
-type CheckboxBaseProps = CheckboxElementProps & CheckboxAttributeProps;
-
-export interface CheckboxProps extends CheckboxBaseProps {
+export interface CheckboxProps extends Omit<ElementProps<'input'>, 'size'> {
   /** Identifies the element */
   id?: string;
 
@@ -21,9 +18,6 @@ export interface CheckboxProps extends CheckboxBaseProps {
 
   /** Identifies an accessible label for the element */
   label?: string;
-
-  /** Specifies a theme scheme for the element */
-  scheme?: CheckboxScheme;
 
   /** Defines the elements `loading` state */
   loading?: boolean;
@@ -51,7 +45,6 @@ export interface CheckboxProps extends CheckboxBaseProps {
 
 const defaultProps: Partial<CheckboxProps> = {
   size: 'sm',
-  scheme: 'default',
 };
 
 function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElement>) {
@@ -60,7 +53,6 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
     size,
     value,
     label,
-    scheme,
     checked,
     rootRef,
     loading,
@@ -70,25 +62,17 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
     indeterminate,
     onChange,
     ...otherProps
-  } = props;
+  } = mergeProps(defaultProps, props);
 
-  const _contextProps = useCheckboxCTX();
+  const ctx = useCheckboxCTX();
 
   const isLoading = loading !== undefined ? true : undefined;
+  const isChecked = (checked && !ctx.value) || ctx.value?.includes(value!);
   const isDisabled = (disabled || loading) !== undefined ? true : undefined;
+  const isIndeterminate = !ctx.value && indeterminate !== undefined;
 
   const uids = useInputIds(id, ['input', 'label', 'description']);
-  const _props = mergeProps({ size, scheme }, defaultProps, _contextProps);
-
-  const clxss = clsx(
-    'Checkbox',
-    `Checkbox--size-${_props.size}`,
-    `Checkbox--scheme-${_props.scheme}`,
-    className
-  );
-
-  const isChecked = (checked && !_contextProps.value) || _contextProps.value?.includes(value!);
-  const isIndeterminate = !_contextProps.value && indeterminate !== undefined;
+  const clxss = clsx('checkbox', `checkbox--size-${size}`, className);
 
   return (
     <div ref={rootRef} className={clxss} data-loading={isLoading} data-disabled={isDisabled}>
@@ -99,53 +83,53 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
         id={uids.input}
         ref={ref}
         type="checkbox"
+        className="checkbox-input"
         {...(!value ? undefined : { value })}
-        className="Checkbox-input"
         tabIndex={isDisabled ? undefined : 0}
         data-checked={isChecked}
         data-loading={isLoading}
         data-disabled={isDisabled}
         data-indeterminate={isIndeterminate}
-        aria-labelledby={_contextProps.legend}
+        aria-labelledby={ctx.legend}
         aria-disabled={isDisabled}
         aria-checked={isIndeterminate ? 'mixed' : isChecked}
         aria-busy={isLoading}
         onChange={(event) => {
-          _contextProps.onChange?.(event);
+          ctx.onChange?.(event);
           onChange?.(event);
         }}
       />
 
-      <div className="Checkbox-content">
+      <div className="checkbox-content">
         {loading ? (
-          <Checkbox.Description
+          <Checkbox.Text
             id={uids.description}
+            size={size}
             text="loading..."
-            size={_props.size}
             data-loading={isLoading}
             data-disabled={isDisabled}
-            className="Checkbox-description"
+            className="checkbox-description"
           />
         ) : (
           <Checkbox.Label
             id={uids.label}
+            size={size}
             text={label}
-            size={_props.size}
             htmlFor={uids.input}
             data-loading={isLoading}
             data-disabled={isDisabled}
-            className="Checkbox-label"
+            className="checkbox-label"
           />
         )}
 
         {loading ? null : (
-          <Checkbox.Description
+          <Checkbox.Text
             id={uids.description}
+            size={size}
             text={description}
-            size={_props.size}
             data-loading={isLoading}
             data-disabled={isDisabled}
-            className="Checkbox-description"
+            className="checkbox-description"
           />
         )}
       </div>
@@ -153,16 +137,18 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
   );
 }
 
-export type CheckboxComponent = React.ForwardRefExoticComponent<CheckboxProps> & {
-  Label: typeof InputLabel;
-  Description: typeof InputDescription;
+export type CheckboxComponents = {
   Indicator: typeof CheckboxIndicator;
   Group: typeof CheckboxGroup;
+  Label: typeof InputLabel;
+  Text: typeof InputText;
 };
 
-export const Checkbox = React.forwardRef(_Checkbox) as CheckboxComponent;
+export const Checkbox = React.forwardRef(_Checkbox) as CheckboxComponents &
+  React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>>;
 
+Checkbox.displayName = '@v2/Checkbox';
 Checkbox.Label = InputLabel;
-Checkbox.Description = InputDescription;
+Checkbox.Text = InputText;
 Checkbox.Indicator = CheckboxIndicator;
 Checkbox.Group = CheckboxGroup;

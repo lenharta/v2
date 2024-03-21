@@ -1,12 +1,16 @@
 import * as React from 'react';
+import { mergeProps } from '@/utils';
+import { ElementProps } from '@/types';
 
-type UnstyledButtonBaseProps = React.JSX.IntrinsicElements['button'];
+export interface UnstyledButtonProps extends ElementProps<'button'> {}
 
-export interface UnstyledButtonProps extends UnstyledButtonBaseProps {}
+const defaultProps: Partial<UnstyledButtonProps> = {};
 
-export const UnstyledButton = React.forwardRef<HTMLButtonElement, UnstyledButtonBaseProps>(
+export const UnstyledButton = React.forwardRef<HTMLButtonElement, UnstyledButtonProps>(
   (props, ref) => {
-    const { ...otherProps } = props;
+    const { ...otherProps } = mergeProps(defaultProps, props);
     return <button {...otherProps} ref={ref} />;
   }
 );
+
+UnstyledButton.displayName = '@v2/Button.Unstyled';

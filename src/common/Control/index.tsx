@@ -3,16 +3,15 @@ import { mergeProps } from '@/utils';
 import { useThemeCTX } from '@/store';
 import { ControlSegment } from './Segment';
 import { ControlIndicator } from './Indicator';
-import { createRadiusToken, createTranslateToken, parseItemData } from '../utils';
-import type { Orientation, Size } from '@/types/common';
-import type { OptionItem } from '../utils';
+import { Orientation, Size } from '@/types/common';
+import { OptionItem, parseItemData } from '../utils';
 
 // TODO: Update translation for theme direction
 
 export interface ControlProps<T> {
   data?: T[] | OptionItem<T>[];
   value?: T;
-  onChange?(value: T): void;
+  onChange(value: T): void;
   orientation?: Orientation;
   radius?: Size | 'rd';
   fullWidth?: boolean;
@@ -33,13 +32,16 @@ export interface ControlComponent<T> {
   Segment: typeof ControlSegment;
 }
 
-const defaultProps: Partial<ControlProps<unknown>> = {
-  orientation: 'horizontal',
-  radius: 'xs',
-};
-
 export const Control: ControlComponent<any> = <T extends string>(props: ControlProps<T>) => {
-  const { data, onChange, value, orientation, fullWidth, radius, size } = props;
+  const defaultProps: Partial<ControlProps<T>> = {
+    orientation: 'horizontal',
+    radius: 'xs',
+  };
+
+  const { data, onChange, value, orientation, fullWidth, radius, size } = mergeProps(
+    defaultProps,
+    props
+  );
 
   const theme = useThemeCTX();
   const direction = theme.state.dir;
@@ -51,7 +53,6 @@ export const Control: ControlComponent<any> = <T extends string>(props: ControlP
   const outputData = direction === 'rtl' ? parsedData.reverse() : parsedData;
 
   const mergedProps = mergeProps({ orientation, radius, size }, defaultProps);
-  const radiusStyle = createRadiusToken(mergedProps.radius);
   const wrapperOffset = scaleSegment(mergedProps.size);
 
   const [indicator, setIndicator] = React.useState({
@@ -69,7 +70,7 @@ export const Control: ControlComponent<any> = <T extends string>(props: ControlP
       const itemPosition = itemWidth * activeRef.current + WRAPPER_PADDING / 2;
 
       setIndicator(() => ({
-        translate: createTranslateToken(...['X', itemPosition]),
+        translate: `translateX(${itemPosition}%)`,
         height: rect.height - wrapperOffset,
         width: itemWidth,
       }));
@@ -80,7 +81,7 @@ export const Control: ControlComponent<any> = <T extends string>(props: ControlP
       const itemPosition = itemHeight * activeRef.current + WRAPPER_PADDING / 2;
 
       setIndicator(() => ({
-        translate: createTranslateToken(...['Y', itemPosition]),
+        translate: `translateY(${itemPosition}%)`,
         height: itemHeight,
         width: rect.width - wrapperOffset,
       }));
@@ -97,12 +98,12 @@ export const Control: ControlComponent<any> = <T extends string>(props: ControlP
       style={{
         gap: wrapperOffset,
         padding: wrapperOffset,
-        borderRadius: radiusStyle,
+        borderRadius: `var(--radius-${mergedProps.radius})`,
       }}
     >
       <Control.Indicator
         style={{
-          borderRadius: radiusStyle,
+          borderRadius: `var(--radius-${mergedProps.radius})`,
           transform: indicator.translate,
           height: indicator.height,
           width: indicator.width,

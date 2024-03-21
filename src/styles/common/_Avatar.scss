@@ -1,8 +1,28 @@
-.Avatar {
+.avatar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: var(--spacing-2);
   border: var(--border-xs);
   border-radius: var(--radius-rd);
+  outline: solid 2px transparent;
+  border: solid 2px transparent;
+
+  &:not([data-disabled]),
+  &:not([data-loading]) {
+    cursor: pointer;
+  }
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+  &[data-loading] {
+    cursor: progress;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: rgba(var(--c-blue), 0.87);
+  }
 }

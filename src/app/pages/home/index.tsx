@@ -1,67 +1,51 @@
-import { Page } from '@/app/layouts';
-import { HomeHero } from './hero';
-import { HomeOverview } from './overview';
+import { Page } from '@/app/components';
+import { Text, Title } from '@/common';
+import { Language } from '@/types';
 
-// Think Freely, Open Minds, <span className="accent">Create With Courage,</span>
+interface CommonSectionProps {
+  lang?: Language;
+}
 
-// I develop accessible digital experiences for the modern world.
+const HomeOverview = ({}: CommonSectionProps) => (
+  <Page.Section id="home-sec-overview">
+    <div className="home-sec-overview">
+      <Title h2>Overview</Title>
+    </div>
+  </Page.Section>
+);
 
-const HomeKeynote = () => {
-  return (
-    <section className="home-sec-keynote-root">
-      <div className="home-sec-keynote-left">
-        <div className="home-sec-keynote-left-content">
-          <span>01</span>
-          <h2>Keynote Title</h2>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus distinctio sint iste
-            incidunt pariatur, enim alias reiciendis consequatur possimus neque autem fugit at
-            ratione exercitationem sapiente officiis ipsum. Temporibus, itaque.
-          </p>
-        </div>
-      </div>
-      <div className="home-sec-keynote-center">
-        <div className="home-sec-keynote-center-content">
-          <span>02</span>
-          <h2>Keynote Title</h2>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus distinctio sint iste
-            incidunt pariatur, enim alias reiciendis consequatur possimus neque autem fugit at
-            ratione exercitationem sapiente officiis ipsum. Temporibus, itaque.
-          </p>
-        </div>
-      </div>
-      <div className="home-sec-keynote-right">
-        <div className="home-sec-keynote-right-content">
-          <span>03</span>
-          <h2>Keynote Title</h2>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus distinctio sint iste
-            incidunt pariatur, enim alias reiciendis consequatur possimus neque autem fugit at
-            ratione exercitationem sapiente officiis ipsum. Temporibus, itaque.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-};
+const HomeExperience = ({}: CommonSectionProps) => (
+  <Page.Section id="home-sec-experience">
+    <div className="home-sec-experience">
+      <Title h2>Experience</Title>
+    </div>
+  </Page.Section>
+);
 
-const HomeTimeline = () => {
-  return (
-    <section className="home-sec-timeline-root">
-      <div className="home-sec-timeline-left"></div>
-      <div className="home-sec-timeline-right"></div>
-    </section>
-  );
-};
+const HomeTimeline = ({}: CommonSectionProps) => (
+  <Page.Section id="home-sec-timeline">
+    <div className="home-sec-timeline">
+      <Title h2>Timeline</Title>
+    </div>
+  </Page.Section>
+);
 
-export const Home = () => {
-  return (
-    <Page>
-      <HomeHero />
+const HomeHero = ({}: CommonSectionProps) => (
+  <Page.Hero>
+    <div className="home-hero">
+      <Title h2 className="home-hero-subheadline" children="Andrew Lenhart" />
+      <Title h1 className="home-hero-headline" children="Software Engineer" />
+    </div>
+  </Page.Hero>
+);
+
+export const Home = () => (
+  <Page>
+    <HomeHero />
+    <Page.Content>
       <HomeOverview />
-      {/* <Page.Content>
-      </Page.Content> */}
-    </Page>
-  );
-};
+      <HomeExperience />
+      <HomeTimeline />
+    </Page.Content>
+  </Page>
+);

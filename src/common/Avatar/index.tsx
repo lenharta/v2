@@ -2,52 +2,69 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { useNavigate } from 'react-router-dom';
-import { type IconName, Icon } from '../Icon';
-import { type Size } from '@/types/common';
+import { createEventCallback } from '../utils';
+import { UnstyledButton } from '../Button/Unstyled';
+import { Icon, IconName } from '../Icon';
+import { ElementProps } from '@/types/global';
 
-export type AvatarBaseProps = React.JSX.IntrinsicElements['button'];
-
-export interface AvatarProps extends AvatarBaseProps {
-  to?: string;
-  size?: Size;
+export interface AvatarProps extends ElementProps<'button'> {
+  imageSrc?: boolean;
+  disabled?: boolean;
+  label?: string;
   icon?: IconName;
+  url?: string;
 }
 
 const defaultProps: Partial<AvatarProps> = {
+  label: 'avatar icon',
   icon: 'person',
-  size: 'sm',
-  to: '/',
+  url: '/',
 };
 
-export const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>((props, ref) => {
-  const { size, icon, to, onClick, className, disabled, ...otherProps } = props;
+function _Avatar(props: AvatarProps, ref: React.ForwardedRef<HTMLButtonElement>) {
+  const {
+    url,
+    icon,
+    label,
+    value,
+    disabled,
+    imageSrc,
+    className,
+    onKeyDown,
+    onClick,
+    ...otherProps
+  } = mergeProps(defaultProps, props);
 
   const navigate = useNavigate();
-  const mergedProps = mergeProps({ to, size }, defaultProps);
 
-  const clxss = clsx(
-    'Avatar',
-    { [`Avatar--size-${mergedProps.size}`]: mergedProps.size },
-    className
-  );
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (!event.currentTarget.value) return undefined;
+    return event.key === 'Enter' ? navigate(event.currentTarget.value) : undefined;
+  };
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigate(mergedProps.to || '/');
-    onClick?.(e);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    return event.currentTarget.value ? navigate(event.currentTarget.value) : undefined;
   };
 
   return (
-    <button
+    <UnstyledButton
       {...otherProps}
       ref={ref}
-      role="button"
-      className={clxss}
-      tabIndex={disabled ? undefined : 0}
-      data-disabled={!disabled ? undefined : disabled}
-      aria-disabled={!disabled ? undefined : disabled}
-      onClick={handleClick}
-    >
-      <Icon name={icon} size={mergedProps.size} />
-    </button>
+      value={value || url}
+      tabIndex={disabled ? -1 : 0}
+      aria-label={label}
+      aria-disabled={disabled}
+      data-disabled={disabled}
+      className={clsx('avatar', className)}
+      onKeyDown={createEventCallback(onKeyDown, handleKeyDown)}
+      onClick={createEventCallback(onClick, handleClick)}
+      children={<Icon name={icon} aria-label={`${label} icon`} />}
+    />
   );
-});
+}
+
+export const Avatar = React.forwardRef(_Avatar) as React.ForwardRefExoticComponent<
+  AvatarProps & React.RefAttributes<HTMLButtonElement>
+>;
+
+Avatar.displayName = '@v2/Avatar';

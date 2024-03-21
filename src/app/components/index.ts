@@ -1,3 +1,3 @@
-export * from './GlobalControl';
-export * from './AnimatedGrid';
-export * from './SideMenu';
+export * from './footer';
+export * from './header';
+export * from './page';

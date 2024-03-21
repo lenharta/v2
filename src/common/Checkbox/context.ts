@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { Orientation, Size } from '@/types/common';
 
-export type CheckboxScheme = 'default' | 'accent' | 'default-elevated' | 'accent-elevated';
-
 export type CheckboxContextValue = {
-  size?: Size;
-  scheme?: CheckboxScheme;
   orientation?: Orientation;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   legend?: string;
   value: string[];
+  size?: Size;
 };
 
 export const CheckboxContext = React.createContext({} as CheckboxContextValue);

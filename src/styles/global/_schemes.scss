@@ -1,0 +1,163 @@
+@use '../mixins' as mixins;
+
+.primary-base-0,
+.primary-base-1,
+.primary-base-2,
+.primary-base-3,
+.primary-base-4,
+.primary-base-5 {
+  color: var(--c-primary-text-0);
+}
+
+.secondary-base-0,
+.secondary-base-1,
+.secondary-base-2,
+.secondary-base-3,
+.secondary-base-4,
+.secondary-base-5 {
+  color: var(--c-secondary-text-0);
+}
+
+.primary-base-0,
+.primary-base-1,
+.primary-base-2,
+.primary-base-3,
+.primary-base-4,
+.primary-base-5,
+.secondary-base-0,
+.secondary-base-1,
+.secondary-base-2,
+.secondary-base-3,
+.secondary-base-4,
+.secondary-base-5 {
+  @include mixins.transition-colors-static;
+}
+
+.primary-interactive-0,
+.primary-interactive-1,
+.primary-interactive-2,
+.primary-interactive-3,
+.primary-interactive-4,
+.primary-interactive-5,
+.secondary-interactive-0,
+.secondary-interactive-1,
+.secondary-interactive-2,
+.secondary-interactive-3,
+.secondary-interactive-4,
+.secondary-interactive-5 {
+  @include mixins.transition-colors-interactive;
+}
+
+.primary-base-0 {
+  background-color: var(--c-primary-surface-0);
+}
+.primary-base-1 {
+  background-color: var(--c-primary-surface-1);
+}
+.primary-base-2 {
+  background-color: var(--c-primary-surface-2);
+}
+.primary-base-3 {
+  background-color: var(--c-primary-surface-3);
+}
+.primary-base-4 {
+  background-color: var(--c-primary-surface-4);
+}
+.primary-base-5 {
+  background-color: var(--c-primary-surface-5);
+}
+
+.secondary-base-0 {
+  background-color: var(--c-secondary-surface-0);
+}
+.secondary-base-1 {
+  background-color: var(--c-secondary-surface-1);
+}
+.secondary-base-2 {
+  background-color: var(--c-secondary-surface-2);
+}
+.secondary-base-3 {
+  background-color: var(--c-secondary-surface-3);
+}
+.secondary-base-4 {
+  background-color: var(--c-secondary-surface-4);
+}
+.secondary-base-5 {
+  background-color: var(--c-secondary-surface-5);
+}
+
+.primary-interactive-0 {
+  @extend .primary-base-0;
+}
+.primary-interactive-1 {
+  @extend .primary-base-1;
+}
+.primary-interactive-2 {
+  @extend .primary-base-2;
+}
+.primary-interactive-3 {
+  @extend .primary-base-3;
+}
+.primary-interactive-4 {
+  @extend .primary-base-4;
+}
+.primary-interactive-5 {
+  @extend .primary-base-5;
+}
+
+.secondary-interactive-0 {
+  @extend .secondary-base-0;
+}
+.secondary-interactive-1 {
+  @extend .secondary-base-1;
+}
+.secondary-interactive-2 {
+  @extend .secondary-base-2;
+}
+.secondary-interactive-3 {
+  @extend .secondary-base-3;
+}
+.secondary-interactive-4 {
+  @extend .secondary-base-4;
+}
+.secondary-interactive-5 {
+  @extend .secondary-base-5;
+}
+
+.primary-interactive-0:hover {
+  background-color: var(--c-primary-surface-0-hover);
+}
+.primary-interactive-1:hover {
+  background-color: var(--c-primary-surface-1-hover);
+}
+.primary-interactive-2:hover {
+  background-color: var(--c-primary-surface-2-hover);
+}
+.primary-interactive-3:hover {
+  background-color: var(--c-primary-surface-3-hover);
+}
+.primary-interactive-4:hover {
+  background-color: var(--c-primary-surface-4-hover);
+}
+.primary-interactive-5:hover {
+  background-color: var(--c-primary-surface-5-hover);
+}
+
+.secondary-interactive-0:hover {
+  background-color: var(--c-secondary-surface-0-hover);
+}
+.secondary-interactive-1:hover {
+  background-color: var(--c-secondary-surface-1-hover);
+}
+.secondary-interactive-2:hover {
+  background-color: var(--c-secondary-surface-2-hover);
+}
+.secondary-interactive-3:hover {
+  background-color: var(--c-secondary-surface-3-hover);
+}
+.secondary-interactive-4:hover {
+  background-color: var(--c-secondary-surface-4-hover);
+}
+.secondary-interactive-5:hover {
+  background-color: var(--c-secondary-surface-5-hover);
+}

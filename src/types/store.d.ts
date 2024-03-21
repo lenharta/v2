@@ -1,15 +1,15 @@
 import { IconName } from '@/common';
 import { Position } from './common';
+import { Location } from 'react-router-dom';
 
 export type StoreState = {
   error?: string;
   loading?: boolean;
-  sessionId?: string;
-  menuOpen?: boolean;
-  transitioning?: boolean;
-  animating?: boolean;
-  pageY?: number;
-  pageX?: number;
+  sessionKey?: string;
+  location?: Location;
+  isMenuOpen?: boolean;
+  isSplash?: boolean;
+  nonce?: () => string;
 };
 
 export type Store = StoreState;

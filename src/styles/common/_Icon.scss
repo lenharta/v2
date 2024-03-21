@@ -1,11 +1,15 @@
-.Icon {
-  --icon-size-xs: calc(var(--unit) * 10);
-  --icon-size-sm: calc(var(--unit) * 12);
-  --icon-size-md: calc(var(--unit) * 14);
-  --icon-size-lg: calc(var(--unit) * 16);
-  --icon-size-xl: calc(var(--unit) * 18);
-
+.icon {
   display: inline-flex;
-  width: var(--icon-size, var(--icon-size-xs));
-  height: var(--icon-size, var(--icon-size-xs));
+  width: var(--icon-size, var(--icon-size-sm));
+  height: var(--icon-size, var(--icon-size-sm));
+
+  &-size-sm {
+    --icon-size: var(--icon-size-sm);
+  }
+  &-size-md {
+    --icon-size: var(--icon-size-md);
+  }
+  &-size-lg {
+    --icon-size: var(--icon-size-lg);
+  }
 }

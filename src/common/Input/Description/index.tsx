@@ -1,36 +1,28 @@
-import { Size } from '@/types/common';
 import clsx from 'clsx';
 import * as React from 'react';
+import { Size } from '@/types/common';
+import { ElementProps } from '@/types';
 
-type InputDescriptionElementProps = React.ComponentPropsWithoutRef<'p'>;
-type InputDescriptionAttributeProps = React.RefAttributes<HTMLParagraphElement>;
-type InputDescriptionBaseProps = InputDescriptionElementProps & InputDescriptionAttributeProps;
+export interface InputTextProps extends ElementProps<'p'> {
+  id?: string;
+  size?: Size;
+  text?: string;
+  disabled?: boolean;
+}
 
-type InputDescriptionProps = InputDescriptionBaseProps &
-  Partial<{
-    id: string;
-    size: Size;
-    text: string;
-    disabled: boolean;
-  }>;
-
-const _InputDescription = (
-  props: InputDescriptionProps,
-  ref: React.ForwardedRef<HTMLParagraphElement>
-) => {
+export const InputText = React.forwardRef<HTMLParagraphElement, InputTextProps>((props, ref) => {
   const { id, text, size, disabled, className, ...otherProps } = props;
-  const clxss = clsx('InputDescription', `InputDescription--size-${size}`, className);
+  const clxss = clsx('input-text', `input-text--size-${size}`, className);
   return (
     <p
       {...otherProps}
-      className={clxss}
-      aria-describedby={id}
-      data-disabled={disabled}
-      children={text}
       ref={ref}
+      children={text}
+      className={clxss}
+      data-disabled={disabled}
+      aria-describedby={id}
     />
   );
-};
+});
 
-export type InputDescriptionComponent = React.ForwardRefExoticComponent<InputDescriptionProps>;
-export const InputDescription = React.forwardRef(_InputDescription) as InputDescriptionComponent;
+InputText.displayName = '@v2/Input.Text';

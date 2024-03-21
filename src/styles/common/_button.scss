@@ -1,6 +1,6 @@
 @use '../mixins' as mixins;
 
-.Button {
+.button {
   --button-padding-x-xs: calc(var(--unit) * 4);
   --button-padding-x-sm: calc(var(--unit) * 4);
   --button-padding-x-md: calc(var(--unit) * 6);
@@ -13,46 +13,88 @@
   --button-height-lg: calc(var(--unit) * 20);
   --button-height-xl: calc(var(--unit) * 22);
 
-  min-width: 0;
   user-select: none;
-  border: solid var(--border-sm);
-  outline: solid var(--border-sm);
-  outline-color: var(--button-outline-color, transparent);
-  height: var(--button-height, var(--button-height-xs));
-  display: var(--button-display, inline-flex);
-  padding-inline: var(--button-padding-x, var(--button-padding-x-xs));
+  font-weight: 500;
+  font-family: var(--font-family);
+  border: solid 2px transparent;
+  outline: solid 2px transparent;
+  min-height: var(--button-height, var(--button-height-xs));
+  padding-inline: var(--button-padding-x, var(--button-padding-x));
+
+  display: inline-flex;
   align-items: center;
 
   &-inner {
     height: 100%;
-    display: flex;
-    overflow: visible;
-    align-items: center;
-    justify-content: var(--button-justify, center);
-    transition-property: transform, opacity, color;
-    transition-timing-function: var(--easing-standard-productive);
-    transition-duration: var(--easing-duration-1);
-  }
-
-  &-label {
-    height: 100%;
-    display: flex;
-    overflow: hidden;
-    align-items: center;
+    display: inline-flex;
     white-space: nowrap;
-    opacity: var(--button-label-opacity, 1);
-
-    &[data-loading] {
-      --button-label-opacity: 0.2;
-    }
-  }
-  &-content {
-    display: flex;
     align-items: center;
+  }
+
+  &--xs {
+    --button-height: var(--button-height-xs);
+    --button-padding-x: var(--button-padding-x-xs);
+  }
+  &--sm {
+    --button-height: var(--button-height-sm);
+    --button-padding-x: var(--button-padding-x-sm);
+  }
+  &--md {
+    --button-height: var(--button-height-md);
+    --button-padding-x: var(--button-padding-x-md);
+  }
+  &--lg {
+    --button-height: var(--button-height-lg);
+    --button-padding-x: var(--button-padding-x-lg);
+  }
+  &--xl {
+    --button-height: var(--button-height-xl);
+    --button-padding-x: var(--button-padding-x-xl);
+  }
+
+  &--default {
+    background-color: rgba(var(--c-secondary), 0.04);
+    color: rgba(var(--c-secondary), 1);
+  }
+  &--default:hover {
+    background-color: rgba(var(--c-secondary), 0.08);
+    color: rgba(var(--c-secondary), 1);
+  }
+  &--primary {
+    background-color: rgba(var(--c-primary), 1);
+    color: rgba(var(--c-secondary), 1);
+  }
+  &--primary:hover {
+    background-color: rgba(var(--c-primary), 0.8);
+    color: rgba(var(--c-secondary), 1);
+  }
+  &--secondary {
+    background-color: rgba(var(--c-secondary), 1);
+    color: rgba(var(--c-primary), 1);
+  }
+  &--secondary:hover {
+    background-color: rgba(var(--c-secondary), 0.8);
+    color: rgba(var(--c-primary), 1);
+  }
+  &--accent {
+    background-color: rgba(var(--c-accent), 0.3);
+    color: rgba(var(--c-accent), 1);
+  }
+  &--accent:hover {
+    background-color: rgba(var(--c-accent), 0.4);
+    color: rgba(var(--c-accent), 1);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: rgba(var(--c-blue), 1);
+    outline-offset: 2px;
   }
 }
 
-.ButtonGroup {
+.button-group {
   display: flex;
   align-items: center;
   justify-content: flex-start;

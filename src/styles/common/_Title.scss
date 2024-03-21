@@ -1,13 +1,16 @@
 @use '../mixins' as mixins;
 
-.Title {
+.title {
   width: 100%;
   margin: 0;
   padding: 0;
+  display: block;
   box-sizing: border-box;
   text-decoration: none;
-  display: block;
+
   line-height: 1.2;
+  font-weight: 400;
+  font-family: var(--font-family);
 
   direction: ltr;
   text-align: left;

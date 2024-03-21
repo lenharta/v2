@@ -1,10 +1,10 @@
-import { mergeProps } from '@/utils';
 import * as React from 'react';
+import { mergeProps } from '@/utils';
+import { ButtonProvider } from '../context';
+import { Orientation, ElementProps } from '@/types';
 
-type ButtonGroupBaseProps = React.JSX.IntrinsicElements['div'];
-
-export interface ButtonGroupProps extends ButtonGroupBaseProps {
-  orientation?: 'horizontal' | 'vertical';
+export interface ButtonGroupProps extends ElementProps<'div'> {
+  orientation?: Orientation;
 }
 
 const defaultProps: Partial<ButtonGroupProps> = {
@@ -12,18 +12,19 @@ const defaultProps: Partial<ButtonGroupProps> = {
 };
 
 export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
-  const { children, orientation, ...otherProps } = props;
-  const mergedProps = mergeProps({ orientation }, defaultProps);
+  const { orientation, children, className, ...otherProps } = mergeProps(defaultProps, props);
   return (
     <div
       {...otherProps}
       ref={ref}
       role="group"
-      className="Button-group"
-      data-orientation={mergedProps.orientation}
-      aria-orientation={mergedProps.orientation}
+      className="button-group"
+      data-orientation={orientation}
+      aria-orientation={orientation}
     >
-      {children}
+      <ButtonProvider value={{ orientation }}>{children}</ButtonProvider>
     </div>
   );
 });
+
+ButtonGroup.displayName = '@v2/Button.Group';

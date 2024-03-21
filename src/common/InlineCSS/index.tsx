@@ -1,26 +1,14 @@
-import * as React from 'react';
-import { createInlineCSS } from '@/utils';
+import { useStyleNonce } from '@/hooks';
+import { InlineStylesInput } from '@/types/global';
+import { stylesToString } from '@/utils';
 
-export type InlineCSSProps = {
-  selector: string;
-  styles?: React.CSSProperties;
-  nonce?: () => string;
-};
-
-export interface InlineCSSComponent {
-  (props: InlineCSSProps): JSX.Element | null;
-  displayName?: string;
-}
-
-export const InlineCSS: InlineCSSComponent = (props) => {
-  const { selector, styles, nonce = () => '', ...otherProps } = props;
+export const InlineCSS = (props: InlineStylesInput) => {
+  const { selector, styles, media } = props;
+  const nonce = useStyleNonce();
   return (
     <style
-      {...otherProps}
-      dangerouslySetInnerHTML={{ __html: createInlineCSS(selector, styles) }}
-      nonce={nonce()}
+      dangerouslySetInnerHTML={{ __html: stylesToString({ selector, styles, media }) }}
+      nonce={nonce?.()}
     />
   );
 };
-
-InlineCSS.displayName = '@v2/InlineCSS';
