@@ -1,21 +1,15 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
-
-type TextBaseProps = React.ComponentPropsWithoutRef<'p'>;
-
-export interface TextProps extends TextBaseProps {}
+import { TextComponent, TextComponentRender, TextProps } from './types';
 
 const defaultProps: Partial<TextProps> = {};
 
-function _Text(props: TextProps, ref: React.ForwardedRef<HTMLParagraphElement>) {
-  const { className, ...otherProps } = mergeProps(defaultProps, props);
-  const clxss = clsx('text', className);
-  return <p {...otherProps} ref={ref} className={clxss} />;
-}
+const TextRender: TextComponentRender = (props, ref) => {
+  const { className, overrideTokens, ...otherProps } = mergeProps(defaultProps, props);
+  const fontSize = !overrideTokens ? `var(--font-size-body)` : undefined;
+  return <p {...otherProps} ref={ref} style={{ fontSize }} className={clsx('text', className)} />;
+};
 
-export const Text = React.forwardRef(_Text) as React.ForwardRefExoticComponent<
-  TextProps & React.RefAttributes<HTMLParagraphElement>
->;
-
+export const Text = React.forwardRef(TextRender) as TextComponent;
 Text.displayName = '@v2/Text';

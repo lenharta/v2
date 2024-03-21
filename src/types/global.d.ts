@@ -3,7 +3,19 @@ import * as React from 'react';
 export type Promisable<T> = T | Promise<T>;
 
 export type ElementProps<T extends React.ElementType> = React.ComponentPropsWithoutRef<T>;
-export type RefProps<T extends React.ElementType> = React.RefAttributes<T>;
+
+export type ExoticProps<T extends React.ElementType> = React.RefAttributes<T>;
+
+export type ExoticRender<
+  T extends Element,
+  P extends Record<string, any> = {},
+> = React.ForwardRefRenderFunction<T, P>;
+
+export type ExoticComponent<
+  T extends Element,
+  P extends Record<string, any> = {},
+  C extends Record<string, any> = {},
+> = React.ForwardRefExoticComponent<P & React.RefAttributes<T>> & C;
 
 export interface InlineStylesMediaQuery {
   query: string;

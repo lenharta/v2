@@ -71,5 +71,6 @@ export enum SETTINGS_THEME_AVATAR {
 
 export type Mode = keyof typeof SETTINGS_THEME_MODE;
 export type Accent = keyof typeof SETTINGS_THEME_ACCENT;
+export type AccentLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 export type Avatar = IconName;
 export type Dir = 'ltr' | 'rtl';

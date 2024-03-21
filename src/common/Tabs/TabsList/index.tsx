@@ -2,31 +2,69 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { useTabsCTX } from '../context';
+import {
+  TabsListProps,
+  ParseTabsItem,
+  ParseTabsItemData,
+  TabsListComponent,
+  TabsListComponentRender,
+} from '../types';
+import { createEventCallback } from '@/common/utils';
+import { useMergeRefs } from '@/hooks';
+import { Divider } from '@/common';
 
-type TabsListBaseProps = React.ComponentPropsWithoutRef<'div'>;
+const parseTabsItem: ParseTabsItem = (item) => {
+  if (!item.label) {
+    return {
+      ...item,
+      value: (item.value as number).toString(),
+      label: (item.value as number).toString(),
+    };
+  }
+  return {
+    ...item,
+    value: (item.value as number).toString(),
+    label: item.label,
+  };
+};
 
-export interface TabsListProps extends TabsListBaseProps {}
+const parseTabsItemData: ParseTabsItemData = (data) => {
+  return !data ? [] : data.map(parseTabsItem);
+};
 
-const defaultProps: Partial<TabsListProps> = {};
+const defaultProps: Partial<TabsListProps> = {
+  alignment: 'default',
+};
 
-function _TabsList(props: TabsListProps, ref: React.ForwardedRef<HTMLDivElement>) {
-  const { className, ...otherProps } = mergeProps(defaultProps, props);
-  const clxss = clsx('tabs-list', className);
-  const ctx = useTabsCTX();
-
-  return (
-    <div
-      {...otherProps}
-      ref={ref}
-      className={clxss}
-      data-orientation={ctx.orientation}
-      aria-orientation={ctx.orientation}
-    />
+const TabsListRender: TabsListComponentRender = (props, ref) => {
+  const { className, orientation, grow, alignment, ...otherProps } = mergeProps(
+    defaultProps,
+    props
   );
-}
 
-export const TabsList = React.forwardRef(_TabsList) as React.ForwardRefExoticComponent<
-  TabsListProps & React.RefAttributes<HTMLDivElement>
->;
+  const ctx = useTabsCTX();
+  const groupRef = React.useRef<HTMLDivElement>(null);
+  const refs = useMergeRefs(ref, groupRef);
+  return (
+    <>
+      <div
+        {...otherProps}
+        ref={refs}
+        role="tablist"
+        className={clsx('tabs-list', className)}
+        data-orientation={ctx.orientation || orientation}
+        aria-orientation={ctx.orientation || orientation}
+        data-grow={!grow ? undefined : true}
+        data-alignment={alignment}
+        onKeyDownCapture={createEventCallback(otherProps.onKeyDownCapture, (event) => {
+          const groupNode = groupRef.current!;
+          console.log(groupNode);
+        })}
+      />
+      <Divider />
+    </>
+  );
+};
 
-TabsList.displayName = '@v2/TabsList';
+export const TabsList = React.forwardRef(TabsListRender) as TabsListComponent;
+TabsList.displayName = '@v2/Tabs.List';

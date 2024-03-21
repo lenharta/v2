@@ -1,0 +1,5 @@
+.divider {
+  --divider--size-sm: calc(var(--gap) * 1);
+  --divider--size-md: calc(var(--gap) * 2);
+  --divider--size-lg: calc(var(--gap) * 3);
+}

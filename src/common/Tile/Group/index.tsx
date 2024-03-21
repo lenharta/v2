@@ -1,39 +1,26 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
-import { Orientation } from '@/types/common';
-import { TileProvider, TileScheme } from '../context';
-
-type TileGroupBaseProps = React.ComponentPropsWithoutRef<'div'>;
-
-export interface TileGroupProps extends TileGroupBaseProps {
-  orientation?: Orientation;
-  scheme?: TileScheme;
-}
+import { TileProvider } from '../context';
+import { TileGroupComponent, TileGroupProps } from '../types';
 
 const defaultProps: Partial<TileGroupProps> = {
   orientation: 'horizontal',
-  scheme: 'default',
 };
 
-function _TileGroup(props: TileGroupProps, ref: React.ForwardedRef<HTMLDivElement>) {
-  const { className, orientation, scheme, ...otherProps } = mergeProps(defaultProps, props);
-  const clxss = clsx('tile-group', className);
+export const TileGroup: TileGroupComponent = React.forwardRef((props, ref) => {
+  const { children, className, orientation, ...otherProps } = mergeProps(defaultProps, props);
   return (
-    <TileProvider value={{ orientation, scheme }}>
-      <div
-        {...otherProps}
-        ref={ref}
-        className={clxss}
-        data-orientation={orientation}
-        aria-orientation={orientation}
-      />
-    </TileProvider>
+    <div
+      {...otherProps}
+      ref={ref}
+      className={clsx('tile-group', className)}
+      data-orientation={orientation}
+      aria-orientation={orientation}
+    >
+      <TileProvider value={{ orientation }}>{children}</TileProvider>
+    </div>
   );
-}
-
-export const TileGroup = React.forwardRef(_TileGroup) as React.ForwardRefExoticComponent<
-  TileGroupProps & React.RefAttributes<HTMLDivElement>
->;
+});
 
 TileGroup.displayName = '@v2/Tile.Group';

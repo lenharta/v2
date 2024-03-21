@@ -1,19 +1,12 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
 import { useNavigate } from 'react-router-dom';
-import { createEventCallback } from '../utils';
-import { UnstyledButton } from '../Button/Unstyled';
-import { Icon, IconName } from '../Icon';
-import { ElementProps } from '@/types/global';
 
-export interface AvatarProps extends ElementProps<'button'> {
-  imageSrc?: boolean;
-  disabled?: boolean;
-  label?: string;
-  icon?: IconName;
-  url?: string;
-}
+import { Icon } from '../Icon';
+import { mergeProps } from '@/utils';
+import { UnstyledButton } from '../Button/Unstyled';
+import { createEventCallback } from '../utils';
+import { AvatarComponent, AvatarComponentRender, AvatarEvents, AvatarProps } from './types';
 
 const defaultProps: Partial<AvatarProps> = {
   label: 'avatar icon',
@@ -21,7 +14,7 @@ const defaultProps: Partial<AvatarProps> = {
   url: '/',
 };
 
-function _Avatar(props: AvatarProps, ref: React.ForwardedRef<HTMLButtonElement>) {
+const AvatarRender: AvatarComponentRender = (props, ref) => {
   const {
     url,
     icon,
@@ -37,14 +30,17 @@ function _Avatar(props: AvatarProps, ref: React.ForwardedRef<HTMLButtonElement>)
 
   const navigate = useNavigate();
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (!event.currentTarget.value) return undefined;
-    return event.key === 'Enter' ? navigate(event.currentTarget.value) : undefined;
-  };
+  function handleKeyDown(event: AvatarEvents['onKeyDown']) {
+    if (event.currentTarget.value && event.key === 'Enter') {
+      navigate(event.currentTarget.value);
+    }
+  }
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    return event.currentTarget.value ? navigate(event.currentTarget.value) : undefined;
-  };
+  function handleClick(event: AvatarEvents['onClick']) {
+    if (event.currentTarget.value) {
+      navigate(event.currentTarget.value);
+    }
+  }
 
   return (
     <UnstyledButton
@@ -61,10 +57,7 @@ function _Avatar(props: AvatarProps, ref: React.ForwardedRef<HTMLButtonElement>)
       children={<Icon name={icon} aria-label={`${label} icon`} />}
     />
   );
-}
+};
 
-export const Avatar = React.forwardRef(_Avatar) as React.ForwardRefExoticComponent<
-  AvatarProps & React.RefAttributes<HTMLButtonElement>
->;
-
+export const Avatar = React.forwardRef(AvatarRender) as AvatarComponent;
 Avatar.displayName = '@v2/Avatar';

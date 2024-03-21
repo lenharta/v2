@@ -9,7 +9,7 @@ const transitionStatuses = {
   'pre-entering': 'out',
 } as const;
 
-export function getTransitionStyles(props: TransitionStyleInput) {
+export function getTransitionStyles(props: TransitionStyleInput): React.CSSProperties {
   const { state, duration, transition, timingFunction } = props;
   const transitionTimingFunction = timingFunction;
   const transitionDuration = `${duration}ms`;

@@ -1,23 +1,28 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps, objectKeys } from '@/utils';
-import { TitleProps, TitleComponent, FindTitleComponent, FindTitleSizeToken } from './types';
+import {
+  SubtitleProps,
+  SubtitleComponent,
+  FindSubtitleComponent,
+  FindSubtitleSizeToken,
+} from './types';
 
-const defaultProps: Partial<TitleProps> = {
+const defaultProps: Partial<SubtitleProps> = {
   size: 'md',
   h2: true,
 };
 
-const findSizeToken: FindTitleSizeToken = (size) => {
-  if (!size) return `var(--font-size-title-${defaultProps.size})`;
-  return `var(--font-size-title-${size})`;
+const findSizeToken: FindSubtitleSizeToken = (size) => {
+  if (!size) return `var(--font-size-subtitle-${defaultProps.size})`;
+  return `var(--font-size-subtitle-${size})`;
 };
 
-const findComponent: FindTitleComponent = (levels) => {
+const findComponent: FindSubtitleComponent = (levels) => {
   return objectKeys(levels).find((value) => levels[value] !== undefined)!;
 };
 
-export const Title: TitleComponent = React.forwardRef((props, ref) => {
+export const Subtitle: SubtitleComponent = React.forwardRef((props, ref) => {
   const { h1, h2, h3, h4, h5, h6, size, className, overrideTokens, ...otherProps } = mergeProps(
     defaultProps,
     props
@@ -31,9 +36,9 @@ export const Title: TitleComponent = React.forwardRef((props, ref) => {
       {...otherProps}
       ref={ref}
       style={{ fontSize }}
-      className={clsx('Title', className)}
+      className={clsx('Subtitle', className)}
     />
   );
 });
 
-Title.displayName = '@v2/Title';
+Subtitle.displayName = '@v2/Subtitle';
