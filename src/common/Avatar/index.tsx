@@ -2,13 +2,12 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { useNavigate } from 'react-router-dom';
+import { createEventCallback } from '../utils';
 import { UnstyledButton } from '../Button/Unstyled';
 import { Icon, IconName } from '../Icon';
-import { createEventCallback } from '../utils';
+import { ElementProps } from '@/types/global';
 
-type AvatarBaseProps = React.ComponentPropsWithoutRef<'button'>;
-
-export interface AvatarProps extends AvatarBaseProps {
+export interface AvatarProps extends ElementProps<'button'> {
   imageSrc?: boolean;
   disabled?: boolean;
   label?: string;

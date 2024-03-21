@@ -39,3 +39,18 @@ export type SideObject = { [key in Side]: number };
 export type ClientRect = Rect & SideObject;
 
 export type Rect = Coords & Dimensions;
+
+export type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
+
+export type SurfaceState = 'base' | 'interactive';
+
+export type SurfaceVariant = 'primary' | 'secondary' | 'accent';
+
+export type SurfaceToken = `${SurfaceVariant}-${SurfaceState}-${SurfaceLevel}`;
+
+export interface SurfaceOptions {
+  level?: SurfaceLevel;
+  state?: SurfaceState;
+  variant?: SurfaceVariant;
+  inverted?: boolean;
+}

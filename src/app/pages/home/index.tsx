@@ -1,52 +1,51 @@
 import { Page } from '@/app/components';
 import { Text, Title } from '@/common';
+import { Language } from '@/types';
+
+interface CommonSectionProps {
+  lang?: Language;
+}
+
+const HomeOverview = ({}: CommonSectionProps) => (
+  <Page.Section id="home-sec-overview">
+    <div className="home-sec-overview">
+      <Title h2>Overview</Title>
+    </div>
+  </Page.Section>
+);
+
+const HomeExperience = ({}: CommonSectionProps) => (
+  <Page.Section id="home-sec-experience">
+    <div className="home-sec-experience">
+      <Title h2>Experience</Title>
+    </div>
+  </Page.Section>
+);
+
+const HomeTimeline = ({}: CommonSectionProps) => (
+  <Page.Section id="home-sec-timeline">
+    <div className="home-sec-timeline">
+      <Title h2>Timeline</Title>
+    </div>
+  </Page.Section>
+);
+
+const HomeHero = ({}: CommonSectionProps) => (
+  <Page.Hero>
+    <div className="home-hero">
+      <Title h2 className="home-hero-subheadline" children="Andrew Lenhart" />
+      <Title h1 className="home-hero-headline" children="Software Engineer" />
+    </div>
+  </Page.Hero>
+);
 
 export const Home = () => (
-  <Page heroProps={{ title: 'Home' }}>
-    <Page.Section className="demo-section-content">
-      <Title h2>Section Title</Title>
-      <Text>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla modi, incidunt maxime est
-        optio ratione obcaecati autem laborum neque corporis excepturi, iure mollitia aspernatur
-        alias quos delectus itaque dolorum doloribus.
-      </Text>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo corrupti temporibus quisquam
-        dolores ex vero nam. Minima qui, sed ea sapiente quasi magnam modi quam repellendus
-        molestias sunt corporis placeat tempore eveniet! Consequuntur, eum ullam minima ipsum
-        dignissimos molestias porro animi maiores corporis exercitationem quis deleniti modi iste
-        soluta voluptatem.
-      </Text>
-    </Page.Section>
-    <Page.Section className="demo-section-content" surfaceOptions={{ variant: 'secondary' }}>
-      <Title h2>Section Title</Title>
-      <Text>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla modi, incidunt maxime est
-        optio ratione obcaecati autem laborum neque corporis excepturi, iure mollitia aspernatur
-        alias quos delectus itaque dolorum doloribus.
-      </Text>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo corrupti temporibus quisquam
-        dolores ex vero nam. Minima qui, sed ea sapiente quasi magnam modi quam repellendus
-        molestias sunt corporis placeat tempore eveniet! Consequuntur, eum ullam minima ipsum
-        dignissimos molestias porro animi maiores corporis exercitationem quis deleniti modi iste
-        soluta voluptatem.
-      </Text>
-    </Page.Section>
-    <Page.Section className="demo-section-content">
-      <Title h2>Section Title</Title>
-      <Text>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla modi, incidunt maxime est
-        optio ratione obcaecati autem laborum neque corporis excepturi, iure mollitia aspernatur
-        alias quos delectus itaque dolorum doloribus.
-      </Text>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo corrupti temporibus quisquam
-        dolores ex vero nam. Minima qui, sed ea sapiente quasi magnam modi quam repellendus
-        molestias sunt corporis placeat tempore eveniet! Consequuntur, eum ullam minima ipsum
-        dignissimos molestias porro animi maiores corporis exercitationem quis deleniti modi iste
-        soluta voluptatem.
-      </Text>
-    </Page.Section>
+  <Page>
+    <HomeHero />
+    <Page.Content>
+      <HomeOverview />
+      <HomeExperience />
+      <HomeTimeline />
+    </Page.Content>
   </Page>
 );

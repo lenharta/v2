@@ -1,18 +1,17 @@
+import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
-import { ElementProps } from '@/types/global';
+import { ElementProps } from '@/types';
 
-export interface PageLayoutProps extends ElementProps<'div'> {}
-
-const defaultProps: Partial<PageLayoutProps> = {};
-
-export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>((props, ref) => {
-  const { children, ...otherProps } = mergeProps(defaultProps, props);
-  return (
-    <div {...otherProps} ref={ref} className="page-layout">
-      {children}
-    </div>
-  );
-});
+export const PageLayout = React.forwardRef<HTMLDivElement, ElementProps<'div'>>(
+  ({ children, className, ...otherProps }, ref) => (
+    <div
+      {...otherProps}
+      id="page"
+      ref={ref}
+      children={children}
+      className={clsx('page-layout', className)}
+    />
+  )
+);
 
 PageLayout.displayName = '@v2/Page.Layout';

@@ -1,5 +1,6 @@
 export * from './capitalize-string';
 export * from './create-inline-css';
+export * from './create-surface';
 export * from './filter-props';
 export * from './format-camel-to-kebab';
 export * from './generate-random-id';

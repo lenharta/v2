@@ -16,20 +16,16 @@ export interface InlineStylesInput {
   media?: InlineStylesMediaQuery[];
 }
 
-export interface ContactAddress {
-  street?: string;
-  state?: string;
-  city?: string;
-  zip?: string;
-}
+export type ContactInfoKey = 'email' | 'phone' | 'url';
+export type ContactNameKey = 'last' | 'first' | 'middle';
+export type ContactAddressKey = 'street' | 'city' | 'state' | 'zip';
 
-export interface ContactName {
-  lastName?: string;
-  firstName?: string;
-  middleName?: string;
-}
+export type ContactInfoObj = Record<ContactInfoKey, string>;
+export type ContactNameObj = Record<ContactNameKey, string>;
+export type ContactAddressObj = Record<ContactAddressKey, string>;
 
-export interface ContactData extends ContactName, ContactAddress {
-  email?: string;
-  phone?: string;
+export interface ContactDataProps {
+  name: Partial<ContactNameObj>;
+  info: Partial<ContactInfoObj>;
+  address: Partial<ContactAddressObj>;
 }
