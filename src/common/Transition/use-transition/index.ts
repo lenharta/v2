@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { TransitionStatus, UseTransitionOptions } from '../types';
 import { useDidUpdate } from '@/hooks';
+import { TransitionStatus, UseTransitionOptions, UseTransitionReturn } from '../types';
 
-export function useTransition(props: UseTransitionOptions) {
+export function useTransition(props: UseTransitionOptions): UseTransitionReturn {
   const {
     mounted,
     duration,
@@ -16,13 +16,14 @@ export function useTransition(props: UseTransitionOptions) {
     onExited,
   } = props;
 
-  const [transitionDuration, setTransitionDuration] = React.useState(reducedMotion ? 0 : duration);
-  const [transitionStatus, setTransitionStatus] = React.useState<TransitionStatus>(
-    mounted ? 'entered' : 'exited'
-  );
-
-  const timeoutRef = React.useRef<number>(-1);
   const frameRef = React.useRef(-1);
+  const timeoutRef = React.useRef<number>(-1);
+
+  const initialStatus: TransitionStatus = mounted ? 'entered' : 'exited';
+  const initialDuration: typeof duration = reducedMotion ? 0 : duration;
+
+  const [transitionStatus, setTransitionStatus] = React.useState<TransitionStatus>(initialStatus);
+  const [transitionDuration, setTransitionDuration] = React.useState(initialDuration);
 
   const onStateChange = (shouldMount: boolean) => {
     const preHandler = shouldMount ? onEnter : onExit;
@@ -31,11 +32,13 @@ export function useTransition(props: UseTransitionOptions) {
     window.clearTimeout(timeoutRef.current);
 
     const newTransitionDuration = reducedMotion ? 0 : shouldMount ? duration : exitDuration;
+
     setTransitionDuration(newTransitionDuration);
 
     if (newTransitionDuration === 0) {
-      typeof preHandler === 'function' && preHandler;
-      typeof handler === 'function' && handler;
+      typeof handler === 'function' && handler();
+      typeof preHandler === 'function' && preHandler();
+
       setTransitionStatus(shouldMount ? 'entered' : 'exited');
     } else {
       frameRef.current = requestAnimationFrame(() => {
@@ -67,6 +70,7 @@ export function useTransition(props: UseTransitionOptions) {
     },
     []
   );
+
   return {
     transitionStatus,
     transitionDuration,

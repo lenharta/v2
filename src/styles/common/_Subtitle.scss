@@ -1,0 +1,43 @@
+@use '../mixins' as mixins;
+
+.subtitle {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+  text-decoration: none;
+
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: var(--font-family);
+
+  direction: ltr;
+  text-align: left;
+
+  @include mixins.rtl {
+    text-align: right;
+    direction: rtl;
+  }
+
+  &[data-variant='gradient'] {
+    background-image: var(--subtitle-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &[data-line-clamp] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--subtitle-line-clamp);
+    -webkit-box-orient: vertical;
+  }
+
+  &[data-inherit] {
+    line-height: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+  }
+}

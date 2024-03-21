@@ -60,4 +60,74 @@
   --app-index-content: 1;
   --app-index-header: 999;
   --app-index-overlay: 9999;
+
+  --font-size-caption-sm-mobile: 10px;
+  --font-size-caption-sm-desktop: 14px;
+
+  --font-size-caption-md-mobile: 11px;
+  --font-size-caption-md-desktop: 15px;
+
+  --font-size-caption-lg-mobile: 12px;
+  --font-size-caption-lg-desktop: 16px;
+
+  --font-size-body-mobile: 14px;
+  --font-size-body-desktop: 16px;
+
+  --font-size-subtitle-sm-mobile: 16px;
+  --font-size-subtitle-sm-desktop: 22px;
+
+  --font-size-subtitle-md-mobile: 18px;
+  --font-size-subtitle-md-desktop: 24px;
+
+  --font-size-subtitle-lg-mobile: 20px;
+  --font-size-subtitle-lg-desktop: 26px;
+
+  --font-size-title-sm-mobile: 24px;
+  --font-size-title-sm-desktop: 32px;
+
+  --font-size-title-md-mobile: 28px;
+  --font-size-title-md-desktop: 36px;
+
+  --font-size-title-lg-mobile: 32px;
+  --font-size-title-lg-desktop: 40px;
+
+  --font-size-title-xl-mobile: 40px;
+  --font-size-title-xl-desktop: 52px;
+
+  --font-size-title-xxl-mobile: 68px;
+  --font-size-title-xxl-desktop: 92px;
+
+  --font-size-body: var(--font-size-body-mobile);
+
+  --font-size-caption-sm: var(--font-size-caption-sm-mobile);
+  --font-size-caption-md: var(--font-size-caption-md-mobile);
+  --font-size-caption-lg: var(--font-size-caption-lg-mobile);
+
+  --font-size-subtitle-sm: var(--font-size-subtitle-sm-mobile);
+  --font-size-subtitle-md: var(--font-size-subtitle-md-mobile);
+  --font-size-subtitle-lg: var(--font-size-subtitle-lg-mobile);
+
+  --font-size-title-sm: var(--font-size-title-sm-mobile);
+  --font-size-title-md: var(--font-size-title-md-mobile);
+  --font-size-title-lg: var(--font-size-title-lg-mobile);
+  --font-size-title-xl: var(--font-size-title-xl-mobile);
+  --font-size-title-xxl: var(--font-size-title-xxl-mobile);
+
+  @media (min-width: 60em) {
+    --font-size-body: var(--font-size-body-desktop);
+
+    --font-size-caption-sm: var(--font-size-caption-sm-desktop);
+    --font-size-caption-md: var(--font-size-caption-md-desktop);
+    --font-size-caption-lg: var(--font-size-caption-lg-desktop);
+
+    --font-size-subtitle-sm: var(--font-size-subtitle-sm-desktop);
+    --font-size-subtitle-md: var(--font-size-subtitle-md-desktop);
+    --font-size-subtitle-lg: var(--font-size-subtitle-lg-desktop);
+
+    --font-size-title-sm: var(--font-size-title-sm-desktop);
+    --font-size-title-md: var(--font-size-title-md-desktop);
+    --font-size-title-lg: var(--font-size-title-lg-desktop);
+    --font-size-title-xl: var(--font-size-title-xl-desktop);
+    --font-size-title-xxl: var(--font-size-title-xxl-desktop);
+  }
 }

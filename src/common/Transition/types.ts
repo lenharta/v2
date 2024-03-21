@@ -30,7 +30,7 @@ export interface TransitionProps {
   mounted: boolean;
   duration?: number;
   transition?: TransitionStyle;
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
   exitDuration?: number;
   timingFunction?: React.CSSProperties['transitionTimingFunction'];
   children: (styles: React.CSSProperties) => JSX.Element;
@@ -45,4 +45,10 @@ export interface TransitionStyleInput {
   duration: number;
   transition: TransitionStyle;
   timingFunction: React.CSSProperties['transitionTimingFunction'];
+}
+
+export interface UseTransitionReturn {
+  transitionStatus: TransitionStatus;
+  transitionDuration: number;
+  transitionTimingFunction: React.CSSProperties['transitionTimingFunction'];
 }

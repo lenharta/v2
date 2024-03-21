@@ -2,77 +2,69 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { ButtonGroup } from './Group';
-import { useButtonCTX } from './context';
-import { Scheme, Size } from '@/types/common';
-import { UnstyledButton, UnstyledButtonProps } from './Unstyled';
-
-export type ButtonScheme = 'default' | Scheme;
-
-export interface ButtonProps extends UnstyledButtonProps {
-  size?: Size;
-  scheme?: ButtonScheme;
-  loading?: boolean;
-  disabled?: boolean;
-  leftContent?: React.ReactNode;
-  rightContent?: React.ReactNode;
-}
+import { UnstyledButton } from './Unstyled';
+import { ButtonComponent, ButtonComponentRender, ButtonProps } from './types';
 
 const defaultProps: Partial<ButtonProps> = {
-  scheme: 'default',
   size: 'sm',
 };
 
-function _Button(props: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) {
+const ButtonRender: ButtonComponentRender = (props, ref) => {
   const {
-    size,
-    scheme,
+    id,
     loading,
     disabled,
     className,
+    excludeTabOrder,
+    children,
     leftContent,
     rightContent,
-    children,
     ...otherProps
   } = mergeProps(defaultProps, props);
 
-  const ctx = useButtonCTX();
+  const isLoading = loading !== undefined;
+  const isDisabled = disabled !== undefined;
+  const isFocusable = !isDisabled && !excludeTabOrder;
 
-  const clxss = clsx('button', `button--${size}`, `button--${scheme}`, className);
-
-  const hasLeftContent = !!leftContent;
-  const hasRightContent = !!rightContent;
-
-  const isLoading = !disabled && loading;
-  const isDisabled = disabled || isLoading;
+  const hasValidLabel = typeof children === 'string' ? children : undefined;
+  const hasLeftContent = leftContent !== undefined ? leftContent : undefined;
+  const hasRightContent = rightContent !== undefined ? rightContent : undefined;
 
   return (
     <UnstyledButton
       {...otherProps}
       ref={ref}
-      className={clxss}
-      tabIndex={isDisabled ? undefined : 0}
-      aria-busy={isLoading}
-      aria-disabled={!isDisabled ? undefined : isDisabled}
-      data-disabled={!isDisabled ? undefined : isDisabled}
-      data-loading={isLoading}
+      role="button"
+      tabIndex={isFocusable ? 0 : -1}
+      className={clsx('button', className)}
+      data-loading={isLoading ? true : undefined}
+      data-disabled={isDisabled ? true : undefined}
+      aria-disabled={isDisabled ? true : undefined}
+      aria-label={hasValidLabel || otherProps['aria-label']}
+      aria-busy={isLoading ? true : undefined}
     >
-      <span className="inner">
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <>
-            {hasLeftContent && <div data-position="left">{leftContent}</div>}
-            {children && <div>{children}</div>}
-            {hasRightContent && <div data-position="right">{rightContent}</div>}
-          </>
-        )}
-      </span>
+      {isLoading ? (
+        <Button.Loader />
+      ) : (
+        <span className="inner">
+          <Button.Content position="left">{hasLeftContent}</Button.Content>
+          {children && <div>{children}</div>}
+          <Button.Content position="right">{hasRightContent}</Button.Content>
+        </span>
+      )}
     </UnstyledButton>
   );
-}
+};
 
-export const Button = React.forwardRef(_Button) as React.ForwardRefExoticComponent<ButtonProps> & {
-  Group: typeof ButtonGroup;
+export const Button = React.forwardRef(ButtonRender) as ButtonComponent;
+
+Button.Content = ({ position = 'left', children }) => {
+  if (!children) return null;
+  return <div data-position={position}>{children}</div>;
+};
+
+Button.Loader = ({}) => {
+  return <p className="button-loader" children="Loading..." />;
 };
 
 Button.displayName = '@v2/Button';

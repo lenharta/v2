@@ -2,54 +2,43 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { useNavigate } from 'react-router-dom';
-import { TileGroup } from './Group';
 import { createEventCallback } from '../utils';
-import { TileScheme, useTileCTX } from './context';
 
-type TileBaseProps = React.ComponentPropsWithoutRef<'div'>;
-
-export interface TileProps extends TileBaseProps {
-  disabled?: boolean;
-  scheme?: TileScheme;
-  url?: string;
-}
+import { TileGroup } from './Group';
+import { TileComponent, TileExoticRender, TileProps } from './types';
 
 const defaultProps: Partial<TileProps> = {
-  scheme: 'default',
   url: '/',
 };
 
-const _Tile = (props: TileProps, ref: React.ForwardedRef<HTMLDivElement>) => {
-  const { disabled, url, scheme, className, ...otherProps } = mergeProps(defaultProps, props);
+const TileRender: TileExoticRender = (props, ref) => {
+  const { disabled, url, className, ...otherProps } = mergeProps(defaultProps, props);
 
-  const ctx = useTileCTX();
-  const navigate = useNavigate();
-  const clxss = clsx('tile', `tile--scheme-${ctx.scheme || scheme}`, className);
-
-  const isNavigable = url !== undefined;
   const isInteractive = otherProps.onClick !== undefined;
+  const isDisabled = !disabled ? undefined : true;
+  const isFocusable = !isInteractive ? -1 : 0;
+  const isNavigable = url !== undefined;
+
+  const navigate = useNavigate();
+
+  const onNavigate = () => {
+    if (isNavigable) navigate(url);
+  };
 
   return (
     <div
-      ref={ref}
       {...otherProps}
-      className={clxss}
-      data-disabled={disabled}
-      aria-disabled={disabled}
-      tabIndex={!isInteractive ? -1 : 0}
-      onClick={createEventCallback(otherProps.onClick, () => {
-        isNavigable && navigate(url);
-      })}
+      ref={ref}
+      tabIndex={isFocusable}
+      data-disabled={isDisabled}
+      aria-disabled={isDisabled}
+      className={clsx('tile', className)}
+      onClick={createEventCallback(otherProps.onClick, onNavigate)}
     />
   );
 };
 
-interface TileComponents {
-  Group: typeof TileGroup;
-}
+export const Tile = React.forwardRef(TileRender) as TileComponent;
 
-export const Tile = React.forwardRef(_Tile) as TileComponents &
-  React.ForwardRefExoticComponent<TileProps & React.RefAttributes<HTMLDivElement>>;
-
-Tile.displayName = '@v2/Tile';
 Tile.Group = TileGroup;
+Tile.displayName = '@v2/Tile';

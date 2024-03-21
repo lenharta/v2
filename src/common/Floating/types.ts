@@ -1,3 +1,4 @@
+import { ElementProps, ExoticRender } from '@/types';
 import React from 'react';
 
 export type FloatingSide = 'top' | 'left' | 'right' | 'bottom';
@@ -19,3 +20,14 @@ export interface FloatingMiddleware {
   inline?: boolean;
   size?: boolean;
 }
+
+export interface FloatingTargetProps {
+  refProp?: string;
+  children: React.ReactElement;
+  popupType?: React.AriaAttributes['aria-haspopup'];
+}
+
+export type FloatingTargetComponentRender<
+  T extends React.ElementType,
+  E extends HTMLElement,
+> = ExoticRender<E, ElementProps<T> & FloatingTargetProps>;
