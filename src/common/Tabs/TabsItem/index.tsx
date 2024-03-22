@@ -1,20 +1,23 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Text } from '@/common';
+import { mergeProps } from '@/utils';
+import { useTabsCTX } from '../context';
 import { UnstyledButton } from '@/common/Button/Unstyled';
 import { createEventCallback } from '@/common/utils';
-import { createSurface, mergeProps } from '@/utils';
+import { createSurfaceToken, createTokenStyle } from '@/common/tokens';
 import { TabsItemComponent, TabsItemComponentRender, TabsItemProps } from '../types';
-import { useTabsCTX } from '../context';
 
-const defaultProps: Partial<TabsItemProps> = {};
+const defaultProps: Partial<TabsItemProps> = {
+  surface: { type: 'primary', state: 'base', level: 0 },
+};
 
 const TabsItemRender: TabsItemComponentRender = (props, ref) => {
   const {
     size,
     value,
     label,
-    variant,
+    style,
+    surface,
     elevated,
     disabled,
     className,
@@ -25,21 +28,44 @@ const TabsItemRender: TabsItemComponentRender = (props, ref) => {
 
   const ctx = useTabsCTX();
 
-  const isActive = ctx.value !== value ? undefined : true;
-  const isDisabled = !ctx.disabled || !disabled ? undefined : true;
+  const isActive = ctx.value !== value ? true : undefined;
+  const isElevated = (ctx.elevated || elevated) !== undefined ? true : undefined;
+  const isDisabled = (ctx.disabled || disabled) !== undefined ? true : undefined;
 
+  const hasSize = ctx.size || size;
   const hasContentLeft = !leftContent ? undefined : true;
   const hasContentRight = !rightContent ? undefined : true;
 
-  const surface = React.useMemo(
+  const clxss = React.useMemo(
     () =>
-      createSurface({
-        variant: variant,
-        state: 'interactive',
-        level: !elevated ? 0 : 1,
-      }),
-    [elevated, variant]
+      clsx(
+        'tabs-item',
+        createSurfaceToken({
+          type: surface!.type,
+          state: 'interactive',
+          level: isElevated ? 1 : 0,
+        }),
+        className
+      ),
+    [surface, ctx.elevated, elevated, className]
   );
+
+  const styles = React.useMemo(
+    () => ({
+      ...style,
+      ...createTokenStyle({ key: 'tabs-item-height', prop: 'minHeight', value: hasSize }),
+      ...createTokenStyle({ key: 'tabs-item-padding-x', prop: 'paddingInline', value: hasSize }),
+    }),
+    [ctx.size, size, style]
+  );
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    return !isDisabled ? ctx.onChange(event.currentTarget.value) : undefined;
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>): void => {
+    return event.key === 'Enter' && !disabled ? ctx.onChange(event.currentTarget.value) : undefined;
+  };
 
   return (
     <UnstyledButton
@@ -47,25 +73,18 @@ const TabsItemRender: TabsItemComponentRender = (props, ref) => {
       ref={ref}
       role="tab"
       value={value}
+      style={styles}
+      tabIndex={isDisabled ? -1 : 0}
+      className={clxss}
       aria-label={label}
       aria-disabled={isDisabled}
-      tabIndex={isDisabled ? -1 : 0}
-      className={clsx('tabs-item', surface, className)}
       data-active={isActive}
       data-disabled={isDisabled}
-      onClick={createEventCallback(otherProps.onClick, (event) => {
-        if (!isDisabled) {
-          ctx.onChange(event.currentTarget.value);
-        }
-      })}
-      onKeyDown={createEventCallback(otherProps.onKeyDown, (event) => {
-        if (event.key === 'Enter' && !isDisabled) {
-          ctx.onChange(event.currentTarget.value);
-        }
-      })}
+      onClick={createEventCallback(otherProps.onClick, handleClick)}
+      onKeyDown={createEventCallback(otherProps.onKeyDown, handleKeyDown)}
     >
       {hasContentLeft && <div data-position="left">{leftContent}</div>}
-      <Text>{label}</Text>
+      <span className="tab-item-label">{label}</span>
       {hasContentRight && <div data-position="right">{rightContent}</div>}
     </UnstyledButton>
   );

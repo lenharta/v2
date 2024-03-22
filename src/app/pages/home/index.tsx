@@ -1,6 +1,7 @@
 import { Page } from '@/app/components';
-import { Tabs, Title } from '@/common';
+import { Tabs, Text, Title } from '@/common';
 import { Language } from '@/types';
+import { objectKeys } from '@/utils';
 
 interface CommonSectionProps {
   lang?: Language;
@@ -41,18 +42,32 @@ export const HomeHero = ({}: CommonSectionProps) => (
 
 export const DemoTabs = () => (
   <Page.Section>
-    <Tabs.Root defaultValue="tab-value-1">
+    <Tabs.Root defaultValue="tab-a" elevated>
       <Tabs.List>
-        <Tabs.Item value="tab-value-1" label="Tab 1" />
-        <Tabs.Item value="tab-value-2" label="Tab 2" />
-        <Tabs.Item value="tab-value-3" label="Tab 3" />
+        <Tabs.Item value="tab-a" label="Tab A" />
+        <Tabs.Item value="tab-b" label="Tab B" />
+        <Tabs.Item value="tab-c" label="Tab C" />
       </Tabs.List>
-      <Tabs.Panel value="tab-value-1">Tab 1 | Panel Content</Tabs.Panel>
-      <Tabs.Panel value="tab-value-2">Tab 2 | Panel Content</Tabs.Panel>
-      <Tabs.Panel value="tab-value-3">Tab 3 | Panel Content</Tabs.Panel>
+      <Tabs.Panel value="tab-a" children="Content A" style={{ padding: 24 }} />
+      <Tabs.Panel value="tab-b" children="Content B" style={{ padding: 24 }} />
+      <Tabs.Panel value="tab-c" children="Content C" style={{ padding: 24 }} />
     </Tabs.Root>
   </Page.Section>
 );
+
+// type TextSize = 'sm' | 'md' | 'lg';
+// type TitleSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+// type CaptionSize = 'sm' | 'md' | 'lg';
+// type SubtitleSize = 'sm' | 'md' | 'lg';
+
+// type TypographyType = 'text' | 'title' | 'caption' | 'subtitle';
+
+// type GlobalTokens =
+//   | `size-text--${TextSize}`
+//   | `size-title--${TitleSize}`
+//   | `size-caption--${CaptionSize}`
+//   | `size-subtitle--${SubtitleSize}`
+//   | `surface-${SurfaceType}-${SurfaceLevel}`;
 
 export const Home = () => (
   <Page>

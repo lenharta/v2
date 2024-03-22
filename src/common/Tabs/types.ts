@@ -1,76 +1,63 @@
 import * as React from 'react';
-import { IconName } from '../Icon';
 import {
   Size,
+  Accent,
   Alignment,
   Orientation,
   ElementProps,
-  ExoticRender,
   ExoticComponent,
-  SurfaceVariant,
+  ExoticRender,
+  SurfaceConfig,
 } from '@/types';
 
 export interface TabsContextValue {
+  size?: Size | undefined;
+  grow?: boolean | undefined;
   value: string;
   onChange: (value: string) => void;
-  orientation?: Orientation;
-  alignment?: 'default' | Alignment;
-  disabled?: boolean;
-  elevated?: boolean;
-  variant?: SurfaceVariant;
-  grow?: boolean;
-  size?: Size;
-}
-
-export interface TabsItemDataObj {
-  value: string | number;
-  label?: string | undefined;
-  icon?: IconName | undefined;
+  accent?: Accent | undefined;
+  surface?: SurfaceConfig;
   disabled?: boolean | undefined;
+  elevated?: boolean | undefined;
+  alignment?: Alignment | undefined;
+  withDivider?: boolean | undefined;
+  orientation?: Orientation | undefined;
 }
-
-export interface TabsItemDataObjParsed {
-  value: string;
-  label: string;
-  icon?: IconName | undefined;
-  disabled?: boolean | undefined;
-}
-
-export type ParseTabsItem = (item: TabsItemDataObj) => TabsItemDataObjParsed;
-export type ParseTabsItemData = (data?: TabsItemDataObj[]) => TabsItemDataObjParsed[];
 
 export interface TabsRootProps {
-  children?: React.ReactNode;
-  activateWithKeyboard?: boolean;
-  variant?: SurfaceVariant;
-  elevated?: boolean;
-  orientation?: Orientation;
-  defaultValue?: string;
-  alignment?: 'default' | Alignment;
-  disabled?: boolean;
-  grow?: boolean;
-  size?: Size;
+  size?: Size | undefined;
+  grow?: boolean | undefined;
+  surface?: SurfaceConfig;
+  children?: React.ReactNode | undefined;
+  disabled?: boolean | undefined;
+  elevated?: boolean | undefined;
+  alignment?: Alignment | undefined;
+  withDivider?: boolean | undefined;
+  orientation?: Orientation | undefined;
+  defaultValue?: string | undefined;
+  activateWithKeyboard?: boolean | undefined;
 }
 
 export interface TabsItemProps extends Omit<ElementProps<'button'>, 'children'> {
-  size?: Size;
-  value: string;
-  label?: string;
-  variant?: SurfaceVariant;
-  elevated?: boolean;
-  disabled?: boolean;
-  leftContent?: React.ReactNode;
-  rightContent?: React.ReactNode;
+  size?: Size | undefined;
+  value: string | undefined;
+  label?: string | undefined;
+  surface?: SurfaceConfig;
+  elevated?: boolean | undefined;
+  disabled?: boolean | undefined;
+  leftContent?: React.ReactNode | undefined;
+  rightContent?: React.ReactNode | undefined;
 }
 
 export interface TabsListProps extends ElementProps<'div'> {
-  orientation?: Orientation;
-  alignment?: 'default' | Alignment;
-  grow?: boolean;
+  withDivider?: boolean | undefined;
+  orientation?: Orientation | undefined;
+  alignment?: Alignment | undefined;
+  grow?: boolean | undefined;
 }
 
 export interface TabsPanelProps extends ElementProps<'div'> {
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
   value: string;
 }
 

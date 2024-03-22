@@ -50,17 +50,27 @@ export type TitleLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export type TitleLevelProps = Record<TitleLevel, boolean>;
 
-export type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
+export type SurfaceType = 'primary' | 'secondary' | 'accent';
 
 export type SurfaceState = 'base' | 'interactive';
 
-export type SurfaceVariant = 'primary' | 'secondary' | 'accent';
+export type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
-export type SurfaceToken = `${SurfaceVariant}-${SurfaceState}-${SurfaceLevel}`;
+export type SurfaceToken = `surface-${SurfaceType}-${SurfaceState}-${SurfaceLevel}`;
 
-export interface SurfaceOptions {
-  level?: SurfaceLevel;
-  state?: SurfaceState;
-  variant?: SurfaceVariant;
-  inverted?: boolean;
+export interface SurfaceConfig {
+  type: SurfaceType;
+  state: SurfaceState;
+  level: SurfaceLevel;
+}
+
+export interface TokenConfig {
+  key: string;
+  value?: string;
+}
+
+export interface TokenStyleConfig {
+  value?: string;
+  prop: keyof React.CSSProperties;
+  key: string;
 }

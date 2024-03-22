@@ -1,4 +1,5 @@
 export * from './capitalize-string';
+export * from './create-event-callback';
 export * from './create-inline-css';
 export * from './create-surface';
 export * from './filter-props';

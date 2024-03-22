@@ -6,6 +6,7 @@ import {
   ElementProps,
   ExoticRender,
   ExoticComponent,
+  SurfaceConfig,
 } from '@/types';
 
 export interface DividerProps extends ElementProps<'div'> {
@@ -14,7 +15,8 @@ export interface DividerProps extends ElementProps<'div'> {
   labelPosition?: 'center' | Alignment;
   overrideTokens?: boolean;
   orientation?: Orientation;
-  accentColor?: Accent;
+  surface?: SurfaceConfig;
+  accent?: Accent;
 }
 
 export type DividerComponentRender = ExoticRender<HTMLDivElement, DividerProps>;

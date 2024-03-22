@@ -7,10 +7,11 @@ import { TabsPanelComponent, TabsPanelComponentRender, TabsPanelProps } from '..
 const defaultProps: Partial<TabsPanelProps> = {};
 
 const TabsPanelRender: TabsPanelComponentRender = (props, ref) => {
-  const { className, keepMounted, value, ...otherProps } = mergeProps(defaultProps, props);
+  const { className, keepMounted, value, style, ...otherProps } = mergeProps(defaultProps, props);
 
   const ctx = useTabsCTX();
   const isActive = ctx.value === value;
+  const isHidden = !isActive && keepMounted ? 'none' : undefined;
 
   if (!isActive && !keepMounted) {
     return null;
@@ -21,7 +22,7 @@ const TabsPanelRender: TabsPanelComponentRender = (props, ref) => {
       {...otherProps}
       ref={ref}
       role="tabpanel"
-      style={{ display: !isActive && keepMounted ? 'none' : undefined }}
+      style={{ ...style, display: isHidden }}
       className={clsx('tabs-panel', className)}
     />
   );
