@@ -1,5 +1,5 @@
 import { Page } from '@/app/components';
-import { Tabs, Text, Title } from '@/common';
+import { Button, Tabs, Text, Title } from '@/common';
 import { Language } from '@/types';
 import { objectKeys } from '@/utils';
 
@@ -55,24 +55,19 @@ export const DemoTabs = () => (
   </Page.Section>
 );
 
-// type TextSize = 'sm' | 'md' | 'lg';
-// type TitleSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-// type CaptionSize = 'sm' | 'md' | 'lg';
-// type SubtitleSize = 'sm' | 'md' | 'lg';
-
-// type TypographyType = 'text' | 'title' | 'caption' | 'subtitle';
-
-// type GlobalTokens =
-//   | `size-text--${TextSize}`
-//   | `size-title--${TitleSize}`
-//   | `size-caption--${CaptionSize}`
-//   | `size-subtitle--${SubtitleSize}`
-//   | `surface-${SurfaceType}-${SurfaceLevel}`;
+export const DemoButton = () => (
+  <Page.Section>
+    <Button>Button 1</Button>
+    <Button>Button 2</Button>
+    <Button>Button 3</Button>
+  </Page.Section>
+);
 
 export const Home = () => (
   <Page>
     <HomeHero />
     <Page.Content>
+      <DemoButton />
       <DemoTabs />
     </Page.Content>
   </Page>

@@ -1,9 +1,19 @@
-import { ElementProps, ExoticComponent, ExoticRender, Orientation, Size } from '@/types';
+import {
+  Accent,
+  ElementProps,
+  ExoticComponent,
+  ExoticRender,
+  Orientation,
+  Size,
+  SurfaceConfig,
+} from '@/types';
 import { Side } from '@floating-ui/react';
 
 export interface ButtonContextValue {
-  orientation: Orientation;
-  size: Size;
+  orientation?: Orientation;
+  disabled?: boolean;
+  loading?: boolean;
+  size?: Size;
 }
 
 export interface UnstyledButtonProps extends ElementProps<'button'> {
@@ -13,6 +23,7 @@ export interface UnstyledButtonProps extends ElementProps<'button'> {
 export interface ButtonProps extends UnstyledButtonProps {
   size?: Size;
   loading?: boolean;
+  surface?: SurfaceConfig;
   disabled?: boolean;
   leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
@@ -28,6 +39,8 @@ export interface ButtonLoaderProps {}
 
 export interface ButtonGroupProps extends ElementProps<'div'> {
   orientation?: Orientation;
+  disabled?: boolean;
+  loading?: boolean;
   size?: Size;
 }
 

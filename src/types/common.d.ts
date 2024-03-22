@@ -52,7 +52,7 @@ export type TitleLevelProps = Record<TitleLevel, boolean>;
 
 export type SurfaceType = 'primary' | 'secondary' | 'accent';
 
-export type SurfaceState = 'base' | 'interactive';
+export type SurfaceState = 'base' | 'interactive' | 'disabled';
 
 export type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
