@@ -1,5 +1,9 @@
 .divider {
-  --divider--size-sm: calc(var(--gap) * 1);
-  --divider--size-md: calc(var(--gap) * 2);
-  --divider--size-lg: calc(var(--gap) * 3);
+  --divider-height--sm: 1px;
+  --divider-height--md: 2px;
+  --divider-height--lg: 3px;
+
+  width: 100%;
+  display: block;
+  background-color: var(--c-primary-surface-5);
 }

@@ -1,46 +1,82 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
-import { createAccentToken, createSizeToken } from '../utils';
 import { DividerProps, DividerComponent, DividerComponentRender } from './types';
+import { createSurfaceToken, createTokenStyle } from '../tokens';
 
 const defaultProps: Partial<DividerProps> = {
   orientation: 'vertical',
-  size: 'sm',
+  size: 'md',
 };
 
 const DividerRender: DividerComponentRender = (props, ref) => {
   const {
     size,
-    style,
     label,
+    style,
+    accent,
+    surface,
     className,
     orientation,
-    accentColor,
     labelPosition,
     overrideTokens,
     ...otherProps
   } = mergeProps(defaultProps, props);
+
+  const hasSize = size !== undefined ? size : undefined;
+  const hasAccent = accent !== undefined ? accent : undefined;
+
+  const styles = React.useMemo(
+    () => ({
+      ...style,
+      ...createTokenStyle({ key: 'divider-height', prop: 'minHeight', value: hasSize }),
+    }),
+    [style, hasSize]
+  );
+
+  const clxss = React.useMemo(
+    () =>
+      clsx(
+        'divider',
+        createSurfaceToken({
+          level: 5,
+          state: 'base',
+          type: surface?.type || 'secondary',
+        }),
+        className
+      ),
+    [surface, className]
+  );
 
   return (
     <div
       {...otherProps}
       ref={ref}
       role="separator"
-      className={clsx('divider', className)}
+      style={styles}
+      className={clxss}
       data-orientation={orientation}
       aria-orientation={orientation}
-      style={{
-        ...style,
-        height: createSizeToken('divider', size),
-        backgroundColor: createAccentToken(accentColor, 5),
-      }}
     >
       <span
         children={label}
-        className="divider-label"
-        style={{ color: createAccentToken(accentColor, 5) }}
         data-position={labelPosition}
+        className={clsx(
+          'divider-label',
+          createSurfaceToken(
+            hasAccent
+              ? {
+                  type: surface?.type || 'secondary',
+                  state: 'base',
+                  level: 5,
+                }
+              : {
+                  type: 'accent',
+                  state: 'base',
+                  level: 0,
+                }
+          )
+        )}
       />
     </div>
   );

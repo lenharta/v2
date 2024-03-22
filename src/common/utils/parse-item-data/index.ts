@@ -1,29 +1,30 @@
-export interface OptionItem<T> {
-  value: T;
-  label?: string;
+export interface ItemObj {
+  value: string | number;
+  label?: string | number | undefined;
+  disabled?: boolean | undefined;
+}
+
+export interface ItemObjParsed {
+  value: string;
+  label: string;
   disabled?: boolean;
 }
 
-export function parseItem<T extends string>(item: T | OptionItem<T>) {
-  if (typeof item === 'string' || typeof item === 'number') {
+export function parseItem(item: ItemObj): ItemObjParsed {
+  if (!item.label) {
     return {
-      value: item,
-      label: item,
+      ...item,
+      value: (item.value as number).toString(),
+      label: (item.value as number).toString(),
     };
   }
-
-  if (!('label' in item)) {
-    return {
-      label: item.value,
-      value: item.value,
-      disabled: item.disabled,
-    };
-  }
-
-  return item;
+  return {
+    ...item,
+    value: (item.value as number).toString(),
+    label: (item.label as number).toString(),
+  };
 }
 
-export function parseItemData<T extends string>(data?: T[] | OptionItem<T>[]) {
-  if (!data) return [];
-  return data.map((option) => parseItem<T>(option));
+export function parseItemData(data?: ItemObj[] | undefined): ItemObjParsed[] {
+  return !data ? [] : data.map(parseItem);
 }
