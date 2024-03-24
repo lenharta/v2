@@ -1,61 +1,24 @@
-[data-prefers-color-accent='orange'] {
-  --c-accent: var(--hsl-orange);
-}
-[data-prefers-color-accent='yellow'] {
-  --c-accent: var(--hsl-yellow);
-}
-[data-prefers-color-accent='green'] {
-  --c-accent: var(--hsl-green);
-}
-[data-prefers-color-accent='mint'] {
-  --c-accent: var(--hsl-mint);
-}
-[data-prefers-color-accent='teal'] {
-  --c-accent: var(--hsl-teal);
-}
-[data-prefers-color-accent='cyan'] {
-  --c-accent: var(--hsl-cyan);
-}
-[data-prefers-color-accent='blue'] {
-  --c-accent: var(--hsl-blue);
-}
-[data-prefers-color-accent='indigo'] {
-  --c-accent: var(--hsl-indigo);
-}
-[data-prefers-color-accent='purple'] {
-  --c-accent: var(--hsl-purple);
-}
-[data-prefers-color-accent='pink'] {
-  --c-accent: var(--hsl-pink);
-}
-[data-prefers-color-accent='brown'] {
-  --c-accent: var(--hsl-brown);
-}
-[data-prefers-color-accent='red'] {
-  --c-accent: var(--hsl-red);
-}
-
 [data-prefers-color-scheme='dim'],
 [data-prefers-color-scheme='dark'],
 [data-prefers-color-scheme='light'] {
-  --c-accent-text-0: rgba(var(--c-accent), 0.99);
-  --c-accent-text-1: rgba(var(--c-accent), 0.87);
-  --c-accent-text-2: rgba(var(--c-accent), 0.67);
-  --c-accent-text-3: rgba(var(--c-accent), 0.47);
+  --c-accent-text-0: hsla(var(--c-accent), 0.99);
+  --c-accent-text-1: hsla(var(--c-accent), 0.87);
+  --c-accent-text-2: hsla(var(--c-accent), 0.67);
+  --c-accent-text-3: hsla(var(--c-accent), 0.47);
 
-  --c-accent-surface-0: rgba(var(--c-accent), 0);
-  --c-accent-surface-1: rgba(var(--c-accent), 0.1);
-  --c-accent-surface-2: rgba(var(--c-accent), 0.2);
-  --c-accent-surface-3: rgba(var(--c-accent), 0.3);
-  --c-accent-surface-4: rgba(var(--c-accent), 0.4);
-  --c-accent-surface-5: rgba(var(--c-accent), 0.5);
+  --c-accent-surface-0: hsla(var(--c-accent), 0);
+  --c-accent-surface-1: hsla(var(--c-accent), 0.1);
+  --c-accent-surface-2: hsla(var(--c-accent), 0.2);
+  --c-accent-surface-3: hsla(var(--c-accent), 0.3);
+  --c-accent-surface-4: hsla(var(--c-accent), 0.4);
+  --c-accent-surface-5: hsla(var(--c-accent), 0.5);
 
-  --c-accent-surface-0-hover: rgba(var(--c-accent), 0.1);
-  --c-accent-surface-1-hover: rgba(var(--c-accent), 0.2);
-  --c-accent-surface-2-hover: rgba(var(--c-accent), 0.3);
-  --c-accent-surface-3-hover: rgba(var(--c-accent), 0.4);
-  --c-accent-surface-4-hover: rgba(var(--c-accent), 0.5);
-  --c-accent-surface-5-hover: rgba(var(--c-accent), 0.6);
+  --c-accent-surface-0-hover: hsla(var(--c-accent), 0.1);
+  --c-accent-surface-1-hover: hsla(var(--c-accent), 0.2);
+  --c-accent-surface-2-hover: hsla(var(--c-accent), 0.3);
+  --c-accent-surface-3-hover: hsla(var(--c-accent), 0.4);
+  --c-accent-surface-4-hover: hsla(var(--c-accent), 0.5);
+  --c-accent-surface-5-hover: hsla(var(--c-accent), 0.6);
 
   --c-primary-text-0: var(--c-neutral-20);
   --c-primary-text-1: var(--c-neutral-18);

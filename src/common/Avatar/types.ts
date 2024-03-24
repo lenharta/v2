@@ -1,17 +1,14 @@
-import { ElementProps, ExoticComponent, ExoticRender } from '@/types';
 import { IconName } from '../Icon';
+import { ElementProps, ExoticComponent, ExoticRender, Size, SurfaceConfig } from '@/types';
 
 export interface AvatarProps extends ElementProps<'button'> {
+  surface?: SurfaceConfig;
   imageSrc?: string;
   disabled?: boolean;
   label?: string;
   icon?: IconName;
+  size?: Size;
   url?: string;
-}
-
-export interface AvatarEvents {
-  onKeyDown: React.KeyboardEvent<HTMLButtonElement>;
-  onClick: React.MouseEvent<HTMLButtonElement>;
 }
 
 export type AvatarComponentRender = ExoticRender<HTMLButtonElement, AvatarProps>;

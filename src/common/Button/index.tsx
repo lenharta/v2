@@ -5,15 +5,27 @@ import { ButtonGroup } from './Group';
 import { useButtonCTX } from './context';
 import { UnstyledButton } from './Unstyled';
 import { createSurfaceToken, createTokenStyle } from '../tokens';
-import { ButtonComponent, ButtonComponentRender, ButtonProps } from './types';
+import { ButtonComponent, ButtonRenderType, ButtonProps } from './types';
 
 const defaultProps: Partial<ButtonProps> = {
+  surface: { level: 1, state: 'interactive', type: 'primary' },
   size: 'sm',
 };
 
-const ButtonRender: ButtonComponentRender = (props, ref) => {
+function findButtonLabel(props: Partial<ButtonProps>) {
+  if (props['aria-label'] !== undefined) {
+    return props['aria-label'];
+  }
+  if (typeof props.children === 'string') {
+    return props.children as string;
+  }
+  return 'button';
+}
+
+const ButtonRender: ButtonRenderType = (props, ref) => {
   const {
     id,
+    grow,
     size,
     style,
     loading,
@@ -29,27 +41,21 @@ const ButtonRender: ButtonComponentRender = (props, ref) => {
 
   const ctx = useButtonCTX();
 
-  const isLoading = ctx.loading !== undefined || loading !== undefined ? true : undefined;
-  const isDisabled = ctx.disabled !== undefined || disabled !== undefined ? true : undefined;
-  const isFocusable = !isDisabled && !excludeTabOrder ? true : undefined;
-
   const hasSize = ctx.size || size;
-  const hasLeftContent = leftContent !== undefined ? true : undefined;
-  const hasRightContent = rightContent !== undefined ? true : undefined;
+  const hasLoading = ctx.loading || loading;
+  const hasDisabled = ctx.disabled || disabled;
 
-  let buttonLabel: string | undefined;
+  const isLoading = hasLoading !== undefined ? true : undefined;
+  const isDisabled = hasDisabled !== undefined ? true : undefined;
+  const isFocusable = !isDisabled && !excludeTabOrder ? true : undefined;
+  const isFlexGrow = grow !== undefined ? true : undefined;
 
-  if (typeof children === 'string') {
-    buttonLabel = children;
-  }
-  if (otherProps['aria-label'] !== undefined) {
-    buttonLabel = otherProps['aria-label'];
-  }
+  const buttonLabel = findButtonLabel({ children, 'aria-label': otherProps['aria-label'] });
 
   const styles = React.useMemo(
     () => ({
       ...style,
-      ...createTokenStyle({ key: 'button-height', prop: 'height', value: hasSize }),
+      ...createTokenStyle({ key: 'button-height', prop: 'minHeight', value: hasSize }),
       ...createTokenStyle({ key: 'button-padding-x', prop: 'paddingInline', value: hasSize }),
     }),
     [ctx.size, size, style]
@@ -60,13 +66,12 @@ const ButtonRender: ButtonComponentRender = (props, ref) => {
       clsx(
         'button',
         createSurfaceToken({
-          type: surface?.type || 'primary',
-          level: !isDisabled && surface?.level ? surface?.level : 1,
-          state: !isDisabled ? 'interactive' : 'disabled',
+          ...surface,
+          state: isDisabled ? 'disabled' : surface?.state,
         }),
         className
       ),
-    [surface, disabled, className]
+    [className, disabled, surface]
   );
 
   return (
@@ -75,8 +80,9 @@ const ButtonRender: ButtonComponentRender = (props, ref) => {
       ref={ref}
       role="button"
       style={styles}
-      className={clxss}
       tabIndex={isFocusable ? 0 : -1}
+      className={clxss}
+      data-grow={isFlexGrow}
       data-loading={isLoading}
       data-disabled={isDisabled}
       aria-disabled={isDisabled}
@@ -87,9 +93,9 @@ const ButtonRender: ButtonComponentRender = (props, ref) => {
         <Button.Loader />
       ) : (
         <span className="inner">
-          {hasLeftContent && <div data-position="left">{leftContent}</div>}
+          {leftContent && <div data-position="left">{leftContent}</div>}
           {children && <div>{children}</div>}
-          {hasRightContent && <div data-position="right">{rightContent}</div>}
+          {rightContent && <div data-position="right">{rightContent}</div>}
         </span>
       )}
     </UnstyledButton>

@@ -12,11 +12,6 @@ export type StoreState = {
   nonce?: () => string;
 };
 
-export type Store = StoreState;
-export type StoreDispatch = React.Dispatch<StoreState>;
-
-export type Language = 'english' | 'german' | 'spanish' | 'japanese' | 'arabic' | 'french';
-
 export type ThemeStore = {
   dir: Dir;
   lang: Language;
@@ -69,8 +64,13 @@ export enum SETTINGS_THEME_AVATAR {
   soccer = 'avatar-soccer',
 }
 
+export type Store = StoreState;
+export type StoreDispatch = React.Dispatch<StoreState>;
+export type Language = 'english' | 'german' | 'spanish' | 'japanese' | 'arabic' | 'french';
+export type ValidationStatus = 'info' | 'warn' | 'danger' | 'success';
+
+export type Dir = 'ltr' | 'rtl';
 export type Mode = keyof typeof SETTINGS_THEME_MODE;
+export type Avatar = IconName;
 export type Accent = keyof typeof SETTINGS_THEME_ACCENT;
 export type AccentLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-export type Avatar = IconName;
-export type Dir = 'ltr' | 'rtl';

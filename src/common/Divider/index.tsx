@@ -31,7 +31,7 @@ const DividerRender: DividerComponentRender = (props, ref) => {
       ...style,
       ...createTokenStyle({ key: 'divider-height', prop: 'minHeight', value: hasSize }),
     }),
-    [style, hasSize]
+    [style, size]
   );
 
   const clxss = React.useMemo(
@@ -39,9 +39,9 @@ const DividerRender: DividerComponentRender = (props, ref) => {
       clsx(
         'divider',
         createSurfaceToken({
-          level: 5,
-          state: 'base',
           type: surface?.type || 'secondary',
+          state: 'base',
+          level: 5,
         }),
         className
       ),

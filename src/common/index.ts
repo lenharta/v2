@@ -8,6 +8,7 @@ export * from './Floating';
 export * from './Icon';
 export * from './Image';
 export * from './InlineCSS';
+export * from './InlineInput';
 export * from './Space';
 export * from './Stack';
 export * from './Subtitle';

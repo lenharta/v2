@@ -1,10 +1,14 @@
 :root {
+  --unit: 0.5rem;
   --scale: 1;
   --cursor: default;
 
-  --gap: calc(0.75rem * var(--scale));
-  --gutter: calc(calc(var(--gap) * 2) * var(--scale));
-  --spacing: calc(calc(var(--gap) * 3) * var(--scale));
+  --gap: calc(calc(var(--unit) * 1.5) * var(--scale));
+  --gutter: calc(calc(var(--gap) * 1.5) * var(--scale));
+  --spacing: calc(calc(var(--gutter) * 1.5) * var(--scale));
+
+  // --gutter: calc(calc(var(--gap) * 2) * var(--scale));
+  // --spacing: calc(calc(var(--gap) * 3) * var(--scale));
 
   --icon-size-sm: 24px;
   --icon-size-md: 28px;

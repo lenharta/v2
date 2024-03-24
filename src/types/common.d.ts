@@ -52,7 +52,7 @@ export type TitleLevelProps = Record<TitleLevel, boolean>;
 
 export type SurfaceType = 'primary' | 'secondary' | 'accent';
 
-export type SurfaceState = 'base' | 'interactive' | 'disabled';
+export type SurfaceState = 'base' | 'interactive' | 'disabled' | 'loading';
 
 export type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -71,6 +71,6 @@ export interface TokenConfig {
 
 export interface TokenStyleConfig {
   value?: string;
-  prop: keyof React.CSSProperties;
+  prop: keyof React.CSSProperties | (keyof React.CSSProperties)[];
   key: string;
 }

@@ -8,5 +8,17 @@ export function createToken(config: TokenConfig): string | undefined {
 
 export function createTokenStyle(config: TokenStyleConfig): React.CSSProperties {
   const { key, value, prop } = config;
-  return !value ? {} : { [prop]: createToken({ key, value }) };
+
+  if (!value) return {};
+
+  if (!Array.isArray(prop)) {
+    return { [prop]: createToken({ key, value }) };
+  }
+  return prop.reduce(
+    (prev, curr) => ({
+      ...prev,
+      ...{ [curr]: createToken({ key, value }) },
+    }),
+    {}
+  );
 }

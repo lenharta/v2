@@ -1,28 +1,17 @@
 .avatar {
+  --avatar-padding-xs: calc(6px * var(--scale));
+  --avatar-padding-sm: calc(8px * var(--scale));
+  --avatar-padding-md: calc(10px * var(--scale));
+  --avatar-padding-lg: calc(12px * var(--scale));
+  --avatar-padding-xl: calc(14px * var(--scale));
+
   display: inline-flex;
+  width: max-content;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-2);
-  border: var(--border-xs);
-  border-radius: var(--radius-rd);
-  outline: solid 2px transparent;
   border: solid 2px transparent;
-
-  &:not([data-disabled]),
-  &:not([data-loading]) {
-    cursor: pointer;
-  }
-  &[data-disabled] {
-    cursor: not-allowed;
-  }
-  &[data-loading] {
-    cursor: progress;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline-color: transparent;
-  }
-  &:focus:focus-visible {
-    outline-color: rgba(var(--c-blue), 0.87);
-  }
+  outline: solid 2px transparent;
+  border-radius: var(--radius-rd);
+  color: var(--c-accent-text-0);
+  border-color: var(--c-accent-text-0);
 }

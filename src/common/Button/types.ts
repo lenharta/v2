@@ -1,13 +1,12 @@
 import {
-  Accent,
-  ElementProps,
-  ExoticComponent,
-  ExoticRender,
-  Orientation,
+  Side,
   Size,
+  Orientation,
   SurfaceConfig,
+  ElementProps,
+  ExoticRender,
+  ExoticComponent,
 } from '@/types';
-import { Side } from '@floating-ui/react';
 
 export interface ButtonContextValue {
   orientation?: Orientation;
@@ -22,6 +21,7 @@ export interface UnstyledButtonProps extends ElementProps<'button'> {
 
 export interface ButtonProps extends UnstyledButtonProps {
   size?: Size;
+  grow?: boolean;
   loading?: boolean;
   surface?: SurfaceConfig;
   disabled?: boolean;
@@ -47,10 +47,10 @@ export interface ButtonGroupProps extends ElementProps<'div'> {
 export type ButtonLoaderComponent = React.FC<ButtonLoaderProps>;
 export type ButtonContentComponent = React.FC<ButtonContentProps>;
 
-export type ButtonGroupComponentRender = ExoticRender<HTMLDivElement, ButtonGroupProps>;
+export type ButtonGroupRenderType = ExoticRender<HTMLDivElement, ButtonGroupProps>;
 export type ButtonGroupComponent = ExoticComponent<HTMLDivElement, ButtonGroupProps>;
 
-export type UnstyledButtonComponentRender = ExoticRender<HTMLButtonElement, UnstyledButtonProps>;
+export type UnstyledButtonRenderType = ExoticRender<HTMLButtonElement, UnstyledButtonProps>;
 export type UnstyledButtonComponent = ExoticComponent<HTMLButtonElement, UnstyledButtonProps>;
 
 export interface ButtonComponents {
@@ -59,5 +59,5 @@ export interface ButtonComponents {
   Group: ButtonGroupComponent;
 }
 
-export type ButtonComponentRender = ExoticRender<HTMLButtonElement, ButtonProps>;
+export type ButtonRenderType = ExoticRender<HTMLButtonElement, ButtonProps>;
 export type ButtonComponent = ExoticComponent<HTMLButtonElement, ButtonProps> & ButtonComponents;

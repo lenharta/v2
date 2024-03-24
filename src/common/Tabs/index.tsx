@@ -9,7 +9,7 @@ import { TabsRootComponent, TabsRootProps } from './types';
 
 const defaultProps: Partial<TabsRootProps> = {
   alignment: 'start',
-  size: 'sm',
+  size: 'md',
 };
 
 export const Tabs: TabsRootComponent = (props) => {

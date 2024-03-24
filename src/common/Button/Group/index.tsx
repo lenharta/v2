@@ -2,13 +2,13 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { ButtonProvider } from '../context';
-import { ButtonGroupComponent, ButtonGroupComponentRender, ButtonGroupProps } from '../types';
+import { ButtonGroupComponent, ButtonGroupRenderType, ButtonGroupProps } from '../types';
 
 const defaultProps: Partial<ButtonGroupProps> = {
   orientation: 'horizontal',
 };
 
-export const ButtonGroupRender: ButtonGroupComponentRender = (props, ref) => {
+export const ButtonGroupRender: ButtonGroupRenderType = (props, ref) => {
   const { orientation, size, children, loading, disabled, className, ...otherProps } = mergeProps(
     defaultProps,
     props
