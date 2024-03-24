@@ -6,6 +6,7 @@ export interface TitleProps extends ElementProps<'h1'>, Partial<TitleLevelProps>
 }
 
 export type FindTitleSizeToken = (size?: TitleSize) => string;
+
 export type FindTitleComponent = (props: Partial<TitleLevelProps>) => TitleLevel;
 
 export type TitleComponent = ExoticComponent<HTMLHeadingElement, TitleProps>;

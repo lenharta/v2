@@ -4,6 +4,7 @@ import { Subtitle, Text, Title } from '@/common';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { SurfaceConfig, createSurface } from '@/utils';
 
 const HomeHero = () => {
   const scopeRef = React.useRef<HTMLDivElement>(null);
@@ -33,10 +34,18 @@ const HomeHero = () => {
   );
 };
 
+const DemoSurface = (props: Partial<SurfaceConfig>) => {
+  const clxss = createSurface(props);
+  return (
+    <div style={{ width: 300, height: 200 }} className={clxss} children={JSON.stringify(clxss)} />
+  );
+};
+
 export const Home = () => (
   <Page>
     <HomeHero />
     <Page.Content>
+      <DemoSurface type="primary-1" state="interactive" />
       <Page.Section>
         <Subtitle>Section One</Subtitle>
         <Text>
