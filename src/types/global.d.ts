@@ -41,3 +41,28 @@ export interface ContactDataProps {
   info: Partial<ContactInfoObj>;
   address: Partial<ContactAddressObj>;
 }
+
+export interface ItemObject {
+  value: string | number;
+  label: string | number;
+  disabled?: boolean;
+}
+
+export interface ItemObjectParsed {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface ItemObjectGroup {
+  group: string;
+  items: (string | ItemObject)[];
+}
+
+export interface ItemObjectGroupParsed {
+  group: string;
+  items: (ItemObjectParsed | ItemObjectGroupParsed)[];
+}
+
+export type ItemInput = string | number | ItemObject | ItemObjectGroup;
+export type ItemOutput = ItemObjectParsed | ItemObjectGroupParsed;

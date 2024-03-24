@@ -6,16 +6,13 @@ import {
   ElementProps,
   ExoticRender,
   ExoticComponent,
-  SurfaceConfig,
 } from '@/types';
 
 export interface DividerProps extends ElementProps<'div'> {
   size?: SizeCompact;
   label?: string;
   labelPosition?: 'center' | Alignment;
-  overrideTokens?: boolean;
   orientation?: Orientation;
-  surface?: SurfaceConfig;
   accent?: Accent;
 }
 

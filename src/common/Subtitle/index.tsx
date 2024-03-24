@@ -36,7 +36,7 @@ export const Subtitle: SubtitleComponent = React.forwardRef((props, ref) => {
       {...otherProps}
       ref={ref}
       style={{ fontSize }}
-      className={clsx('Subtitle', className)}
+      className={clsx('subtitle', className)}
     />
   );
 });

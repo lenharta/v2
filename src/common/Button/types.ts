@@ -1,9 +1,10 @@
-import { ElementProps, ExoticComponent, ExoticRender, Orientation, Size } from '@/types';
-import { Side } from '@floating-ui/react';
+import { Side, Size, Orientation, ElementProps, ExoticRender, ExoticComponent } from '@/types';
 
 export interface ButtonContextValue {
-  orientation: Orientation;
-  size: Size;
+  orientation?: Orientation;
+  disabled?: boolean;
+  loading?: boolean;
+  size?: Size;
 }
 
 export interface UnstyledButtonProps extends ElementProps<'button'> {
@@ -12,6 +13,7 @@ export interface UnstyledButtonProps extends ElementProps<'button'> {
 
 export interface ButtonProps extends UnstyledButtonProps {
   size?: Size;
+  grow?: boolean;
   loading?: boolean;
   disabled?: boolean;
   leftContent?: React.ReactNode;
@@ -28,16 +30,18 @@ export interface ButtonLoaderProps {}
 
 export interface ButtonGroupProps extends ElementProps<'div'> {
   orientation?: Orientation;
+  disabled?: boolean;
+  loading?: boolean;
   size?: Size;
 }
 
 export type ButtonLoaderComponent = React.FC<ButtonLoaderProps>;
 export type ButtonContentComponent = React.FC<ButtonContentProps>;
 
-export type ButtonGroupComponentRender = ExoticRender<HTMLDivElement, ButtonGroupProps>;
+export type ButtonGroupRenderType = ExoticRender<HTMLDivElement, ButtonGroupProps>;
 export type ButtonGroupComponent = ExoticComponent<HTMLDivElement, ButtonGroupProps>;
 
-export type UnstyledButtonComponentRender = ExoticRender<HTMLButtonElement, UnstyledButtonProps>;
+export type UnstyledButtonRenderType = ExoticRender<HTMLButtonElement, UnstyledButtonProps>;
 export type UnstyledButtonComponent = ExoticComponent<HTMLButtonElement, UnstyledButtonProps>;
 
 export interface ButtonComponents {
@@ -46,5 +50,5 @@ export interface ButtonComponents {
   Group: ButtonGroupComponent;
 }
 
-export type ButtonComponentRender = ExoticRender<HTMLButtonElement, ButtonProps>;
+export type ButtonRenderType = ExoticRender<HTMLButtonElement, ButtonProps>;
 export type ButtonComponent = ExoticComponent<HTMLButtonElement, ButtonProps> & ButtonComponents;

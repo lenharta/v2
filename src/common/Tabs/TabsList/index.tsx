@@ -11,6 +11,15 @@ import { TabsListProps, TabsListComponent, TabsListComponentRender } from '../ty
 
 const defaultProps: Partial<TabsListProps> = {};
 
+function createKeydownScope<T extends Element>({ element }: { element?: T | null }) {
+  return (event: React.KeyboardEvent<T>) => {
+    console.log(event);
+    if (element) {
+      console.log(element);
+    }
+  };
+}
+
 const TabsListRender: TabsListComponentRender = (props, ref) => {
   const { className, orientation, grow, alignment, ...otherProps } = mergeProps(
     defaultProps,
@@ -36,10 +45,7 @@ const TabsListRender: TabsListComponentRender = (props, ref) => {
         data-orientation={hasOrientation}
         data-alignment={hasAlignment}
         data-grow={isFlexGrow}
-        onKeyDownCapture={createEventCallback(otherProps.onKeyDownCapture, (event) => {
-          const groupNode = listRef.current!;
-          // console.log(groupNode);
-        })}
+        onKeyDownCapture={createKeydownScope({ element: listRef.current })}
       />
       <Divider accent={ctx.accent} />
     </>

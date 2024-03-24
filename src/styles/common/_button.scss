@@ -1,88 +1,47 @@
 @use '../mixins' as mixins;
 
 .button {
-  --button-padding-x-xs: calc(var(--unit) * 4);
-  --button-padding-x-sm: calc(var(--unit) * 4);
-  --button-padding-x-md: calc(var(--unit) * 6);
-  --button-padding-x-lg: calc(var(--unit) * 6);
-  --button-padding-x-xl: calc(var(--unit) * 8);
+  --button-height-xs: calc(30px * var(--scale));
+  --button-height-sm: calc(36px * var(--scale));
+  --button-height-md: calc(42px * var(--scale));
+  --button-height-lg: calc(50px * var(--scale));
+  --button-height-xl: calc(60px * var(--scale));
 
-  --button-height-xs: calc(var(--unit) * 14);
-  --button-height-sm: calc(var(--unit) * 16);
-  --button-height-md: calc(var(--unit) * 18);
-  --button-height-lg: calc(var(--unit) * 20);
-  --button-height-xl: calc(var(--unit) * 22);
+  --button-padding-x-xs: calc(8px * var(--scale));
+  --button-padding-x-sm: calc(9px * var(--scale));
+  --button-padding-x-md: calc(10px * var(--scale));
+  --button-padding-x-lg: calc(11px * var(--scale));
+  --button-padding-x-xl: calc(12px * var(--scale));
+
+  // --button-padding-x-xs: rem(14px);
+  // --button-padding-x-sm: rem(18px);
+  // --button-padding-x-md: rem(22px);
+  // --button-padding-x-lg: rem(26px);
+  // --button-padding-x-xl: rem(32px);
+
+  // --button-padding-x-compact-xs: rem();
+  // --button-padding-x-compact-sm: rem();
+  // --button-padding-x-compact-md: rem();
+  // --button-padding-x-compact-lg: rem();
+  // --button-padding-x-compact-xl: rem();
 
   user-select: none;
   font-weight: 500;
   font-family: var(--font-family);
-  border: solid 2px transparent;
+  font-size: var(--font-size-body);
   outline: solid 2px transparent;
-  min-height: var(--button-height, var(--button-height-xs));
-  padding-inline: var(--button-padding-x, var(--button-padding-x));
-
-  display: inline-flex;
+  border: solid 2px transparent;
   align-items: center;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  padding-inline: 0.6rem;
+  margin: 2px;
 
-  &-inner {
-    height: 100%;
-    display: inline-flex;
-    white-space: nowrap;
-    align-items: center;
+  &:not([data-grow]) {
+    width: max-content;
   }
-
-  &--xs {
-    --button-height: var(--button-height-xs);
-    --button-padding-x: var(--button-padding-x-xs);
-  }
-  &--sm {
-    --button-height: var(--button-height-sm);
-    --button-padding-x: var(--button-padding-x-sm);
-  }
-  &--md {
-    --button-height: var(--button-height-md);
-    --button-padding-x: var(--button-padding-x-md);
-  }
-  &--lg {
-    --button-height: var(--button-height-lg);
-    --button-padding-x: var(--button-padding-x-lg);
-  }
-  &--xl {
-    --button-height: var(--button-height-xl);
-    --button-padding-x: var(--button-padding-x-xl);
-  }
-
-  &--default {
-    background-color: rgba(var(--c-secondary), 0.04);
-    color: rgba(var(--c-secondary), 1);
-  }
-  &--default:hover {
-    background-color: rgba(var(--c-secondary), 0.08);
-    color: rgba(var(--c-secondary), 1);
-  }
-  &--primary {
-    background-color: rgba(var(--c-primary), 1);
-    color: rgba(var(--c-secondary), 1);
-  }
-  &--primary:hover {
-    background-color: rgba(var(--c-primary), 0.8);
-    color: rgba(var(--c-secondary), 1);
-  }
-  &--secondary {
-    background-color: rgba(var(--c-secondary), 1);
-    color: rgba(var(--c-primary), 1);
-  }
-  &--secondary:hover {
-    background-color: rgba(var(--c-secondary), 0.8);
-    color: rgba(var(--c-primary), 1);
-  }
-  &--accent {
-    background-color: rgba(var(--c-accent), 0.3);
-    color: rgba(var(--c-accent), 1);
-  }
-  &--accent:hover {
-    background-color: rgba(var(--c-accent), 0.4);
-    color: rgba(var(--c-accent), 1);
+  [data-grow] {
+    width: 100%;
   }
 
   &:focus:not(:focus-visible) {
@@ -92,18 +51,25 @@
     outline-color: rgba(var(--c-blue), 1);
     outline-offset: 2px;
   }
+
+  &-inner {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
 }
 
 .button-group {
+  width: max-content;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  gap: calc(var(--unit) * 1);
 
-  [data-orientation='vertical'] {
+  &[data-orientation='vertical'] {
     flex-direction: column;
   }
-  [data-orientation='horizontal'] {
+  &[data-orientation='horizontal'] {
     flex-direction: row;
   }
 }

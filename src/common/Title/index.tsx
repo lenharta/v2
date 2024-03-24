@@ -31,7 +31,7 @@ export const Title: TitleComponent = React.forwardRef((props, ref) => {
       {...otherProps}
       ref={ref}
       style={{ fontSize }}
-      className={clsx('Title', className)}
+      className={clsx('title', className)}
     />
   );
 });

@@ -1,79 +1,58 @@
+import * as React from 'react';
 import { Page } from '@/app/components';
-import { Tabs, Text, Title } from '@/common';
-import { Language } from '@/types';
-import { objectKeys } from '@/utils';
+import { Subtitle, Text, Title } from '@/common';
 
-interface CommonSectionProps {
-  lang?: Language;
-}
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
-export const HomeOverview = ({}: CommonSectionProps) => (
-  <Page.Section id="home-sec-overview">
-    <div className="home-sec-overview">
-      <Title h2>Overview</Title>
+const HomeHero = () => {
+  const scopeRef = React.useRef<HTMLDivElement>(null);
+  const timelineRef = React.useRef<gsap.core.Timeline>();
+  const commonFrom: gsap.TweenVars = { opacity: 0, ease: 'circ.inOut' };
+  const commonTo: gsap.TweenVars = { opacity: 1, ease: 'circ.inOut' };
+
+  useGSAP(
+    () => {
+      timelineRef.current = gsap
+        .timeline()
+        .from('.subtitle', { y: -100, ...commonFrom })
+        .from('.title', { x: -100, ...commonFrom })
+        .to('.subtitle', { y: 0, ...commonTo })
+        .to('.title', { x: 0, ...commonTo });
+    },
+    { scope: scopeRef }
+  );
+
+  return (
+    <div className="page-hero home-hero" ref={scopeRef}>
+      <Subtitle>Andrew Lenhart</Subtitle>
+      <Title>Software Engineer</Title>
+      <div className="underlay-top" />
+      <div className="underlay-bottom" />
     </div>
-  </Page.Section>
-);
-
-export const HomeExperience = ({}: CommonSectionProps) => (
-  <Page.Section id="home-sec-experience">
-    <div className="home-sec-experience">
-      <Title h2>Experience</Title>
-    </div>
-  </Page.Section>
-);
-
-export const HomeTimeline = ({}: CommonSectionProps) => (
-  <Page.Section id="home-sec-timeline">
-    <div className="home-sec-timeline">
-      <Title h2>Timeline</Title>
-    </div>
-  </Page.Section>
-);
-
-export const HomeHero = ({}: CommonSectionProps) => (
-  <Page.Hero>
-    <div className="home-hero">
-      <Title h2 className="home-hero-subheadline" children="Andrew Lenhart" />
-      <Title h1 className="home-hero-headline" children="Software Engineer" />
-    </div>
-  </Page.Hero>
-);
-
-export const DemoTabs = () => (
-  <Page.Section>
-    <Tabs.Root defaultValue="tab-a" elevated>
-      <Tabs.List>
-        <Tabs.Item value="tab-a" label="Tab A" />
-        <Tabs.Item value="tab-b" label="Tab B" />
-        <Tabs.Item value="tab-c" label="Tab C" />
-      </Tabs.List>
-      <Tabs.Panel value="tab-a" children="Content A" style={{ padding: 24 }} />
-      <Tabs.Panel value="tab-b" children="Content B" style={{ padding: 24 }} />
-      <Tabs.Panel value="tab-c" children="Content C" style={{ padding: 24 }} />
-    </Tabs.Root>
-  </Page.Section>
-);
-
-// type TextSize = 'sm' | 'md' | 'lg';
-// type TitleSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-// type CaptionSize = 'sm' | 'md' | 'lg';
-// type SubtitleSize = 'sm' | 'md' | 'lg';
-
-// type TypographyType = 'text' | 'title' | 'caption' | 'subtitle';
-
-// type GlobalTokens =
-//   | `size-text--${TextSize}`
-//   | `size-title--${TitleSize}`
-//   | `size-caption--${CaptionSize}`
-//   | `size-subtitle--${SubtitleSize}`
-//   | `surface-${SurfaceType}-${SurfaceLevel}`;
+  );
+};
 
 export const Home = () => (
   <Page>
     <HomeHero />
     <Page.Content>
-      <DemoTabs />
+      <Page.Section>
+        <Subtitle>Section One</Subtitle>
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum minus hic qui alias
+          doloremque nostrum, veniam vel tempora ex sint quos consequuntur totam possimus officia
+          voluptates, tenetur sed officiis perspiciatis?
+        </Text>
+      </Page.Section>
+      <Page.Section>
+        <Subtitle>Section Two</Subtitle>
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum minus hic qui alias
+          doloremque nostrum, veniam vel tempora ex sint quos consequuntur totam possimus officia
+          voluptates, tenetur sed officiis perspiciatis?
+        </Text>
+      </Page.Section>
     </Page.Content>
   </Page>
 );

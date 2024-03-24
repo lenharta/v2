@@ -46,7 +46,6 @@
   flex-direction: column;
   justify-content: flex-start;
   padding-inline: var(--gutter);
-  padding-block: calc(var(--gutter) * 2);
 
   &:first-of-type {
     padding-top: var(--spacing);

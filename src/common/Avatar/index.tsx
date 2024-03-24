@@ -1,25 +1,27 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import { Icon } from '../Icon';
 import { mergeProps } from '@/utils';
+import { useNavigate } from 'react-router-dom';
 import { UnstyledButton } from '../Button/Unstyled';
 import { createEventCallback } from '../utils';
-import { AvatarComponent, AvatarComponentRender, AvatarEvents, AvatarProps } from './types';
+import { AvatarComponent, AvatarComponentRender, AvatarProps } from './types';
 
 const defaultProps: Partial<AvatarProps> = {
   label: 'avatar icon',
   icon: 'person',
+  size: 'md',
   url: '/',
 };
 
 const AvatarRender: AvatarComponentRender = (props, ref) => {
   const {
     url,
+    size,
     icon,
     label,
     value,
+    style,
     disabled,
     imageSrc,
     className,
@@ -29,32 +31,36 @@ const AvatarRender: AvatarComponentRender = (props, ref) => {
   } = mergeProps(defaultProps, props);
 
   const navigate = useNavigate();
+  const hasValue = value || url;
+  const isDisabled = disabled !== undefined ? true : undefined;
 
-  function handleKeyDown(event: AvatarEvents['onKeyDown']) {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (event.currentTarget.value && event.key === 'Enter') {
       navigate(event.currentTarget.value);
     }
-  }
+  };
 
-  function handleClick(event: AvatarEvents['onClick']) {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (event.currentTarget.value) {
       navigate(event.currentTarget.value);
     }
-  }
+  };
+
+  const clxss = clsx('avatar', className);
 
   return (
     <UnstyledButton
       {...otherProps}
       ref={ref}
-      value={value || url}
-      tabIndex={disabled ? -1 : 0}
+      value={hasValue}
+      tabIndex={!isDisabled ? 0 : -1}
+      className={clxss}
       aria-label={label}
-      aria-disabled={disabled}
-      data-disabled={disabled}
-      className={clsx('avatar', className)}
-      onKeyDown={createEventCallback(onKeyDown, handleKeyDown)}
+      aria-disabled={isDisabled}
+      data-disabled={isDisabled}
       onClick={createEventCallback(onClick, handleClick)}
-      children={<Icon name={icon} aria-label={`${label} icon`} />}
+      onKeyDown={createEventCallback(onKeyDown, handleKeyDown)}
+      children={<Icon name={icon} aria-label={[label, 'icon'].join(' ')} />}
     />
   );
 };

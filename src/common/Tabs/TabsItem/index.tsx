@@ -4,7 +4,6 @@ import { mergeProps } from '@/utils';
 import { useTabsCTX } from '../context';
 import { UnstyledButton } from '@/common/Button/Unstyled';
 import { createEventCallback } from '@/common/utils';
-import { createSurfaceToken, createTokenStyle } from '@/common/tokens';
 import { TabsItemComponent, TabsItemComponentRender, TabsItemProps } from '../types';
 
 const defaultProps: Partial<TabsItemProps> = {
@@ -16,7 +15,6 @@ const TabsItemRender: TabsItemComponentRender = (props, ref) => {
     size,
     value,
     label,
-    style,
     surface,
     elevated,
     disabled,
@@ -36,28 +34,7 @@ const TabsItemRender: TabsItemComponentRender = (props, ref) => {
   const hasContentLeft = !leftContent ? undefined : true;
   const hasContentRight = !rightContent ? undefined : true;
 
-  const clxss = React.useMemo(
-    () =>
-      clsx(
-        'tabs-item',
-        createSurfaceToken({
-          type: surface!.type,
-          state: 'interactive',
-          level: isElevated ? 1 : 0,
-        }),
-        className
-      ),
-    [surface, ctx.elevated, elevated, className]
-  );
-
-  const styles = React.useMemo(
-    () => ({
-      ...style,
-      ...createTokenStyle({ key: 'tabs-item-height', prop: 'minHeight', value: hasSize }),
-      ...createTokenStyle({ key: 'tabs-item-padding-x', prop: 'paddingInline', value: hasSize }),
-    }),
-    [ctx.size, size, style]
-  );
+  const clxss = clsx('tabs-item', className);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
     return !isDisabled ? ctx.onChange(event.currentTarget.value) : undefined;
@@ -73,7 +50,6 @@ const TabsItemRender: TabsItemComponentRender = (props, ref) => {
       ref={ref}
       role="tab"
       value={value}
-      style={styles}
       tabIndex={isDisabled ? -1 : 0}
       className={clxss}
       aria-label={label}

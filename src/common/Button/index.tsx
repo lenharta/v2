@@ -2,33 +2,52 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { ButtonGroup } from './Group';
+import { useButtonCTX } from './context';
 import { UnstyledButton } from './Unstyled';
-import { ButtonComponent, ButtonComponentRender, ButtonProps } from './types';
+import { ButtonComponent, ButtonRenderType, ButtonProps } from './types';
 
 const defaultProps: Partial<ButtonProps> = {
   size: 'sm',
 };
 
-const ButtonRender: ButtonComponentRender = (props, ref) => {
+function findButtonLabel(props: Partial<ButtonProps>) {
+  if (props['aria-label'] !== undefined) {
+    return props['aria-label'];
+  }
+  if (typeof props.children === 'string') {
+    return props.children as string;
+  }
+  return 'button';
+}
+
+const ButtonRender: ButtonRenderType = (props, ref) => {
   const {
     id,
+    grow,
+    size,
     loading,
     disabled,
-    className,
-    excludeTabOrder,
     children,
+    className,
     leftContent,
     rightContent,
+    excludeTabOrder,
     ...otherProps
   } = mergeProps(defaultProps, props);
 
-  const isLoading = loading !== undefined;
-  const isDisabled = disabled !== undefined;
-  const isFocusable = !isDisabled && !excludeTabOrder;
+  const ctx = useButtonCTX();
 
-  const hasValidLabel = typeof children === 'string' ? children : undefined;
-  const hasLeftContent = leftContent !== undefined ? leftContent : undefined;
-  const hasRightContent = rightContent !== undefined ? rightContent : undefined;
+  const hasSize = ctx.size || size;
+  const hasLoading = ctx.loading || loading;
+  const hasDisabled = ctx.disabled || disabled;
+
+  const isLoading = hasLoading !== undefined ? true : undefined;
+  const isDisabled = hasDisabled !== undefined ? true : undefined;
+  const isFocusable = !isDisabled && !excludeTabOrder ? true : undefined;
+  const isFlexGrow = grow !== undefined ? true : undefined;
+
+  const clxss = clsx('button', className);
+  const buttonLabel = findButtonLabel({ children, 'aria-label': otherProps['aria-label'] });
 
   return (
     <UnstyledButton
@@ -36,20 +55,21 @@ const ButtonRender: ButtonComponentRender = (props, ref) => {
       ref={ref}
       role="button"
       tabIndex={isFocusable ? 0 : -1}
-      className={clsx('button', className)}
-      data-loading={isLoading ? true : undefined}
-      data-disabled={isDisabled ? true : undefined}
-      aria-disabled={isDisabled ? true : undefined}
-      aria-label={hasValidLabel || otherProps['aria-label']}
-      aria-busy={isLoading ? true : undefined}
+      className={clxss}
+      data-grow={isFlexGrow}
+      data-loading={isLoading}
+      data-disabled={isDisabled}
+      aria-disabled={isDisabled}
+      aria-label={buttonLabel}
+      aria-busy={isLoading}
     >
       {isLoading ? (
         <Button.Loader />
       ) : (
         <span className="inner">
-          <Button.Content position="left">{hasLeftContent}</Button.Content>
+          {leftContent && <div data-position="left">{leftContent}</div>}
           {children && <div>{children}</div>}
-          <Button.Content position="right">{hasRightContent}</Button.Content>
+          {rightContent && <div data-position="right">{rightContent}</div>}
         </span>
       )}
     </UnstyledButton>
@@ -58,13 +78,8 @@ const ButtonRender: ButtonComponentRender = (props, ref) => {
 
 export const Button = React.forwardRef(ButtonRender) as ButtonComponent;
 
-Button.Content = ({ position = 'left', children }) => {
-  if (!children) return null;
-  return <div data-position={position}>{children}</div>;
-};
-
 Button.Loader = ({}) => {
-  return <p className="button-loader" children="Loading..." />;
+  return <p className="button-loader">Loading...</p>;
 };
 
 Button.displayName = '@v2/Button';
