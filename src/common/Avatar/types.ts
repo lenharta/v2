@@ -1,8 +1,7 @@
 import { IconName } from '../Icon';
-import { ElementProps, ExoticComponent, ExoticRender, Size, SurfaceConfig } from '@/types';
+import { ElementProps, ExoticComponent, ExoticRender, Size } from '@/types';
 
 export interface AvatarProps extends ElementProps<'button'> {
-  surface?: SurfaceConfig;
   imageSrc?: string;
   disabled?: boolean;
   label?: string;

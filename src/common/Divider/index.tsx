@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { DividerProps, DividerComponent, DividerComponentRender } from './types';
-import { createSurfaceToken, createTokenStyle } from '../tokens';
 
 const defaultProps: Partial<DividerProps> = {
   orientation: 'vertical',
@@ -10,74 +9,25 @@ const defaultProps: Partial<DividerProps> = {
 };
 
 const DividerRender: DividerComponentRender = (props, ref) => {
-  const {
-    size,
-    label,
-    style,
-    accent,
-    surface,
-    className,
-    orientation,
-    labelPosition,
-    overrideTokens,
-    ...otherProps
-  } = mergeProps(defaultProps, props);
+  const { size, label, accent, className, orientation, labelPosition, ...otherProps } = mergeProps(
+    defaultProps,
+    props
+  );
 
+  const clxss = clsx('divider', className);
   const hasSize = size !== undefined ? size : undefined;
   const hasAccent = accent !== undefined ? accent : undefined;
-
-  const styles = React.useMemo(
-    () => ({
-      ...style,
-      ...createTokenStyle({ key: 'divider-height', prop: 'minHeight', value: hasSize }),
-    }),
-    [style, size]
-  );
-
-  const clxss = React.useMemo(
-    () =>
-      clsx(
-        'divider',
-        createSurfaceToken({
-          type: surface?.type || 'secondary',
-          state: 'base',
-          level: 5,
-        }),
-        className
-      ),
-    [surface, className]
-  );
 
   return (
     <div
       {...otherProps}
       ref={ref}
       role="separator"
-      style={styles}
       className={clxss}
       data-orientation={orientation}
       aria-orientation={orientation}
     >
-      <span
-        children={label}
-        data-position={labelPosition}
-        className={clsx(
-          'divider-label',
-          createSurfaceToken(
-            hasAccent
-              ? {
-                  type: surface?.type || 'secondary',
-                  state: 'base',
-                  level: 5,
-                }
-              : {
-                  type: 'accent',
-                  state: 'base',
-                  level: 0,
-                }
-          )
-        )}
-      />
+      <span children={label} data-position={labelPosition} className="divider-label" />
     </div>
   );
 };

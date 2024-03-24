@@ -4,11 +4,9 @@ import { mergeProps } from '@/utils';
 import { ButtonGroup } from './Group';
 import { useButtonCTX } from './context';
 import { UnstyledButton } from './Unstyled';
-import { createSurfaceToken, createTokenStyle } from '../tokens';
 import { ButtonComponent, ButtonRenderType, ButtonProps } from './types';
 
 const defaultProps: Partial<ButtonProps> = {
-  surface: { level: 1, state: 'interactive', type: 'primary' },
   size: 'sm',
 };
 
@@ -27,9 +25,7 @@ const ButtonRender: ButtonRenderType = (props, ref) => {
     id,
     grow,
     size,
-    style,
     loading,
-    surface,
     disabled,
     children,
     className,
@@ -50,36 +46,14 @@ const ButtonRender: ButtonRenderType = (props, ref) => {
   const isFocusable = !isDisabled && !excludeTabOrder ? true : undefined;
   const isFlexGrow = grow !== undefined ? true : undefined;
 
+  const clxss = clsx('button', className);
   const buttonLabel = findButtonLabel({ children, 'aria-label': otherProps['aria-label'] });
-
-  const styles = React.useMemo(
-    () => ({
-      ...style,
-      ...createTokenStyle({ key: 'button-height', prop: 'minHeight', value: hasSize }),
-      ...createTokenStyle({ key: 'button-padding-x', prop: 'paddingInline', value: hasSize }),
-    }),
-    [ctx.size, size, style]
-  );
-
-  const clxss = React.useMemo(
-    () =>
-      clsx(
-        'button',
-        createSurfaceToken({
-          ...surface,
-          state: isDisabled ? 'disabled' : surface?.state,
-        }),
-        className
-      ),
-    [className, disabled, surface]
-  );
 
   return (
     <UnstyledButton
       {...otherProps}
       ref={ref}
       role="button"
-      style={styles}
       tabIndex={isFocusable ? 0 : -1}
       className={clxss}
       data-grow={isFlexGrow}

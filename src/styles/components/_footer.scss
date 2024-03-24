@@ -1,4 +1,6 @@
 .footer {
+  display: block;
+  padding: var(--gutter);
 }
 
 .footer-menu {
@@ -17,6 +19,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--unit);
+
+    .subtitle {
+      margin-inline: var(--gap);
+    }
   }
 
   &-list {

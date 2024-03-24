@@ -1,11 +1,4 @@
-import {
-  ElementProps,
-  ExoticRender,
-  ExoticComponent,
-  SurfaceConfig,
-  ValidationStatus,
-  Size,
-} from '@/types';
+import { ElementProps, ExoticRender, ExoticComponent, ValidationStatus, Size } from '@/types';
 
 export interface InlineInputTextProps extends ElementProps<'p'> {
   text?: string;
@@ -24,7 +17,6 @@ export type InlineInputLabelRenderType = ExoticRender<HTMLLabelElement, InlineIn
 export type InlineInputLabelComponent = ExoticComponent<HTMLLabelElement, InlineInputLabelProps>;
 
 export interface InlineInputProps extends ElementProps<'button'> {
-  surface?: SurfaceConfig;
   elevated?: boolean;
   compact?: boolean;
   label: string;

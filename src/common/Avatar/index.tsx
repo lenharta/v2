@@ -5,11 +5,9 @@ import { mergeProps } from '@/utils';
 import { useNavigate } from 'react-router-dom';
 import { UnstyledButton } from '../Button/Unstyled';
 import { createEventCallback } from '../utils';
-import { createSurfaceToken, createTokenStyle } from '../tokens';
 import { AvatarComponent, AvatarComponentRender, AvatarProps } from './types';
 
 const defaultProps: Partial<AvatarProps> = {
-  surface: { type: 'primary', state: 'interactive', level: 0 },
   label: 'avatar icon',
   icon: 'person',
   size: 'md',
@@ -24,7 +22,6 @@ const AvatarRender: AvatarComponentRender = (props, ref) => {
     label,
     value,
     style,
-    surface,
     disabled,
     imageSrc,
     className,
@@ -49,36 +46,13 @@ const AvatarRender: AvatarComponentRender = (props, ref) => {
     }
   };
 
-  const clxss = React.useMemo(
-    () =>
-      clsx(
-        'avatar',
-        createSurfaceToken({
-          ...surface,
-          state: isDisabled ? 'disabled' : surface?.state,
-        })
-      ),
-    [surface]
-  );
-
-  const styles = React.useMemo(
-    () => ({
-      ...style,
-      ...createTokenStyle({
-        key: 'avatar-padding',
-        prop: 'padding',
-        value: size,
-      }),
-    }),
-    [style, size]
-  );
+  const clxss = clsx('avatar', className);
 
   return (
     <UnstyledButton
       {...otherProps}
       ref={ref}
       value={hasValue}
-      style={styles}
       tabIndex={!isDisabled ? 0 : -1}
       className={clxss}
       aria-label={label}

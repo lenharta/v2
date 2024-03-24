@@ -1,33 +1,57 @@
-import { mergeProps } from '../merge-props';
-import { SurfaceLevel, SurfaceOptions, SurfaceState, SurfaceVariant } from '@/types/common';
+import { objectKeys } from '..';
 
-const inverseSurfaceLookup: Record<SurfaceVariant, SurfaceVariant> = {
+type SurfaceType = 'accent' | 'primary' | 'secondary';
+type SurfaceState = 'base' | 'disabled' | 'loading' | 'interactive';
+type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
+
+const inverseSurfaceTypes: Record<SurfaceType, SurfaceType> = {
   accent: 'accent',
   primary: 'secondary',
   secondary: 'primary',
 };
 
-export function createSurfaceToken(
-  variant: SurfaceVariant = 'primary',
-  state: SurfaceState = 'base',
-  level: SurfaceLevel = 0
-) {
-  return [variant, state, level].join('-');
+export type TokenProperty = keyof React.CSSProperties;
+
+interface TokenProps {
+  key: string | string[];
+  prop: TokenProperty | TokenProperty[];
+  value?: any | any[];
 }
 
-export function getInverseSurfaceVariant(variant?: SurfaceVariant): SurfaceVariant {
-  return inverseSurfaceLookup[variant || 'primary'];
+export function parseToken(config: TokenProps | TokenProps[]) {
+  if (Array.isArray(config)) {
+    return config.reduce(
+      (prev, item) => ({
+        ...prev,
+      }),
+      {}
+    );
+  }
 }
 
-const defaultSurfaceProps: Partial<SurfaceOptions> = {
-  variant: 'primary',
-  state: 'base',
-  level: 0,
+const isArray = (config: any) => {
+  return Array.isArray(config) ? true : false;
 };
 
-export function createSurface(props?: SurfaceOptions) {
-  const { variant, state, level, inverted } = mergeProps(defaultSurfaceProps, props ?? {});
-  const inverseVariant = getInverseSurfaceVariant(variant);
-  const surfaceClxss = createSurfaceToken(inverted ? inverseVariant : variant, state, level);
-  return surfaceClxss;
+function isEqualTokenConfig(config: TokenProps) {
+  const hasValidArrays = isArray(config.key) && isArray(config.prop);
+  const hasValidLengths = config.key.length === config.prop.length;
+  return hasValidArrays && hasValidLengths ? true : false;
+}
+
+export function createToken(props: TokenProps) {
+  const isEqual = isEqualTokenConfig(props);
+  return isEqual;
+}
+
+interface SurfaceProps {
+  disabled?: boolean;
+}
+
+function findDisabledSurface(props: SurfaceProps) {
+  const {} = props;
+}
+
+export function createSurface(props: {}) {
+  const {} = props;
 }

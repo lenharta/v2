@@ -1,66 +1,35 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, Divider, Subtitle, Title } from '@/common';
 import { Page } from '@/app/components';
+import { Subtitle, Text, Title } from '@/common';
 
-const HomeHero = () => (
-  <div className="page-hero home-hero">
-    <Subtitle>Andrew Lenhart</Subtitle>
-    <Title>Software Engineer</Title>
-  </div>
-);
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
-interface FooterMenuItemProps {
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  value: string;
-  label: string;
-}
+const HomeHero = () => {
+  const scopeRef = React.useRef<HTMLDivElement>(null);
+  const timelineRef = React.useRef<gsap.core.Timeline>();
+  const commonFrom: gsap.TweenVars = { opacity: 0, ease: 'circ.inOut' };
+  const commonTo: gsap.TweenVars = { opacity: 1, ease: 'circ.inOut' };
 
-interface FooterMenuGroupProps {
-  group: string;
-  items: FooterMenuItemProps[];
-}
-
-interface FooterMenuProps {
-  groups: FooterMenuGroupProps[];
-}
-
-const FooterMenuGroup = (props: FooterMenuGroupProps) => {
-  const { group, items } = props;
-  const navigate = useNavigate();
-  return (
-    <div className="footer-menu-group">
-      <Subtitle>{group}</Subtitle>
-      <Divider />
-      <div className="footer-menu-list">
-        {items.map(({ value, label, onClick }) => {
-          return (
-            <Button
-              key={value}
-              value={value}
-              children={label}
-              className="footer-menu-item"
-              surface={{ level: 0, state: 'interactive', type: 'primary' }}
-              onClick={(event) => {
-                const isExternalChange = onClick !== undefined;
-                return isExternalChange ? onClick(event) : navigate(value);
-              }}
-            />
-          );
-        })}
-      </div>
-    </div>
+  useGSAP(
+    () => {
+      timelineRef.current = gsap
+        .timeline()
+        .from('.subtitle', { y: -100, ...commonFrom })
+        .from('.title', { x: -100, ...commonFrom })
+        .to('.subtitle', { y: 0, ...commonTo })
+        .to('.title', { x: 0, ...commonTo });
+    },
+    { scope: scopeRef }
   );
-};
 
-const FooterMenu = (props: FooterMenuProps) => {
-  const { groups } = props;
   return (
-    <nav className="footer-menu">
-      {groups.map(({ group, items }) => (
-        <FooterMenuGroup key={group} group={group} items={items} />
-      ))}
-    </nav>
+    <div className="page-hero home-hero" ref={scopeRef}>
+      <Subtitle>Andrew Lenhart</Subtitle>
+      <Title>Software Engineer</Title>
+      <div className="underlay-top" />
+      <div className="underlay-bottom" />
+    </div>
   );
 };
 
@@ -69,26 +38,20 @@ export const Home = () => (
     <HomeHero />
     <Page.Content>
       <Page.Section>
-        <FooterMenu
-          groups={[
-            {
-              group: 'Routes',
-              items: [
-                { value: '/', label: 'Home' },
-                { value: '/sandbox', label: 'Sandbox' },
-                { value: '/toolbox', label: 'Toolbox' },
-              ],
-            },
-            {
-              group: 'Demos',
-              items: [
-                { value: '/demo/tabs', label: 'Tabs' },
-                { value: '/demo/button', label: 'Button' },
-                { value: '/demo/checkbox', label: 'Checkbox' },
-              ],
-            },
-          ]}
-        />
+        <Subtitle>Section One</Subtitle>
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum minus hic qui alias
+          doloremque nostrum, veniam vel tempora ex sint quos consequuntur totam possimus officia
+          voluptates, tenetur sed officiis perspiciatis?
+        </Text>
+      </Page.Section>
+      <Page.Section>
+        <Subtitle>Section Two</Subtitle>
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum minus hic qui alias
+          doloremque nostrum, veniam vel tempora ex sint quos consequuntur totam possimus officia
+          voluptates, tenetur sed officiis perspiciatis?
+        </Text>
       </Page.Section>
     </Page.Content>
   </Page>

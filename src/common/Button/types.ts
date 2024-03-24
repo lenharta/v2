@@ -1,12 +1,4 @@
-import {
-  Side,
-  Size,
-  Orientation,
-  SurfaceConfig,
-  ElementProps,
-  ExoticRender,
-  ExoticComponent,
-} from '@/types';
+import { Side, Size, Orientation, ElementProps, ExoticRender, ExoticComponent } from '@/types';
 
 export interface ButtonContextValue {
   orientation?: Orientation;
@@ -23,7 +15,6 @@ export interface ButtonProps extends UnstyledButtonProps {
   size?: Size;
   grow?: boolean;
   loading?: boolean;
-  surface?: SurfaceConfig;
   disabled?: boolean;
   leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
