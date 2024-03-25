@@ -1,3 +1,4 @@
+import { SurfaceConfig } from '@/utils';
 import { ElementProps, ExoticComponent, ExoticRender, Orientation } from '@/types';
 
 export interface TileContextValue {
@@ -10,6 +11,7 @@ export interface TileGroupProps extends ElementProps<'div'> {
 
 export interface TileProps extends ElementProps<'div'> {
   disabled?: boolean;
+  surface?: SurfaceConfig;
   url?: string;
 }
 

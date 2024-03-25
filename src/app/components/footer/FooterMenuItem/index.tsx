@@ -8,7 +8,7 @@ export const FooterMenuItem: FooterMenuItemComponent = (props) => {
       value={value}
       children={label}
       className="footer-menu-item"
-      surface={{ level: 0, state: 'interactive', type: 'primary' }}
+      surface={{ type: 'primary-0', state: 'interactive' }}
       onClick={(event) => {
         if (onClick !== undefined) {
           return onClick(event);

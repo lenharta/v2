@@ -1,31 +1,20 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
-import {
-  CaptionProps,
-  CaptionComponent,
-  CaptionComponentRender,
-  FindCaptionSizeToken,
-} from './types';
-
-const defaultProps: Partial<CaptionProps> = {
-  size: 'md',
-};
-
-const findCaptionSizeToken: FindCaptionSizeToken = (size) => {
-  if (!size) return `var(--font-size-caption-${defaultProps.size})`;
-  return `var(--font-size-caption-${size})`;
-};
+import { parseTokenData } from '@/utils';
+import { CaptionComponent, CaptionComponentRender } from './types';
 
 export const CaptionRender: CaptionComponentRender = (props, ref) => {
-  const { size, className, overrideTokens, ...otherProps } = mergeProps(defaultProps, props);
-  const fontSize = !overrideTokens ? findCaptionSizeToken(size) : undefined;
+  const { size = 'md', style, className, overrideTokens, ...otherProps } = props;
+  const hasSize = !overrideTokens ? size : undefined;
   return (
     <caption
       {...otherProps}
       ref={ref}
-      style={{ fontSize }}
       className={clsx('caption', className)}
+      style={{
+        ...style,
+        ...parseTokenData([{ key: 'font-size-caption', prop: 'fontSize', value: hasSize }]),
+      }}
     />
   );
 };

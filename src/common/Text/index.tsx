@@ -1,15 +1,19 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
-import { TextComponent, TextComponentRender, TextProps } from './types';
-
-const defaultProps: Partial<TextProps> = {};
+import { TextComponentType, TextComponentRender } from './types';
 
 const TextRender: TextComponentRender = (props, ref) => {
-  const { className, overrideTokens, ...otherProps } = mergeProps(defaultProps, props);
-  const fontSize = !overrideTokens ? `var(--font-size-body)` : undefined;
-  return <p {...otherProps} ref={ref} style={{ fontSize }} className={clsx('text', className)} />;
+  const { className, overrideTokens, ...otherProps } = props;
+  const hasSize = !overrideTokens ? 'var(--font-size-body)' : undefined;
+  return (
+    <p
+      {...otherProps}
+      ref={ref}
+      className={clsx('text', className)}
+      style={{ fontSize: hasSize }}
+    />
+  );
 };
 
-export const Text = React.forwardRef(TextRender) as TextComponent;
+export const Text = React.forwardRef(TextRender) as TextComponentType;
 Text.displayName = '@v2/Text';

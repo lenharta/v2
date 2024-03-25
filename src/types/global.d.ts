@@ -17,6 +17,9 @@ export type ExoticComponent<
   C extends Record<string, any> = {},
 > = React.ForwardRefExoticComponent<P & React.RefAttributes<T>> & C;
 
+export type AnimationConfigKey = 'to' | 'from';
+export type AnimationConfigObject = Record<AnimationConfigKey, gsap.TweenVars>;
+
 export interface InlineStylesMediaQuery {
   query: string;
   styles: React.CSSProperties;

@@ -1,6 +1,7 @@
 .footer {
   display: block;
   padding: var(--gutter);
+  z-index: var(--app-index-content);
 }
 
 .footer-menu {

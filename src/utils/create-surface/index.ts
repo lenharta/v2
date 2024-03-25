@@ -1,57 +1,55 @@
-import { objectKeys } from '..';
+export type SurfaceVariant = 'primary' | 'secondary';
+export type SurfaceState = 'base' | 'interactive' | 'disabled' | 'loading';
+export type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
+export type SurfaceType = `${SurfaceVariant}-${SurfaceLevel}`;
+export type SurfaceKey = `${SurfaceVariant}-${SurfaceState}-${SurfaceLevel}`;
 
-type SurfaceType = 'accent' | 'primary' | 'secondary';
-type SurfaceState = 'base' | 'disabled' | 'loading' | 'interactive';
-type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
-
-const inverseSurfaceTypes: Record<SurfaceType, SurfaceType> = {
-  accent: 'accent',
-  primary: 'secondary',
-  secondary: 'primary',
-};
-
-export type TokenProperty = keyof React.CSSProperties;
-
-interface TokenProps {
-  key: string | string[];
-  prop: TokenProperty | TokenProperty[];
-  value?: any | any[];
-}
-
-export function parseToken(config: TokenProps | TokenProps[]) {
-  if (Array.isArray(config)) {
-    return config.reduce(
-      (prev, item) => ({
-        ...prev,
-      }),
-      {}
-    );
-  }
-}
-
-const isArray = (config: any) => {
-  return Array.isArray(config) ? true : false;
-};
-
-function isEqualTokenConfig(config: TokenProps) {
-  const hasValidArrays = isArray(config.key) && isArray(config.prop);
-  const hasValidLengths = config.key.length === config.prop.length;
-  return hasValidArrays && hasValidLengths ? true : false;
-}
-
-export function createToken(props: TokenProps) {
-  const isEqual = isEqualTokenConfig(props);
-  return isEqual;
-}
-
-interface SurfaceProps {
+export interface SurfaceConfig {
+  type: SurfaceType;
+  state: SurfaceState;
   disabled?: boolean;
+  elevated?: boolean;
 }
 
-function findDisabledSurface(props: SurfaceProps) {
-  const {} = props;
+const MAX_SURFACE_LEVEL = 4;
+
+const DEFAULT_SURFACE_CONFIG: SurfaceConfig = {
+  state: 'base',
+  type: 'primary-0',
+};
+
+type ExtractedSurfaceData = [SurfaceVariant, number];
+type ExtractedSurfaceProps = { variant: SurfaceVariant; level: number };
+
+function extractSurfaceType(type: SurfaceType): ExtractedSurfaceProps {
+  const data = type.split('-') as ExtractedSurfaceData;
+  return { variant: data[0], level: Number(data[1]) };
 }
 
-export function createSurface(props: {}) {
-  const {} = props;
+function mergeSurface(defaultProps: SurfaceConfig, props: Partial<SurfaceConfig>): SurfaceConfig {
+  return {
+    ...props,
+    state: props.state || defaultProps.state,
+    type: props.type || defaultProps.type,
+  };
+}
+
+function parseSurfaceProps(props: SurfaceConfig): SurfaceKey {
+  let { level, variant } = extractSurfaceType(props.type);
+
+  if (props.disabled) {
+    props.state = 'disabled';
+  }
+  if (level <= MAX_SURFACE_LEVEL && props.elevated) {
+    level = level + 1;
+  }
+  if (level > MAX_SURFACE_LEVEL) {
+    console.error(`[@v2/create-surface]: Max surface level (${MAX_SURFACE_LEVEL}) exceeded.`);
+  }
+  return [variant, props.state, level].join('-') as SurfaceKey;
+}
+
+export function createSurface(props: Partial<SurfaceConfig>): SurfaceKey {
+  const mergedProps = mergeSurface(DEFAULT_SURFACE_CONFIG, props);
+  return parseSurfaceProps(mergedProps);
 }
