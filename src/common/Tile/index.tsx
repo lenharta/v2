@@ -1,39 +1,47 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
-import { useNavigate } from 'react-router-dom';
-import { createEventCallback } from '../utils';
-
 import { TileGroup } from './Group';
-import { TileComponent, TileExoticRender, TileProps } from './types';
-
-const defaultProps: Partial<TileProps> = {
-  url: '/',
-};
+import { useNavigate } from 'react-router-dom';
+import { createSurface } from '@/utils';
+import { createEventCallback } from '../utils';
+import { TileComponent, TileExoticRender } from './types';
 
 const TileRender: TileExoticRender = (props, ref) => {
-  const { disabled, url, className, ...otherProps } = mergeProps(defaultProps, props);
-
-  const isInteractive = otherProps.onClick !== undefined;
-  const isDisabled = !disabled ? undefined : true;
-  const isFocusable = !isInteractive ? -1 : 0;
-  const isNavigable = url !== undefined;
+  const { url, style, disabled, surface, className, ...otherProps } = props;
 
   const navigate = useNavigate();
 
-  const onNavigate = () => {
-    if (isNavigable) navigate(url);
-  };
+  const isInteractive = otherProps.onClick !== undefined ? true : undefined;
+  const isNavigation = url !== undefined ? true : undefined;
+  const isFocusIndex = isInteractive ? -1 : 0;
+  const isDisabled = !disabled ? undefined : true;
+
+  const clxss = React.useMemo(
+    () =>
+      clsx(
+        'tile',
+        createSurface({
+          type: 'primary-0' || surface?.type,
+          state: (isInteractive ? 'interactive' : 'base') || surface?.state,
+          disabled: isDisabled,
+          elevated: true,
+        }),
+        className
+      ),
+    [style, disabled, surface]
+  );
 
   return (
     <div
       {...otherProps}
       ref={ref}
-      tabIndex={isFocusable}
+      className={clxss}
       data-disabled={isDisabled}
       aria-disabled={isDisabled}
-      className={clsx('tile', className)}
-      onClick={createEventCallback(otherProps.onClick, onNavigate)}
+      tabIndex={isFocusIndex}
+      onClick={createEventCallback(otherProps.onClick, () => {
+        return isNavigation ? navigate(url ?? '/') : undefined;
+      })}
     />
   );
 };

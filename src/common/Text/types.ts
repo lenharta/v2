@@ -5,5 +5,4 @@ export interface TextProps extends ElementProps<'p'> {
 }
 
 export type TextComponentRender = ExoticRender<HTMLParagraphElement, TextProps>;
-
-export type TextComponent = ExoticComponent<HTMLParagraphElement, TextProps>;
+export type TextComponentType = ExoticComponent<HTMLParagraphElement, TextProps>;

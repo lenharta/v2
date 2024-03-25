@@ -1,37 +1,39 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps, objectKeys } from '@/utils';
-import { TitleProps, TitleComponent, FindTitleComponent, FindTitleSizeToken } from './types';
-
-const defaultProps: Partial<TitleProps> = {
-  size: 'md',
-  h2: true,
-};
-
-const findSizeToken: FindTitleSizeToken = (size) => {
-  if (!size) return `var(--font-size-title-${defaultProps.size})`;
-  return `var(--font-size-title-${size})`;
-};
+import { objectKeys, parseTokenData } from '@/utils';
+import { TitleComponent, FindTitleComponent } from './types';
 
 const findComponent: FindTitleComponent = (levels) => {
   return objectKeys(levels).find((value) => levels[value] !== undefined)!;
 };
 
 export const Title: TitleComponent = React.forwardRef((props, ref) => {
-  const { h1, h2, h3, h4, h5, h6, size, className, overrideTokens, ...otherProps } = mergeProps(
-    defaultProps,
-    props
-  );
+  const {
+    h1,
+    h2 = true,
+    h3,
+    h4,
+    h5,
+    h6,
+    size = 'md',
+    style,
+    className,
+    overrideTokens,
+    ...otherProps
+  } = props;
 
   const Component = findComponent({ h1, h2, h3, h4, h5, h6 });
-  const fontSize = !overrideTokens ? findSizeToken(size) : undefined;
+  const hasSize = !overrideTokens ? size : undefined;
 
   return (
     <Component
       {...otherProps}
       ref={ref}
-      style={{ fontSize }}
       className={clsx('title', className)}
+      style={{
+        ...style,
+        ...parseTokenData([{ key: 'font-size-title', prop: 'fontSize', value: hasSize }]),
+      }}
     />
   );
 });

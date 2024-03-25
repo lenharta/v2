@@ -1,18 +1,19 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
 import { ButtonProvider } from '../context';
-import { ButtonGroupComponent, ButtonGroupRenderType, ButtonGroupProps } from '../types';
-
-const defaultProps: Partial<ButtonGroupProps> = {
-  orientation: 'horizontal',
-};
+import { ButtonGroupComponentType, ButtonGroupRenderType } from '../types';
 
 export const ButtonGroupRender: ButtonGroupRenderType = (props, ref) => {
-  const { orientation, size, children, loading, disabled, className, ...otherProps } = mergeProps(
-    defaultProps,
-    props
-  );
+  const {
+    size,
+    loading,
+    elevated,
+    disabled,
+    children,
+    className,
+    orientation = 'horizontal',
+    ...otherProps
+  } = props;
 
   return (
     <div
@@ -23,10 +24,12 @@ export const ButtonGroupRender: ButtonGroupRenderType = (props, ref) => {
       data-orientation={orientation}
       aria-orientation={orientation}
     >
-      <ButtonProvider value={{ orientation, size, loading, disabled }}>{children}</ButtonProvider>
+      <ButtonProvider value={{ size, loading, elevated, disabled, orientation }}>
+        {children}
+      </ButtonProvider>
     </div>
   );
 };
 
-export const ButtonGroup = React.forwardRef(ButtonGroupRender) as ButtonGroupComponent;
+export const ButtonGroup = React.forwardRef(ButtonGroupRender) as ButtonGroupComponentType;
 ButtonGroup.displayName = '@v2/Button.Group';
