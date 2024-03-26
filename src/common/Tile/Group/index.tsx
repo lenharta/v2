@@ -1,26 +1,22 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
-import { TileProvider } from '../context';
-import { TileGroupComponent, TileGroupProps } from '../types';
+import { TileProvider } from '@/common/Tile/context';
+import { TileGroupRenderType, TileGroupComponentType } from '@/common/Tile/types';
 
-const defaultProps: Partial<TileGroupProps> = {
-  orientation: 'horizontal',
-};
+const TileGroupRender: TileGroupRenderType = (props, ref) => {
+  const { children, className, disabled, orientation, ...otherProps } = props;
 
-export const TileGroup: TileGroupComponent = React.forwardRef((props, ref) => {
-  const { children, className, orientation, ...otherProps } = mergeProps(defaultProps, props);
+  const accessibleProps = {
+    ...(disabled ? { 'aria-disabled': true } : {}),
+    ...(orientation ? { 'aria-orientation': orientation } : {}),
+  };
+
   return (
-    <div
-      {...otherProps}
-      ref={ref}
-      className={clsx('tile-group', className)}
-      data-orientation={orientation}
-      aria-orientation={orientation}
-    >
+    <div {...otherProps} {...accessibleProps} className={clsx('tile-group', className)} ref={ref}>
       <TileProvider value={{ orientation }}>{children}</TileProvider>
     </div>
   );
-});
+};
 
+export const TileGroup = React.forwardRef(TileGroupRender) as TileGroupComponentType;
 TileGroup.displayName = '@v2/Tile.Group';

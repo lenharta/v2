@@ -9,12 +9,12 @@ import {
 } from '@/types';
 
 export interface DividerProps extends ElementProps<'div'> {
-  size?: SizeCompact;
-  label?: string;
-  labelPosition?: 'center' | Alignment;
-  orientation?: Orientation;
-  accent?: Accent;
+  size?: SizeCompact | undefined;
+  label?: string | undefined;
+  accent?: Accent | undefined;
+  orientation?: Orientation | undefined;
+  labelPosition?: 'center' | Alignment | undefined;
 }
 
-export type DividerComponentRender = ExoticRender<HTMLDivElement, DividerProps>;
-export type DividerComponent = ExoticComponent<HTMLDivElement, DividerProps>;
+export type DividerRenderType = ExoticRender<HTMLDivElement, DividerProps>;
+export type DividerComponentType = ExoticComponent<HTMLDivElement, DividerProps>;

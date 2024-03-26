@@ -1,25 +1,34 @@
-export interface FooterMenuItemProps {
+import { ElementProps, ExoticComponent, ExoticRender } from '@/types';
+
+export interface FooterMenuItemProps extends ElementProps<'button'> {
   value: string;
   label: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  navigate?: (url: string) => void;
+  onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
+  navigate: (url: string) => void;
 }
 
-export interface FooterMenuGroupProps {
+export type FooterMenuItemRenderType = ExoticRender<HTMLButtonElement, FooterMenuItemProps>;
+export type FooterMenuItemComponentType = ExoticComponent<HTMLButtonElement, FooterMenuItemProps>;
+
+export interface FooterMenuGroupProps extends ElementProps<'div'> {
   group: string;
   items: FooterMenuItemProps[];
 }
 
-export interface FooterMenuProps {
+export type FooterMenuGroupRenderType = ExoticRender<HTMLDivElement, FooterMenuGroupProps>;
+export type FooterMenuGroupComponentType = ExoticComponent<HTMLDivElement, FooterMenuGroupProps>;
+
+export interface FooterMenuProps extends ElementProps<'nav'> {
   groups: FooterMenuGroupProps[];
 }
 
-export interface FooterProps {}
+export type FooterMenuRenderType = ExoticRender<HTMLElement, FooterMenuProps>;
+export type FooterMenuComponentType = ExoticComponent<HTMLElement, FooterMenuProps>;
 
-export type FooterMenuComponent = React.FC<FooterMenuProps>;
-export type FooterMenuItemComponent = React.FC<FooterMenuItemProps>;
-export type FooterMenuGroupComponent = React.FC<FooterMenuProps>;
+export interface FooterProps extends ElementProps<'footer'> {}
 
-export type FooterComponent = React.FC<FooterProps> & {
-  Menu: FooterMenuComponent;
+export type FooterRenderType = ExoticRender<HTMLElement, FooterMenuItemProps>;
+
+export type FooterComponentType = ExoticComponent<HTMLElement, FooterMenuItemProps> & {
+  Menu: FooterMenuComponentType;
 };

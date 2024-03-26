@@ -20,7 +20,6 @@ export interface LinkProps extends UnstyledLinkProps {
   label?: React.ReactNode;
   alignment?: Alignment;
   description?: React.ReactNode;
-  orientation?: Orientation;
   leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
   children?: React.ReactNode;

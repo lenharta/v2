@@ -1,5 +1,5 @@
+import * as React from 'react';
 import { generateRandomId } from '@/utils';
-import React from 'react';
 
 export function useInputIds<T extends string = string>(id?: string, keys?: T[]): Record<T, string> {
   const uid = React.useId();

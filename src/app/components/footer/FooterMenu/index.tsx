@@ -1,13 +1,16 @@
+import * as React from 'react';
 import { FooterMenuGroup } from '../FooterMenuGroup';
-import { FooterMenuComponent } from '../types';
+import { FooterMenuComponentType, FooterMenuRenderType } from '../types';
 
-export const FooterMenu: FooterMenuComponent = (props) => {
+const FooterMenuRender: FooterMenuRenderType = (props, ref) => {
   const { groups } = props;
   return (
-    <nav className="footer-menu">
+    <nav className="footer-menu" ref={ref}>
       {groups.map(({ group, items }) => (
         <FooterMenuGroup key={group} group={group} items={items} />
       ))}
     </nav>
   );
 };
+
+export const FooterMenu = React.forwardRef(FooterMenuRender) as FooterMenuComponentType;

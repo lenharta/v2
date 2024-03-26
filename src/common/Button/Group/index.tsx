@@ -7,7 +7,6 @@ export const ButtonGroupRender: ButtonGroupRenderType = (props, ref) => {
   const {
     size,
     loading,
-    elevated,
     disabled,
     children,
     className,
@@ -24,9 +23,7 @@ export const ButtonGroupRender: ButtonGroupRenderType = (props, ref) => {
       data-orientation={orientation}
       aria-orientation={orientation}
     >
-      <ButtonProvider value={{ size, loading, elevated, disabled, orientation }}>
-        {children}
-      </ButtonProvider>
+      <ButtonProvider value={{ size, loading, disabled, orientation }}>{children}</ButtonProvider>
     </div>
   );
 };

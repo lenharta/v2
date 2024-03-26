@@ -1,3 +1,4 @@
+export * from './Anchor';
 export * from './Avatar';
 export * from './Button';
 export * from './Caption';
@@ -9,6 +10,7 @@ export * from './Icon';
 export * from './Image';
 export * from './InlineCSS';
 export * from './InlineInput';
+export * from './Link';
 export * from './Space';
 export * from './Stack';
 export * from './Subtitle';
@@ -17,3 +19,4 @@ export * from './Text';
 export * from './Tile';
 export * from './Title';
 export * from './Transition';
+export * from './VisuallyHidden';

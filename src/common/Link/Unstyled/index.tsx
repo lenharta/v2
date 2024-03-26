@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { mergeProps } from '@/utils';
 import { Link as RouterLink } from 'react-router-dom';
-import { UnstyledLinkComponentType, UnstyledLinkProps, UnstyledLinkRenderType } from '../types';
-
-const defaultProps: Partial<UnstyledLinkProps> = {};
+import { UnstyledLinkComponentType, UnstyledLinkRenderType } from '../types';
 
 const UnstyledLinkRender: UnstyledLinkRenderType = (props, ref) => {
-  const { to, ...otherProps } = mergeProps(defaultProps, props);
+  const { to, ...otherProps } = props;
   return <RouterLink {...otherProps} ref={ref} to={to}></RouterLink>;
 };
 

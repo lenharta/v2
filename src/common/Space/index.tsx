@@ -1,12 +1,11 @@
 import clsx from 'clsx';
-import { mergeProps } from '@/utils';
-import { SpaceComponent, SpaceProps } from './types';
+import * as React from 'react';
+import { SpaceComponentType, SpaceRenderType } from './types';
 
-const defaultProps: Partial<SpaceProps> = {};
-
-export const Space: SpaceComponent = (props) => {
-  const { size, className, ...otherProps } = mergeProps(defaultProps, props);
-  return <div {...otherProps} className={clsx('space', `space--size-${size}`, className)} />;
+const SpaceRender: SpaceRenderType = (props, ref) => {
+  const { size = 'md', className, ...otherProps } = props;
+  return <div {...otherProps} className={clsx('space', className)} ref={ref} data-size={size} />;
 };
 
+const Space = React.forwardRef(SpaceRender) as SpaceComponentType;
 Space.displayName = '@v2/Space';

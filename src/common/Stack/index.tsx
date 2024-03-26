@@ -1,24 +1,19 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
-import { StackComponent, StackComponentRender, StackProps } from './types';
+import { StackComponentType, StackRenderType } from './types';
 
-const defaultProps: Partial<StackProps> = {
-  gap: 'default',
-};
-
-const StackRender: StackComponentRender = (props, ref) => {
-  const { gap, className, ...otherProps } = mergeProps(defaultProps, props);
+const StackRender: StackRenderType = (props, ref) => {
+  const { gap = 'default', className, ...otherProps } = props;
   return (
     <div
       {...otherProps}
       ref={ref}
-      className={clsx('stack', `stack--gap-${gap}`, className)}
-      data-orientation="vertical"
+      className={clsx('stack', className)}
       aria-orientation="vertical"
+      data-size={gap}
     />
   );
 };
 
-export const Stack = React.forwardRef(StackRender) as StackComponent;
+export const Stack = React.forwardRef(StackRender) as StackComponentType;
 Stack.displayName = '@v2/Stack';

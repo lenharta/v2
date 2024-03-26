@@ -1,19 +1,15 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
-import { AnchorComponent, AnchorComponentRender, AnchorProps } from './type';
-
-const defaultProps: Partial<AnchorProps> = {};
+import { AnchorComponent, AnchorComponentRender } from './type';
 
 const AnchorRender: AnchorComponentRender = (props, ref) => {
-  const { className, style, underline, ...otherProps } = mergeProps(defaultProps, props);
-  const textDecoration = !underline ? undefined : 'underline';
+  const { className, style, underline, ...otherProps } = props;
   return (
     <a
       {...otherProps}
       ref={ref}
-      style={{ ...style, textDecoration }}
       className={clsx('anchor', className)}
+      style={{ ...style, textDecoration: !underline ? undefined : 'underline' }}
     />
   );
 };

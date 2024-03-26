@@ -1,17 +1,11 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { ElementProps } from '@/types';
+import { PageLayoutComponentType, PageLayoutRenderType } from '../types';
 
-export const PageLayout = React.forwardRef<HTMLDivElement, ElementProps<'div'>>(
-  ({ children, className, ...otherProps }, ref) => (
-    <div
-      {...otherProps}
-      id="page"
-      ref={ref}
-      children={children}
-      className={clsx('page-layout', className)}
-    />
-  )
-);
+export const PageLayoutRender: PageLayoutRenderType = (props, ref) => {
+  const { className, ...otherProps } = props;
+  return <div {...otherProps} id="page" ref={ref} className={clsx('page-layout', className)} />;
+};
 
+export const PageLayout = React.forwardRef(PageLayoutRender) as PageLayoutComponentType;
 PageLayout.displayName = '@v2/Page.Layout';

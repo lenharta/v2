@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ThemeCTX } from './context';
+import { ThemeStore } from '@/types/store';
 import { STORAGE_KEYS } from '../config';
 import { localManager } from '../storage/local-manager';
-import type { ThemeStore } from '@/types/store';
 
 interface ThemeProviderProps {
   children?: React.ReactNode;
@@ -17,7 +17,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     lang: 'english',
     avatar: 'person',
     accent: 'blue',
-    mode: 'dark',
+    mode: 'light',
     dir: 'ltr',
   };
 

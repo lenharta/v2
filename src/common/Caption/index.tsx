@@ -1,20 +1,17 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { parseTokenData } from '@/utils';
 import { CaptionComponent, CaptionComponentRender } from './types';
 
 export const CaptionRender: CaptionComponentRender = (props, ref) => {
-  const { size = 'md', style, className, overrideTokens, ...otherProps } = props;
-  const hasSize = !overrideTokens ? size : undefined;
+  const { size = 'md', scheme = 'primary', emphasis = 'medium', className, ...otherProps } = props;
   return (
     <caption
       {...otherProps}
       ref={ref}
       className={clsx('caption', className)}
-      style={{
-        ...style,
-        ...parseTokenData([{ key: 'font-size-caption', prop: 'fontSize', value: hasSize }]),
-      }}
+      data-text-emphasis={emphasis}
+      data-text-scheme={scheme}
+      data-text-size={size}
     />
   );
 };

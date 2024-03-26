@@ -1,71 +1,55 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
-import { Size, ElementProps } from '@/types';
 import { createEventCallback } from '../utils';
+import { ImageComponentType, ImageRenderType } from './types';
 
-export interface ImageProps extends Omit<ElementProps<'img'>, 'alt'> {
-  alt?: string;
-  src?: any;
-  fit?: React.CSSProperties['objectFit'];
-  width?: React.CSSProperties['width'];
-  height?: React.CSSProperties['height'];
-  radius?: Size;
-  fallbackSrc?: string;
-  onError?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void;
-}
-
-const defaultProps: Partial<ImageProps> = {
-  fallbackSrc: 'https://placehold.co/600x400?text=Placeholder',
-  height: 500,
-  width: 'auto',
-  alt: 'image',
-};
-
-export const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
+const ImageRender: ImageRenderType = (props, ref) => {
   const {
     alt,
+    src,
     fit,
-    width,
-    height,
+    style,
+    width = 'auto',
+    height = 500,
     radius,
     className,
-    fallbackSrc,
-    src: defaultSrc,
-    onError,
+    fallbackSrc = 'https://placehold.co/600x400?text=Placeholder',
     ...otherProps
-  } = mergeProps(defaultProps, props);
+  } = props;
 
-  const clxss = clsx('image', `image--radius-${radius}`, className);
-  const styles = { ...otherProps.style, objectFit: fit, height, width };
+  const [error, setError] = React.useState(!src);
 
-  const [error, setError] = React.useState(!defaultSrc);
-  React.useEffect(() => setError(!defaultSrc), [defaultSrc]);
+  React.useEffect(() => setError(!src), [src]);
+
+  const commonProps = {
+    alt: alt || 'image',
+    role: otherProps.role || 'img',
+    style: { ...style, objectFit: fit, height, width },
+    className: clsx('image', className),
+  };
 
   if (error && fallbackSrc) {
     return (
       <img
         {...otherProps}
-        ref={ref}
-        alt={alt}
+        {...commonProps}
+        onError={otherProps.onError}
         src={fallbackSrc}
-        style={styles}
-        className={clxss}
-        onError={onError}
+        ref={ref}
       />
     );
   }
+
   return (
     <img
       {...otherProps}
+      {...commonProps}
+      onError={createEventCallback(otherProps.onError, () => setError(true))}
+      src={src}
       ref={ref}
-      alt={alt}
-      src={defaultSrc}
-      style={styles}
-      className={clxss}
-      onError={createEventCallback(onError, () => setError(true))}
     />
   );
-});
+};
 
+export const Image = React.forwardRef(ImageRender) as ImageComponentType;
 Image.displayName = '@v2/Image';
