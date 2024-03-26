@@ -1,13 +1,26 @@
-import { Page } from '@/app/components';
-import { Title } from '@/common';
+import { Section } from '@/app/components';
+import { Text, Subtitle } from '@/common';
 
 export const HomeOverview = () => (
-  <Page.Section className="home-sec-overview">
-    <div className="home-sec-overview-left">
-      <Title>Overview (left)</Title>
-    </div>
-    <div className="home-sec-overview-right">
-      <Title>Overview (right)</Title>
-    </div>
-  </Page.Section>
+  <Section>
+    <Section.Header title="Overview" withDivider />
+    <Section.Content cols={2}>
+      <div>
+        <Subtitle h2 size="lg" children="Left Content" />
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, debitis error repellendus
+          ducimus exercitationem commodi numquam similique perferendis minima ipsa harum fugiat
+          voluptatem autem dolorum dignissimos molestiae illo dolores a?
+        </Text>
+      </div>
+      <div>
+        <Subtitle h2 size="lg" children="Right Content" />
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, debitis error repellendus
+          ducimus exercitationem commodi numquam similique perferendis minima ipsa harum fugiat
+          voluptatem autem dolorum dignissimos molestiae illo dolores a?
+        </Text>
+      </div>
+    </Section.Content>
+  </Section>
 );

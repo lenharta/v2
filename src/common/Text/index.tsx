@@ -3,15 +3,23 @@ import * as React from 'react';
 import { TextComponentType, TextRenderType } from './types';
 
 export const TextRender: TextRenderType = (props, ref) => {
-  const { size = 'md', scheme = 'primary', emphasis = 'medium', className, ...otherProps } = props;
+  const {
+    size = 'md',
+    weight = '2',
+    scheme = 'primary',
+    emphasis = 'high',
+    className,
+    ...otherProps
+  } = props;
   return (
     <p
       {...otherProps}
       ref={ref}
       className={clsx('text', className)}
-      data-text-emphasis={emphasis}
-      data-text-scheme={scheme}
-      data-text-size={size}
+      data-body-size={size}
+      data-body-scheme={scheme}
+      data-body-weight={weight}
+      data-body-emphasis={emphasis}
     />
   );
 };

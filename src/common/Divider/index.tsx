@@ -6,26 +6,33 @@ const DividerRender: DividerRenderType = (props, ref) => {
   const {
     size = 'sm',
     label,
-    className,
-    orientation = 'vertical',
+    scheme = 'primary',
     labelPosition = 'start',
+    orientation = 'vertical',
+    className,
     ...otherProps
   } = props;
+
+  const accessibleProps = {
+    role: 'seperator',
+    'aria-orientation': orientation,
+  };
+
+  const dataProps = {
+    'data-divider-size': size,
+    'data-divider-scheme': scheme,
+    'data-divider-position': labelPosition,
+  };
 
   return (
     <div
       {...otherProps}
-      ref={ref}
-      role="separator"
-      aria-orientation={orientation}
+      {...dataProps}
+      {...accessibleProps}
       className={clsx('divider', className)}
-    >
-      {label && (
-        <span className="divider-label" data-position={labelPosition}>
-          {label}
-        </span>
-      )}
-    </div>
+      children={label && <p className="divider-label" role="presentation" children={label} />}
+      ref={ref}
+    />
   );
 };
 

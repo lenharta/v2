@@ -5,9 +5,7 @@ export const Toolbox = () => (
   <Page>
     <Page.Hero title="Toolbox" />
     <Page.Content>
-      <Page.Section>
-        <Text>Content</Text>
-      </Page.Section>
+      <Text>Content</Text>
     </Page.Content>
   </Page>
 );

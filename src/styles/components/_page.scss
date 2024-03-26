@@ -22,54 +22,13 @@
   .inner {
     margin-inline: var(--gutter);
   }
-
-  h1.title {
-    font-size: 3.5rem;
-    font-family: var(--font-family);
-    font-weight: 300;
+  .title {
     line-height: 1;
   }
-}
-
-:where(.page-content, .page-section) {
-  background-color: var(--c-primary-surface-0);
-  color: var(--c-primary-text-0);
 }
 
 .page-content {
   display: block;
   z-index: var(--app-index-content);
   margin-top: calc(var(--app-hero-height) + var(--app-header-height));
-}
-
-.page-section {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-// TEMPORARY
-
-.demo-section-content {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: var(--gap);
-
-  p {
-    width: auto;
-    display: block;
-    text-wrap: wrap;
-    word-break: normal;
-    white-space-collapse: collapse;
-  }
-
-  h2.title {
-    font-size: 2rem;
-    font-weight: 400;
-    font-family: var(--font-family);
-    margin-block: var(--gap);
-  }
 }

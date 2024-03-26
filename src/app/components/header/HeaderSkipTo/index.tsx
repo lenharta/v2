@@ -4,18 +4,24 @@ import { UnstyledButton } from '@/common/Button/Unstyled';
 import { createEventCallback } from '@/utils';
 import { HeaderSkipToComponentType, HeaderSkipToRenderType } from '../types';
 
+function getSkipUrl(path: string, id: string): string {
+  return [path, '#', id].join('');
+}
+
 export const HeaderSkipToRender: HeaderSkipToRenderType = (props, ref) => {
   const {
     url = 'main-content',
     show,
     label = 'Skip To Main',
     style,
+    location,
     navigate,
     disabled,
     className,
     ...otherProps
   } = props;
 
+  const hasPath = location?.pathname || '/';
   const hasLabel = otherProps['aria-label'] ?? label ?? undefined;
 
   const accessibleProps = {
@@ -25,11 +31,15 @@ export const HeaderSkipToRender: HeaderSkipToRenderType = (props, ref) => {
   };
 
   const handleClick = createEventCallback(otherProps.onClick, () => {
-    if (url && !disabled) navigate(url);
+    if (url && !disabled) {
+      navigate(getSkipUrl(hasPath, url));
+    }
   });
 
   const handleKeyDown = createEventCallback(otherProps.onKeyDown, () => {
-    if (url && !disabled) navigate(url);
+    if (url && !disabled) {
+      navigate(getSkipUrl(hasPath, url));
+    }
   });
 
   return (

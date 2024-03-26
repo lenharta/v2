@@ -1,9 +1,27 @@
 .divider {
-  --divider-height-sm: 1px;
-  --divider-height-md: 2px;
-  --divider-height-lg: 3px;
+  --divider-height-sm: 2px;
+  --divider-height-md: 3px;
+  --divider-height-lg: 4px;
+
+  --divider-margin-y-sm: 6px;
+  --divider-margin-y-md: 7px;
+  --divider-margin-y-lg: 8px;
 
   width: 100%;
   display: block;
-  background-color: var(--c-primary-surface-5);
+  height: var(--divider-height, var(--divider-height-sm));
+  margin-block: var(--divider-margin-y, var(--divider-margin-y-sm));
+
+  &[data-divider-size='sm'] {
+    --divider-height: var(--divider-height-sm);
+    --divider-margin-y: var(--divider-margin-y-sm);
+  }
+  &[data-divider-size='md'] {
+    --divider-height: var(--divider-height-md);
+    --divider-margin-y: var(--divider-margin-y-md);
+  }
+  &[data-divider-size='lg'] {
+    --divider-height: var(--divider-height-lg);
+    --divider-margin-y: var(--divider-margin-y-lg);
+  }
 }

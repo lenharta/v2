@@ -7,9 +7,6 @@
   --gutter: calc(calc(var(--gap) * 1.5) * var(--scale));
   --spacing: calc(calc(var(--gutter) * 1.5) * var(--scale));
 
-  // --gutter: calc(calc(var(--gap) * 2) * var(--scale));
-  // --spacing: calc(calc(var(--gap) * 3) * var(--scale));
-
   --icon-size-sm: 24px;
   --icon-size-md: 28px;
   --icon-size-lg: 32px;
@@ -47,14 +44,11 @@
   --easing-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
   --easing-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
 
-  // READ-ONLY
   --breakpoint-xs: 36em;
   --breakpoint-sm: 48em;
   --breakpoint-md: 62em;
   --breakpoint-lg: 75em;
   --breakpoint-xl: 88em;
-
-  // APP
 
   --app-header-height: 4rem;
   --app-hero-height: 40vh;
@@ -75,8 +69,17 @@
   --font-size-caption-lg-mobile: 12px;
   --font-size-caption-lg-desktop: 16px;
 
-  --font-size-body-mobile: 14px;
-  --font-size-body-desktop: 16px;
+  --font-size-body-sm-mobile: 12px;
+  --font-size-body-sm-desktop: 16px;
+
+  --font-size-body-md-mobile: 14px;
+  --font-size-body-md-desktop: 16px;
+
+  --font-size-body-lg-mobile: 16px;
+  --font-size-body-lg-desktop: 18px;
+
+  --font-size-body-xl-mobile: 18px;
+  --font-size-body-xl-desktop: 20px;
 
   --font-size-subtitle-sm-mobile: 16px;
   --font-size-subtitle-sm-desktop: 22px;
@@ -102,7 +105,10 @@
   --font-size-title-xxl-mobile: 68px;
   --font-size-title-xxl-desktop: 92px;
 
-  --font-size-body: var(--font-size-body-mobile);
+  --font-size-body-sm: var(--font-size-body-sm-mobile);
+  --font-size-body-md: var(--font-size-body-md-mobile);
+  --font-size-body-lg: var(--font-size-body-lg-mobile);
+  --font-size-body-xl: var(--font-size-body-xl-mobile);
 
   --font-size-caption-sm: var(--font-size-caption-sm-mobile);
   --font-size-caption-md: var(--font-size-caption-md-mobile);
@@ -119,7 +125,10 @@
   --font-size-title-xxl: var(--font-size-title-xxl-mobile);
 
   @media (min-width: 60em) {
-    --font-size-body: var(--font-size-body-desktop);
+    --font-size-body-sm: var(--font-size-body-sm-desktop);
+    --font-size-body-md: var(--font-size-body-md-desktop);
+    --font-size-body-lg: var(--font-size-body-lg-desktop);
+    --font-size-body-xl: var(--font-size-body-xl-desktop);
 
     --font-size-caption-sm: var(--font-size-caption-sm-desktop);
     --font-size-caption-md: var(--font-size-caption-md-desktop);

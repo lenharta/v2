@@ -5,18 +5,39 @@ import { TitleLevel } from '@/types';
 import { TitleComponentType, TitleLevelProps, TitleRenderType } from './types';
 
 const findComponent = (levels: TitleLevelProps): TitleLevel => {
-  return objectKeys(levels).find((value) => levels[value ?? 'h2'] !== undefined)!;
+  const find = objectKeys(levels!).find((value) => levels![value] !== undefined);
+  return !find ? 'h2' : find;
 };
 
 export const TitleRender: TitleRenderType = (props, ref) => {
-  const { h1, h2 = true, h3, h4, h5, h6, size = 'md', style, className, ...otherProps } = props;
+  const {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    size = 'sm',
+    weight = '2',
+    scheme = 'primary',
+    variant = 'default',
+    emphasis = 'medium',
+    className,
+    ...otherProps
+  } = props;
+
   const Component = findComponent({ h1, h2, h3, h4, h5, h6 });
+
   return (
     <Component
       {...otherProps}
       ref={ref}
       className={clsx('title', className)}
-      style={{ ...style, fontSize: `var(--font-size-title-${size})` }}
+      data-title-size={size}
+      data-title-scheme={scheme}
+      data-title-weight={weight}
+      data-title-variant={variant}
+      data-title-emphasis={emphasis}
     />
   );
 };

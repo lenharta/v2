@@ -9,7 +9,6 @@ import { Header } from '../header';
 import { PageHero } from './PageHero';
 import { PageLayout } from './PageLayout';
 import { PageContent } from './PageContent';
-import { PageSection } from './PageSection';
 
 function usePageTransition(pathname?: string): Omit<TransitionProps, 'children'> {
   const [mounted, setMounted] = React.useState<boolean>(false);
@@ -52,5 +51,4 @@ export const Page: PageComponentType = (props) => {
 Page.Hero = PageHero;
 Page.Layout = PageLayout;
 Page.Content = PageContent;
-Page.Section = PageSection;
 Page.displayName = '@v2/Page';

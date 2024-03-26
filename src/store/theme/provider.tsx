@@ -17,7 +17,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     lang: 'english',
     avatar: 'person',
     accent: 'blue',
-    mode: 'light',
+    mode: 'dark',
     dir: 'ltr',
   };
 
