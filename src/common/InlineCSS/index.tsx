@@ -1,6 +1,6 @@
 import { useStyleNonce } from '@/hooks';
-import { InlineStylesInput } from '@/types/global';
 import { stylesToString } from '@/utils';
+import { InlineStylesInput } from '@/types/global';
 
 export const InlineCSS = (props: InlineStylesInput) => {
   const { selector, styles, media } = props;

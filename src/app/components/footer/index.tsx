@@ -1,9 +1,11 @@
+import * as React from 'react';
 import { FooterMenu } from './FooterMenu';
-import { FooterComponent } from './types';
+import { FooterComponentType, FooterRenderType } from './types';
 
-export const Footer: FooterComponent = () => {
+export const FooterRender: FooterRenderType = (props, ref) => {
+  const { ...otherProps } = props;
   return (
-    <footer className="footer">
+    <footer {...otherProps} className="footer" ref={ref}>
       <Footer.Menu
         groups={[
           {
@@ -28,5 +30,6 @@ export const Footer: FooterComponent = () => {
   );
 };
 
+export const Footer = React.forwardRef(FooterRender) as FooterComponentType;
 Footer.displayName = '@v2/Footer';
 Footer.Menu = FooterMenu;

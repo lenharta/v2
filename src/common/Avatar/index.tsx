@@ -1,66 +1,56 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Icon } from '../Icon';
-import { mergeProps } from '@/utils';
 import { useNavigate } from 'react-router-dom';
 import { UnstyledButton } from '../Button/Unstyled';
 import { createEventCallback } from '../utils';
-import { AvatarComponent, AvatarComponentRender, AvatarProps } from './types';
-
-const defaultProps: Partial<AvatarProps> = {
-  label: 'avatar icon',
-  icon: 'person',
-  size: 'md',
-  url: '/',
-};
+import { AvatarComponent, AvatarComponentRender } from './types';
 
 const AvatarRender: AvatarComponentRender = (props, ref) => {
   const {
-    url,
-    size,
-    icon,
-    label,
+    url = '/',
+    size = 'md',
+    icon = 'person',
+    label = 'avatar icon',
     value,
     style,
-    disabled,
     imageSrc,
+    disabled,
     className,
-    onKeyDown,
-    onClick,
     ...otherProps
-  } = mergeProps(defaultProps, props);
+  } = props;
 
   const navigate = useNavigate();
-  const hasValue = value || url;
-  const isDisabled = disabled !== undefined ? true : undefined;
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (event.currentTarget.value && event.key === 'Enter') {
+  const onKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+    if (event.currentTarget.value && event.key === 'Enter' && !disabled) {
       navigate(event.currentTarget.value);
     }
-  };
+  });
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (event.currentTarget.value) {
+  const onClick = createEventCallback(otherProps.onClick, (event) => {
+    if (event.currentTarget.value && !disabled) {
       navigate(event.currentTarget.value);
     }
-  };
+  });
 
-  const clxss = clsx('avatar', className);
+  const accessibleProps = {
+    role: 'link',
+    ...(label ? { 'aria-label': label } : {}),
+    ...(!disabled ? { 'aria-disabled': true } : {}),
+    ...(!disabled ? { tabIndex: 0 } : {}),
+  };
 
   return (
     <UnstyledButton
       {...otherProps}
-      ref={ref}
-      value={hasValue}
-      tabIndex={!isDisabled ? 0 : -1}
-      className={clxss}
-      aria-label={label}
-      aria-disabled={isDisabled}
-      data-disabled={isDisabled}
-      onClick={createEventCallback(onClick, handleClick)}
-      onKeyDown={createEventCallback(onKeyDown, handleKeyDown)}
+      {...accessibleProps}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+      className={clsx('avatar', className)}
       children={<Icon name={icon} aria-label={[label, 'icon'].join(' ')} />}
+      value={(value || url) ?? '/'}
+      ref={ref}
     />
   );
 };

@@ -1,61 +1,48 @@
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
 export type SizeCompact = 'sm' | 'md' | 'lg';
-
 export type SizeExpanded = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-
 export type Sizes = Size | SizeCompact | SizeExpanded;
 
-export type CaptionSize = 'sm' | 'md' | 'lg';
-
-export type SubtitleSize = 'sm' | 'md' | 'lg';
-
-export type TitleSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-
-export type Weight = 'xlt' | 'lgt' | 'reg' | 'med' | 'bld' | 'xbd';
-
-export type Emphasis = 'low' | 'med' | 'hgh' | 'max';
-
-export type Border = 'sm' | 'md' | 'lg';
-
-export type Direction = 'up' | 'down' | 'left' | 'right';
-
-export type Orientation = 'horizontal' | 'vertical';
-
-export type Scheme = 'primary' | 'secondary' | 'accent';
-
 export type Axis = 'x' | 'y';
-
 export type Side = 'top' | 'left' | 'right' | 'bottom';
-
 export type Length = 'width' | 'height';
-
 export type Alignment = 'start' | 'end';
-
+export type Direction = 'up' | 'down' | 'left' | 'right';
+export type Orientation = 'horizontal' | 'vertical';
+export type Placement = Side | Position;
 export type Position = `${Side}-${Alignment}`;
 
-export type Placement = Side | Position;
-
+export type Rect = Coords & Dimensions;
 export type Coords = { [key in Axis]: number };
-
-export type Dimensions = { [key in Length]: number };
-
 export type SideObject = { [key in Side]: number };
-
+export type Dimensions = { [key in Length]: number };
 export type ClientRect = Rect & SideObject;
 
-export type Rect = Coords & Dimensions;
-
+export type TitleSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export type TitleLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type TitleScheme = 'primary' | 'secondary' | 'accent';
+export type TitleVariant = 'default' | 'gradient' | 'outlined';
+export type TitleEmphasis = 'low' | 'medium' | 'high';
 
-export type TitleLevelProps = Record<TitleLevel, boolean>;
+export type SubtitleSize = 'sm' | 'md' | 'lg';
+export type SubtitleLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type SubtitleScheme = 'primary' | 'secondary' | 'accent';
+export type SubtitleVariant = 'default' | 'gradient' | 'outlined';
+export type SubtitleEmphasis = 'low' | 'medium' | 'high';
+
+export type CaptionSize = 'sm' | 'md' | 'lg';
+export type CaptionScheme = 'primary' | 'secondary' | 'accent';
+export type CaptionVariant = 'default' | 'gradient' | 'outlined';
+export type CaptionEmphasis = 'low' | 'medium' | 'high';
+
+export type TextSize = 'sm' | 'md' | 'lg';
+export type TextScheme = 'primary' | 'secondary' | 'accent';
+export type TextVariant = 'default' | 'gradient' | 'outlined';
+export type TextEmphasis = 'low' | 'medium' | 'high';
 
 export type SurfaceType = 'primary' | 'secondary' | 'accent';
-
 export type SurfaceState = 'base' | 'interactive' | 'disabled' | 'loading';
-
 export type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
-
 export type SurfaceToken = `surface-${SurfaceType}-${SurfaceState}-${SurfaceLevel}`;
 
 export interface SurfaceConfig {

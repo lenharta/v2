@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { ButtonGroup } from './Group';
 import { useButtonCTX } from './context';
+import { parseTokenData } from '@/utils';
 import { UnstyledButton } from './Unstyled';
-import { createSurface, parseTokenData } from '@/utils';
 import { ButtonComponentType, ButtonRenderType } from './types';
 
 const ButtonRender: ButtonRenderType = (props, ref) => {
@@ -12,10 +12,9 @@ const ButtonRender: ButtonRenderType = (props, ref) => {
     grow,
     size = 'sm',
     style,
-    surface,
+    scheme = 'default',
     loading,
     disabled,
-    elevated,
     children,
     className,
     leftContent,
@@ -26,61 +25,46 @@ const ButtonRender: ButtonRenderType = (props, ref) => {
 
   const ctx = useButtonCTX();
 
-  const hasSize = (ctx.size || size) ?? undefined;
-  const hasSurface = (ctx.surface || surface) ?? undefined;
-  const hasLoading = (ctx.loading || loading) ?? undefined;
-  const hasDisabled = (ctx.disabled || disabled) ?? undefined;
-  const hasElevated = (ctx.elevated || elevated) ?? undefined;
-
-  const isFlexGrow = grow !== undefined ? true : undefined;
-  const isLoading = hasLoading !== undefined ? true : undefined;
-  const isDisabled = hasDisabled !== undefined ? true : undefined;
-  const isElevated = hasElevated !== undefined ? true : undefined;
-  const isFocusable = !isDisabled && !excludeTabOrder ? true : undefined;
-  const isLabelable = typeof children !== 'string' ? undefined : children;
+  const isSize = ctx.size || size;
+  const isLoading = ctx.loading || loading;
+  const isDisabled = ctx.disabled || disabled;
 
   const styles = React.useMemo(
     () => ({
       ...style,
       ...parseTokenData([
-        { key: 'button-height', prop: 'height', value: hasSize },
-        { key: 'button-padding-x', prop: 'paddingInline', value: hasSize },
+        { key: 'button-height', prop: 'height', value: isSize },
+        { key: 'button-padding-x', prop: 'paddingInline', value: isSize },
       ]),
     }),
     [style, ctx.size, size]
   );
 
-  const clxss = React.useMemo(
-    () =>
-      clsx(
-        'button',
-        createSurface({
-          type: hasSurface?.type || 'primary-1',
-          state: hasSurface?.state || 'interactive',
-          disabled: isDisabled,
-          elevated: isElevated,
-        }),
-        className
-      ),
-    [className, disabled, elevated, surface, ctx.disabled, ctx.elevated, ctx.surface]
-  );
+  const accessibleProps = {
+    role: 'button',
+    ...(!isLoading ? { 'aria-busy': true } : {}),
+    ...(!isDisabled ? { 'aria-disabled': true } : {}),
+    ...(!isDisabled && !excludeTabOrder ? { tabIndex: 0 } : {}),
+    ...(typeof children === 'string' ? { 'aria-label': children } : {}),
+  };
+
+  const dataProps = {
+    ...(grow ? { 'data-grow': true } : {}),
+    ...(scheme ? { 'data-scheme': scheme } : {}),
+    ...(isLoading ? { 'data-loading': true } : {}),
+    ...(isDisabled ? { 'data-disabled': true } : {}),
+  };
 
   return (
     <UnstyledButton
       {...otherProps}
-      ref={ref}
-      role="button"
+      {...accessibleProps}
+      {...dataProps}
+      className={clsx('button', className)}
       style={styles}
-      tabIndex={isFocusable ? 0 : -1}
-      className={clxss}
-      data-grow={isFlexGrow}
-      data-loading={isLoading}
-      data-disabled={isDisabled}
-      aria-disabled={isDisabled}
-      aria-label={isLabelable ?? otherProps['aria-label']}
-      aria-busy={isLoading}
+      ref={ref}
     >
-      {isLoading ? (
+      {isLoading !== undefined ? (
         <span>Loading...</span>
       ) : (
         <span className="inner">

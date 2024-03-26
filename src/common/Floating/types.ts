@@ -1,5 +1,5 @@
+import * as React from 'react';
 import { ElementProps, ExoticRender } from '@/types';
-import React from 'react';
 
 export type FloatingSide = 'top' | 'left' | 'right' | 'bottom';
 export type FloatingPlacement = 'end' | 'start';

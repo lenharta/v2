@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Store, StoreState } from '@/types/store';
 
-export const INITIAL_STORE: Store = {
-  pageX: 0,
-  pageY: 0,
-};
+export const INITIAL_STORE: Store = {};
 
 export function useStoreReducer<T extends StoreState>(initialState: T, initializer: (arg: T) => T) {
   return React.useReducer(

@@ -1,11 +1,10 @@
-import { ElementProps, ExoticComponent, SubtitleSize, TitleLevel, TitleLevelProps } from '@/types';
+import { ElementProps, ExoticComponent, ExoticRender, SubtitleLevel, SubtitleSize } from '@/types';
 
-export interface SubtitleProps extends ElementProps<'h1'>, Partial<TitleLevelProps> {
-  overrideTokens?: boolean;
+export type SubtitleLevelProps = Partial<Record<SubtitleLevel, boolean>>;
+
+export interface SubtitleProps extends ElementProps<'h1'>, SubtitleLevelProps {
   size?: SubtitleSize;
 }
 
-export type FindSubtitleSizeToken = (size?: SubtitleSize) => string;
-export type FindSubtitleComponent = (props: Partial<TitleLevelProps>) => TitleLevel;
-
-export type SubtitleComponent = ExoticComponent<HTMLHeadingElement, SubtitleProps>;
+export type SubtitleRenderType = ExoticRender<HTMLHeadingElement, SubtitleProps>;
+export type SubtitleComponentType = ExoticComponent<HTMLHeadingElement, SubtitleProps>;

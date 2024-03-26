@@ -1,16 +1,17 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { TextComponentType, TextComponentRender } from './types';
+import { TextComponentType, TextRenderType } from './types';
 
-const TextRender: TextComponentRender = (props, ref) => {
-  const { className, overrideTokens, ...otherProps } = props;
-  const hasSize = !overrideTokens ? 'var(--font-size-body)' : undefined;
+export const TextRender: TextRenderType = (props, ref) => {
+  const { size = 'md', scheme = 'primary', emphasis = 'medium', className, ...otherProps } = props;
   return (
-    <p
+    <Text
       {...otherProps}
       ref={ref}
       className={clsx('text', className)}
-      style={{ fontSize: hasSize }}
+      data-text-emphasis={emphasis}
+      data-text-scheme={scheme}
+      data-text-size={size}
     />
   );
 };

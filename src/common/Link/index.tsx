@@ -1,35 +1,36 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
 import { useLinkCTX } from './context';
 import { Link as RouterLink } from 'react-router-dom';
-import { LinkComponentType, LinkProps, LinkRenderType } from './types';
-
-const defaultProps: Partial<LinkProps> = {};
+import { LinkComponentType, LinkRenderType } from './types';
 
 const LinkRender: LinkRenderType = (props, ref) => {
   const {
-    to,
-    size,
-    alignment,
-    className,
-    orientation,
-    rightContent,
-    leftContent,
+    to = '/',
+    size = 'md',
+    alignment = 'start',
     children,
+    className,
+    leftContent,
+    rightContent,
     ...otherProps
-  } = mergeProps(defaultProps, props);
+  } = props;
 
   const ctx = useLinkCTX();
 
-  const hasSize = ctx.size || size;
-  const hasAlignment = ctx.alignment || alignment;
-  const hasOrientation = ctx.orientation || orientation;
-
-  const clxss = clsx('link', className);
+  const dataProps = {
+    'data-size': ctx.size || size,
+    'data-aligment': ctx.alignment || alignment,
+  };
 
   return (
-    <RouterLink {...otherProps} to={to} ref={ref} className={clxss}>
+    <RouterLink
+      {...otherProps}
+      {...dataProps}
+      className={clsx('link', className)}
+      ref={ref}
+      to={to}
+    >
       <span className="inner">
         {leftContent && <div data-position="left">{leftContent}</div>}
         {children && <div>{children}</div>}

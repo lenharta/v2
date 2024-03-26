@@ -12,6 +12,7 @@
   display: block;
   height: var(--app-hero-height);
   z-index: var(--app-index-parallax-1);
+  margin-top: var(--app-header-height);
   isolation: isolate;
   position: fixed;
   right: 0;
@@ -19,11 +20,7 @@
   top: 0;
 
   .inner {
-    height: 100%;
-    display: grid;
-    align-items: end;
-    margin-block: calc(var(--gutter) * 2);
-    padding-inline: var(--gutter);
+    margin-inline: var(--gutter);
   }
 
   h1.title {
@@ -34,10 +31,15 @@
   }
 }
 
+:where(.page-content, .page-section) {
+  background-color: var(--c-primary-surface-0);
+  color: var(--c-primary-text-0);
+}
+
 .page-content {
   display: block;
   z-index: var(--app-index-content);
-  margin-top: var(--app-hero-height);
+  margin-top: calc(var(--app-hero-height) + var(--app-header-height));
 }
 
 .page-section {
@@ -45,11 +47,6 @@
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  padding-inline: var(--gutter);
-
-  &:first-of-type {
-    padding-top: var(--spacing);
-  }
 }
 
 // TEMPORARY

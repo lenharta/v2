@@ -1,8 +1,17 @@
-import { ElementProps, ExoticComponent, ExoticRender } from '@/types';
+import {
+  TextSize,
+  TextScheme,
+  TextEmphasis,
+  ElementProps,
+  ExoticRender,
+  ExoticComponent,
+} from '@/types';
 
 export interface TextProps extends ElementProps<'p'> {
-  overrideTokens?: boolean;
+  emphasis?: TextEmphasis | undefined;
+  scheme?: TextScheme | undefined;
+  size?: TextSize | undefined;
 }
 
-export type TextComponentRender = ExoticRender<HTMLParagraphElement, TextProps>;
+export type TextRenderType = ExoticRender<HTMLParagraphElement, TextProps>;
 export type TextComponentType = ExoticComponent<HTMLParagraphElement, TextProps>;

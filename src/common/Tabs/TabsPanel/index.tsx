@@ -1,32 +1,33 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
 import { useTabsCTX } from '../context';
-import { TabsPanelComponent, TabsPanelComponentRender, TabsPanelProps } from '../types';
+import { TabsPanelComponentType, TabsPanelRenderType } from '../types';
 
-const defaultProps: Partial<TabsPanelProps> = {};
-
-const TabsPanelRender: TabsPanelComponentRender = (props, ref) => {
-  const { className, keepMounted, value, style, ...otherProps } = mergeProps(defaultProps, props);
+const TabsPanelRender: TabsPanelRenderType = (props, ref) => {
+  const { className, keepMounted, value, style, ...otherProps } = props;
 
   const ctx = useTabsCTX();
   const isActive = ctx.value === value;
-  const isHidden = !isActive && keepMounted ? 'none' : undefined;
 
   if (!isActive && !keepMounted) {
     return null;
   }
 
+  const accessibleProps = {
+    id: ctx.getTabPanelId(),
+    role: otherProps['role'] || 'tabpanel',
+  };
+
   return (
     <div
       {...otherProps}
-      ref={ref}
-      role="tabpanel"
-      style={{ ...style, display: isHidden }}
+      {...accessibleProps}
       className={clsx('tabs-panel', className)}
+      style={{ ...style, display: !isActive && keepMounted ? 'none' : undefined }}
+      ref={ref}
     />
   );
 };
 
-export const TabsPanel = React.forwardRef(TabsPanelRender) as TabsPanelComponent;
+export const TabsPanel = React.forwardRef(TabsPanelRender) as TabsPanelComponentType;
 TabsPanel.displayName = '@v2/Tabs.Panel';

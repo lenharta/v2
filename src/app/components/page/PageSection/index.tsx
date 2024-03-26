@@ -1,26 +1,11 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { ElementProps } from '@/types';
-import { SurfaceConfig, createSurface } from '@/utils';
+import { PageSectionComponentType, PageSectionRenderType } from '../types';
 
-export interface PageSectionProps extends ElementProps<'section'> {
-  surface?: SurfaceConfig | undefined;
-}
+const PageSectionRender: PageSectionRenderType = (props, ref) => {
+  const { className, ...otherProps } = props;
+  return <section {...otherProps} ref={ref} className={clsx('page-section', className)} />;
+};
 
-export const PageSection = React.forwardRef<HTMLDivElement, PageSectionProps>((props, ref) => {
-  const {
-    surface = { type: 'primary-0', state: 'base' },
-    children,
-    className,
-    ...otherProps
-  } = props;
-
-  const clxss = React.useMemo(
-    () => clsx('page-section', createSurface(surface), className),
-    [surface, className]
-  );
-
-  return <section {...otherProps} ref={ref} className={clxss} children={children} />;
-});
-
+export const PageSection = React.forwardRef(PageSectionRender) as PageSectionComponentType;
 PageSection.displayName = '@v2/Page.Section';

@@ -1,31 +1,31 @@
-import { ElementProps, ExoticRender, ExoticComponent, ValidationStatus, Size } from '@/types';
-
-export interface InlineInputTextProps extends ElementProps<'p'> {
-  text?: string;
-  show?: boolean;
-  status?: ValidationStatus;
-  keepMounted?: boolean;
-}
-
-export type InlineInputTextRenderType = ExoticRender<HTMLParagraphElement, InlineInputTextProps>;
-export type InlineInputTextComponent = ExoticComponent<HTMLParagraphElement, InlineInputTextProps>;
-
-export interface InlineInputLabelProps extends ElementProps<'label'> {
-  label: string;
-}
-export type InlineInputLabelRenderType = ExoticRender<HTMLLabelElement, InlineInputLabelProps>;
-export type InlineInputLabelComponent = ExoticComponent<HTMLLabelElement, InlineInputLabelProps>;
+import { ElementProps, ExoticRender, ExoticComponent, Size } from '@/types';
 
 export interface InlineInputProps extends ElementProps<'button'> {
-  elevated?: boolean;
-  compact?: boolean;
+  id: string;
   label: string;
   size?: Size;
-  id?: string;
+  group?: string;
+  error?: string;
+  scheme?: 'primary' | 'secondary';
+  disabled?: boolean;
+  description?: string;
+}
+
+export interface InputLabelProps extends ElementProps<'label'> {
+  ids: { input: string; label: string; description: string };
+  size?: Size;
+  label: string;
+  error?: string;
+  disabled?: boolean;
+}
+
+export interface InputDescriptionProps extends ElementProps<'p'> {
+  id: string;
+  size?: Size;
+  error?: string;
+  disabled?: boolean;
+  description?: string;
 }
 
 export type InlineInputRenderType = ExoticRender<HTMLButtonElement, InlineInputProps>;
-export type InlineInputComponent = ExoticComponent<HTMLButtonElement, InlineInputProps> & {
-  Label: InlineInputLabelComponent;
-  Text: InlineInputTextComponent;
-};
+export type InlineInputComponentType = ExoticComponent<HTMLButtonElement, InlineInputProps>;

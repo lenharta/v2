@@ -1,44 +1,24 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps, objectKeys } from '@/utils';
-import {
-  SubtitleProps,
-  SubtitleComponent,
-  FindSubtitleComponent,
-  FindSubtitleSizeToken,
-} from './types';
+import { objectKeys } from '@/utils';
+import { SubtitleComponentType, SubtitleLevelProps, SubtitleRenderType } from './types';
 
-const defaultProps: Partial<SubtitleProps> = {
-  size: 'md',
-  h2: true,
-};
-
-const findSizeToken: FindSubtitleSizeToken = (size) => {
-  if (!size) return `var(--font-size-subtitle-${defaultProps.size})`;
-  return `var(--font-size-subtitle-${size})`;
-};
-
-const findComponent: FindSubtitleComponent = (levels) => {
+const findComponent = (levels: SubtitleLevelProps) => {
   return objectKeys(levels).find((value) => levels[value] !== undefined)!;
 };
 
-export const Subtitle: SubtitleComponent = React.forwardRef((props, ref) => {
-  const { h1, h2, h3, h4, h5, h6, size, className, overrideTokens, ...otherProps } = mergeProps(
-    defaultProps,
-    props
-  );
-
+const SubtitleRender: SubtitleRenderType = (props, ref) => {
+  const { h1, h2, h3, h4, h5, h6, size = 'md', style, className, ...otherProps } = props;
   const Component = findComponent({ h1, h2, h3, h4, h5, h6 });
-  const fontSize = !overrideTokens ? findSizeToken(size) : undefined;
-
   return (
     <Component
       {...otherProps}
-      ref={ref}
-      style={{ fontSize }}
+      style={{ ...style, fontSize: `var(--font-size-subtitle-${size})` }}
       className={clsx('subtitle', className)}
+      ref={ref}
     />
   );
-});
+};
 
+export const Subtitle = React.forwardRef(SubtitleRender) as SubtitleComponentType;
 Subtitle.displayName = '@v2/Subtitle';

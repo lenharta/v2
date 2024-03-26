@@ -1,70 +1,70 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { mergeProps } from '@/utils';
 import { useTabsCTX } from '../context';
 import { UnstyledButton } from '@/common/Button/Unstyled';
 import { createEventCallback } from '@/common/utils';
-import { TabsItemComponent, TabsItemComponentRender, TabsItemProps } from '../types';
+import { TabsItemComponentType, TabsItemRenderType } from '../types';
 
-const defaultProps: Partial<TabsItemProps> = {
-  surface: { type: 'primary', state: 'base', level: 0 },
-};
-
-const TabsItemRender: TabsItemComponentRender = (props, ref) => {
+const TabsItemRender: TabsItemRenderType = (props, ref) => {
   const {
-    size,
-    value,
+    size = 'sm',
     label,
-    surface,
-    elevated,
+    value,
     disabled,
     className,
     leftContent,
     rightContent,
     ...otherProps
-  } = mergeProps(defaultProps, props);
+  } = props;
 
   const ctx = useTabsCTX();
 
-  const isActive = ctx.value !== value ? true : undefined;
-  const isElevated = (ctx.elevated || elevated) !== undefined ? true : undefined;
-  const isDisabled = (ctx.disabled || disabled) !== undefined ? true : undefined;
-
+  const isActive = ctx.value !== value;
   const hasSize = ctx.size || size;
-  const hasContentLeft = !leftContent ? undefined : true;
-  const hasContentRight = !rightContent ? undefined : true;
+  const hasDisabled = ctx.disabled || disabled;
 
-  const clxss = clsx('tabs-item', className);
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    return !isDisabled ? ctx.onChange(event.currentTarget.value) : undefined;
+  const dataProps = {
+    ...(isActive ? { 'data-active': true } : {}),
+    ...(hasSize ? { 'data-size': hasSize } : {}),
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>): void => {
-    return event.key === 'Enter' && !disabled ? ctx.onChange(event.currentTarget.value) : undefined;
+  const accessibleProps = {
+    id: ctx.getTabItemId(),
+    role: otherProps['role'] || 'tab',
+    ...(!hasDisabled ? { tabIndex: otherProps['tabIndex'] || 0 } : {}),
+    ...(hasDisabled ? { 'aria-disabled': true } : {}),
+    ...(label ? { 'aria-label': label } : {}),
   };
+
+  const handleClick = createEventCallback(otherProps.onClick, (event) => {
+    if (!hasDisabled && event.currentTarget.value) {
+      ctx.onChange(event.currentTarget.value);
+    }
+  });
+
+  const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+    if (!hasDisabled && event.currentTarget.value && event.key === 'Enter') {
+      ctx.onChange(event.currentTarget.value);
+    }
+  });
 
   return (
     <UnstyledButton
       {...otherProps}
-      ref={ref}
-      role="tab"
+      {...dataProps}
+      {...accessibleProps}
+      className={clsx('tabs-item', className)}
+      onKeyDown={handleKeyDown}
+      onClick={handleClick}
       value={value}
-      tabIndex={isDisabled ? -1 : 0}
-      className={clxss}
-      aria-label={label}
-      aria-disabled={isDisabled}
-      data-active={isActive}
-      data-disabled={isDisabled}
-      onClick={createEventCallback(otherProps.onClick, handleClick)}
-      onKeyDown={createEventCallback(otherProps.onKeyDown, handleKeyDown)}
+      ref={ref}
     >
-      {hasContentLeft && <div data-position="left">{leftContent}</div>}
-      <span className="tab-item-label">{label}</span>
-      {hasContentRight && <div data-position="right">{rightContent}</div>}
+      {leftContent && <div data-position="left">{leftContent}</div>}
+      {label && <span className="label">{label}</span>}
+      {rightContent && <div data-position="right">{rightContent}</div>}
     </UnstyledButton>
   );
 };
 
-export const TabsItem = React.forwardRef(TabsItemRender) as TabsItemComponent;
+export const TabsItem = React.forwardRef(TabsItemRender) as TabsItemComponentType;
 TabsItem.displayName = '@v2/Tabs.Item';

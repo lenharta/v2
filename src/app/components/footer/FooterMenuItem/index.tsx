@@ -1,25 +1,22 @@
+import * as React from 'react';
 import { Button } from '@/common';
-import { FooterMenuItemComponent } from '../types';
+import { FooterMenuItemComponentType, FooterMenuItemRenderType } from '../types';
 
-export const FooterMenuItem: FooterMenuItemComponent = (props) => {
-  const { value, label, onClick, navigate } = props;
+const FooterMenuItemRender: FooterMenuItemRenderType = (props, ref) => {
+  const { value = '/', label, onClick, navigate } = props;
   return (
     <Button
+      ref={ref}
       value={value}
       children={label}
       className="footer-menu-item"
-      surface={{ type: 'primary-0', state: 'interactive' }}
       onClick={(event) => {
-        if (onClick !== undefined) {
-          return onClick(event);
-        }
-        if (navigate !== undefined) {
-          return navigate(value);
-        }
-        return;
+        onClick?.(event);
+        navigate(value);
       }}
     />
   );
 };
 
+export const FooterMenuItem = React.forwardRef(FooterMenuItemRender) as FooterMenuItemComponentType;
 FooterMenuItem.displayName = '@v2/Footer.MenuItem';

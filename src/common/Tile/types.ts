@@ -1,24 +1,24 @@
-import { SurfaceConfig } from '@/utils';
 import { ElementProps, ExoticComponent, ExoticRender, Orientation } from '@/types';
 
 export interface TileContextValue {
   orientation?: Orientation;
+  disabled?: boolean;
 }
 
 export interface TileGroupProps extends ElementProps<'div'> {
   orientation?: Orientation;
+  disabled?: boolean;
 }
 
 export interface TileProps extends ElementProps<'div'> {
   disabled?: boolean;
-  surface?: SurfaceConfig;
   url?: string;
 }
 
-export type TileExoticRender = ExoticRender<HTMLDivElement, TileProps>;
+export type TileRenderType = ExoticRender<HTMLDivElement, TileProps>;
+export type TileComponentType = ExoticComponent<HTMLDivElement, TileProps> & {
+  Group: TileGroupComponentType;
+};
 
-export type TileGroupComponent = ExoticComponent<HTMLDivElement, TileGroupProps>;
-
-export type TileComponents = { Group: TileGroupComponent };
-
-export type TileComponent = ExoticComponent<HTMLDivElement, TileProps, TileComponents>;
+export type TileGroupRenderType = ExoticRender<HTMLDivElement, TileGroupProps>;
+export type TileGroupComponentType = ExoticComponent<HTMLDivElement, TileGroupProps>;

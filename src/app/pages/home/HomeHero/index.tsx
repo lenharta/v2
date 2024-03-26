@@ -26,8 +26,10 @@ export const HomeHero = () => {
 
   return (
     <div className="page-hero home-hero" ref={scopeRef}>
-      <Subtitle size="lg">Andrew Lenhart</Subtitle>
-      <Title size="xl">Software Engineer</Title>
+      <div className="inner">
+        <Subtitle size="lg">Andrew Lenhart</Subtitle>
+        <Title size="xl">Software Engineer</Title>
+      </div>
       <div className="underlay-top" />
       <div className="underlay-bottom" />
     </div>

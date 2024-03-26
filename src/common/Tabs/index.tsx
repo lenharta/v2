@@ -1,23 +1,27 @@
 import * as React from 'react';
-import { useThemeCTX } from '@/store';
-import { mergeProps } from '@/utils';
 import { TabsItem } from './TabsItem';
 import { TabsList } from './TabsList';
 import { TabsPanel } from './TabsPanel';
 import { TabsProvider } from './context';
-import { TabsRootComponent, TabsRootProps } from './types';
+import { TabsComponentType } from './types';
 
-const defaultProps: Partial<TabsRootProps> = {
-  alignment: 'start',
-  size: 'md',
-};
+export const Tabs: TabsComponentType = (props) => {
+  const {
+    grow,
+    size = 'md',
+    children,
+    disabled,
+    alignment = 'start',
+    withDivider = true,
+    orientation = 'horizontal',
+    defaultValue,
+  } = props;
 
-export const Tabs: TabsRootComponent = (props) => {
-  const { size, grow, children, disabled, alignment, withDivider, orientation, defaultValue } =
-    mergeProps(defaultProps, props);
-
-  const ctx = useThemeCTX();
   const [value, onChange] = React.useState(defaultValue ?? '');
+
+  const uid = React.useId();
+  const getTabPanelId = () => `tabs${uid}panel`;
+  const getTabItemId = () => `tabs${uid}item`;
 
   return (
     <TabsProvider
@@ -26,11 +30,12 @@ export const Tabs: TabsRootComponent = (props) => {
         grow,
         value,
         onChange,
+        getTabPanelId,
+        getTabItemId,
         disabled,
         alignment,
         withDivider,
         orientation,
-        accent: ctx.state.accent,
       }}
     >
       <React.Fragment>{children}</React.Fragment>

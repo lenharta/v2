@@ -1,7 +1,8 @@
-import { ElementProps, SizeExpanded } from '@/types';
+import { ElementProps, ExoticComponent, ExoticRender, SizeExpanded } from '@/types';
 
 export interface SpaceProps extends Omit<ElementProps<'div'>, 'children'> {
   size?: SizeExpanded;
 }
 
-export type SpaceComponent = React.FC<SpaceProps>;
+export type SpaceComponentType = ExoticComponent<HTMLDivElement, SpaceProps>;
+export type SpaceRenderType = ExoticRender<HTMLDivElement, SpaceProps>;

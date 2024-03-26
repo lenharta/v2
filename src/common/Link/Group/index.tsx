@@ -1,25 +1,28 @@
 import clsx from 'clsx';
-import { mergeProps } from '@/utils';
-import { LinkProvider } from '../context';
-import { LinkGroupProps, LinkGroupRenderType } from '../types';
+import * as React from 'react';
+import { LinkProvider } from '@/common/Link/context';
+import { LinkGroupComponentType, LinkGroupRenderType } from '@/common/Link/types';
 
-const defaultProps: Partial<LinkGroupProps> = {};
-
-export const LinkGroupRender: LinkGroupRenderType = (props, ref) => {
-  const { size, alignment, orientation, className, children, ...otherProps } = mergeProps(
-    defaultProps,
-    props
-  );
+const LinkGroupRender: LinkGroupRenderType = (props, ref) => {
+  const {
+    size = 'md',
+    alignment = 'start',
+    orientation = 'horizontal',
+    className,
+    children,
+    ...otherProps
+  } = props;
 
   return (
     <div
       {...otherProps}
       ref={ref}
       className={clsx('link-group', className)}
-      data-orientation={orientation}
       aria-orientation={orientation}
     >
       <LinkProvider value={{ size, alignment, orientation }}>{children}</LinkProvider>
     </div>
   );
 };
+
+export const LinkGroup = React.forwardRef(LinkGroupRender) as LinkGroupComponentType;

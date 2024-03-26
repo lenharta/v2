@@ -1,13 +1,10 @@
 import { Size, Orientation, ElementProps, ExoticRender, ExoticComponent } from '@/types';
-import { SurfaceConfig } from '@/utils';
 
 export interface ButtonContextValue {
-  orientation?: Orientation;
-  elevated?: boolean;
-  disabled?: boolean;
-  surface?: SurfaceConfig;
-  loading?: boolean;
-  size?: Size;
+  orientation?: Orientation | undefined;
+  disabled?: boolean | undefined;
+  loading?: boolean | undefined;
+  size?: Size | undefined;
 }
 
 export interface UnstyledButtonProps extends ElementProps<'button'> {
@@ -15,26 +12,23 @@ export interface UnstyledButtonProps extends ElementProps<'button'> {
 }
 
 export interface ButtonProps extends UnstyledButtonProps {
-  size?: Size;
-  grow?: boolean;
-  surface?: SurfaceConfig;
-  loading?: boolean;
-  elevated?: boolean;
-  disabled?: boolean;
-  leftContent?: React.ReactNode;
-  rightContent?: React.ReactNode;
-  excludeTabOrder?: boolean;
+  size?: Size | undefined;
+  grow?: boolean | undefined;
+  scheme?: 'default' | undefined;
+  loading?: boolean | undefined;
+  disabled?: boolean | undefined;
+  leftContent?: React.ReactNode | undefined;
+  rightContent?: React.ReactNode | undefined;
+  excludeTabOrder?: boolean | undefined;
 }
 
 export interface ButtonLoaderProps {}
 
 export interface ButtonGroupProps extends ElementProps<'div'> {
-  orientation?: Orientation;
-  disabled?: boolean;
-  elevated?: boolean;
-  surface?: SurfaceConfig;
-  loading?: boolean;
-  size?: Size;
+  orientation?: Orientation | undefined;
+  disabled?: boolean | undefined;
+  loading?: boolean | undefined;
+  size?: Size | undefined;
 }
 
 export type ButtonGroupRenderType = ExoticRender<HTMLDivElement, ButtonGroupProps>;

@@ -1,15 +1,16 @@
+import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FooterMenuItem } from '../FooterMenuItem';
 import { Divider, Subtitle } from '@/common';
-import { FooterMenuGroupProps } from '../types';
+import { FooterMenuItem } from '../FooterMenuItem';
+import { FooterMenuGroupComponentType, FooterMenuGroupRenderType } from '../types';
 
-export const FooterMenuGroup = (props: FooterMenuGroupProps) => {
+const FooterMenuGroupRender: FooterMenuGroupRenderType = (props, ref) => {
   const { group, items } = props;
   const navigate = useNavigate();
   return (
-    <div className="footer-menu-group">
+    <div className="footer-menu-group" ref={ref}>
       <Subtitle>{group}</Subtitle>
-      <Divider />
+      <Divider size="sm" />
       <div className="footer-menu-list">
         {items.map(({ value, label, onClick }) => {
           return (
@@ -26,3 +27,9 @@ export const FooterMenuGroup = (props: FooterMenuGroupProps) => {
     </div>
   );
 };
+
+export const FooterMenuGroup = React.forwardRef(
+  FooterMenuGroupRender
+) as FooterMenuGroupComponentType;
+
+FooterMenuGroup.displayName = '@v2/FooterMenu.Group';

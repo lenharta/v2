@@ -1,22 +1,15 @@
 import * as React from 'react';
-
 import { useStore } from '@/store';
-import { useIsomorphicEffect } from '@/hooks';
-import { TransitionProps } from '@/common/Transition/types';
 import { Transition } from '@/common';
-
-import { Footer } from '../../footer';
-import { PageHero } from '../PageHero';
-import { PageLayout } from '../PageLayout';
-import { PageContent } from '../PageContent';
-import { PageSection } from '../PageSection';
-
-type PageComponent = React.FC<{ children?: React.ReactNode }> & {
-  Hero: typeof PageHero;
-  Layout: typeof PageLayout;
-  Content: typeof PageContent;
-  Section: typeof PageSection;
-};
+import { TransitionProps } from '@/common/Transition/types';
+import { useIsomorphicEffect } from '@/hooks';
+import { PageComponentType } from './types';
+import { Footer } from '../footer';
+import { Header } from '../header';
+import { PageHero } from './PageHero';
+import { PageLayout } from './PageLayout';
+import { PageContent } from './PageContent';
+import { PageSection } from './PageSection';
 
 function usePageTransition(pathname?: string): Omit<TransitionProps, 'children'> {
   const [mounted, setMounted] = React.useState<boolean>(false);
@@ -37,19 +30,22 @@ function usePageTransition(pathname?: string): Omit<TransitionProps, 'children'>
   };
 }
 
-export const Page: PageComponent = (props) => {
+export const Page: PageComponentType = (props) => {
   const { children } = props;
   const { location } = useStore();
   const pageTransition = usePageTransition(location?.pathname);
   return (
-    <Transition {...pageTransition}>
-      {(transitionStyles) => (
-        <Page.Layout style={transitionStyles}>
-          {children}
-          <Footer />
-        </Page.Layout>
-      )}
-    </Transition>
+    <>
+      <Header />
+      <Transition {...pageTransition}>
+        {(transitionStyles) => (
+          <Page.Layout style={transitionStyles}>
+            {children}
+            <Footer />
+          </Page.Layout>
+        )}
+      </Transition>
+    </>
   );
 };
 

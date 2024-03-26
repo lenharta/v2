@@ -4,5 +4,5 @@ export interface StackProps extends ElementProps<'div'> {
   gap?: 'default' | SizeExpanded;
 }
 
-export type StackComponentRender = ExoticRender<HTMLDivElement, StackProps>;
-export type StackComponent = ExoticComponent<HTMLDivElement, StackProps>;
+export type StackRenderType = ExoticRender<HTMLDivElement, StackProps>;
+export type StackComponentType = ExoticComponent<HTMLDivElement, StackProps>;
