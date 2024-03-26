@@ -1,10 +1,11 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { objectKeys } from '@/utils';
+import { TitleLevel } from '@/types';
 import { TitleComponentType, TitleLevelProps, TitleRenderType } from './types';
 
-const findComponent = (levels: TitleLevelProps) => {
-  return objectKeys(levels).find((value) => levels[value] !== undefined)!;
+const findComponent = (levels: TitleLevelProps): TitleLevel => {
+  return objectKeys(levels).find((value) => levels[value ?? 'h2'] !== undefined)!;
 };
 
 export const TitleRender: TitleRenderType = (props, ref) => {

@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { mergeProps } from '@/utils';
 import { useThemeCTX } from '@/store';
 import { ControlSegment } from './Segment';
 import { ControlIndicator } from './Indicator';
 import { Orientation, Size } from '@/types/common';
-import { OptionItem, parseItemData } from '../utils';
+import { ItemObj, parseItemData } from '../utils';
 
 // TODO: Update translation for theme direction
 
-export interface ControlProps<T> {
-  data?: T[] | OptionItem<T>[];
-  value?: T;
-  onChange(value: T): void;
+export interface ControlProps {
+  data?: ItemObj[];
+  value: string;
+  onChange(value: string): void;
   orientation?: Orientation;
   radius?: Size | 'rd';
   fullWidth?: boolean;
@@ -25,23 +24,23 @@ const scaleSegment = (size: Size = 'xs') => {
   return WRAPPER_PADDING * sizes[size];
 };
 
-export interface ControlComponent<T> {
-  (props: ControlProps<T>): JSX.Element | null;
+export interface ControlComponent {
+  (props: ControlProps): JSX.Element | null;
   displayName?: string;
   Indicator: typeof ControlIndicator;
   Segment: typeof ControlSegment;
 }
 
-export const Control: ControlComponent<any> = <T extends string>(props: ControlProps<T>) => {
-  const defaultProps: Partial<ControlProps<T>> = {
-    orientation: 'horizontal',
-    radius: 'xs',
-  };
-
-  const { data, onChange, value, orientation, fullWidth, radius, size } = mergeProps(
-    defaultProps,
-    props
-  );
+export const Control: ControlComponent = (props: ControlProps) => {
+  const {
+    data,
+    onChange,
+    value,
+    orientation = 'horizontal',
+    fullWidth,
+    radius = 'xs',
+    size = 'sm',
+  } = props;
 
   const theme = useThemeCTX();
   const direction = theme.state.dir;
@@ -52,8 +51,7 @@ export const Control: ControlComponent<any> = <T extends string>(props: ControlP
   const parsedData = React.useMemo(() => parseItemData(data), [data, direction]);
   const outputData = direction === 'rtl' ? parsedData.reverse() : parsedData;
 
-  const mergedProps = mergeProps({ orientation, radius, size }, defaultProps);
-  const wrapperOffset = scaleSegment(mergedProps.size);
+  const wrapperOffset = scaleSegment(size);
 
   const [indicator, setIndicator] = React.useState({
     translate: '',
@@ -65,7 +63,7 @@ export const Control: ControlComponent<any> = <T extends string>(props: ControlP
     const node = wrapperRef.current!;
     const rect = node.getBoundingClientRect();
 
-    if (mergedProps.orientation === 'horizontal') {
+    if (orientation === 'horizontal') {
       const itemWidth = (rect.width - wrapperOffset) / outputData.length;
       const itemPosition = itemWidth * activeRef.current + WRAPPER_PADDING / 2;
 
@@ -76,7 +74,7 @@ export const Control: ControlComponent<any> = <T extends string>(props: ControlP
       }));
     }
 
-    if (mergedProps.orientation === 'vertical') {
+    if (orientation === 'vertical') {
       const itemHeight = (rect.height - wrapperOffset) / outputData.length;
       const itemPosition = itemHeight * activeRef.current + WRAPPER_PADDING / 2;
 
@@ -93,17 +91,17 @@ export const Control: ControlComponent<any> = <T extends string>(props: ControlP
       ref={wrapperRef}
       className="Control"
       data-fullwidth={fullWidth}
-      data-orientation={mergedProps.orientation}
-      aria-orientation={mergedProps.orientation}
+      data-orientation={orientation}
+      aria-orientation={orientation}
       style={{
         gap: wrapperOffset,
         padding: wrapperOffset,
-        borderRadius: `var(--radius-${mergedProps.radius})`,
+        borderRadius: `var(--radius-${radius})`,
       }}
     >
       <Control.Indicator
         style={{
-          borderRadius: `var(--radius-${mergedProps.radius})`,
+          borderRadius: `var(--radius-${radius})`,
           transform: indicator.translate,
           height: indicator.height,
           width: indicator.width,

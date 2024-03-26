@@ -11,8 +11,8 @@ const HeaderRender: HeaderRenderType = (props, ref) => {
   return (
     <div {...otherProps} ref={ref} className={clsx('header', className)}>
       <div className="left-content">
-        <Header.SkipTo show={true} navigate={navigate} />
-        <Header.Logo navigate={navigate} />
+        <HeaderSkipTo show={true} navigate={navigate} />
+        <HeaderLogo navigate={navigate} />
       </div>
     </div>
   );
@@ -20,5 +20,3 @@ const HeaderRender: HeaderRenderType = (props, ref) => {
 
 export const Header = React.forwardRef(HeaderRender) as HeaderComponentType;
 Header.displayName = '@v2/Header';
-Header.SkipTo = HeaderSkipTo;
-Header.Logo = HeaderLogo;

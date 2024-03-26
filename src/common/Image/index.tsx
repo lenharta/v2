@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { createEventCallback } from '../utils';
 import { ImageComponentType, ImageRenderType } from './types';
+import { createEventCallback } from '@/utils';
 
 const ImageRender: ImageRenderType = (props, ref) => {
   const {

@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { ButtonGroup } from './Group';
 import { useButtonCTX } from './context';
-import { parseTokenData } from '@/utils';
 import { UnstyledButton } from './Unstyled';
 import { ButtonComponentType, ButtonRenderType } from './types';
 
@@ -29,17 +28,6 @@ const ButtonRender: ButtonRenderType = (props, ref) => {
   const isLoading = ctx.loading || loading;
   const isDisabled = ctx.disabled || disabled;
 
-  const styles = React.useMemo(
-    () => ({
-      ...style,
-      ...parseTokenData([
-        { key: 'button-height', prop: 'height', value: isSize },
-        { key: 'button-padding-x', prop: 'paddingInline', value: isSize },
-      ]),
-    }),
-    [style, ctx.size, size]
-  );
-
   const accessibleProps = {
     role: 'button',
     ...(!isLoading ? { 'aria-busy': true } : {}),
@@ -60,9 +48,13 @@ const ButtonRender: ButtonRenderType = (props, ref) => {
       {...otherProps}
       {...accessibleProps}
       {...dataProps}
-      className={clsx('button', className)}
-      style={styles}
       ref={ref}
+      className={clsx('button', className)}
+      style={{
+        ...style,
+        fontSize: `var(--button-height-${isSize})`,
+        paddingInline: `var(--button-padding-x-${isSize})`,
+      }}
     >
       {isLoading !== undefined ? (
         <span>Loading...</span>

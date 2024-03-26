@@ -25,7 +25,4 @@ export type HeaderLogoComponentType = ExoticComponent<HTMLButtonElement, HeaderL
 export interface HeaderProps extends ElementProps<'header'> {}
 
 export type HeaderRenderType = ExoticRender<HTMLDivElement, HeaderProps>;
-export type HeaderComponentType = ExoticComponent<HTMLDivElement, HeaderProps> & {
-  SkipTo: HeaderSkipToComponentType;
-  Logo: HeaderLogoComponentType;
-};
+export type HeaderComponentType = ExoticComponent<HTMLDivElement, HeaderProps>;

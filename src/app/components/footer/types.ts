@@ -4,7 +4,7 @@ export interface FooterMenuItemProps extends ElementProps<'button'> {
   value: string;
   label: string;
   onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
-  navigate: (url: string) => void;
+  navigate?: (url: string) => void;
 }
 
 export type FooterMenuItemRenderType = ExoticRender<HTMLButtonElement, FooterMenuItemProps>;
@@ -27,8 +27,5 @@ export type FooterMenuComponentType = ExoticComponent<HTMLElement, FooterMenuPro
 
 export interface FooterProps extends ElementProps<'footer'> {}
 
-export type FooterRenderType = ExoticRender<HTMLElement, FooterMenuItemProps>;
-
-export type FooterComponentType = ExoticComponent<HTMLElement, FooterMenuItemProps> & {
-  Menu: FooterMenuComponentType;
-};
+export type FooterRenderType = ExoticRender<HTMLDivElement, FooterProps>;
+export type FooterComponentType = ExoticComponent<HTMLDivElement, FooterProps>;

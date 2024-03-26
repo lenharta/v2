@@ -2,15 +2,9 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { PageContentComponentType, PageContentRenderType } from '../types';
 
-const PageContentRender: PageContentRenderType = ({ id, className, ...otherProps }, ref) => {
-  return (
-    <main
-      {...otherProps}
-      ref={ref}
-      id={id || 'main-content'}
-      className={clsx('page-content', className)}
-    />
-  );
+const PageContentRender: PageContentRenderType = (props, ref) => {
+  const { id = 'main-content', className, ...otherProps } = props;
+  return <main {...otherProps} ref={ref} className={clsx('page-content', className)} />;
 };
 
 export const PageContent = React.forwardRef(PageContentRender) as PageContentComponentType;

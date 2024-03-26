@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Size } from '@/types/common';
+import { Text } from '@/common';
 import { mergeProps } from '@/utils';
 import { useInputIds } from '@/hooks';
-import { ElementProps } from '@/types/global';
+import { Size, ElementProps } from '@/types';
 import { CheckboxIndicator } from './Indicator';
-import { InputText, InputLabel } from '../Input';
 import { useCheckboxCTX } from './context';
 import { CheckboxGroup } from './Group';
 
@@ -102,34 +101,31 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
 
       <div className="checkbox-content">
         {loading ? (
-          <Checkbox.Text
+          <CheckboxText
             id={uids.description}
             size={size}
             text="loading..."
-            data-loading={isLoading}
-            data-disabled={isDisabled}
-            className="checkbox-description"
+            loading={isLoading}
+            disabled={isDisabled}
           />
         ) : (
-          <Checkbox.Label
-            id={uids.label}
+          <CheckboxLabel
             size={size}
             text={label}
+            id={uids.label}
             htmlFor={uids.input}
-            data-loading={isLoading}
-            data-disabled={isDisabled}
-            className="checkbox-label"
+            loading={isLoading}
+            disabled={isDisabled}
           />
         )}
 
         {loading ? null : (
-          <Checkbox.Text
+          <CheckboxText
             id={uids.description}
             size={size}
             text={description}
-            data-loading={isLoading}
-            data-disabled={isDisabled}
-            className="checkbox-description"
+            loading={isLoading}
+            disabled={isDisabled}
           />
         )}
       </div>
@@ -137,18 +133,68 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
   );
 }
 
+interface CheckboxLabelProps {
+  id: string;
+  size?: Size;
+  text?: string;
+  htmlFor?: string;
+  loading?: boolean;
+  disabled?: boolean;
+}
+
+const CheckboxLabel = (props: CheckboxLabelProps) => {
+  const { text, id, size, htmlFor, loading, disabled, ...otherProps } = props;
+  if (!text) return null;
+  return (
+    <label
+      {...otherProps}
+      id={id}
+      htmlFor={htmlFor}
+      className="label"
+      data-loading={loading}
+      data-disabled={disabled}
+      aria-disabled={disabled}
+      aria-busy={loading}
+    >
+      {text}
+    </label>
+  );
+};
+
+interface CheckboxTextProps {
+  id: string;
+  size?: Size;
+  text?: string;
+  loading?: boolean;
+  disabled?: boolean;
+}
+
+const CheckboxText = (props: CheckboxTextProps) => {
+  const { text, id, size, loading, disabled, ...otherProps } = props;
+  if (!text) return null;
+  return (
+    <Text
+      {...otherProps}
+      id={id}
+      className="description"
+      data-loading={loading}
+      data-disabled={disabled}
+      aria-disabled={disabled}
+      aria-busy={loading}
+    >
+      {text}
+    </Text>
+  );
+};
+
 export type CheckboxComponents = {
   Indicator: typeof CheckboxIndicator;
   Group: typeof CheckboxGroup;
-  Label: typeof InputLabel;
-  Text: typeof InputText;
 };
 
 export const Checkbox = React.forwardRef(_Checkbox) as CheckboxComponents &
   React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>>;
 
 Checkbox.displayName = '@v2/Checkbox';
-Checkbox.Label = InputLabel;
-Checkbox.Text = InputText;
 Checkbox.Indicator = CheckboxIndicator;
 Checkbox.Group = CheckboxGroup;

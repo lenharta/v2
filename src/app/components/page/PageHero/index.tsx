@@ -10,8 +10,8 @@ export const PageHeroRender: PageHeroRenderType = (props, ref) => {
       {...otherProps}
       ref={ref}
       role="banner"
-      className={clsx('page-hero', className)}
       data-variant={variant}
+      className={clsx('page-hero', className)}
     >
       <div className="inner">
         {subtitle && <Subtitle h2>{subtitle}</Subtitle>}

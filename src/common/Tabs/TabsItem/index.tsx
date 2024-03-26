@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { useTabsCTX } from '../context';
 import { UnstyledButton } from '@/common/Button/Unstyled';
-import { createEventCallback } from '@/common/utils';
 import { TabsItemComponentType, TabsItemRenderType } from '../types';
+import { createEventCallback } from '@/utils';
 
 const TabsItemRender: TabsItemRenderType = (props, ref) => {
   const {

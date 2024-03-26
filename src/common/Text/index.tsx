@@ -5,7 +5,7 @@ import { TextComponentType, TextRenderType } from './types';
 export const TextRender: TextRenderType = (props, ref) => {
   const { size = 'md', scheme = 'primary', emphasis = 'medium', className, ...otherProps } = props;
   return (
-    <Text
+    <p
       {...otherProps}
       ref={ref}
       className={clsx('text', className)}
