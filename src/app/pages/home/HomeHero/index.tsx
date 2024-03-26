@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import * as React from 'react';
 import { useGSAP } from '@gsap/react';
-import { Subtitle, Title } from '@/common';
+import { Title } from '@/common';
 
 export const HomeHero = () => {
   const timelineRef = React.useRef<gsap.core.Timeline>();
@@ -27,8 +27,8 @@ export const HomeHero = () => {
   return (
     <div className="page-hero home-hero" ref={scopeRef}>
       <div className="inner">
-        <Subtitle size="lg" h2 children="Andrew Lenhart" />
-        <Title size="xl" h1 children="Software Engineer" />
+        <Title h2 size="sm" children="Andrew Lenhart" />
+        <Title h1 size="xl" children="Software Engineer" />
       </div>
       <div className="underlay-top" />
       <div className="underlay-bottom" />

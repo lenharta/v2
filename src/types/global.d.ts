@@ -31,6 +31,11 @@ export interface InlineStylesInput {
   media?: InlineStylesMediaQuery[];
 }
 
+export interface LayoutProps {
+  lang?: Language;
+  children?: React.ReactNode;
+}
+
 export type ContactInfoKey = 'email' | 'phone' | 'url';
 export type ContactNameKey = 'last' | 'first' | 'middle';
 export type ContactAddressKey = 'street' | 'city' | 'state' | 'zip';

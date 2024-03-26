@@ -5,9 +5,7 @@ export const Sandbox = () => (
   <Page>
     <Page.Hero title="Sandbox" />
     <Page.Content>
-      <Page.Section>
-        <Text>Content</Text>
-      </Page.Section>
+      <Text>Content</Text>
     </Page.Content>
   </Page>
 );

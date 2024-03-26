@@ -1,8 +1,8 @@
 import {
-  Accent,
-  Alignment,
   SizeCompact,
   Orientation,
+  DividerScheme,
+  DividerPosition,
   ElementProps,
   ExoticRender,
   ExoticComponent,
@@ -11,9 +11,9 @@ import {
 export interface DividerProps extends ElementProps<'div'> {
   size?: SizeCompact | undefined;
   label?: string | undefined;
-  accent?: Accent | undefined;
+  scheme?: DividerScheme | undefined;
   orientation?: Orientation | undefined;
-  labelPosition?: 'center' | Alignment | undefined;
+  labelPosition?: DividerPosition | undefined;
 }
 
 export type DividerRenderType = ExoticRender<HTMLDivElement, DividerProps>;

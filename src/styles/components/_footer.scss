@@ -1,10 +1,10 @@
 .footer {
   display: block;
-  padding: var(--gutter);
   z-index: var(--app-index-content);
-  background-color: var(--c-primary-surface-1);
   min-height: 40vh;
 }
 
-.footer-menu {
+.footer-menu-item {
+  padding-inline: var(--gutter);
+  padding-block: var(--gap);
 }

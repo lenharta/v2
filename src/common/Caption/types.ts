@@ -1,6 +1,7 @@
 import {
   CaptionSize,
   CaptionScheme,
+  CaptionWeight,
   CaptionEmphasis,
   ElementProps,
   ExoticRender,
@@ -8,10 +9,10 @@ import {
 } from '@/types';
 
 export interface CaptionProps extends ElementProps<'caption'> {
-  overrideTokens?: boolean | undefined;
-  emphasis?: CaptionEmphasis | undefined;
-  scheme?: CaptionScheme | undefined;
   size?: CaptionSize | undefined;
+  scheme?: CaptionScheme | undefined;
+  weight?: CaptionWeight | undefined;
+  emphasis?: CaptionEmphasis | undefined;
 }
 
 export type CaptionComponentRender = ExoticRender<HTMLParagraphElement, CaptionProps>;

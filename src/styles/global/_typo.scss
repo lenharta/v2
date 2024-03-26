@@ -1,6 +1,229 @@
-.line-1 {
-  font-size: 32px;
-  line-height: 40px;
-  font-weight: 300;
-  letter-spacing: normal;
+@use '../mixins' as mixins;
+
+.body,
+.title,
+.caption,
+.subtitle {
+  margin: 0;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: var(--gap);
+  text-decoration: none;
+  font-family: var(--font-family);
+  text-align: left;
+  direction: ltr;
+
+  @include mixins.rtl {
+    text-align: right;
+    direction: rtl;
+  }
+
+  &[data-line-clamp] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--line-clamp);
+    -webkit-box-orient: vertical;
+  }
+
+  &[data-inherit] {
+    line-height: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+  }
+}
+
+.body,
+.caption {
+  line-height: 1.4;
+  font-weight: 500;
+
+  &[data-truncate='start'] {
+    direction: rtl;
+    text-align: right;
+
+    @include mixins.rtl {
+      direction: ltr;
+      text-align: left;
+    }
+  }
+
+  &[data-truncate] {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.title,
+.subtitle {
+  line-height: 1.2;
+  font-weight: 400;
+
+  &[data-variant='gradient'] {
+    background-image: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+[data-prefers-color-scheme='dim'],
+[data-prefers-color-scheme='dark'],
+[data-prefers-color-scheme='light'] {
+  [data-body-scheme='accent'][data-body-emphasis='high'],
+  [data-title-scheme='accent'][data-title-emphasis='high'],
+  [data-caption-scheme='accent'][data-caption-emphasis='high'],
+  [data-subtitle-scheme='accent'][data-subtitle-emphasis='high'] {
+    color: hsla(var(--c-accent), 0.99);
+  }
+
+  [data-body-scheme='primary'][data-body-emphasis='high'],
+  [data-title-scheme='primary'][data-title-emphasis='high'],
+  [data-caption-scheme='primary'][data-caption-emphasis='high'],
+  [data-subtitle-scheme='primary'][data-subtitle-emphasis='high'] {
+    color: hsla(var(--c-primary), 0.99);
+  }
+
+  [data-body-scheme='secondary'][data-body-emphasis='high'],
+  [data-title-scheme='secondary'][data-title-emphasis='high'],
+  [data-caption-scheme='secondary'][data-caption-emphasis='high'],
+  [data-subtitle-scheme='secondary'][data-subtitle-emphasis='high'] {
+    color: hsla(var(--c-secondary), 0.99);
+  }
+
+  [data-body-scheme='accent'][data-body-emphasis='medium'],
+  [data-title-scheme='accent'][data-title-emphasis='medium'],
+  [data-caption-scheme='accent'][data-caption-emphasis='medium'],
+  [data-subtitle-scheme='accent'][data-subtitle-emphasis='medium'] {
+    color: hsla(var(--c-accent), 0.87);
+  }
+
+  [data-body-scheme='primary'][data-body-emphasis='medium'],
+  [data-title-scheme='primary'][data-title-emphasis='medium'],
+  [data-caption-scheme='primary'][data-caption-emphasis='medium'],
+  [data-subtitle-scheme='primary'][data-subtitle-emphasis='medium'] {
+    color: hsla(var(--c-primary), 0.87);
+  }
+
+  [data-body-scheme='secondary'][data-body-emphasis='medium'],
+  [data-title-scheme='secondary'][data-title-emphasis='medium'],
+  [data-caption-scheme='secondary'][data-caption-emphasis='medium'],
+  [data-subtitle-scheme='secondary'][data-subtitle-emphasis='medium'] {
+    color: hsla(var(--c-secondary), 0.87);
+  }
+
+  [data-body-scheme='accent'][data-body-emphasis='low'],
+  [data-title-scheme='accent'][data-title-emphasis='low'],
+  [data-caption-scheme='accent'][data-caption-emphasis='low'],
+  [data-subtitle-scheme='accent'][data-subtitle-emphasis='low'] {
+    color: hsla(var(--c-accent), 0.64);
+  }
+
+  [data-body-scheme='primary'][data-body-emphasis='low'],
+  [data-title-scheme='primary'][data-title-emphasis='low'],
+  [data-caption-scheme='primary'][data-caption-emphasis='low'],
+  [data-subtitle-scheme='primary'][data-subtitle-emphasis='low'] {
+    color: hsla(var(--c-primary), 0.64);
+  }
+
+  [data-body-scheme='secondary'][data-body-emphasis='low'],
+  [data-title-scheme='secondary'][data-title-emphasis='low'],
+  [data-caption-scheme='secondary'][data-caption-emphasis='low'],
+  [data-subtitle-scheme='secondary'][data-subtitle-emphasis='low'] {
+    color: hsla(var(--c-secondary), 0.64);
+  }
+}
+
+[data-body-size='sm'] {
+  font-size: var(--font-size-body-sm);
+}
+[data-body-size='md'] {
+  font-size: var(--font-size-body-md);
+}
+[data-body-size='lg'] {
+  font-size: var(--font-size-body-lg);
+}
+[data-body-size='xl'] {
+  font-size: var(--font-size-body-xl);
+}
+
+[data-caption-size='sm'] {
+  font-size: var(--font-size-caption-sm);
+}
+[data-caption-size='md'] {
+  font-size: var(--font-size-caption-md);
+}
+[data-caption-size='lg'] {
+  font-size: var(--font-size-caption-lg);
+}
+
+[data-subtitle-size='sm'] {
+  font-size: var(--font-size-subtitle-sm);
+  margin-bottom: var(--gap);
+}
+[data-subtitle-size='md'] {
+  font-size: var(--font-size-subtitle-md);
+  margin-bottom: var(--gap);
+}
+[data-subtitle-size='lg'] {
+  font-size: var(--font-size-subtitle-lg);
+  margin-bottom: var(--gap);
+}
+
+[data-title-size='sm'] {
+  font-size: var(--font-size-title-sm);
+  margin-bottom: var(--gap);
+}
+[data-title-size='md'] {
+  font-size: var(--font-size-title-md);
+  margin-bottom: var(--gap);
+}
+[data-title-size='lg'] {
+  font-size: var(--font-size-title-lg);
+  margin-bottom: var(--gap);
+}
+[data-title-size='xl'] {
+  font-size: var(--font-size-title-xl);
+  margin-bottom: var(--gap);
+}
+[data-title-size='xxl'] {
+  font-size: var(--font-size-title-xxl);
+  margin-bottom: var(--gap);
+}
+
+[data-body-weight='1'],
+[data-title-weight='1'],
+[data-caption-weight='1'],
+[data-subtitle-weight='1'] {
+  font-weight: var(--font-weight-1);
+}
+
+[data-body-weight='2'],
+[data-title-weight='2'],
+[data-caption-weight='2'],
+[data-subtitle-weight='2'] {
+  font-weight: var(--font-weight-2);
+}
+
+[data-body-weight='3'],
+[data-title-weight='3'],
+[data-caption-weight='3'],
+[data-subtitle-weight='3'] {
+  font-weight: var(--font-weight-3);
+}
+
+[data-body-weight='4'],
+[data-title-weight='4'],
+[data-caption-weight='4'],
+[data-subtitle-weight='4'] {
+  font-weight: var(--font-weight-4);
+}
+
+[data-body-weight='5'],
+[data-title-weight='5'],
+[data-caption-weight='5'],
+[data-subtitle-weight='5'] {
+  font-weight: var(--font-weight-5);
 }

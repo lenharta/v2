@@ -11,6 +11,7 @@ const HeaderLogoRender: HeaderLogoRenderType = (props, ref) => {
     show,
     label = 'Logo',
     style,
+    location,
     navigate,
     disabled,
     children,

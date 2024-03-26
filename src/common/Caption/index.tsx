@@ -3,15 +3,23 @@ import * as React from 'react';
 import { CaptionComponent, CaptionComponentRender } from './types';
 
 export const CaptionRender: CaptionComponentRender = (props, ref) => {
-  const { size = 'md', scheme = 'primary', emphasis = 'medium', className, ...otherProps } = props;
+  const {
+    size = 'md',
+    weight = '2',
+    scheme = 'primary',
+    emphasis = 'medium',
+    className,
+    ...otherProps
+  } = props;
   return (
     <caption
       {...otherProps}
       ref={ref}
       className={clsx('caption', className)}
-      data-text-emphasis={emphasis}
-      data-text-scheme={scheme}
-      data-text-size={size}
+      data-caption-emphasis={emphasis}
+      data-caption-weight={weight}
+      data-caption-scheme={scheme}
+      data-caption-size={size}
     />
   );
 };

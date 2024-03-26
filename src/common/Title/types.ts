@@ -2,6 +2,7 @@ import {
   TitleSize,
   TitleLevel,
   TitleScheme,
+  TitleWeight,
   TitleVariant,
   TitleEmphasis,
   ElementProps,
@@ -14,8 +15,9 @@ export type TitleLevelProps = Partial<Record<TitleLevel, boolean>>;
 export interface TitleProps extends ElementProps<'h1'>, TitleLevelProps {
   size?: TitleSize | undefined;
   scheme?: TitleScheme | undefined;
+  weight?: TitleWeight | undefined;
   variant?: TitleVariant | undefined;
-  empahasis?: TitleEmphasis | undefined;
+  emphasis?: TitleEmphasis | undefined;
 }
 
 export type TitleRenderType = ExoticRender<HTMLHeadingElement, TitleProps>;

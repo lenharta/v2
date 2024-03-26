@@ -1,6 +1,7 @@
 import {
   TextSize,
   TextScheme,
+  TextWeight,
   TextEmphasis,
   ElementProps,
   ExoticRender,
@@ -8,9 +9,10 @@ import {
 } from '@/types';
 
 export interface TextProps extends ElementProps<'p'> {
-  emphasis?: TextEmphasis | undefined;
-  scheme?: TextScheme | undefined;
   size?: TextSize | undefined;
+  scheme?: TextScheme | undefined;
+  weight?: TextWeight | undefined;
+  emphasis?: TextEmphasis | undefined;
 }
 
 export type TextRenderType = ExoticRender<HTMLParagraphElement, TextProps>;
