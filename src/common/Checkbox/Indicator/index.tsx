@@ -15,8 +15,8 @@ export const CheckboxIndicator = React.forwardRef<HTMLDivElement, CheckboxIndica
   (props, ref) => {
     const { checked, value, className, ...otherProps } = mergeProps(defaultProps, props);
     const clxss = clsx('checkbox-indicator', className);
-    const label = !checked ? 'checkbox unchecked' : 'checkbox checked';
     const icon = !checked ? 'checkbox_unchecked' : 'checkbox_checked';
+    const label = !checked ? 'checkbox unchecked' : 'checkbox checked';
 
     return (
       <div

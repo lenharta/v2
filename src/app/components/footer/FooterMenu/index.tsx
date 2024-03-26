@@ -14,3 +14,4 @@ const FooterMenuRender: FooterMenuRenderType = (props, ref) => {
 };
 
 export const FooterMenu = React.forwardRef(FooterMenuRender) as FooterMenuComponentType;
+FooterMenu.displayName = '@v2/FooterMenu';

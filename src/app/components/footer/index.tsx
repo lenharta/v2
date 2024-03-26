@@ -6,7 +6,7 @@ export const FooterRender: FooterRenderType = (props, ref) => {
   const { ...otherProps } = props;
   return (
     <footer {...otherProps} className="footer" ref={ref}>
-      <Footer.Menu
+      <FooterMenu
         groups={[
           {
             group: 'Routes',
@@ -32,4 +32,3 @@ export const FooterRender: FooterRenderType = (props, ref) => {
 
 export const Footer = React.forwardRef(FooterRender) as FooterComponentType;
 Footer.displayName = '@v2/Footer';
-Footer.Menu = FooterMenu;

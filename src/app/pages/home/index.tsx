@@ -1,8 +1,8 @@
 import { Page } from '@/app/components';
 import { HomeHero } from './HomeHero';
-import { HomeKeynote } from './HomeKeynote';
 import { HomeTimeline } from './HomeTimeline';
 import { HomeOverview } from './HomeOverview';
+import { HomeKeynote } from './HomeKeynote';
 
 export const Home = () => (
   <Page>

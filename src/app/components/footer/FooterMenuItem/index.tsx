@@ -12,7 +12,7 @@ const FooterMenuItemRender: FooterMenuItemRenderType = (props, ref) => {
       className="footer-menu-item"
       onClick={(event) => {
         onClick?.(event);
-        navigate(value);
+        navigate?.(value);
       }}
     />
   );

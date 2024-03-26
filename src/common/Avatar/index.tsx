@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Icon } from '../Icon';
 import { useNavigate } from 'react-router-dom';
 import { UnstyledButton } from '../Button/Unstyled';
-import { createEventCallback } from '../utils';
+import { createEventCallback } from '@/utils';
 import { AvatarComponent, AvatarComponentRender } from './types';
 
 const AvatarRender: AvatarComponentRender = (props, ref) => {
