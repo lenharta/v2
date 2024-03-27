@@ -27,11 +27,15 @@ const HeaderLogoRender: HeaderLogoRenderType = (props, ref) => {
   };
 
   const handleClick = createEventCallback(otherProps.onClick, () => {
-    if (url && !disabled) navigate(url);
+    if (url && !disabled) {
+      navigate(url);
+    }
   });
 
-  const handleKeyDown = createEventCallback(otherProps.onKeyDown, () => {
-    if (url && !disabled) navigate(url);
+  const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+    if (url && !disabled && event.key === 'Enter') {
+      navigate(url);
+    }
   });
 
   return (

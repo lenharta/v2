@@ -3,12 +3,15 @@ import { useStore } from '@/store';
 import { Transition } from '@/common';
 import { TransitionProps } from '@/common/Transition/types';
 import { useIsomorphicEffect } from '@/hooks';
-import { PageComponentType } from './types';
+
 import { Footer } from '../footer';
 import { Header } from '../header';
+import { Actions } from '../actions';
+
 import { PageHero } from './PageHero';
 import { PageLayout } from './PageLayout';
 import { PageContent } from './PageContent';
+import { PageComponentType } from './types';
 
 function usePageTransition(pathname?: string): Omit<TransitionProps, 'children'> {
   const [mounted, setMounted] = React.useState<boolean>(false);
@@ -36,6 +39,7 @@ export const Page: PageComponentType = (props) => {
   return (
     <>
       <Header />
+      <Actions />
       <Transition {...pageTransition}>
         {(transitionStyles) => (
           <Page.Layout style={transitionStyles}>

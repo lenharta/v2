@@ -9,11 +9,10 @@
   z-index: var(--app-index-header);
 
   .left-content {
-    flex: 1 0 20%;
-    max-width: 20%;
     height: 100%;
     display: flex;
     position: relative;
+    padding: 2px;
     gap: 2px;
   }
 }
@@ -22,10 +21,6 @@
 .header-skip-link {
   border: solid 2px transparent;
   outline: solid 2px transparent;
-}
-
-.header {
-  margin: 2px;
 }
 
 .header-skip-link {

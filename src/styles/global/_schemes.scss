@@ -7,16 +7,11 @@ body,
 .header,
 .page-header,
 .page-layout,
-.page-content {
+.page-content,
+.page-actions {
   @include mixins.transition-colors-static;
   background-color: var(--c-primary-surface-0);
   color: var(--c-primary-text-0);
-}
-
-.home-sec-overview-right {
-  @include mixins.transition-colors-static;
-  background-color: var(--c-secondary-surface-0);
-  color: var(--c-secondary-text-0);
 }
 
 .button,
@@ -61,7 +56,8 @@ body,
 
 .header-logo-link,
 .header-skip-link,
-.footer-menu-item {
+.footer-menu-item,
+.page-actions-menu-item {
   @include mixins.transition-colors-interactive;
   background-color: var(--c-primary-surface-0);
   color: var(--c-primary-text-0);

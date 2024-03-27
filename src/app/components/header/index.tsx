@@ -28,6 +28,9 @@ const HeaderRender: HeaderRenderType = (props, ref) => {
           navigate={navigate}
           location={location}
           onKeyDown={(event) => {
+            if (showSkip && event.shiftKey && event.key === 'Tab') {
+              setShowSkip(undefined);
+            }
             if (showSkip && event.key === 'Tab') {
               setShowSkip(undefined);
             }

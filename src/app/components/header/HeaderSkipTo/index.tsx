@@ -37,7 +37,8 @@ export const HeaderSkipToRender: HeaderSkipToRenderType = (props, ref) => {
   });
 
   const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
-    if (url && !disabled && event.key !== 'Tab') {
+    event.stopPropagation();
+    if (url && !disabled && event.key !== 'Tab' && !event.shiftKey) {
       navigate(getSkipUrl(hasPath, url));
     }
   });

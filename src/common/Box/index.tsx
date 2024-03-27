@@ -3,9 +3,15 @@ import * as React from 'react';
 import { BoxComponentType, BoxRenderType } from './types';
 
 const BoxRender: BoxRenderType = (props, ref) => {
-  const { scheme = 'primary', className, children, ...otherProps } = props;
+  const { scheme = 'primary', cols, className, children, ...otherProps } = props;
   return (
-    <div {...otherProps} className={clsx('box', className)} ref={ref} data-box-scheme={scheme}>
+    <div
+      {...otherProps}
+      className={clsx('box', className)}
+      ref={ref}
+      data-box-scheme={scheme}
+      data-box-cols={cols}
+    >
       {children}
     </div>
   );
