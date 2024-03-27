@@ -21,25 +21,25 @@ export type ClientRect = Rect & SideObject;
 export type TitleSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export type TitleLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type TitleWeight = '1' | '2' | '3' | '4' | '5';
-export type TitleScheme = 'primary' | 'secondary' | 'accent';
+export type TitleScheme = SurfaceType;
 export type TitleVariant = 'default' | 'gradient' | 'outlined';
 export type TitleEmphasis = 'low' | 'medium' | 'high';
 
 export type SubtitleSize = 'sm' | 'md' | 'lg';
 export type SubtitleLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type SubtitleWeight = '1' | '2' | '3' | '4' | '5';
-export type SubtitleScheme = 'primary' | 'secondary' | 'accent';
+export type SubtitleScheme = SurfaceType;
 export type SubtitleVariant = 'default' | 'gradient' | 'outlined';
 export type SubtitleEmphasis = 'low' | 'medium' | 'high';
 
 export type CaptionSize = 'sm' | 'md' | 'lg';
-export type CaptionScheme = 'primary' | 'secondary' | 'accent';
+export type CaptionScheme = SurfaceType;
 export type CaptionWeight = '1' | '2' | '3' | '4' | '5';
 export type CaptionVariant = 'default' | 'gradient' | 'outlined';
 export type CaptionEmphasis = 'low' | 'medium' | 'high';
 
 export type TextSize = 'sm' | 'md' | 'lg';
-export type TextScheme = 'primary' | 'secondary' | 'accent';
+export type TextScheme = SurfaceType;
 export type TextWeight = '1' | '2' | '3' | '4' | '5';
 export type TextVariant = 'default' | 'gradient' | 'outlined';
 export type TextEmphasis = 'low' | 'medium' | 'high';
@@ -49,11 +49,11 @@ export type SurfaceState = 'base' | 'interactive' | 'disabled' | 'loading';
 export type SurfaceLevel = 0 | 1 | 2 | 3 | 4 | 5;
 export type SurfaceToken = `surface-${SurfaceType}-${SurfaceState}-${SurfaceLevel}`;
 
-export type SecSchemeType = 'primary' | 'secondary' | 'accent';
+export type SecSchemeType = SurfaceType;
 export type SecSchemeMods = 'elevated';
 export type SecScheme = SecSchemeType | `${SecSchemeType}-${SecSchemeMods}`;
 
-export type DividerScheme = 'primary' | 'secondary' | 'accent';
+export type DividerScheme = SurfaceType;
 export type DividerPosition = 'center' | Alignment;
 
 export interface SurfaceConfig {

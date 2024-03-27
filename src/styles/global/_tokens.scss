@@ -50,7 +50,7 @@
   --breakpoint-lg: 75em;
   --breakpoint-xl: 88em;
 
-  --app-header-height: 4rem;
+  --app-header-height: calc(3.5rem + 4px);
   --app-hero-height: 40vh;
 
   --app-index-parallax-1: -3;

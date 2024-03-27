@@ -2,12 +2,12 @@
 
 html,
 body,
+:root,
 #root,
 .header,
+.page-header,
 .page-layout,
-.page-content,
-.home-sec-overview,
-.home-sec-overview-left {
+.page-content {
   @include mixins.transition-colors-static;
   background-color: var(--c-primary-surface-0);
   color: var(--c-primary-text-0);
@@ -99,33 +99,37 @@ body,
   }
 }
 
+.divider[data-divider-scheme='accent'] {
+  @include mixins.transition-colors-static;
+  background-color: var(--c-accent-text);
+}
 .divider[data-divider-scheme='primary'] {
   @include mixins.transition-colors-static;
-  background: var(--c-primary-surface-4);
+  background-color: var(--c-neutral-10);
 }
 .divider[data-divider-scheme='secondary'] {
   @include mixins.transition-colors-static;
-  background: var(--c-secondary-surface-4);
+  background-color: var(--c-neutral-10);
 }
 
-.sec[data-scheme='primary'] {
+.box[data-box-scheme='primary'],
+.sec[data-sec-scheme='primary'] {
   @include mixins.transition-colors-static;
   background-color: var(--c-primary-surface-0);
   color: var(--c-primary-text-0);
 }
-.sec[data-scheme='primary-elvated'] {
-  @include mixins.transition-colors-static;
-  background-color: var(--c-primary-surface-1);
-  color: var(--c-primary-text-1);
-}
 
-.sec[data-scheme='secondary'] {
+.box[data-box-scheme='secondary'],
+.sec[data-sec-scheme='secondary'] {
   @include mixins.transition-colors-static;
   background-color: var(--c-secondary-surface-0);
   color: var(--c-secondary-text-0);
 }
-.sec[data-scheme='secondary-elvated'] {
+
+.box[data-box-scheme='accent'],
+.sec[data-sec-scheme='accent'] {
   @include mixins.transition-colors-static;
-  background-color: var(--c-secondary-surface-1);
-  color: var(--c-secondary-text-1);
+  @include mixins.transition-colors-static;
+  background-color: var(--c-accent-6);
+  color: var(--c-accent-text);
 }

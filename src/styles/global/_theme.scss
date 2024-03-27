@@ -1,24 +1,16 @@
 [data-prefers-color-scheme='dim'],
 [data-prefers-color-scheme='dark'],
 [data-prefers-color-scheme='light'] {
-  --c-accent-text-0: hsla(var(--c-accent), 0.99);
-  --c-accent-text-1: hsla(var(--c-accent), 0.87);
-  --c-accent-text-2: hsla(var(--c-accent), 0.67);
-  --c-accent-text-3: hsla(var(--c-accent), 0.47);
-
-  --c-accent-surface-0: hsla(var(--c-accent), 0);
-  --c-accent-surface-1: hsla(var(--c-accent), 0.1);
-  --c-accent-surface-2: hsla(var(--c-accent), 0.2);
-  --c-accent-surface-3: hsla(var(--c-accent), 0.3);
-  --c-accent-surface-4: hsla(var(--c-accent), 0.4);
-  --c-accent-surface-5: hsla(var(--c-accent), 0.5);
-
-  --c-accent-surface-0-hover: hsla(var(--c-accent), 0.1);
-  --c-accent-surface-1-hover: hsla(var(--c-accent), 0.2);
-  --c-accent-surface-2-hover: hsla(var(--c-accent), 0.3);
-  --c-accent-surface-3-hover: hsla(var(--c-accent), 0.4);
-  --c-accent-surface-4-hover: hsla(var(--c-accent), 0.5);
-  --c-accent-surface-5-hover: hsla(var(--c-accent), 0.6);
+  --c-accent-0: hsla(var(--c-accent), 0.1);
+  --c-accent-1: hsla(var(--c-accent), 0.2);
+  --c-accent-2: hsla(var(--c-accent), 0.3);
+  --c-accent-3: hsla(var(--c-accent), 0.4);
+  --c-accent-4: hsla(var(--c-accent), 0.5);
+  --c-accent-5: hsla(var(--c-accent), 0.6);
+  --c-accent-6: hsla(var(--c-accent), 0.7);
+  --c-accent-7: hsla(var(--c-accent), 0.8);
+  --c-accent-8: hsla(var(--c-accent), 0.9);
+  --c-accent-9: hsla(var(--c-accent), 1);
 
   --c-primary-text-0: var(--c-neutral-20);
   --c-primary-text-1: var(--c-neutral-18);

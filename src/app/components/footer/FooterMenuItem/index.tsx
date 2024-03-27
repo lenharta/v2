@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Button } from '@/common';
+import { UnstyledButton } from '@/common/Button/Unstyled';
 import { FooterMenuItemComponentType, FooterMenuItemRenderType } from '../types';
 
 const FooterMenuItemRender: FooterMenuItemRenderType = (props, ref) => {
   const { value = '/', label, onClick, navigate } = props;
   return (
-    <Button
+    <UnstyledButton
       ref={ref}
       value={value}
       children={label}

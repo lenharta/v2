@@ -10,7 +10,7 @@
   width: 100%;
   display: block;
   height: var(--divider-height, var(--divider-height-sm));
-  margin-block: var(--divider-margin-y, var(--divider-margin-y-sm));
+  margin-top: var(--divider-margin-y, var(--divider-margin-y-sm));
 
   &[data-divider-size='sm'] {
     --divider-height: var(--divider-height-sm);

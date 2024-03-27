@@ -22,12 +22,14 @@ type SecOmitProps = 'children' | 'lang';
 type SecBaseProps<T extends React.ElementType> = Omit<ElementProps<T>, SecOmitProps>;
 
 export interface SecProps extends SecBaseProps<'section'>, SecLayoutProps {
+  cols?: number | undefined;
   scheme?: SecScheme | undefined;
 }
 
 export interface SecHeaderProps extends SecBaseProps<'header'>, SecLayoutProps {
   id?: string | undefined;
   title?: string | undefined;
+  scheme?: SecScheme | undefined;
   subtitle?: string | undefined;
   description?: string | undefined;
   withDivider?: boolean | undefined;
