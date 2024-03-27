@@ -7,16 +7,37 @@ import { HeaderComponentType, HeaderRenderType } from './types';
 
 const HeaderRender: HeaderRenderType = (props, ref) => {
   const { children, className, ...otherProps } = props;
+  const [showSkip, setShowSkip] = React.useState<boolean>();
   const location = useLocation();
   const navigate = useNavigate();
 
   return (
-    <div {...otherProps} ref={ref} className={clsx('header', className)}>
+    <header {...otherProps} ref={ref} className={clsx('header', className)}>
       <div className="left-content">
-        <HeaderLogo navigate={navigate} location={location} />
-        <HeaderSkipTo show={true} navigate={navigate} location={location} />
+        <HeaderLogo
+          navigate={navigate}
+          location={location}
+          onKeyDown={(event) => {
+            if (!showSkip && event.key === 'Tab' && !event.shiftKey) {
+              setShowSkip(true);
+            }
+          }}
+        />
+        <HeaderSkipTo
+          show={showSkip}
+          navigate={navigate}
+          location={location}
+          onKeyDown={(event) => {
+            if (showSkip && event.shiftKey && event.key === 'Tab') {
+              setShowSkip(undefined);
+            }
+            if (showSkip && event.key === 'Tab') {
+              setShowSkip(undefined);
+            }
+          }}
+        />
       </div>
-    </div>
+    </header>
   );
 };
 

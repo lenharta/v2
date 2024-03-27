@@ -7,6 +7,7 @@ const SectionHeaderRender: SecHeaderRenderType = (props, ref) => {
   const {
     id,
     title,
+    scheme = 'primary',
     subtitle,
     description,
     withDivider,
@@ -24,7 +25,7 @@ const SectionHeaderRender: SecHeaderRenderType = (props, ref) => {
       {title && <Title size="sm" {...titleProps} children={title} h2 />}
       {subtitle && <Subtitle size="sm" {...subtitleProps} children={subtitle} h3 />}
       {description && <Text size="lg" {...descriptionProps} children={description} />}
-      {withDivider && <Divider size="sm" {...dividerProps} />}
+      {withDivider && <Divider size="sm" scheme={scheme} {...dividerProps} />}
     </header>
   );
 };

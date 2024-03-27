@@ -1,9 +1,7 @@
-.page-sec,
-.page-sec-header,
-.page-sec-content,
-.home-sec-overview-left,
-.home-sec-overview-right {
+.sec,
+.box {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -12,42 +10,27 @@
 
 .page-hero,
 .home-hero {
-  width: 100%;
   height: 40vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  flex-direction: column;
 }
-
 .page-hero .inner,
 .home-hero .inner {
   height: 100%;
+}
+
+.page-hero,
+.home-hero,
+.page-hero .inner,
+.home-hero .inner {
+  width: 100%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-end;
-  padding-block: calc(var(--gutter) * 2);
 }
 
-.sec {
-  padding-block: calc(var(--gutter) * 2);
-}
-.sec-header,
-.sec-content div {
+.box,
+.page-hero .inner,
+.home-hero .inner {
   padding-inline: var(--gutter);
-}
-
-.sec-content div {
   padding-block: calc(var(--gutter) * 2);
-}
-
-.sec-content[data-grid-cols='2'] {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(1, 1fr);
-
-  @media (min-width: 60em) {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }

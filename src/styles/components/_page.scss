@@ -6,10 +6,13 @@
   overflow-x: hidden;
   isolation: isolate;
   position: relative;
+
+  @media (min-width: 60em) {
+    margin-left: calc(var(--app-header-height) + 4px);
+  }
 }
 
 .page-hero {
-  display: block;
   height: var(--app-hero-height);
   z-index: var(--app-index-parallax-1);
   margin-top: var(--app-header-height);
@@ -19,11 +22,8 @@
   left: 0;
   top: 0;
 
-  .inner {
-    margin-inline: var(--gutter);
-  }
-  .title {
-    line-height: 1;
+  @media (min-width: 60em) {
+    margin-left: calc(var(--app-header-height) + 4px);
   }
 }
 
@@ -31,4 +31,9 @@
   display: block;
   z-index: var(--app-index-content);
   margin-top: calc(var(--app-hero-height) + var(--app-header-height));
+
+  @media (min-width: 60em) {
+    outline: solid 2px transparent;
+    border-left: solid 2px transparent;
+  }
 }

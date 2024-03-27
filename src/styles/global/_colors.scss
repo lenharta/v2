@@ -374,3 +374,82 @@
 [data-prefers-color-accent='red'] {
   --c-accent: var(--hsl-red);
 }
+
+[data-prefers-color-scheme='dim'],
+[data-prefers-color-scheme='dark'] {
+  &[data-prefers-color-accent='orange'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='yellow'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='green'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='mint'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='teal'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='cyan'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='blue'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='indigo'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='purple'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='pink'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='brown'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='red'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+}
+
+[data-prefers-color-scheme='light'] {
+  &[data-prefers-color-accent='orange'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='yellow'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='green'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='mint'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='teal'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='cyan'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='blue'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='indigo'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='purple'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='pink'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='brown'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='red'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+}

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { VisuallyHidden } from '@/common';
+import { Icon, VisuallyHidden } from '@/common';
 import { UnstyledButton } from '@/common/Button/Unstyled';
 import { createEventCallback } from '@/utils';
 import { HeaderLogoComponentType, HeaderLogoRenderType } from '@/app/components/header/types';
@@ -8,7 +8,6 @@ import { HeaderLogoComponentType, HeaderLogoRenderType } from '@/app/components/
 const HeaderLogoRender: HeaderLogoRenderType = (props, ref) => {
   const {
     url = '/',
-    show,
     label = 'Logo',
     style,
     location,
@@ -28,25 +27,28 @@ const HeaderLogoRender: HeaderLogoRenderType = (props, ref) => {
   };
 
   const handleClick = createEventCallback(otherProps.onClick, () => {
-    if (url && !disabled) navigate(url);
+    if (url && !disabled) {
+      navigate(url);
+    }
   });
 
-  const handleKeyDown = createEventCallback(otherProps.onKeyDown, () => {
-    if (url && !disabled) navigate(url);
+  const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+    if (url && !disabled && event.key === 'Enter') {
+      navigate(url);
+    }
   });
 
   return (
     <UnstyledButton
       {...otherProps}
       {...accessibleProps}
-      style={{ ...style, visibility: !show ? 'hidden' : 'visible' }}
       className={clsx('header-logo-link', className)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}
       ref={ref}
     >
-      {hasLabel && <VisuallyHidden>{hasLabel}</VisuallyHidden>}
-      {children}
+      {/* {hasLabel && <VisuallyHidden>{hasLabel}</VisuallyHidden>} */}
+      <Icon name="home" aria-label="go home icon" />
     </UnstyledButton>
   );
 };

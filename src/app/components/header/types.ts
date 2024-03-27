@@ -15,7 +15,6 @@ export type HeaderSkipToComponentType = ExoticComponent<HTMLButtonElement, Heade
 
 export interface HeaderLogoProps extends ElementProps<'button'> {
   url?: string | undefined;
-  show?: boolean | undefined;
   label?: string | undefined;
   location?: Location;
   navigate: NavigateFunction;

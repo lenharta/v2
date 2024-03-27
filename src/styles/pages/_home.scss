@@ -12,22 +12,22 @@
     top: 0;
     background: linear-gradient(
       10deg,
-      hsla(var(--c-accent), 0.99) 0%,
-      hsla(var(--c-accent), 0.89) 50%,
-      hsla(var(--c-accent), 0.79) 100%
+      hsla(var(--c-accent), 0.79) 0%,
+      hsla(var(--c-accent), 0.69) 50%,
+      hsla(var(--c-accent), 0.59) 100%
     );
   }
   .underlay-bottom {
     bottom: 0;
     background: linear-gradient(
       190deg,
-      hsla(var(--c-accent), 0.99) 0%,
-      hsla(var(--c-accent), 0.89) 50%,
-      hsla(var(--c-accent), 0.79) 100%
+      hsla(var(--c-accent), 0.79) 0%,
+      hsla(var(--c-accent), 0.69) 50%,
+      hsla(var(--c-accent), 0.59) 100%
     );
   }
 
-  h1.title {
-    margin-block: var(--gap);
+  .title {
+    margin: 0;
   }
 }
