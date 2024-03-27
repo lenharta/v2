@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import * as React from 'react';
 import { objectKeys } from '@/utils';
 import { SubtitleLevel } from '@/types';
+import { useThemeClxss } from '../utils';
 import { SubtitleComponentType, SubtitleLevelProps, SubtitleRenderType } from './types';
 
 const findComponent = (levels?: SubtitleLevelProps): SubtitleLevel => {
@@ -17,27 +17,22 @@ const SubtitleRender: SubtitleRenderType = (props, ref) => {
     h4,
     h5,
     h6,
-    size = 'md',
-    weight = '2',
-    scheme = 'primary',
-    variant = 'default',
-    emphasis = 'high',
+    fz = 6,
+    fw = 3,
+    px,
+    py,
+    mx,
+    my,
     children,
     className,
     ...otherProps
   } = props;
+
   const Component = findComponent({ h1, h2, h3, h4, h5, h6 });
+  const clxss = useThemeClxss({ clxss: 'subtitle', className, fz, fw, px, py, mx, my });
+
   return (
-    <Component
-      {...otherProps}
-      ref={ref}
-      className={clsx('subtitle', className)}
-      data-subtitle-size={size}
-      data-subtitle-scheme={scheme}
-      data-subtitle-weight={weight}
-      data-subtitle-variant={variant}
-      data-subtitle-emphasis={emphasis}
-    >
+    <Component {...otherProps} ref={ref} className={clxss}>
       {children}
     </Component>
   );

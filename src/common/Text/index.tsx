@@ -1,27 +1,11 @@
-import clsx from 'clsx';
 import * as React from 'react';
 import { TextComponentType, TextRenderType } from './types';
+import { useThemeClxss } from '../utils';
 
 export const TextRender: TextRenderType = (props, ref) => {
-  const {
-    size = 'md',
-    weight = '2',
-    scheme = 'primary',
-    emphasis = 'high',
-    className,
-    ...otherProps
-  } = props;
-  return (
-    <p
-      {...otherProps}
-      ref={ref}
-      className={clsx('text', className)}
-      data-body-size={size}
-      data-body-scheme={scheme}
-      data-body-weight={weight}
-      data-body-emphasis={emphasis}
-    />
-  );
+  const { fz = 4, fw = 1, px, py, mx, my, className, ...otherProps } = props;
+  const clxss = useThemeClxss({ clxss: 'text', className, fz, fw, px, py, mx, my });
+  return <p {...otherProps} ref={ref} className={clxss} />;
 };
 
 export const Text = React.forwardRef(TextRender) as TextComponentType;

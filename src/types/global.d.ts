@@ -32,8 +32,9 @@ export interface InlineStylesInput {
 }
 
 export interface LayoutProps {
-  lang?: Language;
-  children?: React.ReactNode;
+  lang?: Language | undefined;
+  className?: string | undefined;
+  children?: React.ReactNode | undefined;
 }
 
 export type ContactInfoKey = 'email' | 'phone' | 'url';
