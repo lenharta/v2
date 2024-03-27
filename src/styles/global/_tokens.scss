@@ -7,9 +7,13 @@
   --gutter: calc(calc(var(--gap) * 1.5) * var(--scale));
   --spacing: calc(calc(var(--gutter) * 1.5) * var(--scale));
 
+  --icon-size-xxs: 16px;
+  --icon-size-xs: 20px;
   --icon-size-sm: 24px;
   --icon-size-md: 28px;
   --icon-size-lg: 32px;
+  --icon-size-xl: 40px;
+  --icon-size-xxl: 48px;
 
   --border-width-sm: 2px;
   --border-width-md: 3px;
@@ -60,88 +64,149 @@
   --app-index-header: 999;
   --app-index-overlay: 9999;
 
+  --font-size-1-mobile: 10px;
+  --font-size-2-mobile: 11px;
+  --font-size-3-mobile: 12px;
+  --font-size-4-mobile: 14px;
+  --font-size-5-mobile: 16px;
+  --font-size-6-mobile: 18px;
+  --font-size-7-mobile: 20px;
+  --font-size-8-mobile: 24px;
+  --font-size-9-mobile: 28px;
+  --font-size-10-mobile: 32px;
+  --font-size-11-mobile: 40px;
+  --font-size-12-mobile: 68px;
+
+  --font-size-1-desktop: 14px;
+  --font-size-2-desktop: 16px;
+  --font-size-3-desktop: 18px;
+  --font-size-4-desktop: 20px;
+  --font-size-5-desktop: 22px;
+  --font-size-6-desktop: 24px;
+  --font-size-7-desktop: 26px;
+  --font-size-8-desktop: 32px;
+  --font-size-9-desktop: 36px;
+  --font-size-10-desktop: 40px;
+  --font-size-11-desktop: 52px;
+  --font-size-12-desktop: 92px;
+
   --font-size-caption-sm-mobile: 10px;
-  --font-size-caption-sm-desktop: 14px;
-
   --font-size-caption-md-mobile: 11px;
-  --font-size-caption-md-desktop: 15px;
-
   --font-size-caption-lg-mobile: 12px;
+
+  --font-size-caption-sm-desktop: 14px;
+  --font-size-caption-md-desktop: 15px;
   --font-size-caption-lg-desktop: 16px;
 
   --font-size-body-sm-mobile: 12px;
-  --font-size-body-sm-desktop: 16px;
-
   --font-size-body-md-mobile: 14px;
-  --font-size-body-md-desktop: 16px;
-
   --font-size-body-lg-mobile: 16px;
-  --font-size-body-lg-desktop: 18px;
-
   --font-size-body-xl-mobile: 18px;
+
+  --font-size-body-sm-desktop: 14px;
+  --font-size-body-md-desktop: 16px;
+  --font-size-body-lg-desktop: 18px;
   --font-size-body-xl-desktop: 20px;
 
+  --font-size-subtitle-xs-mobile: 14px;
   --font-size-subtitle-sm-mobile: 16px;
-  --font-size-subtitle-sm-desktop: 22px;
-
   --font-size-subtitle-md-mobile: 18px;
-  --font-size-subtitle-md-desktop: 24px;
-
   --font-size-subtitle-lg-mobile: 20px;
+  --font-size-subtitle-xl-mobile: 22px;
+  --font-size-subtitle-xxl-mobile: 24px;
+
+  --font-size-subtitle-xs-desktop: 20px;
+  --font-size-subtitle-sm-desktop: 22px;
+  --font-size-subtitle-md-desktop: 24px;
   --font-size-subtitle-lg-desktop: 26px;
+  --font-size-subtitle-xl-desktop: 28px;
+  --font-size-subtitle-xxl-desktop: 30px;
 
+  --font-size-title-xs-mobile: 22px;
   --font-size-title-sm-mobile: 24px;
-  --font-size-title-sm-desktop: 32px;
-
   --font-size-title-md-mobile: 28px;
-  --font-size-title-md-desktop: 36px;
-
   --font-size-title-lg-mobile: 32px;
-  --font-size-title-lg-desktop: 40px;
-
   --font-size-title-xl-mobile: 40px;
-  --font-size-title-xl-desktop: 52px;
-
   --font-size-title-xxl-mobile: 68px;
+
+  --font-size-title-xs-desktop: 28px;
+  --font-size-title-sm-desktop: 32px;
+  --font-size-title-md-desktop: 36px;
+  --font-size-title-lg-desktop: 40px;
+  --font-size-title-xl-desktop: 52px;
   --font-size-title-xxl-desktop: 92px;
+
+  --font-size-caption-sm: var(--font-size-caption-sm-mobile);
+  --font-size-caption-md: var(--font-size-caption-md-mobile);
+  --font-size-caption-lg: var(--font-size-caption-lg-mobile);
 
   --font-size-body-sm: var(--font-size-body-sm-mobile);
   --font-size-body-md: var(--font-size-body-md-mobile);
   --font-size-body-lg: var(--font-size-body-lg-mobile);
   --font-size-body-xl: var(--font-size-body-xl-mobile);
 
-  --font-size-caption-sm: var(--font-size-caption-sm-mobile);
-  --font-size-caption-md: var(--font-size-caption-md-mobile);
-  --font-size-caption-lg: var(--font-size-caption-lg-mobile);
-
+  --font-size-subtitle-xs: var(--font-size-subtitle-xs-mobile);
   --font-size-subtitle-sm: var(--font-size-subtitle-sm-mobile);
   --font-size-subtitle-md: var(--font-size-subtitle-md-mobile);
   --font-size-subtitle-lg: var(--font-size-subtitle-lg-mobile);
+  --font-size-subtitle-xl: var(--font-size-subtitle-xl-mobile);
+  --font-size-subtitle-xxl: var(--font-size-subtitle-xl-mobile);
 
+  --font-size-title-xs: var(--font-size-title-xs-mobile);
   --font-size-title-sm: var(--font-size-title-sm-mobile);
   --font-size-title-md: var(--font-size-title-md-mobile);
   --font-size-title-lg: var(--font-size-title-lg-mobile);
   --font-size-title-xl: var(--font-size-title-xl-mobile);
   --font-size-title-xxl: var(--font-size-title-xxl-mobile);
 
+  --font-size-1: var(--font-size-1-mobile);
+  --font-size-2: var(--font-size-2-mobile);
+  --font-size-3: var(--font-size-3-mobile);
+  --font-size-4: var(--font-size-4-mobile);
+  --font-size-5: var(--font-size-5-mobile);
+  --font-size-6: var(--font-size-6-mobile);
+  --font-size-7: var(--font-size-7-mobile);
+  --font-size-8: var(--font-size-8-mobile);
+  --font-size-9: var(--font-size-9-mobile);
+  --font-size-10: var(--font-size-10-mobile);
+  --font-size-11: var(--font-size-11-mobile);
+  --font-size-12: var(--font-size-12-mobile);
+
   @media (min-width: 60em) {
+    --font-size-caption-sm: var(--font-size-caption-sm-desktop);
+    --font-size-caption-md: var(--font-size-caption-md-desktop);
+    --font-size-caption-lg: var(--font-size-caption-lg-desktop);
+
     --font-size-body-sm: var(--font-size-body-sm-desktop);
     --font-size-body-md: var(--font-size-body-md-desktop);
     --font-size-body-lg: var(--font-size-body-lg-desktop);
     --font-size-body-xl: var(--font-size-body-xl-desktop);
 
-    --font-size-caption-sm: var(--font-size-caption-sm-desktop);
-    --font-size-caption-md: var(--font-size-caption-md-desktop);
-    --font-size-caption-lg: var(--font-size-caption-lg-desktop);
-
+    --font-size-subtitle-xs: var(--font-size-subtitle-xs-desktop);
     --font-size-subtitle-sm: var(--font-size-subtitle-sm-desktop);
     --font-size-subtitle-md: var(--font-size-subtitle-md-desktop);
     --font-size-subtitle-lg: var(--font-size-subtitle-lg-desktop);
+    --font-size-subtitle-xl: var(--font-size-subtitle-xl-desktop);
+    --font-size-subtitle-xxl: var(--font-size-subtitle-xl-desktop);
 
+    --font-size-title-xs: var(--font-size-title-xs-desktop);
     --font-size-title-sm: var(--font-size-title-sm-desktop);
     --font-size-title-md: var(--font-size-title-md-desktop);
     --font-size-title-lg: var(--font-size-title-lg-desktop);
     --font-size-title-xl: var(--font-size-title-xl-desktop);
     --font-size-title-xxl: var(--font-size-title-xxl-desktop);
+
+    --font-size-1: var(--font-size-1-desktop);
+    --font-size-2: var(--font-size-2-desktop);
+    --font-size-3: var(--font-size-3-desktop);
+    --font-size-4: var(--font-size-4-desktop);
+    --font-size-5: var(--font-size-5-desktop);
+    --font-size-6: var(--font-size-6-desktop);
+    --font-size-7: var(--font-size-7-desktop);
+    --font-size-8: var(--font-size-8-desktop);
+    --font-size-9: var(--font-size-9-desktop);
+    --font-size-10: var(--font-size-10-desktop);
+    --font-size-11: var(--font-size-11-desktop);
+    --font-size-12: var(--font-size-12-desktop);
   }
 }

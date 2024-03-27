@@ -31,3 +31,21 @@
     margin: 0;
   }
 }
+
+.home-stat-box {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.home-stat-box-integer {
+  font-size: 3rem;
+  font-weight: var(--font-weight-4);
+}
+
+.home-stat-box-title {
+}
+
+.home-stat-box-description {
+}

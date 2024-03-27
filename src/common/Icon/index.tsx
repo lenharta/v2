@@ -1,13 +1,14 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { DATA_ICON_LOOKUP } from '@/data';
-import { ElementProps, ExoticComponent, ExoticRender } from '@/types';
+import { ElementProps, ExoticComponent, ExoticRender, Size7 } from '@/types';
 
 export type IconLookup = typeof DATA_ICON_LOOKUP;
 export type IconType = keyof IconLookup;
 export type IconName = keyof IconLookup['filled'];
 
 export interface IconProps extends ElementProps<'svg'> {
+  size?: Size7 | undefined;
   type?: IconType | undefined;
   name?: IconName | undefined;
   label?: string | undefined;
@@ -19,6 +20,7 @@ type IconComponentType = ExoticComponent<SVGSVGElement, IconProps>;
 const IconRender: IconRenderType = (props, ref) => {
   const {
     fill,
+    size = 'md',
     type = 'outlined',
     name = 'placeholder',
     label,
@@ -37,6 +39,7 @@ const IconRender: IconRenderType = (props, ref) => {
       className={clsx('icon', className)}
       aria-label={(otherProps['aria-label'] || label) ?? name}
       children={<path d={DATA_ICON_LOOKUP[type][name]} fill="currentColor" />}
+      data-icon-size={size}
     />
   );
 };

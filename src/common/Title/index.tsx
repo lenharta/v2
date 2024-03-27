@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import * as React from 'react';
 import { objectKeys } from '@/utils';
 import { TitleLevel } from '@/types';
+import { useThemeClxss } from '../utils';
 import { TitleComponentType, TitleLevelProps, TitleRenderType } from './types';
 
 const findComponent = (levels: TitleLevelProps): TitleLevel => {
@@ -17,28 +17,24 @@ export const TitleRender: TitleRenderType = (props, ref) => {
     h4,
     h5,
     h6,
-    size = 'sm',
-    weight = '2',
-    scheme = 'primary',
-    variant = 'default',
-    emphasis = 'medium',
+    fz = 8,
+    fw = 1,
+    px,
+    py,
+    mx,
+    my,
+    children,
     className,
     ...otherProps
   } = props;
 
   const Component = findComponent({ h1, h2, h3, h4, h5, h6 });
+  const clxss = useThemeClxss({ clxss: 'title', className, fz, fw, px, py, mx, my });
 
   return (
-    <Component
-      {...otherProps}
-      ref={ref}
-      className={clsx('title', className)}
-      data-title-size={size}
-      data-title-scheme={scheme}
-      data-title-weight={weight}
-      data-title-variant={variant}
-      data-title-emphasis={emphasis}
-    />
+    <Component {...otherProps} ref={ref} className={clxss}>
+      {children}
+    </Component>
   );
 };
 
