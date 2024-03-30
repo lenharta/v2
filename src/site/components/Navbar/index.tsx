@@ -13,23 +13,22 @@ export type ActionItemObj = {
 };
 
 export const DATA_NAVBAR_ITEMS: ActionItemObj[] = [
-  { value: '/projects', label: 'Projects', icon: 'code' },
   { value: '/experience', label: 'Experience', icon: 'briefcase' },
+  { value: '/projects', label: 'Projects', icon: 'code' },
+  { value: '/toolbox', label: 'Toolbox', icon: 'wrench' },
   { value: '/contact', label: 'Contact', icon: 'mention' },
-  { value: '/toolbox', label: 'Toolbox', icon: 'boxToolbox' },
-  { value: '/sandbox', label: 'Sandbox', icon: 'placeholder' },
+  { value: '/sandbox', label: 'Sandbox', icon: 'boxMultiple' },
 ];
 
 export interface NavbarProps extends ElementProps<'nav'> {
-  items: ActionItemObj[];
+  items?: ActionItemObj[];
 }
 
 export const Navbar = (props: NavbarProps) => {
   const { items = DATA_NAVBAR_ITEMS, ...otherProps } = props;
-  const [show, onChange] = React.useState<boolean>();
-  const skipRef = useClickOutside(() => onChange(undefined));
+  const [show, setShow] = React.useState<boolean>();
+  const skipRef = useClickOutside(() => setShow(undefined));
   const navigate = useNavigate();
-
   return (
     <nav {...otherProps} className="navbar-layout" aria-orientation="vertical">
       <div className="navbar-content">
@@ -40,8 +39,9 @@ export const Navbar = (props: NavbarProps) => {
             label="Home"
             navigate={navigate}
             onKeyDown={(event) => {
+              event.stopPropagation();
               if (!event.shiftKey && event.key === 'Tab') {
-                onChange(true);
+                setShow(true);
               }
             }}
           />
@@ -51,7 +51,7 @@ export const Navbar = (props: NavbarProps) => {
             show={show}
             href="#main-content"
             label="Skip To Main"
-            onChange={onChange}
+            onChange={setShow}
           />
         </div>
 
@@ -80,13 +80,15 @@ interface NavbarActionProps extends ElementProps<'button'> {
   icon: IconName;
   value: string;
   label: string;
-  navigate: NavigateFunction;
   disabled?: boolean;
+  navigate: NavigateFunction;
 }
 
 Navbar.Action = React.forwardRef<HTMLButtonElement, NavbarActionProps>((props, ref) => {
   const { value, icon, label, disabled, navigate, ...otherProps } = props;
-  const hasTitle = otherProps['title'] || label;
+
+  const hasLabel = otherProps['aria-label'] || label;
+  const hasTitle = otherProps['title'] || hasLabel;
 
   function extendActionLabel(label: string) {
     const cleanLabel = label.toLowerCase();
@@ -94,22 +96,36 @@ Navbar.Action = React.forwardRef<HTMLButtonElement, NavbarActionProps>((props, r
     return label.includes('/') ? extendedLabel : cleanLabel;
   }
 
+  const onClick = createEventCallback(otherProps.onClick, (event) => {
+    event.stopPropagation();
+    if (event.currentTarget.value) {
+      navigate(event.currentTarget.value);
+    }
+  });
+
   const onKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+    event.stopPropagation();
     if (event.key === 'Enter' && event.currentTarget.value) {
       navigate(event.currentTarget.value);
     }
   });
 
+  const a11yProps = {
+    ...(value ? { id: value } : {}),
+    ...(hasTitle ? { title: hasTitle } : {}),
+    ...(hasLabel ? { 'aria-label': extendActionLabel(label) } : {}),
+  };
+
   return (
     <button
       {...otherProps}
+      {...a11yProps}
       ref={ref}
       value={value}
-      title={hasTitle}
       children={<Icon name={icon} />}
       className="action-item"
-      aria-label={extendActionLabel(label)}
       onKeyDown={onKeyDown}
+      onClick={onClick}
     />
   );
 });
@@ -136,6 +152,7 @@ Navbar.SkipLink = React.forwardRef<HTMLAnchorElement, NavbarSkipLinkProps>((prop
   };
 
   const onKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+    event.stopPropagation();
     if (event.key === 'Tab' || (event.shiftKey && event.key === 'Tab')) {
       onChange?.(undefined);
     }

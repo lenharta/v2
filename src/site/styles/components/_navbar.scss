@@ -1,6 +1,6 @@
 .navbar-layout {
-  z-index: var(--site-navbar-index);
   width: var(--site-header-height);
+  z-index: var(--site-navbar-index);
   isolation: isolate;
   position: fixed;
   bottom: 0;
@@ -17,7 +17,6 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  margin: var(--site-gap);
 
   svg {
     width: var(--site-icon-size-md);
@@ -32,6 +31,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+  margin: var(--site-gap);
 }
 
 .navbar-menu {
@@ -39,12 +39,13 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+  gap: var(--site-gap);
 }
 
 .navbar-skip-link {
   width: max-content;
   height: var(--site-action-height);
-  transform: translateX(calc(100% + var(--site-gap)));
+  transform: translateX(calc(100% + calc(var(--site-gap) * 2)));
   padding-inline: var(--site-gutter);
   position: absolute;
   right: 0;
