@@ -5,15 +5,9 @@ import { SectionContent } from './SectionContent';
 import { SecComponentType, SecRenderType } from './types';
 
 const SectionRender: SecRenderType = (props, ref) => {
-  const { cols = 1, scheme = 'primary', className, children, ...otherProps } = props;
+  const { className, children, ...otherProps } = props;
   return (
-    <section
-      {...otherProps}
-      ref={ref}
-      className={clsx('sec', className)}
-      data-sec-scheme={scheme}
-      data-sec-cols={cols}
-    >
+    <section {...otherProps} ref={ref} className={clsx('sec', className)}>
       {children}
     </section>
   );

@@ -1,6 +1,7 @@
-import { ElementProps, ExoticRender, ExoticComponent, ThemeProps } from '@/types';
+import { ElementProps, ExoticRender, ExoticComponent } from '@/types';
 
-export interface TextProps extends ElementProps<'p'>, ThemeProps {}
+export interface TextProps extends ElementProps<'p'> {}
 
 export type TextRenderType = ExoticRender<HTMLParagraphElement, TextProps>;
+
 export type TextComponentType = ExoticComponent<HTMLParagraphElement, TextProps>;

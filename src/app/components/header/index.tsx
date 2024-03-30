@@ -12,31 +12,34 @@ const HeaderRender: HeaderRenderType = (props, ref) => {
   const navigate = useNavigate();
 
   return (
-    <header {...otherProps} ref={ref} className={clsx('header', className)}>
-      <div className="left-content">
-        <HeaderLogo
-          navigate={navigate}
-          location={location}
-          onKeyDown={(event) => {
-            if (!showSkip && event.key === 'Tab' && !event.shiftKey) {
-              setShowSkip(true);
-            }
-          }}
-        />
-        <HeaderSkipTo
-          show={showSkip}
-          navigate={navigate}
-          location={location}
-          onKeyDown={(event) => {
-            if (showSkip && event.shiftKey && event.key === 'Tab') {
-              setShowSkip(undefined);
-            }
-            if (showSkip && event.key === 'Tab') {
-              setShowSkip(undefined);
-            }
-          }}
-        />
-      </div>
+    <header {...otherProps} ref={ref} className={clsx('page-header', className)}>
+      <nav className="page-header-content">
+        <div className="page-header-content--left">
+          <HeaderLogo
+            navigate={navigate}
+            location={location}
+            onKeyDown={(event) => {
+              if (!showSkip && event.key === 'Tab' && !event.shiftKey) {
+                setShowSkip(true);
+              }
+            }}
+          />
+          <HeaderSkipTo
+            show={showSkip}
+            location={location}
+            onKeyDown={(event) => {
+              if (showSkip && event.shiftKey && event.key === 'Tab') {
+                setShowSkip(undefined);
+              }
+              if (showSkip && event.key === 'Tab') {
+                setShowSkip(undefined);
+              }
+            }}
+          />
+        </div>
+
+        <div className="page-header-content--right"></div>
+      </nav>
     </header>
   );
 };

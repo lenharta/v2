@@ -5,7 +5,7 @@ import { FooterMenuComponentType, FooterMenuRenderType } from '../types';
 const FooterMenuRender: FooterMenuRenderType = (props, ref) => {
   const { groups } = props;
   return (
-    <nav className="footer-menu" ref={ref}>
+    <nav className="page-footer-menu" ref={ref}>
       {groups.map(({ group, items }) => (
         <FooterMenuGroup key={group} group={group} items={items} />
       ))}

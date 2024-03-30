@@ -1,16 +1,16 @@
+import clsx from 'clsx';
 import { LayoutProps } from '@/types';
-import { CopyDataCard } from '@/data/types';
-import { extractCopyCardData } from '@/data/utils';
+import { CopyCardData } from '@/data/types';
 import { Box, Icon, Subtitle, Text } from '@/common';
+import { parseExtractedCopyCardData } from '@/data/utils';
 
-export type CopyCardProps = { data: CopyDataCard } & LayoutProps;
+export type CopyCardProps = { data: CopyCardData } & LayoutProps;
 
 export const CopyCard = (props: CopyCardProps) => {
   const { data, lang, className } = props;
-  const { getId, getIcon, getText, getTitle } = extractCopyCardData(data, lang);
-  const card = { id: getId(), icon: getIcon(), text: getText(), title: getTitle() };
+  const card = parseExtractedCopyCardData(data, lang);
   return (
-    <Box id={getId()} className={className} cols={1}>
+    <Box id={card.id} className={clsx('copy-card', className)} cols={1}>
       {card.icon && <Icon name={card.icon} size="xxl" />}
       {card.title && <Subtitle>{card.title}</Subtitle>}
       {card.text && <Text>{card.text}</Text>}

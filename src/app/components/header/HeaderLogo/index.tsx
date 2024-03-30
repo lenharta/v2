@@ -8,7 +8,7 @@ import { HeaderLogoComponentType, HeaderLogoRenderType } from '@/app/components/
 const HeaderLogoRender: HeaderLogoRenderType = (props, ref) => {
   const {
     url = '/',
-    label = 'Logo',
+    label = 'navigate home',
     style,
     location,
     navigate,
@@ -42,12 +42,13 @@ const HeaderLogoRender: HeaderLogoRenderType = (props, ref) => {
     <UnstyledButton
       {...otherProps}
       {...accessibleProps}
-      className={clsx('header-logo-link', className)}
+      className={clsx('page-header-logo-link', className)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}
+      title="Home"
       ref={ref}
     >
-      {/* {hasLabel && <VisuallyHidden>{hasLabel}</VisuallyHidden>} */}
+      {hasLabel && <VisuallyHidden>{hasLabel}</VisuallyHidden>}
       <Icon name="home" aria-label="go home icon" />
     </UnstyledButton>
   );

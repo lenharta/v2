@@ -1,23 +1,48 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Icon } from '@/common';
-import { UnstyledButton } from '@/common/Button/Unstyled';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ActionsComponentType, ActionsRenderType } from './types';
+import { ActionMenuItem } from './ActionMenuItem';
 
 const ActionsRender: ActionsRenderType = (props, ref) => {
   const { className, ...otherProps } = props;
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
     <aside {...otherProps} ref={ref} className={clsx('page-actions', className)}>
       <div className="page-actions-menu">
-        <UnstyledButton className="page-actions-menu-item">
-          <Icon name="code" />
-        </UnstyledButton>
-        <UnstyledButton className="page-actions-menu-item">
-          <Icon name="mention" />
-        </UnstyledButton>
-        <UnstyledButton className="page-actions-menu-item">
-          <Icon name="briefcase" />
-        </UnstyledButton>
+        <ActionMenuItem
+          navigate={navigate}
+          location={location}
+          label="navigate to projects page"
+          title="Projects"
+          value="/projects"
+          icon="code"
+        />
+        <ActionMenuItem
+          navigate={navigate}
+          location={location}
+          label="navigate to experience page"
+          title="Experience"
+          value="/experience"
+          icon="briefcase"
+        />
+        <ActionMenuItem
+          navigate={navigate}
+          location={location}
+          label="navigate to contact page"
+          title="Contact"
+          value="/contact"
+          icon="mention"
+        />
+        <ActionMenuItem
+          navigate={navigate}
+          location={location}
+          label="navigate to sandbox page"
+          title="Sandbox"
+          value="/sandbox"
+          icon="cube"
+        />
       </div>
     </aside>
   );
