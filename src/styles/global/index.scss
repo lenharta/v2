@@ -1,8 +1,10 @@
 @forward 'tokens';
-@forward 'colors';
+@forward 'color';
 @forward 'theme';
+@forward 'scheme';
 
-@forward 'layouts';
-@forward 'containers';
-@forward 'schemes';
+@forward 'position';
+@forward 'spacing';
+@forward 'sizing';
+@forward 'layout';
 @forward 'typo';

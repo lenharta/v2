@@ -1,0 +1,31 @@
+.action-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  [aria-orientation='vertical'] & {
+    width: var(--site-action-width);
+    height: var(--site-action-height);
+  }
+
+  [aria-orientation='horizontal'] & {
+    width: var(--site-action-width);
+    height: 100%;
+  }
+}
+
+.action-group {
+  display: flex;
+
+  &[aria-orientation='vertical'] {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &[aria-orientation='horizontal'] {
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}

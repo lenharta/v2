@@ -8,10 +8,10 @@ const FooterMenuGroupRender: FooterMenuGroupRenderType = (props, ref) => {
   const { group, items } = props;
   const navigate = useNavigate();
   return (
-    <div className="footer-menu-group" ref={ref}>
-      <Subtitle size="sm">{group}</Subtitle>
+    <div className="page-footer-menu-group" ref={ref}>
+      <Subtitle>{group}</Subtitle>
       <Divider size="sm" />
-      <div className="footer-menu-list">
+      <div className="page-footer-menu-list">
         {items.map(({ value, label, onClick }) => {
           return (
             <FooterMenuItem

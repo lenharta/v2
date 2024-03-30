@@ -1,0 +1,23 @@
+.page-hero,
+.page-hero-home {
+  display: block;
+
+  .subtitle {
+    font-size: var(--font-size-subtitle-lg);
+    font-weight: var(--font-weight-1);
+    line-height: 1.2;
+  }
+  .title {
+    font-size: var(--font-size-title-lg);
+    font-weight: var(--font-weight-2);
+    line-height: 1;
+  }
+}
+
+.page-hero-inner,
+.page-hero-home-inner {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-end;
+}

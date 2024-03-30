@@ -1,0 +1,31 @@
+.header-layout {
+  height: var(--site-header-height);
+  z-index: var(--site-header-index);
+  isolation: isolate;
+  position: fixed;
+  display: block;
+  right: 0;
+  left: 0;
+  top: 0;
+
+  @media (min-width: 60em) {
+    margin-left: var(--site-header-height);
+  }
+}
+
+.header-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-content--left,
+.header-content--right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-inline: var(--site-gutter);
+}

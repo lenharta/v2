@@ -1,0 +1,20 @@
+:root {
+  --site-gap: 0.125rem;
+  --site-gutter: calc(var(--site-gap) * 12);
+
+  --site-index: 0;
+  --site-hero-index: -2;
+  --site-navbar-index: 999;
+  --site-header-index: 999;
+  --site-content-index: 1;
+
+  --site-hero-height: 40vh;
+  --site-footer-height: 40vh;
+  --site-header-height: 3.5rem;
+  --site-action-height: 3.25rem;
+  --site-action-width: 3.25rem;
+
+  --site-icon-size-sm: 22px;
+  --site-icon-size-md: 26px;
+  --site-icon-size-lg: 32px;
+}

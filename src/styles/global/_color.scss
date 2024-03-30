@@ -1,0 +1,115 @@
+[data-prefers-color-accent='orange'] {
+  --c-accent: var(--hsl-orange);
+}
+[data-prefers-color-accent='yellow'] {
+  --c-accent: var(--hsl-yellow);
+}
+[data-prefers-color-accent='green'] {
+  --c-accent: var(--hsl-green);
+}
+[data-prefers-color-accent='mint'] {
+  --c-accent: var(--hsl-mint);
+}
+[data-prefers-color-accent='teal'] {
+  --c-accent: var(--hsl-teal);
+}
+[data-prefers-color-accent='cyan'] {
+  --c-accent: var(--hsl-cyan);
+}
+[data-prefers-color-accent='blue'] {
+  --c-accent: var(--hsl-blue);
+}
+[data-prefers-color-accent='indigo'] {
+  --c-accent: var(--hsl-indigo);
+}
+[data-prefers-color-accent='purple'] {
+  --c-accent: var(--hsl-purple);
+}
+[data-prefers-color-accent='pink'] {
+  --c-accent: var(--hsl-pink);
+}
+[data-prefers-color-accent='brown'] {
+  --c-accent: var(--hsl-brown);
+}
+[data-prefers-color-accent='red'] {
+  --c-accent: var(--hsl-red);
+}
+
+[data-prefers-color-scheme='dim'],
+[data-prefers-color-scheme='dark'] {
+  &[data-prefers-color-accent='orange'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='yellow'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='green'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='mint'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='teal'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='cyan'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='blue'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='indigo'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='purple'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='pink'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='brown'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+  &[data-prefers-color-accent='red'] {
+    --c-accent-text: var(--c-neutral-20);
+  }
+}
+
+[data-prefers-color-scheme='light'] {
+  &[data-prefers-color-accent='orange'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='yellow'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='green'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='mint'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='teal'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='cyan'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='blue'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='indigo'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='purple'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='pink'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='brown'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+  &[data-prefers-color-accent='red'] {
+    --c-accent-text: var(--c-neutral-01);
+  }
+}

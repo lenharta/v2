@@ -1,12 +1,11 @@
+import clsx from 'clsx';
 import * as React from 'react';
-import { useThemeClxss } from '../utils';
 import { BoxComponentType, BoxRenderType } from './types';
 
 const BoxRender: BoxRenderType = (props, ref) => {
-  const { px, py, mx, my, cols, gap, className, children, ...otherProps } = props;
-  const clxss = useThemeClxss({ clxss: 'box', className, px, py, mx, my, cols, gap });
+  const { className, children, ...otherProps } = props;
   return (
-    <div {...otherProps} className={clxss} ref={ref}>
+    <div {...otherProps} className={clsx('box-layout', className)} ref={ref}>
       {children}
     </div>
   );

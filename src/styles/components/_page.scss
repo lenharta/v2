@@ -2,17 +2,23 @@
   display: block;
   max-width: 100%;
   min-height: 100vh;
-  overflow-y: auto;
   overflow-x: hidden;
+  overflow-y: auto;
   isolation: isolate;
   position: relative;
+}
 
+.page-hero,
+.page-hero-home,
+.page-content,
+.page-footer {
   @media (min-width: 60em) {
-    margin-left: calc(var(--app-header-height) + 4px);
+    margin-left: var(--app-header-height);
   }
 }
 
-.page-hero {
+.page-hero,
+.page-hero-home {
   height: var(--app-hero-height);
   z-index: var(--app-index-parallax-1);
   margin-top: var(--app-header-height);
@@ -21,19 +27,76 @@
   right: 0;
   left: 0;
   top: 0;
+}
 
-  @media (min-width: 60em) {
-    margin-left: calc(var(--app-header-height) + 4px);
+.page-hero-inner,
+.page-hero-home-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-inline: var(--gutter);
+  padding-block: calc(var(--gutter) * 2);
+  z-index: var(--app-index-parallax-1);
+  position: relative;
+
+  .title {
+    margin: 0;
+  }
+}
+
+.page-hero-home-underlay {
+  &--top {
+    z-index: var(--app-index-parallax-2);
+    position: absolute;
+    height: 50%;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+  &--bottom {
+    z-index: var(--app-index-parallax-2);
+    position: absolute;
+    height: 50%;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
 }
 
 .page-content {
-  display: block;
+  position: relative;
   z-index: var(--app-index-content);
-  margin-top: calc(var(--app-hero-height) + var(--app-header-height));
+  margin-top: calc(var(--app-header-height) + var(--app-hero-height));
+}
 
-  @media (min-width: 60em) {
-    outline: solid 2px transparent;
-    border-left: solid 2px transparent;
-  }
+.page-actions-menu-item {
+  height: var(--app-action-size);
+  width: var(--app-action-size);
+}
+
+.page-actions {
+  padding: 2px;
+  width: var(--app-header-height);
+  margin-top: var(--app-header-height);
+  position: fixed;
+  z-index: var(--app-index-header);
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+
+.page-actions-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: flex-start;
+  gap: 2px;
+}
+
+.page-actions-menu-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }

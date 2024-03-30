@@ -2,11 +2,9 @@ import { Section } from '@/app/components';
 import { Text, Subtitle, Box } from '@/common';
 
 export const HomeKeynote = () => (
-  <Section cols={2} scheme="primary">
+  <Section>
     <Box>
-      <Subtitle h2 size="lg">
-        Left Subtitle
-      </Subtitle>
+      <Subtitle h2>Left Subtitle</Subtitle>
       <Text>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, debitis error repellendus
         ducimus exercitationem commodi numquam similique perferendis minima ipsa harum fugiat
@@ -15,9 +13,7 @@ export const HomeKeynote = () => (
     </Box>
 
     <Box>
-      <Subtitle h2 size="lg">
-        Right Subtitle
-      </Subtitle>
+      <Subtitle h2>Right Subtitle</Subtitle>
       <Text>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, debitis error repellendus
         ducimus exercitationem commodi numquam similique perferendis minima ipsa harum fugiat

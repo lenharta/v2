@@ -1,5 +1,5 @@
 import { Language } from "@/types";
-import { CopyData, CopyDataCard } from "./types";
+import { CopyCardData, CopyData } from "./types";
 
 export function extractCopyData(data: CopyData, lang: Language = 'english') {
   return {
@@ -18,7 +18,7 @@ export function extractCopyData(data: CopyData, lang: Language = 'english') {
   };
 }
 
-export function extractCopyCardData(data: CopyDataCard, lang: Language = 'english') {
+export function extractCopyCardData(data: CopyCardData, lang: Language = 'english') {
   return {
     getId() {
       return data.id;
@@ -33,4 +33,14 @@ export function extractCopyCardData(data: CopyDataCard, lang: Language = 'englis
       return data.text?.[lang];
     },
   };
+}
+
+export function parseExtractedCopyData<T extends CopyData>(data: T, lang: Language = 'english') {
+  const { getId, getText, getTitle, getCards } = extractCopyData(data, lang);
+  return { id: getId(), text: getText(), title: getTitle(), cards: getCards() };
+}
+
+export function parseExtractedCopyCardData<T extends CopyCardData>(data: T , lang: Language = 'english') {
+  const { getIcon, getId, getText, getTitle } = extractCopyCardData(data, lang);
+  return { id: getId(), icon: getIcon(), text: getText(), title: getTitle() }
 }

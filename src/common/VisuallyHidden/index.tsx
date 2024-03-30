@@ -9,7 +9,7 @@ export const VisuallyHiddenRender: VisuallyHiddenRenderType = (props, ref) => {
       {...otherProps}
       ref={ref}
       className={clsx('visually-hidden', className)}
-      style={{ ...style, visibility: 'hidden' }}
+      style={{ ...style, visibility: 'hidden', position: 'absolute' }}
     />
   );
 };

@@ -1,7 +1,5 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { UnstyledButton } from '@/common/Button/Unstyled';
-import { createEventCallback } from '@/utils';
 import { HeaderSkipToComponentType, HeaderSkipToRenderType } from '../types';
 
 function getSkipUrl(path: string, id: string): string {
@@ -15,46 +13,29 @@ export const HeaderSkipToRender: HeaderSkipToRenderType = (props, ref) => {
     label = 'Skip To Main',
     style,
     location,
-    navigate,
     disabled,
     className,
     ...otherProps
   } = props;
 
   const hasPath = location?.pathname || '/';
-  const hasLabel = otherProps['aria-label'] ?? label ?? undefined;
 
   const accessibleProps = {
     ...(disabled ? { tabIndex: 0 } : {}),
     ...(disabled ? { 'aria-disabled': true } : {}),
-    ...(hasLabel ? { 'aria-label': hasLabel } : {}),
+    ...(label ? { 'aria-label': label } : {}),
   };
 
-  const handleClick = createEventCallback(otherProps.onClick, () => {
-    if (url && !disabled) {
-      navigate(getSkipUrl(hasPath, url));
-    }
-  });
-
-  const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
-    event.stopPropagation();
-    if (url && !disabled && event.key !== 'Tab' && !event.shiftKey) {
-      navigate(getSkipUrl(hasPath, url));
-    }
-  });
-
   return (
-    <UnstyledButton
+    <a
       {...otherProps}
       {...accessibleProps}
       style={{ ...style, visibility: !show ? 'hidden' : 'visible' }}
-      className={clsx('header-skip-link', className)}
-      onKeyDown={handleKeyDown}
-      onClick={handleClick}
+      className={clsx('page-header-skip-link', className)}
+      href={getSkipUrl(hasPath, url)}
+      children={label}
       ref={ref}
-    >
-      {hasLabel ?? null}
-    </UnstyledButton>
+    />
   );
 };
 
