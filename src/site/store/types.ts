@@ -54,13 +54,13 @@ export enum RootAttributes {
 }
 
 export type AppStore = {
-  nonce: () => string;
-  error: string;
-  loading: boolean;
-  location: Location;
-  sessionId: string;
-  isMenuOpen: boolean;
-  isSplashOpen: boolean;
+  nonce?: () => string;
+  error?: string;
+  loading?: boolean;
+  location?: Location;
+  sessionId?: string;
+  isMenuOpen?: boolean;
+  isSplashOpen?: boolean;
 };
 
 export type ThemeStore = {
@@ -73,6 +73,16 @@ export type ThemeStore = {
 
 export type AppDispatch = React.Dispatch<Partial<AppStore>>;
 export type ThemeDispatch = React.Dispatch<Partial<ThemeStore>>;
+
+export type AppContextValue = {
+  nonce?: () => string;
+  error?: string;
+  loading?: boolean;
+  location?: Location;
+  sessionId?: string;
+  isMenuOpen?: boolean;
+  isSplashOpen?: boolean;
+};
 
 export type ThemeContextValue = {
   dir: Dir;

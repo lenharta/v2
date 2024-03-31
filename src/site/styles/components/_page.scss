@@ -27,4 +27,6 @@
   display: block;
   position: relative;
   isolation: isolate;
+  margin-left: var(--site-header-height);
+  padding-inline: var(--site-gutter);
 }

@@ -1,5 +1,7 @@
 import { Page } from '@/site/components';
 import { useThemeContext } from '@/site/store';
+import { useAppContext } from '@/site/store/app';
+import React from 'react';
 
 const ModeController = () => {
   const { setMode } = useThemeContext();
@@ -12,6 +14,17 @@ const ModeController = () => {
   );
 };
 
+const DemoLoader = ({ children }: { children: React.ReactNode }) => {
+  const [state, dispatch] = useAppContext();
+
+  React.useEffect(() => {
+    dispatch({ loading: true });
+    setTimeout(() => dispatch({ loading: undefined }), 2000);
+  }, []);
+
+  return <>{state.loading ? 'Loading...' : children}</>;
+};
+
 export function Home() {
   return (
     <Page>
@@ -19,6 +32,9 @@ export function Home() {
         <h1>Home</h1>
       </Page.Hero>
       <Page.Content>
+        <DemoLoader>
+          <span>Loaded Content</span>
+        </DemoLoader>
         <ModeController />
       </Page.Content>
     </Page>
