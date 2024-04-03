@@ -10,4 +10,5 @@
 
 .control-thumb {
   @include mixins.reset;
+  @include mixins.transition-colors-interactive;
 }

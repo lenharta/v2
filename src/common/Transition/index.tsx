@@ -1,6 +1,6 @@
+import { getTransitionStyles } from './get-transition-styles';
 import { TransitionProps } from './types';
 import { useTransition } from './use-transition';
-import { getTransitionStyles } from './get-transition-styles';
 
 export const Transition = (props: TransitionProps) => {
   const {

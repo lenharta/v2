@@ -80,3 +80,113 @@ export interface ItemObjectGroupParsed {
 
 export type ItemInput = string | number | ItemObject | ItemObjectGroup;
 export type ItemOutput = ItemObjectParsed | ItemObjectGroupParsed;
+
+export interface FocusProps {
+  /** Defines a index for tabbing the interactive element. */
+  tabIndex?: number | undefined;
+
+  /** Indicates a `disabled` state for the interactive element. */
+  disabled?: boolean | undefined;
+
+  /** Defines if the interactive element should be ignored in the current tab order. */
+  excludeTabOrder?: boolean | undefined;
+
+  /** Defines if the interactive element should be focused when `disabled` state is provided. */
+  allowDisabledFocus?: boolean | undefined;
+}
+
+export interface AriaLabelProps {
+  label?: string | undefined;
+  value?: string | undefined;
+  children?: React.ReactNode | undefined;
+  ariaLabel?: string | undefined;
+}
+
+export type TransitionStatus =
+  | 'entering'
+  | 'exiting'
+  | 'entered'
+  | 'exited'
+  | 'pre-entering'
+  | 'pre-exiting';
+
+export interface UseTransitionOptions {
+  mounted: boolean;
+  duration: number;
+  exitDuration: number;
+  timingFunction: React.CSSProperties['transitionTimingFunction'];
+  onEnter?: () => void;
+  onExit?: () => void;
+  onEntered?: () => void;
+  onExited?: () => void;
+  // option for now, relocate to theme provider
+  reducedMotion?: boolean;
+}
+
+export interface TransitionStyle {
+  transitionProperty: React.CSSProperties['transitionProperty'];
+  common?: React.CSSProperties;
+  out: React.CSSProperties;
+  in: React.CSSProperties;
+}
+
+export interface TransitionProps {
+  mounted: boolean;
+  duration?: number;
+  transition?: TransitionStyle;
+  keepMounted?: boolean | undefined;
+  exitDuration?: number;
+  timingFunction?: React.CSSProperties['transitionTimingFunction'];
+  children: (styles: React.CSSProperties) => JSX.Element;
+  onExit?: () => void;
+  onEnter?: () => void;
+  onExited?: () => void;
+  onEntered?: () => void;
+}
+
+export interface TransitionStyleInput {
+  state: TransitionStatus;
+  duration: number;
+  transition: TransitionStyle;
+  timingFunction: React.CSSProperties['transitionTimingFunction'];
+}
+
+export interface UseTransitionReturn {
+  transitionStatus: TransitionStatus;
+  transitionDuration: number;
+  transitionTimingFunction: React.CSSProperties['transitionTimingFunction'];
+}
+
+export type FloatingSide = 'top' | 'left' | 'right' | 'bottom';
+export type FloatingPlacement = 'end' | 'start';
+export type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
+export type FloatingStrategy = 'absolute' | 'fixed';
+
+export type FloatingWidth = 'target' | React.CSSProperties['width'] | null;
+
+export interface FloatingOffsetAxis {
+  mainAxis?: number;
+  crossAxis?: number;
+  alignmentAxis?: number | null;
+}
+
+export interface FloatingMiddleware {
+  flip: boolean;
+  shift: boolean;
+  inline?: boolean;
+  size?: boolean;
+}
+
+export interface UseFloatingOptions {
+  position: FloatingPosition;
+  opened?: boolean;
+  onChange?: (opened: boolean) => void;
+  offset: number | FloatingOffsetAxis;
+  width?: FloatingWidth;
+  strategy?: FloatingStrategy;
+  middleware?: FloatingMiddleware;
+  positionDependencies?: React.DependencyList | any[];
+  onPositionChange?: (position: FloatingPosition) => void;
+  onClose?: () => void;
+  onOpen?: () => void;
+}

@@ -1,41 +1,35 @@
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// .icon {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
 
-  &--size-xxs,
-  &--size-xxs svg {
-    height: var(--icon-size-xxs);
-    width: var(--icon-size-xxs);
-  }
-  &--size-xs,
-  &--size-xs svg {
-    height: var(--icon-size-xs);
-    width: var(--icon-size-xs);
-  }
-  &--size-sm,
-  &--size-sm svg {
-    height: var(--icon-size-sm);
-    width: var(--icon-size-sm);
-  }
-  &--size-md,
-  &--size-md svg {
-    height: var(--icon-size-md);
-    width: var(--icon-size-md);
-  }
-  &--size-lg,
-  &--size-lg svg {
-    height: var(--icon-size-lg);
-    width: var(--icon-size-lg);
-  }
-  &--size-xl,
-  &--size-xl svg {
-    height: var(--icon-size-xl);
-    width: var(--icon-size-xl);
-  }
-  &--size-xxl,
-  &--size-xxl svg {
-    height: var(--icon-size-xxl);
-    width: var(--icon-size-xxl);
-  }
-}
+//   &--size-xs,
+//   &--size-xs svg {
+//     width: var(--core-icon-size-xs);
+//     height: var(--core-icon-size-xs);
+//   }
+
+//   &--size-sm,
+//   &--size-sm svg {
+//     width: var(--core-icon-size-sm);
+//     height: var(--core-icon-size-sm);
+//   }
+
+//   &--size-md,
+//   &--size-md svg {
+//     width: var(--core-icon-size-md);
+//     height: var(--core-icon-size-md);
+//   }
+
+//   &--size-lg,
+//   &--size-lg svg {
+//     width: var(--core-icon-size-lg);
+//     height: var(--core-icon-size-lg);
+//   }
+
+//   &--size-xl,
+//   &--size-xl svg {
+//     width: var(--core-icon-size-xl);
+//     height: var(--core-icon-size-xl);
+//   }
+// }

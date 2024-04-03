@@ -1,5 +1,5 @@
-@use 'tokens';
-@use 'shared';
+@forward 'tokens';
+@forward 'shared';
 
 @forward 'Action';
 @forward 'Avatar';

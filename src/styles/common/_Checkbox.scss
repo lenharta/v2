@@ -1,31 +1,31 @@
-@use '../mixins' as mixins;
+// @use '../mixins' as mixins;
 
-.checkbox,
-.checkbox-group,
-.checkbox-input,
-.checkbox-indicator,
-.checkbox-indicator svg {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  vertical-align: baseline;
-}
+// .checkbox,
+// .checkbox-group,
+// .checkbox-input,
+// .checkbox-indicator,
+// .checkbox-indicator svg {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   vertical-align: baseline;
+// }
 
-.checkbox {
-  position: relative;
-  user-select: none;
+// .checkbox {
+//   position: relative;
+//   user-select: none;
 
-  &-input {
-    width: 100%;
-    height: 100%;
-    display: inline-flex;
-    position: absolute;
-    appearance: none;
-    align-items: center;
-    justify-content: flex-start;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-  }
-}
+//   &-input {
+//     width: 100%;
+//     height: 100%;
+//     display: inline-flex;
+//     position: absolute;
+//     appearance: none;
+//     align-items: center;
+//     justify-content: flex-start;
+//     bottom: 0;
+//     right: 0;
+//     left: 0;
+//     top: 0;
+//   }
+// }

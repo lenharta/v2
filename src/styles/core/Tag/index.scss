@@ -2,6 +2,7 @@
 
 .tag {
   @include mixins.reset;
+  @include mixins.transition-colors-interactive;
 }
 
 .tag-group {

@@ -2,7 +2,9 @@
 
 .button {
   @include mixins.reset;
+  @include mixins.transition-colors-interactive;
 }
+
 .button-group {
   @include mixins.reset;
 }

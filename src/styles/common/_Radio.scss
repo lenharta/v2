@@ -1,64 +1,64 @@
-.radio {
-  --radio-gap-xs: calc(var(--unit) * 3);
-  --radio-gap-sm: calc(var(--unit) * 4);
-  --radio-gap-md: calc(var(--unit) * 5);
-  --radio-gap-lg: calc(var(--unit) * 6);
-  --radio-gap-xl: calc(var(--unit) * 7);
+// .radio {
+//   --radio-gap-xs: calc(var(--unit) * 3);
+//   --radio-gap-sm: calc(var(--unit) * 4);
+//   --radio-gap-md: calc(var(--unit) * 5);
+//   --radio-gap-lg: calc(var(--unit) * 6);
+//   --radio-gap-xl: calc(var(--unit) * 7);
 
-  --radio-height-xs: calc(var(--unit) * 16);
-  --radio-height-sm: calc(var(--unit) * 18);
-  --radio-height-md: calc(var(--unit) * 20);
-  --radio-height-lg: calc(var(--unit) * 22);
-  --radio-height-xl: calc(var(--unit) * 24);
+//   --radio-height-xs: calc(var(--unit) * 16);
+//   --radio-height-sm: calc(var(--unit) * 18);
+//   --radio-height-md: calc(var(--unit) * 20);
+//   --radio-height-lg: calc(var(--unit) * 22);
+//   --radio-height-xl: calc(var(--unit) * 24);
 
-  --radio-padding-x-xs: calc(var(--unit) * 1);
-  --radio-padding-x-sm: calc(var(--unit) * 2);
-  --radio-padding-x-md: calc(var(--unit) * 3);
-  --radio-padding-x-lg: calc(var(--unit) * 4);
-  --radio-padding-x-xl: calc(var(--unit) * 5);
+//   --radio-padding-x-xs: calc(var(--unit) * 1);
+//   --radio-padding-x-sm: calc(var(--unit) * 2);
+//   --radio-padding-x-md: calc(var(--unit) * 3);
+//   --radio-padding-x-lg: calc(var(--unit) * 4);
+//   --radio-padding-x-xl: calc(var(--unit) * 5);
 
-  z-index: 0;
-  user-select: none;
-  position: relative;
-  isolation: isolate;
+//   z-index: 0;
+//   user-select: none;
+//   position: relative;
+//   isolation: isolate;
 
-  display: var(--radio-display, inline-flex);
-  align-items: var(--radio-align, center);
-  justify-content: var(--radio-justify, flex-start);
-  flex-direction: var(--radio-direction, row);
-  padding-inline: var(--radio-padding-x, var(--radio-padding-x-xs));
-  height: var(--radio-height, var(--radio-height-xs));
-  gap: var(--radio-gap, var(--radio-gap-xs));
+//   display: var(--radio-display, inline-flex);
+//   align-items: var(--radio-align, center);
+//   justify-content: var(--radio-justify, flex-start);
+//   flex-direction: var(--radio-direction, row);
+//   padding-inline: var(--radio-padding-x, var(--radio-padding-x-xs));
+//   height: var(--radio-height, var(--radio-height-xs));
+//   gap: var(--radio-gap, var(--radio-gap-xs));
 
-  transition-property: color, background-color, border, outline;
-  transition-timing-function: var(--easing-standard-productive);
-  transition-duration: var(--easing-duration-1);
-  outline: solid 2px transparent;
-  border: solid 2px transparent;
+//   transition-property: color, background-color, border, outline;
+//   transition-timing-function: var(--easing-standard-productive);
+//   transition-duration: var(--easing-duration-1);
+//   outline: solid 2px transparent;
+//   border: solid 2px transparent;
 
-  &--size-xs {
-    --radio-gap: var(--radio-gap-xs);
-    --radio-height: var(--radio-height-xs);
-    --radio-padding-x: var(--radio-padding-x-xs);
-  }
-  &--size-sm {
-    --radio-gap: var(--radio-gap-sm);
-    --radio-height: var(--radio-height-sm);
-    --radio-padding-x: var(--radio-padding-x-sm);
-  }
-  &--size-md {
-    --radio-gap: var(--radio-gap-md);
-    --radio-height: var(--radio-height-md);
-    --radio-padding-x: var(--radio-padding-x-md);
-  }
-  &--size-lg {
-    --radio-gap: var(--radio-gap-lg);
-    --radio-height: var(--radio-height-lg);
-    --radio-padding-x: var(--radio-padding-x-lg);
-  }
-  &--size-xl {
-    --radio-gap: var(--radio-gap-xl);
-    --radio-height: var(--radio-height-xl);
-    --radio-padding-x: var(--radio-padding-x-xl);
-  }
-}
+//   &--size-xs {
+//     --radio-gap: var(--radio-gap-xs);
+//     --radio-height: var(--radio-height-xs);
+//     --radio-padding-x: var(--radio-padding-x-xs);
+//   }
+//   &--size-sm {
+//     --radio-gap: var(--radio-gap-sm);
+//     --radio-height: var(--radio-height-sm);
+//     --radio-padding-x: var(--radio-padding-x-sm);
+//   }
+//   &--size-md {
+//     --radio-gap: var(--radio-gap-md);
+//     --radio-height: var(--radio-height-md);
+//     --radio-padding-x: var(--radio-padding-x-md);
+//   }
+//   &--size-lg {
+//     --radio-gap: var(--radio-gap-lg);
+//     --radio-height: var(--radio-height-lg);
+//     --radio-padding-x: var(--radio-padding-x-lg);
+//   }
+//   &--size-xl {
+//     --radio-gap: var(--radio-gap-xl);
+//     --radio-height: var(--radio-height-xl);
+//     --radio-padding-x: var(--radio-padding-x-xl);
+//   }
+// }

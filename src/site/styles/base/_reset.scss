@@ -135,38 +135,14 @@ a {
 button {
   margin: 0;
   padding: 0;
-  display: inline-flex;
-  box-sizing: border-box;
-  vertical-align: baseline;
-  justify-content: flex-start;
-  flex-direction: row;
-  align-items: center;
-
   font-size: inherit;
   font-family: inherit;
   text-transform: none;
   text-decoration: none;
-
-  color: inherit;
   background-color: inherit;
-  outline: solid 2px transparent;
-  border: solid 2px transparent;
-
-  &:disabled,
-  &[aria-disabled] {
-    cursor: default;
-  }
-  &:not(:disabled),
-  &:not([aria-disabled]) {
-    cursor: pointer;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline-color: transparent;
-  }
-  &:focus:focus-visible {
-    outline-color: var(--app-focus-outline);
-  }
+  vertical-align: baseline;
+  box-sizing: border-box;
+  color: inherit;
 }
 
 label {
@@ -174,11 +150,6 @@ label {
   padding: 0;
   box-sizing: border-box;
   vertical-align: baseline;
-
-  &:disabled,
-  &[aria-disabled] {
-    cursor: default;
-  }
 }
 
 input,

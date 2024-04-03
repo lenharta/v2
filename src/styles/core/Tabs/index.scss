@@ -6,6 +6,7 @@
 
 .tabs-item {
   @include mixins.reset;
+  @include mixins.transition-colors-interactive;
 }
 
 .tabs-panel {

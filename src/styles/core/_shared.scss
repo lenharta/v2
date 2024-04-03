@@ -1,28 +1,72 @@
-// .action,
-// .avatar,
-// .badge,
-// .button,
-// .caption,
-// .close,
-// .combobox,
-// .combobutton,
-// .control,
-// .divider,
-// .dropdown,
-// .floating,
-// .icon,
-// .input,
-// .modal,
-// .radio,
-// .selectbox,
-// .space,
-// .stack,
-// .subtitle,
-// .switch,
-// .tabs,
-// .tag,
-// .text,
-// .textarea,
-// .textbox,
-// .tile,
-// .title
+.tag-group,
+.tile-group,
+.radio-group,
+.action-group,
+.button-group,
+.switch-group,
+.checkbox-group {
+  --flex-align: flex-start;
+  --flex-justify: flex-start;
+  --flex-direction: row;
+
+  display: flex;
+  align-items: var(--flex-align);
+  flex-direction: var(--flex-direction);
+  justify-content: var(--flex-justify);
+
+  &[aria-orientation='vertical'] {
+    --flex-direction: column;
+  }
+  &[aria-orientation='horizontal'] {
+    --flex-direction: row;
+  }
+}
+
+.tag,
+.avatar,
+.switch,
+.action,
+.button {
+  user-select: none;
+}
+
+.tag,
+.tile,
+.radio,
+.avatar,
+.action,
+.button,
+.switch,
+.checkbox {
+  border: solid 2px transparent;
+  outline: solid 2px transparent;
+
+  &:not([aria-disabled]):focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:not([aria-disabled]):focus:focus-visible {
+    outline-color: var(--c-blue-6);
+  }
+  &:not([aria-disabled]):hover {
+    cursor: pointer;
+  }
+  &[aria-disabled]:hover {
+    cursor: default;
+  }
+}
+
+.radio,
+.checkbox {
+  &-indicator,
+  &-indicator svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.text,
+.title,
+.caption,
+.subtitle {
+}

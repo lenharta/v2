@@ -1,43 +1,43 @@
-@use '../mixins' as mixins;
+// @use '../mixins' as mixins;
 
-.label {
-  --label-font-size-xxs: calc(var(--unit) * 5);
-  --label-font-size-xs: calc(var(--unit) * 6);
-  --label-font-size-sm: calc(var(--unit) * 7);
-  --label-font-size-md: calc(var(--unit) * 8);
-  --label-font-size-lg: calc(var(--unit) * 9);
-  --label-font-size-xl: calc(var(--unit) * 10);
-  --label-font-size-xxl: calc(var(--unit) * 11);
+// .label {
+//   --label-font-size-xxs: calc(var(--unit) * 5);
+//   --label-font-size-xs: calc(var(--unit) * 6);
+//   --label-font-size-sm: calc(var(--unit) * 7);
+//   --label-font-size-md: calc(var(--unit) * 8);
+//   --label-font-size-lg: calc(var(--unit) * 9);
+//   --label-font-size-xl: calc(var(--unit) * 10);
+//   --label-font-size-xxl: calc(var(--unit) * 11);
 
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  line-height: 1;
-  font-weight: var(--label-font-weight, var(--font-weight-reg));
-  font-size: var(--label-font-size, var(--label-font-size-xs));
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   text-decoration: none;
+//   line-height: 1;
+//   font-weight: var(--label-font-weight, var(--font-weight-reg));
+//   font-size: var(--label-font-size, var(--label-font-size-xs));
 
-  cursor: var(--cursor);
+//   cursor: var(--cursor);
 
-  &[data-truncate='start'] {
-    direction: rtl;
-    text-align: right;
+//   &[data-truncate='start'] {
+//     direction: rtl;
+//     text-align: right;
 
-    @include mixins.rtl {
-      direction: ltr;
-      text-align: left;
-    }
-  }
+//     @include mixins.rtl {
+//       direction: ltr;
+//       text-align: left;
+//     }
+//   }
 
-  &[data-inherit] {
-    line-height: inherit;
-    font-weight: inherit;
-    font-size: inherit;
-  }
+//   &[data-inherit] {
+//     line-height: inherit;
+//     font-weight: inherit;
+//     font-size: inherit;
+//   }
 
-  &[data-truncate] {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-}
+//   &[data-truncate] {
+//     overflow: hidden;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+//   }
+// }
