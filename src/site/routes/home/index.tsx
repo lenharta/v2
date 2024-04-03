@@ -1,41 +1,42 @@
-import { Page } from '@/site/components';
-import { useThemeContext } from '@/site/store';
-import { useAppContext } from '@/site/store/app';
-import React from 'react';
+import { Text, Title } from '@/common';
+import { Page, Section } from '@/site/components';
+import { HomeHero } from './HomeHero';
 
-const ModeController = () => {
-  const { setMode } = useThemeContext();
+export const HomeOverview = () => {
   return (
-    <div>
-      <button className="action-item" onClick={() => setMode('light')} children="Light Mode" />
-      <button className="action-item" onClick={() => setMode('dark')} children="Dark Mode" />
-      <button className="action-item" onClick={() => setMode('dim')} children="Dim Mode" />
-    </div>
+    <Section className="sec-home-overview">
+      <Section.Content className="sec-home-overview-content">
+        <div className="sec-home-overview-box" data-scheme="primary">
+          <Title h2 className="sec-home-overview-title">
+            Overview
+          </Title>
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, nulla est? Saepe
+            aspernatur hic voluptatum beatae exercitationem corrupti minus, pariatur repellat
+            incidunt asperiores vitae facilis neque voluptatibus? Ea, exercitationem? Earum!
+          </Text>
+        </div>
+        <div className="sec-home-overview-box" data-scheme="primary">
+          <Title h3 className="sec-home-overview-title">
+            Section Title
+          </Title>
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, nulla est? Saepe
+            aspernatur hic voluptatum beatae exercitationem corrupti minus, pariatur repellat
+            incidunt asperiores vitae facilis neque voluptatibus? Ea, exercitationem? Earum!
+          </Text>
+        </div>
+      </Section.Content>
+    </Section>
   );
-};
-
-const DemoLoader = ({ children }: { children: React.ReactNode }) => {
-  const [state, dispatch] = useAppContext();
-
-  React.useEffect(() => {
-    dispatch({ loading: true });
-    setTimeout(() => dispatch({ loading: undefined }), 2000);
-  }, []);
-
-  return <>{state.loading ? 'Loading...' : children}</>;
 };
 
 export function Home() {
   return (
     <Page>
-      <Page.Hero>
-        <h1>Home</h1>
-      </Page.Hero>
+      <HomeHero />
       <Page.Content>
-        <DemoLoader>
-          <span>Loaded Content</span>
-        </DemoLoader>
-        <ModeController />
+        <HomeOverview />
       </Page.Content>
     </Page>
   );

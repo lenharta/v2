@@ -1,6 +1,10 @@
 import { IconName } from "@/common";
 import { Language } from "@/types";
 
+export type LangName = 'arabic' | 'english' | 'french' | 'german' | 'japanese' | 'spanish';
+export type LangCode = 'ar' | 'en' | 'fr' | 'de' | 'ja' | 'es';
+export type LangObj = { name: LangName; code: LangCode };
+
 export interface CopyCardData {
   id: string;
   icon?: IconName | undefined;
@@ -15,9 +19,3 @@ export interface CopyData {
   cards?: CopyCardData[];
 }
 
-// english: ``,
-// arabic: ``,
-// french: ``,
-// german: ``,
-// japanese: ``,
-// spanish: ``,

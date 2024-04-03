@@ -1,0 +1,5 @@
+@use '../mixins' as mixins;
+
+.selectbox {
+  @include mixins.reset;
+}

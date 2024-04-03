@@ -1,0 +1,5 @@
+@use '../mixins' as mixins;
+
+.textbox {
+  @include mixins.reset;
+}

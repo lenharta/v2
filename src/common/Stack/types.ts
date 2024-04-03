@@ -1,7 +1,7 @@
-import { ElementProps, ExoticComponent, ExoticRender, SizeExpanded } from '@/types';
+import { ElementProps, ExoticComponent, ExoticRender, Size7 } from '@/types';
 
 export interface StackProps extends ElementProps<'div'> {
-  gap?: 'default' | SizeExpanded;
+  gap?: 'default' | Size7;
 }
 
 export type StackRenderType = ExoticRender<HTMLDivElement, StackProps>;

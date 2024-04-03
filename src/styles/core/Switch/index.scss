@@ -1,0 +1,9 @@
+@use '../mixins' as mixins;
+
+.switch {
+  @include mixins.reset;
+}
+
+.switch-group {
+  @include mixins.reset;
+}

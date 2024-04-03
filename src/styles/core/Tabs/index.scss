@@ -1,0 +1,13 @@
+@use '../mixins' as mixins;
+
+.tabs-list {
+  @include mixins.reset;
+}
+
+.tabs-item {
+  @include mixins.reset;
+}
+
+.tabs-panel {
+  @include mixins.reset;
+}

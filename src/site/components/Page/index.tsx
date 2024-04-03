@@ -1,7 +1,10 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { ElementProps } from '@/types';
 import { Footer } from '../Footer';
+import { Transition } from '@/common';
+import { ElementProps } from '@/types';
+import { usePageTransition } from './use-page-transition';
+import { useAppState } from '@/store';
 
 export interface PageProps extends ElementProps<'div'> {
   children?: React.ReactNode | undefined;
@@ -10,11 +13,17 @@ export interface PageProps extends ElementProps<'div'> {
 
 export const Page = (props: PageProps) => {
   const { children, className, ...otherProps } = props;
+  const store = useAppState();
+  const pageTransition = usePageTransition(store.location?.pathname);
   return (
-    <div {...otherProps} className={clsx('page-layout', className)}>
-      {children}
-      <Footer />
-    </div>
+    <Transition {...pageTransition}>
+      {(transitionStyles) => (
+        <div {...otherProps} style={transitionStyles} className={clsx('page-layout', className)}>
+          {children}
+          <Footer />
+        </div>
+      )}
+    </Transition>
   );
 };
 

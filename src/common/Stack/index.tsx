@@ -8,9 +8,8 @@ const StackRender: StackRenderType = (props, ref) => {
     <div
       {...otherProps}
       ref={ref}
-      className={clsx('stack', className)}
+      className={clsx('stack', `stack--gap-${gap}`, className)}
       aria-orientation="vertical"
-      data-size={gap}
     />
   );
 };

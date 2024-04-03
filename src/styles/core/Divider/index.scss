@@ -1,0 +1,9 @@
+@use '../mixins' as mixins;
+
+.divider {
+  @include mixins.reset;
+}
+
+.divider-label {
+  @include mixins.reset;
+}

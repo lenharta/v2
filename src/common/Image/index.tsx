@@ -5,10 +5,8 @@ import { createEventCallback } from '@/utils';
 
 const ImageRender: ImageRenderType = (props, ref) => {
   const {
-    alt,
     src,
-    fit,
-    style,
+    fit = 'cover',
     width = 'auto',
     height = 500,
     radius,
@@ -21,11 +19,31 @@ const ImageRender: ImageRenderType = (props, ref) => {
 
   React.useEffect(() => setError(!src), [src]);
 
-  const commonProps = {
-    alt: alt || 'image',
-    role: otherProps.role || 'img',
-    style: { ...style, objectFit: fit, height, width },
+  let hasAltText = otherProps['alt'] !== undefined ? true : false;
+  let hasOtherRole = otherProps['role'] !== undefined ? true : false;
+  let hasOtherStyles = otherProps['style'] !== undefined ? true : false;
+
+  if (!hasAltText) {
+    console.error(
+      '[@v2/common/Image]: Image components should be provided `alt` prop for accessibility.'
+    );
+  }
+
+  let style: React.CSSProperties = {};
+  let staticStyles = { borderRadius: radius, objectFit: fit, height, width };
+
+  if (hasOtherStyles) {
+    style = { ...otherProps['style'], ...staticStyles };
+  }
+  if (!hasOtherStyles) {
+    style = { ...staticStyles };
+  }
+
+  let commonProps = {
+    ...(hasAltText ? { alt: otherProps['alt'] } : {}),
+    ...(hasOtherRole ? { role: otherProps['role'] } : { role: 'img' }),
     className: clsx('image', className),
+    style,
   };
 
   if (error && fallbackSrc) {

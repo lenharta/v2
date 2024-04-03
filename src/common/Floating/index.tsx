@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { mergeProps } from '@/utils';
-import { useThemeCTX } from '@/store';
 import { useFloating } from './utils/use-floating';
 import { FloatingProvider } from './context';
 import { getFloatingPosition } from './utils';
@@ -13,6 +12,7 @@ import {
   FloatingStrategy,
   FloatingWidth,
 } from './types';
+import { useThemeState } from '@/store';
 
 export interface FloatingProps {
   width?: FloatingWidth;
@@ -64,9 +64,9 @@ export const Floating: FloatingComponentType = (props) => {
     onOpen,
   } = mergeProps(defaultProps, props);
 
-  const theme = useThemeCTX();
+  const theme = useThemeState();
   const uid = React.useId();
-  const dir = theme.state.dir;
+  const dir = theme.dir;
 
   const [boxNode, setBoxNode] = React.useState<HTMLElement | null>(null);
   const [targetNode, setTargetNode] = React.useState<HTMLElement | null>(null);

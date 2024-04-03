@@ -31,6 +31,11 @@ export interface InlineStylesInput {
   media?: InlineStylesMediaQuery[];
 }
 
+export interface ScrollPosition {
+  x: number;
+  y: number;
+}
+
 export interface LayoutProps {
   lang?: Language | undefined;
   className?: string | undefined;

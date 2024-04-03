@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { TileProvider } from '@/common/Tile/context';
-import { TileGroupRenderType, TileGroupComponentType } from '@/common/Tile/types';
+import { TileGroupProvider } from '../context';
+import { TileGroupRenderType, TileGroupComponentType } from '../types';
 
 const TileGroupRender: TileGroupRenderType = (props, ref) => {
   const { children, className, disabled, orientation, ...otherProps } = props;
@@ -13,7 +13,7 @@ const TileGroupRender: TileGroupRenderType = (props, ref) => {
 
   return (
     <div {...otherProps} {...accessibleProps} className={clsx('tile-group', className)} ref={ref}>
-      <TileProvider value={{ orientation }}>{children}</TileProvider>
+      <TileGroupProvider value={{ orientation }}>{children}</TileGroupProvider>
     </div>
   );
 };

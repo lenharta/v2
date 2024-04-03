@@ -2,15 +2,16 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createEventCallback } from '@/utils';
-import { TileGroup } from '@/common/Tile/Group';
-import { useTileCTX } from '@/common/Tile/context';
-import { TileComponentType, TileRenderType } from '@/common/Tile/types';
+import { TileGroup } from './Group';
+import { useTileGroupContext } from './context';
+import { TileComponentType, TileRenderType } from './types';
 
 const TileRender: TileRenderType = (props, ref) => {
   const { url, style, disabled, className, ...otherProps } = props;
 
-  const ctx = useTileCTX();
+  const ctx = useTileGroupContext();
   const navigate = useNavigate();
+
   const hasDisabled = ctx.disabled || disabled;
 
   const accessibleProps = {

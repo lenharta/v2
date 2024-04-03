@@ -1,19 +1,10 @@
-import {
-  SizeCompact,
-  Orientation,
-  DividerPosition,
-  ElementProps,
-  ExoticRender,
-  ExoticComponent,
-  SurfaceType,
-} from '@/types';
+import { Size3, Orientation, ElementProps, ExoticRender, ExoticComponent } from '@/types';
 
 export interface DividerProps extends ElementProps<'div'> {
-  size?: SizeCompact | undefined;
+  size?: Size3 | undefined;
   label?: string | undefined;
-  scheme?: SurfaceType | undefined;
   orientation?: Orientation | undefined;
-  labelPosition?: DividerPosition | undefined;
+  labelPosition?: 'left' | 'right' | undefined;
 }
 
 export type DividerRenderType = ExoticRender<HTMLDivElement, DividerProps>;

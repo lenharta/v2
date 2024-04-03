@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mergeProps } from '@/utils';
 import { useInputIds } from '@/hooks';
-import { Size, Orientation, ElementProps } from '@/types';
+import { Size5, Orientation, ElementProps } from '@/types';
 import { CheckboxProvider } from '../context';
 
 export interface CheckboxGroupProps extends Omit<ElementProps<'fieldset'>, 'onChange'> {
@@ -10,7 +10,7 @@ export interface CheckboxGroupProps extends Omit<ElementProps<'fieldset'>, 'onCh
   onChange: (value: string[]) => void;
   legend?: string;
   value: string[];
-  size?: Size;
+  size?: Size5;
 }
 
 const defaultProps: Partial<CheckboxGroupProps> = {

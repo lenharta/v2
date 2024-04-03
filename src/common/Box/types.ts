@@ -1,6 +1,6 @@
-import { ElementProps, ExoticComponent, ExoticRender, ThemeProps } from '@/types';
+import { ElementProps, ExoticComponent, ExoticRender } from '@/types';
 
-interface BoxProps extends ElementProps<'div'>, ThemeProps {}
+interface BoxProps extends ElementProps<'div'> {}
 
 export type BoxRenderType = ExoticRender<HTMLDivElement, BoxProps>;
 export type BoxComponentType = ExoticComponent<HTMLDivElement, BoxProps>;

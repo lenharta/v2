@@ -1,21 +1,14 @@
-.chip {
-  --chip-height-xs: calc(var(--unit) * 12);
-  --chip-height-sm: calc(var(--unit) * 13);
-  --chip-height-md: calc(var(--unit) * 14);
-  --chip-height-lg: calc(var(--unit) * 16);
-  --chip-height-xl: calc(var(--unit) * 15);
+.chip,
+.chip-label,
+.chip-group {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
 
+.chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: var(--chip-height);
-  border-radius: var(--radius-rd);
-  padding-inline: calc(var(--unit) * 4);
-}
-
-.chip-group {
-  display: inline-flex;
-  flex-wrap: wrap;
-  flex: 1 0 100%;
-  gap: calc(var(--unit) * 1);
 }

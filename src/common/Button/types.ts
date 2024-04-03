@@ -1,10 +1,10 @@
-import { Size, Orientation, ElementProps, ExoticRender, ExoticComponent } from '@/types';
+import { Size5, Orientation, ElementProps, ExoticRender, ExoticComponent } from '@/types';
 
 export interface ButtonContextValue {
   orientation?: Orientation | undefined;
   disabled?: boolean | undefined;
   loading?: boolean | undefined;
-  size?: Size | undefined;
+  size?: Size5 | undefined;
 }
 
 export interface UnstyledButtonProps extends ElementProps<'button'> {
@@ -12,7 +12,7 @@ export interface UnstyledButtonProps extends ElementProps<'button'> {
 }
 
 export interface ButtonProps extends UnstyledButtonProps {
-  size?: Size | undefined;
+  size?: Size5 | undefined;
   grow?: boolean | undefined;
   scheme?: 'default' | undefined;
   loading?: boolean | undefined;
@@ -28,7 +28,7 @@ export interface ButtonGroupProps extends ElementProps<'div'> {
   orientation?: Orientation | undefined;
   disabled?: boolean | undefined;
   loading?: boolean | undefined;
-  size?: Size | undefined;
+  size?: Size5 | undefined;
 }
 
 export type ButtonGroupRenderType = ExoticRender<HTMLDivElement, ButtonGroupProps>;

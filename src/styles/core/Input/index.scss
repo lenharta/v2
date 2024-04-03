@@ -1,0 +1,13 @@
+@use '../mixins' as mixins;
+
+.input {
+  @include mixins.reset;
+}
+
+.input-label {
+  @include mixins.reset;
+}
+
+.input-text {
+  @include mixins.reset;
+}

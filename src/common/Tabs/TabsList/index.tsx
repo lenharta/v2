@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { Divider } from '@/common';
 import { useMergeRefs } from '@/hooks';
-import { useTabsCTX } from '../context';
+import { useTabsContext } from '../context';
 import { TabsListComponentType, TabsListRenderType } from '../types';
 
 const TabsListRender: TabsListRenderType = (props, ref) => {
@@ -17,7 +17,7 @@ const TabsListRender: TabsListRenderType = (props, ref) => {
 
   const listRef = React.useRef<HTMLDivElement>(null);
   const refs = useMergeRefs(ref, listRef);
-  const ctx = useTabsCTX();
+  const ctx = useTabsContext();
 
   const hasFlexGrow = ctx.grow || grow;
   const hasAlignment = ctx.alignment || alignment;

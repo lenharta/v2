@@ -1,7 +1,7 @@
-import { ElementProps, ExoticComponent, ExoticRender, SizeExpanded } from '@/types';
+import { ElementProps, ExoticComponent, ExoticRender, Size7 } from '@/types';
 
 export interface SpaceProps extends Omit<ElementProps<'div'>, 'children'> {
-  size?: SizeExpanded;
+  size?: Size7;
 }
 
 export type SpaceComponentType = ExoticComponent<HTMLDivElement, SpaceProps>;

@@ -20,8 +20,8 @@ export const Tabs: TabsComponentType = (props) => {
   const [value, onChange] = React.useState(defaultValue ?? '');
 
   const uid = React.useId();
-  const getTabPanelId = () => `tabs${uid}panel`;
   const getTabItemId = () => `tabs${uid}item`;
+  const getTabPanelId = () => `tabs${uid}panel`;
 
   return (
     <TabsProvider
@@ -30,8 +30,8 @@ export const Tabs: TabsComponentType = (props) => {
         grow,
         value,
         onChange,
-        getTabPanelId,
         getTabItemId,
+        getTabPanelId,
         disabled,
         alignment,
         withDivider,

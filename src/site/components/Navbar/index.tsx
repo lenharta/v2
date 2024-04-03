@@ -27,16 +27,21 @@ export interface NavbarProps extends ElementProps<'nav'> {
 export const Navbar = (props: NavbarProps) => {
   const { items = DATA_NAVBAR_ITEMS, ...otherProps } = props;
   const [show, setShow] = React.useState<boolean>();
-  const skipRef = useClickOutside(() => setShow(undefined));
+  const skipClickRef = useClickOutside(() => setShow(undefined));
   const navigate = useNavigate();
   return (
-    <nav {...otherProps} className="navbar-layout" aria-orientation="vertical">
+    <nav
+      {...otherProps}
+      data-scheme="primary"
+      aria-orientation="vertical"
+      className="navbar-layout"
+    >
       <div className="navbar-content">
         <div className="navbar-content--upper">
           <Navbar.Action
-            value="/"
             icon="home"
             label="Home"
+            value="/"
             navigate={navigate}
             onKeyDown={(event) => {
               event.stopPropagation();
@@ -47,15 +52,13 @@ export const Navbar = (props: NavbarProps) => {
           />
 
           <Navbar.SkipLink
-            ref={skipRef}
+            ref={skipClickRef}
             show={show}
             href="#main-content"
             label="Skip To Main"
             onChange={setShow}
           />
-        </div>
 
-        <div className="navbar-menu">
           {items.map((item) => {
             return (
               <Navbar.Action
@@ -70,7 +73,15 @@ export const Navbar = (props: NavbarProps) => {
           })}
         </div>
 
-        <div className="navbar-content--lower"></div>
+        <div className="navbar-content--lower">
+          <Navbar.Action
+            icon="settings"
+            label="Settings"
+            value="/settings"
+            navigate={navigate}
+            aria-label="navigate to settings"
+          />
+        </div>
       </div>
     </nav>
   );
