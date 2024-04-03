@@ -2,6 +2,7 @@
 
 .switch {
   @include mixins.reset;
+  @include mixins.transition-colors-interactive;
 }
 
 .switch-group {

@@ -2,4 +2,5 @@
 
 .selectbox {
   @include mixins.reset;
+  @include mixins.transition-colors-interactive;
 }

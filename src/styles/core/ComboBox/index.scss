@@ -2,4 +2,5 @@
 
 .combobox {
   @include mixins.reset;
+  @include mixins.transition-colors-interactive;
 }

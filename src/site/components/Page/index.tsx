@@ -34,7 +34,14 @@ export interface PageHeroProps extends ElementProps<'section'> {
 
 Page.Hero = React.forwardRef<HTMLDivElement, PageHeroProps>((props, ref) => {
   const { className, ...otherProps } = props;
-  return <section {...otherProps} ref={ref} className={clsx('page-hero', className)} />;
+  return (
+    <section
+      {...otherProps}
+      ref={ref}
+      role="presentation"
+      className={clsx('page-hero', className)}
+    />
+  );
 });
 
 export interface PageContentProps extends ElementProps<'main'> {

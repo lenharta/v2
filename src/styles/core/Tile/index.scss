@@ -2,6 +2,10 @@
 
 .tile {
   @include mixins.reset;
+
+  &[data-interactive]:hover {
+    @include mixins.transition-colors-interactive;
+  }
 }
 
 .tile-group {

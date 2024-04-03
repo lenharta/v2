@@ -2,6 +2,12 @@
   --core-scale: 1;
   --core-spacing: calc(0.125rem * var(--core-scale));
 
+  --core-icon-size-xs: calc(var(--core-spacing) * 8);
+  --core-icon-size-sm: calc(var(--core-spacing) * 10);
+  --core-icon-size-md: calc(var(--core-spacing) * 12);
+  --core-icon-size-lg: calc(var(--core-spacing) * 14);
+  --core-icon-size-xl: calc(var(--core-spacing) * 16);
+
   --core-button-height-xs: calc(var(--core-spacing) * 10);
   --core-button-height-sm: calc(var(--core-spacing) * 16);
   --core-button-height-md: calc(var(--core-spacing) * 22);
