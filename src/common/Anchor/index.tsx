@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { AnchorComponent, AnchorComponentRender } from './type';
 import { VisuallyHidden } from '../VisuallyHidden';
+import { AnchorComponent, AnchorComponentRender } from './types';
 
 const AnchorRender: AnchorComponentRender = (props, ref) => {
   const { className, style, underline, ...otherProps } = props;

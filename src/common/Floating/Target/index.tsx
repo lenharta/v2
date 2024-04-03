@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { createEventCallback, mergeProps } from '@/utils';
 import { useMergeRefs } from '@/hooks';
+import { isReactElement } from '@/utils';
 import { useFloatingCTX } from '../context';
-import { isReactElement } from '@/common/utils';
+import { createEventCallback, mergeProps } from '@/utils';
 
 type TargetElementProps<T extends React.ElementType> = React.ComponentPropsWithoutRef<T>;
 type TargetRefProps<E extends HTMLElement> = React.RefAttributes<E>;

@@ -6,12 +6,18 @@ import { UnstyledButton } from '../Button/Unstyled';
 import { createEventCallback } from '@/utils';
 import { AvatarComponent, AvatarComponentRender } from './types';
 
+function formatAriaLabel(label: string, mods?: string[]) {
+  const prefix = label.toLowerCase();
+  const suffix = mods?.map((m) => m.toLowerCase()).join(' ');
+  return !mods ? prefix.trim() : [prefix, suffix].join(' ').trim();
+}
+
 const AvatarRender: AvatarComponentRender = (props, ref) => {
   const {
-    url = '/',
+    url,
     size = 'md',
-    icon = 'person',
-    label = 'avatar icon',
+    icon,
+    label,
     value,
     style,
     imageSrc,
@@ -34,22 +40,27 @@ const AvatarRender: AvatarComponentRender = (props, ref) => {
     }
   });
 
-  const accessibleProps = {
+  const a11yProps = {
     role: 'link',
-    ...(label ? { 'aria-label': label } : {}),
-    ...(!disabled ? { 'aria-disabled': true } : {}),
     ...(!disabled ? { tabIndex: 0 } : {}),
+    ...(disabled ? { 'aria-disabled': true } : {}),
+    ...(label ? { 'aria-label': formatAriaLabel(label) } : {}),
+  };
+
+  const iconProps = {
+    ...(icon ? { name: icon } : {}),
+    ...(label ? { 'aria-label': formatAriaLabel(label, ['icon']) } : {}),
   };
 
   return (
     <UnstyledButton
       {...otherProps}
-      {...accessibleProps}
+      {...a11yProps}
       onClick={onClick}
       onKeyDown={onKeyDown}
-      className={clsx('avatar', className)}
-      children={<Icon name={icon} aria-label={[label, 'icon'].join(' ')} />}
-      value={(value || url) ?? '/'}
+      className={clsx('avatar', `avatar--size-${size}`, className)}
+      children={<Icon {...iconProps} />}
+      value={value || url}
       ref={ref}
     />
   );

@@ -1,0 +1,40 @@
+:root {
+  --core-scale: 1;
+  --core-spacing: calc(0.125rem * var(--core-scale));
+
+  --core-button-height-xs: calc(var(--core-spacing) * 10);
+  --core-button-height-sm: calc(var(--core-spacing) * 16);
+  --core-button-height-md: calc(var(--core-spacing) * 22);
+  --core-button-height-lg: calc(var(--core-spacing) * 28);
+  --core-button-height-xl: calc(var(--core-spacing) * 34);
+
+  --core-tab-height-xs: calc(var(--core-spacing) * 10);
+  --core-tab-height-sm: calc(var(--core-spacing) * 16);
+  --core-tab-height-md: calc(var(--core-spacing) * 22);
+  --core-tab-height-lg: calc(var(--core-spacing) * 28);
+  --core-tab-height-xl: calc(var(--core-spacing) * 34);
+
+  --core-input-height-xs: calc(var(--core-spacing) * 12);
+  --core-input-height-sm: calc(var(--core-spacing) * 18);
+  --core-input-height-md: calc(var(--core-spacing) * 24);
+  --core-input-height-lg: calc(var(--core-spacing) * 30);
+  --core-input-height-xl: calc(var(--core-spacing) * 36);
+
+  --core-checkbox-height-xs: var(--core-input-height-xs);
+  --core-checkbox-height-sm: var(--core-input-height-sm);
+  --core-checkbox-height-md: var(--core-input-height-md);
+  --core-checkbox-height-lg: var(--core-input-height-lg);
+  --core-checkbox-height-xl: var(--core-input-height-xl);
+
+  --core-switch-height-xs: var(--core-input-height-xs);
+  --core-switch-height-sm: var(--core-input-height-sm);
+  --core-switch-height-md: var(--core-input-height-md);
+  --core-switch-height-lg: var(--core-input-height-lg);
+  --core-switch-height-xl: var(--core-input-height-xl);
+
+  --core-radio-height-xs: var(--core-input-height-xs);
+  --core-radio-height-sm: var(--core-input-height-sm);
+  --core-radio-height-md: var(--core-input-height-md);
+  --core-radio-height-lg: var(--core-input-height-lg);
+  --core-radio-height-xl: var(--core-input-height-xl);
+}

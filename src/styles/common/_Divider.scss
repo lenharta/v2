@@ -1,27 +1,43 @@
+.divider,
+.divider-label {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
 .divider {
   --divider-height-sm: 2px;
   --divider-height-md: 3px;
   --divider-height-lg: 4px;
 
-  --divider-margin-y-sm: 6px;
-  --divider-margin-y-md: 7px;
-  --divider-margin-y-lg: 8px;
+  height: var(--divider-height);
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
 
-  width: 100%;
-  display: block;
-  height: var(--divider-height, var(--divider-height-sm));
-  margin-top: var(--divider-margin-y, var(--divider-margin-y-sm));
+  &-label {
+    position: absolute;
+    font-size: var(--font-size-caption-sm);
+    font-weight: var(--font-weight-2);
+    line-height: 1.1;
 
-  &[data-divider-size='sm'] {
+    [data-label-position='left'] & {
+      left: 0;
+    }
+    [data-label-position='right'] & {
+      right: 0;
+    }
+  }
+
+  &--size-sm {
     --divider-height: var(--divider-height-sm);
-    --divider-margin-y: var(--divider-margin-y-sm);
   }
-  &[data-divider-size='md'] {
+  &--size-md {
     --divider-height: var(--divider-height-md);
-    --divider-margin-y: var(--divider-margin-y-md);
   }
-  &[data-divider-size='lg'] {
+  &--size-lg {
     --divider-height: var(--divider-height-lg);
-    --divider-margin-y: var(--divider-margin-y-lg);
   }
 }

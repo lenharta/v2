@@ -1,0 +1,9 @@
+@use '../mixins' as mixins;
+
+.radio {
+  @include mixins.reset;
+}
+
+.radio-group {
+  @include mixins.reset;
+}

@@ -1,0 +1,5 @@
+@use '../mixins' as mixins;
+
+.floating {
+  @include mixins.reset;
+}

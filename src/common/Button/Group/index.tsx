@@ -20,7 +20,6 @@ export const ButtonGroupRender: ButtonGroupRenderType = (props, ref) => {
       ref={ref}
       role="group"
       className={clsx('button-group', className)}
-      data-orientation={orientation}
       aria-orientation={orientation}
     >
       <ButtonProvider value={{ size, loading, disabled, orientation }}>{children}</ButtonProvider>

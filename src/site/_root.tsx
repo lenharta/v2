@@ -1,6 +1,5 @@
 import { Layout } from './components';
-import { ThemeProvider } from './store';
-import { AppProvider } from './store/app';
+import { AppProvider, ThemeProvider } from '@/store';
 
 export function Root() {
   return (

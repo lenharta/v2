@@ -2,9 +2,9 @@ import * as React from 'react';
 
 export const useExhibit = (
   initialState: boolean = false,
-  options: { onRemove?: () => void; onShow?: () => void } = {}
-): [boolean, { toggle(): void; remove(): void; show(): void }] => {
-  const { onShow, onRemove } = options;
+  onRemove?: () => void,
+  onShow?: () => void
+) => {
   const [state, dispatch] = React.useState(initialState);
 
   const show = React.useCallback(() => {

@@ -3,4 +3,4 @@ import { TabsContextValue } from './types';
 
 export const TabsContext = React.createContext({} as TabsContextValue);
 export const TabsProvider = TabsContext.Provider;
-export const useTabsCTX = () => React.useContext(TabsContext);
+export const useTabsContext = () => React.useContext(TabsContext);

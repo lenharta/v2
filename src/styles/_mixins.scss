@@ -10,14 +10,6 @@
   }
 }
 
-@mixin clearfix {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-}
-
 @mixin transition-colors-static {
   transition-property: color, background-color, border, outline, stroke, fill;
   transition-timing-function: var(--easing-standard-expressive);

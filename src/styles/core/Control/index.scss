@@ -1,0 +1,13 @@
+@use '../mixins' as mixins;
+
+.control {
+  @include mixins.reset;
+}
+
+.control-track {
+  @include mixins.reset;
+}
+
+.control-thumb {
+  @include mixins.reset;
+}

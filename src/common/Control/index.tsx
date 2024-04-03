@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useThemeCTX } from '@/store';
 import { ControlSegment } from './Segment';
 import { ControlIndicator } from './Indicator';
 import { Orientation, Size } from '@/types/common';
 import { ItemObj, parseItemData } from '../utils';
+import { useThemeState } from '@/store';
 
 // TODO: Update translation for theme direction
 
@@ -42,8 +42,8 @@ export const Control: ControlComponent = (props: ControlProps) => {
     size = 'sm',
   } = props;
 
-  const theme = useThemeCTX();
-  const direction = theme.state.dir;
+  const theme = useThemeState();
+  const direction = theme.dir;
 
   const activeRef = React.useRef<number>(0);
   const wrapperRef = React.useRef<HTMLDivElement>(null);

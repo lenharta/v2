@@ -14,31 +14,15 @@
   --button-padding-x-xl: calc(12px * var(--scale));
 
   user-select: none;
-  font-weight: 500;
   font-family: var(--font-family);
-  font-size: var(--font-size-body);
-  outline: solid 2px transparent;
-  border: solid 2px transparent;
-  align-items: center;
+  font-weight: var(--font-weight-2);
+  font-size: var(--font-size-body-md);
+
+  margin: 2px;
   display: inline-flex;
   flex-wrap: nowrap;
+  align-items: center;
   padding-inline: 0.6rem;
-  margin: 2px;
-
-  &:not([data-grow]) {
-    width: max-content;
-  }
-  [data-grow] {
-    width: 100%;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline-color: transparent;
-  }
-  &:focus:focus-visible {
-    outline-color: var(--root-focus-outline);
-    outline-offset: 2px;
-  }
 
   &-inner {
     height: 100%;
@@ -46,18 +30,12 @@
     align-items: center;
     white-space: nowrap;
   }
-}
 
-.button-group {
-  width: max-content;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  &[data-orientation='vertical'] {
-    flex-direction: column;
+  &:not([data-grow]) {
+    width: max-content;
   }
-  &[data-orientation='horizontal'] {
-    flex-direction: row;
+
+  [data-grow] {
+    width: 100%;
   }
 }

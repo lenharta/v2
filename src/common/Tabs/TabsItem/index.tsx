@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { useTabsCTX } from '../context';
+import { useTabsContext } from '../context';
 import { UnstyledButton } from '@/common/Button/Unstyled';
-import { TabsItemComponentType, TabsItemRenderType } from '../types';
 import { createEventCallback } from '@/utils';
+import { TabsItemComponentType, TabsItemRenderType } from '../types';
 
 const TabsItemRender: TabsItemRenderType = (props, ref) => {
   const {
@@ -17,7 +17,7 @@ const TabsItemRender: TabsItemRenderType = (props, ref) => {
     ...otherProps
   } = props;
 
-  const ctx = useTabsCTX();
+  const ctx = useTabsContext();
 
   const isActive = ctx.value !== value;
   const hasSize = ctx.size || size;

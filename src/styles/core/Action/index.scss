@@ -1,0 +1,9 @@
+@use '../mixins' as mixins;
+
+.action {
+  @include mixins.reset;
+}
+
+.action-group {
+  @include mixins.reset;
+}

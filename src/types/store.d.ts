@@ -1,76 +1,101 @@
-import { IconName } from '@/common';
-import { Position } from './common';
-import { Location } from 'react-router-dom';
+import * as React from 'react';
 
-export type StoreState = {
-  error?: string;
-  loading?: boolean;
-  sessionKey?: string;
-  location?: Location;
-  isMenuOpen?: boolean;
-  isSplash?: boolean;
-  nonce?: () => string;
-};
-
-export type ThemeStore = {
-  dir: Dir;
-  lang: Language;
-  mode: Mode;
-  accent: Accent;
-  avatar: Avatar;
-};
-
-export enum SETTINGS_THEME_MODE {
+export enum ThemeMode {
   light = 'mode-light',
   dark = 'mode-dark',
   dim = 'mode-dim',
 }
 
-export enum SETTINGS_THEME_ACCENT {
-  orange = 'color-accent-orange',
-  yellow = 'color-accent-yellow',
-  green = 'color-accent-green',
-  mint = 'color-accent-mint',
-  teal = 'color-accent-teal',
-  cyan = 'color-accent-cyan',
-  blue = 'color-accent-blue',
-  indigo = 'color-accent-indigo',
-  purple = 'color-accent-purple',
-  pink = 'color-accent-pink',
-  brown = 'color-accent-brown',
-  red = 'color-accent-red',
+export enum ThemeAccent {
+  orange = 'accent-orange',
+  yellow = 'accent-yellow',
+  green = 'accent-green',
+  mint = 'accent-mint',
+  teal = 'accent-teal',
+  cyan = 'accent-cyan',
+  blue = 'accent-blue',
+  indigo = 'accent-indigo',
+  purple = 'accent-purple',
+  pink = 'accent-pink',
+  brown = 'accent-brown',
+  red = 'accent-red',
 }
 
-export enum SETTINGS_THEME_AVATAR {
-  dog = 'avatar-dog',
-  rocket = 'avatar-rocket',
-  music = 'avatar-music',
+export enum ThemeDir {
+  ltr = 'left-to-right',
+  rtl = 'right-to-left',
+}
+
+export enum ThemeAvatar {
+  person = 'avatar-person',
   robot = 'avatar-robot',
-  pizza = 'avatar-pizza',
-  football = 'avatar-football',
-  baseball = 'avatar-baseball',
-  basketball = 'avatar-basketball',
-  star = 'avatar-star',
-  heart = 'avatar-heart',
-  code = 'avatar-code',
-  palette = 'avatar-palette',
-  coffee = 'avatar-coffee',
-  beer = 'avatar-beer',
-  smiley = 'avatar-smiley',
-  bolt = 'avatar-bolt',
-  film = 'avatar-film',
-  puzzle = 'avatar-puzzle',
-  shield = 'avatar-shield',
-  soccer = 'avatar-soccer',
 }
 
-export type Store = StoreState;
-export type StoreDispatch = React.Dispatch<StoreState>;
-export type Language = 'english' | 'german' | 'spanish' | 'japanese' | 'arabic' | 'french';
-export type ValidationStatus = 'info' | 'warn' | 'danger' | 'success';
+export enum ThemeLanguage {
+  english = 'en',
+  german = 'de',
+  spanish = 'es',
+  japanese = 'ja',
+  arabic = 'ar',
+  french = 'fr',
+}
 
-export type Dir = 'ltr' | 'rtl';
-export type Mode = keyof typeof SETTINGS_THEME_MODE;
-export type Avatar = IconName;
-export type Accent = keyof typeof SETTINGS_THEME_ACCENT;
-export type AccentLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+export type Dir = keyof typeof ThemeDir;
+export type Mode = keyof typeof ThemeMode;
+export type Lang = keyof typeof ThemeLanguage;
+export type Avatar = keyof typeof ThemeAvatar;
+export type Accent = keyof typeof ThemeAccent;
+
+export type StorageType = 'sessionStorage' | 'localStorage';
+
+export enum RootAttributes {
+  mode = 'data-prefers-color-scheme',
+  accent = 'data-prefers-color-accent',
+}
+
+export type AppStore = {
+  nonce?: () => string;
+  error?: string;
+  loading?: boolean;
+  location?: Location;
+  sessionId?: string;
+  isMenuOpen?: boolean;
+  isSplashOpen?: boolean;
+};
+
+export type ThemeStore = {
+  dir: Dir;
+  mode: Mode;
+  lang: Lang;
+  avatar: Avatar;
+  accent: Accent;
+};
+
+export type AppDispatch = React.Dispatch<Partial<AppStore>>;
+export type ThemeDispatch = React.Dispatch<Partial<ThemeStore>>;
+
+export type AppContextValue = {
+  nonce?: () => string;
+  error?: string;
+  loading?: boolean;
+  location?: Location;
+  sessionId?: string;
+  isMenuOpen?: boolean;
+  isSplashOpen?: boolean;
+};
+
+export type ThemeContextValue = {
+  dir: Dir;
+  mode: Mode;
+  lang: Lang;
+  avatar: Avatar;
+  accent: Accent;
+};
+
+export type ThemeDispatchContextValue = {
+  setDir(dir: Dir): void;
+  setMode(mode: Mode): void;
+  setLang(lang: Lang): void;
+  setAvatar(avatar: Avatar): void;
+  setAccent(accent: Accent): void;
+};

@@ -1,0 +1,9 @@
+@use '../mixins' as mixins;
+
+.tag {
+  @include mixins.reset;
+}
+
+.tag-group {
+  @include mixins.reset;
+}

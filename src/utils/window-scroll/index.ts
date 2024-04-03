@@ -1,7 +1,4 @@
-interface ScrollPosition {
-  x: number;
-  y: number;
-}
+import { ScrollPosition } from '@/types';
 
 export function getScrollPosition(): ScrollPosition {
   if (typeof window !== 'undefined') {

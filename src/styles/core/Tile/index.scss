@@ -1,0 +1,9 @@
+@use '../mixins' as mixins;
+
+.tile {
+  @include mixins.reset;
+}
+
+.tile-group {
+  @include mixins.reset;
+}

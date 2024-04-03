@@ -1,0 +1,156 @@
+[data-prefers-color-scheme='dim'],
+[data-prefers-color-scheme='dark'],
+[data-prefers-color-scheme='light'] {
+  background-color: var(--background-primary-1);
+  color: var(--text-primary-1);
+}
+
+[data-prefers-color-scheme='dim'] [data-scheme='primary'],
+[data-prefers-color-scheme='dark'] [data-scheme='primary'],
+[data-prefers-color-scheme='light'] [data-scheme='primary'] {
+  background-color: var(--background-primary-1);
+  color: var(--text-primary-1);
+
+  .tile,
+  .radio,
+  .button,
+  .checkbox,
+  .action-item {
+    background-color: var(--background-primary-1);
+    color: var(--text-primary-1);
+  }
+
+  .tile:hover,
+  .radio:hover,
+  .button:hover,
+  .checkbox:hover,
+  .action-item:hover {
+    background-color: var(--background-primary-1-hover);
+  }
+
+  .tile--elevated,
+  .radio--elevated,
+  .button--elevated,
+  .checkbox--elevated,
+  .action-item--elevated {
+    background-color: var(--background-primary-2);
+    color: var(--text-primary-1);
+  }
+
+  .tile--elevated:hover,
+  .radio--elevated:hover,
+  .button--elevated:hover,
+  .checkbox--elevated:hover,
+  .action-item--elevated:hover {
+    background-color: var(--background-primary-2-hover);
+  }
+}
+
+[data-prefers-color-scheme='dim'] [data-scheme='secondary'],
+[data-prefers-color-scheme='dark'] [data-scheme='secondary'],
+[data-prefers-color-scheme='light'] [data-scheme='secondary'] {
+  background-color: var(--background-secondary-1);
+  color: var(--text-secondary-1);
+
+  .tile,
+  .radio,
+  .button,
+  .checkbox {
+    background-color: var(--background-secondary-1);
+    color: var(--text-secondary-1);
+  }
+
+  .tile:hover,
+  .radio:hover,
+  .button:hover,
+  .checkbox:hover {
+    background-color: var(--background-secondary-1-hover);
+  }
+
+  .tile--elevated,
+  .radio--elevated,
+  .button--elevated,
+  .checkbox--elevated {
+    background-color: var(--background-secondary-2);
+    color: var(--text-secondary-1);
+  }
+
+  .tile--elevated:hover,
+  .radio--elevated:hover,
+  .button--elevated:hover,
+  .checkbox--elevated:hover {
+    background-color: var(--background-secondary-2-hover);
+  }
+}
+
+div[data-scheme='accent-gradient-up'] {
+  background: linear-gradient(
+    to top,
+    var(--c-accent-6-A300) 0%,
+    var(--c-accent-4-A500) 50%,
+    var(--c-accent-2-A700) 100%
+  );
+}
+
+div[data-scheme='accent-gradient-down'] {
+  background: linear-gradient(
+    to bottom,
+    var(--c-accent-6-A300) 0%,
+    var(--c-accent-4-A500) 50%,
+    var(--c-accent-2-A700) 100%
+  );
+}
+
+div[data-scheme='accent-gradient-left'] {
+  background: linear-gradient(
+    to left,
+    var(--c-accent-6-A300) 0%,
+    var(--c-accent-4-A500) 50%,
+    var(--c-accent-2-A700) 100%
+  );
+}
+
+div[data-scheme='accent-gradient-right'] {
+  background: linear-gradient(
+    to right,
+    var(--c-accent-6-A300) 0%,
+    var(--c-accent-4-A500) 50%,
+    var(--c-accent-2-A700) 100%
+  );
+}
+
+div[data-scheme='accent-gradient-top-right'] {
+  background: linear-gradient(
+    to top right,
+    var(--c-accent-6-A300) 0%,
+    var(--c-accent-4-A500) 50%,
+    var(--c-accent-2-A700) 100%
+  );
+}
+
+div[data-scheme='accent-gradient-top-left'] {
+  background: linear-gradient(
+    to top left,
+    var(--c-accent-6-A300) 0%,
+    var(--c-accent-4-A500) 50%,
+    var(--c-accent-2-A700) 100%
+  );
+}
+
+div[data-scheme='accent-gradient-bottom-right'] {
+  background: linear-gradient(
+    to bottom right,
+    var(--c-accent-6-A300) 0%,
+    var(--c-accent-4-A500) 50%,
+    var(--c-accent-2-A700) 100%
+  );
+}
+
+div[data-scheme='accent-gradient-bottom-left'] {
+  background: linear-gradient(
+    to bottom left,
+    var(--c-accent-6-A300) 0%,
+    var(--c-accent-4-A500) 50%,
+    var(--c-accent-2-A700) 100%
+  );
+}

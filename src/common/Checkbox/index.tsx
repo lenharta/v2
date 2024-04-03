@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Text } from '@/common';
 import { mergeProps } from '@/utils';
 import { useInputIds } from '@/hooks';
-import { Size, ElementProps } from '@/types';
+import { Size5, ElementProps } from '@/types';
 import { CheckboxIndicator } from './Indicator';
 import { useCheckboxCTX } from './context';
 import { CheckboxGroup } from './Group';
@@ -13,7 +13,7 @@ export interface CheckboxProps extends Omit<ElementProps<'input'>, 'size'> {
   id?: string;
 
   /** Specifies a size for the element */
-  size?: Size;
+  size?: Size5;
 
   /** Identifies an accessible label for the element */
   label?: string;
@@ -135,7 +135,7 @@ function _Checkbox(props: CheckboxProps, ref: React.ForwardedRef<HTMLInputElemen
 
 interface CheckboxLabelProps {
   id: string;
-  size?: Size;
+  size?: Size5;
   text?: string;
   htmlFor?: string;
   loading?: boolean;
@@ -163,7 +163,7 @@ const CheckboxLabel = (props: CheckboxLabelProps) => {
 
 interface CheckboxTextProps {
   id: string;
-  size?: Size;
+  size?: Size5;
   text?: string;
   loading?: boolean;
   disabled?: boolean;

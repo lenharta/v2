@@ -1,0 +1,30 @@
+@mixin reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+@mixin ltr {
+  [data-prefers-script-dir='ltr'] & {
+    @content;
+  }
+}
+
+@mixin rtl {
+  [data-prefers-script-dir='rtl'] & {
+    @content;
+  }
+}
+
+@mixin transition-colors-static {
+  transition-property: color, background-color, border, outline, stroke, fill;
+  transition-timing-function: var(--easing-standard-expressive);
+  transition-duration: var(--easing-duration-5);
+}
+
+@mixin transition-colors-interactive {
+  transition-property: color, background-color, border, outline, stroke, fill;
+  transition-timing-function: var(--easing-standard-productive);
+  transition-duration: var(--easing-duration-1);
+}

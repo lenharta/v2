@@ -1,8 +1,15 @@
 import * as React from 'react';
-import { Size, Alignment, Orientation, ElementProps, ExoticRender, ExoticComponent } from '@/types';
+import {
+  Size5,
+  Alignment,
+  Orientation,
+  ElementProps,
+  ExoticRender,
+  ExoticComponent,
+} from '@/types';
 
 export interface TabsContextValue {
-  size?: Size | undefined;
+  size?: Size5 | undefined;
   grow?: boolean | undefined;
   value: string;
   disabled?: boolean | undefined;
@@ -15,7 +22,7 @@ export interface TabsContextValue {
 }
 
 export interface TabsRootProps {
-  size?: Size | undefined;
+  size?: Size5 | undefined;
   grow?: boolean | undefined;
   children?: React.ReactNode | undefined;
   disabled?: boolean | undefined;
@@ -27,7 +34,7 @@ export interface TabsRootProps {
 }
 
 export interface TabsItemProps extends Omit<ElementProps<'button'>, 'children'> {
-  size?: Size | undefined;
+  size?: Size5 | undefined;
   value: string | undefined;
   label?: string | undefined;
   disabled?: boolean | undefined;

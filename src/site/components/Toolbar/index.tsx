@@ -1,12 +1,6 @@
-import { Icon, IconName } from '@/common';
 import { ElementProps } from '@/types';
 
 export interface ToolbarProps extends ElementProps<'aside'> {}
-
-interface ToolbarItemObj {
-  id: string;
-  icon: IconName;
-}
 
 export const Toolbar = (props: ToolbarProps) => {
   const { ...otherProps } = props;

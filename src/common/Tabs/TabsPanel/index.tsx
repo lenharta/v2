@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { useTabsCTX } from '../context';
+import { useTabsContext } from '../context';
 import { TabsPanelComponentType, TabsPanelRenderType } from '../types';
 
 const TabsPanelRender: TabsPanelRenderType = (props, ref) => {
   const { className, keepMounted, value, style, ...otherProps } = props;
 
-  const ctx = useTabsCTX();
+  const ctx = useTabsContext();
   const isActive = ctx.value === value;
 
   if (!isActive && !keepMounted) {
