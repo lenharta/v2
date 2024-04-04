@@ -1,28 +1,51 @@
 import clsx from 'clsx';
-import { ICON, Icon } from '@/core';
-import { useFocusIndex } from '../hooks';
 import { Core, factory } from '../factory';
+import { useFocusIndex } from '../hooks';
+import { Icon, IconProps } from '@/core';
 
 export interface ActionProps {
-  /** Defines the type of icon for the action button element. */
-  icon?: ICON | undefined;
-
-  /** Defines a shorthand property for action button `aria-label` property */
+  /**
+   * Specifies the name key for the path that will be rendered by the `Icon` component.
+   * @see {IconProps.name}
+   * @default 'placeholder'
+   */
+  icon?: IconProps['name'] | undefined;
+  /**
+   * Defines a shorthand property `aria-label` property.
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+   * @default 'action'
+   */
   label?: string | undefined;
-
-  /** Defines a index for tabbing the action button element. */
+  /**
+   * Specifies a index for the `Action` button tab order, if provided any other focusable props are ignored.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+   * @default undefined
+   */
   tabIndex?: number | undefined;
-
-  /** Indicates a `disabled` state for the action button element. */
+  /**
+   * Indicates a `disabled` state for the `Action` button.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled
+   * @default undefined
+   */
   disabled?: boolean | undefined;
-
-  /** Indicates if the action button element should be ignored in the current tab order. */
+  /**
+   * Specifies if the element should be ignored in the current tab order.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+   * @default undefined
+   */
   excludeTabOrder?: boolean | undefined;
-
-  /** Indicates if the action button element should be focused when `disabled` state is provided. */
+  /**
+   * Defines if the element should be focused when `disabled` state is provided.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+   * @default undefined
+   */
   allowDisabledFocus?: boolean | undefined;
-
-  /** Defines a default HTML `className` appended to the action button classList */
+  /**
+   * Defines a default html `class` appended to the `Action` button classList.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+   * @default 'button'
+   */
   className?: string | undefined;
 }
 
