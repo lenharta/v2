@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HomeHero } from './HomeHero';
 import { Page, Section } from '@/site/components';
-import { Subtitle, Tabs, Text, Title } from '@/core';
+import { Button, Subtitle, Tabs, Text, Title } from '@/core';
 
 export const HomeOverview = () => {
   return (
@@ -120,6 +120,9 @@ export function Home() {
         <HomeOverview />
         <DemoTabsUncontrolled />
         <DemoTabsControlled />
+        <Button disabled allowDisabledFocus>
+          Button Label
+        </Button>
       </Page.Content>
     </Page>
   );

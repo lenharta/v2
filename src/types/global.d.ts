@@ -97,9 +97,9 @@ export interface FocusProps {
 
 export interface AriaLabelProps {
   label?: string | undefined;
-  value?: string | undefined;
+  value?: string | number | readonly string[] | undefined;
   children?: React.ReactNode | undefined;
-  ariaLabel?: string | undefined;
+  ariaLabel?: React.AriaAttributes['aria-label'];
 }
 
 export type TransitionStatus =

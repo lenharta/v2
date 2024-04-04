@@ -2,6 +2,7 @@ export * from './Action';
 export * from './Avatar';
 export * from './Button';
 export * from './Caption';
+export * from './Checkbox';
 export * from './Divider';
 export * from './Floating';
 export * from './Icon';

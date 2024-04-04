@@ -1,44 +1,109 @@
 import clsx from 'clsx';
-import { useFocusIndex } from '../hooks';
+import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createEventCallback } from '@/utils';
 import { Core, factory } from '../factory';
+import { useFocusIndex } from '../hooks';
+import { getAriaLabel } from '../utils';
 
 export interface ButtonProps {
-  /** Indicates a `loading` state for the button element */
-  loading?: boolean | undefined;
-
-  /** Defines a index for tabbing the button element. */
+  /**
+   * Defines a unique global identifier for the element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+   * @default undefined
+   */
+  id?: string | undefined;
+  /**
+   * - Specifies the `internal` destination for the `Button`.
+   * - If provided the button will navigate to the `internal url` destination.
+   * - The `navigate()` function will run concurrent with any provided event handlers.
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/href
+   * @see https://reactrouter.com/en/main/components/link
+   * @see {LinkProps.variant}
+   * @default undefined
+   */
+  url?: string | undefined;
+  /**
+   * Defines a shorthand property `aria-label` property.
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+   * @default 'action'
+   */
+  label?: string | undefined;
+  /**
+   * A string representing the `Button` value.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value
+   * @default undefined
+   */
+  value?: string | undefined;
+  /**
+   * Specifies a index for the `Button` tab order, if provided any other focusable props are ignored.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+   * @default undefined
+   */
   tabIndex?: number | undefined;
-
-  /** Indicates a `disabled` state for the button element. */
+  /**
+   * Indicates a `disabled` state for the `Button`.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled
+   * @default undefined
+   */
   disabled?: boolean | undefined;
-
-  /** Defines if the button element should be ignored in the current tab order. */
+  /**
+   * Specifies if the element should be ignored in the current tab order.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+   * @default undefined
+   */
   excludeTabOrder?: boolean | undefined;
-
-  /** Defines if the button element should be focused when `disabled` state is provided. */
+  /**
+   * Defines if the element should be focused when `disabled` state is provided.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+   * @default undefined
+   */
   allowDisabledFocus?: boolean | undefined;
-
-  /** A label for the button element */
+  /**
+   * Defines the content of the `Button`.
+   * @see https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children
+   * @default undefined
+   */
   children?: React.ReactNode | undefined;
-
-  /** Content placed to the `left` of button label element */
+  /**
+   * Defines a default html `class` appended to the `Button` classList.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+   * @default 'button'
+   */
+  className?: string | undefined;
+  /**
+   * Indicates a `loading` state for the `Button`.
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy
+   * @default undefined
+   */
+  loading?: boolean | undefined;
+  /**
+   * Content placed to the `left` of `Button` label.
+   * @see https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children
+   * @default undefined;
+   */
   leftContent?: React.ReactNode | undefined;
-
-  /** Content placed to the `right` of button label element */
+  /**
+   * Content placed to the `left` of `Button` label.
+   * @see https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children
+   * @default undefined;
+   */
   rightContent?: React.ReactNode | undefined;
 }
-
-type ButtonOmittedProps = 'children' | 'disabled';
 
 export type ButtonFactory = Core.Factory<{
   ref: HTMLButtonElement;
   comp: 'button';
   props: ButtonProps;
-  omits: ButtonOmittedProps;
 }>;
 
 export const Button = factory<ButtonFactory>((props, ref) => {
   const {
+    id,
+    url,
+    value,
+    label,
     loading,
     disabled,
     tabIndex,
@@ -48,44 +113,63 @@ export const Button = factory<ButtonFactory>((props, ref) => {
     rightContent,
     excludeTabOrder,
     allowDisabledFocus,
+    'aria-label': ariaLabel,
     ...otherProps
   } = props;
 
-  const focusProps = useFocusIndex({
-    tabIndex,
-    disabled,
-    excludeTabOrder,
-    allowDisabledFocus,
-  });
+  const navigate = useNavigate();
+  const labelProps = getAriaLabel({ ariaLabel, children, label, value });
+  const focusProps = useFocusIndex({ tabIndex, disabled, excludeTabOrder, allowDisabledFocus });
 
-  if (!otherProps['aria-label'] && typeof children !== 'string') {
-    console.warn(
-      '[@v2/core/Button]: Button components must be provided a `label` prop for accessibility.'
-    );
-  }
+  let isDisabled = disabled !== undefined;
+  let isLoading = !isDisabled && loading !== undefined;
+
+  console.log(labelProps);
+  console.log(focusProps);
 
   let accessibleProps = {
+    id,
+    role: otherProps['role'] || 'button',
+    ...(isDisabled ? { 'aria-disabled': true } : {}),
+    ...(isLoading ? { 'aria-busy': true } : {}),
     ...focusProps,
-    ...(loading ? { 'aria-busy': true } : {}),
-    ...(disabled ? { 'aria-disabled': true } : {}),
-    ...(otherProps['role'] ? { role: otherProps['role'] } : { role: 'button' }),
-    ...(!!(typeof children === 'string') ? { 'aria-label': children } : {}),
-    ...(!!otherProps['aria-label'] ? { 'aria-label': otherProps['aria-label'] } : {}),
+    ...labelProps,
   };
 
+  const handleClick = createEventCallback(otherProps.onClick, (event) => {
+    if (url !== undefined) {
+      event.stopPropagation();
+      navigate(url);
+    }
+  });
+
+  const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+    if (url !== undefined) {
+      event.stopPropagation();
+      navigate(url);
+    }
+  });
+
   return (
-    <button {...otherProps} {...accessibleProps} ref={ref} className={clsx('button', className)}>
-      {loading ? (
-        <span className="button-inner" style={{ opacity: 0.5 }}>
+    <button
+      {...otherProps}
+      {...accessibleProps}
+      className={clsx('button', className)}
+      onKeyDown={handleKeyDown}
+      onClick={handleClick}
+      ref={ref}
+    >
+      <span className="inner" style={{ ...(isLoading ? { opacity: 0.5 } : {}) }}>
+        {isLoading ? (
           <span>Loading...</span>
-        </span>
-      ) : (
-        <span className="button-inner">
-          {leftContent && <div data-position="left">{leftContent}</div>}
-          {children && <div>{children}</div>}
-          {rightContent && <div data-position="right">{rightContent}</div>}
-        </span>
-      )}
+        ) : (
+          <React.Fragment>
+            {leftContent && <div data-position="left">{leftContent}</div>}
+            {children && <div>{children}</div>}
+            {rightContent && <div data-position="right">{rightContent}</div>}
+          </React.Fragment>
+        )}
+      </span>
     </button>
   );
 });

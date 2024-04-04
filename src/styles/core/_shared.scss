@@ -41,16 +41,20 @@
   border: solid 2px transparent;
   outline: solid 2px transparent;
 
-  &:not([aria-disabled]):focus:not(:focus-visible) {
+  &:not([aria-disabled]):focus:not(:focus-visible),
+  &:not([data-disabled]):focus:not(:focus-visible) {
     outline-color: transparent;
   }
-  &:not([aria-disabled]):focus:focus-visible {
+  &:not([aria-disabled]):focus:focus-visible,
+  &:not([data-disabled]):focus:focus-visible {
     outline-color: var(--c-blue-6);
   }
-  &:not([aria-disabled]):hover {
+  &:not([aria-disabled]):hover,
+  &:not([data-disabled]):hover {
     cursor: pointer;
   }
-  &[aria-disabled]:hover {
+  &[aria-disabled]:hover,
+  &[data-disabled]:hover {
     cursor: default;
   }
 }
