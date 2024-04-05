@@ -10,16 +10,28 @@ import React from 'react';
 export interface ButtonProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
   /** Defines a unique global identifier for the element. */
   id?: string | undefined;
+
   /** Specifies the destination urk for the element. */
   url?: string | undefined;
+
+  /** Specifies the size of the element. */
+  size?: Core.Size5;
+
   /** Defines a shorthand property `aria-label` property. */
   label?: string | undefined;
+
   /** A string representing the a value for the element. */
   value?: string | undefined;
+
+  /** Specifies the style variant of the element. */
+  variant?: 'default' | 'tonal';
+
   /** Indicates a `loading` state for the element. */
   loading?: boolean | undefined;
+
   /** Content placed to the `left` of the label.*/
   leftContent?: React.ReactNode | undefined;
+
   /** Content placed to the `right` of the label.*/
   rightContent?: React.ReactNode | undefined;
 }
@@ -32,10 +44,11 @@ export type ButtonFactory = Factory.Config<{
 
 export const Button = factory<ButtonFactory>((props, ref) => {
   const {
-    id,
     url,
+    size = 'sm',
     value,
     label,
+    variant = 'default',
     loading,
     disabled,
     tabIndex,
@@ -53,14 +66,11 @@ export const Button = factory<ButtonFactory>((props, ref) => {
   const labelProps = getAriaLabel({ ariaLabel, children, label, value });
   const focusProps = useFocusIndex({ tabIndex, disabled, excludeTabOrder, allowDisabledFocus });
 
-  let isDisabled = disabled !== undefined;
-  let isLoading = !isDisabled && loading !== undefined;
+  const isDisabled = disabled !== undefined;
+  const isLoading = !isDisabled && loading !== undefined;
+  const modifiers = [`action--${variant}`, `action--size-${size}`];
 
-  console.log(labelProps);
-  console.log(focusProps);
-
-  let accessibleProps = {
-    id,
+  const accessibleProps = {
     role: otherProps['role'] || 'button',
     ...(isDisabled ? { 'aria-disabled': true } : {}),
     ...(isLoading ? { 'aria-busy': true } : {}),
@@ -86,7 +96,7 @@ export const Button = factory<ButtonFactory>((props, ref) => {
     <button
       {...otherProps}
       {...accessibleProps}
-      className={clsx('button', className)}
+      className={clsx('button', modifiers, className)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}
       ref={ref}

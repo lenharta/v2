@@ -39,6 +39,11 @@
 .action,
 .button {
   user-select: none;
+
+  svg {
+    width: 60%;
+    height: 60%;
+  }
 }
 
 .action,

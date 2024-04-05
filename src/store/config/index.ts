@@ -6,7 +6,7 @@ export const initialAppState: Store.AppState = {};
 
 export const initialThemeState: Store.ThemeState = {
   dir: 'ltr',
-  mode: 'dark',
+  mode: 'dim',
   lang: { name: 'english', code: 'en' },
   accent: 'blue',
   avatar: 'person',

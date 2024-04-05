@@ -18,6 +18,10 @@ export namespace Core {
   export type Dimensions = { [key in Length]: number };
   export type ClientRect = Rect & SideObject;
 
+  export type SchemeVariant = 'inverted';
+  export type SchemeType = 'primary' | 'secondary' | 'tertiary';
+  export type Scheme = SchemeType | `${SchemeType}${SchemeVariant}`;
+
   export interface BaseProps {
     /** Defines a unique identifier for the element. */
     id?: string | undefined;

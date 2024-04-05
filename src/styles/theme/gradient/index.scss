@@ -1,6 +1,6 @@
-[data-prefers-color-scheme='dim'],
-[data-prefers-color-scheme='dark'],
-[data-prefers-color-scheme='light'] {
+@use '../mixins' as mixins;
+
+@include mixins.mode {
   [data-gradient] {
     --c-gradient: linear-gradient(
       to var(--c-gradient-direction),
@@ -35,7 +35,7 @@
   }
 }
 
-[data-prefers-color-scheme='dim'] {
+@include mixins.mode-dim {
   [data-accent-gradient='top'] {
     --c-gradient-start: var(--c-accent-200);
     --c-gradient-end: var(--c-accent-50);
@@ -70,7 +70,7 @@
   }
 }
 
-[data-prefers-color-scheme='dark'] {
+@include mixins.mode-dark {
   [data-accent-gradient='top'] {
     --c-gradient-start: var(--c-accent-200);
     --c-gradient-end: var(--c-accent-50);
@@ -105,7 +105,7 @@
   }
 }
 
-[data-prefers-color-scheme='light'] {
+@include mixins.mode-light {
   [data-accent-gradient='top'] {
     --c-gradient-start: var(--c-accent-200);
     --c-gradient-end: var(--c-accent-50);

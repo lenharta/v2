@@ -13,13 +13,31 @@
 }
 
 @mixin ltr {
-  [data-prefers-script-dir='ltr'] & {
+  [data-prefers-dir='ltr'] & {
     @content;
   }
 }
 
 @mixin rtl {
-  [data-prefers-script-dir='rtl'] & {
+  [data-prefers-dir='rtl'] & {
+    @content;
+  }
+}
+
+@mixin mode-dim {
+  [data-prefers-mode='dim'] {
+    @content;
+  }
+}
+
+@mixin mode-dark {
+  [data-prefers-mode='dark'] {
+    @content;
+  }
+}
+
+@mixin mode-light {
+  [data-prefers-mode='light'] {
     @content;
   }
 }

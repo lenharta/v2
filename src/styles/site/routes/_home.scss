@@ -7,6 +7,7 @@
 }
 
 .sec-home-hero-content {
+  padding-inline: var(--site-gutter);
   margin-top: var(--site-height-header);
   z-index: var(--site-index-hero);
   height: var(--site-height-hero);

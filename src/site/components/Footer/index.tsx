@@ -13,9 +13,12 @@ export type FooterFactory = Factory.Config<{
 }>;
 
 export const Footer = factory<FooterFactory>((props, ref) => {
-  const { ...otherProps } = props;
+  const { scheme = 'tertiary', ...otherProps } = props;
+  const dataProps = {
+    'data-scheme': scheme,
+  };
   return (
-    <footer {...otherProps} className="footer-layout" ref={ref}>
+    <footer {...otherProps} {...dataProps} className="footer-layout" ref={ref}>
       <div className="footer-content">
         <div className="footer-box--left">
           <span>Footer Box (left)</span>
