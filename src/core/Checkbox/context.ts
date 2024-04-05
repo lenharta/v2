@@ -1,34 +1,16 @@
 import * as React from 'react';
-import { createSafeContext } from '../utils';
 
 export interface CheckboxContextValue {
-  /**
-   * A string representing the `Checkbox.Group` value.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value
-   * @default undefined
-   */
-  value: string | undefined;
-  /**
-   * Defines legend for the `Checkbox.Group`.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
-   * @default undefined
-   */
-  group: string | undefined;
-  /**
-   * Defines a change event handler for the `Checkbox.Group`.
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
-   * @default undefined
-   */
-  onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void) | (() => void);
-  /**
-   * Indicates a `disabled` state for the `Checkbox.Group`.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled
-   * @default undefined
-   */
+  /** A string representing the `Checkbox.Group` value. */
+  value: string[] | undefined;
+  /** Defines legend for the `Checkbox.Group`. */
+  groupId: string | undefined;
+  /** Defines a change event handler for the `Checkbox.Group`. */
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  /** Indicates a `disabled` state for the `Checkbox.Group`. */
   disabled?: boolean | undefined;
 }
 
-export const [CheckboxProvider, useCheckboxContext] = createSafeContext<CheckboxContextValue>(
-  '[@v2/core/Checkbox.Context]: Component not found in context tree.'
-);
+export const CheckboxContext = React.createContext({} as CheckboxContextValue);
+export const CheckboxProvider = CheckboxContext.Provider;
+export const useCheckboxContext = () => React.useContext(CheckboxContext);

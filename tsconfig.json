@@ -29,13 +29,10 @@
       "@/site/*": ["./src/site/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/hooks/*": ["./src/hooks/*"],
-      "@/pages/*": ["./src/pages/*"],
       "@/tests/*": ["./src/tests/*"],
       "@/types/*": ["./src/types/*"],
       "@/store/*": ["./src/store/*"],
-      "@/assets/*": ["./src/assets/*"],
-      "@/common/*": ["./src/common/*"],
-      "@/factory/*": ["./src/factory/*"]
+      "@/assets/*": ["./src/assets/*"]
     }
   },
   "include": ["src"],

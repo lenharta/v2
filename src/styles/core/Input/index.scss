@@ -1,13 +1,29 @@
 @use '../mixins' as mixins;
 
-.input {
+.input-label,
+.input-inner,
+.input-layout,
+.input-message,
+.input-labelbox,
+.input-messagebox {
   @include mixins.reset;
+}
+
+.input-layout {
+  width: var(--input-width, max-content);
+  height: var(--input-height, var(--input-height-xs));
+  display: inline-flex;
+}
+
+.input-inner {
+}
+
+.input-labelbox,
+.input-messagebox {
 }
 
 .input-label {
-  @include mixins.reset;
 }
 
-.input-text {
-  @include mixins.reset;
+.input-message {
 }

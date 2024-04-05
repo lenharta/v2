@@ -1,0 +1,141 @@
+[data-prefers-color-scheme='dim'],
+[data-prefers-color-scheme='dark'],
+[data-prefers-color-scheme='light'] {
+  [data-gradient] {
+    --c-gradient: linear-gradient(
+      to var(--c-gradient-direction),
+      var(--c-gradient-start) 0%,
+      var(--c-gradient-end) 100%
+    );
+  }
+
+  [data-accent-gradient='top'] {
+    --c-gradient-direction: top;
+  }
+  [data-accent-gradient='left'] {
+    --c-gradient-direction: left;
+  }
+  [data-accent-gradient='right'] {
+    --c-gradient-direction: right;
+  }
+  [data-accent-gradient='bottom'] {
+    --c-gradient-direction: bottom;
+  }
+  [data-accent-gradient='top-left'] {
+    --c-gradient-direction: top left;
+  }
+  [data-accent-gradient='top-right'] {
+    --c-gradient-direction: top right;
+  }
+  [data-accent-gradient='bottom-left'] {
+    --c-gradient-direction: bottom left;
+  }
+  [data-accent-gradient='bottom-right'] {
+    --c-gradient-direction: bottom right;
+  }
+}
+
+[data-prefers-color-scheme='dim'] {
+  [data-accent-gradient='top'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='left'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='right'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='bottom'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='top-left'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='top-right'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='bottom-left'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='bottom-right'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+}
+
+[data-prefers-color-scheme='dark'] {
+  [data-accent-gradient='top'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='left'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='right'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='bottom'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='top-left'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='top-right'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='bottom-left'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='bottom-right'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+}
+
+[data-prefers-color-scheme='light'] {
+  [data-accent-gradient='top'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='left'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='right'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='bottom'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='top-left'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='top-right'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='bottom-left'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+  [data-accent-gradient='bottom-right'] {
+    --c-gradient-start: var(--c-accent-200);
+    --c-gradient-end: var(--c-accent-50);
+  }
+}

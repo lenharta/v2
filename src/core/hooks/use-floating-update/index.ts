@@ -1,22 +1,9 @@
 import * as React from 'react';
+import { Core } from '@/types';
 import { autoUpdate } from '@floating-ui/react';
-import { FloatingPosition } from '@/types';
 import { useDidUpdate } from '@/hooks';
 
-export interface Payload {
-  opened?: boolean;
-  floating: {
-    update: () => void;
-    refs: {
-      reference: React.MutableRefObject<any>;
-      floating: React.MutableRefObject<any>;
-    };
-  };
-  positionDependencies?: React.DependencyList | any[];
-  position: FloatingPosition;
-}
-
-export function useFloatingUpdate(props: Payload) {
+export function useFloatingUpdate(props: Core.FloatingPayload) {
   const { opened, floating, position, positionDependencies } = props;
   const [delayedUpdate, setDelayedUpdate] = React.useState(0);
 

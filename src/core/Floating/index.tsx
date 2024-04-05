@@ -1,37 +1,14 @@
 import * as React from 'react';
+import { Core } from '@/types';
 import { useFloating } from '../hooks';
 import { useThemeState } from '@/store';
 import { FloatingProvider } from './context';
 import { getFloatingPosition } from '../utils';
-import { FloatingTarget } from './Target';
+
 import { FloatingBox } from './Box';
-import {
-  FloatingMiddleware,
-  FloatingOffsetAxis,
-  FloatingPosition,
-  FloatingStrategy,
-  FloatingWidth,
-} from '@/types';
+import { FloatingTarget } from './Target';
 
-export interface FloatingProps {
-  width?: FloatingWidth | undefined;
-  opened?: boolean | undefined;
-  zIndex?: string | number;
-  offset?: number | FloatingOffsetAxis;
-  children?: React.ReactNode | undefined;
-  disabled?: boolean | undefined;
-  strategy?: FloatingStrategy | undefined;
-  position?: FloatingPosition | undefined;
-  middleware?: FloatingMiddleware | undefined;
-  closeOnOutsideClick?: boolean | undefined;
-  positionDependencies?: React.DependencyList | undefined;
-  onPositionChange?: ((position: FloatingPosition) => void) | undefined;
-  onChange: (opened?: boolean) => void;
-  onClose?: (() => void) | undefined;
-  onOpen?: (() => void) | undefined;
-}
-
-export type FloatingComponentType = React.FC<FloatingProps> & {
+export type FloatingComponentType = React.FC<Core.FloatingProps> & {
   Target: typeof FloatingTarget;
   Box: typeof FloatingBox;
 };

@@ -1,0 +1,39 @@
+@use '../mixins' as mixins;
+
+.sec-home-hero-content,
+.sec-home-hero-underlay--upper,
+.sec-home-hero-underlay--lower {
+  @include mixins.reset;
+}
+
+.sec-home-hero-content {
+  margin-top: var(--site-height-header);
+  z-index: var(--site-index-hero);
+  height: var(--site-height-hero);
+  overflow-x: hidden;
+  isolation: isolate;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+
+  @media (min-width: 60em) {
+    margin-left: var(--site-height-header);
+  }
+}
+
+.sec-home-hero-underlay--upper,
+.sec-home-hero-underlay--lower {
+  width: 100%;
+  height: 50%;
+  display: block;
+  position: absolute;
+  z-index: var(--site-index-base);
+}
+
+.sec-home-hero-underlay--upper {
+  top: 0;
+}
+.sec-home-hero-underlay--lower {
+  bottom: 0;
+}

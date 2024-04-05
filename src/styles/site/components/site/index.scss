@@ -1,0 +1,13 @@
+.site-layout {
+  display: block;
+  z-index: var(--site-index-layout);
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  max-width: 100%;
+
+  color: var(--c-site-text);
+  background-color: var(--c-site-background);
+}

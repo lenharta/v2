@@ -13,5 +13,3 @@ LICENSE
 # Ignore directories:
 
 data
-src/types/core.d.ts
-src/types/common.d.ts

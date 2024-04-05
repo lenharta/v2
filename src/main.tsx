@@ -1,10 +1,9 @@
+import './styles/main.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Root, Error, Home, Articles, Experience, Toolbox, Sandbox, Projects } from './site';
-
-import './styles/main.scss';
-import './site/styles/main.scss';
 
 const router = createBrowserRouter([
   {

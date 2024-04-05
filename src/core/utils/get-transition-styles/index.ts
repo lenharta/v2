@@ -1,13 +1,13 @@
-import { TransitionStyleInput } from '@/types';
+import { Core, TransitionStyleInput } from '@/types';
 
-const transitionStatuses = {
+const lookupTransitionStatus: Record<Core.TransitionStatus, Core.TransitionState> = {
   entering: 'in',
   entered: 'in',
   exiting: 'out',
   exited: 'out',
   'pre-exiting': 'out',
   'pre-entering': 'out',
-} as const;
+};
 
 export function getTransitionStyles(props: TransitionStyleInput): React.CSSProperties {
   const { state, duration, transition, timingFunction } = props;
@@ -18,6 +18,6 @@ export function getTransitionStyles(props: TransitionStyleInput): React.CSSPrope
     transitionProperty: transition.transitionProperty,
     ...{ transitionDuration, transitionTimingFunction },
     ...transition.common,
-    ...transition[transitionStatuses[state]],
+    ...transition[lookupTransitionStatus[state]],
   };
 }

@@ -1,34 +1,15 @@
 import clsx from 'clsx';
-import { Core, factory } from '../factory';
+import { factory } from '../factory';
+import { Core, Factory } from '@/types';
 
-export interface DividerProps {
-  /**
-   * - Specifies a `label` for the `Divider` element to give additional context.
-   * - The label can be render to the `left` -or `right` side of the container.
-   * @see {DividerProps.labelPosition}
-   * @default undefined
-   */
-
+export interface DividerProps extends Core.BaseProps {
+  /** Specifies a `label` for the `Divider` element to give additional context, can be render to the `left` or `right` side of the container. */
   label?: React.ReactNode | undefined;
-
-  /**
-   * Specifies the position of the `label` element relative to its `Divider` container.
-   * @see {DividerProps.label}
-   * @default 'left'
-   */
-
+  /** Specifies the position of the `label` element relative to its `Divider` container. */
   labelPosition?: 'left' | 'right' | undefined;
-
-  /**
-   * Defines a default html `class` appended to the `Divider` element classList.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
-   * @default 'divider'
-   */
-
-  className?: string | undefined;
 }
 
-export type DividerFactory = Core.Factory<{
+export type DividerFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: DividerProps;

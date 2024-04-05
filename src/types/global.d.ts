@@ -2,21 +2,6 @@ import * as React from 'react';
 
 export type Promisable<T> = T | Promise<T>;
 
-export type ElementProps<T extends React.ElementType> = React.ComponentPropsWithoutRef<T>;
-
-export type ExoticProps<T extends React.ElementType> = React.RefAttributes<T>;
-
-export type ExoticRender<
-  T extends Element,
-  P extends Record<string, any> = {},
-> = React.ForwardRefRenderFunction<T, P>;
-
-export type ExoticComponent<
-  T extends Element,
-  P extends Record<string, any> = {},
-  C extends Record<string, any> = {},
-> = React.ForwardRefExoticComponent<P & React.RefAttributes<T>> & C;
-
 export type AnimationConfigKey = 'to' | 'from';
 export type AnimationConfigObject = Record<AnimationConfigKey, gsap.TweenVars>;
 
@@ -84,13 +69,10 @@ export type ItemOutput = ItemObjectParsed | ItemObjectGroupParsed;
 export interface FocusProps {
   /** Defines a index for tabbing the interactive element. */
   tabIndex?: number | undefined;
-
   /** Indicates a `disabled` state for the interactive element. */
   disabled?: boolean | undefined;
-
   /** Defines if the interactive element should be ignored in the current tab order. */
   excludeTabOrder?: boolean | undefined;
-
   /** Defines if the interactive element should be focused when `disabled` state is provided. */
   allowDisabledFocus?: boolean | undefined;
 }
@@ -158,11 +140,10 @@ export interface UseTransitionReturn {
 }
 
 export type FloatingSide = 'top' | 'left' | 'right' | 'bottom';
+export type FloatingWidth = 'target' | React.CSSProperties['width'] | null;
+export type FloatingStrategy = 'absolute' | 'fixed';
 export type FloatingPlacement = 'end' | 'start';
 export type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;
-export type FloatingStrategy = 'absolute' | 'fixed';
-
-export type FloatingWidth = 'target' | React.CSSProperties['width'] | null;
 
 export interface FloatingOffsetAxis {
   mainAxis?: number;

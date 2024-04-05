@@ -1,28 +1,48 @@
-import { AppDispatch, AppStore } from '@/types';
 import * as React from 'react';
+import { Store } from '@/types';
+import { localMiddleware } from '../local';
+import { generateRandomId } from '@/utils';
 
-export const AppStateContext = React.createContext({} as AppStore);
-export const AppDispatchContext = React.createContext({} as AppDispatch);
+export const AppStateContext = React.createContext({} as Store.AppState);
+export const AppDispatchContext = React.createContext({} as Store.AppDispatch);
+
+export const AppStateProvider = AppStateContext.Provider;
+export const AppDispatchProvider = AppDispatchContext.Provider;
+
 export const useAppState = () => React.useContext(AppStateContext);
 export const useAppDispatch = () => React.useContext(AppDispatchContext);
 
-const initialState: AppStore = {};
+const initialState: Store.AppState = {};
 
-export const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const reducer = (state: AppStore, update: Partial<AppStore>) => {
-    return {
-      ...state,
-      ...update,
-    };
+export const AppProvider = ({ children }: Store.ProviderProps) => {
+  const reducer = (state: Store.AppState, update: Partial<Store.AppState>) => ({
+    ...state,
+    ...update,
+  });
+
+  const middleware = localMiddleware<Store.AppState>('session');
+
+  const connectSession = () => {
+    const connection = { sessionKey: generateRandomId(16) };
+    middleware.write(connection);
+    return connection;
   };
 
-  const initializer = (current: AppStore) => current;
+  const initializer = (current: Store.AppState) => {
+    if (!middleware.fetch()?.sessionKey) {
+      return {
+        ...current,
+        ...connectSession(),
+      };
+    }
+    return current;
+  };
 
   const [state, dispatch] = React.useReducer(reducer, initialState, initializer);
 
   return (
-    <AppStateContext.Provider value={state}>
-      <AppDispatchContext.Provider value={dispatch}>{children}</AppDispatchContext.Provider>
-    </AppStateContext.Provider>
+    <AppStateProvider value={state}>
+      <AppDispatchProvider value={dispatch}>{children}</AppDispatchProvider>
+    </AppStateProvider>
   );
 };

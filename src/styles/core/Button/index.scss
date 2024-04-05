@@ -3,6 +3,20 @@
 .button {
   @include mixins.reset;
   @include mixins.transition-colors-interactive;
+
+  width: var(--button-width, max-content);
+  height: var(--button-height, var(--core-button-height-xs));
+  display: var(--button-display, inline-flex);
+
+  color: var(--c-button-text);
+  border-color: var(--c-button-border, transparent);
+  outline-color: var(--c-button-outline, transparent);
+  background-color: var(--c-button-background);
+
+  [data-grow] {
+    --button-width: 100%;
+    --button-display: block;
+  }
 }
 
 .button-group {

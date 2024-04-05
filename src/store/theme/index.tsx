@@ -1,41 +1,53 @@
 import * as React from 'react';
+import { Store } from '@/types';
 import { localMiddleware } from '../local';
-import { initialThemeState } from '../config';
-import { ThemeContextValue, ThemeDispatchContextValue, ThemeStore } from '@/types';
+import { lookupRootAttribute } from '@/data';
+import { initialThemeState, rootAttributes } from '../config';
 
-export const ThemeStateContext = React.createContext({} as ThemeContextValue);
-export const ThemeDispatchContext = React.createContext({} as ThemeDispatchContextValue);
+export const ThemeStateContext = React.createContext({} as Store.ThemeContextValue);
+export const ThemeDispatchContext = React.createContext({} as Store.ThemeDispatchValue);
+
+export const ThemeStateProvider = ThemeStateContext.Provider;
+export const ThemeDispatchProvider = ThemeDispatchContext.Provider;
+
 export const useThemeState = () => React.useContext(ThemeStateContext);
 export const useThemeDispatch = () => React.useContext(ThemeDispatchContext);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const reducer = (state: ThemeStore, update: Partial<ThemeStore>) => ({
+export function ThemeProvider({ children }: Store.ProviderProps) {
+  const reducer = (state: Store.ThemeState, update: Partial<Store.ThemeState>) => ({
     ...state,
     ...update,
   });
 
-  const middleware = localMiddleware<ThemeStore>('localStorage');
-  const initializer = (current: ThemeStore) => middleware.fetch() ?? current;
+  const middleware = localMiddleware<Store.ThemeState>('local');
+
+  const initializer = (current: Store.ThemeState) => middleware.fetch() ?? current;
+
   const [theme, dispatch] = React.useReducer(reducer, initialThemeState, initializer);
 
-  const setDir = (dir: ThemeStore['dir']) => dispatch({ dir });
-  const setMode = (mode: ThemeStore['mode']) => dispatch({ mode });
-  const setLang = (lang: ThemeStore['lang']) => dispatch({ lang });
-  const setAccent = (accent: ThemeStore['accent']) => dispatch({ accent });
-  const setAvatar = (avatar: ThemeStore['avatar']) => dispatch({ avatar });
-
   React.useEffect(() => {
-    const root = document.getElementById('root')!;
-    root.setAttribute('data-prefers-color-scheme', theme.mode);
-    root.setAttribute('data-prefers-color-accent', theme.accent);
     middleware.write(theme);
+
+    const root = document.getElementById('root')!;
+
+    rootAttributes.forEach((key) => {
+      root.setAttribute(lookupRootAttribute[key], theme.dir);
+    });
   }, [theme]);
 
   return (
-    <ThemeStateContext.Provider value={theme}>
-      <ThemeDispatchContext.Provider value={{ setDir, setMode, setLang, setAccent, setAvatar }}>
+    <ThemeStateProvider value={theme}>
+      <ThemeDispatchProvider
+        value={{
+          setDir: (dir) => dispatch({ dir }),
+          setMode: (mode) => dispatch({ mode }),
+          setLang: (lang) => dispatch({ lang }),
+          setAccent: (accent) => dispatch({ accent }),
+          setAvatar: (avatar) => dispatch({ avatar }),
+        }}
+      >
         {children}
-      </ThemeDispatchContext.Provider>
-    </ThemeStateContext.Provider>
+      </ThemeDispatchProvider>
+    </ThemeStateProvider>
   );
 }

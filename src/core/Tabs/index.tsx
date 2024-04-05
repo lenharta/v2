@@ -6,13 +6,13 @@ import { TabsProvider } from './context';
 
 export interface TabsProps {
   value?: string | undefined;
-  onChange?: (value: string) => void;
   children?: React.ReactNode | undefined;
   disabled?: boolean | undefined;
   withDivider?: boolean | undefined;
+  orientation?: 'vertical' | 'horizontal' | undefined;
   defaultValue?: string | undefined;
   keyboardActivated?: boolean | undefined;
-  orientation?: 'vertical' | 'horizontal' | undefined;
+  onChange?: ((value: string) => void) | undefined;
 }
 
 export type TabsComponent = React.FC<TabsProps> & {

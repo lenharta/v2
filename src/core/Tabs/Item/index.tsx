@@ -1,12 +1,13 @@
 import clsx from 'clsx';
 import { ICON } from '@/core';
+import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
 import { getAriaLabel } from '@/core/utils';
 import { useFocusIndex } from '@/core/hooks';
-import { Core, factory } from '@/core/factory';
 import { useTabsContext } from '../context';
 import { createEventCallback } from '@/utils';
 
-export interface TabsItemProps {
+export interface TabsItemProps extends Core.BaseProps, Core.FocusProps {
   /** Defines the `value` of the tab item. This value will be compared to determine the active tab item. */
   value: string;
 
@@ -18,24 +19,13 @@ export interface TabsItemProps {
 
   /** Defines the content of the item element if no `label` is provided, if undefined defaults to item `value` */
   children?: React.ReactNode | undefined;
-
-  /** Defines a index for tabbing the item element. */
-  tabIndex?: number | undefined;
-
-  /** Indicates a `disabled` state for the item element. */
-  disabled?: boolean | undefined;
-
-  /** Defines if the item element should be ignored in the current tab order. */
-  excludeTabOrder?: boolean | undefined;
-
-  /** Defines if the item element should be focused when `disabled` state is provided. */
-  allowDisabledFocus?: boolean | undefined;
 }
 
-export type TabsItemFactory = Core.Factory<{
+export type TabsItemFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   props: TabsItemProps;
+  omits: 'id';
 }>;
 
 export const TabsItem = factory<TabsItemFactory>((props, ref) => {
@@ -48,35 +38,34 @@ export const TabsItem = factory<TabsItemFactory>((props, ref) => {
     className,
     excludeTabOrder,
     allowDisabledFocus,
-    'aria-label': ariaLabel,
     ...otherProps
   } = props;
 
   const ctx = useTabsContext();
 
-  let isActive = ctx.value === value;
-  let isDisabled = ctx.disabled || disabled;
+  const isActive = ctx.value === value;
+  const isDisabled = ctx.disabled || disabled;
 
-  let focusProps = useFocusIndex({
+  const focusProps = useFocusIndex({
     disabled,
     tabIndex,
     excludeTabOrder,
     allowDisabledFocus,
   });
 
-  let accessibleProps = {
+  const accessibleProps = {
     ...focusProps,
     ...(isActive ? { 'aria-checked': true } : {}),
     ...(isDisabled ? { 'aria-disabled': true } : {}),
     ...getAriaLabel({
-      ariaLabel,
+      ariaLabel: otherProps['aria-label'],
       children,
       label,
       value,
     }),
   };
 
-  let dataProps = {
+  const dataProps = {
     ...(isActive ? { 'data-selected': true } : {}),
     ...(isDisabled ? { 'data-disabled': true } : {}),
   };
@@ -112,3 +101,5 @@ export const TabsItem = factory<TabsItemFactory>((props, ref) => {
     </button>
   );
 });
+
+TabsItem.displayName = '@v2/core/Tabs.Item';

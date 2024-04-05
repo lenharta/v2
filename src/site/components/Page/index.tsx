@@ -1,55 +1,48 @@
 import clsx from 'clsx';
-import * as React from 'react';
-import { Footer } from '../Footer';
-import { Transition } from '@/common';
-import { ElementProps } from '@/types';
-import { usePageTransition } from './use-page-transition';
+import { Transition } from '@/core';
 import { useAppState } from '@/store';
+import { usePageTransition } from '@/site/hooks';
 
-export interface PageProps extends ElementProps<'div'> {
-  children?: React.ReactNode | undefined;
-  className?: string | undefined;
-}
+import { PageHero } from './Hero';
+import { PageContent } from './Content';
+import { Core, Factory } from '@/types';
+import { factory } from '@/core/factory';
 
-export const Page = (props: PageProps) => {
+export interface PageProps extends Core.BaseProps {}
+
+export type PageFactory = Factory.Config<{
+  ref: HTMLDivElement;
+  comp: 'div';
+  props: PageProps;
+  comps: {
+    Hero: typeof PageHero;
+    Content: typeof PageContent;
+  };
+}>;
+
+export const Page = factory<PageFactory>((props, ref) => {
   const { children, className, ...otherProps } = props;
-  const store = useAppState();
-  const pageTransition = usePageTransition(store.location?.pathname);
+
+  const { location } = useAppState();
+  const { pathname } = location ?? {};
+  const pageTransition = usePageTransition({ pathname });
+
   return (
     <Transition {...pageTransition}>
       {(transitionStyles) => (
-        <div {...otherProps} style={transitionStyles} className={clsx('page-layout', className)}>
+        <div
+          {...otherProps}
+          className={clsx('page-layout', className)}
+          style={transitionStyles}
+          ref={ref}
+        >
           {children}
-          <Footer />
         </div>
       )}
     </Transition>
   );
-};
-
-export interface PageHeroProps extends ElementProps<'section'> {
-  children?: React.ReactNode | undefined;
-  className?: string | undefined;
-}
-
-Page.Hero = React.forwardRef<HTMLDivElement, PageHeroProps>((props, ref) => {
-  const { className, ...otherProps } = props;
-  return (
-    <section
-      {...otherProps}
-      ref={ref}
-      role="presentation"
-      className={clsx('page-hero', className)}
-    />
-  );
 });
 
-export interface PageContentProps extends ElementProps<'main'> {
-  children?: React.ReactNode | undefined;
-  className?: string | undefined;
-}
-
-Page.Content = React.forwardRef<HTMLDivElement, PageContentProps>((props, ref) => {
-  const { className, ...otherProps } = props;
-  return <section {...otherProps} ref={ref} className={clsx('page-content', className)} />;
-});
+Page.displayName = '@v2/site/Page';
+Page.Content = PageContent;
+Page.Hero = PageHero;

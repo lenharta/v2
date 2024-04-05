@@ -1,18 +1,20 @@
 import * as React from 'react';
 
-export function createSafeContext<CTX>(errorMessage: string) {
-  const Context = React.createContext<CTX | null>(null);
+interface SafeProviderProps<Value> {
+  children: React.ReactNode;
+  value: Value;
+}
+
+export function createSafeContext<T>(errorMessage: string) {
+  const Context = React.createContext<T | null>(null);
 
   const useSafeContext = () => {
-    const ctx = React.useContext(Context);
-
-    if (ctx === null) {
-      throw new Error(errorMessage);
-    }
-    return ctx;
+    const T = React.useContext(Context);
+    if (T === null) throw new Error(errorMessage);
+    return T;
   };
 
-  const Provider = ({ children, value }: { value: CTX; children: React.ReactNode }) => (
+  const Provider = ({ children, value }: SafeProviderProps<T>) => (
     <Context.Provider value={value}>{children}</Context.Provider>
   );
 

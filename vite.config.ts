@@ -38,13 +38,10 @@ export default defineConfig(({ mode, command }) => {
           '@/site': path.resolve(__dirname, './src/site/'),
           '@/utils': path.resolve(__dirname, './src/utils/'),
           '@/hooks': path.resolve(__dirname, './src/hooks/'),
-          '@/pages': path.resolve(__dirname, './src/pages/'),
           '@/tests': path.resolve(__dirname, './src/tests/'),
           '@/types': path.resolve(__dirname, './src/types/'),
           '@/store': path.resolve(__dirname, './src/store/'),
           '@/assets': path.resolve(__dirname, './src/assets/'),
-          '@/common': path.resolve(__dirname, './src/common/'),
-          '@/factory': path.resolve(__dirname, './src/factory/'),
         },
       },
       define: {

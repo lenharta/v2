@@ -1,13 +1,17 @@
-import { Dir, FloatingPlacement, FloatingPosition, FloatingSide } from '@/types';
+import { Core } from '@/types';
 
-export function getFloatingPosition(dir: Dir, position: FloatingPosition): FloatingPosition {
-  const isRTL = dir === 'rtl';
-  const isInline = position.includes('left') || position.includes('right');
+export const getFloatingPosition = (
+  dir: Core.FloatingDir,
+  pos: Core.FloatingPosition
+): Core.FloatingPosition => {
+  const isInlinePosition = pos.includes('left') || pos.includes('right');
+  const isRightToLeft = dir === 'rtl';
 
-  if (isRTL && isInline) {
-    const [side, placement] = position.split('-') as [FloatingSide, FloatingPlacement];
+  if (isRightToLeft && isInlinePosition) {
+    const [side, placement] = pos.split('-') as [Core.FloatingSide, Core.FloatingPlacement];
     const flippedPosition = side === 'right' ? 'left' : 'right';
-    return position === undefined ? flippedPosition : `${flippedPosition}-${placement}`;
+
+    return pos === undefined ? flippedPosition : `${flippedPosition}-${placement}`;
   }
-  return position;
-}
+  return pos;
+};

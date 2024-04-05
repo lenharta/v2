@@ -1,6 +1,9 @@
 :root {
+  --core-unit: 0.125rem;
   --core-scale: 1;
-  --core-spacing: calc(0.125rem * var(--core-scale));
+  --core-spacing: calc(var(--core-unit) * var(--core-scale));
+  --core-gutter: calc(var(--core-spacing) * 12);
+  --core-gap: calc(var(--core-spacing) * 4);
 
   --core-icon-size-xs: calc(var(--core-spacing) * 8);
   --core-icon-size-sm: calc(var(--core-spacing) * 10);
@@ -43,4 +46,131 @@
   --core-radio-height-md: var(--core-input-height-md);
   --core-radio-height-lg: var(--core-input-height-lg);
   --core-radio-height-xl: var(--core-input-height-xl);
+
+  --core-border-width-sm: calc(var(--core-spacing) * 1);
+  --core-border-width-md: calc(var(--core-spacing) * 2);
+  --core-border-width-lg: calc(var(--core-spacing) * 3);
+
+  --core-radius-xs: calc(var(--core-spacing) * 1);
+  --core-radius-sm: calc(var(--core-spacing) * 2);
+  --core-radius-md: calc(var(--core-spacing) * 4);
+  --core-radius-lg: calc(var(--core-spacing) * 8);
+  --core-radius-xl: calc(var(--core-spacing) * 16);
+  --core-radius-rd: 1000px;
+
+  --core-font-family: 'Satoshi';
+  --core-font-weight-1: 300;
+  --core-font-weight-2: 400;
+  --core-font-weight-3: 500;
+  --core-font-weight-4: 600;
+  --core-font-weight-5: 700;
+
+  --core-easing-duration-1: 70ms;
+  --core-easing-duration-2: 110ms;
+  --core-easing-duration-3: 150ms;
+  --core-easing-duration-4: 240ms;
+  --core-easing-duration-5: 400ms;
+  --core-easing-duration-6: 700ms;
+
+  --core-easing-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --core-easing-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
+  --core-easing-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
+
+  --core-easing-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --core-easing-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
+  --core-easing-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
+
+  --core-font-size-caption-sm-mobile: 10px;
+  --core-font-size-caption-md-mobile: 11px;
+  --core-font-size-caption-lg-mobile: 12px;
+
+  --core-font-size-caption-sm-desktop: 14px;
+  --core-font-size-caption-md-desktop: 15px;
+  --core-font-size-caption-lg-desktop: 16px;
+
+  --core-font-size-body-sm-mobile: 12px;
+  --core-font-size-body-md-mobile: 14px;
+  --core-font-size-body-lg-mobile: 16px;
+  --core-font-size-body-xl-mobile: 18px;
+
+  --core-font-size-body-sm-desktop: 14px;
+  --core-font-size-body-md-desktop: 16px;
+  --core-font-size-body-lg-desktop: 18px;
+  --core-font-size-body-xl-desktop: 20px;
+
+  --core-font-size-subtitle-xs-mobile: 14px;
+  --core-font-size-subtitle-sm-mobile: 16px;
+  --core-font-size-subtitle-md-mobile: 18px;
+  --core-font-size-subtitle-lg-mobile: 20px;
+  --core-font-size-subtitle-xl-mobile: 22px;
+  --core-font-size-subtitle-xxl-mobile: 24px;
+
+  --core-font-size-subtitle-xs-desktop: 20px;
+  --core-font-size-subtitle-sm-desktop: 22px;
+  --core-font-size-subtitle-md-desktop: 24px;
+  --core-font-size-subtitle-lg-desktop: 26px;
+  --core-font-size-subtitle-xl-desktop: 28px;
+  --core-font-size-subtitle-xxl-desktop: 30px;
+
+  --core-font-size-title-xs-mobile: 22px;
+  --core-font-size-title-sm-mobile: 24px;
+  --core-font-size-title-md-mobile: 28px;
+  --core-font-size-title-lg-mobile: 32px;
+  --core-font-size-title-xl-mobile: 40px;
+  --core-font-size-title-xxl-mobile: 68px;
+
+  --core-font-size-title-xs-desktop: 28px;
+  --core-font-size-title-sm-desktop: 32px;
+  --core-font-size-title-md-desktop: 36px;
+  --core-font-size-title-lg-desktop: 40px;
+  --core-font-size-title-xl-desktop: 52px;
+  --core-font-size-title-xxl-desktop: 92px;
+
+  --core-font-size-caption-sm: var(--core-font-size-caption-sm-mobile);
+  --core-font-size-caption-md: var(--core-font-size-caption-md-mobile);
+  --core-font-size-caption-lg: var(--core-font-size-caption-lg-mobile);
+
+  --core-font-size-body-sm: var(--core-font-size-body-sm-mobile);
+  --core-font-size-body-md: var(--core-font-size-body-md-mobile);
+  --core-font-size-body-lg: var(--core-font-size-body-lg-mobile);
+  --core-font-size-body-xl: var(--core-font-size-body-xl-mobile);
+
+  --core-font-size-subtitle-xs: var(--core-font-size-subtitle-xs-mobile);
+  --core-font-size-subtitle-sm: var(--core-font-size-subtitle-sm-mobile);
+  --core-font-size-subtitle-md: var(--core-font-size-subtitle-md-mobile);
+  --core-font-size-subtitle-lg: var(--core-font-size-subtitle-lg-mobile);
+  --core-font-size-subtitle-xl: var(--core-font-size-subtitle-xl-mobile);
+  --core-font-size-subtitle-xxl: var(--core-font-size-subtitle-xl-mobile);
+
+  --core-font-size-title-xs: var(--core-font-size-title-xs-mobile);
+  --core-font-size-title-sm: var(--core-font-size-title-sm-mobile);
+  --core-font-size-title-md: var(--core-font-size-title-md-mobile);
+  --core-font-size-title-lg: var(--core-font-size-title-lg-mobile);
+  --core-font-size-title-xl: var(--core-font-size-title-xl-mobile);
+  --core-font-size-title-xxl: var(--core-font-size-title-xxl-mobile);
+
+  @media (min-width: 60em) {
+    --core-font-size-caption-sm: var(--core-font-size-caption-sm-desktop);
+    --core-font-size-caption-md: var(--core-font-size-caption-md-desktop);
+    --core-font-size-caption-lg: var(--core-font-size-caption-lg-desktop);
+
+    --core-font-size-body-sm: var(--core-font-size-body-sm-desktop);
+    --core-font-size-body-md: var(--core-font-size-body-md-desktop);
+    --core-font-size-body-lg: var(--core-font-size-body-lg-desktop);
+    --core-font-size-body-xl: var(--core-font-size-body-xl-desktop);
+
+    --core-font-size-subtitle-xs: var(--core-font-size-subtitle-xs-desktop);
+    --core-font-size-subtitle-sm: var(--core-font-size-subtitle-sm-desktop);
+    --core-font-size-subtitle-md: var(--core-font-size-subtitle-md-desktop);
+    --core-font-size-subtitle-lg: var(--core-font-size-subtitle-lg-desktop);
+    --core-font-size-subtitle-xl: var(--core-font-size-subtitle-xl-desktop);
+    --core-font-size-subtitle-xxl: var(--core-font-size-subtitle-xl-desktop);
+
+    --core-font-size-title-xs: var(--core-font-size-title-xs-desktop);
+    --core-font-size-title-sm: var(--core-font-size-title-sm-desktop);
+    --core-font-size-title-md: var(--core-font-size-title-md-desktop);
+    --core-font-size-title-lg: var(--core-font-size-title-lg-desktop);
+    --core-font-size-title-xl: var(--core-font-size-title-xl-desktop);
+    --core-font-size-title-xxl: var(--core-font-size-title-xxl-desktop);
+  }
 }

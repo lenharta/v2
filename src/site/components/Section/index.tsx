@@ -1,57 +1,35 @@
 import clsx from 'clsx';
-import * as React from 'react';
-import { ElementProps } from '@/types';
+import { SectionContent } from './Content';
+import { SectionHeader } from './Header';
+import { Core, Factory } from '@/types';
+import { factory } from '@/core/factory';
 
-export interface SectionProps extends ElementProps<'section'> {
-  scheme?: 'primary' | 'secondary' | undefined;
+export type SectionScheme = 'primary' | 'secondary';
+
+export interface SectionProps extends Core.BaseProps {
+  scheme?: SectionScheme | undefined;
 }
 
-export interface SectionHeaderProps extends ElementProps<'header'> {}
+export type SectionFactory = Factory.Config<{
+  ref: HTMLDivElement;
+  comp: 'section';
+  props: SectionProps;
+  comps: {
+    Header: typeof SectionHeader;
+    Content: typeof SectionContent;
+  };
+}>;
 
-export interface SectionContentProps extends ElementProps<'div'> {}
-
-export type SectionRender = React.ForwardRefExoticComponent<
-  SectionProps & React.RefAttributes<HTMLDivElement>
->;
-
-export type SectionHeaderComponent = React.ForwardRefExoticComponent<
-  SectionHeaderProps & React.RefAttributes<HTMLDivElement>
->;
-
-export type SectionContentComponent = React.ForwardRefExoticComponent<
-  SectionContentProps & React.RefAttributes<HTMLDivElement>
->;
-
-export interface SectionComponent extends SectionRender {
-  Header: SectionHeaderComponent;
-  Content: SectionContentComponent;
-}
-
-const SectionRender = (props: SectionProps, ref: React.ForwardedRef<HTMLDivElement>) => {
-  const { scheme = 'primary', className, children, ...otherProps } = props;
+export const Section = factory<SectionFactory>((props, ref) => {
+  const { scheme = 'primary', children, className, ...otherProps } = props;
+  const dataProps = { 'data-scheme': scheme };
   return (
-    <section {...otherProps} ref={ref} className={clsx('sec-layout', scheme, className)}>
+    <section {...otherProps} {...dataProps} className={clsx('sec-layout', className)} ref={ref}>
       {children}
     </section>
   );
-};
-
-export const Section = React.forwardRef(SectionRender) as SectionComponent;
-
-Section.Header = React.forwardRef((props, ref) => {
-  const { children, className, ...otherProps } = props;
-  return (
-    <header {...otherProps} ref={ref} className={clsx('sec-header', className)}>
-      {children}
-    </header>
-  );
 });
 
-Section.Content = React.forwardRef((props, ref) => {
-  const { children, className, ...otherProps } = props;
-  return (
-    <div {...otherProps} ref={ref} className={clsx('sec-content', className)}>
-      {children}
-    </div>
-  );
-});
+Section.displayName = '@v2/site/Section';
+Section.Header = SectionHeader;
+Section.Content = SectionContent;

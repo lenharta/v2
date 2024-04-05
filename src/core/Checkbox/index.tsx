@@ -1,142 +1,62 @@
-import clsx from 'clsx';
-import * as React from 'react';
+import React from 'react';
+import { Input } from '@/core/Input';
+import { factory } from '../factory';
+import { ICON, Icon } from '@/core/Icon';
+import { Core, Factory } from '@/types';
 import { CheckboxGroup } from './Group';
 import { useFocusIndex } from '../hooks';
-import { Core, factory } from '../factory';
-import { Text, Label, Icon } from '@/core';
 import { useCheckboxContext } from './context';
-import { createEventCallback } from '@/utils';
-
-export interface CheckboxProps {
-  /**
-   * Defines a unique global identifier for the element.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
-   * @default undefined
-   */
-  id?: string | undefined;
-  /**
-   * A string representing the `Checkbox` value.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value
-   * @default undefined
-   */
-  value?: string | undefined;
-  /**
-   * Defines a shorthand property `aria-label` property.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
-   * @default undefined
-   */
-  label?: string | undefined;
-  /**
-   * Specifies text the gives additional context to the `Checkbox.label`
-   * @see {CheckboxProps.label}
-   * @default undefined
-   */
-  description?: string | undefined;
-  /**
-   * - Indicates the current "checked" state of the `Checkbox`.
-   * - `true` - The element is currently checked.
-   * - `false` - The element supports being checked but is not currently checked.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role
-   * @default undefined
-   */
-  checked?: boolean | undefined;
-  /**
-   * Indicates a mixed mode value of neither checked nor unchecked.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role
-   * @default undefined
-   */
-  indeterminate?: boolean | undefined;
-  /**
-   * Specifies a index for the `Checkbox` tab order, if provided any other focusable props are ignored.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
-   * @default undefined
-   */
-  tabIndex?: number | undefined;
-  /**
-   * Indicates a `disabled` state for the `Checkbox`.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled
-   * @default undefined
-   */
-  disabled?: boolean | undefined;
-  /**
-   * Specifies if the element should be ignored in the current tab order.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
-   * @default undefined
-   */
-  excludeTabOrder?: boolean | undefined;
-  /**
-   * Defines if the element should be focused when `disabled` state is provided.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
-   * @default undefined
-   */
-  allowDisabledFocus?: boolean | undefined;
-  /**
-   * Defines a default html `class` appended to the `Checkbox` classList.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
-   * @default 'button'
-   */
-  className?: string | undefined;
-  /**
-   * Defines a `ref` object given to the `Input` wrapper.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
-   * @default undefined
-   */
-  wrapperRef?: React.RefObject<HTMLDivElement> | null | undefined;
-  /**
-   * Defines a change event handler for the element.
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
-   * @default undefined
-   */
-  onChange?: ((event: React.ChangeEvent<HTMLInputElement>) => void) | (() => void);
-}
-
-export const checkboxIconLookup = {
-  true: 'checkbox_checked',
-  false: 'checkbox_unchecked',
-  mixed: 'checkbox_indeterminate',
-} as const;
+import clsx from 'clsx';
 
 export type CheckboxState = 'true' | 'false' | 'mixed';
+export type CheckboxStateLookup = Record<CheckboxState, ICON>;
 
-export type CheckboxFactory = Core.Factory<{
+export interface CheckboxProps extends Core.BaseProps, Core.FocusProps {
+  /** Defines a unique global identifier for the element. */
+  id?: string | undefined;
+  /** A string representing the `Checkbox` value. */
+  value?: string | undefined;
+  /** Defines a shorthand property `aria-label` property. */
+  label?: string | undefined;
+  /** Specifies text the gives additional context to the `Checkbox.label` */
+  message?: string | undefined;
+  /** Indicates the current "checked" state of the `Checkbox`. If `true` the element is currently checked. If `false` the element supports being checked but is not currently checked. */
+  checked?: boolean | undefined;
+  /** Indicates a mixed mode value of neither checked nor unchecked. */
+  indeterminate?: boolean | undefined;
+  /** Defines a `ref` object given to the `Input` wrapper. */
+  wrapperRef?: React.RefObject<HTMLDivElement> | null | undefined;
+  /** Defines a change event handler for the element. */
+  onChange?: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
+}
+
+export type CheckboxFactory = Factory.Config<{
   ref: HTMLInputElement;
   comp: 'input';
   props: CheckboxProps;
-  omits: 'children';
+  omits: 'children' | 'onChange';
   comps: {
     Group: typeof CheckboxGroup;
   };
 }>;
 
-function getCheckedState(props: CheckboxProps): CheckboxState | undefined {
-  if (!props.disabled) {
-    if (props.checked && !props.indeterminate) {
-      return 'true';
-    }
-    if (!props.checked && !props.indeterminate) {
-      return 'false';
-    }
-    if (props.indeterminate) {
-      return 'mixed';
-    }
-  }
-  return undefined;
-}
+export const checkboxIconLookup: CheckboxStateLookup = {
+  true: 'checkbox_checked',
+  false: 'checkbox_unchecked',
+  mixed: 'checkbox_indeterminate',
+};
 
 export const Checkbox = factory<CheckboxFactory>((props, ref) => {
   const {
     id,
-    label,
     value,
+    label,
+    message,
     checked,
     disabled,
     tabIndex,
     className,
     wrapperRef,
-    description,
     indeterminate,
     excludeTabOrder,
     allowDisabledFocus,
@@ -145,78 +65,83 @@ export const Checkbox = factory<CheckboxFactory>((props, ref) => {
 
   const uid = React.useId();
   const ctx = useCheckboxContext();
-  const getRenderId = (eid: string) => `${id}${uid}${eid}`;
 
-  let isChecked = (checked && !ctx.value) || ctx.value?.includes(value!);
-  let isDisabled = (disabled || ctx.disabled) !== undefined;
-  let isIndeterminate = !ctx.value && indeterminate !== undefined;
+  const getRenderId = (element: string) => {
+    const base = [id ?? value, uid, element].join('');
+    return ctx.groupId ? [ctx.groupId, base].join(':') : base;
+  };
 
-  let focusProps = useFocusIndex({
-    excludeTabOrder,
-    allowDisabledFocus,
+  const ids = {
+    input: getRenderId('input'),
+    label: getRenderId('label'),
+    message: getRenderId('message'),
+  };
+
+  const isChecked = (checked && !ctx.value) ?? ctx.value?.includes(value!);
+  const isDisabled = (disabled || ctx.disabled) ?? undefined;
+  const isIndeterminate = (!ctx.value && indeterminate) ?? undefined;
+
+  const focusProps = useFocusIndex({
     disabled: isDisabled,
+    allowDisabledFocus,
+    excludeTabOrder,
     tabIndex,
   });
 
-  let isState = React.useMemo(
-    () =>
-      getCheckedState({
-        checked: isChecked,
-        disabled: isDisabled,
-        indeterminate: isIndeterminate,
-      }),
-    [ctx.disabled, ctx.value, disabled, value, indeterminate]
-  );
+  let ariaChecked: CheckboxState | undefined;
+
+  if (isChecked && !isIndeterminate) {
+    ariaChecked = 'true';
+  }
+  if (!isChecked && !isIndeterminate) {
+    ariaChecked = 'false';
+  }
+  if (isIndeterminate) {
+    ariaChecked = 'mixed';
+  }
+
+  const indicatorKey = checkboxIconLookup[ariaChecked ?? 'false'];
+  const indicatorLabel = indicatorKey?.split('_').toString().toLowerCase();
 
   let accessibleProps = {
-    id: getRenderId('input'),
-    role: otherProps['role'] || 'checkbox',
-    'aria-labelledby': otherProps['aria-labelledby'] || getRenderId('input'),
-    'aria-describedby': otherProps['aria-describedby'] || getRenderId('description'),
+    ...(label ? { 'aria-labelledby': ids.label } : {}),
+    ...(message ? { 'aria-describedby': ids.message } : {}),
     ...(isDisabled ? { 'aria-disabled': true } : {}),
-    ...(isState ? { 'aria-checked': isState } : {}),
+    ...(ariaChecked ? { 'aria-checked': ariaChecked } : {}),
     ...focusProps,
   };
 
-  const handleChange = createEventCallback(otherProps.onChange, (event) => {
-    event.stopPropagation();
-    ctx.onChange(event);
-  });
-
   return (
-    <div className="inline-input" ref={wrapperRef}>
-      <span className="inner">
-        {isState && (
-          <div className="indicator">
-            <Icon name={checkboxIconLookup[isState]} />
-          </div>
-        )}
-
-        <input
-          {...otherProps}
-          {...accessibleProps}
-          ref={ref}
-          type="checkbox"
-          className={clsx('checkbox', className)}
-          onChange={handleChange}
-          value={value}
-        />
-
-        <div>
-          {description && (
-            <Text id={getRenderId('description')} className="description">
-              {description}
-            </Text>
-          )}
-
-          {label && (
-            <Label id={getRenderId('label')} htmlFor={getRenderId('input')}>
-              {label}
-            </Label>
-          )}
+    <Input
+      ref={wrapperRef}
+      input={{ id: ids.input }}
+      label={{ id: ids.label, text: label ?? value }}
+      message={{ id: ids.message, text: message }}
+      className="checkbox-layout"
+    >
+      {ariaChecked && (
+        <div className="indicator">
+          <Icon name={indicatorKey} aria-label={indicatorLabel} />
         </div>
-      </span>
-    </div>
+      )}
+
+      <input
+        {...otherProps}
+        {...accessibleProps}
+        id={ids.input}
+        ref={ref}
+        type="checkbox"
+        value={value}
+        className={clsx('checkbox-input', className)}
+        onChange={(event) => {
+          if (!disabled) {
+            event.stopPropagation();
+            otherProps.onChange?.(event);
+            ctx.onChange?.(event);
+          }
+        }}
+      />
+    </Input>
   );
 });
 

@@ -1,7 +1,7 @@
-import { InlineStylesInput } from '@/types/global';
+import { Core } from '@/types';
 import { cssObjectToString } from '../style-object-to-string';
 
-export function stylesToString({ selector, styles, media }: InlineStylesInput) {
+export function stylesToString({ selector, styles, media }: Core.StylesInput) {
   const baseStyles = styles ? cssObjectToString(styles) : '';
   const mediaQueryStyles = !Array.isArray(media)
     ? []

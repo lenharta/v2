@@ -1,9 +1,9 @@
-import { AriaLabelProps } from '@/types';
+import * as React from 'react';
+import { Core } from '@/types';
 
-type ParseLabel = (value: string | number | readonly string[] | undefined) => React.AriaAttributes;
-type GetAriaLabel = (props: AriaLabelProps) => React.AriaAttributes;
-
-const parseLabel: ParseLabel = (value) => {
+const parseLabel = (
+  value: string | number | readonly string[] | undefined
+): React.AriaAttributes => {
   const clean = (v: string) => v.trim().toLowerCase();
 
   if (value && !Array.isArray(value)) {
@@ -15,7 +15,7 @@ const parseLabel: ParseLabel = (value) => {
   return {};
 };
 
-export const getAriaLabel: GetAriaLabel = (props) => {
+export const getAriaLabel = (props: Core.AriaLabelProps): React.AriaAttributes => {
   if (props.ariaLabel) {
     return parseLabel(props.ariaLabel);
   }

@@ -1,22 +1,10 @@
+import { Core, Factory } from '@/types';
+import { factory } from '../factory';
 import clsx from 'clsx';
-import { Core, factory } from '../factory';
 
-export interface CaptionProps {
-  /**
-   * Defines the content of the `Caption`.
-   * @see https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children
-   * @default undefined
-   */
-  children?: React.ReactNode | undefined;
-  /**
-   * Defines a default html `class` appended to the `Caption` classList.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
-   * @default 'text'
-   */
-  className?: string | undefined;
-}
+export interface CaptionProps extends Core.BaseProps {}
 
-export type CaptionFactory = Core.Factory<{
+export type CaptionFactory = Factory.Config<{
   ref: HTMLParagraphElement;
   comp: 'caption';
   props: CaptionProps;

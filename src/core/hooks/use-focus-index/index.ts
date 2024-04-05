@@ -1,7 +1,7 @@
-import { FocusProps } from '@/types';
-import React from 'react';
+import * as React from 'react';
+import { Core } from '@/types';
 
-export function useFocusIndex(props: FocusProps) {
+export function useFocusIndex(props: Core.FocusProps) {
   return React.useMemo(() => {
     if (props.tabIndex) {
       return { tabIndex: props.tabIndex };
