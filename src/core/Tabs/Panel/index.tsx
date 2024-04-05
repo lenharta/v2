@@ -1,16 +1,15 @@
 import clsx from 'clsx';
-import { Core, factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
+import { factory } from '@/core/factory';
 import { useTabsContext } from '../context';
 
-export interface TabsPanelProps {
+export interface TabsPanelProps extends Core.BaseProps {
   value: string;
   style?: React.CSSProperties | undefined;
-  children?: React.ReactNode | undefined;
-  className?: string | undefined;
   keepMounted?: boolean | undefined;
 }
 
-export type TabsPanelFactory = Core.Factory<{
+export type TabsPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: TabsPanelProps;

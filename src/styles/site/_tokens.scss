@@ -1,0 +1,21 @@
+:root {
+  --site-unit: 0.125rem;
+  --site-scale: 1;
+  --site-spacing: calc(var(--site-unit) * var(--site-scale));
+  --site-gutter: calc(var(--site-spacing) * 12);
+  --site-gap: calc(var(--site-spacing) * 4);
+
+  --site-index-base: -2;
+  --site-index-hero: -1;
+  --site-index-layout: 0;
+  --site-index-screen: 0;
+  --site-index-page: 0;
+  --site-index-main: 1;
+  --site-index-navbar: 999;
+  --site-index-header: 999;
+  --site-index-modal: 1000;
+
+  --site-height-hero: 40vh;
+  --site-height-footer: 40vh;
+  --site-height-header: 3.5rem;
+}

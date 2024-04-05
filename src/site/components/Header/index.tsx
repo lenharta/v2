@@ -1,17 +1,36 @@
-import { ElementProps } from '@/types';
+import clsx from 'clsx';
+import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
 
-interface HeaderProps extends Omit<ElementProps<'footer'>, 'children'> {}
+export interface HeaderProps extends Core.BaseProps {
+  scheme?: 'primary' | 'secondary' | undefined;
+}
 
-export const Header = (props: HeaderProps) => {
-  const { ...otherProps } = props;
+export type HeaderFactory = Factory.Config<{
+  ref: HTMLDivElement;
+  comp: 'header';
+  props: HeaderProps;
+}>;
+
+export const Header = factory<HeaderFactory>((props, ref) => {
+  const { scheme = 'primary', children, className, ...otherProps } = props;
   return (
-    <footer {...otherProps} data-scheme="primary" className="header-layout">
+    <header
+      {...otherProps}
+      className={clsx('header-layout', className)}
+      data-scheme={scheme}
+      ref={ref}
+    >
       <div className="header-content">
-        <div className="header-content--left"></div>
-        <div className="header-content--right">
-          <span>Content Right</span>
+        <div className="header-box--left">
+          <span>Header Box (left)</span>
+        </div>
+        <div className="header-box--right">
+          <span>Header Box (right)</span>
         </div>
       </div>
-    </footer>
+    </header>
   );
-};
+});
+
+Header.displayName = '@v2/site/Header';

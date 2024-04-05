@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import * as React from 'react';
 import { useGSAP } from '@gsap/react';
-import { Subtitle, Title } from '@/common';
+import { Subtitle, Title } from '@/core';
 import { Page } from '@/site/components';
 
 export const HomeHero = () => {

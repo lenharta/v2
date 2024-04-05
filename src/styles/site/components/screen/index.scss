@@ -1,0 +1,10 @@
+.screen {
+  &-layout {
+    display: block;
+    z-index: var(--site-index-screen);
+    isolation: isolate;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+  }
+}

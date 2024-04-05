@@ -1,12 +1,13 @@
 import clsx from 'clsx';
-import { Core, factory } from '../factory';
+import { Factory } from '@/types';
+import { factory } from '../factory';
 
 export interface VisuallyHiddenProps {
   style?: React.CSSProperties | undefined;
   className?: string | undefined;
 }
 
-export type VisuallyHiddenFactory = Core.Factory<{
+export type VisuallyHiddenFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: VisuallyHiddenProps;

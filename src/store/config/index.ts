@@ -1,11 +1,13 @@
-import { RootAttributes, ThemeStore } from '@/types';
+import { Store } from '@/types';
 
-export const initialThemeState: ThemeStore = {
+export const rootAttributes: Store.AttributeKey[] = ['dir', 'mode', 'accent'];
+
+export const initialAppState: Store.AppState = {};
+
+export const initialThemeState: Store.ThemeState = {
   dir: 'ltr',
   mode: 'dark',
-  lang: 'english',
+  lang: { name: 'english', code: 'en' },
   accent: 'blue',
   avatar: 'person',
 };
-
-export const rootAttributes: (keyof typeof RootAttributes)[] = ['mode', 'accent'];

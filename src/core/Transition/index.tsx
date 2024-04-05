@@ -1,8 +1,8 @@
-import { getTransitionStyles } from '../utils';
-import { TransitionProps } from '@/types';
+import { Core } from '@/types';
 import { useTransition } from '../hooks';
+import { getTransitionStyles } from '../utils';
 
-export const Transition = (props: TransitionProps) => {
+export const Transition = (props: Core.TransitionProps) => {
   const {
     mounted,
     duration = 250,
@@ -58,4 +58,4 @@ export const Transition = (props: TransitionProps) => {
   );
 };
 
-Transition.displayName = `@v2/Transition`;
+Transition.displayName = `@v2/core/Transition`;

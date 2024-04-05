@@ -1,10 +1,10 @@
+import { Core } from '@/types';
 import { useDidUpdate } from '@/hooks';
-import { UseFloatingOptions } from '@/types';
-import { useFloatingUpdate } from '../use-floating-update';
+import { useFloatingUpdate } from '@/core/hooks';
 import { getFloatingMiddleware } from '@/core/utils';
-import { useFloating as useFloatingUI, UseFloatingReturn } from '@floating-ui/react';
+import { UseFloatingReturn, useFloating as useFloatingUI } from '@floating-ui/react';
 
-export function useFloating(options: UseFloatingOptions) {
+export function useFloating(options: Core.FloatingOptions) {
   const onClose = () => {
     if (options.opened) {
       options.onClose?.();

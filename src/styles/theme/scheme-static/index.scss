@@ -1,0 +1,45 @@
+[data-prefers-color-scheme='dim'] {
+  --c-site-text: var(--c-state-50);
+  --c-site-background: var(--c-state-950);
+
+  [data-scheme='primary'] {
+    --c-sec-text: var(--c-state-50);
+    --c-sec-background: var(--c-state-950);
+  }
+  [data-scheme='secondary'] {
+    --c-sec-text: var(--c-state-950);
+    --c-sec-background: var(--c-state-50);
+  }
+}
+
+[data-prefers-color-scheme='dark'] {
+  --c-site-text: var(--c-zinc-50);
+  --c-site-background: var(--c-zinc-950);
+
+  [data-scheme='primary'] {
+    --c-sec-text: var(--c-zinc-50);
+    --c-sec-background: var(--c-zinc-950);
+  }
+  [data-scheme='secondary'] {
+    --c-sec-text: var(--c-zinc-950);
+    --c-sec-background: var(--c-zinc-50);
+  }
+}
+
+[data-prefers-color-scheme='light'] {
+  --c-sec-text: var(--c-state-950);
+  --c-sec-background: var(--c-state-50);
+
+  [data-scheme='primary'] {
+    --c-sec-text: var(--c-state-950);
+    --c-sec-background: var(--c-state-50);
+  }
+  [data-scheme='secondary'] {
+    --c-sec-text: var(--c-state-50);
+    --c-sec-background: var(--c-state-950);
+  }
+}
+
+// [data-prefers-color-scheme='dim']
+// [data-prefers-color-scheme='dark']
+// [data-prefers-color-scheme='light']

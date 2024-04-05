@@ -1,15 +1,14 @@
 import clsx from 'clsx';
-import { Core, factory } from '../factory';
+import { factory } from '../factory';
+import { Core, Factory } from '@/types';
 
-export interface SpaceProps {
-  /** Defines a default HTML `class` that will be appended to the Space elements classList */
-  className?: string | undefined;
-}
+export interface SpaceProps extends Core.BaseProps {}
 
-export type SpaceFactory = Core.Factory<{
+export type SpaceFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: SpaceProps;
+  omits: 'children';
 }>;
 
 const Space = factory<SpaceFactory>((props, ref) => {

@@ -1,13 +1,14 @@
 import clsx from 'clsx';
 import { Divider } from '@/core';
-import { Core, factory } from '@/core/factory';
+import { Factory } from '@/types';
+import { factory } from '@/core/factory';
 import { useTabsContext } from '../context';
 
 // [TODO]: focus loop || keyboard activation
 
 export interface TabsListProps {}
 
-export type TabsListFactory = Core.Factory<{
+export type TabsListFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: TabsListProps;

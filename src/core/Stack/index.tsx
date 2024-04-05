@@ -1,26 +1,21 @@
 import clsx from 'clsx';
-import { Core, factory } from '../factory';
+import { factory } from '../factory';
+import { Core, Factory } from '@/types';
 
-export interface StackProps {
-  /** Defines a default HTML `class` that will be appended to the Stack elements classList */
-  className?: string | undefined;
-}
+export interface StackProps extends Core.BaseProps {}
 
-export type StackFactory = Core.Factory<{
+export type StackFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: StackProps;
 }>;
 
 const Stack = factory<StackFactory>((props, ref) => {
-  const { className, ...otherProps } = props;
+  const { children, className, ...otherProps } = props;
   return (
-    <div
-      {...otherProps}
-      ref={ref}
-      aria-orientation="vertical"
-      className={clsx('stack', className)}
-    />
+    <div {...otherProps} ref={ref} aria-orientation="vertical" className={clsx('stack', className)}>
+      {children}
+    </div>
   );
 });
 

@@ -1,7 +1,44 @@
 import * as React from 'react';
 import { HomeHero } from './HomeHero';
 import { Page, Section } from '@/site/components';
-import { Button, Subtitle, Tabs, Text, Title } from '@/core';
+import { Button, Checkbox, Subtitle, Tabs, Text, Title } from '@/core';
+
+interface DemoLayoutProps {
+  title?: React.ReactNode | undefined;
+  children?: React.ReactNode | undefined;
+}
+
+export const DemoLayout = ({ children, title }: DemoLayoutProps) => {
+  return (
+    <Section className="sec-demo-layout" scheme="primary">
+      <Section.Header className="sec-demo-header">{title}</Section.Header>
+      <Section.Content className="sec-demo-content">{children}</Section.Content>
+    </Section>
+  );
+};
+
+export const DemoContent = ({ title = 'Demo Panel' }: { title?: string }) => {
+  return (
+    <DemoLayout title={<Title>{title}</Title>}>
+      <div>
+        <Subtitle>Subtitle</Subtitle>
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, id corrupti. Vero
+          magni voluptates aut rerum, corporis sunt? Quisquam nulla architecto velit dolore deserunt
+          enim ab expedita dolor commodi sed.
+        </Text>
+      </div>
+      <div>
+        <Subtitle>Subtitle</Subtitle>
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, id corrupti. Vero
+          magni voluptates aut rerum, corporis sunt? Quisquam nulla architecto velit dolore deserunt
+          enim ab expedita dolor commodi sed.
+        </Text>
+      </div>
+    </DemoLayout>
+  );
+};
 
 export const HomeOverview = () => {
   return (
@@ -32,83 +69,128 @@ export const HomeOverview = () => {
   );
 };
 
-const DemoPanelContent = ({ title = 'Demo Panel' }: { title?: string }) => {
+const DemoButtonDefault = () => {
   return (
-    <Section>
-      <Section.Header>{title}</Section.Header>
-      <Section.Content>
-        <div>
-          <Subtitle>Subtitle</Subtitle>
-          <Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, id corrupti. Vero
-            magni voluptates aut rerum, corporis sunt? Quisquam nulla architecto velit dolore
-            deserunt enim ab expedita dolor commodi sed.
-          </Text>
-        </div>
-        <div>
-          <Subtitle>Subtitle</Subtitle>
-          <Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, id corrupti. Vero
-            magni voluptates aut rerum, corporis sunt? Quisquam nulla architecto velit dolore
-            deserunt enim ab expedita dolor commodi sed.
-          </Text>
-        </div>
-      </Section.Content>
-    </Section>
+    <DemoLayout title={<Title>Button Demo (default)</Title>}>
+      <Button>Button</Button>
+    </DemoLayout>
+  );
+};
+
+const DemoCheckboxSingle = () => {
+  const [termsAccepted, setTermsAccepted] = React.useState<boolean>(false);
+  return (
+    <DemoLayout title={<Title>Checkbox (single)</Title>}>
+      <Checkbox
+        checked={termsAccepted}
+        onChange={(event) => setTermsAccepted(!event.currentTarget.value)}
+        label="Accept Terms & Conditions"
+      />
+    </DemoLayout>
+  );
+};
+
+const DemoCheckboxGroup = () => {
+  const [value, onChange] = React.useState<string[]>([]);
+  console.log(value);
+  return (
+    <DemoLayout title={<Title>Checkbox (group)</Title>}>
+      <Checkbox.Group value={value} onChange={onChange} group="Checkbox Group 1">
+        <Checkbox label="Opiton 1" value="option-1" />
+        <Checkbox label="Opiton 2" value="option-2" />
+        <Checkbox label="Opiton 3" value="option-3" />
+        <Checkbox label="Opiton 4" value="option-4" />
+        <Checkbox label="Opiton 5" value="option-5" />
+      </Checkbox.Group>
+    </DemoLayout>
   );
 };
 
 const DemoTabsUncontrolled = () => {
   return (
-    <div>
-      <header>
-        <Title>Tabs (Uncontrolled)</Title>
-      </header>
-      <div>
-        <Tabs defaultValue="tab-1A">
-          <Tabs.List>
-            <Tabs.Item value="tab-1A">Tab #1</Tabs.Item>
-            <Tabs.Item value="tab-2A">Tab #2</Tabs.Item>
-            <Tabs.Item value="tab-3A">Tab #3</Tabs.Item>
-            <Tabs.Item value="tab-4A">Tab #4</Tabs.Item>
-            <Tabs.Item value="tab-5A">Tab #5</Tabs.Item>
-          </Tabs.List>
+    <DemoLayout title={<Title>Tabs (uncontrolled)</Title>}>
+      <Tabs defaultValue="tab-1A">
+        <Tabs.List>
+          <Tabs.Item value="tab-1A">Tab #1</Tabs.Item>
+          <Tabs.Item value="tab-2A">Tab #2</Tabs.Item>
+          <Tabs.Item value="tab-3A">Tab #3</Tabs.Item>
+          <Tabs.Item value="tab-4A">Tab #4</Tabs.Item>
+          <Tabs.Item value="tab-5A">Tab #5</Tabs.Item>
+        </Tabs.List>
 
-          <Tabs.Panel keepMounted value="tab-1A" children={<span>Panel #1A</span>} />
-          <Tabs.Panel keepMounted value="tab-2A" children={<span>Panel #2A</span>} />
-          <Tabs.Panel keepMounted value="tab-3A" children={<span>Panel #3A</span>} />
-          <Tabs.Panel keepMounted value="tab-4A" children={<span>Panel #4A</span>} />
-          <Tabs.Panel keepMounted value="tab-5A" children={<span>Panel #5A</span>} />
-        </Tabs>
-      </div>
-    </div>
+        <Tabs.Panel keepMounted value="tab-1A" children={<span>Panel #1A</span>} />
+        <Tabs.Panel keepMounted value="tab-2A" children={<span>Panel #2A</span>} />
+        <Tabs.Panel keepMounted value="tab-3A" children={<span>Panel #3A</span>} />
+        <Tabs.Panel keepMounted value="tab-4A" children={<span>Panel #4A</span>} />
+        <Tabs.Panel keepMounted value="tab-5A" children={<span>Panel #5A</span>} />
+      </Tabs>
+    </DemoLayout>
   );
 };
 
 const DemoTabsControlled = () => {
   const [value, onChange] = React.useState('tab-1B');
   return (
+    <DemoLayout title={<Title>Tabs (controlled)</Title>}>
+      <Tabs value={value} onChange={onChange}>
+        <Tabs.List>
+          <Tabs.Item value="tab-1B">Tab #1</Tabs.Item>
+          <Tabs.Item value="tab-2B">Tab #2</Tabs.Item>
+          <Tabs.Item value="tab-3B">Tab #3</Tabs.Item>
+          <Tabs.Item value="tab-4B">Tab #4</Tabs.Item>
+          <Tabs.Item value="tab-5B">Tab #5</Tabs.Item>
+        </Tabs.List>
+        <Tabs.Panel value="tab-1B" children={<span>Panel #1B</span>} />
+        <Tabs.Panel value="tab-2B" children={<span>Panel #2B</span>} />
+        <Tabs.Panel value="tab-3B" children={<span>Panel #3B</span>} />
+        <Tabs.Panel value="tab-4B" children={<span>Panel #4B</span>} />
+        <Tabs.Panel value="tab-5B" children={<span>Panel #5B</span>} />
+      </Tabs>
+    </DemoLayout>
+  );
+};
+
+const DemoList = () => {
+  return (
     <div>
-      <header>
-        <Title>Tabs (Controlled)</Title>
-      </header>
-      <div>
-        <Tabs value={value} onChange={onChange}>
-          <Tabs.List>
-            <Tabs.Item value="tab-1B">Tab #1</Tabs.Item>
-            <Tabs.Item value="tab-2B">Tab #2</Tabs.Item>
-            <Tabs.Item value="tab-3B">Tab #3</Tabs.Item>
-            <Tabs.Item value="tab-4B">Tab #4</Tabs.Item>
-            <Tabs.Item value="tab-5B">Tab #5</Tabs.Item>
-          </Tabs.List>
-          <Tabs.Panel value="tab-1B" children={<span>Panel #1B</span>} />
-          <Tabs.Panel value="tab-2B" children={<span>Panel #2B</span>} />
-          <Tabs.Panel value="tab-3B" children={<span>Panel #3B</span>} />
-          <Tabs.Panel value="tab-4B" children={<span>Panel #4B</span>} />
-          <Tabs.Panel value="tab-5B" children={<span>Panel #5B</span>} />
-        </Tabs>
-      </div>
+      <DemoButtonDefault />
+      <DemoCheckboxSingle />
+      <DemoCheckboxGroup />
+      <DemoTabsControlled />
+      <DemoTabsUncontrolled />
     </div>
+  );
+};
+
+export type SchemeType = 'accent' | 'primary' | 'secondary';
+
+export const DemoSection = () => {
+  return (
+    <Section>
+      <Section.Header>
+        <Title>Section Title</Title>
+      </Section.Header>
+      <Section.Content>
+        <div>
+          <Subtitle>Subtitle</Subtitle>
+          <Text>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita saepe suscipit nobis,
+            facere beatae ut pariatur laudantium repellat velit, porro quae quis eveniet minus
+            impedit repellendus obcaecati reprehenderit laboriosam distinctio.
+          </Text>
+          <Button>Button</Button>
+        </div>
+        <div>
+          <Subtitle>Subtitle</Subtitle>
+          <Text>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita saepe suscipit nobis,
+            facere beatae ut pariatur laudantium repellat velit, porro quae quis eveniet minus
+            impedit repellendus obcaecati reprehenderit laboriosam distinctio.
+          </Text>
+          <Button>Button</Button>
+        </div>
+      </Section.Content>
+    </Section>
   );
 };
 
@@ -117,12 +199,7 @@ export function Home() {
     <Page>
       <HomeHero />
       <Page.Content>
-        <HomeOverview />
-        <DemoTabsUncontrolled />
-        <DemoTabsControlled />
-        <Button disabled allowDisabledFocus>
-          Button Label
-        </Button>
+        <DemoSection />
       </Page.Content>
     </Page>
   );

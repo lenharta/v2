@@ -1,20 +1,14 @@
 import { createSafeContext } from '../utils';
 
-export interface TabsThemeProps {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | undefined;
-  align?: 'start' | 'center' | 'end' | undefined;
-  justify?: 'start' | 'center' | 'end' | undefined;
-}
-
 export interface TabsContextValue {
   value: string;
   onChange: (value: string) => void;
-  disabled?: boolean | undefined;
-  withDivider?: boolean | undefined;
-  keyboardActivated?: boolean | undefined;
-  orientation: 'vertical' | 'horizontal' | undefined;
-  getPanelId: () => string;
   getItemId: () => string;
+  getPanelId: () => string;
+  orientation: 'vertical' | 'horizontal' | undefined;
+  keyboardActivated?: boolean | undefined;
+  withDivider?: boolean | undefined;
+  disabled?: boolean | undefined;
 }
 
 export const [TabsProvider, useTabsContext] = createSafeContext<TabsContextValue>(
