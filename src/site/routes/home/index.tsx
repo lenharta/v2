@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { HomeHero } from './HomeHero';
 import { Page, Section } from '@/site/components';
-import { Button, Checkbox, Subtitle, Tabs, Text, Title } from '@/core';
+import { Action, Button, Checkbox, Subtitle, Tabs, Text, Title } from '@/core';
+import { useThemeDispatch } from '@/store';
+import { Core } from '@/types';
 
 interface DemoLayoutProps {
   title?: React.ReactNode | undefined;
@@ -164,32 +166,57 @@ const DemoList = () => {
 
 export type SchemeType = 'accent' | 'primary' | 'secondary';
 
-export const DemoSection = () => {
+const DemoControls = () => {
+  const { setMode } = useThemeDispatch();
   return (
-    <Section>
-      <Section.Header>
-        <Title>Section Title</Title>
-      </Section.Header>
-      <Section.Content>
-        <div>
-          <Subtitle>Subtitle</Subtitle>
-          <Text>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita saepe suscipit nobis,
-            facere beatae ut pariatur laudantium repellat velit, porro quae quis eveniet minus
-            impedit repellendus obcaecati reprehenderit laboriosam distinctio.
-          </Text>
-          <Button>Button</Button>
-        </div>
-        <div>
-          <Subtitle>Subtitle</Subtitle>
-          <Text>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita saepe suscipit nobis,
-            facere beatae ut pariatur laudantium repellat velit, porro quae quis eveniet minus
-            impedit repellendus obcaecati reprehenderit laboriosam distinctio.
-          </Text>
-          <Button>Button</Button>
-        </div>
-      </Section.Content>
+    <DemoLayout>
+      <Button onClick={() => setMode('light')}>Light</Button>
+      <Button onClick={() => setMode('dark')}>Dark</Button>
+      <Button onClick={() => setMode('dim')}>Dim</Button>
+    </DemoLayout>
+  );
+};
+
+interface SectionDemoProps {
+  title?: React.ReactNode;
+  scheme?: Core.Scheme;
+  children?: React.ReactNode;
+}
+
+const DemoSectionCopy = () => (
+  <>
+    <div>
+      <Subtitle>Subtitle</Subtitle>
+      <Text>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita saepe suscipit nobis,
+        facere beatae ut pariatur laudantium repellat velit, porro quae quis eveniet minus impedit
+        repellendus obcaecati reprehenderit laboriosam distinctio.
+      </Text>
+      <Button>Button</Button>
+      <Action icon="placeholder" />
+      <Action icon="placeholder" />
+      <Action icon="placeholder" />
+    </div>
+    <div>
+      <Subtitle>Subtitle</Subtitle>
+      <Text>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita saepe suscipit nobis,
+        facere beatae ut pariatur laudantium repellat velit, porro quae quis eveniet minus impedit
+        repellendus obcaecati reprehenderit laboriosam distinctio.
+      </Text>
+      <Button>Button</Button>
+      <Action icon="placeholder" />
+      <Action icon="placeholder" />
+      <Action icon="placeholder" />
+    </div>
+  </>
+);
+
+export const DemoSection = ({ scheme = 'primary', title, children }: SectionDemoProps) => {
+  return (
+    <Section scheme={scheme} className="sec-demo-scheme-layout">
+      {title && <Section.Header className="sec-demo-scheme-header">{title}</Section.Header>}
+      <Section.Content className="sec-demo-scheme-content">{children}</Section.Content>
     </Section>
   );
 };
@@ -199,7 +226,15 @@ export function Home() {
     <Page>
       <HomeHero />
       <Page.Content>
-        <DemoSection />
+        <DemoSection scheme="primary">
+          <DemoSectionCopy />
+        </DemoSection>
+        <DemoSection scheme="secondary">
+          <DemoSectionCopy />
+        </DemoSection>
+        <DemoSection scheme="tertiary">
+          <DemoSectionCopy />
+        </DemoSection>
       </Page.Content>
     </Page>
   );

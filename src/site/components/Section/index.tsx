@@ -4,10 +4,8 @@ import { SectionHeader } from './Header';
 import { Core, Factory } from '@/types';
 import { factory } from '@/core/factory';
 
-export type SectionScheme = 'primary' | 'secondary';
-
 export interface SectionProps extends Core.BaseProps {
-  scheme?: SectionScheme | undefined;
+  scheme?: Core.Scheme | undefined;
 }
 
 export type SectionFactory = Factory.Config<{

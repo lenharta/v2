@@ -3,6 +3,14 @@
 .action {
   @include mixins.reset;
   @include mixins.transition-colors-interactive;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--core-action-size, var(--core-action-size-xs));
+  height: var(--core-action-size, var(--core-action-size-xs));
+
+  // border-color: var(--c-orange-500);
 }
 
 .action-group {

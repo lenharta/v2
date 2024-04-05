@@ -1,3 +1,5 @@
+@use '../mixins' as mixins;
+
 :root {
   --c-slate-50: #f8fafc;
   --c-slate-100: #f1f5f9;
@@ -264,7 +266,7 @@
   --c-rose-950: #4c0519;
 }
 
-[data-prefers-accent-color='red'] {
+@include mixins.mode-accent('red') {
   --c-accent-50: var(--c-red-50);
   --c-accent-100: var(--c-red-100);
   --c-accent-200: var(--c-red-200);
@@ -278,7 +280,7 @@
   --c-accent-950: var(--c-red-950);
 }
 
-[data-prefers-accent-color='orange'] {
+@include mixins.mode-accent('orange') {
   --c-accent-50: var(--c-orange-50);
   --c-accent-100: var(--c-orange-100);
   --c-accent-200: var(--c-orange-200);
@@ -292,7 +294,7 @@
   --c-accent-950: var(--c-orange-950);
 }
 
-[data-prefers-accent-color='amber'] {
+@include mixins.mode-accent('amber') {
   --c-accent-50: var(--c-amber-50);
   --c-accent-100: var(--c-amber-100);
   --c-accent-200: var(--c-amber-200);
@@ -306,7 +308,7 @@
   --c-accent-950: var(--c-amber-950);
 }
 
-[data-prefers-accent-color='yellow'] {
+@include mixins.mode-accent('yellow') {
   --c-accent-50: var(--c-yellow-50);
   --c-accent-100: var(--c-yellow-100);
   --c-accent-200: var(--c-yellow-200);
@@ -320,7 +322,7 @@
   --c-accent-950: var(--c-yellow-950);
 }
 
-[data-prefers-accent-color='lime'] {
+@include mixins.mode-accent('lime') {
   --c-accent-50: var(--c-lime-50);
   --c-accent-100: var(--c-lime-100);
   --c-accent-200: var(--c-lime-200);
@@ -334,7 +336,7 @@
   --c-accent-950: var(--c-lime-950);
 }
 
-[data-prefers-accent-color='green'] {
+@include mixins.mode-accent('green') {
   --c-accent-50: var(--c-green-50);
   --c-accent-100: var(--c-green-100);
   --c-accent-200: var(--c-green-200);
@@ -348,7 +350,7 @@
   --c-accent-950: var(--c-green-950);
 }
 
-[data-prefers-accent-color='emerald'] {
+@include mixins.mode-accent('emerald') {
   --c-accent-50: var(--c-emerald-50);
   --c-accent-100: var(--c-emerald-100);
   --c-accent-200: var(--c-emerald-200);
@@ -362,7 +364,7 @@
   --c-accent-950: var(--c-emerald-950);
 }
 
-[data-prefers-accent-color='teal'] {
+@include mixins.mode-accent('teal') {
   --c-accent-50: var(--c-teal-50);
   --c-accent-100: var(--c-teal-100);
   --c-accent-200: var(--c-teal-200);
@@ -376,7 +378,7 @@
   --c-accent-950: var(--c-teal-950);
 }
 
-[data-prefers-accent-color='cyan'] {
+@include mixins.mode-accent('cyan') {
   --c-accent-50: var(--c-cyan-50);
   --c-accent-100: var(--c-cyan-100);
   --c-accent-200: var(--c-cyan-200);
@@ -390,7 +392,7 @@
   --c-accent-950: var(--c-cyan-950);
 }
 
-[data-prefers-accent-color='sky'] {
+@include mixins.mode-accent('sky') {
   --c-accent-50: var(--c-sky-50);
   --c-accent-100: var(--c-sky-100);
   --c-accent-200: var(--c-sky-200);
@@ -404,7 +406,7 @@
   --c-accent-950: var(--c-sky-950);
 }
 
-[data-prefers-accent-color='blue'] {
+@include mixins.mode-accent('blue') {
   --c-accent-50: var(--c-blue-50);
   --c-accent-100: var(--c-blue-100);
   --c-accent-200: var(--c-blue-200);
@@ -418,7 +420,7 @@
   --c-accent-950: var(--c-blue-950);
 }
 
-[data-prefers-accent-color='indigo'] {
+@include mixins.mode-accent('indigo') {
   --c-accent-50: var(--c-indigo-50);
   --c-accent-100: var(--c-indigo-100);
   --c-accent-200: var(--c-indigo-200);
@@ -432,7 +434,7 @@
   --c-accent-950: var(--c-indigo-950);
 }
 
-[data-prefers-accent-color='violet'] {
+@include mixins.mode-accent('violet') {
   --c-accent-50: var(--c-violet-50);
   --c-accent-100: var(--c-violet-100);
   --c-accent-200: var(--c-violet-200);
@@ -446,7 +448,7 @@
   --c-accent-950: var(--c-violet-950);
 }
 
-[data-prefers-accent-color='purple'] {
+@include mixins.mode-accent('purple') {
   --c-accent-50: var(--c-purple-50);
   --c-accent-100: var(--c-purple-100);
   --c-accent-200: var(--c-purple-200);
@@ -460,7 +462,7 @@
   --c-accent-950: var(--c-purple-950);
 }
 
-[data-prefers-accent-color='fuchsia'] {
+@include mixins.mode-accent('fuchsia') {
   --c-accent-50: var(--c-fuchsia-50);
   --c-accent-100: var(--c-fuchsia-100);
   --c-accent-200: var(--c-fuchsia-200);
@@ -474,7 +476,7 @@
   --c-accent-950: var(--c-fuchsia-950);
 }
 
-[data-prefers-accent-color='pink'] {
+@include mixins.mode-accent('pink') {
   --c-accent-50: var(--c-pink-50);
   --c-accent-100: var(--c-pink-100);
   --c-accent-200: var(--c-pink-200);
@@ -488,7 +490,7 @@
   --c-accent-950: var(--c-pink-950);
 }
 
-[data-prefers-accent-color='rose'] {
+@include mixins.mode-accent('rose') {
   --c-accent-50: var(--c-rose-50);
   --c-accent-100: var(--c-rose-100);
   --c-accent-200: var(--c-rose-200);

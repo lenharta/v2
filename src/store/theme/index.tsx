@@ -31,7 +31,7 @@ export function ThemeProvider({ children }: Store.ProviderProps) {
     const root = document.getElementById('root')!;
 
     rootAttributes.forEach((key) => {
-      root.setAttribute(lookupRootAttribute[key], theme.dir);
+      root.setAttribute(lookupRootAttribute[key], theme[key]);
     });
   }, [theme]);
 

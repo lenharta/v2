@@ -1,0 +1,31 @@
+@mixin mode {
+  [data-prefers-mode='dim'],
+  [data-prefers-mode='dark'],
+  [data-prefers-mode='light'] {
+    @content;
+  }
+}
+
+@mixin mode-dim {
+  [data-prefers-mode='dim'] {
+    @content;
+  }
+}
+
+@mixin mode-dark {
+  [data-prefers-mode='dark'] {
+    @content;
+  }
+}
+
+@mixin mode-light {
+  [data-prefers-mode='light'] {
+    @content;
+  }
+}
+
+@mixin mode-accent($color: 'blue') {
+  [data-prefers-accent='#{$color}'] {
+    @content;
+  }
+}
