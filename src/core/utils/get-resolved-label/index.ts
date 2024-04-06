@@ -1,21 +1,18 @@
-import * as React from 'react';
 import { Core } from '@/types';
 
-const parseLabel = (
-  value: string | number | readonly string[] | undefined
-): React.AriaAttributes => {
+const parseLabel = (value: string | number | readonly string[] | undefined): string | undefined => {
   const clean = (v: string) => v.trim().toLowerCase();
 
   if (value && !Array.isArray(value)) {
-    return { 'aria-label': clean(value.toString()) };
+    return clean(value.toString());
   }
   if (value && Array.isArray(value)) {
-    return { 'aria-label': clean(value.join(' ')) };
+    return clean(value.join(' '));
   }
-  return {};
+  return undefined;
 };
 
-export const getAriaLabel = (props: Core.AriaLabelProps): React.AriaAttributes => {
+export const getResolvedLabel = (props: Core.AriaLabelProps): string | undefined => {
   if (props.ariaLabel) {
     return parseLabel(props.ariaLabel);
   }
@@ -28,5 +25,5 @@ export const getAriaLabel = (props: Core.AriaLabelProps): React.AriaAttributes =
   if (props.value) {
     return parseLabel(props.value);
   }
-  return {} as React.AriaAttributes;
+  return undefined;
 };

@@ -4,13 +4,34 @@
   @include mixins.reset;
   @include mixins.transition-colors-interactive;
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--core-action-size, var(--core-action-size-xs));
-  height: var(--core-action-size, var(--core-action-size-xs));
+  --action-size-xs: calc(var(--core-spacing) * 16);
+  --action-size-sm: calc(var(--core-spacing) * 18);
+  --action-size-md: calc(var(--core-spacing) * 20);
+  --action-size-lg: calc(var(--core-spacing) * 24);
+  --action-size-xl: calc(var(--core-spacing) * 26);
 
-  // border-color: var(--c-orange-500);
+  display: var(--action-display, inline-flex);
+  align-items: var(--action-align, center);
+  justify-content: var(--action-justify, center);
+  width: var(--action-size, var(--action-size-xs));
+  height: var(--action-size, var(--action-size-xs));
+  margin: var(--core-gap);
+
+  &--size-xs {
+    --action-size: var(--action-size-xs);
+  }
+  &--size-sm {
+    --action-size: var(--action-size-sm);
+  }
+  &--size-md {
+    --action-size: var(--action-size-md);
+  }
+  &--size-lg {
+    --action-size: var(--action-size-lg);
+  }
+  &--size-xl {
+    --action-size: var(--action-size-xl);
+  }
 }
 
 .action-group {

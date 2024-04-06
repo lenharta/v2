@@ -1,31 +1,38 @@
-import React from 'react';
+import clsx from 'clsx';
+import * as React from 'react';
 import { Input } from '@/core/Input';
 import { factory } from '../factory';
 import { ICON, Icon } from '@/core/Icon';
 import { Core, Factory } from '@/types';
 import { CheckboxGroup } from './Group';
-import { useFocusIndex } from '../hooks';
+import { useFocusProps, useResolvedLabel } from '../hooks';
 import { useCheckboxContext } from './context';
-import clsx from 'clsx';
 
 export type CheckboxState = 'true' | 'false' | 'mixed';
 export type CheckboxStateLookup = Record<CheckboxState, ICON>;
 
-export interface CheckboxProps extends Core.BaseProps, Core.FocusProps {
+export interface CheckboxProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
   /** Defines a unique global identifier for the element. */
   id?: string | undefined;
-  /** A string representing the `Checkbox` value. */
+
+  /** A string representing the element value. */
   value?: string | undefined;
+
   /** Defines a shorthand property `aria-label` property. */
   label?: string | undefined;
-  /** Specifies text the gives additional context to the `Checkbox.label` */
+
+  /** Specifies text the gives additional context to the label element. */
   message?: string | undefined;
-  /** Indicates the current "checked" state of the `Checkbox`. If `true` the element is currently checked. If `false` the element supports being checked but is not currently checked. */
+
+  /** Indicates the current "checked" state of the input. */
   checked?: boolean | undefined;
+
   /** Indicates a mixed mode value of neither checked nor unchecked. */
   indeterminate?: boolean | undefined;
+
   /** Defines a `ref` object given to the `Input` wrapper. */
   wrapperRef?: React.RefObject<HTMLDivElement> | null | undefined;
+
   /** Defines a change event handler for the element. */
   onChange?: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
 }
@@ -81,11 +88,17 @@ export const Checkbox = factory<CheckboxFactory>((props, ref) => {
   const isDisabled = (disabled || ctx.disabled) ?? undefined;
   const isIndeterminate = (!ctx.value && indeterminate) ?? undefined;
 
-  const focusProps = useFocusIndex({
+  const focusProps = useFocusProps({
     disabled: isDisabled,
     allowDisabledFocus,
     excludeTabOrder,
     tabIndex,
+  });
+
+  const resolvedLabel = useResolvedLabel({
+    ariaLabel: otherProps['aria-label'],
+    value,
+    label,
   });
 
   let ariaChecked: CheckboxState | undefined;
@@ -104,9 +117,10 @@ export const Checkbox = factory<CheckboxFactory>((props, ref) => {
   const indicatorLabel = indicatorKey?.split('_').toString().toLowerCase();
 
   let accessibleProps = {
-    ...(label ? { 'aria-labelledby': ids.label } : {}),
     ...(message ? { 'aria-describedby': ids.message } : {}),
     ...(isDisabled ? { 'aria-disabled': true } : {}),
+    ...(resolvedLabel ? { 'aria-label': resolvedLabel } : {}),
+    ...(resolvedLabel ? { 'aria-labelledby': ids.label } : {}),
     ...(ariaChecked ? { 'aria-checked': ariaChecked } : {}),
     ...focusProps,
   };

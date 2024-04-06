@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Store } from '@/types';
-import { localMiddleware } from '../local';
-import { lookupRootAttribute } from '@/data';
-import { initialThemeState, rootAttributes } from '../config';
+import { localMiddleware } from '@/store/local';
+import { initialThemeState } from '@/store/config';
+import { dataStoreThemeAttributes, lookupStoreRootAttribute } from '@/data';
 
 export const ThemeStateContext = React.createContext({} as Store.ThemeContextValue);
 export const ThemeDispatchContext = React.createContext({} as Store.ThemeDispatchValue);
@@ -30,8 +30,8 @@ export function ThemeProvider({ children }: Store.ProviderProps) {
 
     const root = document.getElementById('root')!;
 
-    rootAttributes.forEach((key) => {
-      root.setAttribute(lookupRootAttribute[key], theme[key]);
+    dataStoreThemeAttributes.forEach((key) => {
+      root.setAttribute(lookupStoreRootAttribute[key], theme[key]);
     });
   }, [theme]);
 

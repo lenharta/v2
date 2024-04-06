@@ -9,7 +9,3 @@ LICENSE
 .eslintignore
 .gitignore
 .git
-
-# Ignore directories:
-
-data

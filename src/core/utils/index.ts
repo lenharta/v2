@@ -1,5 +1,5 @@
 export * from './create-safe-context';
-export * from './get-aria-label';
+export * from './get-resolved-label';
 export * from './get-floating-middleware';
 export * from './get-floating-position';
 export * from './get-heading-level';

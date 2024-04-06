@@ -2,10 +2,9 @@ import clsx from 'clsx';
 import { ICON } from '@/core';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
-import { getAriaLabel } from '@/core/utils';
-import { useFocusIndex } from '@/core/hooks';
-import { useTabsContext } from '../context';
+import { useTabsContext } from '@/core/Tabs/context';
 import { createEventCallback } from '@/utils';
+import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export interface TabsItemProps extends Core.BaseProps, Core.FocusProps {
   /** Defines the `value` of the tab item. This value will be compared to determine the active tab item. */
@@ -46,23 +45,25 @@ export const TabsItem = factory<TabsItemFactory>((props, ref) => {
   const isActive = ctx.value === value;
   const isDisabled = ctx.disabled || disabled;
 
-  const focusProps = useFocusIndex({
+  const focusProps = useFocusProps({
     disabled,
     tabIndex,
     excludeTabOrder,
     allowDisabledFocus,
   });
 
+  const resolvedLabel = useResolvedLabel({
+    ariaLabel: otherProps['aria-label'],
+    children,
+    label,
+    value,
+  });
+
   const accessibleProps = {
     ...focusProps,
     ...(isActive ? { 'aria-checked': true } : {}),
     ...(isDisabled ? { 'aria-disabled': true } : {}),
-    ...getAriaLabel({
-      ariaLabel: otherProps['aria-label'],
-      children,
-      label,
-      value,
-    }),
+    ...(resolvedLabel ? { 'aria-label': resolvedLabel } : {}),
   };
 
   const dataProps = {

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 export namespace Store {
-  export type StorageKey = 'local' | 'session';
-  export type StorageLocale = 'localStorage' | 'sessionStorage';
-  export type AttributeKey = 'dir' | 'mode' | 'accent';
+  export type StorageLocation = 'localStorage' | 'sessionStorage';
+  export type StorageLocationKey = 'local' | 'session';
+  export type ThemeAttributeKey = 'dir' | 'mode' | 'accent';
 
   export type Dir = 'ltr' | 'rtl';
   export type Mode = 'dim' | 'dark' | 'light';

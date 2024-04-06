@@ -1,4 +1,12 @@
+@use '../../mixins' as mixins;
+
 .screen {
+  &-hero,
+  &-layout,
+  &-content {
+    @include mixins.reset;
+  }
+
   &-layout {
     display: block;
     z-index: var(--site-index-screen);

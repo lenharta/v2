@@ -1,11 +1,19 @@
+@use '../../mixins' as mixins;
+
 .page {
+  &-hero,
+  &-layout,
+  &-content {
+    @include mixins.reset;
+  }
+
   &-layout {
     display: block;
     z-index: var(--site-index-page);
     isolation: isolate;
+    min-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    min-height: 100vh;
   }
 
   &-hero {
@@ -20,8 +28,6 @@
     left: 0;
     top: 0;
 
-    // border: solid 2px var(--c-yellow-500);
-
     @media (min-width: 60em) {
       margin-left: var(--site-height-header);
     }
@@ -32,8 +38,6 @@
     display: block;
     position: relative;
     isolation: isolate;
-
-    // border: solid 2px var(--c-blue-500);
 
     @media (min-width: 60em) {
       margin-left: var(--site-height-header);

@@ -1,7 +1,7 @@
+import clsx from 'clsx';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 import { CheckboxProvider } from '../context';
-import clsx from 'clsx';
 
 export interface CheckboxGroupProps extends Core.BaseProps {
   /** A string representing the `Checkbox.Group` value. */
@@ -40,6 +40,7 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
   } = props;
 
   const groupId = formatGroupId(group);
+  const groupRole = otherProps['role'] || 'group';
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const currentItem = event.currentTarget.value!;
@@ -49,6 +50,11 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
         ? clonedItems.filter((v) => v !== currentItem)
         : [...clonedItems, currentItem]
     );
+  };
+
+  const a11yProps = {
+    role: groupRole,
+    'aria-orientation': orientation,
   };
 
   return (

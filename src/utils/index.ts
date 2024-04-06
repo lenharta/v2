@@ -10,6 +10,7 @@ export * from './get-node-name';
 export * from './get-parent-node';
 export * from './get-window';
 export * from './is-element';
+export * from './is-empty-object';
 export * from './is-html-element';
 export * from './is-node';
 export * from './is-react-element';

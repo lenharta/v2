@@ -1,7 +1,19 @@
 export namespace Core {
   export type Size3 = 'sm' | 'md' | 'lg';
+  export type Size3Label = 'small' | 'medium' | 'large';
+
   export type Size5 = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  export type Size5Label = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+
   export type Size7 = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type Size7Label =
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge';
 
   export type Axis = 'x' | 'y';
   export type Side = 'top' | 'left' | 'right' | 'bottom';
@@ -18,9 +30,7 @@ export namespace Core {
   export type Dimensions = { [key in Length]: number };
   export type ClientRect = Rect & SideObject;
 
-  export type SchemeVariant = 'inverted';
-  export type SchemeType = 'primary' | 'secondary' | 'tertiary';
-  export type Scheme = SchemeType | `${SchemeType}${SchemeVariant}`;
+  export type Scheme = 'primary' | 'secondary' | 'tertiary';
 
   export interface BaseProps {
     /** Defines a unique identifier for the element. */
@@ -29,6 +39,11 @@ export namespace Core {
     className?: string | undefined;
     /** Defines the displayed content of the element. */
     children?: React.ReactNode | undefined;
+  }
+
+  export interface GroupProps extends BaseProps {
+    /** Specifies the directional layout of the group item elements */
+    orientation?: Orientation;
   }
 
   export interface FocusProps {
