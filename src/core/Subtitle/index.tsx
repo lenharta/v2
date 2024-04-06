@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { factory } from '../factory';
+import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
-import { getHeadingLevel } from '../utils';
+import { getHeadingLevel } from '@/core/utils';
 
 const defaultComponent = 'h3' as const;
 

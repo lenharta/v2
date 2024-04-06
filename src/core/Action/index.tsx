@@ -1,12 +1,17 @@
 import clsx from 'clsx';
-import { factory } from '../factory';
+import { factory } from '@/core/factory';
 import { ICON, Icon } from '@/core/Icon';
+import { ActionGroup } from '@/core/Action/Group';
 import { Core, Factory } from '@/types';
-import { useFocusIndex } from '../hooks';
+import { useActionGroup } from '@/core/Action/context';
+import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
-export interface ActionProps extends Core.BaseProps, Core.FocusProps {
-  /** Specifies the name key for the path that will be rendered by the `Icon` component. */
+export interface ActionProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
+  /** Specifies the name of the icon path to be rendered. */
   icon?: ICON | undefined;
+
+  /** Specifies the destination urk for the element. */
+  url?: string | undefined;
 
   /** Specifies the size of the element. */
   size?: Core.Size5;
@@ -23,10 +28,14 @@ export type ActionFactory = Factory.Config<{
   comp: 'button';
   props: ActionProps;
   omits: 'children';
+  comps: {
+    Group: typeof ActionGroup;
+  };
 }>;
 
 export const Action = factory<ActionFactory>((props, ref) => {
   const {
+    url,
     size = 'sm',
     icon = 'placeholder',
     label = 'action',
@@ -39,28 +48,44 @@ export const Action = factory<ActionFactory>((props, ref) => {
     ...otherProps
   } = props;
 
-  const hasLabel = otherProps['aria-label'] || label;
-  const modifiers = [`action--${variant}`, `action--size-${size}`];
+  const ctx = useActionGroup();
 
-  const focusProps = useFocusIndex({
+  const isDisabled = ctx.disabled || disabled;
+
+  const actionRole = otherProps['role'] || 'button';
+  const actionSizeMod = ctx.size || size;
+  const actionVariantMod = ctx.variant || variant;
+
+  const focusProps = useFocusProps({
     tabIndex,
-    disabled,
+    disabled: isDisabled,
     excludeTabOrder,
     allowDisabledFocus,
   });
 
-  const accessibleProps = {
+  const resolvedLabel = useResolvedLabel({
+    ariaLabel: otherProps['aria-label'],
+    label,
+  });
+
+  const a11yProps = {
+    role: actionRole,
+    'aria-label': resolvedLabel,
+    'aria-disabled': isDisabled,
     ...focusProps,
-    ...(hasLabel ? { title: hasLabel } : {}),
-    ...(hasLabel ? { 'aria-label': hasLabel } : {}),
   };
 
   return (
     <button
       {...otherProps}
-      {...accessibleProps}
+      {...a11yProps}
       ref={ref}
-      className={clsx('action', modifiers, className)}
+      className={clsx(
+        'action',
+        `action--${actionVariantMod}`,
+        `action--size-${actionSizeMod}`,
+        className
+      )}
     >
       <Icon name={icon} />
     </button>
@@ -68,3 +93,4 @@ export const Action = factory<ActionFactory>((props, ref) => {
 });
 
 Action.displayName = '@v2/core/Action';
+Action.Group = ActionGroup;

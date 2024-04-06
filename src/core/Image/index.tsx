@@ -1,6 +1,3 @@
-// [TODO]: Sizing Tokens
-// [TODO]: Icon Fallbacks?
-
 import clsx from 'clsx';
 import * as React from 'react';
 import { factory } from '@/core/factory';
@@ -41,10 +38,10 @@ export const Image = factory<ImageFactory>((props, ref) => {
     alt,
     fit = 'cover',
     role = 'img',
+    style,
     width = 'auto',
     height = 500,
     radius = 0,
-    style,
     className,
     fallbackSrc,
     ...otherProps
@@ -90,6 +87,3 @@ export const Image = factory<ImageFactory>((props, ref) => {
 });
 
 Image.displayName = '@v2/core/Image';
-
-// export const Image = React.forwardRef(ImageRender) as ImageComponentType;
-// Image.displayName = '@v2/Image';

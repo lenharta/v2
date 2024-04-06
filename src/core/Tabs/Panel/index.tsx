@@ -4,9 +4,14 @@ import { factory } from '@/core/factory';
 import { useTabsContext } from '../context';
 
 export interface TabsPanelProps extends Core.BaseProps {
+  /** Defines a unique value to be match with a corresponding item. */
   value: string;
-  style?: React.CSSProperties | undefined;
+
+  /** Determines if the panel should be removed from the DOM when deactivated. */
   keepMounted?: boolean | undefined;
+
+  /** Defines inline styles for the panel element. */
+  style?: React.CSSProperties | undefined;
 }
 
 export type TabsPanelFactory = Factory.Config<{
@@ -19,27 +24,24 @@ export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
   const { value, style, keepMounted, className, children, ...otherProps } = props;
 
   const ctx = useTabsContext();
+  const isActive = ctx.value === value;
+  const hiddenStyles = !isActive && keepMounted ? { display: 'none' } : {};
 
-  let isActive = ctx.value === value;
-  let isHidden = !isActive && keepMounted;
-  let isUnmounted = !isActive && !keepMounted;
-
-  let styles = {
-    ...style,
-    ...(isHidden ? { display: 'none' } : {}),
+  const a11yProps = {
+    id: ctx.getPanelId(),
+    role: 'tabpanel',
   };
 
-  if (isUnmounted) {
+  if (!isActive && !keepMounted) {
     return null;
   }
 
   return (
     <div
       {...otherProps}
-      id={ctx.getPanelId()}
+      {...a11yProps}
       className={clsx('tabs-panel', className)}
-      style={styles}
-      role="tabpanel"
+      style={{ ...style, ...hiddenStyles }}
       ref={ref}
     >
       {children}

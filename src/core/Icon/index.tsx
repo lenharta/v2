@@ -1,7 +1,7 @@
+import clsx from 'clsx';
+import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 import { DATA_ICON_LOOKUP } from '@/data';
-import { factory } from '../factory';
-import clsx from 'clsx';
 
 export type ICON = keyof (typeof DATA_ICON_LOOKUP)['filled'];
 

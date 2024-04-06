@@ -1,14 +1,9 @@
+@use '../../mixins' as mixins;
+
 .sec {
   &-layout,
   &-header,
   &-content {
-  }
-
-  &-layout {
-    display: block;
-  }
-  &-header {
-  }
-  &-content {
+    @include mixins.reset;
   }
 }

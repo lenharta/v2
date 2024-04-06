@@ -2,7 +2,8 @@
 
 .sec-home-hero-content,
 .sec-home-hero-underlay--upper,
-.sec-home-hero-underlay--lower {
+.sec-home-hero-underlay--lower,
+.sec-home-overview-content {
   @include mixins.reset;
 }
 
@@ -37,4 +38,11 @@
 }
 .sec-home-hero-underlay--lower {
   bottom: 0;
+}
+
+.sec-home-overview-content {
+  .box {
+    padding-block: calc(var(--site-gutter) * 2);
+    padding-inline: var(--site-gutter);
+  }
 }

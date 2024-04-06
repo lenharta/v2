@@ -3,15 +3,28 @@ import { TabsList } from './List';
 import { TabsItem } from './Item';
 import { TabsPanel } from './Panel';
 import { TabsProvider } from './context';
+import { Core } from '@/types';
 
 export interface TabsProps {
+  /** Defines a unique value to be match with a tab with its corresponding item. (controlled) */
   value?: string | undefined;
+
+  /** The content available to the tabs context. */
   children?: React.ReactNode | undefined;
+
+  /** Indicates if the entire tabslist should have a disabled state. */
   disabled?: boolean | undefined;
-  withDivider?: boolean | undefined;
-  orientation?: 'vertical' | 'horizontal' | undefined;
+
+  /** Defines the directional layout of the tablist. */
+  orientation?: Core.Orientation;
+
+  /** Specifies the tab value that should be initially mounted. (uncontrolled) */
   defaultValue?: string | undefined;
+
+  /** Specifies if the tabs can be activated with keyboard events. */
   keyboardActivated?: boolean | undefined;
+
+  /** Defines a state handler to match a tab with its corresponding item. (controlled) */
   onChange?: ((value: string) => void) | undefined;
 }
 
@@ -23,37 +36,36 @@ export type TabsComponent = React.FC<TabsProps> & {
 
 export const Tabs: TabsComponent = (props) => {
   const {
-    disabled,
+    value: controlledValue,
+    onChange: controlledChange,
     children,
-    withDivider,
+    disabled,
+    orientation = 'horizontal',
     defaultValue,
     keyboardActivated,
-    orientation = 'horizontal',
-    ...otherProps
   } = props;
 
-  const [_value, _onChange] = React.useState(props.defaultValue || '');
-  const onChange = (_onChange || otherProps.onChange) as (value: string) => void;
-  const value = (_value || otherProps.value) as string;
+  const uid = React.useId();
+  const getItemId = () => `tabs${uid}item`;
+  const getPanelId = () => `tabs${uid}panel`;
 
-  const renderId = React.useId();
-  const getPanelId = () => `tabs${renderId}panel`;
-  const getItemId = () => `tabs${renderId}item`;
+  const [uncontrolledValue, uncontrolledChange] = React.useState(defaultValue || '');
+  const onChange = (uncontrolledChange || controlledChange) as (value: string) => void;
+  const value = (uncontrolledValue || controlledValue) as string;
 
   return (
     <TabsProvider
       value={{
         value,
         disabled,
-        withDivider,
-        keyboardActivated,
         orientation,
+        keyboardActivated,
         getPanelId,
         getItemId,
         onChange,
       }}
     >
-      {props.children}
+      {children}
     </TabsProvider>
   );
 };

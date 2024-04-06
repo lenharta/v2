@@ -1,6 +1,6 @@
-import { Core, Factory } from '@/types';
-import { factory } from '../factory';
 import clsx from 'clsx';
+import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
 
 export interface LabelProps extends Core.BaseProps {
   /** Indicates a `disabled` state for the `Label`. */
@@ -26,3 +26,5 @@ export const Label = factory<LabelFactory>((props, ref) => {
     </label>
   );
 });
+
+Label.displayName = '@v2/core/Label';

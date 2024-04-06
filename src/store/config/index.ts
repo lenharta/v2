@@ -1,7 +1,5 @@
 import { Store } from '@/types';
 
-export const rootAttributes: Store.AttributeKey[] = ['dir', 'mode', 'accent'];
-
 export const initialAppState: Store.AppState = {};
 
 export const initialThemeState: Store.ThemeState = {

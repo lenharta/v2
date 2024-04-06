@@ -19,20 +19,20 @@
 
 .action-group,
 .button-group {
-  --flex-align: flex-start;
-  --flex-justify: flex-start;
-  --flex-direction: row;
+  --group-align: flex-start;
+  --group-justify: flex-start;
+  --group-direction: row;
 
   display: flex;
-  align-items: var(--flex-align);
-  flex-direction: var(--flex-direction);
-  justify-content: var(--flex-justify);
+  align-items: var(--group-align);
+  flex-direction: var(--group-direction);
+  justify-content: var(--group-justify);
 
   &[aria-orientation='vertical'] {
-    --flex-direction: column;
+    --group-direction: column;
   }
   &[aria-orientation='horizontal'] {
-    --flex-direction: row;
+    --group-direction: row;
   }
 }
 
@@ -57,7 +57,7 @@
   }
   &:not([aria-disabled]):focus:focus-visible,
   &:not([data-disabled]):focus:focus-visible {
-    outline-color: var(--c-blue-400);
+    outline-color: var(--c-blue-500);
   }
   &:not([aria-disabled]):hover,
   &:not([data-disabled]):hover {

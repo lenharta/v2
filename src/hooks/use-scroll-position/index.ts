@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { getScrollPosition, scrollTo } from '@/utils';
+import { Core } from '@/types';
+import { getScrollPosition } from '@/utils';
 
-export function useScrollPosition() {
-  const INITIAL_STATE = { x: 0, y: 0 };
+const initialPosition: Core.ScrollPosition = { x: 0, y: 0 };
 
-  const [position, setPosition] = React.useState<{ x: number; y: number }>(INITIAL_STATE);
+export const useScrollPosition = () => {
+  const [position, setPosition] = React.useState(initialPosition);
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -22,4 +23,4 @@ export function useScrollPosition() {
   }, []);
 
   return [position, scrollTo] as const;
-}
+};

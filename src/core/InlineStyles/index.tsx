@@ -1,8 +1,8 @@
 import { Core } from '@/types';
-import { useStyleNonce } from '../hooks';
+import { useStyleNonce } from '@/core/hooks';
 import { stylesToString } from '@/utils';
 
-export const InlineStyles = (props: Core.StylesInput) => {
+export const InlineStyles: React.FC<Core.StylesInput> = (props) => {
   const { selector, styles, media } = props;
   const nonce = useStyleNonce();
   return (
@@ -12,3 +12,5 @@ export const InlineStyles = (props: Core.StylesInput) => {
     />
   );
 };
+
+InlineStyles.displayName = '@v2/core/InlineStyles';

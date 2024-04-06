@@ -1,30 +1,20 @@
-import { Core, Factory } from '@/types';
-import { factory } from '../factory';
-import { useNavigate } from 'react-router-dom';
-import { getAriaLabel } from '../utils';
-import { useFocusIndex } from '../hooks';
-import { createEventCallback } from '@/utils';
 import clsx from 'clsx';
-import React from 'react';
+import * as React from 'react';
+import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
+import { ButtonGroup } from '@/core/Button/Group';
+import { useButtonGroup } from '@/core/Button/context';
+import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export interface ButtonProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
   /** Defines a unique global identifier for the element. */
   id?: string | undefined;
-
-  /** Specifies the destination urk for the element. */
-  url?: string | undefined;
-
-  /** Specifies the size of the element. */
-  size?: Core.Size5;
 
   /** Defines a shorthand property `aria-label` property. */
   label?: string | undefined;
 
   /** A string representing the a value for the element. */
   value?: string | undefined;
-
-  /** Specifies the style variant of the element. */
-  variant?: 'default' | 'tonal';
 
   /** Indicates a `loading` state for the element. */
   loading?: boolean | undefined;
@@ -34,17 +24,25 @@ export interface ButtonProps extends Core.BaseProps, Core.FocusProps, Core.AriaL
 
   /** Content placed to the `right` of the label.*/
   rightContent?: React.ReactNode | undefined;
+
+  /** Specifies the style variant of the element. */
+  variant?: 'default' | 'tonal';
+
+  /** Specifies the size of the element. */
+  size?: Core.Size5;
 }
 
 export type ButtonFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   props: ButtonProps;
+  comps: {
+    Group: typeof ButtonGroup;
+  };
 }>;
 
 export const Button = factory<ButtonFactory>((props, ref) => {
   const {
-    url,
     size = 'sm',
     value,
     label,
@@ -58,50 +56,58 @@ export const Button = factory<ButtonFactory>((props, ref) => {
     rightContent,
     excludeTabOrder,
     allowDisabledFocus,
-    'aria-label': ariaLabel,
     ...otherProps
   } = props;
 
-  const navigate = useNavigate();
-  const labelProps = getAriaLabel({ ariaLabel, children, label, value });
-  const focusProps = useFocusIndex({ tabIndex, disabled, excludeTabOrder, allowDisabledFocus });
+  const ctx = useButtonGroup();
 
-  const isDisabled = disabled !== undefined;
-  const isLoading = !isDisabled && loading !== undefined;
-  const modifiers = [`action--${variant}`, `action--size-${size}`];
+  const isDisabled = ctx.disabled || disabled;
+  const isLoading = (ctx.loading || loading) && !isDisabled;
 
-  const accessibleProps = {
-    role: otherProps['role'] || 'button',
-    ...(isDisabled ? { 'aria-disabled': true } : {}),
-    ...(isLoading ? { 'aria-busy': true } : {}),
+  const buttonRole = otherProps['role'] || 'button';
+  const buttonSizeMod = ctx.size || size;
+  const buttonVariantMod = ctx.variant || variant;
+
+  const focusProps = useFocusProps({
+    tabIndex,
+    disabled: isDisabled,
+    excludeTabOrder,
+    allowDisabledFocus,
+  });
+
+  const resolvedLabel = useResolvedLabel({
+    ariaLabel: otherProps['aria-label'],
+    children,
+    label,
+    value,
+  });
+
+  const a11yProps = {
+    role: buttonRole,
+    'aria-busy': isLoading,
+    'aria-label': resolvedLabel,
+    'aria-disabled': isDisabled,
     ...focusProps,
-    ...labelProps,
   };
 
-  const handleClick = createEventCallback(otherProps.onClick, (event) => {
-    if (url !== undefined) {
-      event.stopPropagation();
-      navigate(url);
-    }
-  });
-
-  const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
-    if (url !== undefined) {
-      event.stopPropagation();
-      navigate(url);
-    }
-  });
+  const dataProps = {
+    'data-loading': isLoading,
+  };
 
   return (
     <button
       {...otherProps}
-      {...accessibleProps}
-      className={clsx('button', modifiers, className)}
-      onKeyDown={handleKeyDown}
-      onClick={handleClick}
+      {...a11yProps}
+      {...dataProps}
       ref={ref}
+      className={clsx(
+        'button',
+        `button--${buttonVariantMod}`,
+        `button--size-${buttonSizeMod}`,
+        className
+      )}
     >
-      <span className="inner" style={{ ...(isLoading ? { opacity: 0.5 } : {}) }}>
+      <span className="inner">
         {isLoading ? (
           <span>Loading...</span>
         ) : (
@@ -117,3 +123,4 @@ export const Button = factory<ButtonFactory>((props, ref) => {
 });
 
 Button.displayName = '@v2/core/Button';
+Button.Group = ButtonGroup;

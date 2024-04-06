@@ -1,7 +1,19 @@
 export namespace Core {
   export type Size3 = 'sm' | 'md' | 'lg';
+  export type Size3Label = 'small' | 'medium' | 'large';
+
   export type Size5 = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  export type Size5Label = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+
   export type Size7 = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type Size7Label =
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge';
 
   export type Axis = 'x' | 'y';
   export type Side = 'top' | 'left' | 'right' | 'bottom';
@@ -18,9 +30,7 @@ export namespace Core {
   export type Dimensions = { [key in Length]: number };
   export type ClientRect = Rect & SideObject;
 
-  export type SchemeVariant = 'inverted';
-  export type SchemeType = 'primary' | 'secondary' | 'tertiary';
-  export type Scheme = SchemeType | `${SchemeType}${SchemeVariant}`;
+  export type Scheme = 'primary' | 'secondary' | 'tertiary';
 
   export interface BaseProps {
     /** Defines a unique identifier for the element. */
@@ -29,6 +39,11 @@ export namespace Core {
     className?: string | undefined;
     /** Defines the displayed content of the element. */
     children?: React.ReactNode | undefined;
+  }
+
+  export interface GroupProps extends BaseProps {
+    /** Specifies the directional layout of the group item elements */
+    orientation?: Orientation;
   }
 
   export interface FocusProps {
@@ -67,6 +82,42 @@ export namespace Core {
     /** Specifies that the element should be rendered as an `h6` heading. */
     h6?: boolean | undefined;
   }
+
+  export interface ItemObj {
+    /** Defines a `value` for the item. */
+    value: string | number;
+    /** Specifies a `label` for the item. */
+    label?: string | number;
+    /** Indicates a `disabled` state for the item. */
+    disabled?: boolean;
+  }
+
+  export interface ItemObjParsed {
+    /** Defines a `value` for the item. */
+    value: string;
+    /** Defines a `label` for the item. */
+    label: string;
+    /** Indicates a `disabled` state for the item. */
+    disabled?: boolean;
+  }
+
+  export interface ItemGroupObj {
+    /** Defines a unique identifier for the item group. */
+    group: string;
+    /** Defines the item group data. */
+    items: (string | ItemObj)[];
+  }
+
+  export interface ItemGroupObjParsed {
+    /** Defines a unique identifier for the item group. */
+    group: string;
+    /** Defines the item group data. */
+    items: (ItemObjParsed | ItemGroupObjParsed)[];
+  }
+
+  export type ItemInput = string | number | ItemObj | ItemGroupObj;
+
+  export type ItemParsedOutput = ItemObjParsed | ItemGroupObjParsed;
 
   export interface StylesMediaQuery {
     /** Defines a config object of inline styles. */
@@ -146,6 +197,15 @@ export namespace Core {
     x: number;
     /** Defines the current position along the `y` axis. */
     y: number;
+  }
+
+  export interface ScrollOptions {
+    behavior?: ScrollBehavior;
+  }
+
+  export interface ScrollToOptions extends ScrollOptions {
+    left?: number;
+    top?: number;
   }
 
   export type FloatingDir = 'ltr' | 'rtl';

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { factory } from '../factory';
+import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 
 export interface StackProps extends Core.BaseProps {}

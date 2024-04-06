@@ -1,6 +1,6 @@
 import { Core } from '@/types';
-import { useTransition } from '../hooks';
-import { getTransitionStyles } from '../utils';
+import { useTransition } from '@/core/hooks';
+import { getTransitionStyles } from '@/core/utils';
 
 export const Transition = (props: Core.TransitionProps) => {
   const {
