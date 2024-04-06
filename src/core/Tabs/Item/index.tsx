@@ -7,24 +7,24 @@ import { createEventCallback } from '@/utils';
 import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export interface TabsItemProps extends Core.BaseProps, Core.FocusProps {
-  /** Defines the `value` of the tab item. This value will be compared to determine the active tab item. */
+  /** Defines a unique value to be match with a corresponding panel.  */
   value: string;
 
-  /** Specifies a icon for the tab item, if the tab item is only provided a icon, the `aria-label` defaults to the tab item `value`  */
+  /** Defines the name for the icon to be rendered. If not provided, no icon will be rendered. */
   icon?: ICON | undefined;
 
-  /** Defines the content of the item element if no `children` are provided, if undefined defaults to item `value` */
+  /** Defines the label for the tab item. */
   label?: string | undefined;
 
-  /** Defines the content of the item element if no `label` is provided, if undefined defaults to item `value` */
-  children?: React.ReactNode | undefined;
+  /** Specifies the position of the icon relative to the label. */
+  iconPosition?: 'left' | 'right';
 }
 
 export type TabsItemFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   props: TabsItemProps;
-  omits: 'id';
+  omits: 'id' | 'children';
 }>;
 
 export const TabsItem = factory<TabsItemFactory>((props, ref) => {
@@ -45,6 +45,8 @@ export const TabsItem = factory<TabsItemFactory>((props, ref) => {
   const isActive = ctx.value === value;
   const isDisabled = ctx.disabled || disabled;
 
+  const tabContent = label || children || value;
+
   const focusProps = useFocusProps({
     disabled,
     tabIndex,
@@ -54,21 +56,22 @@ export const TabsItem = factory<TabsItemFactory>((props, ref) => {
 
   const resolvedLabel = useResolvedLabel({
     ariaLabel: otherProps['aria-label'],
-    children,
     label,
     value,
   });
 
-  const accessibleProps = {
+  const a11yProps = {
+    id: ctx.getItemId(),
+    role: 'tab',
+    'aria-label': resolvedLabel,
+    'aria-checked': isActive,
+    'aria-disabled': isDisabled,
     ...focusProps,
-    ...(isActive ? { 'aria-checked': true } : {}),
-    ...(isDisabled ? { 'aria-disabled': true } : {}),
-    ...(resolvedLabel ? { 'aria-label': resolvedLabel } : {}),
   };
 
   const dataProps = {
-    ...(isActive ? { 'data-selected': true } : {}),
-    ...(isDisabled ? { 'data-disabled': true } : {}),
+    'data-selected': isActive,
+    'data-disabled': isDisabled,
   };
 
   const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
@@ -89,16 +92,14 @@ export const TabsItem = factory<TabsItemFactory>((props, ref) => {
     <button
       {...otherProps}
       {...dataProps}
-      {...accessibleProps}
-      id={ctx.getItemId()}
+      {...a11yProps}
       className={clsx('tabs-item', className)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}
       value={value}
-      role="tab"
       ref={ref}
     >
-      {label || children || value}
+      {tabContent}
     </button>
   );
 });

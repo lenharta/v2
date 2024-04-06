@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Input } from '@/core/Input';
-import { factory } from '../factory';
+import { factory } from '@/core/factory';
 import { ICON, Icon } from '@/core/Icon';
 import { Core, Factory } from '@/types';
-import { CheckboxGroup } from './Group';
-import { useFocusProps, useResolvedLabel } from '../hooks';
-import { useCheckboxContext } from './context';
+import { CheckboxGroup } from '@/core/Checkbox/Group';
+import { useCheckboxContext } from '@/core/Checkbox/context';
+import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export type CheckboxState = 'true' | 'false' | 'mixed';
 export type CheckboxStateLookup = Record<CheckboxState, ICON>;

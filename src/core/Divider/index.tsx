@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import { factory } from '../factory';
+import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 
 export interface DividerProps extends Core.BaseProps {
   /** Specifies a `label` for the `Divider` element to give additional context, can be render to the `left` or `right` side of the container. */
   label?: React.ReactNode | undefined;
+
   /** Specifies the position of the `label` element relative to its `Divider` container. */
   labelPosition?: 'left' | 'right' | undefined;
 }

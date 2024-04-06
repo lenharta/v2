@@ -1,6 +1,6 @@
-import { Core, Factory } from '@/types';
-import { factory } from '../factory';
 import clsx from 'clsx';
+import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
 
 export interface CaptionProps extends Core.BaseProps {}
 

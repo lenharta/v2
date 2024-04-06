@@ -1,10 +1,15 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { factory } from '../factory';
+import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
 
-export interface VisuallyHiddenProps {
+export const visuallyHiddenStyles: React.CSSProperties = {
+  visibility: 'hidden',
+  position: 'absolute',
+};
+
+export interface VisuallyHiddenProps extends Core.BaseProps {
+  /** Defines inline styles for the element. */
   style?: React.CSSProperties | undefined;
-  className?: string | undefined;
 }
 
 export type VisuallyHiddenFactory = Factory.Config<{
@@ -14,15 +19,16 @@ export type VisuallyHiddenFactory = Factory.Config<{
 }>;
 
 export const VisuallyHidden = factory<VisuallyHiddenFactory>((props, ref) => {
-  const { style, className, ...otherProps } = props;
-  const staticStyles: React.CSSProperties = { visibility: 'hidden', position: 'absolute' };
+  const { style, className, children, ...otherProps } = props;
   return (
     <div
       {...otherProps}
-      ref={ref}
       className={clsx('visuallyhidden', className)}
-      style={{ ...style, ...staticStyles }}
-    />
+      style={{ ...style, ...visuallyHiddenStyles }}
+      ref={ref}
+    >
+      {children}
+    </div>
   );
 });
 

@@ -1,12 +1,10 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { factory } from '@/core/factory';
-import { useNavigate } from 'react-router-dom';
-import { ButtonGroup } from '@/core/Button/Group';
 import { Core, Factory } from '@/types';
-import { createEventCallback, isEmptyObject } from '@/utils';
+import { ButtonGroup } from '@/core/Button/Group';
+import { useButtonGroup } from '@/core/Button/context';
 import { useFocusProps, useResolvedLabel } from '@/core/hooks';
-import { useButtonGroup } from './context';
 
 export interface ButtonProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
   /** Defines a unique global identifier for the element. */

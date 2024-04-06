@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
-import { CheckboxProvider } from '../context';
+import { CheckboxProvider } from '@/core/Checkbox/context';
 
 export interface CheckboxGroupProps extends Core.BaseProps {
   /** A string representing the `Checkbox.Group` value. */
@@ -60,9 +60,9 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
   return (
     <fieldset
       {...otherProps}
-      ref={ref}
+      {...a11yProps}
       className={clsx('checkbox-group', className)}
-      aria-orientation={orientation}
+      ref={ref}
     >
       <legend>{group}</legend>
       <CheckboxProvider value={{ groupId, value, onChange: handleChange }}>

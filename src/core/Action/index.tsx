@@ -5,8 +5,6 @@ import { ActionGroup } from '@/core/Action/Group';
 import { Core, Factory } from '@/types';
 import { useActionGroup } from '@/core/Action/context';
 import { useFocusProps, useResolvedLabel } from '@/core/hooks';
-import { createEventCallback } from '@/utils';
-import { useNavigate } from 'react-router-dom';
 
 export interface ActionProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
   /** Specifies the name of the icon path to be rendered. */

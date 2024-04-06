@@ -83,6 +83,42 @@ export namespace Core {
     h6?: boolean | undefined;
   }
 
+  export interface ItemObj {
+    /** Defines a `value` for the item. */
+    value: string | number;
+    /** Specifies a `label` for the item. */
+    label?: string | number;
+    /** Indicates a `disabled` state for the item. */
+    disabled?: boolean;
+  }
+
+  export interface ItemObjParsed {
+    /** Defines a `value` for the item. */
+    value: string;
+    /** Defines a `label` for the item. */
+    label: string;
+    /** Indicates a `disabled` state for the item. */
+    disabled?: boolean;
+  }
+
+  export interface ItemGroupObj {
+    /** Defines a unique identifier for the item group. */
+    group: string;
+    /** Defines the item group data. */
+    items: (string | ItemObj)[];
+  }
+
+  export interface ItemGroupObjParsed {
+    /** Defines a unique identifier for the item group. */
+    group: string;
+    /** Defines the item group data. */
+    items: (ItemObjParsed | ItemGroupObjParsed)[];
+  }
+
+  export type ItemInput = string | number | ItemObj | ItemGroupObj;
+
+  export type ItemParsedOutput = ItemObjParsed | ItemGroupObjParsed;
+
   export interface StylesMediaQuery {
     /** Defines a config object of inline styles. */
     styles: React.CSSProperties;
@@ -161,6 +197,15 @@ export namespace Core {
     x: number;
     /** Defines the current position along the `y` axis. */
     y: number;
+  }
+
+  export interface ScrollOptions {
+    behavior?: ScrollBehavior;
+  }
+
+  export interface ScrollToOptions extends ScrollOptions {
+    left?: number;
+    top?: number;
   }
 
   export type FloatingDir = 'ltr' | 'rtl';
