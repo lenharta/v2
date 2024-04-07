@@ -1,7 +1,8 @@
 import { HomeHero } from './HomeHero';
 import { Box, Page, Section } from '@/site/components';
-import { Button, Text, Title } from '@/core';
+import { Button, Subtitle, Text, Title } from '@/core';
 import { useThemeDispatch } from '@/store';
+import { Core } from '@/types';
 
 export const HomeOverview = () => {
   return (
@@ -35,12 +36,35 @@ const SiteConstructionBox = () => {
   );
 };
 
+const DemoSection = ({ scheme = 'primary' }: { scheme?: Core.Scheme }) => {
+  return (
+    <Section scheme={scheme} className="sec-demo">
+      <Section.Header>
+        <Title>Section Title</Title>
+      </Section.Header>
+      <Section.Content>
+        <Box>
+          <Subtitle>Section Subtitle</Subtitle>
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste rem ad nobis. Natus, eaque
+            quod dicta quam animi dignissimos at. Libero consequuntur modi, debitis maxime culpa
+            eaque. Quasi, earum minus!
+          </Text>
+        </Box>
+      </Section.Content>
+    </Section>
+  );
+};
+
 export function Home() {
   return (
     <Page>
       <HomeHero />
       <Page.Content>
         <HomeOverview />
+        <DemoSection scheme="primary" />
+        <DemoSection scheme="secondary" />
+        <DemoSection scheme="tertiary" />
         <SiteConstructionBox />
       </Page.Content>
     </Page>

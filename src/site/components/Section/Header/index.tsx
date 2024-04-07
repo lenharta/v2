@@ -1,6 +1,5 @@
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
-import clsx from 'clsx';
 
 export interface SectionHeaderProps extends Core.BaseProps {}
 
@@ -13,7 +12,7 @@ export type SectionHeaderFactory = Factory.Config<{
 export const SectionHeader = factory<SectionHeaderFactory>((props, ref) => {
   const { children, className, ...otherProps } = props;
   return (
-    <header {...otherProps} ref={ref} className={clsx('sec-header', className)}>
+    <header {...otherProps} ref={ref} className={className}>
       {children}
     </header>
   );

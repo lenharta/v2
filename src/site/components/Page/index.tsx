@@ -1,12 +1,11 @@
 import clsx from 'clsx';
+import { factory } from '@/core/factory';
 import { Transition } from '@/core';
 import { useAppState } from '@/store';
-import { usePageTransition } from '@/site/hooks';
-
-import { PageHero } from './Hero';
-import { PageContent } from './Content';
 import { Core, Factory } from '@/types';
-import { factory } from '@/core/factory';
+import { usePageTransition } from '@/site/hooks';
+import { PageContent } from './Content';
+import { PageHero } from './Hero';
 
 export interface PageProps extends Core.BaseProps {}
 
@@ -25,17 +24,12 @@ export const Page = factory<PageFactory>((props, ref) => {
 
   const { location } = useAppState();
   const { pathname } = location ?? {};
-  const pageTransition = usePageTransition({ pathname });
+  const { config } = usePageTransition({ pathname });
 
   return (
-    <Transition {...pageTransition}>
+    <Transition {...config}>
       {(transitionStyles) => (
-        <div
-          {...otherProps}
-          className={clsx('page-layout', className)}
-          style={transitionStyles}
-          ref={ref}
-        >
+        <div {...otherProps} className={clsx('page', className)} style={transitionStyles} ref={ref}>
           {children}
         </div>
       )}

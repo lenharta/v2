@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Footer } from '@/site/components/Footer';
-import { Core, Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
 
 export interface PageContentProps extends Core.BaseProps {}
 

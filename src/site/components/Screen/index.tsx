@@ -1,8 +1,8 @@
 import clsx from 'clsx';
+import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
 import { ScreenContent } from './Content';
 import { ScreenHero } from './Hero';
-import { Core, Factory } from '@/types';
-import { factory } from '@/core/factory';
 
 export interface ScreenProps extends Core.BaseProps {}
 

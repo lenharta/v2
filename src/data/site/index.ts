@@ -18,7 +18,7 @@ export const dataSiteMenuLinks: Site.LinkItem[] = [
   { value: '/sandbox', label: 'Sandbox', icon: 'boxMultiple' },
 ];
 
-export const lookupSiteSocialUrls: Record<Site.SocialKey, string> = {
+export const lookupSiteSocialUrls: Partial<Record<Site.SocialKey, string>> = {
   npm: 'https://www.npmjs.com/~thunkworks',
   github: 'https://github.com/lenharta',
   twitter: 'https://twitter.com/thunkworks',
@@ -26,7 +26,7 @@ export const lookupSiteSocialUrls: Record<Site.SocialKey, string> = {
   codesandbox: 'https://codesandbox.io/u/lenharta',
 };
 
-export const lookupSiteSocialLogos: Record<Site.SocialKey, ICON> = {
+export const lookupSiteSocialLogos: Partial<Record<Site.SocialKey, ICON>> = {
   npm: 'logo_npm',
   github: 'logo_github',
   twitter: 'logo_twitter',

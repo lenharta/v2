@@ -1,18 +1,44 @@
 @use '../../mixins' as mixins;
 
-.screen {
-  &-hero,
-  &-layout,
-  &-content {
+@layer reset {
+  .screen {
     @include mixins.reset;
+    &-hero,
+    &-content {
+      @include mixins.reset;
+    }
   }
+}
 
-  &-layout {
-    display: block;
-    z-index: var(--site-index-screen);
+.screen {
+  display: block;
+  z-index: var(--site-index-screen);
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+
+  &-hero {
+    margin-top: var(--site-height-header);
+    height: var(--site-height-hero);
+    z-index: var(--site-index-hero);
     isolation: isolate;
     overflow-x: hidden;
-    overflow-y: auto;
-    min-height: 100vh;
+    position: fixed;
+    display: flex;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+
+  &-content {
+    display: block;
+    position: relative;
+    isolation: isolate;
+    margin-top: calc(var(--site-height-header) + var(--site-height-hero));
+
+    @media (min-width: 60em) {
+      margin-left: var(--site-height-header);
+    }
   }
 }
