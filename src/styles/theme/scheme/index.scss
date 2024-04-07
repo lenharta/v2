@@ -1,6 +1,6 @@
 @use '../mixins' as mixins;
 
-@include mixins.mode-dim {
+[data-prefers-mode='dim'] {
   --c-primary-text: hsl(230, 12%, 99%);
   --c-primary-base: hsl(230, 12%, 12%);
   --c-primary-hover: hsl(230, 12%, 16%);
@@ -23,7 +23,7 @@
   --c-tertiary-disabled: hsl(230, 12%, 40%);
 }
 
-@include mixins.mode-dark {
+[data-prefers-mode='dark'] {
   --c-primary-text: hsl(230, 3%, 99%);
   --c-primary-base: hsl(230, 3%, 10%);
   --c-primary-hover: hsl(230, 3%, 14%);
@@ -46,7 +46,7 @@
   --c-tertiary-disabled: hsl(230, 3%, 40%);
 }
 
-@include mixins.mode-light {
+[data-prefers-mode='light'] {
   --c-primary-text: hsl(230, 3%, 8%);
   --c-primary-base: hsl(230, 3%, 99%);
   --c-primary-hover: hsl(230, 3%, 95%);
@@ -69,33 +69,28 @@
   --c-tertiary-disabled: hsl(230, 3%, 60%);
 }
 
-@include mixins.mode {
-  color: var(--c-primary-text);
-  background-color: var(--c-primary-base);
-
-  .button--default,
-  .action--default {
+[data-prefers-mode='dim'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='light'] {
+  .layout {
+    @include mixins.transition-colors-static;
     color: var(--c-primary-text);
     background-color: var(--c-primary-base);
-
-    &:not([aria-disabled]):hover,
-    &:not([data-disabled]):hover {
-      background-color: var(--c-primary-hover);
-    }
-    &:not([aria-disabled]):active,
-    &:not([data-disabled]):active {
-      background-color: var(--c-primary-pressed);
-    }
   }
+}
 
+[data-prefers-mode='dim'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='light'] {
   [data-scheme='primary'] {
-    color: var(--c-primary-text);
-    background-color: var(--c-primary-base);
-
-    .button--default,
-    .action--default {
+    .sec {
       color: var(--c-primary-text);
       background-color: var(--c-primary-base);
+    }
+    .button--default,
+    .action--default {
+      color: inherit;
+      background-color: transparent;
 
       &:not([aria-disabled]):hover,
       &:not([data-disabled]):hover {
@@ -109,13 +104,14 @@
   }
 
   [data-scheme='secondary'] {
-    color: var(--c-secondary-text);
-    background-color: var(--c-secondary-base);
-
-    .button--default,
-    .action--default {
+    .sec {
       color: var(--c-secondary-text);
       background-color: var(--c-secondary-base);
+    }
+    .button--default,
+    .action--default {
+      color: inherit;
+      background-color: transparent;
 
       &:not([aria-disabled]):hover,
       &:not([data-disabled]):hover {
@@ -129,13 +125,14 @@
   }
 
   [data-scheme='tertiary'] {
-    color: var(--c-tertiary-text);
-    background-color: var(--c-tertiary-base);
-
-    .button--default,
-    .action--default {
+    .sec {
       color: var(--c-tertiary-text);
       background-color: var(--c-tertiary-base);
+    }
+    .button--default,
+    .action--default {
+      color: inherit;
+      background-color: transparent;
 
       &:not([aria-disabled]):hover,
       &:not([data-disabled]):hover {

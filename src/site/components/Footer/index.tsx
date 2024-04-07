@@ -18,8 +18,8 @@ export const Footer = factory<FooterFactory>((props, ref) => {
   const dataProps = { 'data-scheme': scheme };
 
   return (
-    <footer {...otherProps} {...dataProps} className="footer-layout" ref={ref}>
-      <div className="footer-content">
+    <footer {...otherProps} {...dataProps} className="footer" ref={ref}>
+      <div className="content">
         <Box></Box>
         <Box></Box>
       </div>

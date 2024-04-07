@@ -1,0 +1,18 @@
+@use '../../mixins' as mixins;
+
+@layer reset {
+  .layout {
+    @include mixins.reset;
+  }
+}
+
+.layout {
+  display: block;
+  z-index: var(--site-index-layout);
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  max-width: 100%;
+}

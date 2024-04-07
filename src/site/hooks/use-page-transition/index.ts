@@ -1,28 +1,40 @@
 import * as React from 'react';
-import { TransitionProps } from '@/types';
+import { Core } from '@/types';
+import { useIsomorphicEffect } from '@/hooks';
 
-type PageTransitionProps = { pathname?: string };
-type PageTransitionReturn = Omit<TransitionProps, 'children'>;
-type UsePageTransition = (props: PageTransitionProps) => PageTransitionReturn;
+const CONFIG = {
+  easing: 'cubic-bezier(0.4, 0.14, 0.3, 1)',
+  duration: { entrance: 800, exit: 800 },
+  transition: {
+    transitionProperty: 'color, background-color, opacity',
+    out: { opacity: 0 },
+    in: { opacity: 1 },
+  },
+};
 
-export const usePageTransition: UsePageTransition = ({ pathname }) => {
+type PageTransitonProps = { pathname?: string };
+type PageTransitionReturn = {
+  state?: boolean | undefined;
+  config: Omit<Core.TransitionProps, 'children'>;
+};
+
+export function usePageTransition(props: PageTransitonProps): PageTransitionReturn {
+  const { pathname } = props;
   const [mounted, setMounted] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
+  useIsomorphicEffect(() => {
     if (mounted !== true) {
       setMounted(true);
     }
   }, [pathname]);
 
   return {
-    mounted,
-    duration: 600,
-    exitDuration: 600,
-    timingFunction: 'cubic-bezier(0.4, 0.14, 0.3, 1)',
-    transition: {
-      transitionProperty: 'color, background-color, opacity',
-      out: { opacity: 0 },
-      in: { opacity: 1 },
+    config: {
+      mounted,
+      duration: CONFIG.duration.entrance,
+      exitDuration: CONFIG.duration.exit,
+      timingFunction: CONFIG.easing,
+      transition: CONFIG.transition,
     },
   };
-};
+}

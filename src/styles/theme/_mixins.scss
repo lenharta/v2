@@ -29,3 +29,47 @@
     @content;
   }
 }
+
+@mixin where-mode {
+  [data-prefers-mode='dim'] &,
+  [data-prefers-mode='dark'] &,
+  [data-prefers-mode='light'] & {
+    @content;
+  }
+}
+
+@mixin where-mode-dim {
+  [data-prefers-mode='dim'] & {
+    @content;
+  }
+}
+
+@mixin where-mode-dark {
+  [data-prefers-mode='dark'] & {
+    @content;
+  }
+}
+
+@mixin where-mode-light {
+  [data-prefers-mode='light'] & {
+    @content;
+  }
+}
+
+@mixin where-mode-accent($color: 'blue') {
+  [data-prefers-accent='#{$color}'] & {
+    @content;
+  }
+}
+
+@mixin transition-colors-static {
+  transition-property: color, background-color, border, outline, stroke, fill;
+  transition-timing-function: var(--site-easing-standard-expressive);
+  transition-duration: var(--site-easing-duration-5);
+}
+
+@mixin transition-colors-interactive {
+  transition-property: color, background-color, border, outline, stroke, fill;
+  transition-timing-function: var(--site-easing-standard-productive);
+  transition-duration: var(--site-easing-duration-1);
+}

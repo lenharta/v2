@@ -15,7 +15,6 @@ export type BoxFactory = Factory.Config<{
 export const Box = factory<BoxFactory>((props, ref) => {
   const { scheme = 'primary', children, className, ...otherProps } = props;
   const dataProps = { 'data-scheme': scheme };
-
   return (
     <div {...otherProps} {...dataProps} ref={ref} className={clsx('box', className)}>
       {children}
@@ -23,4 +22,4 @@ export const Box = factory<BoxFactory>((props, ref) => {
   );
 });
 
-Box.displayName = '@v2/core/Box';
+Box.displayName = '@v2/site/Box';

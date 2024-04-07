@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Store } from '@/types';
-import { localMiddleware } from '../local';
+import { localMiddleware } from '@/store/local';
 import { generateRandomId } from '@/utils';
 
 export const AppStateContext = React.createContext({} as Store.AppState);

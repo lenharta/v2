@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { SectionContent } from './Content';
-import { SectionHeader } from './Header';
-import { Core, Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
+import { SectionHeader } from './Header';
+import { SectionContent } from './Content';
 
 export interface SectionProps extends Core.BaseProps {
   scheme?: Core.Scheme | undefined;
@@ -22,7 +22,7 @@ export const Section = factory<SectionFactory>((props, ref) => {
   const { scheme = 'primary', children, className, ...otherProps } = props;
   const dataProps = { 'data-scheme': scheme };
   return (
-    <section {...otherProps} {...dataProps} className={clsx('sec-layout', className)} ref={ref}>
+    <section {...otherProps} {...dataProps} className={clsx('sec', className)} ref={ref}>
       {children}
     </section>
   );

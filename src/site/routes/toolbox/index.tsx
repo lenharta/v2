@@ -1,13 +1,30 @@
-import { Page } from '@/site/components';
+import { Title } from '@/core';
+import { Box, Page } from '@/site/components';
+
+export const ToolboxHero = () => {
+  return (
+    <Page.Hero>
+      <Box>
+        <Title>Toolbox</Title>
+      </Box>
+    </Page.Hero>
+  );
+};
+
+// // src/middleware.js
+// const loggingMiddleware = (store) => (next) => (action) => {
+//   console.log('Action:', action.type);
+//   console.log('Payload:', action.payload);
+//   return next(action);
+// };
+// export default loggingMiddleware;
 
 export function Toolbox() {
   return (
     <Page>
-      <Page.Hero>
-        <h1>Toolbox</h1>
-      </Page.Hero>
+      <ToolboxHero />
       <Page.Content>
-        <h2>Content</h2>
+        <span>Content</span>
       </Page.Content>
     </Page>
   );

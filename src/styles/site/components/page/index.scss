@@ -1,20 +1,22 @@
 @use '../../mixins' as mixins;
 
-.page {
-  &-hero,
-  &-layout,
-  &-content {
+@layer reset {
+  .page {
     @include mixins.reset;
+    &-hero,
+    &-content {
+      @include mixins.reset;
+    }
   }
+}
 
-  &-layout {
-    display: block;
-    z-index: var(--site-index-page);
-    isolation: isolate;
-    min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
+.page {
+  display: block;
+  z-index: var(--site-index-page);
+  isolation: isolate;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   &-hero {
     margin-top: var(--site-height-header);

@@ -1,7 +1,7 @@
 @use '../../mixins' as mixins;
 
-.toolbar {
-  &-layout {
+@layer reset {
+  .toolbar {
     @include mixins.reset;
   }
 }

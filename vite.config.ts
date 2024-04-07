@@ -41,6 +41,7 @@ export default defineConfig(({ mode, command }) => {
           '@/tests': path.resolve(__dirname, './src/tests/'),
           '@/types': path.resolve(__dirname, './src/types/'),
           '@/store': path.resolve(__dirname, './src/store/'),
+          '@/motion': path.resolve(__dirname, './src/motion/'),
           '@/assets': path.resolve(__dirname, './src/assets/'),
         },
       },
