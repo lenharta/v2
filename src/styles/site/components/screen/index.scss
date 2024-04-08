@@ -12,16 +12,16 @@
 
 .screen {
   display: block;
-  z-index: var(--site-index-screen);
+  z-index: var(--index-screen);
   isolation: isolate;
   overflow-x: hidden;
   overflow-y: auto;
   min-height: 100vh;
 
   &-hero {
-    margin-top: var(--site-height-header);
-    height: var(--site-height-hero);
-    z-index: var(--site-index-hero);
+    margin-top: var(--height-header);
+    height: var(--height-hero);
+    z-index: var(--index-hero);
     isolation: isolate;
     overflow-x: hidden;
     position: fixed;
@@ -35,10 +35,10 @@
     display: block;
     position: relative;
     isolation: isolate;
-    margin-top: calc(var(--site-height-header) + var(--site-height-hero));
+    margin-top: calc(var(--height-header) + var(--height-hero));
 
     @media (min-width: 60em) {
-      margin-left: var(--site-height-header);
+      margin-left: var(--height-header);
     }
   }
 }

@@ -35,31 +35,12 @@ export namespace Store {
     name: LanguageName;
   }
 
-  export interface AppState {
-    error?: string;
-    loading?: boolean;
-    location?: Location;
-    sessionKey?: string;
-    nonce?: (() => string) | undefined;
-  }
-
   export interface ThemeState {
     dir: Dir;
     mode: Mode;
     lang: Language;
     accent: Accent;
     avatar: Avatar;
-  }
-
-  export type AppDispatch = React.Dispatch<AppState>;
-  export type ThemeDispatch = React.Dispatch<ThemeState>;
-
-  export interface AppContextValue {
-    error?: string | undefined;
-    loading?: boolean | undefined;
-    location: Location;
-    sessionKey: string;
-    nonce: () => string;
   }
 
   export interface ThemeContextValue {
@@ -76,6 +57,32 @@ export namespace Store {
     setLang(lang: Language): void;
     setAvatar(avatar: Avatar): void;
     setAccent(accent: Accent): void;
+  }
+
+  export interface AppState {
+    nonce?: (() => string) | undefined;
+    location?: Location | undefined;
+    sessionKey?: string | undefined;
+    isMenuOpen?: boolean | undefined;
+    loading?: boolean | undefined;
+    error?: string | undefined;
+  }
+
+  export interface AppContextValue {
+    nonce: () => string;
+    location: Location;
+    sessionKey: string;
+    isMenuOpen?: boolean | undefined;
+    loading?: boolean | undefined;
+    error?: string | undefined;
+  }
+
+  export type AppDispatch = React.Dispatch<AppState>;
+  export type ThemeDispatch = React.Dispatch<ThemeState>;
+
+  export interface AppStateProps {
+    state: AppState;
+    dispatch: AppDispatch;
   }
 
   export interface ProviderProps {

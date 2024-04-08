@@ -27,7 +27,6 @@ export type ActionFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   props: ActionProps;
-  omits: 'children';
   comps: {
     Group: typeof ActionGroup;
   };
@@ -37,9 +36,10 @@ export const Action = factory<ActionFactory>((props, ref) => {
   const {
     url,
     size = 'sm',
-    icon = 'placeholder',
+    icon,
     label = 'action',
     variant = 'default',
+    children,
     disabled,
     tabIndex,
     className,
@@ -87,7 +87,7 @@ export const Action = factory<ActionFactory>((props, ref) => {
         className
       )}
     >
-      <Icon name={icon} />
+      {!icon ? children : <Icon name={icon} />}
     </button>
   );
 });

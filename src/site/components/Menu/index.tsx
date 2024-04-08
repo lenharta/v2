@@ -1,13 +1,12 @@
+import * as React from 'react';
+import { useAppDispatch, useAppState } from '@/store';
 import { MenuFooter } from './Footer';
 import { MenuTarget } from './Target';
 import { MenuPanel } from './Panel';
 import { MenuLogo } from './Logo';
 import { MenuNav } from './Nav';
-import { useAppDispatch, useAppState } from '@/store';
 
-export interface MenuProps {}
-
-export type MenuComponent = React.FC<MenuProps> & {
+export type MenuComponent = React.FC & {
   Footer: typeof MenuFooter;
   Target: typeof MenuTarget;
   Panel: typeof MenuPanel;
@@ -15,14 +14,14 @@ export type MenuComponent = React.FC<MenuProps> & {
   Nav: typeof MenuNav;
 };
 
-export const Menu: MenuComponent = (props) => {
-  const {} = props;
-  const appState = useAppState();
-  const appDispatch = useAppDispatch();
+export const Menu: MenuComponent = () => {
+  const dispatch = useAppDispatch();
+  const state = useAppState();
+  console.log(state);
   return (
-    <>
-      <span>Menu</span>
-    </>
+    <React.Fragment>
+      <Menu.Target state={state} dispatch={dispatch} />
+    </React.Fragment>
   );
 };
 

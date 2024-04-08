@@ -1,9 +1,9 @@
-import './styles/main.scss';
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Root, Error, Home, Articles, Experience, Toolbox, Sandbox, Projects } from './site';
+import { Root, Error, Home, Articles, Experience, Toolbox, Sandbox, Projects, Demo } from './site';
+
+import './styles/main.scss';
 
 const router = createBrowserRouter([
   {
@@ -12,6 +12,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { index: true, element: <Home /> },
+      { path: '/demo', element: <Demo /> },
       { path: '/articles', element: <Articles /> },
       { path: '/experience', element: <Experience /> },
       { path: '/projects', element: <Projects /> },

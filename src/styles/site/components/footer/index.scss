@@ -17,7 +17,7 @@
   isolation: isolate;
 
   @media (min-width: 60em) {
-    margin-left: var(--site-header-height);
+    margin-left: var(--header-height);
   }
 
   &-content {
@@ -37,9 +37,9 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    padding-inline: var(--site-gutter);
-    padding-block: calc(var(--site-gutter) * 2);
-    min-height: var(--site-height-footer);
+    padding-inline: var(--gutter);
+    padding-block: calc(var(--gutter) * 2);
+    min-height: var(--height-footer);
     width: 100%;
   }
 }

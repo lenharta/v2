@@ -1,7 +1,7 @@
 import { Box } from '@/site/components';
+import { Menu } from '@/site/components/Menu';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
-import { Text } from '@/core';
 
 export interface HeaderProps {
   scheme?: Core.Scheme;
@@ -17,16 +17,13 @@ export type HeaderFactory = Factory.Config<{
 export const Header = factory<HeaderFactory>((props, ref) => {
   const { scheme = 'primary', ...otherProps } = props;
   const dataProps = { 'data-scheme': scheme };
-
   return (
     <header {...otherProps} {...dataProps} className="header" ref={ref}>
       <div className="header-content">
         <Box className="header-box" data-position="left">
-          <Text>Header (left)</Text>
+          <Menu />
         </Box>
-        <Box className="header-box" data-position="right">
-          <Text>Header (right)</Text>
-        </Box>
+        <Box className="header-box" data-position="right"></Box>
       </div>
     </header>
   );
