@@ -1,182 +1,158 @@
 :root {
-  --core-unit: 0.125rem;
-  --core-scale: 1;
-  --core-spacing: calc(var(--core-unit) * var(--core-scale));
-  --core-gutter: calc(var(--core-spacing) * 12);
-  --core-gap: calc(var(--core-spacing) * 4);
+  --unit: 0.125rem;
+  --scale: 1;
 
-  --core-icon-size-xs: calc(var(--core-spacing) * 8);
-  --core-icon-size-sm: calc(var(--core-spacing) * 10);
-  --core-icon-size-md: calc(var(--core-spacing) * 12);
-  --core-icon-size-lg: calc(var(--core-spacing) * 14);
-  --core-icon-size-xl: calc(var(--core-spacing) * 16);
+  --spacing: calc(var(--unit) * var(--scale));
+  --gutter: calc(var(--spacing) * 12);
+  --gap: calc(var(--spacing) * 4);
 
-  --core-action-size-xs: calc(var(--core-spacing) * 20);
-  --core-action-size-sm: calc(var(--core-spacing) * 24);
-  --core-action-size-md: calc(var(--core-spacing) * 28);
-  --core-action-size-lg: calc(var(--core-spacing) * 30);
-  --core-action-size-xl: calc(var(--core-spacing) * 36);
+  --border-sm: calc(var(--unit) * 1);
+  --border-md: calc(var(--unit) * 2);
+  --border-lg: calc(var(--unit) * 3);
 
-  --core-button-height-xs: calc(var(--core-spacing) * 10);
-  --core-button-height-sm: calc(var(--core-spacing) * 16);
-  --core-button-height-md: calc(var(--core-spacing) * 22);
-  --core-button-height-lg: calc(var(--core-spacing) * 28);
-  --core-button-height-xl: calc(var(--core-spacing) * 34);
+  --radius-xs: calc(var(--spacing) * 1);
+  --radius-sm: calc(var(--spacing) * 2);
+  --radius-md: calc(var(--spacing) * 4);
+  --radius-lg: calc(var(--spacing) * 8);
+  --radius-xl: calc(var(--spacing) * 16);
+  --radius-rd: 1000px;
 
-  --core-tab-height-xs: calc(var(--core-spacing) * 10);
-  --core-tab-height-sm: calc(var(--core-spacing) * 16);
-  --core-tab-height-md: calc(var(--core-spacing) * 22);
-  --core-tab-height-lg: calc(var(--core-spacing) * 28);
-  --core-tab-height-xl: calc(var(--core-spacing) * 34);
+  --font-family: 'Satoshi';
+  --font-weight-1: 300;
+  --font-weight-2: 400;
+  --font-weight-3: 500;
+  --font-weight-4: 600;
+  --font-weight-5: 700;
 
-  --core-input-height-xs: calc(var(--core-spacing) * 12);
-  --core-input-height-sm: calc(var(--core-spacing) * 18);
-  --core-input-height-md: calc(var(--core-spacing) * 24);
-  --core-input-height-lg: calc(var(--core-spacing) * 30);
-  --core-input-height-xl: calc(var(--core-spacing) * 36);
+  --easing-duration-1: 70ms;
+  --easing-duration-2: 110ms;
+  --easing-duration-3: 150ms;
+  --easing-duration-4: 240ms;
+  --easing-duration-5: 400ms;
+  --easing-duration-6: 700ms;
 
-  --core-checkbox-height-xs: var(--core-input-height-xs);
-  --core-checkbox-height-sm: var(--core-input-height-sm);
-  --core-checkbox-height-md: var(--core-input-height-md);
-  --core-checkbox-height-lg: var(--core-input-height-lg);
-  --core-checkbox-height-xl: var(--core-input-height-xl);
+  --easing-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --easing-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
+  --easing-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 
-  --core-switch-height-xs: var(--core-input-height-xs);
-  --core-switch-height-sm: var(--core-input-height-sm);
-  --core-switch-height-md: var(--core-input-height-md);
-  --core-switch-height-lg: var(--core-input-height-lg);
-  --core-switch-height-xl: var(--core-input-height-xl);
+  --easing-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --easing-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
+  --easing-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
+}
 
-  --core-radio-height-xs: var(--core-input-height-xs);
-  --core-radio-height-sm: var(--core-input-height-sm);
-  --core-radio-height-md: var(--core-input-height-md);
-  --core-radio-height-lg: var(--core-input-height-lg);
-  --core-radio-height-xl: var(--core-input-height-xl);
+:root {
+  --action-size-mobile: calc(var(--unit) * 28);
+  --action-size-desktop: calc(var(--unit) * 28);
 
-  --core-border-width-sm: calc(var(--core-spacing) * 1);
-  --core-border-width-md: calc(var(--core-spacing) * 2);
-  --core-border-width-lg: calc(var(--core-spacing) * 3);
+  --icon-size-sm-mobile: calc(var(--spacing) * 10);
+  --icon-size-md-mobile: calc(var(--spacing) * 12);
+  --icon-size-lg-mobile: calc(var(--spacing) * 14);
 
-  --core-radius-xs: calc(var(--core-spacing) * 1);
-  --core-radius-sm: calc(var(--core-spacing) * 2);
-  --core-radius-md: calc(var(--core-spacing) * 4);
-  --core-radius-lg: calc(var(--core-spacing) * 8);
-  --core-radius-xl: calc(var(--core-spacing) * 16);
-  --core-radius-rd: 1000px;
+  --icon-size-sm-desktop: calc(var(--spacing) * 10);
+  --icon-size-md-desktop: calc(var(--spacing) * 12);
+  --icon-size-lg-desktop: calc(var(--spacing) * 14);
 
-  --core-font-family: 'Satoshi';
-  --core-font-weight-1: 300;
-  --core-font-weight-2: 400;
-  --core-font-weight-3: 500;
-  --core-font-weight-4: 600;
-  --core-font-weight-5: 700;
+  --font-size-caption-sm-mobile: 10px;
+  --font-size-caption-md-mobile: 11px;
+  --font-size-caption-lg-mobile: 12px;
 
-  --core-easing-duration-1: 70ms;
-  --core-easing-duration-2: 110ms;
-  --core-easing-duration-3: 150ms;
-  --core-easing-duration-4: 240ms;
-  --core-easing-duration-5: 400ms;
-  --core-easing-duration-6: 700ms;
+  --font-size-caption-sm-desktop: 14px;
+  --font-size-caption-md-desktop: 15px;
+  --font-size-caption-lg-desktop: 16px;
 
-  --core-easing-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
-  --core-easing-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
-  --core-easing-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
+  --font-size-body-sm-mobile: 12px;
+  --font-size-body-md-mobile: 14px;
+  --font-size-body-lg-mobile: 16px;
+  --font-size-body-xl-mobile: 18px;
 
-  --core-easing-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
-  --core-easing-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
-  --core-easing-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
+  --font-size-body-sm-desktop: 14px;
+  --font-size-body-md-desktop: 16px;
+  --font-size-body-lg-desktop: 18px;
+  --font-size-body-xl-desktop: 20px;
 
-  --core-font-size-caption-sm-mobile: 10px;
-  --core-font-size-caption-md-mobile: 11px;
-  --core-font-size-caption-lg-mobile: 12px;
+  --font-size-subtitle-xs-mobile: 14px;
+  --font-size-subtitle-sm-mobile: 16px;
+  --font-size-subtitle-md-mobile: 18px;
+  --font-size-subtitle-lg-mobile: 20px;
+  --font-size-subtitle-xl-mobile: 22px;
+  --font-size-subtitle-xxl-mobile: 24px;
 
-  --core-font-size-caption-sm-desktop: 14px;
-  --core-font-size-caption-md-desktop: 15px;
-  --core-font-size-caption-lg-desktop: 16px;
+  --font-size-subtitle-xs-desktop: 20px;
+  --font-size-subtitle-sm-desktop: 22px;
+  --font-size-subtitle-md-desktop: 24px;
+  --font-size-subtitle-lg-desktop: 26px;
+  --font-size-subtitle-xl-desktop: 28px;
+  --font-size-subtitle-xxl-desktop: 30px;
 
-  --core-font-size-body-sm-mobile: 12px;
-  --core-font-size-body-md-mobile: 14px;
-  --core-font-size-body-lg-mobile: 16px;
-  --core-font-size-body-xl-mobile: 18px;
+  --font-size-title-xs-mobile: 22px;
+  --font-size-title-sm-mobile: 24px;
+  --font-size-title-md-mobile: 28px;
+  --font-size-title-lg-mobile: 32px;
+  --font-size-title-xl-mobile: 40px;
+  --font-size-title-xxl-mobile: 68px;
 
-  --core-font-size-body-sm-desktop: 14px;
-  --core-font-size-body-md-desktop: 16px;
-  --core-font-size-body-lg-desktop: 18px;
-  --core-font-size-body-xl-desktop: 20px;
+  --font-size-title-xs-desktop: 28px;
+  --font-size-title-sm-desktop: 32px;
+  --font-size-title-md-desktop: 36px;
+  --font-size-title-lg-desktop: 40px;
+  --font-size-title-xl-desktop: 52px;
+  --font-size-title-xxl-desktop: 92px;
 
-  --core-font-size-subtitle-xs-mobile: 14px;
-  --core-font-size-subtitle-sm-mobile: 16px;
-  --core-font-size-subtitle-md-mobile: 18px;
-  --core-font-size-subtitle-lg-mobile: 20px;
-  --core-font-size-subtitle-xl-mobile: 22px;
-  --core-font-size-subtitle-xxl-mobile: 24px;
+  --action-size: var(--action-size-mobile);
 
-  --core-font-size-subtitle-xs-desktop: 20px;
-  --core-font-size-subtitle-sm-desktop: 22px;
-  --core-font-size-subtitle-md-desktop: 24px;
-  --core-font-size-subtitle-lg-desktop: 26px;
-  --core-font-size-subtitle-xl-desktop: 28px;
-  --core-font-size-subtitle-xxl-desktop: 30px;
+  --icon-size-sm: var(--icon-size-sm-mobile);
+  --icon-size-md: var(--icon-size-md-mobile);
+  --icon-size-lg: var(--icon-size-lg-mobile);
 
-  --core-font-size-title-xs-mobile: 22px;
-  --core-font-size-title-sm-mobile: 24px;
-  --core-font-size-title-md-mobile: 28px;
-  --core-font-size-title-lg-mobile: 32px;
-  --core-font-size-title-xl-mobile: 40px;
-  --core-font-size-title-xxl-mobile: 68px;
+  --font-size-caption-sm: var(--font-size-caption-sm-mobile);
+  --font-size-caption-md: var(--font-size-caption-md-mobile);
+  --font-size-caption-lg: var(--font-size-caption-lg-mobile);
 
-  --core-font-size-title-xs-desktop: 28px;
-  --core-font-size-title-sm-desktop: 32px;
-  --core-font-size-title-md-desktop: 36px;
-  --core-font-size-title-lg-desktop: 40px;
-  --core-font-size-title-xl-desktop: 52px;
-  --core-font-size-title-xxl-desktop: 92px;
+  --font-size-body-sm: var(--font-size-body-sm-mobile);
+  --font-size-body-md: var(--font-size-body-md-mobile);
+  --font-size-body-lg: var(--font-size-body-lg-mobile);
+  --font-size-body-xl: var(--font-size-body-xl-mobile);
 
-  --core-font-size-caption-sm: var(--core-font-size-caption-sm-mobile);
-  --core-font-size-caption-md: var(--core-font-size-caption-md-mobile);
-  --core-font-size-caption-lg: var(--core-font-size-caption-lg-mobile);
+  --font-size-subtitle-xs: var(--font-size-subtitle-xs-mobile);
+  --font-size-subtitle-sm: var(--font-size-subtitle-sm-mobile);
+  --font-size-subtitle-md: var(--font-size-subtitle-md-mobile);
+  --font-size-subtitle-lg: var(--font-size-subtitle-lg-mobile);
+  --font-size-subtitle-xl: var(--font-size-subtitle-xl-mobile);
+  --font-size-subtitle-xxl: var(--font-size-subtitle-xl-mobile);
 
-  --core-font-size-body-sm: var(--core-font-size-body-sm-mobile);
-  --core-font-size-body-md: var(--core-font-size-body-md-mobile);
-  --core-font-size-body-lg: var(--core-font-size-body-lg-mobile);
-  --core-font-size-body-xl: var(--core-font-size-body-xl-mobile);
-
-  --core-font-size-subtitle-xs: var(--core-font-size-subtitle-xs-mobile);
-  --core-font-size-subtitle-sm: var(--core-font-size-subtitle-sm-mobile);
-  --core-font-size-subtitle-md: var(--core-font-size-subtitle-md-mobile);
-  --core-font-size-subtitle-lg: var(--core-font-size-subtitle-lg-mobile);
-  --core-font-size-subtitle-xl: var(--core-font-size-subtitle-xl-mobile);
-  --core-font-size-subtitle-xxl: var(--core-font-size-subtitle-xl-mobile);
-
-  --core-font-size-title-xs: var(--core-font-size-title-xs-mobile);
-  --core-font-size-title-sm: var(--core-font-size-title-sm-mobile);
-  --core-font-size-title-md: var(--core-font-size-title-md-mobile);
-  --core-font-size-title-lg: var(--core-font-size-title-lg-mobile);
-  --core-font-size-title-xl: var(--core-font-size-title-xl-mobile);
-  --core-font-size-title-xxl: var(--core-font-size-title-xxl-mobile);
+  --font-size-title-xs: var(--font-size-title-xs-mobile);
+  --font-size-title-sm: var(--font-size-title-sm-mobile);
+  --font-size-title-md: var(--font-size-title-md-mobile);
+  --font-size-title-lg: var(--font-size-title-lg-mobile);
+  --font-size-title-xl: var(--font-size-title-xl-mobile);
+  --font-size-title-xxl: var(--font-size-title-xxl-mobile);
 
   @media (min-width: 60em) {
-    --core-font-size-caption-sm: var(--core-font-size-caption-sm-desktop);
-    --core-font-size-caption-md: var(--core-font-size-caption-md-desktop);
-    --core-font-size-caption-lg: var(--core-font-size-caption-lg-desktop);
+    --icon-size-sm: var(--icon-size-sm-desktop);
+    --icon-size-md: var(--icon-size-md-desktop);
+    --icon-size-lg: var(--icon-size-lg-desktop);
 
-    --core-font-size-body-sm: var(--core-font-size-body-sm-desktop);
-    --core-font-size-body-md: var(--core-font-size-body-md-desktop);
-    --core-font-size-body-lg: var(--core-font-size-body-lg-desktop);
-    --core-font-size-body-xl: var(--core-font-size-body-xl-desktop);
+    --font-size-caption-sm: var(--font-size-caption-sm-desktop);
+    --font-size-caption-md: var(--font-size-caption-md-desktop);
+    --font-size-caption-lg: var(--font-size-caption-lg-desktop);
 
-    --core-font-size-subtitle-xs: var(--core-font-size-subtitle-xs-desktop);
-    --core-font-size-subtitle-sm: var(--core-font-size-subtitle-sm-desktop);
-    --core-font-size-subtitle-md: var(--core-font-size-subtitle-md-desktop);
-    --core-font-size-subtitle-lg: var(--core-font-size-subtitle-lg-desktop);
-    --core-font-size-subtitle-xl: var(--core-font-size-subtitle-xl-desktop);
-    --core-font-size-subtitle-xxl: var(--core-font-size-subtitle-xl-desktop);
+    --font-size-body-sm: var(--font-size-body-sm-desktop);
+    --font-size-body-md: var(--font-size-body-md-desktop);
+    --font-size-body-lg: var(--font-size-body-lg-desktop);
+    --font-size-body-xl: var(--font-size-body-xl-desktop);
 
-    --core-font-size-title-xs: var(--core-font-size-title-xs-desktop);
-    --core-font-size-title-sm: var(--core-font-size-title-sm-desktop);
-    --core-font-size-title-md: var(--core-font-size-title-md-desktop);
-    --core-font-size-title-lg: var(--core-font-size-title-lg-desktop);
-    --core-font-size-title-xl: var(--core-font-size-title-xl-desktop);
-    --core-font-size-title-xxl: var(--core-font-size-title-xxl-desktop);
+    --font-size-subtitle-xs: var(--font-size-subtitle-xs-desktop);
+    --font-size-subtitle-sm: var(--font-size-subtitle-sm-desktop);
+    --font-size-subtitle-md: var(--font-size-subtitle-md-desktop);
+    --font-size-subtitle-lg: var(--font-size-subtitle-lg-desktop);
+    --font-size-subtitle-xl: var(--font-size-subtitle-xl-desktop);
+    --font-size-subtitle-xxl: var(--font-size-subtitle-xl-desktop);
+
+    --font-size-title-xs: var(--font-size-title-xs-desktop);
+    --font-size-title-sm: var(--font-size-title-sm-desktop);
+    --font-size-title-md: var(--font-size-title-md-desktop);
+    --font-size-title-lg: var(--font-size-title-lg-desktop);
+    --font-size-title-xl: var(--font-size-title-xl-desktop);
+    --font-size-title-xxl: var(--font-size-title-xxl-desktop);
   }
 }

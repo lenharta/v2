@@ -82,11 +82,13 @@
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
-  [data-scheme='primary'] {
-    .sec {
-      color: var(--c-primary-text);
-      background-color: var(--c-primary-base);
-    }
+  .box[data-scheme='primary'],
+  .sec[data-scheme='primary'],
+  .menu[data-scheme='primary'],
+  .header[data-scheme='primary'] {
+    color: var(--c-primary-text);
+    background-color: var(--c-primary-base);
+
     .button--default,
     .action--default {
       color: inherit;
@@ -103,11 +105,13 @@
     }
   }
 
-  [data-scheme='secondary'] {
-    .sec {
-      color: var(--c-secondary-text);
-      background-color: var(--c-secondary-base);
-    }
+  .box[data-scheme='secondary'],
+  .sec[data-scheme='secondary'],
+  .menu[data-scheme='secondary'],
+  .header[data-scheme='secondary'] {
+    color: var(--c-secondary-text);
+    background-color: var(--c-secondary-base);
+
     .button--default,
     .action--default {
       color: inherit;
@@ -124,11 +128,13 @@
     }
   }
 
-  [data-scheme='tertiary'] {
-    .sec {
-      color: var(--c-tertiary-text);
-      background-color: var(--c-tertiary-base);
-    }
+  .box[data-scheme='tertiary'],
+  .sec[data-scheme='tertiary'],
+  .menu[data-scheme='tertiary'],
+  .header[data-scheme='tertiary'] {
+    color: var(--c-tertiary-text);
+    background-color: var(--c-tertiary-base);
+
     .button--default,
     .action--default {
       color: inherit;

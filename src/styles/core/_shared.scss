@@ -1,55 +1,27 @@
-.sec-demo-layout {
-  display: grid;
-  place-content: start;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(1, 1fr);
-  background-color: var(--background-primary-1);
-  color: var(--text-primary-1);
-}
-.sec-demo-header {
-  padding-block: var(--site-gutter);
-  padding-inline: var(--site-gutter);
-}
-.sec-demo-content {
-  padding-block: calc(var(--site-gutter) * 2);
-  padding-inline: var(--site-gutter);
-}
-
-// ^ TEMPORARY ^
-
 .action-group,
 .button-group {
-  --group-align: flex-start;
-  --group-justify: flex-start;
-  --group-direction: row;
+  --align: row;
+  --justify: row;
+  --direction: row;
 
   display: flex;
-  align-items: var(--group-align);
-  flex-direction: var(--group-direction);
-  justify-content: var(--group-justify);
+  align-items: var(--align);
+  flex-direction: var(--direction);
+  justify-content: var(--justify);
 
   &[aria-orientation='vertical'] {
-    --group-direction: column;
+    --direction: column;
   }
   &[aria-orientation='horizontal'] {
-    --group-direction: row;
+    --direction: row;
   }
 }
 
 .action,
 .button {
+  border: solid var(--border-sm) transparent;
+  outline: solid var(--border-sm) transparent;
   user-select: none;
-
-  svg {
-    width: 60%;
-    height: 60%;
-  }
-}
-
-.action,
-.button {
-  border: solid 2px transparent;
-  outline: solid 2px transparent;
 
   &:not([aria-disabled]):focus:not(:focus-visible),
   &:not([data-disabled]):focus:not(:focus-visible) {
