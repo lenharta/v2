@@ -9,17 +9,17 @@ export namespace Factory {
 
   export type Prop<C> = { component?: C };
 
+  export type ElementProps<
+    ElementType extends React.ElementType,
+    OmittedProps extends string = never,
+  > = Omit<React.ComponentPropsWithoutRef<ElementType>, OmittedProps>;
+
   export type ComponentProps<T extends React.ElementType> =
     T extends React.JSXElementConstructor<infer P>
       ? P
       : T extends keyof JSX.IntrinsicElements
         ? JSX.IntrinsicElements[T]
         : {};
-
-  export type ElementProps<
-    ElementType extends React.ElementType,
-    OmittedProps extends string = never,
-  > = Omit<React.ComponentPropsWithoutRef<ElementType>, OmittedProps>;
 
   export type Extend<P = {}, O = {}> = O & Omit<P, keyof O>;
 
@@ -39,17 +39,25 @@ export namespace Factory {
 
   export type Filter<T extends React.ElementType, K = unknown, P = {}> = Props<T, K> & P;
 
-  export type Render<P extends Payload> = React.ForwardRefRenderFunction<
-    P['ref'],
-    Filter<P['comp'], P['omits'], P['props']> & {
-      ref?: React.ComponentPropsWithRef<P['comp']>['ref'];
+  export type Render<TPayload extends Payload> = React.ForwardRefRenderFunction<
+    TPayload['ref'],
+    Filter<TPayload['comp'], TPayload['omits'], TPayload['props']> & {
+      ref?: React.ComponentPropsWithRef<TPayload['comp']>['ref'];
     }
   >;
 
-  export type Component<P extends Payload> = React.ForwardRefExoticComponent<
-    Filter<P['comp'], P['omits'], P['props']> & {
-      ref?: React.ComponentPropsWithRef<P['comp']>['ref'];
+  export type Component<TPayload extends Payload> = React.ForwardRefExoticComponent<
+    Filter<TPayload['comp'], TPayload['omits'], TPayload['props']> & {
+      ref?: React.ComponentPropsWithRef<TPayload['comp']>['ref'];
     }
+  >;
+
+  export type PolymorphicRender<TPayload extends Payload> = React.ForwardRefRenderFunction<
+    TPayload['ref'],
+    Prop<TPayload['comp']> &
+      Filter<TPayload['comp'], TPayload['omits'], TPayload['props']> & {
+        ref?: React.ComponentPropsWithRef<TPayload['comp']>['ref'];
+      }
   >;
 
   export type PolymorphicRef<C> = C extends React.ElementType

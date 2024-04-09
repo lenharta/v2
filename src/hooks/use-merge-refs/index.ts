@@ -1,10 +1,9 @@
-import React from 'react';
-
-export type ViableRef<T> = React.Ref<T> | undefined;
+import * as React from 'react';
+import { Core } from '@/types';
 
 /** A utility function that assigns a singular ref */
 
-export function assignRef<T>(ref: ViableRef<T>, value: T) {
+export function assignRef<T>(ref: Core.ViableRef<T>, value: T) {
   if (typeof ref === 'function') {
     ref(value);
   }
@@ -15,12 +14,12 @@ export function assignRef<T>(ref: ViableRef<T>, value: T) {
 
 /** A utility function that merges multiple refs */
 
-export function mergeRefs<T>(...refs: ViableRef<T>[]) {
+export function mergeRefs<T>(...refs: Core.ViableRef<T>[]) {
   return (node: T | null) => refs.forEach((ref) => assignRef(ref, node));
 }
 
 /** A react hook that return a callback function to merge multiple refs into one */
 
-export function useMergeRefs<T>(...refs: ViableRef<T>[]) {
+export function useMergeRefs<T>(...refs: Core.ViableRef<T>[]) {
   return React.useCallback(mergeRefs(...refs), refs);
 }

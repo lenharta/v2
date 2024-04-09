@@ -3,9 +3,15 @@
 .tile {
   @include mixins.reset;
 
-  &[data-interactive]:hover {
+  &--clickable,
+  &--selectable,
+  &--expandable {
     @include mixins.transition-colors-interactive;
   }
+}
+
+.tile {
+  display: block;
 }
 
 .tile-group {

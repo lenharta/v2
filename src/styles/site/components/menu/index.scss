@@ -3,7 +3,13 @@
 @layer reset {
   .menu {
     @include mixins.reset;
-    &-target {
+    &-panel,
+    &-header,
+    &-footer,
+    &-target,
+    &-target-grid,
+    &-target-grid-row,
+    &-target-grid-cell {
       @include mixins.reset;
     }
   }
@@ -44,12 +50,11 @@
     z-index: var(--index-menu);
     padding-block: calc(var(--gutter) * 4);
     padding-inline: var(--gutter);
+    max-width: 40em;
   }
 
   &-header {
   }
   &-footer {
-  }
-  &-header {
   }
 }

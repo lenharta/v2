@@ -1,4 +1,6 @@
 export namespace Core {
+  export type ViableRef<T> = React.Ref<T> | undefined;
+
   export type Size3 = 'sm' | 'md' | 'lg';
   export type Size3Label = 'small' | 'medium' | 'large';
 
@@ -33,14 +35,6 @@ export namespace Core {
   export type Scheme = 'primary' | 'secondary' | 'tertiary';
   export type InteractionType = 'base' | 'clickable' | 'expandable' | 'selectable';
   export type InteractionState = 'hovered' | 'pressed' | 'disabled' | 'selected' | 'expanded';
-
-  type PressHandler<
-    T extends string | number | readonly string[] | undefined = string,
-    E extends HTMLElement = HTMLElement,
-  > =
-    | ((event: React.MouseEvent<E>) => void)
-    | ((event: React.MouseEvent<E>, value: T) => void)
-    | (() => void);
 
   export interface BaseProps {
     /** Defines a unique identifier for the element. */

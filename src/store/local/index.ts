@@ -11,7 +11,7 @@ export function localMiddleware<T extends Record<string, any> = {}>(
       try {
         return !!window[key].getItem(key);
       } catch (error: any) {
-        console.error(`ERROR:[@v2/storage]: 'READ' method @ ${key}`);
+        console.error(`[@v2/store/local]: Check 'READ' method @ ${key}`);
         return false;
       }
     },
@@ -19,7 +19,7 @@ export function localMiddleware<T extends Record<string, any> = {}>(
       try {
         return deserializeJSON<T>(window[key].getItem(key)!) as T;
       } catch (error: any) {
-        console.error(`ERROR:[@v2/storage]: 'FETCH' method @ ${key}`);
+        console.error(`[@v2/store/local]: Check 'FETCH' method @ ${key}`);
         return null;
       }
     },
@@ -28,7 +28,7 @@ export function localMiddleware<T extends Record<string, any> = {}>(
         window[key].setItem(key, serializeJSON(data));
         return true;
       } catch (error: any) {
-        console.error(`ERROR:[@v2/storage]: 'WRITE' method @ ${key}`);
+        console.error(`[@v2/store/local]: Check 'WRITE' method @ ${key}`);
         return false;
       }
     },

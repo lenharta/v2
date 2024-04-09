@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
+const defaultEvents = ['mousedown', 'touchstart'];
 
 export function useClickOutside<T extends HTMLElement = any>(
   handler: () => void,
@@ -16,10 +16,10 @@ export function useClickOutside<T extends HTMLElement = any>(
       }
     };
 
-    (events || DEFAULT_EVENTS).forEach((fn) => document.addEventListener(fn, listener));
+    (events || defaultEvents).forEach((fn) => document.addEventListener(fn, listener));
 
     return () => {
-      (events || DEFAULT_EVENTS).forEach((fn) => document.removeEventListener(fn, listener));
+      (events || defaultEvents).forEach((fn) => document.removeEventListener(fn, listener));
     };
   }, [ref, handler]);
 
