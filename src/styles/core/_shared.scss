@@ -1,3 +1,4 @@
+.tile-group,
 .action-group,
 .button-group {
   --align: row;
@@ -17,6 +18,7 @@
   }
 }
 
+.tile,
 .action,
 .button {
   border: solid var(--border-sm) transparent;

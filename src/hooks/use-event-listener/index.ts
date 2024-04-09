@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIsomorphicEffect } from '../use-isomorphic-effect';
+import { useIsomorphicEffect } from '@/hooks/use-isomorphic-effect';
 
 export function useEventListener<
   KW extends keyof WindowEventMap,

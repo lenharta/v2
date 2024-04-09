@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Dimensions } from '@/types/common';
-import { useEventListener } from '../use-event-listener';
-import { useIsomorphicEffect } from '../use-isomorphic-effect';
+import { Core } from '@/types';
+import { useEventListener } from '@/hooks/use-event-listener';
+import { useIsomorphicEffect } from '@/hooks/use-isomorphic-effect';
 
-export function useViewportSize(): Dimensions {
-  const [windowSize, setWindowSize] = React.useState<Dimensions>({ width: 0, height: 0 });
+export function useViewportSize(): Core.Dimensions {
+  const [windowSize, setWindowSize] = React.useState<Core.Dimensions>({ width: 0, height: 0 });
 
   const onSizeChange = React.useCallback(() => {
     setWindowSize({

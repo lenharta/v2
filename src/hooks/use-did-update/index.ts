@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 export function useDidUpdate(cb: React.EffectCallback, dependencies?: React.DependencyList) {
   const mounted = React.useRef(false);
