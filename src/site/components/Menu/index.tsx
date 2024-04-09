@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useAppDispatch, useAppState } from '@/store';
-import { MenuFooter } from './Footer';
-import { MenuTarget } from './Target';
-import { MenuPanel } from './Panel';
-import { MenuLogo } from './Logo';
 import { MenuNav } from './Nav';
+import { MenuLogo } from './Logo';
+import { MenuPanel } from './Panel';
+import { MenuTarget } from './Target';
+import { MenuFooter } from './Footer';
 
 export type MenuComponent = React.FC & {
   Footer: typeof MenuFooter;
@@ -15,13 +14,10 @@ export type MenuComponent = React.FC & {
 };
 
 export const Menu: MenuComponent = () => {
-  const dispatch = useAppDispatch();
-  const state = useAppState();
-  console.log(state);
   return (
     <React.Fragment>
-      <Menu.Target state={state} dispatch={dispatch} />
-      <Menu.Panel state={state} dispatch={dispatch} />
+      <Menu.Target />
+      <Menu.Panel />
     </React.Fragment>
   );
 };

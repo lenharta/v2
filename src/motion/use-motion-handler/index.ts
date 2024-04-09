@@ -4,13 +4,11 @@ import { useMergeRefs } from '@/hooks';
 
 export function useMotionHandler<E extends HTMLElement>(
   ref: React.ForwardedRef<E>,
-  cb: (args: any) => void
+  cb: (args?: any | undefined) => void
 ) {
   const scopeRef = React.useRef<E>(null);
   const scopeRefs = useMergeRefs(ref, scopeRef) as unknown as React.RefObject<E>;
   const scope = ref ? scopeRefs : scopeRef;
-
   const { contextSafe } = useGSAP({ scope });
-
   return { scope, handler: contextSafe(cb) };
 }

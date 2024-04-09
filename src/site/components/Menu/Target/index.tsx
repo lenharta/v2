@@ -1,16 +1,12 @@
 import gsap from 'gsap';
-import * as React from 'react';
 import { Action } from '@/core';
 import { factory } from '@/core/factory';
-import { Factory, Store } from '@/types';
-import { MenuTargetGrid } from './Grid';
-import { motionSelector } from '@/motion';
-import { useMotionHandler } from '@/motion/use-motion-handler';
+import { Factory } from '@/types';
+import { objectKeys } from '@/utils';
+import { useAppDispatch, useAppState } from '@/store';
+import { motionClass, motionSelector, useMotionHandler } from '@/motion';
 
-export interface MenuTargetProps {
-  state: Store.AppStateProps['state'];
-  dispatch: Store.AppStateProps['dispatch'];
-}
+export interface MenuTargetProps {}
 
 export type MenuTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -25,41 +21,41 @@ const css = {
   row: 'menu-target-grid-row',
 };
 
-const commonMotion: gsap.TweenVars = {
-  ease: 'bounce.inOut',
-  duration: 0.15,
+const translate = (x: number, y: number, mounted?: boolean) => {
+  const pos = mounted ? { x, y } : { x: 0, y: 0 };
+  return { transform: `translate(${pos.x}%, ${pos.y}%)` };
 };
 
 export const MenuTarget = factory<MenuTargetFactory>((props, ref) => {
-  const { dispatch, state, ...otherProps } = props;
+  const { ...otherProps } = props;
+  const dispatch = useAppDispatch();
+  const state = useAppState();
 
-  const [open, setOpen] = React.useState<boolean>();
-
-  const { scope, handler } = useMotionHandler(ref, (open: boolean | undefined) => {
-    const config: gsap.TweenVars = { ...commonMotion, rotate: open ? '45deg' : 0 };
-
-    const translate = (input: string, open: boolean | undefined) => {
-      return open ? input : 'translate(0%, 0%)';
+  const { scope, handler } = useMotionHandler(ref, (isOpen: boolean | undefined) => {
+    const common: gsap.TweenVars = {
+      duration: 0.15,
+      rotate: isOpen ? '45deg' : '0deg',
+      ease: isOpen ? 'bounce.Out' : 'bounce.In',
     };
 
-    gsap.to(motionSelector(css.cell, '-r-y', '-c-y'), {
-      ...config,
-    });
-    gsap.to(motionSelector(css.cell, '-r-x', '-c-y'), {
-      ...config,
-      transform: translate('translate(-100%, 100%)', open),
-    });
-    gsap.to(motionSelector(css.cell, '-r-y', '-c-x'), {
-      ...config,
-      transform: translate('translate(100%, 100%)', open),
-    });
-    gsap.to(motionSelector(css.cell, '-r-y', '-c-z'), {
-      ...config,
-      transform: translate('translate(-100%, -100%)', open),
-    });
-    gsap.to(motionSelector(css.cell, '-r-z', '-c-y'), {
-      ...config,
-      transform: translate('translate(100%, -100%)', open),
+    const cells = {
+      '-r-x-c-x': { ...common, x: 0, y: 0 },
+      '-r-x-c-y': { ...common, x: 100, y: 100 },
+      '-r-x-c-z': { ...common, x: 0, y: 0 },
+      '-r-y-c-x': { ...common, x: 100, y: -100 },
+      '-r-y-c-y': { ...common, x: 0, y: 0 },
+      '-r-y-c-z': { ...common, x: -100, y: 100 },
+      '-r-z-c-x': { ...common, x: 0, y: 0 },
+      '-r-z-c-y': { ...common, x: -100, y: -100 },
+      '-r-z-c-z': { ...common, x: 0, y: 0 },
+    };
+
+    objectKeys(cells).forEach((cell) => {
+      const { x, y, ...otherStyle } = cells[cell];
+      gsap.to(motionSelector(css.cell, cell), {
+        ...otherStyle,
+        ...translate(x, y, isOpen),
+      });
     });
   });
 
@@ -68,14 +64,28 @@ export const MenuTarget = factory<MenuTargetFactory>((props, ref) => {
       {...otherProps}
       ref={scope}
       className="menu-target"
-      onClick={(event) => {
-        event.stopPropagation();
-        handler(!open ? true : undefined);
-        setOpen(!open ? true : undefined);
-        dispatch({ isMenuOpen: !open ? true : undefined });
+      onClick={() => {
+        handler(state.isMenuOpen ? undefined : true);
+        dispatch({ isMenuOpen: !state.isMenuOpen ? true : undefined });
       }}
     >
-      <MenuTargetGrid css={css} state={state} dispatch={dispatch} />
+      <div className="menu-target-grid">
+        <div className={motionClass(css.row, '-r-x')}>
+          <div className={motionClass(css.cell, '-r-x-c-x')} />
+          <div className={motionClass(css.cell, '-r-x-c-y')} />
+          <div className={motionClass(css.cell, '-r-x-c-z')} />
+        </div>
+        <div className={motionClass(css.row, '-r-y')}>
+          <div className={motionClass(css.cell, '-r-y-c-x')} />
+          <div className={motionClass(css.cell, '-r-y-c-y')} />
+          <div className={motionClass(css.cell, '-r-y-c-z')} />
+        </div>
+        <div className={motionClass(css.row, '-r-z')}>
+          <div className={motionClass(css.cell, '-r-z-c-x')} />
+          <div className={motionClass(css.cell, '-r-z-c-y')} />
+          <div className={motionClass(css.cell, '-r-z-c-z')} />
+        </div>
+      </div>
     </Action>
   );
 });
