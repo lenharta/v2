@@ -14,7 +14,7 @@ export interface ButtonProps extends Core.BaseProps, Core.FocusProps, Core.AriaL
   label?: string | undefined;
 
   /** A string representing the a value for the element. */
-  value?: string | undefined;
+  value?: string | number | readonly string[] | undefined;
 
   /** Indicates a `loading` state for the element. */
   loading?: boolean | undefined;

@@ -28,10 +28,28 @@
       gap: calc(var(--unit) * 2);
     }
     &-cell {
-      background-color: white;
       display: flex;
       height: calc(var(--unit) * 2);
       width: calc(var(--unit) * 2);
     }
+  }
+
+  &-panel {
+    top: var(--height-header);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    isolation: isolate;
+    z-index: var(--index-menu);
+    padding-block: calc(var(--gutter) * 4);
+    padding-inline: var(--gutter);
+  }
+
+  &-header {
+  }
+  &-footer {
+  }
+  &-header {
   }
 }

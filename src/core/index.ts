@@ -16,5 +16,6 @@ export * from './Subtitle';
 export * from './Tabs';
 export * from './Text';
 export * from './Title';
+export * from './Tile';
 export * from './Transition';
 export * from './VisuallyHidden';

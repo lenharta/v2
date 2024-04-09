@@ -1,7 +1,13 @@
-import { Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { Transition } from '@/core';
+import { MenuFooter } from '@/site/components/Menu/Footer';
+import { Core, Factory, Store } from '@/types';
 
-export interface MenuPanelProps {}
+export interface MenuPanelProps {
+  scheme?: Core.Scheme;
+  state: Store.AppStateProps['state'];
+  dispatch: Store.AppStateProps['dispatch'];
+}
 
 export type MenuPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -11,11 +17,29 @@ export type MenuPanelFactory = Factory.Config<{
 }>;
 
 export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
-  const { ...otherProps } = props;
+  const { state, scheme = 'primary', ...otherProps } = props;
   return (
-    <div {...otherProps} ref={ref} className="menu-panel">
-      <span>Menu Panel</span>
-    </div>
+    <Transition
+      mounted={state.isMenuOpen ? true : false}
+      timingFunction="ease-in-out"
+      transition={{
+        transitionProperty: 'opacity, transform',
+        out: { opacity: 0, transform: 'translate(-100%)' },
+        in: { opacity: 1, transform: 'translate(0)' },
+      }}
+    >
+      {(transitionStyles) => (
+        <div
+          {...otherProps}
+          ref={ref}
+          style={transitionStyles}
+          className="menu-panel"
+          data-scheme={scheme}
+        >
+          <MenuFooter />
+        </div>
+      )}
+    </Transition>
   );
 });
 

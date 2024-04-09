@@ -6,39 +6,30 @@ export function factory<Payload extends Factory.Payload>(ui: Factory.Render<Payl
   return Component as Factory.Component<Payload> & Factory.Components<Payload['comps']>;
 }
 
-// export declare namespace Core {
-//   interface FactoryPayload {
-//     ref: any;
-//     comp: any;
-//     comps?: Record<string, any> | undefined;
-//     props?: Record<string, any> | undefined;
-//     omits?: any;
-//   }
+export function createPolymorphic<DefaultType, Props>(ui: any) {
+  type UiComponentProps<C> = Factory.PolymorphicProps<C, Props>;
 
-//   type Factory<Payload extends FactoryPayload> = Payload;
+  type UiPolymorphicComponent = <C = DefaultType>(props: UiComponentProps<C>) => React.ReactElement;
 
-//   type Components<Input> = Input extends Record<string, any> ? Input : Record<string, never>;
+  type UiPolymorphicProps = Omit<React.FunctionComponent<Factory.ComponentProps<any>>, never>;
 
-//   type Attributes<T> = T extends React.ElementType ? React.RefAttributes<T> : never;
+  type PolymorphicComponent = UiPolymorphicComponent & UiPolymorphicProps;
 
-//   type Props<T, K> = T extends React.ElementType
-//     ? K extends keyof React.ComponentPropsWithoutRef<T>
-//       ? Omit<React.ComponentPropsWithoutRef<T>, K>
-//       : React.ComponentPropsWithoutRef<T>
-//     : never;
+  return ui as PolymorphicComponent;
+}
 
-//   type FactoryProps<T extends React.ElementType, K = unknown, P = {}> = Props<T, K> & P;
+export function factoryPolymorphic<Payload extends Factory.Payload>(
+  ui: React.ForwardRefRenderFunction<Payload['ref'], Payload['props']>
+) {
+  type UiPolymorphicProps<C> = Factory.PolymorphicProps<C, Payload['props']>;
 
-//   type FactoryRender<Payload extends FactoryPayload> = React.ForwardRefRenderFunction<
-//     Payload['ref'],
-//     FactoryProps<Payload['comp'], Payload['omits'], Payload['props']> & {
-//       ref?: React.ComponentPropsWithRef<Payload['comp']>['ref'];
-//     }
-//   >;
+  type UiPolymorphicComponent = <C = Payload['comp']>(
+    props: UiPolymorphicProps<C>
+  ) => React.ReactElement;
 
-//   type FactoryComponent<Payload extends FactoryPayload> = React.ForwardRefExoticComponent<
-//     FactoryProps<Payload['comp'], Payload['omits'], Payload['props']> & {
-//       ref?: React.ComponentPropsWithRef<Payload['comp']>['ref'];
-//     }
-//   >;
-// }
+  type PolymorphicComponent = UiPolymorphicComponent & Payload['comps'];
+
+  const Component = React.forwardRef(ui) as unknown as PolymorphicComponent;
+
+  return Component as PolymorphicComponent;
+}

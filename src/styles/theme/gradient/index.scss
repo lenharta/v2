@@ -58,8 +58,8 @@
 
 [data-prefers-mode='light'] {
   [data-gradient^='accent'] {
-    --c-gradient-start: var(--c-accent-200-A3);
-    --c-gradient-middle: var(--c-accent-200-A3);
-    --c-gradient-end: var(--c-accent-300-A3);
+    --c-gradient-start: var(--c-accent-500-A5);
+    --c-gradient-middle: var(--c-accent-500-A5);
+    --c-gradient-end: var(--c-accent-600-A5);
   }
 }

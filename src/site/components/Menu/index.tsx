@@ -21,6 +21,7 @@ export const Menu: MenuComponent = () => {
   return (
     <React.Fragment>
       <Menu.Target state={state} dispatch={dispatch} />
+      <Menu.Panel state={state} dispatch={dispatch} />
     </React.Fragment>
   );
 };

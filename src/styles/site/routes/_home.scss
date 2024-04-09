@@ -16,6 +16,12 @@
     &-overview-content {
       @include mixins.reset;
     }
+
+    &-nav-tiles,
+    &-nav-tiles-box,
+    &-nav-tiles-content {
+      @include mixins.reset;
+    }
   }
 }
 
@@ -26,6 +32,7 @@
     flex-direction: column;
     justify-content: flex-end;
     padding-inline: var(--gutter);
+    padding-bottom: var(--gutter);
     margin-top: var(--height-header);
     z-index: var(--index-hero);
     height: var(--height-hero);
@@ -38,6 +45,7 @@
 
     @media (min-width: 60em) {
       margin-left: var(--height-header);
+      padding-inline: calc(var(--gutter) * 2);
     }
   }
 
@@ -67,8 +75,46 @@
     bottom: 0;
   }
 
+  &-overview-content {
+    display: grid;
+    place-content: start;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+
+    @media (min-width: 60em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   &-overview-box {
     padding-block: calc(var(--gutter) * 2);
     padding-inline: var(--gutter);
+
+    .title {
+      font-size: var(--font-size-title-sm);
+      font-weight: var(--font-weight-1);
+      margin-bottom: var(--gutter);
+      line-height: 1.2;
+    }
+
+    @media (min-width: 60em) {
+      padding-inline: calc(var(--gutter) * 2);
+    }
+  }
+
+  &-nav-tiles {
+    &-content {
+      display: grid;
+      place-content: start;
+      grid-template-rows: auto;
+      grid-template-columns: repeat(1, 1fr);
+
+      @media (min-width: 60em) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &-box {
+    }
   }
 }
