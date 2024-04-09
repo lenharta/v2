@@ -1,5 +1,6 @@
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { DemoThemeMode } from '@/site/routes';
 
 export interface MenuFooterProps {}
 
@@ -14,7 +15,7 @@ export const MenuFooter = factory<MenuFooterFactory>((props, ref) => {
   const { ...otherProps } = props;
   return (
     <div {...otherProps} ref={ref} className="menu-footer">
-      <span>Menu Footer</span>
+      <DemoThemeMode />
     </div>
   );
 });

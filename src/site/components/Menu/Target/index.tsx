@@ -20,27 +20,31 @@ export type MenuTargetFactory = Factory.Config<{
 }>;
 
 const css = {
-  row: 'menu-target-grid-row',
-  cell: 'menu-target-grid-cell',
   grid: 'menu-target-grid-grid',
+  cell: 'menu-target-grid-cell',
+  row: 'menu-target-grid-row',
 };
 
 const commonMotion: gsap.TweenVars = {
-  ease: 'power3.in',
-  duration: 0.1,
+  ease: 'bounce.inOut',
+  duration: 0.15,
 };
 
 export const MenuTarget = factory<MenuTargetFactory>((props, ref) => {
   const { dispatch, state, ...otherProps } = props;
+
   const [open, setOpen] = React.useState<boolean>();
 
-  const { scope, handler: onClick } = useMotionHandler(ref, (open: boolean | undefined) => {
+  const { scope, handler } = useMotionHandler(ref, (open: boolean | undefined) => {
     const config: gsap.TweenVars = { ...commonMotion, rotate: open ? '45deg' : 0 };
 
     const translate = (input: string, open: boolean | undefined) => {
       return open ? input : 'translate(0%, 0%)';
     };
 
+    gsap.to(motionSelector(css.cell, '-r-y', '-c-y'), {
+      ...config,
+    });
     gsap.to(motionSelector(css.cell, '-r-x', '-c-y'), {
       ...config,
       transform: translate('translate(-100%, 100%)', open),
@@ -66,7 +70,7 @@ export const MenuTarget = factory<MenuTargetFactory>((props, ref) => {
       className="menu-target"
       onClick={(event) => {
         event.stopPropagation();
-        onClick(!open ? true : undefined);
+        handler(!open ? true : undefined);
         setOpen(!open ? true : undefined);
         dispatch({ isMenuOpen: !open ? true : undefined });
       }}

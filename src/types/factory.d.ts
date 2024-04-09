@@ -7,6 +7,24 @@ export namespace Factory {
     omits?: any;
   }
 
+  export type Prop<C> = { component?: C };
+
+  export type ComponentProps<T extends React.ElementType> =
+    T extends React.JSXElementConstructor<infer P>
+      ? P
+      : T extends keyof JSX.IntrinsicElements
+        ? JSX.IntrinsicElements[T]
+        : {};
+
+  export type ElementProps<
+    ElementType extends React.ElementType,
+    OmittedProps extends string = never,
+  > = Omit<React.ComponentPropsWithoutRef<ElementType>, OmittedProps>;
+
+  export type Extend<P = {}, O = {}> = O & Omit<P, keyof O>;
+
+  export type Inherited<C extends React.ElementType, Props = {}> = Extend<ComponentProps<C>, Props>;
+
   export type Config<T extends Payload> = T;
 
   export type Attributes<T> = T extends React.ElementType ? React.RefAttributes<T> : never;
@@ -19,18 +37,28 @@ export namespace Factory {
       : React.ComponentPropsWithoutRef<T>
     : never;
 
-  export type FilteredProps<T extends React.ElementType, K = unknown, P = {}> = Props<T, K> & P;
+  export type Filter<T extends React.ElementType, K = unknown, P = {}> = Props<T, K> & P;
 
   export type Render<P extends Payload> = React.ForwardRefRenderFunction<
     P['ref'],
-    FilteredProps<P['comp'], P['omits'], P['props']> & {
+    Filter<P['comp'], P['omits'], P['props']> & {
       ref?: React.ComponentPropsWithRef<P['comp']>['ref'];
     }
   >;
 
   export type Component<P extends Payload> = React.ForwardRefExoticComponent<
-    FilteredProps<P['comp'], P['omits'], P['props']> & {
+    Filter<P['comp'], P['omits'], P['props']> & {
       ref?: React.ComponentPropsWithRef<P['comp']>['ref'];
     }
   >;
+
+  export type PolymorphicRef<C> = C extends React.ElementType
+    ? React.ComponentPropsWithRef<C>['ref']
+    : never;
+
+  export type PolymorphicProps<C, Props = {}> = C extends React.ElementType
+    ? Inherited<C, Props & Prop<C>> & {
+        ref?: PolymorphicRef<C>;
+      }
+    : { component: React.ElementType };
 }

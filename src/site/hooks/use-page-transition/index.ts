@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Core } from '@/types';
 import { useIsomorphicEffect } from '@/hooks';
 
-const CONFIG = {
+const config = {
   easing: 'cubic-bezier(0.4, 0.14, 0.3, 1)',
   duration: { entrance: 800, exit: 800 },
   transition: {
@@ -31,10 +31,10 @@ export function usePageTransition(props: PageTransitonProps): PageTransitionRetu
   return {
     config: {
       mounted,
-      duration: CONFIG.duration.entrance,
-      exitDuration: CONFIG.duration.exit,
-      timingFunction: CONFIG.easing,
-      transition: CONFIG.transition,
+      duration: config.duration.entrance,
+      exitDuration: config.duration.exit,
+      timingFunction: config.easing,
+      transition: config.transition,
     },
   };
 }
