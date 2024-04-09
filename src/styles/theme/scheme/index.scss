@@ -90,6 +90,7 @@
   .sec[data-scheme='primary'],
   .menu[data-scheme='primary'],
   .header[data-scheme='primary'],
+  .menu-nav[data-scheme='primary'],
   .menu-panel[data-scheme='primary'] {
     color: var(--c-primary-text);
     background-color: var(--c-primary-base);
@@ -114,6 +115,7 @@
   .sec[data-scheme='secondary'],
   .menu[data-scheme='secondary'],
   .header[data-scheme='secondary'],
+  .menu-nav[data-scheme='secondary'],
   .menu-panel[data-scheme='secondary'] {
     color: var(--c-secondary-text);
     background-color: var(--c-secondary-base);
@@ -138,6 +140,7 @@
   .sec[data-scheme='tertiary'],
   .menu[data-scheme='tertiary'],
   .header[data-scheme='tertiary'],
+  .menu-nav[data-scheme='tertiary'],
   .menu-panel[data-scheme='tertiary'] {
     color: var(--c-tertiary-text);
     background-color: var(--c-tertiary-base);
