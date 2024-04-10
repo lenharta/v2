@@ -7,6 +7,7 @@
   --c-primary-pressed: hsl(230, 12%, 14%);
   --c-primary-selected: hsl(230, 12%, 20%);
   --c-primary-disabled: hsl(230, 12%, 40%);
+  --c-primary-shell-border: hsl(230, 12%, 20%);
 
   --c-secondary-text: hsl(230, 12%, 12%);
   --c-secondary-base: hsl(230, 12%, 99%);
@@ -14,6 +15,7 @@
   --c-secondary-pressed: hsl(230, 12%, 97%);
   --c-secondary-selected: hsl(230, 12%, 91%);
   --c-secondary-disabled: hsl(230, 12%, 60%);
+  --c-secondary-shell-border: hsl(230, 12%, 91%);
 
   --c-tertiary-text: hsl(230, 12%, 99%);
   --c-tertiary-base: hsl(230, 12%, 16%);
@@ -21,6 +23,7 @@
   --c-tertiary-pressed: hsl(230, 12%, 18%);
   --c-tertiary-selected: hsl(230, 12%, 24%);
   --c-tertiary-disabled: hsl(230, 12%, 40%);
+  --c-tertiary-shell-border: hsl(230, 12%, 24%);
 }
 
 [data-prefers-mode='dark'] {
@@ -30,6 +33,7 @@
   --c-primary-pressed: hsl(230, 3%, 12%);
   --c-primary-selected: hsl(230, 3%, 18%);
   --c-primary-disabled: hsl(230, 3%, 40%);
+  --c-primary-shell-border: hsl(230, 3%, 18%);
 
   --c-secondary-text: hsl(230, 3%, 12%);
   --c-secondary-base: hsl(230, 3%, 99%);
@@ -37,6 +41,7 @@
   --c-secondary-pressed: hsl(230, 3%, 97%);
   --c-secondary-selected: hsl(230, 3%, 91%);
   --c-secondary-disabled: hsl(230, 3%, 60%);
+  --c-secondary-shell-border: hsl(230, 3%, 91%);
 
   --c-tertiary-text: hsl(230, 3%, 99%);
   --c-tertiary-base: hsl(230, 3%, 14%);
@@ -44,6 +49,7 @@
   --c-tertiary-pressed: hsl(230, 3%, 16%);
   --c-tertiary-selected: hsl(230, 3%, 22%);
   --c-tertiary-disabled: hsl(230, 3%, 40%);
+  --c-tertiary-shell-border: hsl(230, 3%, 20%);
 }
 
 [data-prefers-mode='light'] {
@@ -53,6 +59,7 @@
   --c-primary-pressed: hsl(230, 3%, 97%);
   --c-primary-selected: hsl(230, 3%, 91%);
   --c-primary-disabled: hsl(230, 3%, 60%);
+  --c-primary-shell-border: hsl(230, 3%, 91%);
 
   --c-secondary-text: hsl(230, 3%, 99%);
   --c-secondary-base: hsl(230, 3%, 10%);
@@ -60,6 +67,7 @@
   --c-secondary-pressed: hsl(230, 3%, 12%);
   --c-secondary-selected: hsl(230, 3%, 18%);
   --c-secondary-disabled: hsl(230, 3%, 40%);
+  --c-secondary-shell-border: hsl(230, 3%, 18%);
 
   --c-tertiary-text: hsl(230, 3%, 8%);
   --c-tertiary-base: hsl(230, 3%, 94%);
@@ -67,6 +75,7 @@
   --c-tertiary-pressed: hsl(230, 3%, 92%);
   --c-tertiary-selected: hsl(230, 3%, 86%);
   --c-tertiary-disabled: hsl(230, 3%, 60%);
+  --c-tertiary-shell-border: hsl(230, 3%, 86%);
 }
 
 [data-prefers-mode='dim'],
@@ -78,20 +87,30 @@
     background-color: var(--c-primary-base);
   }
 
-  .menu-target-grid-cell {
-    background-color: var(--c-secondary-base);
+  .header {
+    color: var(--c-primary-text);
+    background-color: var(--c-primary-base);
+    border-bottom: solid 2px var(--c-primary-shell-border);
   }
-}
 
-[data-prefers-mode='dim'],
-[data-prefers-mode='dark'],
-[data-prefers-mode='light'] {
+  .menu {
+    &-nav {
+      color: var(--c-primary-text);
+      background-color: var(--c-primary-base);
+      border-right: solid 2px var(--c-primary-shell-border);
+    }
+    &-panel {
+      color: var(--c-primary-text);
+      background-color: var(--c-primary-base);
+      border-right: solid 2px var(--c-primary-shell-border);
+    }
+    &-target-grid-cell {
+      background-color: var(--c-secondary-base);
+    }
+  }
+
   .box[data-scheme='primary'],
-  .sec[data-scheme='primary'],
-  .menu[data-scheme='primary'],
-  .header[data-scheme='primary'],
-  .menu-nav[data-scheme='primary'],
-  .menu-panel[data-scheme='primary'] {
+  .sec[data-scheme='primary'] {
     color: var(--c-primary-text);
     background-color: var(--c-primary-base);
 
@@ -112,11 +131,7 @@
   }
 
   .box[data-scheme='secondary'],
-  .sec[data-scheme='secondary'],
-  .menu[data-scheme='secondary'],
-  .header[data-scheme='secondary'],
-  .menu-nav[data-scheme='secondary'],
-  .menu-panel[data-scheme='secondary'] {
+  .sec[data-scheme='secondary'] {
     color: var(--c-secondary-text);
     background-color: var(--c-secondary-base);
 
@@ -137,11 +152,7 @@
   }
 
   .box[data-scheme='tertiary'],
-  .sec[data-scheme='tertiary'],
-  .menu[data-scheme='tertiary'],
-  .header[data-scheme='tertiary'],
-  .menu-nav[data-scheme='tertiary'],
-  .menu-panel[data-scheme='tertiary'] {
+  .sec[data-scheme='tertiary'] {
     color: var(--c-tertiary-text);
     background-color: var(--c-tertiary-base);
 

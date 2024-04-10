@@ -4,6 +4,7 @@ import { MenuFooter } from '../Footer';
 import { Core, Factory } from '@/types';
 import { useAppState } from '@/store';
 import { useMergeRefs } from '@/hooks';
+import { MenuLogo } from '../Logo';
 
 const transitionConfig = {
   timingFunction: 'ease-in-out',
@@ -42,6 +43,7 @@ export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
           ref={refs}
         >
           <div className="menu-panel-content">
+            <MenuLogo />
             <MenuFooter />
           </div>
         </div>

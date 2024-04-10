@@ -1,39 +1,33 @@
 import clsx from 'clsx';
 import { ICON } from '@/core/Icon';
 import { Core, Factory } from '@/types';
-import { factoryPolymorphic } from '@/core/factory';
 import { useFocusProps } from '@/core/hooks';
-import { useTileContext } from './context';
+import { factoryPolymorphic } from '@/core/factory';
 
-export interface TileProps extends Core.BaseProps, Core.FocusProps {
+import { TileGroup } from './Group';
+import { TileInteractionProps, useTileContext } from './context';
+
+type TileBaseProps = Core.BaseProps & Core.FocusProps & Omit<TileInteractionProps, 'selectable'>;
+
+export interface TileProps extends TileBaseProps {
   /** Defines a unique global identifier for the element. */
   id?: string | undefined;
   /** Specifies the name of the icon path to be rendered. */
   icon?: ICON | undefined;
-  /** Defines the interaction type of the element */
-  type?: Core.InteractionType | undefined;
   /** Specifies the theme of the element */
   scheme?: Core.Scheme | undefined;
-  disabled?: boolean | undefined;
+  /** Defines a default html `class` for the element. */
   className?: string | undefined;
-  clickable?: boolean | undefined;
-  selectable?: boolean | undefined;
-  expandable?: boolean | undefined;
 }
 
 export type TileFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: TileProps;
+  comps: {
+    Group: typeof TileGroup;
+  };
 }>;
-
-interface TileInteractionProps {
-  type?: Core.InteractionType | undefined;
-  disabled?: boolean | undefined;
-  clickable?: boolean | undefined;
-  selectable?: boolean | undefined;
-  expandable?: boolean | undefined;
-}
 
 function findInteractionType(props: TileInteractionProps): Core.InteractionType {
   const { clickable, disabled, expandable, selectable, type } = props;
@@ -54,7 +48,6 @@ export const Tile = factoryPolymorphic<TileFactory>((props, ref) => {
     children,
     clickable,
     expandable,
-    selectable,
     excludeTabOrder,
     allowDisabledFocus,
     component = 'div',
@@ -70,7 +63,7 @@ export const Tile = factoryPolymorphic<TileFactory>((props, ref) => {
     disabled: ctx.disabled ?? disabled,
     clickable: ctx.clickable ?? clickable,
     expandable: ctx.expandable ?? expandable,
-    selectable: ctx.selectable ?? selectable,
+    selectable: ctx.selectable ?? undefined,
   });
 
   const isInteractive = interactionType !== 'base';
@@ -80,15 +73,15 @@ export const Tile = factoryPolymorphic<TileFactory>((props, ref) => {
     <Component
       {...otherProps}
       {...(isInteractive ? focusProps : {})}
-      ref={ref}
-      className={clsx('tile', `tile--${interactionType}`, otherProps.className)}
-      data-scheme={ctx.scheme ?? scheme}
       aria-disabled={isInteractive && isDisabled}
+      data-scheme={ctx.scheme ?? scheme}
+      className={clsx('tile', `tile--${interactionType}`, otherProps.className)}
+      ref={ref}
     >
-      <div className="="></div>
       {children}
     </Component>
   );
 });
 
 Tile.displayName = '@v2/core/Tile';
+Tile.Group = TileGroup;

@@ -18,9 +18,11 @@
   }
 }
 
-.tile,
+.button,
 .action,
-.button {
+.tile--clickable,
+.tile--expandable,
+.tile--selectable {
   border: solid var(--border-sm) transparent;
   outline: solid var(--border-sm) transparent;
   user-select: none;
@@ -31,7 +33,7 @@
   }
   &:not([aria-disabled]):focus:focus-visible,
   &:not([data-disabled]):focus:focus-visible {
-    outline-color: var(--c-blue-500);
+    outline-color: var(--hex-blue-500);
   }
   &:not([aria-disabled]):hover,
   &:not([data-disabled]):hover {

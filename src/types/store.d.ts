@@ -88,4 +88,11 @@ export namespace Store {
   export interface ProviderProps {
     children: React.ReactNode;
   }
+
+  export type ControlValue<T> = T;
+
+  export type ControlData<T> = {
+    value: ControlValue<T>;
+    label: string;
+  };
 }

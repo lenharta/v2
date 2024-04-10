@@ -40,9 +40,9 @@ export const Menu: MenuComponent = () => {
   const targetRefs = useMergeRefs(targetRef, scope);
 
   const common: gsap.TweenVars = {
-    duration: 0.05,
+    duration: 0.033,
     rotate: state.isMenuOpen ? '45deg' : '0deg',
-    ease: 'sine.InOut',
+    ease: state.isMenuOpen ? 'power1.in' : 'power1.Out',
   };
 
   const cellMotion: Record<string, gsap.TweenVars> = {

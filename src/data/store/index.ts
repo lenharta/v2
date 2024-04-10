@@ -2,6 +2,26 @@ import { Store } from '@/types';
 
 export const dataStoreThemeAttributes: Store.ThemeAttributeKey[] = ['dir', 'mode', 'accent'];
 
+export const dataStoreAccentColors: Store.Accent[] = [
+  'red',
+  'orange',
+  'amber',
+  'yellow',
+  'lime',
+  'green',
+  'emerald',
+  'teal',
+  'cyan',
+  'sky',
+  'blue',
+  'indigo',
+  'violet',
+  'purple',
+  'fuchsia',
+  'pink',
+  'rose',
+];
+
 export const lookupStoreThemeDir: Record<Store.Dir, Store.Dir> = {
   ltr: 'ltr',
   rtl: 'rtl',

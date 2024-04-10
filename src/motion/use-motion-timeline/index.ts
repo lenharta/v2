@@ -8,5 +8,5 @@ export function useMotionTimeline<E extends HTMLElement>(forwardedRef?: React.Fo
   return {
     scope: forwardedRef ? (refs as unknown as React.RefObject<E>) : scope,
     timeline,
-  };
+  } as const;
 }
