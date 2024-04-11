@@ -1,5 +1,6 @@
 import { Box } from '@/core';
 import { Action } from '@/app/action';
+import { LayoutSearch } from '../../LayoutSearch';
 
 export type LayoutHeaderRightComponent = React.FC<{
   navigate: (to: string) => void;
@@ -8,18 +9,11 @@ export type LayoutHeaderRightComponent = React.FC<{
 export const LayoutHeaderRight: LayoutHeaderRightComponent = ({ navigate }) => {
   return (
     <Box className="layout-header-right">
+      <LayoutSearch />
       <Action
-        to="/"
-        icon="placeholder"
-        label="header action item"
-        className="layout-header-action-item"
-        navigate={navigate}
-        variant="button"
-      />
-      <Action
-        to="/"
-        icon="placeholder"
-        label="header action item"
+        to="/preferences"
+        icon="settings"
+        label="go to preferences"
         className="layout-header-action-item"
         navigate={navigate}
         variant="button"

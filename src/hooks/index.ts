@@ -6,6 +6,7 @@ export * from './use-is-mounted';
 export * from './use-isomorphic-effect';
 export * from './use-latest-ref';
 export * from './use-merge-refs';
+export * from './use-merged-click-outside';
 export * from './use-random-classname';
 export * from './use-scroll-position';
 export * from './use-viewport-size';

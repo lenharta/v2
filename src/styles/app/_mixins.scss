@@ -1,15 +1,15 @@
 @mixin reset {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   vertical-align: baseline;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 @mixin reset-interactive {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   vertical-align: baseline;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 @mixin ltr {

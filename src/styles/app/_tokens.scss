@@ -1,0 +1,14 @@
+:root {
+  --app-index-header: 900;
+  --app-index-panel: 1000;
+  --app-index-nav: 1100;
+
+  --app-height-hero-mobile: 30vh;
+  --app-height-hero-desktop: 40vh;
+
+  --app-height-hero: var(--app-height-hero-mobile);
+
+  @media (min-width: 60em) {
+    --app-height-hero: var(--app-height-hero-desktop);
+  }
+}

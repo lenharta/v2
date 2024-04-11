@@ -116,7 +116,14 @@
 
 [data-prefers-mode='dim'] {
   --c-primary-text: var(--rgb-light-mode-surface-6);
+  --c-primary-border: var(--rgb-dark-mode-surface-5);
   --c-primary-background: var(--rgb-dark-mode-surface-6);
+
+  --c-primary-surface-1: var(--rgb-dark-mode-surface-6);
+  --c-primary-surface-2: var(--rgb-dark-mode-surface-5);
+  --c-primary-surface-3: var(--rgb-dark-mode-surface-4);
+  --c-primary-surface-4: var(--rgb-dark-mode-surface-3);
+  --c-primary-surface-5: var(--rgb-dark-mode-surface-2);
 
   --c-primary-button: color-mix(
     in srgb,
@@ -138,13 +145,30 @@
     var(--rgb-dark-mode-surface-6) 85%,
     var(--rgb-light-mode-surface-6)
   );
-  --c-primary-button-elevated: color-mix(
+
+  --c-primary-input: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 80%,
+    var(--rgb-dark-mode-surface-6) 96%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-primary-input-hover: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 92%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-primary-input-active: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 88%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-primary-input-selected: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 84%,
     var(--rgb-light-mode-surface-6)
   );
 
   --c-secondary-text: var(--rgb-dark-mode-surface-6);
+  --c-secondary-border: var(--rgb-light-mode-surface-5);
   --c-secondary-background: var(--rgb-light-mode-surface-6);
 
   --c-secondary-button: color-mix(
@@ -167,16 +191,39 @@
     var(--rgb-dark-mode-surface-6) 85%,
     var(--rgb-light-mode-surface-6)
   );
-  --c-secondary-button-elevated: color-mix(
+
+  --c-secondary-input: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 80%,
+    var(--rgb-dark-mode-surface-6) 96%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-secondary-input-hover: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 92%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-secondary-input-active: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 88%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-secondary-input-selected: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 84%,
     var(--rgb-light-mode-surface-6)
   );
 }
 
 [data-prefers-mode='dark'] {
   --c-primary-text: var(--rgb-light-mode-surface-6);
+  --c-primary-border: var(--rgb-dark-mode-surface-5);
   --c-primary-background: var(--rgb-dark-mode-surface-6);
+
+  --c-primary-surface-1: var(--rgb-dark-mode-surface-6);
+  --c-primary-surface-2: var(--rgb-dark-mode-surface-5);
+  --c-primary-surface-3: var(--rgb-dark-mode-surface-4);
+  --c-primary-surface-4: var(--rgb-dark-mode-surface-3);
+  --c-primary-surface-5: var(--rgb-dark-mode-surface-2);
 
   --c-primary-button: color-mix(
     in srgb,
@@ -185,26 +232,43 @@
   );
   --c-primary-button-hover: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 95%,
+    var(--rgb-dark-mode-surface-6) 96%,
     var(--rgb-light-mode-surface-6)
   );
   --c-primary-button-active: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 90%,
+    var(--rgb-dark-mode-surface-6) 92%,
     var(--rgb-light-mode-surface-6)
   );
   --c-primary-button-selected: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 85%,
+    var(--rgb-dark-mode-surface-6) 88%,
     var(--rgb-light-mode-surface-6)
   );
-  --c-primary-button-elevated: color-mix(
+
+  --c-primary-input: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 80%,
+    var(--rgb-dark-mode-surface-6) 96%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-primary-input-hover: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 92%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-primary-input-active: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 88%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-primary-input-selected: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 84%,
     var(--rgb-light-mode-surface-6)
   );
 
   --c-secondary-text: var(--rgb-dark-mode-surface-6);
+  --c-secondary-border: var(--rgb-light-mode-surface-5);
   --c-secondary-background: var(--rgb-light-mode-surface-6);
 
   --c-secondary-button: color-mix(
@@ -214,28 +278,45 @@
   );
   --c-secondary-button-hover: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 95%,
+    var(--rgb-dark-mode-surface-6) 96%,
     var(--rgb-light-mode-surface-6)
   );
   --c-secondary-button-active: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 90%,
+    var(--rgb-dark-mode-surface-6) 92%,
     var(--rgb-light-mode-surface-6)
   );
   --c-secondary-button-selected: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 85%,
+    var(--rgb-dark-mode-surface-6) 88%,
     var(--rgb-light-mode-surface-6)
   );
-  --c-secondary-button-elevated: color-mix(
+
+  --c-secondary-input: color-mix(
     in srgb,
-    var(--rgb-dark-mode-surface-6) 80%,
+    var(--rgb-dark-mode-surface-6) 96%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-secondary-input-hover: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 92%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-secondary-input-active: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 88%,
+    var(--rgb-light-mode-surface-6)
+  );
+  --c-secondary-input-selected: color-mix(
+    in srgb,
+    var(--rgb-dark-mode-surface-6) 84%,
     var(--rgb-light-mode-surface-6)
   );
 }
 
 [data-prefers-mode='light'] {
   --c-primary-text: var(--rgb-dark-mode-surface-6);
+  --c-primary-border: var(--rgb-light-mode-surface-5);
   --c-primary-background: var(--rgb-light-mode-surface-6);
 
   --c-primary-button: color-mix(
@@ -258,13 +339,30 @@
     var(--rgb-light-mode-surface-6) 85%,
     var(--rgb-dark-mode-surface-6)
   );
-  --c-primary-button-elevated: color-mix(
+
+  --c-primary-input: color-mix(
     in srgb,
-    var(--rgb-light-mode-surface-6) 80%,
+    var(--rgb-light-mode-surface-6) 96%,
+    var(--rgb-dark-mode-surface-6)
+  );
+  --c-primary-input-hover: color-mix(
+    in srgb,
+    var(--rgb-light-mode-surface-6) 92%,
+    var(--rgb-dark-mode-surface-6)
+  );
+  --c-primary-input-active: color-mix(
+    in srgb,
+    var(--rgb-light-mode-surface-6) 88%,
+    var(--rgb-dark-mode-surface-6)
+  );
+  --c-primary-input-selected: color-mix(
+    in srgb,
+    var(--rgb-light-mode-surface-6) 84%,
     var(--rgb-dark-mode-surface-6)
   );
 
   --c-secondary-text: var(--rgb-light-mode-surface-6);
+  --c-secondary-border: var(--rgb-dark-mode-surface-5);
   --c-secondary-background: var(--rgb-dark-mode-surface-6);
 
   --c-secondary-button: color-mix(
@@ -287,9 +385,25 @@
     var(--rgb-light-mode-surface-6) 85%,
     var(--rgb-dark-mode-surface-6)
   );
-  --c-secondary-button-elevated: color-mix(
+
+  --c-secondary-input: color-mix(
     in srgb,
-    var(--rgb-light-mode-surface-6) 80%,
+    var(--rgb-light-mode-surface-6) 96%,
+    var(--rgb-dark-mode-surface-6)
+  );
+  --c-secondary-input-hover: color-mix(
+    in srgb,
+    var(--rgb-light-mode-surface-6) 92%,
+    var(--rgb-dark-mode-surface-6)
+  );
+  --c-secondary-input-active: color-mix(
+    in srgb,
+    var(--rgb-light-mode-surface-6) 88%,
+    var(--rgb-dark-mode-surface-6)
+  );
+  --c-secondary-input-selected: color-mix(
+    in srgb,
+    var(--rgb-light-mode-surface-6) 84%,
     var(--rgb-dark-mode-surface-6)
   );
 }
@@ -327,8 +441,8 @@
   --c-gray: var(--rgb-light-mode-gray);
 }
 
-[data-prefers-mode='dim'][data-prefers-accessible-color],
-[data-prefers-mode='dark'][data-prefers-accessible-color] {
+[data-prefers-mode='dim'][data-prefers-accessible-color='true'],
+[data-prefers-mode='dark'][data-prefers-accessible-color='true'] {
   --c-red: var(--rgb-dark-mode-red-a11y);
   --c-orange: var(--rgb-dark-mode-orange-a11y);
   --c-yellow: var(--rgb-dark-mode-yellow-a11y);
@@ -344,7 +458,7 @@
   --c-gray: var(--rgb-dark-mode-gray-a11y);
 }
 
-[data-prefers-mode='light'][data-prefers-accessible-color] {
+[data-prefers-mode='light'][data-prefers-accessible-color='true'] {
   --c-red: var(--rgb-dark-mode-red-a11y);
   --c-orange: var(--rgb-dark-mode-orange-a11y);
   --c-yellow: var(--rgb-dark-mode-yellow-a11y);
@@ -378,62 +492,62 @@
   --c-accent-text: var(--c-yellow);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='red'],
-[data-prefers-mode='dark'][data-prefers-accent='red'],
-[data-prefers-mode='light'][data-prefers-accent='red'] {
+[data-prefers-mode='dim'][data-prefers-accent='green'],
+[data-prefers-mode='dark'][data-prefers-accent='green'],
+[data-prefers-mode='light'][data-prefers-accent='green'] {
   --c-accent-text: var(--c-green);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='orange'],
-[data-prefers-mode='dark'][data-prefers-accent='orange'],
-[data-prefers-mode='light'][data-prefers-accent='orange'] {
+[data-prefers-mode='dim'][data-prefers-accent='mint'],
+[data-prefers-mode='dark'][data-prefers-accent='mint'],
+[data-prefers-mode='light'][data-prefers-accent='mint'] {
   --c-accent-text: var(--c-mint);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='yellow'],
-[data-prefers-mode='dark'][data-prefers-accent='yellow'],
-[data-prefers-mode='light'][data-prefers-accent='yellow'] {
+[data-prefers-mode='dim'][data-prefers-accent='teal'],
+[data-prefers-mode='dark'][data-prefers-accent='teal'],
+[data-prefers-mode='light'][data-prefers-accent='teal'] {
   --c-accent-text: var(--c-teal);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='red'],
-[data-prefers-mode='dark'][data-prefers-accent='red'],
-[data-prefers-mode='light'][data-prefers-accent='red'] {
+[data-prefers-mode='dim'][data-prefers-accent='cyan'],
+[data-prefers-mode='dark'][data-prefers-accent='cyan'],
+[data-prefers-mode='light'][data-prefers-accent='cyan'] {
   --c-accent-text: var(--c-cyan);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='orange'],
-[data-prefers-mode='dark'][data-prefers-accent='orange'],
-[data-prefers-mode='light'][data-prefers-accent='orange'] {
+[data-prefers-mode='dim'][data-prefers-accent='blue'],
+[data-prefers-mode='dark'][data-prefers-accent='blue'],
+[data-prefers-mode='light'][data-prefers-accent='blue'] {
   --c-accent-text: var(--c-blue);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='yellow'],
-[data-prefers-mode='dark'][data-prefers-accent='yellow'],
-[data-prefers-mode='light'][data-prefers-accent='yellow'] {
+[data-prefers-mode='dim'][data-prefers-accent='indigo'],
+[data-prefers-mode='dark'][data-prefers-accent='indigo'],
+[data-prefers-mode='light'][data-prefers-accent='indigo'] {
   --c-accent-text: var(--c-indigo);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='red'],
-[data-prefers-mode='dark'][data-prefers-accent='red'],
-[data-prefers-mode='light'][data-prefers-accent='red'] {
+[data-prefers-mode='dim'][data-prefers-accent='purple'],
+[data-prefers-mode='dark'][data-prefers-accent='purple'],
+[data-prefers-mode='light'][data-prefers-accent='purple'] {
   --c-accent-text: var(--c-purple);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='orange'],
-[data-prefers-mode='dark'][data-prefers-accent='orange'],
-[data-prefers-mode='light'][data-prefers-accent='orange'] {
+[data-prefers-mode='dim'][data-prefers-accent='pink'],
+[data-prefers-mode='dark'][data-prefers-accent='pink'],
+[data-prefers-mode='light'][data-prefers-accent='pink'] {
   --c-accent-text: var(--c-pink);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='yellow'],
-[data-prefers-mode='dark'][data-prefers-accent='yellow'],
-[data-prefers-mode='light'][data-prefers-accent='yellow'] {
+[data-prefers-mode='dim'][data-prefers-accent='brown'],
+[data-prefers-mode='dark'][data-prefers-accent='brown'],
+[data-prefers-mode='light'][data-prefers-accent='brown'] {
   --c-accent-text: var(--c-brown);
 }
 
-[data-prefers-mode='dim'][data-prefers-accent='yellow'],
-[data-prefers-mode='dark'][data-prefers-accent='yellow'],
-[data-prefers-mode='light'][data-prefers-accent='yellow'] {
+[data-prefers-mode='dim'][data-prefers-accent='gray'],
+[data-prefers-mode='dark'][data-prefers-accent='gray'],
+[data-prefers-mode='light'][data-prefers-accent='gray'] {
   --c-accent-text: var(--c-gray);
 }

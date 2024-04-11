@@ -7,7 +7,16 @@ import './styles/main.scss';
 import App from './app';
 import { ErrorPage } from './app/page';
 import { ErrorLayout } from './app/layout';
-import { Home, Demo, Sandbox, Toolbox, Projects, Experience, Contact } from './app/routes';
+import {
+  Home,
+  Demo,
+  Contact,
+  Sandbox,
+  Toolbox,
+  Projects,
+  Experience,
+  Preferences,
+} from './app/routes';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +31,7 @@ const router = createBrowserRouter([
       { path: '/sandbox', element: <Sandbox />, errorElement: <ErrorPage /> },
       { path: '/projects', element: <Projects />, errorElement: <ErrorPage /> },
       { path: '/experience', element: <Experience />, errorElement: <ErrorPage /> },
+      { path: '/preferences', element: <Preferences />, errorElement: <ErrorPage /> },
     ],
   },
 ]);
