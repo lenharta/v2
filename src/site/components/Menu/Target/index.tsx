@@ -15,9 +15,9 @@ export type MenuTargetFactory = Factory.Config<{
 }>;
 
 const css = {
-  grid: 'menu-target-grid-grid',
-  cell: 'menu-target-grid-cell',
-  row: 'menu-target-grid-row',
+  grid: 'page-menu-target-grid',
+  cell: 'page-menu-target-cell',
+  row: 'page-menu-target-row',
 };
 
 export const MenuTarget = factory<MenuTargetFactory>((props, ref) => {
@@ -29,13 +29,13 @@ export const MenuTarget = factory<MenuTargetFactory>((props, ref) => {
     <Action
       {...otherProps}
       ref={ref}
-      className="menu-target"
+      className="page-menu-target"
       onClick={(event) => {
         event.stopPropagation();
         dispatch({ isMenuOpen: !state.isMenuOpen ? true : undefined });
       }}
     >
-      <div className="menu-target-grid">
+      <div className="page-menu-target-grid">
         <div className={motionClass(css.row, '-r-x')}>
           <div className={motionClass(css.cell, '-r-x-c-x')} />
           <div className={motionClass(css.cell, '-r-x-c-y')} />

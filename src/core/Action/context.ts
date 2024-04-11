@@ -3,10 +3,10 @@ import { Core } from '@/types';
 
 export interface ActionGroupContextValue {
   /** Specifies the size of the element. */
-  size?: Core.Size5;
+  size?: Core.Size5 | undefined;
 
   /** Specifies the style variant of the element. */
-  variant?: 'default' | 'tonal';
+  variant?: 'default' | 'tonal' | undefined;
 
   /** Indicates a `disabled` state for the interactive element. */
   disabled?: boolean | undefined;

@@ -20,9 +20,9 @@ export type MenuComponent = React.FC & {
 };
 
 const css = {
-  grid: 'menu-target-grid-grid',
-  cell: 'menu-target-grid-cell',
-  row: 'menu-target-grid-row',
+  grid: 'page-menu-target-grid',
+  cell: 'page-menu-target-cell',
+  row: 'page-menu-target-row',
 };
 
 const translate = (x: number, y: number, mounted?: boolean): gsap.TweenVars => {

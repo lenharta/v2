@@ -11,11 +11,12 @@ export const dataSiteLinks: Site.LinkItem[] = [
 ];
 
 export const dataSiteMenuLinks: Site.LinkItem[] = [
+  { value: '/', label: 'Home', icon: 'home' },
   { value: '/experience', label: 'Experience', icon: 'briefcase' },
   { value: '/projects', label: 'Projects', icon: 'code' },
-  { value: '/contact', label: 'Contact', icon: 'mention' },
   { value: '/toolbox', label: 'Toolbox', icon: 'wrench' },
   { value: '/sandbox', label: 'Sandbox', icon: 'boxMultiple' },
+  { value: '/contact', label: 'Contact', icon: 'mention' },
 ];
 
 export const lookupSiteSocialUrls: Partial<Record<Site.SocialKey, string>> = {

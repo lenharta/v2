@@ -1,9 +1,10 @@
+import { Box } from '@/core';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { MenuNavItem } from './Item';
-import { dataSiteLinks } from '@/data';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '@/store';
+import { dataSiteMenuLinks } from '@/data';
 
 export interface MenuNavProps {}
 
@@ -19,9 +20,9 @@ export const MenuNav = factory<MenuNavFactory>((props, ref) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   return (
-    <nav {...otherProps} ref={ref} className="menu-nav" data-scheme="primary">
-      <ul className="menu-nav-list">
-        {dataSiteLinks.map(({ label, value, icon }) => (
+    <Box component="nav" {...otherProps} ref={ref} className="page-menu-nav" data-scheme="primary">
+      <Box component="ul" className="page-menu-nav-content">
+        {dataSiteMenuLinks.map(({ label, value, icon }) => (
           <MenuNavItem
             key={value}
             icon={icon}
@@ -34,8 +35,8 @@ export const MenuNav = factory<MenuNavFactory>((props, ref) => {
             }}
           />
         ))}
-      </ul>
-    </nav>
+      </Box>
+    </Box>
   );
 });
 

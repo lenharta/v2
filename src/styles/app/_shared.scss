@@ -1,0 +1,5 @@
+@use './mixins' as mixins;
+
+.accent-text {
+  color: var(--c-accent-text);
+}

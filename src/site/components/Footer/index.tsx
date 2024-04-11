@@ -3,7 +3,8 @@ import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 
 export interface FooterProps {
-  scheme?: Core.Scheme;
+  /** Specifies the theme of the element */
+  scheme?: Core.Scheme | undefined;
 }
 
 export type FooterFactory = Factory.Config<{

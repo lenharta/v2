@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { factory } from '@/core/factory';
-import { Transition } from '@/core';
 import { useAppState } from '@/store';
 import { Core, Factory } from '@/types';
+import { Box, Transition } from '@/core';
 import { usePageTransition } from '@/site/hooks';
 
 import { PageTileGroup } from './Tile/Group';
@@ -32,14 +32,14 @@ export const Page = factory<PageFactory>((props, ref) => {
   return (
     <Transition {...config}>
       {(transitionStyles) => (
-        <div
+        <Box
           {...otherProps}
-          className={clsx('page', className)}
+          className={clsx('page-layout', className)}
           style={{ ...style, ...transitionStyles }}
           ref={ref}
         >
           {children}
-        </div>
+        </Box>
       )}
     </Transition>
   );

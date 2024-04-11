@@ -5,17 +5,17 @@ import { Core, Factory } from '@/types';
 import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export interface AvatarProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
-  /** Specifies the name key for the path that will be rendered by the `Icon` component. */
+  /** Specifies the icon path to be rendered. */
   icon?: ICON | undefined;
 
-  /** Defines a shorthand property `aria-label` property. */
+  /** Specifies the size of the element. */
+  size?: Core.Size5 | undefined;
+
+  /** Defines an accessible label for the element. */
   label?: string | undefined;
 
-  /** Specifies the size of the element. */
-  size?: Core.Size5;
-
   /** Specifies the style variant of the element. */
-  variant?: 'default' | 'tonal';
+  variant?: 'default' | 'tonal' | undefined;
 }
 
 export type AvatarFactory = Factory.Config<{

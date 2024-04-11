@@ -7,8 +7,8 @@
 
   display: flex;
   align-items: var(--align);
-  flex-direction: var(--direction);
   justify-content: var(--justify);
+  flex-direction: var(--direction);
 
   &[aria-orientation='vertical'] {
     --direction: column;
@@ -23,18 +23,10 @@
 .tile--clickable,
 .tile--expandable,
 .tile--selectable {
-  border: solid var(--border-sm) transparent;
-  outline: solid var(--border-sm) transparent;
   user-select: none;
+  outline: solid var(--border-sm) transparent;
+  border: solid var(--border-sm) transparent;
 
-  &:not([aria-disabled]):focus:not(:focus-visible),
-  &:not([data-disabled]):focus:not(:focus-visible) {
-    outline-color: transparent;
-  }
-  &:not([aria-disabled]):focus:focus-visible,
-  &:not([data-disabled]):focus:focus-visible {
-    outline-color: var(--hex-blue-500);
-  }
   &:not([aria-disabled]):hover,
   &:not([data-disabled]):hover {
     cursor: pointer;

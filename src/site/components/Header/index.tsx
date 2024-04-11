@@ -1,10 +1,11 @@
-import { Box } from '@/site/components';
-import { Menu } from '@/site/components/Menu';
+import { Box } from '@/core';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
+import { HeaderLogo } from './Logo';
 
 export interface HeaderProps {
-  scheme?: Core.Scheme;
+  /** Specifies the theme of the element */
+  scheme?: Core.Scheme | undefined;
 }
 
 export type HeaderFactory = Factory.Config<{
@@ -18,14 +19,13 @@ export const Header = factory<HeaderFactory>((props, ref) => {
   const { scheme = 'primary', ...otherProps } = props;
   const dataProps = { 'data-scheme': scheme };
   return (
-    <header {...otherProps} {...dataProps} className="header" ref={ref}>
-      <div className="header-content">
-        <Box className="header-box" data-position="left">
-          <Menu />
-        </Box>
-        <Box className="header-box" data-position="right"></Box>
-      </div>
-    </header>
+    <Box {...otherProps} {...dataProps} ref={ref} component="header" className="page-header">
+      <Box className="page-header-content">
+        <HeaderLogo />
+        {/* <Box className="page-header-box" data-position="left"></Box> */}
+        {/* <Box className="page-header-box" data-position="right"></Box> */}
+      </Box>
+    </Box>
   );
 });
 

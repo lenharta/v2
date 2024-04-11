@@ -1,10 +1,11 @@
+import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Transition } from '@/core';
-import { MenuFooter } from '../Footer';
-import { Core, Factory } from '@/types';
 import { useAppState } from '@/store';
 import { useMergeRefs } from '@/hooks';
+import { Box, Transition } from '@/core';
+
 import { MenuLogo } from '../Logo';
+import { MenuFooter } from '../Footer';
 
 const transitionConfig = {
   timingFunction: 'ease-in-out',
@@ -16,7 +17,6 @@ const transitionConfig = {
 };
 
 export interface MenuPanelProps {
-  scheme?: Core.Scheme;
   clickRef?: React.MutableRefObject<HTMLDivElement | undefined>;
 }
 
@@ -25,31 +25,32 @@ export type MenuPanelFactory = Factory.Config<{
   comp: 'div';
   props: MenuPanelProps;
   omits: 'className' | 'children';
+  comps: {
+    Footer: typeof MenuFooter;
+    Logo: typeof MenuLogo;
+  };
 }>;
 
 export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
-  const { scheme = 'primary', clickRef, ...otherProps } = props;
-  const refs = useMergeRefs(ref, clickRef);
+  const { clickRef, ...otherProps } = props;
+
   const state = useAppState();
+  const refs = useMergeRefs(ref, clickRef);
 
   return (
     <Transition mounted={state.isMenuOpen ? true : false} {...transitionConfig}>
       {(transitionStyles) => (
-        <div
-          {...otherProps}
-          data-scheme={scheme}
-          className="menu-panel"
-          style={transitionStyles}
-          ref={refs}
-        >
-          <div className="menu-panel-content">
-            <MenuLogo />
-            <MenuFooter />
-          </div>
-        </div>
+        <Box {...otherProps} style={transitionStyles} className="page-menu-panel" ref={refs}>
+          <Box className="page-menu-panel-content">
+            <MenuPanel.Logo />
+            <MenuPanel.Footer />
+          </Box>
+        </Box>
       )}
     </Transition>
   );
 });
 
 MenuPanel.displayName = '@v2/site/Menu.Panel';
+MenuPanel.Footer = MenuFooter;
+MenuPanel.Logo = MenuLogo;

@@ -7,12 +7,16 @@ import { Core, Factory } from '@/types';
 interface TileGroupProps {
   /** Defines the interaction type of the element */
   type?: Core.InteractionType | undefined;
-  scheme?: Core.Scheme | undefined;
+  /** Indicates a `disabled` state for all elements. */
   disabled?: boolean | undefined;
-  className?: string | undefined;
-  clickable?: boolean | undefined;
+  /** Indicates a selecatble interaction type for all elements. */
   selectable?: boolean | undefined;
+  /** Indicates a clickable interaction type for all elements. */
+  clickable?: boolean | undefined;
+  /** Indicates a expandable interaction type for all elements. */
   expandable?: boolean | undefined;
+
+  scheme?: Core.Scheme | undefined;
   orientation?: Core.Orientation | undefined;
   component?: React.ElementType | undefined;
 }

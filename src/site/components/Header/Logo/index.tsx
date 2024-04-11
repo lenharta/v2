@@ -1,20 +1,21 @@
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { Box } from '@/core';
 
 export interface HeaderLogoProps {}
 
 export type HeaderLogoFactory = Factory.Config<{
-  ref: HTMLDivElement;
-  comp: 'div';
+  ref: HTMLButtonElement;
+  comp: 'button';
   props: HeaderLogoProps;
 }>;
 
 export const HeaderLogo = factory<HeaderLogoFactory>((props, ref) => {
   const { ...otherProps } = props;
   return (
-    <div {...otherProps} ref={ref} className="header-logo">
-      <span>Header Logo</span>
-    </div>
+    <Box component="button" {...otherProps} ref={ref} className="page-header-logo">
+      Logo
+    </Box>
   );
 });
 

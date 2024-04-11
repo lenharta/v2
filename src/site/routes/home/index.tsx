@@ -16,6 +16,10 @@ export function Home() {
       <HomeHero />
       <Page.Content>
         <HomeOverview />
+        <HomeOverview />
+        <HomeOverview />
+        <HomeOverview />
+        <HomeOverview />
         <Tile.Group>
           <Tile ref={focusRef} clickable>
             <Text>Tile Item 1</Text>

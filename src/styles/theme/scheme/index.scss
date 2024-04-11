@@ -81,43 +81,58 @@
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
+  @include mixins.transition-colors-static;
+  background-color: var(--c-primary-base);
+  color: var(--c-primary-text);
+
+  .page,
   .layout {
     @include mixins.transition-colors-static;
-    color: var(--c-primary-text);
     background-color: var(--c-primary-base);
+    color: var(--c-primary-text);
   }
 
-  .header {
-    color: var(--c-primary-text);
-    background-color: var(--c-primary-base);
-    border-bottom: solid 2px var(--c-primary-shell-border);
+  .page-menu-target-cell {
+    @include mixins.transition-colors-static;
+    background-color: var(--c-secondary-base);
   }
 
-  .menu {
-    &-nav {
-      color: var(--c-primary-text);
-      background-color: var(--c-primary-base);
-      border-right: solid 2px var(--c-primary-shell-border);
+  .button--default,
+  .action--default,
+  .tile--clickable,
+  .tile--expandable,
+  .tile--selectable,
+  .page-menu-target {
+    @include mixins.transition-colors-interactive;
+    background-color: transparent;
+    color: inherit;
+
+    &:not([aria-disabled]):hover,
+    &:not([data-disabled]):hover {
+      background-color: var(--c-primary-hover);
     }
-    &-panel {
-      color: var(--c-primary-text);
-      background-color: var(--c-primary-base);
-      border-right: solid 2px var(--c-primary-shell-border);
-    }
-    &-target-grid-cell {
-      background-color: var(--c-secondary-base);
+    &:not([aria-disabled]):active,
+    &:not([data-disabled]):active {
+      background-color: var(--c-primary-pressed);
     }
   }
 
   .box[data-scheme='primary'],
-  .sec[data-scheme='primary'] {
-    color: var(--c-primary-text);
+  .sec[data-scheme='primary'],
+  .tile[data-scheme='primary'] {
+    @include mixins.transition-colors-static;
     background-color: var(--c-primary-base);
+    color: var(--c-primary-text);
 
     .button--default,
-    .action--default {
-      color: inherit;
+    .action--default,
+    .tile--clickable,
+    .tile--expandable,
+    .tile--selectable,
+    .page-menu-target {
+      @include mixins.transition-colors-interactive;
       background-color: transparent;
+      color: inherit;
 
       &:not([aria-disabled]):hover,
       &:not([data-disabled]):hover {
@@ -131,14 +146,21 @@
   }
 
   .box[data-scheme='secondary'],
-  .sec[data-scheme='secondary'] {
-    color: var(--c-secondary-text);
+  .sec[data-scheme='secondary'],
+  .tile[data-scheme='secondary'] {
+    @include mixins.transition-colors-static;
     background-color: var(--c-secondary-base);
+    color: var(--c-secondary-text);
 
     .button--default,
-    .action--default {
-      color: inherit;
+    .action--default,
+    .tile--clickable,
+    .tile--expandable,
+    .tile--selectable,
+    .page-menu-target {
+      @include mixins.transition-colors-interactive;
       background-color: transparent;
+      color: inherit;
 
       &:not([aria-disabled]):hover,
       &:not([data-disabled]):hover {
@@ -152,14 +174,21 @@
   }
 
   .box[data-scheme='tertiary'],
-  .sec[data-scheme='tertiary'] {
-    color: var(--c-tertiary-text);
+  .sec[data-scheme='tertiary'],
+  .tile[data-scheme='tertiary'] {
+    @include mixins.transition-colors-static;
     background-color: var(--c-tertiary-base);
+    color: var(--c-tertiary-text);
 
     .button--default,
-    .action--default {
-      color: inherit;
+    .action--default,
+    .tile--clickable,
+    .tile--expandable,
+    .tile--selectable,
+    .page-menu-target {
+      @include mixins.transition-colors-interactive;
       background-color: transparent;
+      color: inherit;
 
       &:not([aria-disabled]):hover,
       &:not([data-disabled]):hover {

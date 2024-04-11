@@ -1,8 +1,10 @@
 import clsx from 'clsx';
+import { Box } from '@/core';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
-import { ScreenContent } from './Content';
+
 import { ScreenHero } from './Hero';
+import { ScreenContent } from './Content';
 
 export interface ScreenProps extends Core.BaseProps {}
 
@@ -19,9 +21,9 @@ export type ScreenFactory = Factory.Config<{
 export const Screen = factory<ScreenFactory>((props, ref) => {
   const { children, className, ...otherProps } = props;
   return (
-    <div {...otherProps} className={clsx('screen-layout', className)} ref={ref}>
+    <Box {...otherProps} className={clsx('screen-layout', className)} ref={ref}>
       {children}
-    </div>
+    </Box>
   );
 });
 

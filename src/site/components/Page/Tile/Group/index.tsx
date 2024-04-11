@@ -2,6 +2,7 @@ import { Core, Factory } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import { factory } from '@/core/factory';
 import { PageTile } from '..';
+import { Box } from '@/core';
 
 export interface PageTileGroupProps {
   items?: Core.LinkItemObj[];
@@ -34,10 +35,10 @@ export const PageTileGroup = factory<PageTileGroupFactory>((props, ref) => {
   ));
 
   return (
-    <div {...otherProps} ref={ref} className="page-tile-group">
+    <Box {...otherProps} ref={ref} className="page-tile-group">
       {isDataGroup && dataGroup}
       {isChildGroup && children}
-    </div>
+    </Box>
   );
 });
 
