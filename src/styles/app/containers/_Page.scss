@@ -1,0 +1,17 @@
+@use '../mixins' as mixins;
+
+@layer reset {
+  .page {
+    @include mixins.reset;
+  }
+}
+
+.page {
+  display: block;
+  border: solid var(--unit) transparent;
+}
+
+.page-hero {
+  padding-inline: var(--gutter);
+  padding-block: var(--gutter);
+}

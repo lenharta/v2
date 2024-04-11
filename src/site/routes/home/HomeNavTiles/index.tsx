@@ -1,4 +1,5 @@
-import { Box, Section } from '@/site/components';
+import { Box } from '@/core';
+import { Section } from '@/site/components';
 
 export const HomeNavTiles = () => (
   <Section className="sec-home-nav-tiles">

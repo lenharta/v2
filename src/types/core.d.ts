@@ -87,6 +87,15 @@ export namespace Core {
     h6?: boolean | undefined;
   }
 
+  export interface LinkItemObj {
+    /** Defines a destination url for the link item element. */
+    to: string;
+    /** Defines an accessible label for the link item element. */
+    label: string;
+    /** Defines a icon path for the link item element. */
+    icon?: ICON | undefined;
+  }
+
   export interface ItemObj {
     /** Defines a `value` for the item. */
     value: string | number;

@@ -7,20 +7,17 @@ import { useActionGroup } from '@/core/Action/context';
 import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export interface ActionProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
-  /** Specifies the name of the icon path to be rendered. */
+  /** Specifies the icon path to be rendered. */
   icon?: ICON | undefined;
 
-  /** Specifies the destination urk for the element. */
-  url?: string | undefined;
-
   /** Specifies the size of the element. */
-  size?: Core.Size5;
+  size?: Core.Size5 | undefined;
+
+  /** Defines an accessible label for the element. */
+  label?: string | undefined;
 
   /** Specifies the style variant of the element. */
-  variant?: 'default' | 'tonal';
-
-  /** Defines a shorthand property `aria-label` property. */
-  label?: string | undefined;
+  variant?: 'default' | 'tonal' | undefined;
 }
 
 export type ActionFactory = Factory.Config<{
@@ -34,7 +31,6 @@ export type ActionFactory = Factory.Config<{
 
 export const Action = factory<ActionFactory>((props, ref) => {
   const {
-    url,
     size = 'sm',
     icon,
     label = 'action',

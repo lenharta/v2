@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { Box } from '@/core';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 
@@ -13,9 +14,9 @@ export type ScreenContentFactory = Factory.Config<{
 export const ScreenContent = factory<ScreenContentFactory>((props, ref) => {
   const { children, className, ...otherProps } = props;
   return (
-    <div {...otherProps} className={clsx('screen-content', className)} ref={ref}>
+    <Box {...otherProps} className={clsx('screen-content', className)} ref={ref}>
       {children}
-    </div>
+    </Box>
   );
 });
 

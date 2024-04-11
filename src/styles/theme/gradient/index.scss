@@ -5,7 +5,7 @@
 [data-prefers-mode='light'] {
   [data-gradient] {
     background: linear-gradient(
-      to var(--c-gradient-direction),
+      var(--c-gradient-direction),
       var(--c-gradient-start) 0%,
       var(--c-gradient-middle) 50%,
       var(--c-gradient-end) 100%
@@ -13,53 +13,87 @@
   }
 
   [data-gradient$='top'] {
-    --c-gradient-direction: top;
+    --c-gradient-direction: to top;
   }
   [data-gradient$='left'] {
-    --c-gradient-direction: left;
+    --c-gradient-direction: to left;
   }
   [data-gradient$='right'] {
-    --c-gradient-direction: right;
+    --c-gradient-direction: to right;
   }
   [data-gradient$='bottom'] {
-    --c-gradient-direction: bottom;
+    --c-gradient-direction: to bottom;
   }
   [data-gradient$='top-left'] {
-    --c-gradient-direction: top left;
+    --c-gradient-direction: to top left;
   }
   [data-gradient$='top-right'] {
-    --c-gradient-direction: top right;
+    --c-gradient-direction: to top right;
   }
   [data-gradient$='bottom-left'] {
-    --c-gradient-direction: bottom left;
+    --c-gradient-direction: to bottom left;
   }
   [data-gradient$='bottom-right'] {
-    --c-gradient-direction: bottom right;
+    --c-gradient-direction: to bottom right;
   }
 }
 
 [data-prefers-mode='dim'] {
-  @include mixins.transition-colors-static;
-
   [data-gradient^='accent'] {
-    --c-gradient-start: var(--c-accent-950-A3);
-    --c-gradient-middle: var(--c-accent-950-A3);
-    --c-gradient-end: var(--c-accent-900-A3);
+    --c-gradient-start: var(--c-accent-950);
+    --c-gradient-middle: var(--c-accent-950);
+    --c-gradient-end: var(--c-accent-900);
+  }
+  [data-gradient='accent-hero-upper'] {
+    --c-gradient-direction: 325deg;
+    --c-gradient-start: var(--c-accent-500-A3);
+    --c-gradient-middle: var(--c-accent-500-A3);
+    --c-gradient-end: var(--c-accent-500-A5);
+  }
+  [data-gradient='accent-hero-lower'] {
+    --c-gradient-direction: 35deg;
+    --c-gradient-start: var(--c-accent-500-A3);
+    --c-gradient-middle: var(--c-accent-500-A3);
+    --c-gradient-end: var(--c-accent-500-A5);
   }
 }
 
 [data-prefers-mode='dark'] {
   [data-gradient^='accent'] {
-    --c-gradient-start: var(--c-accent-950-A3);
-    --c-gradient-middle: var(--c-accent-900-A3);
-    --c-gradient-end: var(--c-accent-800-A3);
+    --c-gradient-start: var(--c-accent-950);
+    --c-gradient-middle: var(--c-accent-950);
+    --c-gradient-end: var(--c-accent-900);
+  }
+  [data-gradient='accent-hero-upper'] {
+    --c-gradient-direction: 325deg;
+    --c-gradient-start: var(--c-accent-500-A3);
+    --c-gradient-middle: var(--c-accent-500-A3);
+    --c-gradient-end: var(--c-accent-500-A5);
+  }
+  [data-gradient='accent-hero-lower'] {
+    --c-gradient-direction: 35deg;
+    --c-gradient-start: var(--c-accent-500-A3);
+    --c-gradient-middle: var(--c-accent-500-A3);
+    --c-gradient-end: var(--c-accent-500-A5);
   }
 }
 
 [data-prefers-mode='light'] {
   [data-gradient^='accent'] {
-    --c-gradient-start: var(--c-accent-500-A5);
-    --c-gradient-middle: var(--c-accent-500-A5);
-    --c-gradient-end: var(--c-accent-600-A5);
+    --c-gradient-start: var(--c-accent-300);
+    --c-gradient-middle: var(--c-accent-400);
+    --c-gradient-end: var(--c-accent-400);
+  }
+  [data-gradient='accent-hero-upper'] {
+    --c-gradient-direction: 325deg;
+    --c-gradient-start: var(--c-accent-500-A3);
+    --c-gradient-middle: var(--c-accent-500-A3);
+    --c-gradient-end: var(--c-accent-500-A5);
+  }
+  [data-gradient='accent-hero-lower'] {
+    --c-gradient-direction: 35deg;
+    --c-gradient-start: var(--c-accent-500-A3);
+    --c-gradient-middle: var(--c-accent-500-A3);
+    --c-gradient-end: var(--c-accent-500-A5);
   }
 }

@@ -1,0 +1,11 @@
+@use '../mixins' as mixins;
+
+@layer reset {
+  .section {
+    @include mixins.reset;
+  }
+}
+
+.section {
+  display: block;
+}

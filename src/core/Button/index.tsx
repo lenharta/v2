@@ -10,26 +10,29 @@ export interface ButtonProps extends Core.BaseProps, Core.FocusProps, Core.AriaL
   /** Defines a unique global identifier for the element. */
   id?: string | undefined;
 
+  /** Specifies the size of the element. */
+  size?: Core.Size5 | undefined;
+
   /** Defines a shorthand property `aria-label` property. */
   label?: string | undefined;
 
   /** A string representing the a value for the element. */
   value?: string | number | readonly string[] | undefined;
 
-  /** Indicates a `loading` state for the element. */
+  /** Specifies the style variant of the element. */
+  variant?: 'default' | 'tonal' | undefined;
+
+  /** Indicates a `loading` state for the interactive element. */
   loading?: boolean | undefined;
 
-  /** Content placed to the `left` of the label.*/
+  /** Indicates a `disabled` state for the interactive element. */
+  disabled?: boolean | undefined;
+
+  /** Defines content placed to the `left` of the label.*/
   leftContent?: React.ReactNode | undefined;
 
-  /** Content placed to the `right` of the label.*/
+  /** Defines content placed to the `right` of the label.*/
   rightContent?: React.ReactNode | undefined;
-
-  /** Specifies the style variant of the element. */
-  variant?: 'default' | 'tonal';
-
-  /** Specifies the size of the element. */
-  size?: Core.Size5;
 }
 
 export type ButtonFactory = Factory.Config<{

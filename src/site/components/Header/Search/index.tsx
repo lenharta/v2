@@ -12,7 +12,7 @@ export type HeaderSearchFactory = Factory.Config<{
 export const HeaderSearch = factory<HeaderSearchFactory>((props, ref) => {
   const { ...otherProps } = props;
   return (
-    <div {...otherProps} ref={ref} className="header-search">
+    <div {...otherProps} ref={ref} className="page-header-search">
       <span>Header Search</span>
     </div>
   );

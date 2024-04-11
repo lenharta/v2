@@ -1,20 +1,31 @@
+import clsx from 'clsx';
+import { Box } from '@/core';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 
-export interface SectionHeaderProps extends Core.BaseProps {}
+export interface SectionHeaderProps extends Core.BaseProps {
+  /** Specifies the theme of the element */
+  scheme?: Core.Scheme | undefined;
+}
 
 export type SectionHeaderFactory = Factory.Config<{
   ref: HTMLDivElement;
-  comp: 'section';
+  comp: 'header';
   props: SectionHeaderProps;
 }>;
 
 export const SectionHeader = factory<SectionHeaderFactory>((props, ref) => {
-  const { children, className, ...otherProps } = props;
+  const { scheme = 'primary', children, className, ...otherProps } = props;
   return (
-    <header {...otherProps} ref={ref} className={className}>
+    <Box
+      {...otherProps}
+      className={clsx('sec-header', className)}
+      component="header"
+      scheme={scheme}
+      ref={ref}
+    >
       {children}
-    </header>
+    </Box>
   );
 });
 

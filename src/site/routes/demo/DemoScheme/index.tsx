@@ -3,7 +3,12 @@ import { Box, Section } from '@/site/components';
 import { capitalizeString } from '@/utils';
 import { Subtitle, Text, Title } from '@/core';
 
-export const DemoScheme = ({ scheme = 'primary' }: { scheme?: Core.Scheme }) => (
+interface DemoSchemeProps {
+  /** Specifies the theme of the element */
+  scheme?: Core.Scheme | undefined;
+}
+
+export const DemoScheme = ({ scheme = 'primary' }: DemoSchemeProps) => (
   <Section scheme={scheme} className="sec-demo">
     <Section.Header className="sec-demo-header">
       <Title>{capitalizeString(scheme)}</Title>

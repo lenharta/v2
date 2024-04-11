@@ -1,61 +1,96 @@
+import clsx from 'clsx';
 import gsap from 'gsap';
 import * as React from 'react';
 import { Page } from '@/site/components';
 import { useGSAP } from '@gsap/react';
-import { Subtitle, Title } from '@/core';
+import { Box, Subtitle, Title } from '@/core';
+import { useMotionTimeline } from '@/motion';
+
+export const HomeHeroGridCell = ({ cell }: { cell?: string }) => {
+  return <div className={clsx('sec-home-hero-grid-cell', cell)} />;
+};
+
+export const HomeHeroGridRow = ({ row, cells }: { row: string; cells: string[] }) => {
+  return (
+    <div className={clsx('sec-home-hero-grid-row', row)}>
+      {cells.map((cell) => (
+        <HomeHeroGridCell key={cell} cell={cell} />
+      ))}
+    </div>
+  );
+};
+
+const data = [
+  {
+    row: 'row-1',
+    cells: [
+      'row-1-box-1',
+      'row-1-box-2',
+      'row-1-box-3',
+      'row-1-box-4',
+      'row-1-box-5',
+      'row-1-box-6',
+    ],
+  },
+  {
+    row: 'row-2',
+    cells: [
+      'row-2-box-1',
+      'row-2-box-2',
+      'row-2-box-3',
+      'row-2-box-4',
+      'row-2-box-5',
+      'row-2-box-6',
+    ],
+  },
+];
 
 export const HomeHero = () => {
-  const timelineRef = React.useRef<gsap.core.Timeline>();
-  const scopeRef = React.useRef<HTMLDivElement>(null);
-  const common = { ease: 'sine.inOut', opacity: 0, duration: 0.5 };
+  const { scope, timeline } = useMotionTimeline<HTMLDivElement>();
 
-  const styles = {
-    titleUpper: { y: '-100%', ...common },
-    titleLower: { x: '-100%', ...common },
-    underlayUpper: { x: '100%', skewX: '45deg', ...common },
-    underlayLower: { x: '-100%', skewX: '-45deg', ...common },
-  } as const;
-
-  const css = {
-    titleUpper: 'sec-home-hero-title--upper',
-    titleLower: 'sec-home-hero-title--lower',
-    underlayUpper: 'sec-home-hero-underlay--upper',
-    underlayLower: 'sec-home-hero-underlay--lower',
-  } as const;
-
-  const gradients = {
-    underlayUpper: 'accent-bottom-left',
-    underlayLower: 'accent-top-right',
-  } as const;
-
-  const formatClassName = (key: keyof typeof css) => {
-    return '.' + css[key];
+  const common: gsap.TweenVars = {
+    ease: 'sine.inOut',
+    opacity: 0,
+    duration: 0.2,
   };
 
   useGSAP(
     () => {
-      timelineRef.current = gsap
+      timeline.current = gsap
         .timeline()
-        .from(...[formatClassName('titleUpper'), styles.titleUpper, '<'])
-        .from(...[formatClassName('titleLower'), styles.titleLower, '>'])
-        .from(...[formatClassName('underlayUpper'), styles.underlayUpper, '<'])
-        .from(...[formatClassName('underlayLower'), styles.underlayLower, '<']);
+        .from('.row-1', { ...common })
+        .from('.row-1-box-1', { ...common })
+        .from('.row-1-box-2', { ...common })
+        .from('.row-1-box-3', { ...common })
+        .from('.row-1-box-4', { ...common })
+        .from('.row-1-box-5', { ...common })
+        .from('.row-1-box-6', { ...common })
+        .from('.row-2', { ...common })
+        .from('.row-2-box-1', { ...common })
+        .from('.row-2-box-2', { ...common })
+        .from('.row-2-box-3', { ...common })
+        .from('.row-2-box-4', { ...common })
+        .from('.row-2-box-5', { ...common })
+        .from('.row-2-box-6', { ...common });
     },
-    { scope: scopeRef, revertOnUpdate: true }
+    { scope }
   );
 
   return (
-    <Page.Hero ref={scopeRef}>
-      <div className="sec-home-hero-content">
-        <Subtitle className={css.titleUpper} h2>
+    <Page.Hero ref={scope}>
+      <Box className="sec-home-hero-content">
+        <Subtitle className="sec-home-hero-title--upper" h2>
           Andrew Lenhart
         </Subtitle>
-        <Title className={css.titleLower} h1>
+        <Title className="sec-home-hero-title--lower" h1>
           Software Engineer
         </Title>
-      </div>
-      <div data-gradient={gradients.underlayUpper} className={css.underlayUpper} />
-      <div data-gradient={gradients.underlayLower} className={css.underlayLower} />
+      </Box>
+      <Box className="sec-home-hero-grid">
+        {data.map(({ cells, row }) => (
+          <HomeHeroGridRow key={row} row={row} cells={cells} />
+        ))}
+      </Box>
     </Page.Hero>
   );
 };

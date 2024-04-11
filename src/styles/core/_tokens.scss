@@ -41,7 +41,9 @@
 }
 
 :root {
+  --action-box-mobile: calc(var(--unit) * 30);
   --action-size-mobile: calc(var(--unit) * 28);
+  --action-box-desktop: calc(var(--unit) * 30);
   --action-size-desktop: calc(var(--unit) * 28);
 
   --icon-size-sm-mobile: calc(var(--spacing) * 10);
@@ -98,7 +100,9 @@
   --font-size-title-xl-desktop: 52px;
   --font-size-title-xxl-desktop: 92px;
 
+  --action-box: var(--action-box-mobile);
   --action-size: var(--action-size-mobile);
+  --action-offset: calc(var(--action-size) - var(--action-box));
 
   --icon-size-sm: var(--icon-size-sm-mobile);
   --icon-size-md: var(--icon-size-md-mobile);
@@ -128,6 +132,9 @@
   --font-size-title-xxl: var(--font-size-title-xxl-mobile);
 
   @media (min-width: 60em) {
+    --action-box: var(--action-box-desktop);
+    --action-size: var(--action-size-desktop);
+
     --icon-size-sm: var(--icon-size-sm-desktop);
     --icon-size-md: var(--icon-size-md-desktop);
     --icon-size-lg: var(--icon-size-lg-desktop);

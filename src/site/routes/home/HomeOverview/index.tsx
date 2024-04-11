@@ -1,5 +1,5 @@
-import { Text, Title } from '@/core';
-import { Box, Section } from '@/site/components';
+import { Section } from '@/site/components';
+import { Box, Text, Title } from '@/core';
 
 export const HomeOverview = () => {
   return (

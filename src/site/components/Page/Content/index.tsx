@@ -1,7 +1,9 @@
 import clsx from 'clsx';
-import { Footer } from '@/site/components/Footer';
+import { Box } from '@/core';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
+
+import { Footer } from '../../Footer';
 
 export interface PageContentProps extends Core.BaseProps {}
 
@@ -14,10 +16,16 @@ export type PageContentFactory = Factory.Config<{
 export const PageContent = factory<PageContentFactory>((props, ref) => {
   const { id = 'main_content', className, children, ...otherProps } = props;
   return (
-    <main {...otherProps} id={id} ref={ref} className={clsx('page-content', className)}>
+    <Box
+      {...otherProps}
+      className={clsx('page-content', className)}
+      component="main"
+      ref={ref}
+      id={id}
+    >
       {children}
       <Footer />
-    </main>
+    </Box>
   );
 });
 

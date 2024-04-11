@@ -5,6 +5,7 @@ import { SectionHeader } from './Header';
 import { SectionContent } from './Content';
 
 export interface SectionProps extends Core.BaseProps {
+  /** Specifies the theme of the element */
   scheme?: Core.Scheme | undefined;
 }
 
@@ -13,8 +14,8 @@ export type SectionFactory = Factory.Config<{
   comp: 'section';
   props: SectionProps;
   comps: {
-    Header: typeof SectionHeader;
     Content: typeof SectionContent;
+    Header: typeof SectionHeader;
   };
 }>;
 
@@ -29,5 +30,5 @@ export const Section = factory<SectionFactory>((props, ref) => {
 });
 
 Section.displayName = '@v2/site/Section';
-Section.Header = SectionHeader;
 Section.Content = SectionContent;
+Section.Header = SectionHeader;

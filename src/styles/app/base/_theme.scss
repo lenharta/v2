@@ -1,0 +1,71 @@
+[data-prefers-mode='dim'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='light'] {
+  color: var(--c-primary-text);
+  background-color: var(--c-primary-background);
+
+  .layout-nav {
+    background-color: var(--c-primary-background);
+  }
+
+  .button,
+  .action--link,
+  .action--button {
+    color: var(--c-primary-text);
+    background-color: var(--c-primary-button);
+    outline: solid var(--unit) transparent;
+    border: solid var(--unit) transparent;
+
+    &:not([data-disabled]):hover,
+    &:not([aria-disabled]):hover {
+      color: var(--c-primary-text);
+      background-color: var(--c-primary-button-hover);
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      color: var(--c-primary-text);
+      background-color: var(--c-primary-button-active);
+    }
+    &:not([aria-disabled]):focus:not(:focus-visible),
+    &:not([data-disabled]):focus:not(:focus-visible) {
+      outline-color: transparent;
+    }
+    &:not([aria-disabled]):focus:focus-visible,
+    &:not([data-disabled]):focus:focus-visible {
+      outline-color: var(--c-blue);
+    }
+  }
+
+  [data-scheme='secondary'] {
+    color: var(--c-secondary-text);
+    background-color: var(--c-secondary-background);
+
+    .button,
+    .action--link,
+    .action--button {
+      color: var(--c-secondary-text);
+      background-color: var(--c-secondary-button);
+      outline: solid var(--unit) transparent;
+      border: solid var(--unit) transparent;
+
+      &:not([data-disabled]):hover,
+      &:not([aria-disabled]):hover {
+        color: var(--c-secondary-text);
+        background-color: var(--c-secondary-button-hover);
+      }
+      &:not([data-disabled]):active,
+      &:not([aria-disabled]):active {
+        color: var(--c-secondary-text);
+        background-color: var(--c-secondary-button-active);
+      }
+      &:not([aria-disabled]):focus:not(:focus-visible),
+      &:not([data-disabled]):focus:not(:focus-visible) {
+        outline-color: transparent;
+      }
+      &:not([aria-disabled]):focus:focus-visible,
+      &:not([data-disabled]):focus:focus-visible {
+        outline-color: var(--c-blue);
+      }
+    }
+  }
+}

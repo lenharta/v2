@@ -1,16 +1,11 @@
-import gsap from 'gsap';
-import * as React from 'react';
+// import gsap from 'gsap';
 import { Action } from '@/core';
+import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Factory, Store } from '@/types';
-import { MenuTargetGrid } from './Grid';
-import { motionSelector } from '@/motion';
-import { useMotionHandler } from '@/motion/use-motion-handler';
+import { motionClass } from '@/motion';
+import { useAppDispatch, useAppState } from '@/store';
 
-export interface MenuTargetProps {
-  state: Store.AppStateProps['state'];
-  dispatch: Store.AppStateProps['dispatch'];
-}
+export interface MenuTargetProps {}
 
 export type MenuTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -20,62 +15,43 @@ export type MenuTargetFactory = Factory.Config<{
 }>;
 
 const css = {
-  grid: 'menu-target-grid-grid',
-  cell: 'menu-target-grid-cell',
-  row: 'menu-target-grid-row',
-};
-
-const commonMotion: gsap.TweenVars = {
-  ease: 'bounce.inOut',
-  duration: 0.15,
+  grid: 'page-menu-target-grid',
+  cell: 'page-menu-target-cell',
+  row: 'page-menu-target-row',
 };
 
 export const MenuTarget = factory<MenuTargetFactory>((props, ref) => {
-  const { dispatch, state, ...otherProps } = props;
-
-  const [open, setOpen] = React.useState<boolean>();
-
-  const { scope, handler } = useMotionHandler(ref, (open: boolean | undefined) => {
-    const config: gsap.TweenVars = { ...commonMotion, rotate: open ? '45deg' : 0 };
-
-    const translate = (input: string, open: boolean | undefined) => {
-      return open ? input : 'translate(0%, 0%)';
-    };
-
-    gsap.to(motionSelector(css.cell, '-r-y', '-c-y'), {
-      ...config,
-    });
-    gsap.to(motionSelector(css.cell, '-r-x', '-c-y'), {
-      ...config,
-      transform: translate('translate(-100%, 100%)', open),
-    });
-    gsap.to(motionSelector(css.cell, '-r-y', '-c-x'), {
-      ...config,
-      transform: translate('translate(100%, 100%)', open),
-    });
-    gsap.to(motionSelector(css.cell, '-r-y', '-c-z'), {
-      ...config,
-      transform: translate('translate(-100%, -100%)', open),
-    });
-    gsap.to(motionSelector(css.cell, '-r-z', '-c-y'), {
-      ...config,
-      transform: translate('translate(100%, -100%)', open),
-    });
-  });
+  const { ...otherProps } = props;
+  const dispatch = useAppDispatch();
+  const state = useAppState();
 
   return (
     <Action
       {...otherProps}
-      ref={scope}
-      className="menu-target"
+      ref={ref}
+      className="page-menu-target"
       onClick={(event) => {
         event.stopPropagation();
-        handler(!open ? true : undefined);
-        setOpen(!open ? true : undefined);
-        dispatch({ isMenuOpen: !open ? true : undefined });
+        dispatch({ isMenuOpen: !state.isMenuOpen ? true : undefined });
       }}
     >
-      <MenuTargetGrid css={css} state={state} dispatch={dispatch} />
+      <div className="page-menu-target-grid">
+        <div className={motionClass(css.row, '-r-x')}>
+          <div className={motionClass(css.cell, '-r-x-c-x')} />
+          <div className={motionClass(css.cell, '-r-x-c-y')} />
+          <div className={motionClass(css.cell, '-r-x-c-z')} />
+        </div>
+        <div className={motionClass(css.row, '-r-y')}>
+          <div className={motionClass(css.cell, '-r-y-c-x')} />
+          <div className={motionClass(css.cell, '-r-y-c-y')} />
+          <div className={motionClass(css.cell, '-r-y-c-z')} />
+        </div>
+        <div className={motionClass(css.row, '-r-z')}>
+          <div className={motionClass(css.cell, '-r-z-c-x')} />
+          <div className={motionClass(css.cell, '-r-z-c-y')} />
+          <div className={motionClass(css.cell, '-r-z-c-z')} />
+        </div>
+      </div>
     </Action>
   );
 });

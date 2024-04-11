@@ -1,0 +1,19 @@
+.action--button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--action-size);
+  width: var(--action-size);
+}
+
+.action--link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: var(--action-size);
+}
+
+.action--link,
+.action--button {
+  margin: var(--unit);
+}

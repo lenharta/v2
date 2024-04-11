@@ -1,6 +1,7 @@
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { DemoThemeMode } from '@/site/routes';
+import { DemoAccentMode } from '@/site/routes/demo/DemoAccent';
 
 export interface MenuFooterProps {}
 
@@ -16,6 +17,7 @@ export const MenuFooter = factory<MenuFooterFactory>((props, ref) => {
   return (
     <div {...otherProps} ref={ref} className="menu-footer">
       <DemoThemeMode />
+      <DemoAccentMode />
     </div>
   );
 });
