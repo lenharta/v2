@@ -1,8 +1,10 @@
 import { Box } from '@/core';
 import { Action } from '@/app/action';
+import { Store } from '@/types';
 
 export type LayoutNavUpperComponent = React.FC<{
   navigate: (to: string) => void;
+  dispatch: Store.AppDispatch;
 }>;
 
 const data = [
@@ -12,9 +14,10 @@ const data = [
   { label: 'Toolbox', to: '/toolbox', icon: 'boxMultiple' },
   { label: 'Sandbox', to: '/sandbox', icon: 'boxRegular' },
   { label: 'Demo', to: '/demo', icon: 'cube' },
+  { label: 'Contact', to: '/contact', icon: 'mention' },
 ] as const;
 
-export const LayoutNavUpper: LayoutNavUpperComponent = ({ navigate }) => {
+export const LayoutNavUpper: LayoutNavUpperComponent = ({ navigate, dispatch }) => {
   return (
     <Box className="layout-nav-upper">
       {data.map(({ to, icon, label }) => (
@@ -25,6 +28,12 @@ export const LayoutNavUpper: LayoutNavUpperComponent = ({ navigate }) => {
           label={label}
           navigate={navigate}
           className="layout-nav-item"
+          onClick={() => {
+            dispatch({
+              isSearchOpen: undefined,
+              isMenuOpen: undefined,
+            });
+          }}
         />
       ))}
     </Box>

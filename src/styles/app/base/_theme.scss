@@ -4,17 +4,12 @@
   color: var(--c-primary-text);
   background-color: var(--c-primary-background);
 
-  .layout-nav {
-    background-color: var(--c-primary-background);
-  }
-
   .button,
   .action--link,
-  .action--button {
+  .action--button,
+  .layout-search-input {
     color: var(--c-primary-text);
     background-color: var(--c-primary-button);
-    outline: solid var(--unit) transparent;
-    border: solid var(--unit) transparent;
 
     &:not([data-disabled]):hover,
     &:not([aria-disabled]):hover {
@@ -26,14 +21,6 @@
       color: var(--c-primary-text);
       background-color: var(--c-primary-button-active);
     }
-    &:not([aria-disabled]):focus:not(:focus-visible),
-    &:not([data-disabled]):focus:not(:focus-visible) {
-      outline-color: transparent;
-    }
-    &:not([aria-disabled]):focus:focus-visible,
-    &:not([data-disabled]):focus:focus-visible {
-      outline-color: var(--c-blue);
-    }
   }
 
   [data-scheme='secondary'] {
@@ -42,11 +29,10 @@
 
     .button,
     .action--link,
-    .action--button {
+    .action--button,
+    .layout-search-input {
       color: var(--c-secondary-text);
       background-color: var(--c-secondary-button);
-      outline: solid var(--unit) transparent;
-      border: solid var(--unit) transparent;
 
       &:not([data-disabled]):hover,
       &:not([aria-disabled]):hover {
@@ -58,14 +44,57 @@
         color: var(--c-secondary-text);
         background-color: var(--c-secondary-button-active);
       }
-      &:not([aria-disabled]):focus:not(:focus-visible),
-      &:not([data-disabled]):focus:not(:focus-visible) {
-        outline-color: transparent;
-      }
-      &:not([aria-disabled]):focus:focus-visible,
-      &:not([data-disabled]):focus:focus-visible {
-        outline-color: var(--c-blue);
-      }
+    }
+  }
+
+  .button,
+  .action--link,
+  .action--button {
+    outline: solid var(--unit) transparent;
+    border: solid var(--unit) transparent;
+
+    &:not([aria-disabled]):focus:not(:focus-visible),
+    &:not([data-disabled]):focus:not(:focus-visible) {
+      outline-color: transparent;
+    }
+    &:not([aria-disabled]):focus:focus-visible,
+    &:not([data-disabled]):focus:focus-visible {
+      outline-color: var(--c-blue);
+    }
+  }
+
+  .layout-header {
+    background-color: var(--c-primary-background);
+    border-left: solid var(--unit) var(--c-primary-border);
+    border-bottom: solid var(--unit) var(--c-primary-border);
+  }
+
+  .layout-nav {
+    background-color: var(--c-primary-background);
+    border-right: solid var(--unit) var(--c-primary-border);
+  }
+
+  .layout-search-input {
+    border: solid var(--unit) transparent;
+    outline: solid var(--unit) transparent;
+    border-left: solid var(--unit) var(--c-primary-border);
+
+    &:not([aria-disabled]):focus-visible,
+    &:not([data-disabled]):focus-visible {
+      outline: solid var(--unit) transparent !important;
+      outline-color: var(--c-blue) !important;
+    }
+  }
+
+  .layout-menu {
+    background-color: var(--c-primary-background);
+    border-bottom: solid var(--unit) var(--c-primary-border);
+
+    &-panel {
+      background-color: var(--c-primary-surface-1);
+    }
+    &-cell {
+      background-color: var(--c-accent-text);
     }
   }
 }

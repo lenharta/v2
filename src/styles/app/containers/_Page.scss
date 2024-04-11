@@ -7,11 +7,33 @@
 }
 
 .page {
-  display: block;
-  border: solid var(--unit) transparent;
+  display: grid;
+  place-content: center;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .page-hero {
-  padding-inline: var(--gutter);
-  padding-block: var(--gutter);
+  display: grid;
+  place-content: center;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
+  min-height: var(--app-height-hero);
+}
+
+// padding-block: var(--gutter);
+// padding-inline: var(--gutter);
+
+.page-content {
+  display: grid;
+  place-content: start;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.page-footer {
+  display: grid;
+  place-content: start;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
 }

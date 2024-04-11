@@ -63,6 +63,8 @@ export namespace Store {
     nonce?: (() => string) | undefined;
     location?: Location | undefined;
     sessionKey?: string | undefined;
+    searchQuery?: string | undefined;
+    isSearchOpen?: boolean | undefined;
     isMenuOpen?: boolean | undefined;
     loading?: boolean | undefined;
     error?: string | undefined;
@@ -72,6 +74,8 @@ export namespace Store {
     nonce: () => string;
     location: Location;
     sessionKey: string;
+    searchQuery?: string | undefined;
+    isSearchOpen?: boolean | undefined;
     isMenuOpen?: boolean | undefined;
     loading?: boolean | undefined;
     error?: string | undefined;

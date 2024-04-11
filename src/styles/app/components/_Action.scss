@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--action-size);
-  width: var(--action-size);
+  min-height: var(--action-size);
+  min-width: var(--action-size);
 }
 
 .action--link {

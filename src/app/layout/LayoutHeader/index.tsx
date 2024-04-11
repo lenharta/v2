@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { LayoutHeaderLeft, LayoutHeaderLeftComponent } from './Left';
+import { LayoutHeaderRight, LayoutHeaderRightComponent } from './Right';
 
 export type LayoutHeaderComponent = React.FC<{}> & {
   Left: LayoutHeaderLeftComponent;
+  Right: LayoutHeaderRightComponent;
 };
 
 export const LayoutHeader: LayoutHeaderComponent = ({}) => {
@@ -10,9 +12,11 @@ export const LayoutHeader: LayoutHeaderComponent = ({}) => {
   return (
     <header className="layout-header">
       <LayoutHeader.Left navigate={navigate} />
+      <LayoutHeader.Right navigate={navigate} />
     </header>
   );
 };
 
 LayoutHeader.displayName = '@v2/app/Layout.Header';
 LayoutHeader.Left = LayoutHeaderLeft;
+LayoutHeader.Right = LayoutHeaderRight;

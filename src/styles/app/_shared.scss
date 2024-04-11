@@ -3,3 +3,43 @@
 .accent-text {
   color: var(--c-accent-text);
 }
+
+.layout-nav {
+  z-index: var(--app-index-nav);
+}
+.layout-header {
+  z-index: var(--app-index-header);
+}
+.layout-menu-panel {
+  z-index: var(--app-index-panel);
+}
+
+.button,
+.action--link,
+.action--button {
+  cursor: default;
+
+  &[data-disabled]:hover,
+  &[aria-disabled]:hover {
+    cursor: default;
+  }
+
+  &:not([data-disabled]):hover,
+  &:not([aria-disabled]):hover {
+    cursor: pointer;
+  }
+}
+
+.layout-search-input {
+  cursor: default;
+
+  &[data-disabled]:hover,
+  &[aria-disabled]:hover {
+    cursor: text;
+  }
+
+  &:not([data-disabled]):hover,
+  &:not([aria-disabled]):hover {
+    cursor: text;
+  }
+}

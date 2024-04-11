@@ -28,12 +28,13 @@ export const Action = factory<ActionFactory>((props, ref) => {
     children,
     navigate,
     className,
+    onClick,
     ...otherProps
   } = props;
 
   const isRouter = !!to && !!navigate;
 
-  const handleClick = createEventCallback((event) => {
+  const handleClick = createEventCallback(onClick, (event) => {
     event.stopPropagation();
     isRouter && navigate?.(to);
   });
@@ -48,7 +49,7 @@ export const Action = factory<ActionFactory>((props, ref) => {
       onClick={handleClick}
     >
       {icon && <Icon name={icon} />}
-      {children}
+      {children && children}
     </button>
   );
 });
