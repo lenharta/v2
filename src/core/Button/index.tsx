@@ -4,7 +4,6 @@ import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 import { ButtonGroup } from '@/core/Button/Group';
 import { useButtonGroup } from '@/core/Button/context';
-import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export interface ButtonProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
   /** Defines a unique global identifier for the element. */
@@ -71,26 +70,11 @@ export const Button = factory<ButtonFactory>((props, ref) => {
   const buttonSizeMod = ctx.size || size;
   const buttonVariantMod = ctx.variant || variant;
 
-  const focusProps = useFocusProps({
-    tabIndex,
-    disabled: isDisabled,
-    excludeTabOrder,
-    allowDisabledFocus,
-  });
-
-  const resolvedLabel = useResolvedLabel({
-    ariaLabel: otherProps['aria-label'],
-    children,
-    label,
-    value,
-  });
-
   const a11yProps = {
     role: buttonRole,
     'aria-busy': isLoading,
-    'aria-label': resolvedLabel,
+    'aria-label': otherProps['aria-label'],
     'aria-disabled': isDisabled,
-    ...focusProps,
   };
 
   const dataProps = {

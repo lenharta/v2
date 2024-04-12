@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import { factory } from '@/core/factory';
 import { ICON, Icon } from '@/core/Icon';
 import { Core, Factory } from '@/types';
-import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export interface AvatarProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
   /** Specifies the icon path to be rendered. */
@@ -39,23 +38,9 @@ export const Avatar = factory<AvatarFactory>((props, ref) => {
     ...otherProps
   } = props;
 
-  const focusProps = useFocusProps({
-    tabIndex,
-    disabled,
-    excludeTabOrder,
-    allowDisabledFocus,
-  });
-
-  const resolvedLabel = useResolvedLabel({
-    ariaLabel: otherProps['aria-label'],
-    label,
-  });
-
   let accessibleProps = {
-    title: resolvedLabel,
+    'aria-label': otherProps['aria-label'],
     'aria-disabled': disabled,
-    'aria-label': resolvedLabel,
-    ...focusProps,
   };
 
   return (

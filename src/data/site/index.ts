@@ -1,7 +1,7 @@
 import { ICON } from '@/core';
 import { Site } from '@/types';
 
-export const dataSiteLinks: Site.LinkItem[] = [
+export const DATA_SITE_LINKS: Site.LinkItem[] = [
   { value: '/', label: 'Home', icon: 'home' },
   { value: '/experience', label: 'Experience', icon: 'briefcase' },
   { value: '/projects', label: 'Projects', icon: 'code' },
@@ -10,7 +10,7 @@ export const dataSiteLinks: Site.LinkItem[] = [
   { value: '/sandbox', label: 'Sandbox', icon: 'boxMultiple' },
 ];
 
-export const dataSiteMenuLinks: Site.LinkItem[] = [
+export const DATA_SITE_MENU_LINKS: Site.LinkItem[] = [
   { value: '/', label: 'Home', icon: 'home' },
   { value: '/experience', label: 'Experience', icon: 'briefcase' },
   { value: '/projects', label: 'Projects', icon: 'code' },
@@ -19,7 +19,7 @@ export const dataSiteMenuLinks: Site.LinkItem[] = [
   { value: '/contact', label: 'Contact', icon: 'mention' },
 ];
 
-export const lookupSiteSocialUrls: Partial<Record<Site.SocialKey, string>> = {
+export const LOOKUP_SITE_SOCIAL_URLS: Partial<Record<Site.SocialKey, string>> = {
   npm: 'https://www.npmjs.com/~thunkworks',
   github: 'https://github.com/lenharta',
   twitter: 'https://twitter.com/thunkworks',
@@ -27,7 +27,7 @@ export const lookupSiteSocialUrls: Partial<Record<Site.SocialKey, string>> = {
   codesandbox: 'https://codesandbox.io/u/lenharta',
 };
 
-export const lookupSiteSocialLogos: Partial<Record<Site.SocialKey, ICON>> = {
+export const LOOKUP_SITE_SOCIAL_LOGOS: Partial<Record<Site.SocialKey, ICON>> = {
   npm: 'logo_npm',
   github: 'logo_github',
   twitter: 'logo_twitter',

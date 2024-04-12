@@ -47,6 +47,26 @@
     }
   }
 
+  .demo-floating-target {
+    color: var(--c-primary-text);
+    background-color: var(--c-primary-button);
+
+    &:not([data-disabled]):hover,
+    &:not([aria-disabled]):hover {
+      color: var(--c-primary-text);
+      background-color: var(--c-primary-button-hover);
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      color: var(--c-primary-text);
+      background-color: var(--c-primary-button-active);
+    }
+  }
+  .demo-floating-box {
+    border: solid var(--unit) var(--c-primary-border);
+    background-color: var(--c-primary-surface-2);
+  }
+
   .button,
   .action--link,
   .action--button {
@@ -92,6 +112,7 @@
 
     &-panel {
       background-color: var(--c-primary-surface-1);
+      border-right: solid var(--unit) var(--c-primary-border);
     }
     &-cell {
       background-color: var(--c-accent-text);

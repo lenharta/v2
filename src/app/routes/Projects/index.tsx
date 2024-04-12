@@ -7,7 +7,7 @@ export const Projects: ProjectsRouteComponent = ({}) => {
   return (
     <Page>
       <Page.Hero>
-        <Title>Projects Route</Title>
+        <Title h1>Projects</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
       <Page.Footer></Page.Footer>

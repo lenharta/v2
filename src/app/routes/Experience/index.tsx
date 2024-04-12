@@ -7,7 +7,7 @@ export const Experience: ExperienceRouteComponent = ({}) => {
   return (
     <Page>
       <Page.Hero>
-        <Title>Experience Route</Title>
+        <Title h1>Experience</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
       <Page.Footer></Page.Footer>

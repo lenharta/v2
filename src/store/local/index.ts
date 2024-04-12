@@ -1,11 +1,11 @@
 import { Store } from '@/types';
-import { lookupStoreStorageLocation } from '@/data';
+import { LOOKUP_STORE_STORAGE_LOCATION } from '@/data';
 import { deserializeJSON, serializeJSON } from '@/utils';
 
 export function localMiddleware<T extends Record<string, any> = {}>(
   type: Store.StorageLocationKey = 'local'
 ) {
-  const key = lookupStoreStorageLocation[type];
+  const key = LOOKUP_STORE_STORAGE_LOCATION[type];
   return {
     read(): boolean {
       try {

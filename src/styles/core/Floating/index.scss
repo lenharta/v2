@@ -2,4 +2,8 @@
 
 .floating {
   @include mixins.reset;
+  top: 0;
+  left: 0;
+  width: max-content;
+  position: absolute;
 }

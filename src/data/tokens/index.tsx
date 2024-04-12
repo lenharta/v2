@@ -1,0 +1,15 @@
+export const DATA_TOKEN_COLORS = [
+  { token: 'var(--c-red)', label: 'Red' },
+  { token: 'var(--c-orange)', label: 'Orange' },
+  { token: 'var(--c-yellow)', label: 'Yellow' },
+  { token: 'var(--c-green)', label: 'Green' },
+  { token: 'var(--c-mint)', label: 'Mint' },
+  { token: 'var(--c-teal)', label: 'Teal' },
+  { token: 'var(--c-cyan)', label: 'Cyan' },
+  { token: 'var(--c-blue)', label: 'Blue' },
+  { token: 'var(--c-indigo)', label: 'Indigo' },
+  { token: 'var(--c-purple)', label: 'Purple' },
+  { token: 'var(--c-pink)', label: 'Pink' },
+  { token: 'var(--c-brown)', label: 'Brown' },
+  { token: 'var(--c-gray)', label: 'Gray' },
+];

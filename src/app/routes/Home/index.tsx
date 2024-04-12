@@ -1,21 +1,15 @@
 import { Page } from '@/app/page';
-import { Title } from '@/core';
-import { Section } from '@/site/components';
+import { HomeHero } from './Hero';
+import { HomeOverview } from './Overview';
 
 type HomeRouteComponent = React.FC<{}>;
 
 export const Home: HomeRouteComponent = ({}) => {
   return (
     <Page>
-      <Page.Hero>
-        <Title h1>Home Route</Title>
-      </Page.Hero>
+      <HomeHero />
       <Page.Content>
-        <Section className="sec-home-overview">
-          <Section.Content className="sec-content-home-overview">
-            <p className="accent-text">Some Accent Text Here.</p>
-          </Section.Content>
-        </Section>
+        <HomeOverview />
       </Page.Content>
       <Page.Footer></Page.Footer>
     </Page>

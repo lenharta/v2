@@ -1,8 +1,8 @@
 import { Store } from '@/types';
 
-export const dataStoreThemeAttributes: Store.ThemeAttributeKey[] = ['dir', 'mode', 'accent'];
+export const DATA_STORE_GLOBAL_ATTRIBUTES: Store.ThemeAttributeKey[] = ['dir', 'mode', 'accent'];
 
-export const dataStoreAccentColors: Store.Accent[] = [
+export const DATA_STORE_ACCENT_COLORS: Store.Accent[] = [
   'red',
   'orange',
   'amber',
@@ -22,18 +22,18 @@ export const dataStoreAccentColors: Store.Accent[] = [
   'rose',
 ];
 
-export const lookupStoreThemeDir: Record<Store.Dir, Store.Dir> = {
+export const LOOKUP_STORE_THEME_DIR: Record<Store.Dir, Store.Dir> = {
   ltr: 'ltr',
   rtl: 'rtl',
 };
 
-export const lookupStoreThemeMode: Record<Store.Mode, Store.Mode> = {
+export const LOOKUP_STORE_THEME_MODE: Record<Store.Mode, Store.Mode> = {
   dim: 'dim',
   dark: 'dark',
   light: 'light',
 };
 
-export const lookupStoreThemeAccent: Record<Store.Accent, Store.Accent> = {
+export const LOOKUP_STORE_THEME_ACCENT_COLOR: Record<Store.Accent, Store.Accent> = {
   red: 'red',
   orange: 'orange',
   amber: 'amber',
@@ -53,17 +53,20 @@ export const lookupStoreThemeAccent: Record<Store.Accent, Store.Accent> = {
   rose: 'rose',
 };
 
-export const lookupStoreThemeAvatar: Record<Store.Avatar, Store.Avatar> = {
+export const LOOKUP_STORE_THEME_AVATAR_ICON: Record<Store.Avatar, Store.Avatar> = {
   person: 'person',
   robot: 'robot',
 };
 
-export const lookupStoreStorageLocation: Record<Store.StorageLocationKey, Store.StorageLocation> = {
+export const LOOKUP_STORE_STORAGE_LOCATION: Record<
+  Store.StorageLocationKey,
+  Store.StorageLocation
+> = {
   local: 'localStorage',
   session: 'sessionStorage',
 };
 
-export const lookupStoreRootAttribute: Record<Store.ThemeAttributeKey, string> = {
+export const LOOKUP_STORE_GLOBAL_ATTRIBUTES: Record<Store.ThemeAttributeKey, string> = {
   dir: 'data-prefers-dir',
   mode: 'data-prefers-mode',
   accent: 'data-prefers-accent',

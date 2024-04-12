@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Store } from '@/types';
 import { localMiddleware } from '@/store/local';
 import { initialThemeState } from '@/store/config';
-import { dataStoreThemeAttributes, lookupStoreRootAttribute } from '@/data';
+import { DATA_STORE_GLOBAL_ATTRIBUTES, LOOKUP_STORE_GLOBAL_ATTRIBUTES } from '@/data';
 
 export const ThemeStateContext = React.createContext({} as Store.ThemeContextValue);
 export const ThemeDispatchContext = React.createContext({} as Store.ThemeDispatchValue);
@@ -30,8 +30,8 @@ export function ThemeProvider({ children }: Store.ProviderProps) {
 
     const root = document.getElementById('root')!;
 
-    dataStoreThemeAttributes.forEach((key) => {
-      root.setAttribute(lookupStoreRootAttribute[key], theme[key]);
+    DATA_STORE_GLOBAL_ATTRIBUTES.forEach((key) => {
+      root.setAttribute(LOOKUP_STORE_GLOBAL_ATTRIBUTES[key], theme[key]);
     });
   }, [theme]);
 
