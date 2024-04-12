@@ -1,11 +1,10 @@
-export * from './Action';
 export * from './Avatar';
 export * from './Box';
 export * from './Button';
 export * from './Caption';
 export * from './Checkbox';
 export * from './Divider';
-// export * from './Floating';
+export * from './Floating';
 export * from './Icon';
 export * from './Image';
 export * from './InlineStyles';

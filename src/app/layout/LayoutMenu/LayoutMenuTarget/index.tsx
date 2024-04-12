@@ -1,4 +1,4 @@
-import { Action } from '@/app/action';
+import { Action } from '@/app/Action';
 import { factory } from '@/core/factory';
 import { Factory } from '@/types';
 

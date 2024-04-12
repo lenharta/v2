@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { SectionContent } from './Content';
 import { factoryPolymorphic } from '@/core/factory';
+import { SectionContent } from './SectionContent';
 
 export type SectionFactory = Factory.Config<{
   ref: HTMLDivElement;

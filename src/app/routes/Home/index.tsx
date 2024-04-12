@@ -1,6 +1,6 @@
 import { Page } from '@/app/page';
-import { HomeHero } from './Hero';
-import { HomeOverview } from './Overview';
+import { HomeHero } from './HomeHero';
+import { HomeOverview } from './HomeOverview';
 
 type HomeRouteComponent = React.FC<{}>;
 

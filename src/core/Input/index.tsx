@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
-import { InputMessage } from './Message';
-import { InputLabel } from './Label';
+import { InputMessage } from './InputMessage';
+import { InputLabel } from './InputLabel';
 
 export interface InputConfiguration {
   /** A unique identifier for the input. */

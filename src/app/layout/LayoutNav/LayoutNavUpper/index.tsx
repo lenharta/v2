@@ -1,5 +1,5 @@
 import { Box } from '@/core';
-import { Action } from '@/app/action';
+import { Action } from '@/app/Action';
 import { Store } from '@/types';
 
 export type LayoutNavUpperComponent = React.FC<{
