@@ -7,7 +7,7 @@ export const Preferences: PreferencesRouteComponent = ({}) => {
   return (
     <Page>
       <Page.Hero>
-        <Title>Preferences Route</Title>
+        <Title h1>Preferences</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
       <Page.Footer></Page.Footer>

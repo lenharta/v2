@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
-import { DATA_ICON_LOOKUP } from '@/data';
+import { LOOKUP_ICON_PATH } from '@/data';
 
-export type ICON = keyof (typeof DATA_ICON_LOOKUP)['filled'];
+export type ICON = keyof (typeof LOOKUP_ICON_PATH)['filled'];
 
 export interface IconProps extends Core.BaseProps {
   /** Specifies the lookup key for the path that will be rendered. Each `name` key has two types available, choose from `filled` or `outlined`. */
@@ -36,7 +36,7 @@ export const Icon = factory<IconFactory>((props, ref) => {
     ...otherProps
   } = props;
 
-  let iconPath = DATA_ICON_LOOKUP[type][name];
+  let iconPath = LOOKUP_ICON_PATH[type][name];
   let iconLabel = otherProps['aria-label'] || name;
 
   let accessibleProps = {

@@ -6,7 +6,6 @@ import { ICON, Icon } from '@/core/Icon';
 import { Core, Factory } from '@/types';
 import { CheckboxGroup } from '@/core/Checkbox/Group';
 import { useCheckboxContext } from '@/core/Checkbox/context';
-import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export type CheckboxState = 'true' | 'false' | 'mixed';
 export type CheckboxStateLookup = Record<CheckboxState, ICON>;
@@ -88,19 +87,6 @@ export const Checkbox = factory<CheckboxFactory>((props, ref) => {
   const isDisabled = (disabled || ctx.disabled) ?? undefined;
   const isIndeterminate = (!ctx.value && indeterminate) ?? undefined;
 
-  const focusProps = useFocusProps({
-    disabled: isDisabled,
-    allowDisabledFocus,
-    excludeTabOrder,
-    tabIndex,
-  });
-
-  const resolvedLabel = useResolvedLabel({
-    ariaLabel: otherProps['aria-label'],
-    value,
-    label,
-  });
-
   let ariaChecked: CheckboxState | undefined;
 
   if (isChecked && !isIndeterminate) {
@@ -119,10 +105,9 @@ export const Checkbox = factory<CheckboxFactory>((props, ref) => {
   let accessibleProps = {
     ...(message ? { 'aria-describedby': ids.message } : {}),
     ...(isDisabled ? { 'aria-disabled': true } : {}),
-    ...(resolvedLabel ? { 'aria-label': resolvedLabel } : {}),
-    ...(resolvedLabel ? { 'aria-labelledby': ids.label } : {}),
+    ...(otherProps['aria-label'] ? { 'aria-label': otherProps['aria-label'] } : {}),
+    ...(otherProps['aria-label'] ? { 'aria-labelledby': ids.label } : {}),
     ...(ariaChecked ? { 'aria-checked': ariaChecked } : {}),
-    ...focusProps,
   };
 
   return (

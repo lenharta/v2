@@ -4,7 +4,6 @@ import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 import { useTabsContext } from '@/core/Tabs/context';
 import { createEventCallback } from '@/utils';
-import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export interface TabsItemProps extends Core.BaseProps, Core.FocusProps {
   /** Defines a unique value to be match with a corresponding panel.  */
@@ -47,26 +46,12 @@ export const TabsItem = factory<TabsItemFactory>((props, ref) => {
 
   const tabContent = label || children || value;
 
-  const focusProps = useFocusProps({
-    disabled,
-    tabIndex,
-    excludeTabOrder,
-    allowDisabledFocus,
-  });
-
-  const resolvedLabel = useResolvedLabel({
-    ariaLabel: otherProps['aria-label'],
-    label,
-    value,
-  });
-
   const a11yProps = {
     id: ctx.getItemId(),
     role: 'tab',
-    'aria-label': resolvedLabel,
+    'aria-label': otherProps['aria-label'],
     'aria-checked': isActive,
     'aria-disabled': isDisabled,
-    ...focusProps,
   };
 
   const dataProps = {

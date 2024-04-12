@@ -1,4 +1,14 @@
+import { ICON } from '@/core';
+
 export declare namespace Site {
+  export interface FrontMatterObj {
+    url: string;
+    icon: ICON;
+    tags: string[];
+    title: string;
+    search: string;
+  }
+
   export interface LinkItem {
     icon?: ICON;
     value: string;

@@ -26,7 +26,6 @@
       "@/app/*": ["./src/app/*"],
       "@/data/*": ["./src/data/*"],
       "@/core/*": ["./src/core/*"],
-      "@/site/*": ["./src/site/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/tests/*": ["./src/tests/*"],

@@ -64,10 +64,11 @@ export namespace Store {
     location?: Location | undefined;
     sessionKey?: string | undefined;
     searchQuery?: string | undefined;
+    isTransition?: boolean | undefined;
     isSearchOpen?: boolean | undefined;
     isMenuOpen?: boolean | undefined;
-    loading?: boolean | undefined;
-    error?: string | undefined;
+    isLoading?: boolean | undefined;
+    isError?: string | undefined;
   }
 
   export interface AppContextValue {
@@ -75,10 +76,11 @@ export namespace Store {
     location: Location;
     sessionKey: string;
     searchQuery?: string | undefined;
+    isTransition?: boolean | undefined;
     isSearchOpen?: boolean | undefined;
     isMenuOpen?: boolean | undefined;
-    loading?: boolean | undefined;
-    error?: string | undefined;
+    isLoading?: boolean | undefined;
+    isError?: string | undefined;
   }
 
   export type AppDispatch = React.Dispatch<AppState>;

@@ -7,7 +7,7 @@ export const Contact: ContactRouteComponent = ({}) => {
   return (
     <Page>
       <Page.Hero>
-        <Title>Contact Route</Title>
+        <Title h1>Contact</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
       <Page.Footer></Page.Footer>

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { factory } from '@/core/factory';
+import { factory, factoryPolymorphic } from '@/core/factory';
 import { Core, Factory } from '@/types';
 
 export interface StackProps extends Core.BaseProps {}
@@ -10,12 +10,17 @@ export type StackFactory = Factory.Config<{
   props: StackProps;
 }>;
 
-const Stack = factory<StackFactory>((props, ref) => {
-  const { children, className, ...otherProps } = props;
+const Stack = factoryPolymorphic<StackFactory>((props, ref) => {
+  const { component: Component = 'div', children, className, ...otherProps } = props;
   return (
-    <div {...otherProps} ref={ref} aria-orientation="vertical" className={clsx('stack', className)}>
+    <Component
+      {...otherProps}
+      aria-orientation="vertical"
+      className={clsx('stack', className)}
+      ref={ref}
+    >
       {children}
-    </div>
+    </Component>
   );
 });
 

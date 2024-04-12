@@ -7,7 +7,7 @@ export const Sandbox: SandboxRouteComponent = ({}) => {
   return (
     <Page>
       <Page.Hero>
-        <Title>Sandbox Route</Title>
+        <Title h1>Sandbox</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
       <Page.Footer></Page.Footer>

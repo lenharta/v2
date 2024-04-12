@@ -223,7 +223,7 @@ export namespace Core {
 
   export type FloatingDir = 'ltr' | 'rtl';
   export type FloatingSide = 'top' | 'left' | 'right' | 'bottom';
-  export type FloatingWidth = 'target' | React.CSSProperties['width'] | null;
+  export type FloatingWidth = 'target' | string | number | null;
   export type FloatingStrategy = 'absolute' | 'fixed';
   export type FloatingPlacement = 'end' | 'start';
   export type FloatingPosition = FloatingSide | `${FloatingSide}-${FloatingPlacement}`;

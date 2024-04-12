@@ -1,7 +1,7 @@
-import { Box } from '@/core';
-import { factory } from '@/core/factory';
-import { Factory } from '@/types';
 import clsx from 'clsx';
+import { Box } from '@/core';
+import { Factory } from '@/types';
+import { factory } from '@/core/factory';
 
 type SectionContentFactory = Factory.Config<{
   ref: HTMLDivElement;

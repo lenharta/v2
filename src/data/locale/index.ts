@@ -1,6 +1,6 @@
 import { Store } from '@/types';
 
-export const dataLanguages: Store.Language[] = [
+export const DATA_LANGUAGES: Store.Language[] = [
   { name: 'arabic', code: 'ar' },
   { name: 'english', code: 'en' },
   { name: 'french', code: 'fr' },
@@ -9,7 +9,7 @@ export const dataLanguages: Store.Language[] = [
   { name: 'spanish', code: 'es' },
 ];
 
-export const dataLookupLanguageByCode: Record<Store.LanguageCode, Store.Language> = {
+export const LOOKUP_LANGUAGE_BY_CODE: Record<Store.LanguageCode, Store.Language> = {
   ar: { name: 'arabic', code: 'ar' },
   fr: { name: 'french', code: 'fr' },
   de: { name: 'german', code: 'de' },
@@ -18,7 +18,7 @@ export const dataLookupLanguageByCode: Record<Store.LanguageCode, Store.Language
   ja: { name: 'japanese', code: 'ja' },
 };
 
-export const dataLookupLanguageByName: Record<Store.LanguageName, Store.Language> = {
+export const LOOKUP_LANGUAGE_BY_NAME: Record<Store.LanguageName, Store.Language> = {
   arabic: { name: 'arabic', code: 'ar' },
   french: { name: 'french', code: 'fr' },
   german: { name: 'german', code: 'de' },

@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
+import { factoryPolymorphic } from '../factory';
 
 export interface LabelProps extends Core.BaseProps {
-  /** Indicates a `disabled` state for the `Label`. */
+  /** Indicates a disabled state for the element */
   disabled?: boolean | undefined;
 }
 
@@ -13,18 +13,18 @@ export type LabelFactory = Factory.Config<{
   props: LabelProps;
 }>;
 
-export const Label = factory<LabelFactory>((props, ref) => {
-  const { children, className, disabled, ...otherProps } = props;
-
-  const dataProps = {
-    ...(disabled ? { 'data-disabled': true } : {}),
-  };
-
+export const Label = factoryPolymorphic<LabelFactory>((props, ref) => {
+  const { component: Component = 'label', children, className, disabled, ...otherProps } = props;
   return (
-    <label {...otherProps} {...dataProps} ref={ref} className={clsx('input-label', className)}>
+    <Component
+      {...otherProps}
+      ref={ref}
+      data-disabled={disabled}
+      className={clsx('input-label', className)}
+    >
       {children}
-    </label>
+    </Component>
   );
 });
 
-Label.displayName = '@v2/core/Label';
+Label.displayName = '@v2/app/label';

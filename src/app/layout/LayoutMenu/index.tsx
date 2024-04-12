@@ -1,17 +1,17 @@
 import gsap from 'gsap';
 import * as React from 'react';
-import { Action } from '@/app/action';
 import { useGSAP } from '@gsap/react';
 import { LayoutMenuPanel } from './Panel';
 import { useMotionTimeline } from '@/motion';
 import { useMergedClickOutside } from '@/hooks';
 import { useAppDispatch, useAppState } from '@/store';
+import { LayoutMenuTarget } from './Target';
 
 const data = [
   { row: 'r-1', cells: ['r-1-c-1', 'r-1-c-2', 'r-1-c-3'] },
   { row: 'r-2', cells: ['r-2-c-1', 'r-2-c-2', 'r-2-c-3'] },
   { row: 'r-3', cells: ['r-3-c-1', 'r-3-c-2', 'r-3-c-3'] },
-] as const;
+];
 
 const css = {
   grid: 'layout-menu-grid',
@@ -37,6 +37,7 @@ function createGridSelector(cx: string, id: string) {
 }
 
 type LayoutMenuComponent = React.FC<{}> & {
+  Target: typeof LayoutMenuTarget;
   Panel: typeof LayoutMenuPanel;
 };
 
@@ -52,7 +53,7 @@ export const LayoutMenu: LayoutMenuComponent = ({}) => {
   });
 
   const common: gsap.TweenVars = {
-    duration: 0.033,
+    duration: 0.06,
     rotate: state.isMenuOpen ? '45deg' : '0deg',
     ease: state.isMenuOpen ? 'power1.in' : 'power1.Out',
   };
@@ -88,32 +89,23 @@ export const LayoutMenu: LayoutMenuComponent = ({}) => {
 
   return (
     <React.Fragment>
-      <div className="layout-menu">
-        <Action
-          ref={targetRef}
-          className="layout-menu-target"
-          onClick={() => {
-            dispatch({
-              isMenuOpen: !state.isMenuOpen ? true : undefined,
-              isSearchOpen: undefined,
-            });
-          }}
-        >
-          <div className={css.grid}>
-            {data.map(({ row, cells }) => (
-              <div key={row} className={createGridClass(css.row, row)}>
-                {cells.map((cell) => (
-                  <div key={cell} className={createGridClass(css.cell, cell)} />
-                ))}
-              </div>
-            ))}
-          </div>
-        </Action>
-      </div>
+      <LayoutMenu.Target
+        ref={targetRef}
+        css={css}
+        data={data}
+        format={createGridClass}
+        onClick={() => {
+          dispatch({
+            isMenuOpen: !state.isMenuOpen ? true : undefined,
+            isSearchOpen: undefined,
+          });
+        }}
+      />
       <LayoutMenu.Panel ref={boxRef} />
     </React.Fragment>
   );
 };
 
 LayoutMenu.displayName = '@v2/app/LayoutMenu';
+LayoutMenu.Target = LayoutMenuTarget;
 LayoutMenu.Panel = LayoutMenuPanel;

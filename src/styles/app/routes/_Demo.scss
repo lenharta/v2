@@ -1,0 +1,17 @@
+.demo-floating {
+  &-target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: calc(var(--unit) * 6);
+    padding-inline: calc(var(--unit) * 4);
+    // max-width: 20rem;
+  }
+  &-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: calc(var(--unit) * 4);
+    padding-inline: calc(var(--unit) * 4);
+  }
+}

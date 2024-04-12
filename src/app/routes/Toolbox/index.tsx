@@ -7,7 +7,7 @@ export const Toolbox: ToolboxRouteComponent = ({}) => {
   return (
     <Page>
       <Page.Hero>
-        <Title>Toolbox Route</Title>
+        <Title h1>Toolbox</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
       <Page.Footer></Page.Footer>

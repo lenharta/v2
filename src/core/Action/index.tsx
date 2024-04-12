@@ -4,7 +4,6 @@ import { ICON, Icon } from '@/core/Icon';
 import { ActionGroup } from '@/core/Action/Group';
 import { Core, Factory } from '@/types';
 import { useActionGroup } from '@/core/Action/context';
-import { useFocusProps, useResolvedLabel } from '@/core/hooks';
 
 export interface ActionProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {
   /** Specifies the icon path to be rendered. */
@@ -52,23 +51,10 @@ export const Action = factory<ActionFactory>((props, ref) => {
   const actionSizeMod = ctx.size || size;
   const actionVariantMod = ctx.variant || variant;
 
-  const focusProps = useFocusProps({
-    tabIndex,
-    disabled: isDisabled,
-    excludeTabOrder,
-    allowDisabledFocus,
-  });
-
-  const resolvedLabel = useResolvedLabel({
-    ariaLabel: otherProps['aria-label'],
-    label,
-  });
-
   const a11yProps = {
     role: actionRole,
-    'aria-label': resolvedLabel,
+    'aria-label': otherProps['aria-label'],
     'aria-disabled': isDisabled,
-    ...focusProps,
   };
 
   return (

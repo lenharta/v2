@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import { ICON } from '@/core/Icon';
 import { Core, Factory } from '@/types';
-import { useFocusProps } from '@/core/hooks';
 import { factoryPolymorphic } from '@/core/factory';
 
 import { TileGroup } from './Group';
@@ -67,16 +66,14 @@ export const Tile = factoryPolymorphic<TileFactory>((props, ref) => {
   });
 
   const isInteractive = interactionType !== 'base';
-  const focusProps = useFocusProps({ allowDisabledFocus, disabled, excludeTabOrder, tabIndex });
 
   return (
     <Component
       {...otherProps}
-      {...(isInteractive ? focusProps : {})}
-      aria-disabled={isInteractive && isDisabled}
-      data-scheme={ctx.scheme ?? scheme}
-      className={clsx('tile', `tile--${interactionType}`, otherProps.className)}
       ref={ref}
+      className={clsx('tile', `tile--${interactionType}`, otherProps.className)}
+      data-scheme={ctx.scheme ?? scheme}
+      aria-disabled={isInteractive && isDisabled}
     >
       {children}
     </Component>
