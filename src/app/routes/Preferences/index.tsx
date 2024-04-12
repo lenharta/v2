@@ -1,4 +1,5 @@
-import { Page } from '@/app/page';
+import * as React from 'react';
+import { Page } from '@/app/common';
 import { Title } from '@/core';
 
 type PreferencesRouteComponent = React.FC<{}>;

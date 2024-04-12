@@ -1,0 +1,21 @@
+@use '../mixins' as mixins;
+
+@layer reset {
+  .section {
+    @include mixins.reset;
+  }
+}
+
+.section {
+  display: grid;
+  place-content: start;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
+
+  &-content {
+    display: grid;
+    place-content: start;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

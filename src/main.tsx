@@ -5,8 +5,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './styles/main.scss';
 
 import App from './app';
-import { ErrorPage } from './app/page';
-import { ErrorLayout } from './app/layout';
+
+import { LayoutError, PageError } from './app/common';
+
 import {
   Home,
   Demo,
@@ -22,16 +23,16 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <ErrorLayout />,
+    errorElement: <LayoutError />,
     children: [
-      { index: true, element: <Home />, errorElement: <ErrorPage /> },
-      { path: '/demo', element: <Demo />, errorElement: <ErrorPage /> },
-      { path: '/contact', element: <Contact />, errorElement: <ErrorPage /> },
-      { path: '/toolbox', element: <Toolbox />, errorElement: <ErrorPage /> },
-      { path: '/sandbox', element: <Sandbox />, errorElement: <ErrorPage /> },
-      { path: '/projects', element: <Projects />, errorElement: <ErrorPage /> },
-      { path: '/experience', element: <Experience />, errorElement: <ErrorPage /> },
-      { path: '/preferences', element: <Preferences />, errorElement: <ErrorPage /> },
+      { index: true, element: <Home />, errorElement: <PageError /> },
+      { path: '/demo', element: <Demo />, errorElement: <PageError /> },
+      { path: '/contact', element: <Contact />, errorElement: <PageError /> },
+      { path: '/toolbox', element: <Toolbox />, errorElement: <PageError /> },
+      { path: '/sandbox', element: <Sandbox />, errorElement: <PageError /> },
+      { path: '/projects', element: <Projects />, errorElement: <PageError /> },
+      { path: '/experience', element: <Experience />, errorElement: <PageError /> },
+      { path: '/preferences', element: <Preferences />, errorElement: <PageError /> },
     ],
   },
 ]);

@@ -1,0 +1,55 @@
+@use '../mixins' as mixins;
+
+@layer reset {
+  .search,
+  .search-box,
+  .search-input {
+    @include mixins.reset;
+  }
+}
+
+.search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  &-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: var(--action-box);
+  }
+
+  &-input {
+    width: 100%;
+    max-width: 30em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: transparent;
+    height: calc(100% - calc(var(--unit) * 2));
+    padding-inline: var(--gutter);
+    margin-block: var(--unit);
+  }
+
+  &-result {
+    display: grid;
+    place-content: start;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  &-result-item {
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-block: calc(var(--gutter) / 2);
+    padding-inline: var(--gutter);
+    gap: calc(var(--gutter) / 2);
+  }
+}

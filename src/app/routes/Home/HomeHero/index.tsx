@@ -1,4 +1,4 @@
-import { Page } from '@/app/page';
+import { Page } from '@/app/common';
 import { Title } from '@/core';
 
 type HomeHeroComponent = React.FC<{}>;

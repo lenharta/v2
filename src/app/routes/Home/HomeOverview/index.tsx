@@ -1,4 +1,4 @@
-import { Section } from '@/app/section';
+import { Section } from '@/app/common';
 import { Box, Text } from '@/core';
 
 type HomeOverviewComponent = React.FC<{}>;
