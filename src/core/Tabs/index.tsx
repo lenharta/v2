@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { TabsList } from './List';
-import { TabsItem } from './Item';
-import { TabsPanel } from './Panel';
+import { TabsList } from './TabsList';
+import { TabsItem } from './TabsItem';
+import { TabsPanel } from './TabsPanel';
 import { TabsProvider } from './context';
 import { Core } from '@/types';
 

@@ -1,4 +1,4 @@
-import { Action } from '@/app/action';
+import { Action } from '@/app/Action';
 import { Box } from '@/core';
 
 export type LayoutHeaderLeftComponent = React.FC<{

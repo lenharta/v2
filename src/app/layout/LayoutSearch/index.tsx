@@ -2,11 +2,11 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { LayoutSearchClear } from './Clear';
-import { LayoutSearchInput } from './Input';
-import { LayoutSearchTarget } from './Target';
 import { useAppDispatch, useAppState } from '@/store';
-import { Floating } from '@/core';
+
+import { LayoutSearchClear } from './LayoutSearchClear';
+import { LayoutSearchInput } from './LayoutSearchInput';
+import { LayoutSearchTarget } from './LayoutSearchTarget';
 
 type LayoutSearchFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -22,7 +22,6 @@ type LayoutSearchFactory = Factory.Config<{
 export const LayoutSearch = factory<LayoutSearchFactory>((props, ref) => {
   const { className, children, ...otherProps } = props;
 
-  const [isDropdownOpen, setDropdownOpen] = React.useState<boolean | undefined>(false);
   const dispatch = useAppDispatch();
   const state = useAppState();
 
@@ -37,8 +36,6 @@ export const LayoutSearch = factory<LayoutSearchFactory>((props, ref) => {
           ref={focusRef}
           value={state.searchQuery ?? ''}
           mounted={!state.isSearchOpen ? false : true}
-          onExited={() => setDropdownOpen(false)}
-          onEntered={() => setDropdownOpen(true)}
           onChange={(event) => {
             event.stopPropagation();
             dispatch({ searchQuery: event.currentTarget.value });

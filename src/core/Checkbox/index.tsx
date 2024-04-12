@@ -4,7 +4,7 @@ import { Input } from '@/core/Input';
 import { factory } from '@/core/factory';
 import { ICON, Icon } from '@/core/Icon';
 import { Core, Factory } from '@/types';
-import { CheckboxGroup } from '@/core/Checkbox/Group';
+import { CheckboxGroup } from '@/core/Checkbox/CheckboxGroup';
 import { useCheckboxContext } from '@/core/Checkbox/context';
 
 export type CheckboxState = 'true' | 'false' | 'mixed';

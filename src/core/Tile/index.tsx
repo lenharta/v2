@@ -3,7 +3,7 @@ import { ICON } from '@/core/Icon';
 import { Core, Factory } from '@/types';
 import { factoryPolymorphic } from '@/core/factory';
 
-import { TileGroup } from './Group';
+import { TileGroup } from './TileGroup';
 import { TileInteractionProps, useTileContext } from './context';
 
 type TileBaseProps = Core.BaseProps & Core.FocusProps & Omit<TileInteractionProps, 'selectable'>;

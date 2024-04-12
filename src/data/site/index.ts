@@ -34,3 +34,30 @@ export const LOOKUP_SITE_SOCIAL_LOGOS: Partial<Record<Site.SocialKey, ICON>> = {
   linkedin: 'logo_linkedin',
   codesandbox: 'logo_codesandbox',
 };
+
+export const DATA_MATTER_ROUTES: Site.FrontMatterObj[] = [
+  {
+    icon: 'document',
+    tags: ['route', 'page'],
+    search: 'route/page/about/work/experience/history/cv/resume',
+    title: 'Experience',
+    url: '/experience',
+  },
+  {
+    icon: 'document',
+    tags: ['route', 'page'],
+    search: 'route/page/home/index/overview/landing/about/contact/preview',
+    title: 'Home',
+    url: '/',
+  },
+  {
+    icon: 'document',
+    tags: ['route', 'page'],
+    search:
+      'route/page/settings/control/preferences/theme/accent/accessibility/language/mode/direction',
+    title: 'Preferences',
+    url: '/preferences',
+  },
+];
+
+export const DATA_MATTER: Site.FrontMatterObj[] = [...DATA_MATTER_ROUTES];

@@ -1,11 +1,12 @@
 import gsap from 'gsap';
 import * as React from 'react';
 import { useGSAP } from '@gsap/react';
-import { LayoutMenuPanel } from './Panel';
 import { useMotionTimeline } from '@/motion';
 import { useMergedClickOutside } from '@/hooks';
 import { useAppDispatch, useAppState } from '@/store';
-import { LayoutMenuTarget } from './Target';
+
+import { LayoutMenuPanel } from './LayoutMenuPanel';
+import { LayoutMenuTarget } from './LayoutMenuTarget';
 
 const data = [
   { row: 'r-1', cells: ['r-1-c-1', 'r-1-c-2', 'r-1-c-3'] },

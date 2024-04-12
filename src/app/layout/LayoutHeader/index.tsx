@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { LayoutHeaderLeft, LayoutHeaderLeftComponent } from './Left';
-import { LayoutHeaderRight, LayoutHeaderRightComponent } from './Right';
+import { LayoutHeaderLeft, LayoutHeaderLeftComponent } from './LayoutHeaderLeft';
+import { LayoutHeaderRight, LayoutHeaderRightComponent } from './LayoutHeaderRight';
 
 export type LayoutHeaderComponent = React.FC<{}> & {
   Left: LayoutHeaderLeftComponent;

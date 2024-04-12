@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
-import { ButtonGroup } from '@/core/Button/Group';
+import { ButtonGroup } from '@/core/Button/ButtonGroup';
 import { useButtonGroup } from '@/core/Button/context';
 
 export interface ButtonProps extends Core.BaseProps, Core.FocusProps, Core.AriaLabelProps {

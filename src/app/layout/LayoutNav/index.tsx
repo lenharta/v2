@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { LayoutNavUpper, type LayoutNavUpperComponent } from './Upper';
-import { LayoutNavLower, type LayoutNavLowerComponent } from './Lower';
 import { useAppDispatch } from '@/store';
+import { LayoutNavUpper, type LayoutNavUpperComponent } from './LayoutNavUpper';
+import { LayoutNavLower, type LayoutNavLowerComponent } from './LayoutNavLower';
 
 export type LayoutNavComponent = React.FC<{}> & {
   Upper: LayoutNavUpperComponent;
