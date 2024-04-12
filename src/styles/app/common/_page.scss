@@ -1,0 +1,36 @@
+@use '../mixins' as mixins;
+
+@layer reset {
+  .page {
+    @include mixins.reset;
+  }
+}
+
+.page {
+  display: grid;
+  place-content: center;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
+
+  &-hero {
+    display: grid;
+    place-content: center;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+    min-height: var(--app-height-hero);
+  }
+
+  &-content {
+    display: grid;
+    place-content: start;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  &-footer {
+    display: grid;
+    place-content: start;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

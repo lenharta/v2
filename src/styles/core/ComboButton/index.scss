@@ -1,6 +1,0 @@
-@use '../mixins' as mixins;
-
-.combobutton {
-  @include mixins.reset;
-  @include mixins.transition-colors-interactive;
-}

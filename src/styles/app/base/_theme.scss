@@ -19,7 +19,7 @@
   .button,
   .action--link,
   .action--button,
-  .layout-search-input {
+  .search-input {
     color: var(--c-primary-text);
     background-color: var(--c-primary-button);
 
@@ -42,7 +42,7 @@
     .button,
     .action--link,
     .action--button,
-    .layout-search-input {
+    .search-input {
       color: var(--c-secondary-text);
       background-color: var(--c-secondary-button);
 
@@ -106,7 +106,7 @@
     border-right: solid var(--unit) var(--c-primary-border);
   }
 
-  .layout-search-input {
+  .search-input {
     border: solid var(--unit) transparent;
     outline: solid var(--unit) transparent;
     border-left: solid var(--unit) var(--c-primary-border);

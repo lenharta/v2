@@ -1,0 +1,133 @@
+@use '../mixins' as mixins;
+
+@layer reset {
+  .layout,
+  .layout-nav,
+  .layout-menu,
+  .layout-header,
+  .layout-nav-box,
+  .layout-menu-box,
+  .layout-header-box,
+  .layout-header-logo {
+    @include mixins.reset;
+  }
+}
+
+.layout {
+  display: block;
+  min-height: 100vh;
+  position: relative;
+
+  &-content {
+    display: block;
+    margin-top: var(--action-box);
+
+    @media (min-width: 60em) {
+      margin-left: var(--action-box);
+    }
+  }
+
+  &-nav {
+    display: none;
+
+    @media (min-width: 60em) {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      position: fixed;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: var(--action-box);
+      height: calc(100% - var(--action-box));
+      gap: var(--unit);
+
+      &-lower,
+      &-upper {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: var(--unit);
+      }
+    }
+  }
+
+  &-header {
+    top: 0;
+    width: calc(100% - var(--action-box));
+    display: flex;
+    position: fixed;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: var(--action-box);
+
+    &-logo-link {
+      padding-inline: var(--gutter);
+    }
+
+    &-left {
+      width: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    &-right {
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  &-menu {
+    top: 0;
+    left: 0;
+    position: fixed;
+
+    &-grid {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      gap: calc(var(--unit) * 2);
+    }
+
+    &-row {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      gap: calc(var(--unit) * 2);
+    }
+
+    &-cell {
+      width: calc(var(--unit) * 2);
+      height: calc(var(--unit) * 2);
+    }
+
+    &-panel {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: var(--gutter);
+      position: fixed;
+      top: calc(var(--action-box) + var(--unit));
+      width: 100%;
+      bottom: 0;
+      right: 0;
+      left: 0;
+
+      @media (min-width: 60em) {
+        left: var(--action-box);
+        width: 40em;
+      }
+
+      .title {
+        width: 100%;
+      }
+    }
+  }
+}
