@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const defaultEvents = ['mousedown', 'touchstart'];
 
-export function useClickOutside<T extends HTMLElement = any>(
+export function useClickOutside<T extends HTMLElement>(
   handler: () => void,
   events?: string[] | null,
   nodes?: (HTMLElement | null)[]

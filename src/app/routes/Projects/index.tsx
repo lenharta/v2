@@ -11,7 +11,6 @@ export const Projects: ProjectsRouteComponent = ({}) => {
         <Title h1>Projects</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
-      <Page.Footer></Page.Footer>
     </Page>
   );
 };

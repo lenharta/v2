@@ -20,7 +20,7 @@ export const SearchClear = factory<SearchClearFactory>((props, ref) => {
       timingFunction="cubic-bezier(0.4, 0.14, 0.3, 1)"
       transition={{
         transitionProperty: 'transform, opacity',
-        common: { transformOrigin: 'bottom', transitionDelay: '100ms' },
+        common: { transformOrigin: 'bottom', transitionDelay: '200ms' },
         out: { transform: 'scaleX(0)', opacity: 0 },
         in: { transform: 'scaleX(1)', opacity: 1 },
       }}

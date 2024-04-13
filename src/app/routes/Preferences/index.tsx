@@ -11,7 +11,6 @@ export const Preferences: PreferencesRouteComponent = ({}) => {
         <Title h1>Preferences</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
-      <Page.Footer></Page.Footer>
     </Page>
   );
 };

@@ -7,6 +7,7 @@ export declare namespace Site {
     tags: string[];
     title: string;
     search: string;
+    description: string;
   }
 
   export interface LinkItem {
