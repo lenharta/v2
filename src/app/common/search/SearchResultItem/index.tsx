@@ -1,13 +1,11 @@
 import { ICON, Icon, Text } from '@/core';
 import { factory } from '@/core/factory';
 import { Factory } from '@/types';
-import { createEventCallback } from '@/utils';
 
 interface SearchResultItemProps {
   icon: ICON;
   title: string;
   description: string;
-  onEscape: () => void;
 }
 
 export type SearchResultItemFactory = Factory.Config<{
@@ -17,18 +15,9 @@ export type SearchResultItemFactory = Factory.Config<{
 }>;
 
 export const SearchResultItem = factory<SearchResultItemFactory>((props, ref) => {
-  const { icon, title, description, onEscape, ...otherProps } = props;
+  const { icon, title, description, ...otherProps } = props;
   return (
-    <button
-      {...otherProps}
-      ref={ref}
-      className="search-result-item"
-      role="menuitem"
-      onKeyDown={createEventCallback(otherProps.onKeyDown, (event) => {
-        event.stopPropagation();
-        if (event.key === 'Escape') onEscape();
-      })}
-    >
+    <button {...otherProps} ref={ref} role="menuitem" className="search-result-item">
       <Icon name={icon} />
       <div className="search-result-item-copy">
         <Text data-truncate>{title}</Text>

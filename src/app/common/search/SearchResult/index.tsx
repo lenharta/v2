@@ -4,7 +4,6 @@ import { Factory, Site } from '@/types';
 import { SearchResultItem } from '../SearchResultItem';
 
 interface SearchResultProps {
-  onEscape: () => void;
   onEnter?: (() => void) | undefined;
   results?: Site.FrontMatterObj[] | undefined;
   mounted: boolean;
@@ -21,7 +20,7 @@ export type SearchResultFactory = Factory.Config<{
 }>;
 
 export const SearchResult = factory<SearchResultFactory>((props, ref) => {
-  const { mounted, onEnter, onEscape, results, ...otherProps } = props;
+  const { mounted, onEnter, results, ...otherProps } = props;
 
   return (
     <Transition
@@ -48,7 +47,6 @@ export const SearchResult = factory<SearchResultFactory>((props, ref) => {
               icon="placeholder"
               title="No Results"
               description="Try searching again using different keywords"
-              onEscape={onEscape}
             />
           ) : (
             results.map(({ description, icon, title, url }) => (
@@ -59,7 +57,6 @@ export const SearchResult = factory<SearchResultFactory>((props, ref) => {
                 // tags={tags}
                 // search={search}
                 description={description}
-                onEscape={onEscape}
               />
             ))
           )}

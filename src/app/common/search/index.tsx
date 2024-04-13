@@ -183,7 +183,6 @@ export const Search = factory<SearchFactory>((props, ref) => {
           ref={resultRef}
           results={DATA_MATTER_ROUTES}
           mounted={state.searchQuery ? true : false}
-          onEscape={handleEscape}
           onKeyDownCapture={(event) => {
             event.stopPropagation();
             event.preventDefault();
