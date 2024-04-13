@@ -37,26 +37,60 @@ export const LOOKUP_SITE_SOCIAL_LOGOS: Partial<Record<Site.SocialKey, ICON>> = {
 
 export const DATA_MATTER_ROUTES: Site.FrontMatterObj[] = [
   {
-    icon: 'document',
-    tags: ['route', 'page'],
-    search: 'route/page/about/work/experience/history/cv/resume',
-    title: 'Experience',
     url: '/experience',
-  },
-  {
     icon: 'document',
     tags: ['route', 'page'],
-    search: 'route/page/home/index/overview/landing/about/contact/preview',
-    title: 'Home',
+    title: 'Experience',
+    search: `route/page/about/work/experience/history/cv/resume/intro/career/job/workplace`,
+    description: `View a brief introduction of my work experience and download my resume.`,
+  },
+  {
     url: '/',
-  },
-  {
     icon: 'document',
     tags: ['route', 'page'],
-    search:
-      'route/page/settings/control/preferences/theme/accent/accessibility/language/mode/direction',
-    title: 'Preferences',
+    title: 'Home',
+    search: `route/page/home/index/overview/landing/about/contact/preview/top/intro/introduction`,
+    description: `Andrew Lenhart, Front-end Software Engineer.`,
+  },
+  {
     url: '/preferences',
+    icon: 'document',
+    tags: ['route', 'page'],
+    title: 'Preferences',
+    search: `route/page/settings/control/preferences/theme/accent/accessibility/language/mode/direction/writing`,
+    description: `Adjust settings for theme mode, accent color, languages, and more.`,
+  },
+  {
+    url: '/sandbox',
+    icon: 'document',
+    tags: ['route', 'page'],
+    title: 'Sandbox',
+    search: `route/page/sandbox/components/gallery/preview/demo/controls/elements/site/story/stories/tokens/design/colors`,
+    description: `A component gallery for this websites elements.`,
+  },
+  {
+    url: '/toolbox',
+    icon: 'document',
+    tags: ['route', 'page'],
+    title: 'Toolbox',
+    search: `route/page/sandbox/tech/technologies/stack/languages/code/react/typescript/javascript/programming/portfolio`,
+    description: `Complete directory of current and past technologies used.`,
+  },
+  {
+    url: '/projects',
+    icon: 'document',
+    tags: ['route', 'page'],
+    title: 'Projects',
+    search: `route/page/projects/demo/work/app/apps/gallery/portfolio/development/code/react/typescript/javascript/programming`,
+    description: `Explore a gallery of my development projects.`,
+  },
+  {
+    url: '/contact',
+    icon: 'document',
+    tags: ['route', 'page'],
+    title: 'Contact',
+    search: `route/page/contact/email/phone/card/website/social/media/location/personal/work/url/github/code/sandbox/facebook/instagram/twitter/x/linkedin/codepen`,
+    description: `Looking for a developer? Let's get in touch.`,
   },
 ];
 

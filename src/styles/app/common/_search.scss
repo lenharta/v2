@@ -9,47 +9,76 @@
 }
 
 .search {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-end;
+  display: none;
 
-  &-box {
+  @media (min-width: 60em) {
     width: 100%;
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-end;
-    height: var(--action-box);
-  }
 
-  &-input {
-    width: 100%;
-    max-width: 30em;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: transparent;
-    height: calc(100% - calc(var(--unit) * 2));
-    padding-inline: var(--gutter);
-    margin-block: var(--unit);
-  }
+    &-box {
+      width: 100%;
+      display: flex;
+      position: relative;
+      justify-content: flex-end;
+    }
 
-  &-result {
-    display: grid;
-    place-content: start;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(1, 1fr);
-  }
+    &-input {
+      width: 100%;
+      margin: var(--unit);
+      height: calc(100% - calc(var(--unit) * 2));
+      padding-inline: var(--gutter);
+    }
 
-  &-result-item {
-    display: flex;
-    align-content: center;
-    justify-content: flex-start;
-    flex-direction: row;
-    padding-block: calc(var(--gutter) / 2);
-    padding-inline: var(--gutter);
-    gap: calc(var(--gutter) / 2);
+    &-result {
+      top: 100%;
+      left: 0;
+      width: calc(100% - calc(var(--action-box) + calc(var(--unit) * 2)));
+      margin: var(--unit);
+      display: flex;
+      position: absolute;
+      align-items: center;
+      flex-direction: column;
+      gap: calc(var(--gutter) / 2);
+    }
+
+    &-result-item {
+      gap: calc(var(--gutter) / 2);
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      text-align: start;
+      padding-block: calc(var(--gutter) / 4);
+      padding-inline: calc(var(--gutter) / 2);
+
+      svg {
+        min-width: var(--icon-size-sm);
+        min-height: var(--icon-size-sm);
+        margin-top: calc(var(--gutter) / 4);
+        align-self: start;
+        justify-self: center;
+      }
+
+      &-copy {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        overflow: hidden;
+        flex-direction: column;
+        margin: var(--unit);
+
+        .text {
+          display: block;
+        }
+        .text:first-of-type {
+          font-size: var(--font-size-body-sm);
+          font-weight: var(--font-weight-3);
+        }
+        .text:last-of-type {
+          font-size: 12px;
+          font-weight: var(--font-weight-1);
+        }
+      }
+    }
   }
 }

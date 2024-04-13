@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
 import { ICON, Icon } from '@/core';
+import { factoryPolymorphic } from '@/core/factory';
 import { createEventCallback } from '@/utils';
 
 export interface ActionProps {
@@ -19,7 +19,7 @@ type ActionFactory = Factory.Config<{
   props: ActionProps;
 }>;
 
-export const Action = factory<ActionFactory>((props, ref) => {
+export const Action = factoryPolymorphic<ActionFactory>((props, ref) => {
   const {
     to,
     icon,

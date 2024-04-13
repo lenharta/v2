@@ -11,7 +11,6 @@ export const Sandbox: SandboxRouteComponent = ({}) => {
         <Title h1>Sandbox</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
-      <Page.Footer></Page.Footer>
     </Page>
   );
 };

@@ -2,4 +2,29 @@
 
 .text {
   @include mixins.reset;
+
+  line-height: 1.4;
+  font-weight: 500;
+
+  &[data-truncate='start'] {
+    direction: rtl;
+    text-align: right;
+
+    @include mixins.rtl {
+      direction: ltr;
+      text-align: left;
+    }
+  }
+
+  &[data-truncate] {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &[data-inherit] {
+    line-height: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+  }
 }

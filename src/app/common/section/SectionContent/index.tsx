@@ -1,18 +1,20 @@
 import clsx from 'clsx';
 import { Box } from '@/core';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
+import { factoryPolymorphic } from '@/core/factory';
+
+interface SectionContentProps {}
 
 type SectionContentFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
-  props: {};
+  props: SectionContentProps;
 }>;
 
-export const SectionContent = factory<SectionContentFactory>((props, ref) => {
-  const { className, children, ...otherProps } = props;
+export const SectionContent = factoryPolymorphic<SectionContentFactory>((props, ref) => {
+  const { component: Component = 'div', className, children, ...otherProps } = props;
   return (
-    <Box {...otherProps} ref={ref} className={clsx('section', className)}>
+    <Box {...otherProps} ref={ref} className={clsx('section-content', className)}>
       {children}
     </Box>
   );

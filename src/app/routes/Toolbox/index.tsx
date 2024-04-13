@@ -11,7 +11,6 @@ export const Toolbox: ToolboxRouteComponent = ({}) => {
         <Title h1>Toolbox</Title>
       </Page.Hero>
       <Page.Content></Page.Content>
-      <Page.Footer></Page.Footer>
     </Page>
   );
 };

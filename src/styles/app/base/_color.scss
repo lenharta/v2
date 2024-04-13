@@ -1,411 +1,236 @@
 :root {
   --rgb-light-mode-red: rgb(255, 59, 48);
   --rgb-dark-mode-red: rgb(255, 69, 58);
+  --rgba-light-mode-red: 255, 59, 48;
+  --rgba-dark-mode-red: 255, 69, 58;
 
   --rgb-light-mode-red-a11y: rgb(215, 0, 21);
   --rgb-dark-mode-red-a11y: rgb(255, 105, 97);
+  --rgba-light-mode-red-a11y: 215, 0, 21;
+  --rgba-dark-mode-red-a11y: 255, 105, 97;
 
   --rgb-light-mode-orange: rgb(255, 149, 0);
   --rgb-dark-mode-orange: rgb(255, 159, 10);
+  --rgba-light-mode-orange: 255, 149, 0;
+  --rgba-dark-mode-orange: 255, 159, 10;
 
   --rgb-light-mode-orange-a11y: rgb(201, 52, 0);
   --rgb-dark-mode-orange-a11y: rgb(255, 179, 64);
+  --rgba-light-mode-orange-a11y: 201, 52, 0;
+  --rgba-dark-mode-orange-a11y: 255, 179, 64;
 
   --rgb-light-mode-yellow: rgb(255, 204, 0);
   --rgb-dark-mode-yellow: rgb(255, 214, 10);
+  --rgba-light-mode-yellow: 255, 204, 0;
+  --rgba-dark-mode-yellow: 255, 214, 10;
 
   --rgb-light-mode-yellow-a11y: rgb(160, 90, 0);
   --rgb-dark-mode-yellow-a11y: rgb(255, 212, 38);
+  --rgba-light-mode-yellow-a11y: 160, 90, 0;
+  --rgba-dark-mode-yellow-a11y: 255, 212, 38;
 
   --rgb-light-mode-green: rgb(40, 205, 65);
   --rgb-dark-mode-green: rgb(50, 215, 75);
+  --rgba-light-mode-green: 40, 205, 65;
+  --rgba-dark-mode-green: 50, 215, 75;
 
   --rgb-light-mode-green-a11y: rgb(0, 125, 27);
   --rgb-dark-mode-green-a11y: rgb(49, 222, 75);
+  --rgba-light-mode-green-a11y: 0, 125, 27;
+  --rgba-dark-mode-green-a11y: 49, 222, 75;
 
   --rgb-light-mode-mint: rgb(0, 199, 190);
   --rgb-dark-mode-mint: rgb(102, 212, 207);
+  --rgba-light-mode-mint: 0, 199, 190;
+  --rgba-dark-mode-mint: 102, 212, 207;
 
   --rgb-light-mode-mint-a11y: rgb(12, 129, 123);
   --rgb-dark-mode-mint-a11y: rgb(102, 212, 207);
+  --rgba-light-mode-mint-a11y: 12, 129, 123;
+  --rgba-dark-mode-mint-a11y: 102, 212, 207;
 
   --rgb-light-mode-teal: rgb(89, 173, 196);
   --rgb-dark-mode-teal: rgb(106, 196, 220);
+  --rgba-light-mode-teal: 89, 173, 196;
+  --rgba-dark-mode-teal: 106, 196, 220;
 
   --rgb-light-mode-teal-a11y: rgb(0, 130, 153);
   --rgb-dark-mode-teal-a11y: rgb(93, 230, 255);
+  --rgba-light-mode-teal-a11y: 0, 130, 153;
+  --rgba-dark-mode-teal-a11y: 93, 230, 255;
 
   --rgb-light-mode-cyan: rgb(85, 190, 240);
   --rgb-dark-mode-cyan: rgb(90, 200, 245);
+  --rgba-light-mode-cyan: 85, 190, 240;
+  --rgba-dark-mode-cyan: 90, 200, 245;
 
   --rgb-light-mode-cyan-a11y: rgb(0, 113, 164);
   --rgb-dark-mode-cyan-a11y: rgb(112, 215, 255);
+  --rgba-light-mode-cyan-a11y: 0, 113, 164;
+  --rgba-dark-mode-cyan-a11y: 112, 215, 255;
 
   --rgb-light-mode-blue: rgb(0, 122, 255);
   --rgb-dark-mode-blue: rgb(10, 132, 255);
+  --rgba-light-mode-blue: 0, 122, 255;
+  --rgba-dark-mode-blue: 10, 132, 255;
 
   --rgb-light-mode-blue-a11y: rgb(0, 64, 221);
   --rgb-dark-mode-blue-a11y: rgb(64, 156, 255);
+  --rgba-light-mode-blue-a11y: 0, 64, 221;
+  --rgba-dark-mode-blue-a11y: 64, 156, 255;
 
   --rgb-light-mode-indigo: rgb(88, 86, 214);
   --rgb-dark-mode-indigo: rgb(94, 92, 230);
+  --rgba-light-mode-indigo: 88, 86, 214;
+  --rgba-dark-mode-indigo: 94, 92, 230;
 
   --rgb-light-mode-indigo-a11y: rgb(54, 52, 163);
   --rgb-dark-mode-indigo-a11y: rgb(125, 122, 255);
+  --rgba-light-mode-indigo-a11y: 54, 52, 163;
+  --rgba-dark-mode-indigo-a11y: 125, 122, 255;
 
   --rgb-light-mode-purple: rgb(175, 82, 222);
   --rgb-dark-mode-purple: rgb(191, 90, 242);
+  --rgba-light-mode-purple: 175, 82, 222;
+  --rgba-dark-mode-purple: 191, 90, 242;
 
   --rgb-light-mode-purple-a11y: rgb(173, 68, 171);
   --rgb-dark-mode-purple-a11y: rgb(218, 143, 255);
+  --rgba-light-mode-purple-a11y: 173, 68, 171;
+  --rgba-dark-mode-purple-a11y: 218, 143, 255;
 
   --rgb-light-mode-pink: rgb(255, 45, 85);
   --rgb-dark-mode-pink: rgb(255, 55, 95);
+  --rgba-light-mode-pink: 255, 45, 85;
+  --rgba-dark-mode-pink: 255, 55, 95;
 
   --rgb-light-mode-pink-a11y: rgb(211, 15, 69);
   --rgb-dark-mode-pink-a11y: rgb(255, 100, 130);
+  --rgba-light-mode-pink-a11y: 211, 15, 69;
+  --rgba-dark-mode-pink-a11y: 255, 100, 130;
 
   --rgb-light-mode-brown: rgb(162, 132, 94);
   --rgb-dark-mode-brown: rgb(172, 142, 104);
+  --rgba-light-mode-brown: 162, 132, 94;
+  --rgba-dark-mode-brown: 172, 142, 104;
 
   --rgb-light-mode-brown-a11y: rgb(127, 101, 69);
   --rgb-dark-mode-brown-a11y: rgb(181, 148, 105);
+  --rgba-light-mode-brown-a11y: 127, 101, 69;
+  --rgba-dark-mode-brown-a11y: 181, 148, 105;
 
   --rgb-light-mode-gray: rgb(142, 142, 147);
   --rgb-dark-mode-gray: rgb(152, 152, 157);
+  --rgba-light-mode-gray: 142, 142, 147;
+  --rgba-dark-mode-gray: 152, 152, 157;
 
   --rgb-light-mode-gray-a11y: rgb(105, 105, 110);
   --rgb-dark-mode-gray-a11y: rgb(152, 152, 157);
+  --rgba-light-mode-gray-a11y: 105, 105, 110;
+  --rgba-dark-mode-gray-a11y: 152, 152, 157;
 
   --rgb-light-mode-surface-1: rgb(142, 142, 147);
   --rgb-dark-mode-surface-1: rgb(142, 142, 147);
+  --rgba-light-mode-surface-1: 142, 142, 147;
+  --rgba-dark-mode-surface-1: 142, 142, 147;
 
   --rgb-light-mode-surface-1-a11y: rgb(108, 108, 112);
   --rgb-dark-mode-surface-1-a11y: rgb(174, 174, 178);
+  --rgba-light-mode-surface-1-a11y: 108, 108, 112;
+  --rgba-dark-mode-surface-1-a11y: 174, 174, 178;
 
   --rgb-light-mode-surface-2: rgb(174, 174, 178);
   --rgb-dark-mode-surface-2: rgb(99, 99, 102);
+  --rgba-light-mode-surface-2: 174, 174, 178;
+  --rgba-dark-mode-surface-2: 99, 99, 102;
 
   --rgb-light-mode-surface-2-a11y: rgb(142, 142, 147);
   --rgb-dark-mode-surface-2-a11y: rgb(124, 124, 128);
+  --rgba-light-mode-surface-2-a11y: 142, 142, 147;
+  --rgba-dark-mode-surface-2-a11y: 124, 124, 128;
 
   --rgb-light-mode-surface-3: rgb(199, 199, 204);
   --rgb-dark-mode-surface-3: rgb(72, 72, 74);
+  --rgba-light-mode-surface-3: 199, 199, 204;
+  --rgba-dark-mode-surface-3: 72, 72, 74;
 
   --rgb-light-mode-surface-3-a11y: rgb(174, 174, 178);
   --rgb-dark-mode-surface-3-a11y: rgb(84, 84, 86);
+  --rgba-light-mode-surface-3-a11y: 174, 174, 178;
+  --rgba-dark-mode-surface-3-a11y: 84, 84, 86;
 
   --rgb-light-mode-surface-4: rgb(209, 209, 214);
   --rgb-dark-mode-surface-4: rgb(58, 58, 60);
+  --rgba-light-mode-surface-4: 209, 209, 214;
+  --rgba-dark-mode-surface-4: 58, 58, 60;
 
   --rgb-light-mode-surface-4-a11y: rgb(188, 188, 192);
   --rgb-dark-mode-surface-4-a11y: rgb(68, 68, 70);
+  --rgba-light-mode-surface-4-a11y: 188, 188, 192;
+  --rgba-dark-mode-surface-4-a11y: 68, 68, 70;
 
   --rgb-light-mode-surface-5: rgb(229, 229, 234);
   --rgb-dark-mode-surface-5: rgb(44, 44, 46);
+  --rgba-light-mode-surface-5: 229, 229, 234;
+  --rgba-dark-mode-surface-5: 44, 44, 46;
 
   --rgb-light-mode-surface-5-a11y: rgb(216, 216, 220);
   --rgb-dark-mode-surface-5-a11y: rgb(54, 54, 56);
+  --rgba-light-mode-surface-5-a11y: 216, 216, 220;
+  --rgba-dark-mode-surface-5-a11y: 54, 54, 56;
 
   --rgb-light-mode-surface-6: rgb(242, 242, 247);
   --rgb-dark-mode-surface-6: rgb(28, 28, 30);
+  --rgba-light-mode-surface-6: 242, 242, 247;
+  --rgba-dark-mode-surface-6: 28, 28, 30;
 
   --rgb-light-mode-surface-6-a11y: rgb(235, 235, 240);
   --rgb-dark-mode-surface-6-a11y: rgb(36, 36, 38);
+  --rgba-light-mode-surface-6-a11y: 235, 235, 240;
+  --rgba-dark-mode-surface-6-a11y: 36, 36, 38;
 }
 
 [data-prefers-mode='dim'] {
-  --c-primary-text: var(--rgb-light-mode-surface-6);
-  --c-primary-border: var(--rgb-dark-mode-surface-5);
-  --c-primary-background: var(--rgb-dark-mode-surface-6);
-
-  --c-primary-surface-1: var(--rgb-dark-mode-surface-6);
-  --c-primary-surface-2: var(--rgb-dark-mode-surface-5);
-  --c-primary-surface-3: var(--rgb-dark-mode-surface-4);
-  --c-primary-surface-4: var(--rgb-dark-mode-surface-3);
-  --c-primary-surface-5: var(--rgb-dark-mode-surface-2);
-
-  --c-primary-button: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 100%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-button-hover: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 95%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-button-active: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 90%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-button-selected: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 85%,
-    var(--rgb-light-mode-surface-6)
-  );
-
-  --c-primary-input: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 96%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-input-hover: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 92%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-input-active: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 88%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-input-selected: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 84%,
-    var(--rgb-light-mode-surface-6)
-  );
-
-  --c-secondary-text: var(--rgb-dark-mode-surface-6);
-  --c-secondary-border: var(--rgb-light-mode-surface-5);
-  --c-secondary-background: var(--rgb-light-mode-surface-6);
-
-  --c-secondary-button: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 100%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-button-hover: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 95%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-button-active: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 90%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-button-selected: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 85%,
-    var(--rgb-light-mode-surface-6)
-  );
-
-  --c-secondary-input: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 96%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-input-hover: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 92%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-input-active: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 88%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-input-selected: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 84%,
-    var(--rgb-light-mode-surface-6)
-  );
+  --c-mix: var(--rgb-light-mode-surface-6);
+  --c-base: var(--rgb-dark-mode-surface-5);
 }
 
 [data-prefers-mode='dark'] {
-  --c-primary-text: var(--rgb-light-mode-surface-6);
-  --c-primary-border: var(--rgb-dark-mode-surface-5);
-  --c-primary-background: var(--rgb-dark-mode-surface-6);
-
-  --c-primary-surface-1: var(--rgb-dark-mode-surface-6);
-  --c-primary-surface-2: var(--rgb-dark-mode-surface-5);
-  --c-primary-surface-3: var(--rgb-dark-mode-surface-4);
-  --c-primary-surface-4: var(--rgb-dark-mode-surface-3);
-  --c-primary-surface-5: var(--rgb-dark-mode-surface-2);
-
-  --c-primary-button: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 100%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-button-hover: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 96%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-button-active: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 92%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-button-selected: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 88%,
-    var(--rgb-light-mode-surface-6)
-  );
-
-  --c-primary-input: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 96%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-input-hover: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 92%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-input-active: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 88%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-primary-input-selected: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 84%,
-    var(--rgb-light-mode-surface-6)
-  );
-
-  --c-secondary-text: var(--rgb-dark-mode-surface-6);
-  --c-secondary-border: var(--rgb-light-mode-surface-5);
-  --c-secondary-background: var(--rgb-light-mode-surface-6);
-
-  --c-secondary-button: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 100%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-button-hover: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 96%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-button-active: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 92%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-button-selected: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 88%,
-    var(--rgb-light-mode-surface-6)
-  );
-
-  --c-secondary-input: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 96%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-input-hover: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 92%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-input-active: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 88%,
-    var(--rgb-light-mode-surface-6)
-  );
-  --c-secondary-input-selected: color-mix(
-    in srgb,
-    var(--rgb-dark-mode-surface-6) 84%,
-    var(--rgb-light-mode-surface-6)
-  );
+  --c-mix: var(--rgb-light-mode-surface-6);
+  --c-base: var(--rgb-dark-mode-surface-6);
 }
 
 [data-prefers-mode='light'] {
-  --c-primary-text: var(--rgb-dark-mode-surface-6);
-  --c-primary-border: var(--rgb-light-mode-surface-5);
-  --c-primary-background: var(--rgb-light-mode-surface-6);
+  --c-mix: var(--rgb-dark-mode-surface-6);
+  --c-base: var(--rgb-light-mode-surface-6);
+}
 
-  --c-primary-button: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 100%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-primary-button-hover: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 95%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-primary-button-active: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 90%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-primary-button-selected: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 85%,
-    var(--rgb-dark-mode-surface-6)
-  );
+[data-prefers-mode='dim'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='light'] {
+  --c-primary-text: color-mix(in srgb, var(--c-base) 0%, var(--c-mix));
+  --c-primary-text-med: color-mix(in srgb, var(--c-base) 15%, var(--c-mix));
+  --c-primary-text-low: color-mix(in srgb, var(--c-base) 30%, var(--c-mix));
 
-  --c-primary-input: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 96%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-primary-input-hover: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 92%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-primary-input-active: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 88%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-primary-input-selected: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 84%,
-    var(--rgb-dark-mode-surface-6)
-  );
+  --c-primary-panel: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
+  --c-primary-border: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
+  --c-primary-background: color-mix(in srgb, var(--c-base) 100%, var(--c-mix));
 
-  --c-secondary-text: var(--rgb-light-mode-surface-6);
-  --c-secondary-border: var(--rgb-dark-mode-surface-5);
-  --c-secondary-background: var(--rgb-dark-mode-surface-6);
+  --c-primary-surface-1: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
+  --c-primary-surface-2: color-mix(in srgb, var(--c-base) 84%, var(--c-mix));
+  --c-primary-surface-3: color-mix(in srgb, var(--c-base) 76%, var(--c-mix));
+  --c-primary-surface-4: color-mix(in srgb, var(--c-base) 68%, var(--c-mix));
+  --c-primary-surface-5: color-mix(in srgb, var(--c-base) 60%, var(--c-mix));
 
-  --c-secondary-button: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 100%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-secondary-button-hover: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 95%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-secondary-button-active: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 90%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-secondary-button-selected: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 85%,
-    var(--rgb-dark-mode-surface-6)
-  );
+  --c-primary-button-base: color-mix(in srgb, var(--c-base) 100%, var(--c-mix));
+  --c-primary-button-hover: color-mix(in srgb, var(--c-base) 95%, var(--c-mix));
+  --c-primary-button-active: color-mix(in srgb, var(--c-base) 90%, var(--c-mix));
+  --c-primary-button-selected: color-mix(in srgb, var(--c-base) 85%, var(--c-mix));
 
-  --c-secondary-input: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 96%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-secondary-input-hover: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 92%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-secondary-input-active: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 88%,
-    var(--rgb-dark-mode-surface-6)
-  );
-  --c-secondary-input-selected: color-mix(
-    in srgb,
-    var(--rgb-light-mode-surface-6) 84%,
-    var(--rgb-dark-mode-surface-6)
-  );
+  --c-primary-input-base: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
+  --c-primary-input-hover: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
+  --c-primary-input-active: color-mix(in srgb, var(--c-base) 88%, var(--c-mix));
+  --c-primary-input-selected: color-mix(in srgb, var(--c-base) 84%, var(--c-mix));
 }
 
 [data-prefers-mode='dim'],
@@ -477,77 +302,77 @@
 [data-prefers-mode='dim'][data-prefers-accent='red'],
 [data-prefers-mode='dark'][data-prefers-accent='red'],
 [data-prefers-mode='light'][data-prefers-accent='red'] {
-  --c-accent-text: var(--c-red);
+  --c-accent: var(--c-red);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='orange'],
 [data-prefers-mode='dark'][data-prefers-accent='orange'],
 [data-prefers-mode='light'][data-prefers-accent='orange'] {
-  --c-accent-text: var(--c-orange);
+  --c-accent: var(--c-orange);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='yellow'],
 [data-prefers-mode='dark'][data-prefers-accent='yellow'],
 [data-prefers-mode='light'][data-prefers-accent='yellow'] {
-  --c-accent-text: var(--c-yellow);
+  --c-accent: var(--c-yellow);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='green'],
 [data-prefers-mode='dark'][data-prefers-accent='green'],
 [data-prefers-mode='light'][data-prefers-accent='green'] {
-  --c-accent-text: var(--c-green);
+  --c-accent: var(--c-green);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='mint'],
 [data-prefers-mode='dark'][data-prefers-accent='mint'],
 [data-prefers-mode='light'][data-prefers-accent='mint'] {
-  --c-accent-text: var(--c-mint);
+  --c-accent: var(--c-mint);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='teal'],
 [data-prefers-mode='dark'][data-prefers-accent='teal'],
 [data-prefers-mode='light'][data-prefers-accent='teal'] {
-  --c-accent-text: var(--c-teal);
+  --c-accent: var(--c-teal);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='cyan'],
 [data-prefers-mode='dark'][data-prefers-accent='cyan'],
 [data-prefers-mode='light'][data-prefers-accent='cyan'] {
-  --c-accent-text: var(--c-cyan);
+  --c-accent: var(--c-cyan);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='blue'],
 [data-prefers-mode='dark'][data-prefers-accent='blue'],
 [data-prefers-mode='light'][data-prefers-accent='blue'] {
-  --c-accent-text: var(--c-blue);
+  --c-accent: var(--c-blue);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='indigo'],
 [data-prefers-mode='dark'][data-prefers-accent='indigo'],
 [data-prefers-mode='light'][data-prefers-accent='indigo'] {
-  --c-accent-text: var(--c-indigo);
+  --c-accent: var(--c-indigo);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='purple'],
 [data-prefers-mode='dark'][data-prefers-accent='purple'],
 [data-prefers-mode='light'][data-prefers-accent='purple'] {
-  --c-accent-text: var(--c-purple);
+  --c-accent: var(--c-purple);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='pink'],
 [data-prefers-mode='dark'][data-prefers-accent='pink'],
 [data-prefers-mode='light'][data-prefers-accent='pink'] {
-  --c-accent-text: var(--c-pink);
+  --c-accent: var(--c-pink);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='brown'],
 [data-prefers-mode='dark'][data-prefers-accent='brown'],
 [data-prefers-mode='light'][data-prefers-accent='brown'] {
-  --c-accent-text: var(--c-brown);
+  --c-accent: var(--c-brown);
 }
 
 [data-prefers-mode='dim'][data-prefers-accent='gray'],
 [data-prefers-mode='dark'][data-prefers-accent='gray'],
 [data-prefers-mode='light'][data-prefers-accent='gray'] {
-  --c-accent-text: var(--c-gray);
+  --c-accent: var(--c-gray);
 }

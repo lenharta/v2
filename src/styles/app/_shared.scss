@@ -10,8 +10,11 @@
   top: 0;
 }
 
+.accent {
+  background-color: var(--c-accent);
+}
 .accent-text {
-  color: var(--c-accent-text);
+  color: var(--c-accent);
 }
 
 .layout-nav {
@@ -22,6 +25,22 @@
 }
 .layout-menu-panel {
   z-index: var(--app-index-panel);
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-2);
+}
+
+h1.title {
+  font-size: var(--font-size-title-xl);
+}
+h2.title {
+  font-size: var(--font-size-title-md);
+}
+
+.text {
+  font-family: var(--font-family);
 }
 
 .button,

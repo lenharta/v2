@@ -12,7 +12,6 @@ export const Home: HomeRouteComponent = ({}) => {
       <Page.Content>
         <HomeOverview />
       </Page.Content>
-      <Page.Footer></Page.Footer>
     </Page>
   );
 };
