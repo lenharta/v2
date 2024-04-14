@@ -12,10 +12,22 @@
   grid-template-rows: auto;
   grid-template-columns: repeat(1, 1fr);
 
+  &-header {
+    padding-inline: var(--gutter);
+    h2.title {
+      font-size: var(--font-size-subtitle-sm);
+      font-weight: var(--font-weight-3);
+    }
+  }
+
   &-content {
     display: grid;
     place-content: start;
     grid-template-rows: auto;
     grid-template-columns: repeat(1, 1fr);
+
+    .box {
+      padding-inline: var(--gutter);
+    }
   }
 }

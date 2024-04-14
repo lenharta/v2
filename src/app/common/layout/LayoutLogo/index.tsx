@@ -26,12 +26,15 @@ export const LayoutLogo = factory<LayoutLogoFactory>((props, ref) => {
   const { skipProps, linkProps, ...otherProps } = props;
 
   const navigate = useNavigate();
+
   const location = useLocation();
 
   const skipLink = React.useRef<HTMLButtonElement>(null);
+
   const [isSkipFocus, { show, remove }] = useExhibit(false);
 
   const clickRef = useClickOutside<HTMLDivElement>(() => isSkipFocus && remove());
+
   const mergedRefs = useMergeRefs(ref, clickRef);
 
   return (
@@ -44,10 +47,12 @@ export const LayoutLogo = factory<LayoutLogoFactory>((props, ref) => {
           style={{ visibility: isSkipFocus ? 'hidden' : 'visible' }}
           onKeyDown={(event) => {
             event.stopPropagation();
-            if (event.shiftKey) return;
-            if (event.key === 'Tab' && !isSkipFocus) show();
-            if (event.key === 'Tab' && !isSkipFocus) skipLink.current?.focus();
-            return;
+            const shouldShow = !isSkipFocus && !event.shiftKey;
+            const focusSkip = () => shouldShow && skipLink.current?.focus();
+            const showSkip = () => shouldShow && show();
+            const Tab = () => showSkip() && focusSkip();
+            const events = { Tab }[event.key];
+            events?.();
           }}
         />
         <LayoutLogo.Skip
@@ -56,10 +61,11 @@ export const LayoutLogo = factory<LayoutLogoFactory>((props, ref) => {
           location={location}
           style={{ visibility: isSkipFocus ? 'visible' : 'hidden' }}
           onKeyDown={(event) => {
-            if (event.key === 'Escape') remove();
-            if (event.shiftKey && event.key === 'Tab') remove();
-            if (!event.shiftKey && event.key === 'Tab') remove();
-            return;
+            const Tab = () => remove();
+            const Escape = () => remove();
+            const events = { Tab, Escape }[event.key];
+            events?.();
+            // logic for skiping to first header anchor
           }}
         />
       </div>

@@ -8,11 +8,25 @@ export type SearchClearFactory = Factory.Config<{
   comp: 'button';
   props: {
     mounted: boolean;
+    onFocusClear: () => void;
+    onFocusInput: () => void;
+    onFocusSearch: () => void;
+    onClearSearch: () => void;
+    onEscapeSearch: () => void;
   };
 }>;
 
 export const SearchClear = factory<SearchClearFactory>((props, ref) => {
-  const { mounted, ...otherProps } = props;
+  const {
+    mounted,
+    onFocusClear,
+    onFocusInput,
+    onClearSearch,
+    onFocusSearch,
+    onEscapeSearch,
+    ...otherProps
+  } = props;
+
   return (
     <Transition
       mounted={mounted}
@@ -34,6 +48,33 @@ export const SearchClear = factory<SearchClearFactory>((props, ref) => {
           variant="button"
           className="search-clear"
           style={transitionStyles}
+          onKeyDown={(event) => {
+            event.stopPropagation();
+            event.preventDefault();
+
+            const Tab = () => {
+              if (event.shiftKey) {
+                onFocusInput?.();
+              } else {
+                onFocusSearch?.();
+              }
+            };
+
+            const Enter = () => {
+              onFocusInput?.();
+              onClearSearch?.();
+            };
+
+            const events = {
+              Tab,
+              Enter,
+              Escape: () => onEscapeSearch(),
+              ArrowLeft: () => onFocusInput?.(),
+              ArrowRight: () => onFocusSearch?.(),
+            }[event.key];
+
+            return events?.();
+          }}
         />
       )}
     </Transition>

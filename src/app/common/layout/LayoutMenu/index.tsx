@@ -4,9 +4,8 @@ import { useGSAP } from '@gsap/react';
 import { useMotionTimeline } from '@/motion';
 import { useMergedClickOutside } from '@/hooks';
 import { useAppDispatch, useAppState } from '@/store';
-
-import { LayoutMenuPanel } from './LayoutMenuPanel';
 import { LayoutMenuTarget } from './LayoutMenuTarget';
+import { LayoutMenuPanel } from './LayoutMenuPanel';
 
 const data = [
   { row: 'r-1', cells: ['r-1-c-1', 'r-1-c-2', 'r-1-c-3'] },

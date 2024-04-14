@@ -15,3 +15,11 @@
     padding-inline: calc(var(--unit) * 4);
   }
 }
+
+.section-box-demo-component--left,
+.section-box-demo-component--right {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}

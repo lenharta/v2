@@ -61,6 +61,7 @@
   .action--link,
   .action--button,
   .search-result-item {
+    @include transition-colors-interactive;
     outline: solid var(--unit) transparent;
     border: solid var(--unit) transparent;
 
@@ -100,7 +101,7 @@
     border: solid var(--unit) transparent;
     outline: solid var(--unit) transparent;
     border-left: solid var(--unit) var(--c-primary-border);
-    background-color: var(--c-primary-panel);
+    background-color: var(--c-primary-panel-base);
     color: var(--c-primary-text-med);
 
     &:not([aria-disabled]):focus-visible,
@@ -110,10 +111,19 @@
     }
   }
   .search-result {
-    background-color: var(--c-primary-panel);
+    background-color: var(--c-primary-background);
   }
   .search-result-item {
-    background-color: var(--c-primary-panel);
+    background-color: var(--c-primary-panel-base);
+
+    &:not([aria-disabled]):hover,
+    &:not([data-disabled]):hover {
+      background-color: var(--c-primary-panel-hover);
+    }
+    &:not([aria-disabled]):active,
+    &:not([data-disabled]):active {
+      background-color: var(--c-primary-panel-active);
+    }
 
     path {
       fill: var(--c-primary-text-low);
@@ -131,7 +141,7 @@
     border-bottom: solid var(--unit) var(--c-primary-border);
   }
   .layout-menu-panel {
-    background-color: var(--c-primary-panel);
+    background-color: var(--c-primary-panel-base);
     border-right: solid var(--unit) var(--c-primary-border);
   }
   .layout-menu-cell {

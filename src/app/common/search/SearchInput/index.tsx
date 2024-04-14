@@ -8,6 +8,11 @@ interface SearchInputProps {
   onEnter?: () => void;
   onExited?: () => void;
   onExit?: () => void;
+  onFocusInput: () => void;
+  onFocusClear: () => void;
+  onFocusSearch: () => void;
+  onFocusResult: () => void;
+  onEscapeSearch: () => void;
 }
 
 export type SearchInputFactory = Factory.Config<{
@@ -17,7 +22,20 @@ export type SearchInputFactory = Factory.Config<{
 }>;
 
 export const SearchInput = factory<SearchInputFactory>((props, ref) => {
-  const { mounted, onEnter, onEntered, onExit, onExited, ...otherProps } = props;
+  const {
+    mounted,
+    onEnter,
+    onEntered,
+    onExit,
+    onExited,
+    onFocusInput,
+    onFocusClear,
+    onFocusSearch,
+    onFocusResult,
+    onEscapeSearch,
+    ...otherProps
+  } = props;
+
   return (
     <Transition
       onExit={onExit}
@@ -44,6 +62,15 @@ export const SearchInput = factory<SearchInputFactory>((props, ref) => {
           className="search-input"
           placeholder="Search"
           tabIndex={0}
+          onKeyDown={(event) => {
+            event.stopPropagation();
+            const Escape = () => onEscapeSearch?.();
+            const ArrowDown = () => onFocusResult?.();
+            const ArrowLeft = () => !event.shiftKey && !event.ctrlKey && onFocusSearch?.();
+            const ArrowRight = () => !event.shiftKey && !event.ctrlKey && onFocusClear?.();
+            const events = { Escape, ArrowDown, ArrowLeft, ArrowRight }[event.key];
+            return events?.();
+          }}
         />
       )}
     </Transition>

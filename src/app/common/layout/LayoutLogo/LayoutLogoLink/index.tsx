@@ -8,8 +8,8 @@ export interface LayoutLogoLinkProps {
   to?: string | undefined;
   label?: string | undefined;
   style?: React.CSSProperties | undefined;
+  location?: Location | undefined;
   navigate?: ((to: string) => void) | undefined;
-  location?: Location;
 }
 
 export type LayoutLogoLinkFactory = Factory.Config<{
@@ -23,16 +23,17 @@ export const LayoutLogoLink = factory<LayoutLogoLinkFactory>((props, ref) => {
   return (
     <Action
       {...otherProps}
-      variant="link"
-      className="layout-logo-link"
-      aria-label="site logo"
-      children={label}
       ref={ref}
+      variant="link"
+      aria-label="site logo"
+      className="layout-logo-link"
       onClick={createEventCallback(otherProps.onClick, (event) => {
         event.stopPropagation();
-        navigate?.(to);
+        navigate && navigate(to);
       })}
-    />
+    >
+      {label}
+    </Action>
   );
 });
 
