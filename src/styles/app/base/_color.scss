@@ -212,9 +212,11 @@
   --c-primary-text-med: color-mix(in srgb, var(--c-base) 15%, var(--c-mix));
   --c-primary-text-low: color-mix(in srgb, var(--c-base) 30%, var(--c-mix));
 
-  --c-primary-panel: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
   --c-primary-border: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
   --c-primary-background: color-mix(in srgb, var(--c-base) 100%, var(--c-mix));
+  --c-primary-panel-base: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
+  --c-primary-panel-hover: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
+  --c-primary-panel-active: color-mix(in srgb, var(--c-base) 88%, var(--c-mix));
 
   --c-primary-surface-1: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
   --c-primary-surface-2: color-mix(in srgb, var(--c-base) 84%, var(--c-mix));

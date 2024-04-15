@@ -2,25 +2,23 @@ import { ICON } from '@/core';
 import { Action } from '@/app/common/action';
 import { factory } from '@/core/factory';
 import { Factory } from '@/types';
-import { createEventCallback } from '@/utils';
+
+interface LayoutNavItemProps {
+  to: string;
+  icon: ICON;
+  label: string;
+  selected?: boolean | undefined;
+  navigate: (to: string) => void;
+}
 
 type LayoutNavItemFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
-  props: {
-    to: string;
-    icon: ICON;
-    label: string;
-    itemTotal: number;
-    itemIndex: number;
-    selected?: boolean | undefined;
-    navigate: (to: string) => void;
-    onClick: () => void;
-  };
+  props: LayoutNavItemProps;
 }>;
 
 export const LayoutNavItem = factory<LayoutNavItemFactory>((props, ref) => {
-  const { to, icon, itemIndex, itemTotal, label, selected, navigate, ...otherProps } = props;
+  const { to, icon, label, selected, navigate, ...otherProps } = props;
   return (
     <Action
       {...otherProps}
@@ -32,35 +30,55 @@ export const LayoutNavItem = factory<LayoutNavItemFactory>((props, ref) => {
       navigate={navigate}
       className="layout-nav-item"
       aria-selected={selected}
-      onKeyDown={createEventCallback(otherProps.onKeyDown, (event) => {
+      onKeyDown={(event) => {
         event.stopPropagation();
+
         const { currentTarget } = event ?? {};
+        const parentElement = currentTarget.parentElement;
 
-        if (event.key === 'PageUp' || event.key === 'Home' || event.key === 'ArrowLeft') {
-          const { parentElement } = currentTarget;
-          const nodes = (Array.from(parentElement?.children!) as HTMLElement[]) || [];
-          nodes[0].focus();
-        }
+        const elements = (Array.from(parentElement?.children!) as HTMLButtonElement[]) || [];
+        const currentIndex = elements.findIndex((node) => currentTarget === node);
 
-        if (event.key === 'PageDown' || event.key === 'End' || event.key === 'ArrowRight') {
-          const { parentElement } = currentTarget;
-          const nodes = (Array.from(parentElement?.children!) as HTMLElement[]) || [];
-          nodes[itemTotal].focus();
-        }
+        const nextIndex = currentIndex + 1;
+        const prevIndex = currentIndex - 1;
 
-        if (itemIndex > -1) {
-          const { previousSibling } = currentTarget;
-          if (event.key === 'ArrowUp') {
-            previousSibling && (previousSibling as HTMLButtonElement).focus();
+        const ArrowDown = () => {
+          if (elements[nextIndex]) {
+            elements[nextIndex].focus();
+          } else {
+            elements[currentIndex].focus();
           }
-        }
-        if (itemIndex <= itemTotal + 1) {
-          const { nextSibling } = currentTarget;
-          if (event.key === 'ArrowDown') {
-            nextSibling && (nextSibling as HTMLButtonElement).focus();
+        };
+
+        const ArrowUp = () => {
+          if (elements[prevIndex]) {
+            elements[prevIndex].focus();
+          } else {
+            elements[currentIndex].focus();
           }
-        }
-      })}
+        };
+
+        const Home = () => elements[0].focus();
+        const PageUp = () => elements[0].focus();
+        const ArrowLeft = () => elements[0].focus();
+
+        const End = () => elements[elements.length - 1].focus();
+        const PageDown = () => elements[elements.length - 1].focus();
+        const ArrowRight = () => elements[elements.length - 1].focus();
+
+        const events = {
+          End,
+          Home,
+          PageUp,
+          PageDown,
+          ArrowUp,
+          ArrowDown,
+          ArrowLeft,
+          ArrowRight,
+        }[event.key];
+
+        events?.();
+      }}
     />
   );
 });

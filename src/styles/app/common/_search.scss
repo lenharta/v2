@@ -38,7 +38,7 @@
       position: absolute;
       align-items: center;
       flex-direction: column;
-      gap: calc(var(--gutter) / 2);
+      gap: var(--unit);
     }
 
     &-result-item {
@@ -48,7 +48,7 @@
       display: flex;
       justify-content: center;
       text-align: start;
-      padding-block: calc(var(--gutter) / 4);
+      padding-block: calc(var(--gutter) / 3);
       padding-inline: calc(var(--gutter) / 2);
 
       svg {

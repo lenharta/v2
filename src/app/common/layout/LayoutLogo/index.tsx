@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Box } from '@/core';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { useOutsideClick } from '@/hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LayoutLogoSkip, LayoutLogoSkipProps } from './LayoutLogoSkip';
 import { LayoutLogoLink, LayoutLogoLinkProps } from './LayoutLogoLink';
-import { useClickOutside, useExhibit, useMergeRefs } from '@/hooks';
 
 interface LayoutLogoProps {
   skipProps?: LayoutLogoSkipProps;
@@ -25,41 +25,59 @@ export type LayoutLogoFactory = Factory.Config<{
 export const LayoutLogo = factory<LayoutLogoFactory>((props, ref) => {
   const { skipProps, linkProps, ...otherProps } = props;
 
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const skipLink = React.useRef<HTMLButtonElement>(null);
-  const [isSkipFocus, { show, remove }] = useExhibit(false);
+  const skipRef = React.useRef<HTMLButtonElement>(null);
+  const [isSkipFocus, setSkipFocus] = React.useState<boolean>();
 
-  const clickRef = useClickOutside<HTMLDivElement>(() => isSkipFocus && remove());
-  const mergedRefs = useMergeRefs(ref, clickRef);
+  useOutsideClick([skipRef], () => {
+    setSkipFocus(undefined);
+  });
+
+  const getVisibility = (show: boolean, element: 'logo' | 'skip'): React.CSSProperties => {
+    const lookup: Record<'logo' | 'skip', React.CSSProperties> = {
+      logo: { visibility: show ? 'hidden' : 'visible' },
+      skip: { visibility: show ? 'visible' : 'hidden' },
+    };
+    return lookup[element];
+  };
 
   return (
     <Box className="layout-header-left">
-      <div {...otherProps} ref={mergedRefs} className="layout-logo">
+      <div {...otherProps} ref={ref} className="layout-logo">
         <LayoutLogo.Link
           {...linkProps}
+          style={getVisibility(isSkipFocus ? true : false, 'logo')}
           navigate={navigate}
           location={location}
-          style={{ visibility: isSkipFocus ? 'hidden' : 'visible' }}
           onKeyDown={(event) => {
             event.stopPropagation();
-            if (event.shiftKey) return;
-            if (event.key === 'Tab' && !isSkipFocus) show();
-            if (event.key === 'Tab' && !isSkipFocus) skipLink.current?.focus();
-            return;
+            const events = {
+              Tab: () => {
+                if (!isSkipFocus && !event.shiftKey) {
+                  skipRef.current?.focus();
+                  setSkipFocus(true);
+                }
+              },
+            }[event.key];
+            events?.();
           }}
         />
+
         <LayoutLogo.Skip
           {...skipProps}
+          ref={skipRef}
+          style={getVisibility(isSkipFocus ? true : false, 'skip')}
           navigate={navigate}
           location={location}
-          style={{ visibility: isSkipFocus ? 'visible' : 'hidden' }}
           onKeyDown={(event) => {
-            if (event.key === 'Escape') remove();
-            if (event.shiftKey && event.key === 'Tab') remove();
-            if (!event.shiftKey && event.key === 'Tab') remove();
-            return;
+            const events = {
+              Escape: () => setSkipFocus(undefined),
+              Tab: () => setSkipFocus(undefined),
+            }[event.key];
+            events?.();
+            // logic for skiping to first header anchor
           }}
         />
       </div>

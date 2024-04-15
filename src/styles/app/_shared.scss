@@ -45,7 +45,8 @@ h2.title {
 
 .button,
 .action--link,
-.action--button {
+.action--button,
+.search-result-item {
   cursor: default;
 
   &[data-disabled]:hover,

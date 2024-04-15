@@ -7,8 +7,8 @@ import { createEventCallback } from '@/utils';
 export interface LayoutLogoSkipProps {
   to?: string | undefined;
   style?: React.CSSProperties | undefined;
+  location?: Location | undefined;
   navigate?: ((to: string) => void) | undefined;
-  location?: Location;
 }
 
 export type LayoutLogoSkipFactory = Factory.Config<{
@@ -19,21 +19,24 @@ export type LayoutLogoSkipFactory = Factory.Config<{
 
 export const LayoutLogoSkip = factory<LayoutLogoSkipFactory>((props, ref) => {
   const { to = 'main_content', navigate, location, style, ...otherProps } = props;
-  const destination = [location?.pathname, to].join('#');
+
+  const url = [location?.pathname, to].join('#');
+
   return (
     <Action
       {...otherProps}
       ref={ref}
+      label="skip to main content"
       style={style}
       variant="link"
       className="layout-logo-skip"
-      aria-label="skip to main content"
-      children="Skip To Main"
       onClick={createEventCallback(otherProps.onClick, (event) => {
         event.stopPropagation();
-        navigate?.(destination);
+        navigate?.(url);
       })}
-    />
+    >
+      Skip To Main
+    </Action>
   );
 });
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { Box } from '@/core';
-import { useAppDispatch } from '@/store';
 import { LayoutNavItem } from './LayoutNavItem';
+import { useAppDispatch } from '@/store';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export type LayoutNavComponent = React.FC<{}> & {
   Item: typeof LayoutNavItem;
@@ -47,8 +47,6 @@ export const LayoutNav: LayoutNavComponent = ({}) => {
             key={to}
             icon={icon}
             label={label}
-            itemIndex={index}
-            itemTotal={array.length - 1}
             onClick={closeAllPanels}
             selected={isSelected(to)}
             navigate={navigate}
@@ -63,8 +61,6 @@ export const LayoutNav: LayoutNavComponent = ({}) => {
             key={to}
             icon={icon}
             label={label}
-            itemIndex={index}
-            itemTotal={array.length - 1}
             onClick={closeAllPanels}
             selected={isSelected(to)}
             navigate={navigate}

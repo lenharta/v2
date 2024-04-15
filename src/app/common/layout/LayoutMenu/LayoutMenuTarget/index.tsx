@@ -2,14 +2,16 @@ import { Action } from '@/app/common/action';
 import { factory } from '@/core/factory';
 import { Factory } from '@/types';
 
+interface LayoutMenuTargetProps {
+  css: { grid: string; row: string; cell: string };
+  data: { row: string; cells: string[] }[];
+  format: (cx: string, uid: string) => string;
+}
+
 export type LayoutMenuTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
-  props: {
-    css: { grid: string; row: string; cell: string };
-    data: { row: string; cells: string[] }[];
-    format: (cx: string, uid: string) => string;
-  };
+  props: LayoutMenuTargetProps;
 }>;
 
 export const LayoutMenuTarget = factory<LayoutMenuTargetFactory>((props, ref) => {
