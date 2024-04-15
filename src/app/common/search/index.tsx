@@ -1,15 +1,16 @@
 import clsx from 'clsx';
 import * as React from 'react';
+import { Box } from '@/core';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { useNavigate } from 'react-router-dom';
 import { SearchClear } from './SearchClear';
 import { SearchInput } from './SearchInput';
 import { SearchResult } from './SearchResult';
 import { SearchTarget } from './SearchTarget';
+import { useOutsideClick } from '@/hooks';
 import { DATA_MATTER_ROUTES } from '@/data';
 import { useAppDispatch, useAppState } from '@/store';
-import { useNavigate } from 'react-router-dom';
-import { Box } from '@/core';
 
 type SearchFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -23,14 +24,16 @@ type SearchFactory = Factory.Config<{
   };
 }>;
 
-const clickEvents = ['mousedown', 'touchstart'] as const;
-
 export const Search = factory<SearchFactory>((props, ref) => {
   const { className, children, ...otherProps } = props;
 
   const state = useAppState();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const uid = React.useId();
+  const getSearchBoxId = () => `input${uid}searchbox`;
+  const getResultBoxId = () => `input${uid}resultbox`;
 
   const focusIndex = React.useRef(0);
   const resultRef = React.useRef<HTMLDivElement>(null);
@@ -68,58 +71,32 @@ export const Search = factory<SearchFactory>((props, ref) => {
     dispatch({ searchQuery: undefined });
   };
 
-  React.useEffect(() => {
-    const handler = (event: any) => {
-      const { target } = event ?? {};
-
-      const clearBox = clearRef.current;
-      const inputBox = inputRef.current;
-      const searchBox = searchRef.current;
-      const resultBox = resultRef.current;
-
-      const ignoreClear = clearBox && clearBox.contains(target);
-      const ignoreInput = inputBox && inputBox.contains(target);
-      const ignoreResult = resultBox && resultBox.contains(target);
-      const ignoreSearch = searchBox && searchBox.contains(target);
-
-      if (ignoreInput || ignoreResult || ignoreClear || ignoreSearch) {
-        return;
-      }
-
-      const triggerClear = !clearBox || !clearBox.contains(target);
-      const triggerInput = !inputBox || !inputBox.contains(target);
-      const triggerResult = !resultBox || !resultBox.contains(target);
-      const triggerSearch = !searchBox || !searchBox.contains(target);
-
-      if (triggerInput || triggerResult || triggerClear || triggerSearch) {
-        dispatch({
-          searchQuery: undefined,
-          isSearchOpen: undefined,
-        });
-      }
-    };
-
-    clickEvents.forEach((fn) => document.addEventListener(fn, handler));
-    return () => {
-      clickEvents.forEach((fn) => document.addEventListener(fn, handler));
-    };
-  }, [resultRef]);
+  useOutsideClick([clearRef, inputRef, searchRef, resultRef], () => {
+    dispatch({
+      searchQuery: undefined,
+      isSearchOpen: undefined,
+    });
+  });
 
   return (
     <Box className="layout-header-right">
       <div {...otherProps} ref={ref} className={clsx('search', className)}>
         <span className="search-box" role="searchbox">
           <Search.Input
+            id={getSearchBoxId()}
             ref={inputRef}
-            value={state.searchQuery ?? ''}
-            mounted={!state.isSearchOpen ? false : true}
-            onEnter={onTransitionEnter}
             onExit={onTransitionExit}
+            onEnter={onTransitionEnter}
             onEscapeSearch={handleEscape}
             onFocusInput={() => inputRef.current?.focus()}
             onFocusClear={() => clearRef.current?.focus()}
             onFocusSearch={() => searchRef.current?.focus()}
             onFocusResult={() => (resultRef.current?.children[0] as HTMLButtonElement).focus()}
+            aria-controls={getResultBoxId()}
+            aria-expanded={state.isSearchOpen}
+            aria-haspopup="listbox"
+            mounted={!state.isSearchOpen ? false : true}
+            value={state.searchQuery ?? ''}
             onClick={(event) => {
               event.stopPropagation();
               focusIndex.current = 0;
@@ -145,10 +122,12 @@ export const Search = factory<SearchFactory>((props, ref) => {
           />
 
           <Search.Result
+            id={getResultBoxId()}
             ref={resultRef}
             results={DATA_MATTER_ROUTES}
             mounted={state.searchQuery ? true : false}
             onExitKeyDown={() => inputRef.current?.focus()}
+            onEscapeKeyDown={handleEscape}
             onEnterKeyDown={(url: string) => {
               url && navigate(url);
               dispatch({

@@ -1,11 +1,11 @@
 import gsap from 'gsap';
 import * as React from 'react';
 import { useGSAP } from '@gsap/react';
-import { useMotionTimeline } from '@/motion';
-import { useMergedClickOutside } from '@/hooks';
-import { useAppDispatch, useAppState } from '@/store';
-import { LayoutMenuTarget } from './LayoutMenuTarget';
 import { LayoutMenuPanel } from './LayoutMenuPanel';
+import { LayoutMenuTarget } from './LayoutMenuTarget';
+import { useMotionTimeline } from '@/motion';
+import { useAppDispatch, useAppState } from '@/store';
+import { useMergeRefs, useOutsideClick } from '@/hooks';
 
 const data = [
   { row: 'r-1', cells: ['r-1-c-1', 'r-1-c-2', 'r-1-c-3'] },
@@ -42,14 +42,16 @@ export type LayoutMenuComponent = React.FC<{}> & {
 };
 
 export const LayoutMenu: LayoutMenuComponent = ({}) => {
-  const dispatch = useAppDispatch();
   const state = useAppState();
-
+  const dispatch = useAppDispatch();
   const { scope, timeline } = useMotionTimeline<HTMLButtonElement>();
 
-  const { boxRef, targetRef } = useMergedClickOutside({
-    callback: () => dispatch({ isMenuOpen: undefined }),
-    forwardedTargetRef: scope,
+  const boxRef = React.useRef<HTMLDivElement>(null);
+  const targetRef = React.useRef<HTMLButtonElement>(null);
+  const mergedScopeRefs = useMergeRefs<HTMLButtonElement>(targetRef, scope);
+
+  useOutsideClick([boxRef, targetRef], () => {
+    dispatch({ isMenuOpen: undefined });
   });
 
   const common: gsap.TweenVars = {
@@ -90,7 +92,7 @@ export const LayoutMenu: LayoutMenuComponent = ({}) => {
   return (
     <React.Fragment>
       <LayoutMenu.Target
-        ref={targetRef}
+        ref={mergedScopeRefs}
         css={css}
         data={data}
         format={createGridClass}

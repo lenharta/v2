@@ -16,9 +16,17 @@ export type SearchResultItemFactory = Factory.Config<{
 }>;
 
 export const SearchResultItem = factory<SearchResultItemFactory>((props, ref) => {
-  const { url, icon, title, description, ...otherProps } = props;
+  const { url, icon, title, description, onKeyDown, onClick, ...otherProps } = props;
   return (
-    <button {...otherProps} ref={ref} value={url} role="menuitem" className="search-result-item">
+    <button
+      {...otherProps}
+      ref={ref}
+      role="listitem"
+      value={url}
+      className="search-result-item"
+      onKeyDown={onKeyDown}
+      onClick={onClick}
+    >
       <Icon name={icon} />
       <div className="search-result-item-copy">
         <Text data-truncate>{title}</Text>
