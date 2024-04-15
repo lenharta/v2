@@ -1,13 +1,13 @@
-import { Transition } from '@/core';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { Transition } from '@/core';
 
 interface SearchInputProps {
   mounted: boolean;
-  onEntered?: () => void;
+  onExit?: () => void;
   onEnter?: () => void;
   onExited?: () => void;
-  onExit?: () => void;
+  onEntered?: () => void;
   onFocusInput: () => void;
   onFocusClear: () => void;
   onFocusSearch: () => void;
@@ -61,6 +61,7 @@ export const SearchInput = factory<SearchInputFactory>((props, ref) => {
           style={transitionStyles}
           className="search-input"
           placeholder="Search"
+          autoComplete="off"
           tabIndex={0}
           onKeyDown={(event) => {
             event.stopPropagation();

@@ -148,6 +148,13 @@ export namespace Core {
     media?: StylesMediaQuery[] | undefined;
   }
 
+  export interface TransformPosition {
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+  }
+
   export type TransitionState = 'in' | 'out';
 
   export type TransitionStatus =

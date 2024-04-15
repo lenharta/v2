@@ -7,5 +7,6 @@ export * from './use-latest-ref';
 export * from './use-merge-refs';
 export * from './use-outside-click';
 export * from './use-random-classname';
+export * from './use-resize-observer';
 export * from './use-scroll-position';
 export * from './use-viewport-size';

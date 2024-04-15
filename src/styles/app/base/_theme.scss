@@ -10,6 +10,12 @@
   transition-duration: var(--easing-duration-3);
 }
 
+@mixin transition-transform-interactive {
+  transition-property: transform;
+  transition-timing-function: var(--easing-standard-productive);
+  transition-duration: var(--easing-duration-4);
+}
+
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
@@ -17,6 +23,7 @@
   background-color: var(--c-primary-background);
 
   .button,
+  .control-item,
   .action--link,
   .action--button {
     color: var(--c-primary-text);
@@ -39,6 +46,7 @@
     background-color: var(--c-secondary-background);
 
     .button,
+    .control-item,
     .action--link,
     .action--button {
       color: var(--c-secondary-text);
@@ -76,6 +84,34 @@
     }
   }
 
+  .control-item {
+    &[aria-selected]:not([data-disabled]):hover,
+    &[aria-selected]:not([aria-disabled]):hover {
+      background-color: inherit;
+    }
+    &[aria-selected]:not([data-disabled]):active,
+    &[aria-selected]:not([aria-disabled]):active {
+      background-color: inherit;
+    }
+    &:not(:last-of-type)::before {
+      @include transition-transform-interactive;
+      // transition-property: ;
+      transition-delay: 200ms;
+      background-color: var(--c-primary-border);
+    }
+  }
+
+  .control-thumb {
+    @include transition-transform-interactive;
+    background-color: var(--c-accent-s600);
+  }
+  .control-item {
+    &[aria-selected]:not([data-disabled]),
+    &[aria-selected]:not([aria-disabled]) {
+      color: var(--c-on-accent-s600);
+    }
+  }
+
   .layout-header {
     background-color: var(--c-primary-background);
     border-bottom: solid var(--unit) var(--c-primary-border);
@@ -96,6 +132,17 @@
     &:not([aria-disabled]):active {
       color: var(--c-accent);
     }
+  }
+  .layout-menu {
+    background-color: var(--c-primary-background);
+    border-bottom: solid var(--unit) var(--c-primary-border);
+  }
+  .layout-menu-panel {
+    background-color: var(--c-primary-panel-base);
+    border-right: solid var(--unit) var(--c-primary-border);
+  }
+  .layout-menu-cell {
+    background-color: var(--c-accent);
   }
 
   .search-input {
@@ -135,18 +182,6 @@
     .text:last-of-type {
       color: var(--c-primary-text-low);
     }
-  }
-
-  .layout-menu {
-    background-color: var(--c-primary-background);
-    border-bottom: solid var(--unit) var(--c-primary-border);
-  }
-  .layout-menu-panel {
-    background-color: var(--c-primary-panel-base);
-    border-right: solid var(--unit) var(--c-primary-border);
-  }
-  .layout-menu-cell {
-    background-color: var(--c-accent);
   }
 
   .page-hero-content--home,

@@ -2,6 +2,7 @@ import { ICON } from '@/core';
 import { Action } from '@/app/common/action';
 import { factory } from '@/core/factory';
 import { Factory } from '@/types';
+import { createKeyDownGroup } from '@/core/utils';
 
 interface LayoutNavItemProps {
   to: string;
@@ -30,55 +31,10 @@ export const LayoutNavItem = factory<LayoutNavItemFactory>((props, ref) => {
       navigate={navigate}
       className="layout-nav-item"
       aria-selected={selected}
-      onKeyDown={(event) => {
-        event.stopPropagation();
-
-        const { currentTarget } = event ?? {};
-        const parentElement = currentTarget.parentElement;
-
-        const elements = (Array.from(parentElement?.children!) as HTMLButtonElement[]) || [];
-        const currentIndex = elements.findIndex((node) => currentTarget === node);
-
-        const nextIndex = currentIndex + 1;
-        const prevIndex = currentIndex - 1;
-
-        const ArrowDown = () => {
-          if (elements[nextIndex]) {
-            elements[nextIndex].focus();
-          } else {
-            elements[currentIndex].focus();
-          }
-        };
-
-        const ArrowUp = () => {
-          if (elements[prevIndex]) {
-            elements[prevIndex].focus();
-          } else {
-            elements[currentIndex].focus();
-          }
-        };
-
-        const Home = () => elements[0].focus();
-        const PageUp = () => elements[0].focus();
-        const ArrowLeft = () => elements[0].focus();
-
-        const End = () => elements[elements.length - 1].focus();
-        const PageDown = () => elements[elements.length - 1].focus();
-        const ArrowRight = () => elements[elements.length - 1].focus();
-
-        const events = {
-          End,
-          Home,
-          PageUp,
-          PageDown,
-          ArrowUp,
-          ArrowDown,
-          ArrowLeft,
-          ArrowRight,
-        }[event.key];
-
-        events?.();
-      }}
+      onKeyDown={createKeyDownGroup({
+        onKeyDown: otherProps.onKeyDown,
+        orientation: 'vertical',
+      })}
     />
   );
 });

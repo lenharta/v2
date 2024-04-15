@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { Core } from '@/types';
 import { createEventCallback } from '@/utils';
+import { createKeyDownGroup } from '../utils';
 
 interface ControlGroupItem {
   value: string | number;
@@ -52,75 +53,13 @@ export interface ControlProps {
   onChange: (value: string) => void;
 }
 
-const createKeyDownGroup = <T extends HTMLElement = HTMLButtonElement>(props: {
-  onKeyDown?: ((event: React.KeyboardEvent<T>) => void) | undefined;
-  orientation?: Core.Orientation | undefined;
-}) => {
-  const { onKeyDown, orientation = 'horizontal' } = props;
-  return createEventCallback(onKeyDown, (event) => {
-    event.stopPropagation();
-
-    const parentElement = event.currentTarget.parentElement!;
-    const elements = (Array.from(parentElement.children) as T[]) || [];
-    const currentIndex = elements.findIndex((node) => node === event.currentTarget);
-
-    const nextIndex = currentIndex + 1;
-    const prevIndex = currentIndex - 1;
-    const lastIndex = elements.length - 1;
-
-    const moveFocusToNextIndex = () => elements[nextIndex]?.focus();
-    const moveFocusToPrevIndex = () => elements[prevIndex]?.focus();
-    const moveFocusToLastIndex = () => elements[lastIndex]?.focus();
-    const moveFocusToFirstIndex = () => elements[0]?.focus();
-
-    const ArrowDown = () => {
-      if (orientation === 'vertical') moveFocusToNextIndex?.();
-      if (orientation === 'horizontal') moveFocusToLastIndex?.();
-    };
-
-    const ArrowUp = () => {
-      if (orientation === 'vertical') moveFocusToPrevIndex?.();
-      if (orientation === 'horizontal') moveFocusToFirstIndex?.();
-    };
-
-    const ArrowLeft = () => {
-      if (orientation === 'vertical') moveFocusToFirstIndex?.();
-      if (orientation === 'horizontal') moveFocusToPrevIndex?.();
-    };
-
-    const ArrowRight = () => {
-      if (orientation === 'vertical') moveFocusToLastIndex?.();
-      if (orientation === 'horizontal') moveFocusToNextIndex?.();
-    };
-
-    const End = () => moveFocusToLastIndex?.();
-    const Home = () => moveFocusToFirstIndex?.();
-
-    const PageUp = () => moveFocusToFirstIndex?.();
-    const PageDown = () => moveFocusToLastIndex?.();
-
-    const events = {
-      ArrowDown,
-      ArrowUp,
-      ArrowLeft,
-      ArrowRight,
-      PageUp,
-      PageDown,
-      Home,
-      End,
-    }[event.code];
-
-    events?.();
-  });
-};
-
 export type ControlFactory = React.FC<ControlProps> & {};
 
-interface ThumbPositon {
-  top: number;
-  left: number;
-  width: number;
+interface ControlPosition {
   height: number;
+  width: number;
+  left: number;
+  top: number;
 }
 
 export const Control: ControlFactory = (props) => {
@@ -128,36 +67,70 @@ export const Control: ControlFactory = (props) => {
 
   const parsedData = React.useMemo(() => parseControlGroupData(data), [data]);
 
-  const initialState: ThumbPositon = { top: 0, left: 0, width: 0, height: 0 };
-  const [position, setPosition] = React.useState<ThumbPositon>(initialState);
+  const initialPosition: ControlPosition = { top: 0, left: 0, width: 0, height: 0 };
+  const [position, setPosition] = React.useState(initialPosition);
+  const [refs, setRefs] = React.useState<Record<string, HTMLElement | null>>({});
 
-  const updatePosition = (props: { target: HTMLElement; parent: HTMLElement }) => {
-    if (!props.parent || !props.target) {
-      return { top: 0, left: 0, width: 0, height: 0 };
-    }
-    const trackRect = props.parent?.getBoundingClientRect()!;
-    const targetRect = props.target?.getBoundingClientRect()!;
+  const thumbRef = React.useRef<HTMLDivElement>(null);
+  const parentRef = React.useRef<HTMLDivElement>(null);
+  const parentResizeObserver = React.useRef<ResizeObserver>();
 
-    return {
-      top: targetRect?.top - trackRect?.top,
-      left: targetRect?.left - trackRect?.left,
-      width: targetRect?.width,
-      height: targetRect?.height,
-    };
+  const setElementRefs = (element: HTMLElement | null, val: string) => {
+    refs[val] = element;
+    setRefs(refs);
   };
 
-  // React.useEffect(() => {
-  //   console.log(position);
-  // }, [position]);
+  const updateStyle = () => {
+    if (thumbRef.current) {
+      thumbRef.current.style.transform = `translateY(${position.top}px) translateX(${position.left}px)`;
+      thumbRef.current.style.width = `${position.width}px`;
+      thumbRef.current.style.height = `${position.height}px`;
+    }
+  };
 
-  const updateThumbStyle = React.useMemo(
-    () => ({
-      transform: `translateY(${position.top}px) translateX(${position.left}px)`,
-      width: `${position.width}px`,
-      height: `${position.height}px`,
-    }),
-    [position, orientation]
-  );
+  const updatePosition = (
+    targetRect: DOMRect | DOMRectReadOnly,
+    parentRect: DOMRect | DOMRectReadOnly
+  ) => {
+    setPosition({
+      top: targetRect.top - parentRect.top,
+      left: targetRect.left - parentRect.left,
+      width: targetRect.width,
+      height: targetRect.height,
+    });
+  };
+
+  const update = (target: Element, parent: Element) => {
+    const parentRect = parent?.getBoundingClientRect()!;
+    const targetRect = target?.getBoundingClientRect()!;
+    updatePosition(targetRect, parentRect);
+    updateStyle();
+  };
+
+  React.useEffect(() => {
+    update(refs[value]!, parentRef.current!);
+  }, []);
+
+  React.useEffect(() => {
+    parentResizeObserver.current = new ResizeObserver(() => {
+      const parentRect = parentRef.current?.getBoundingClientRect()!;
+      const targetRect = refs[value]!.getBoundingClientRect()!;
+      updatePosition(targetRect, parentRect);
+    });
+
+    if (parentRef.current) {
+      parentResizeObserver.current?.observe(parentRef.current);
+
+      return () => {
+        parentResizeObserver.current?.disconnect();
+      };
+    }
+    return undefined;
+  }, [parentRef.current, refs[value]]);
+
+  React.useEffect(() => {
+    updateStyle();
+  }, [position]);
 
   const css = {
     root: 'control',
@@ -169,24 +142,21 @@ export const Control: ControlFactory = (props) => {
 
   return (
     <div className={css.root}>
-      <div className={css.track} aria-orientation={orientation}>
+      <div className={css.track} ref={parentRef} aria-orientation={orientation}>
         {parsedData.map((item) => {
-          const isSelected = item.value === value ?? undefined;
+          const isSelected = item.value === value || undefined;
           return (
             <button
               key={item.value}
+              ref={(node) => setElementRefs(node, item.value)}
               type="button"
               value={item.value}
               className={css.item}
               aria-selected={isSelected}
               onClick={createEventCallback(otherProps.onClick, (event) => {
                 event.stopPropagation();
-                const { currentTarget } = event ?? {};
-                const parent = currentTarget.parentElement!;
-                const target = currentTarget!;
-
-                onChange(currentTarget.value);
-                setPosition(updatePosition({ target, parent }));
+                onChange(event.currentTarget.value);
+                update(refs[event.currentTarget.value]!, parentRef.current!);
               })}
               onKeyDown={createKeyDownGroup({
                 onKeyDown: otherProps.onKeyDown,
@@ -198,16 +168,7 @@ export const Control: ControlFactory = (props) => {
           );
         })}
       </div>
-      <div
-        className={css.thumb}
-        style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          transitionProperty: 'transform, height, width',
-          transitionTimingFunction: 'ease',
-          transitionDuration: '400ms',
-          ...updateThumbStyle,
-        }}
-      />
+      <div ref={thumbRef} className={css.thumb} />
     </div>
   );
 };
