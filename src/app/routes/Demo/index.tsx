@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { Page, Section } from '@/app/common';
-import { Control, ControlProps, Title } from '@/core';
+import { Box, Control, ControlProps, Title } from '@/core';
+import { capitalizeString } from '@/utils';
 
 type DemoRouteComponent = React.FC<{}>;
 
@@ -54,7 +55,7 @@ Preview.Display = PreviewDisplay;
 
 const PreviewControl = (props: Partial<ControlProps> & PreviewStyleProps & { title?: string }) => {
   const { height, width, title, ...otherProps } = props;
-  const [value, onChange] = React.useState('item-1');
+  const [value, onChange] = React.useState('item-4');
   return (
     <Preview title={title}>
       <Preview.Display width={width} height={height}>
@@ -75,6 +76,56 @@ const PreviewControl = (props: Partial<ControlProps> & PreviewStyleProps & { tit
   );
 };
 
+const tokenData = [
+  { background: 'c-accent-s100', color: 'c-on-accent-s100' },
+  { background: 'c-accent-s200', color: 'c-on-accent-s200' },
+  { background: 'c-accent-s300', color: 'c-on-accent-s300' },
+  { background: 'c-accent-s400', color: 'c-on-accent-s400' },
+  { background: 'c-accent-s500', color: 'c-on-accent-s500' },
+  { background: 'c-accent-s600', color: 'c-on-accent-s600' },
+  { background: 'c-accent-s700', color: 'c-on-accent-s700' },
+  { background: 'c-accent-s800', color: 'c-on-accent-s800' },
+  { background: 'c-accent-s900', color: 'c-on-accent-s900' },
+];
+
+const formatToken = (token: string) => {
+  return `var(--${token})`;
+};
+
+const formatTokenLabel = (token: string) => {
+  const clean = token.slice(2, token.length).toLowerCase();
+  const segments = clean.split('-').map((t) => capitalizeString(t));
+  return segments.join(' ');
+};
+
+const testSwatchStyles: React.CSSProperties = {
+  width: 400,
+  height: 200,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+};
+
+const TestSwatches = ({}) => {
+  return (
+    <Section>
+      <Section.Content>
+        {tokenData.map(({ background, color }) => (
+          <Box
+            key={background}
+            children={formatTokenLabel(background)}
+            style={{
+              ...testSwatchStyles,
+              color: formatToken(color),
+              backgroundColor: formatToken(background),
+            }}
+          />
+        ))}
+      </Section.Content>
+    </Section>
+  );
+};
+
 export const Demo: DemoRouteComponent = ({}) => {
   return (
     <Page>
@@ -82,8 +133,21 @@ export const Demo: DemoRouteComponent = ({}) => {
         <Title h1>Demo</Title>
       </Page.Hero>
       <Page.Content>
-        <PreviewControl title="Control ( horizontal )" width="50%" orientation="horizontal" />
-        <PreviewControl title="Control ( vertical )" width="25%" orientation="vertical" />
+        <PreviewControl
+          orientation="horizontal"
+          variant="accent"
+          title="Control ( horizontal )"
+          width="50%"
+          size="sm"
+        />
+
+        <PreviewControl
+          orientation="vertical"
+          variant="default"
+          title="Control ( vertical )"
+          width="25%"
+          size="lg"
+        />
       </Page.Content>
       <Page.Footer></Page.Footer>
     </Page>

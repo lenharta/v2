@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box } from '@/core';
-import { LayoutNavItem } from './LayoutNavItem';
 import { useAppDispatch } from '@/store';
+import { LayoutNavItem } from './LayoutNavItem';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export type LayoutNavComponent = React.FC<{}> & {
@@ -23,47 +23,43 @@ const lowerData = [
 ] as const;
 
 export const LayoutNav: LayoutNavComponent = ({}) => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useAppDispatch();
 
-  const closeAllPanels = () => {
+  const closePanels = () => {
     dispatch({
       isSearchOpen: undefined,
       isMenuOpen: undefined,
     });
   };
 
-  const isSelected = (to: string) => {
-    return location.pathname === to ? true : undefined;
-  };
-
   return (
     <nav className="layout-nav">
       <Box className="layout-nav-upper">
-        {upperData.map(({ to, icon, label }, index, array) => (
+        {upperData.map(({ to, icon, label }) => (
           <LayoutNav.Item
             to={to}
             key={to}
             icon={icon}
             label={label}
-            onClick={closeAllPanels}
-            selected={isSelected(to)}
             navigate={navigate}
+            selected={location.pathname === to || undefined}
+            onClick={closePanels}
           />
         ))}
       </Box>
 
       <Box className="layout-nav-lower">
-        {lowerData.map(({ to, icon, label }, index, array) => (
+        {lowerData.map(({ to, icon, label }) => (
           <LayoutNav.Item
             to={to}
             key={to}
             icon={icon}
             label={label}
-            onClick={closeAllPanels}
-            selected={isSelected(to)}
             navigate={navigate}
+            selected={location.pathname === to || undefined}
+            onClick={closePanels}
           />
         ))}
       </Box>

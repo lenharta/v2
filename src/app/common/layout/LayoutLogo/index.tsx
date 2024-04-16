@@ -25,8 +25,8 @@ export type LayoutLogoFactory = Factory.Config<{
 export const LayoutLogo = factory<LayoutLogoFactory>((props, ref) => {
   const { skipProps, linkProps, ...otherProps } = props;
 
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const skipRef = React.useRef<HTMLButtonElement>(null);
   const [isSkipFocus, setSkipFocus] = React.useState<boolean>();

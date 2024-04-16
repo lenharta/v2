@@ -11,48 +11,70 @@
   }
 }
 
-.control {
-  position: relative;
+.control,
+.control-item,
+.control-track,
+.control-thumb {
+  --control-height-sm: calc(var(--gutter) * 1.5);
+  --control-height-md: calc(var(--gutter) * 2);
+  --control-height-lg: calc(var(--gutter) * 2.5);
 
-  &-item {
-    width: 100%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--control-height, var(--control-height-sm));
-    user-select: none;
+  border-radius: calc(var(--unit) * 2);
+}
+
+.control {
+  &--size-sm {
+    --control-height: var(--control-height-sm);
+  }
+  &--size-md {
+    --control-height: var(--control-height-md);
+  }
+  &--size-lg {
+    --control-height: var(--control-height-lg);
   }
 
+  display: block;
+  z-index: 0;
+  isolation: isolate;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+
   &-track {
-    top: 0;
-    left: 0;
+    z-index: 0;
+    isolation: isolate;
     position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+
+  &-item {
+    z-index: 1;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    display: inline-flex;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    height: var(--control-height, var(--control-height-sm));
   }
 
   &-thumb {
-    top: 0;
-    left: 0;
-    position: absolute;
-    background-color: dodgerblue;
-  }
-
-  &-thumb,
-  &-track,
-  &-item {
-    --control-height-sm: calc(var(--gutter) * 1.5);
-    --control-height-md: calc(var(--gutter) * 2);
-    --control-height-lg: calc(var(--gutter) * 2.5);
-
     height: var(--control-height, var(--control-height-sm));
-
-    &--size-sm {
-      --control-height: var(--control-height-sm);
-    }
-    &--size-md {
-      --control-height: var(--control-height-md);
-    }
-    &--size-lg {
-      --control-height: var(--control-height-lg);
-    }
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
   }
 }

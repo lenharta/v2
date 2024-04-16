@@ -10,52 +10,17 @@
   transition-duration: var(--easing-duration-3);
 }
 
+@mixin transition-transform-interactive {
+  transition-property: transform;
+  transition-timing-function: var(--easing-standard-productive);
+  transition-duration: var(--easing-duration-4);
+}
+
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
-  color: var(--c-primary-text);
-  background-color: var(--c-primary-background);
-
-  .button,
-  .action--link,
-  .action--button {
-    color: var(--c-primary-text);
-    background-color: var(--c-primary-button);
-
-    &:not([data-disabled]):hover,
-    &:not([aria-disabled]):hover {
-      color: var(--c-primary-text);
-      background-color: var(--c-primary-button-hover);
-    }
-    &:not([data-disabled]):active,
-    &:not([aria-disabled]):active {
-      color: var(--c-primary-text);
-      background-color: var(--c-primary-button-active);
-    }
-  }
-
-  [data-scheme='secondary'] {
-    color: var(--c-secondary-text);
-    background-color: var(--c-secondary-background);
-
-    .button,
-    .action--link,
-    .action--button {
-      color: var(--c-secondary-text);
-      background-color: var(--c-secondary-button);
-
-      &:not([data-disabled]):hover,
-      &:not([aria-disabled]):hover {
-        color: var(--c-secondary-text);
-        background-color: var(--c-secondary-button-hover);
-      }
-      &:not([data-disabled]):active,
-      &:not([aria-disabled]):active {
-        color: var(--c-secondary-text);
-        background-color: var(--c-secondary-button-active);
-      }
-    }
-  }
+  color: var(--c-text);
+  background-color: var(--c-background);
 
   .button,
   .control-item,
@@ -76,15 +41,154 @@
     }
   }
 
+  .button,
+  .action--link,
+  .action--button {
+    color: var(--c-text);
+    background-color: var(--c-button);
+
+    &:not([data-disabled]):hover,
+    &:not([aria-disabled]):hover {
+      color: var(--c-text);
+      background-color: var(--c-button-hover);
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      color: var(--c-text);
+      background-color: var(--c-button-active);
+    }
+  }
+
+  .control-thumb {
+    @include transition-transform-interactive;
+  }
+
+  .control--default {
+    .control-item:not([data-disabled]) {
+      color: var(--c-text);
+      background-color: var(--c-control-base);
+    }
+    .control-item:not([data-disabled]):not([data-selected]):hover {
+      background-color: var(--c-control-hover);
+    }
+    .control-item:not([data-disabled]):not([data-selected]):active {
+      background-color: var(--c-control-active);
+    }
+    .control-thumb:not([data-disabled]) {
+      background-color: var(--c-control-thumb);
+    }
+  }
+
+  .control--accent {
+    .control-item:not([data-disabled]) {
+      color: var(--c-text);
+      background-color: var(--c-control-base);
+    }
+    .control-item[data-selected]:not([data-disabled]) {
+      color: var(--c-accent);
+    }
+    .control-item:not([data-disabled]):not([data-selected]):hover {
+      background-color: var(--c-control-hover);
+    }
+    .control-item:not([data-disabled]):not([data-selected]):active {
+      background-color: var(--c-control-active);
+    }
+    .control-thumb:not([data-disabled]) {
+      background-color: var(--c-accent-a100);
+    }
+  }
+
+  // .control-item {
+  //   &:not([data-disabled]) {
+  //     background-color: var(--c-control-base);
+  //     color: var(--c-text);
+
+  //     &:not([data-selected]):hover {
+  //       background-color: var(--c-control-hover);
+  //     }
+  //     &:not([data-selected]):active {
+  //       background-color: var(--c-control-active);
+  //     }
+  //   }
+
+  //   &[data-accent][data-selected]:not([data-disabled]) {
+  //     color: var(--c-accent);
+  //   }
+  // }
+
+  // .control-thumb {
+  //   @include transition-transform-interactive;
+  //   background-color: var(--c-control-thumb);
+  // }
+  // .control-thumb[data-accent] {
+  //   background-color: var(--c-accent-a100);
+  // }
+
+  // .control-item:not([data-disabled]) {
+  //   background-color: var(--c-control-base);
+  //
+
+  //   &:not([data-selected]):hover {
+  //     background-color: var(--c-control-hover);
+  //   }
+  //   &:not([data-selected]):active {
+  //     background-color: var(--c-control-active);
+  //   }
+
+  //   // &: not([data-]);
+
+  // }
+
+  // .control-thumb:not([data-disabled]) {
+  //   @include transition-transform-interactive;
+
+  //   &:not([data-accent]) {
+  //     background-color: var(--c-control-thumb);
+  //   }
+  //   &[data-accent] {
+  //     background-color: var(--c-accent-a100);
+  //   }
+  // }
+
+  // &[data-accent][data-selected] {
+  //   color: var(--c-accent);
+  // }
+
+  // &:not([data-selected]) {
+  //   color: var(--c-text);
+  // }
+
+  // background-color: var(--c-control-base);
+
+  // &:not([data-selected]):not([data-disabled]):hover,
+  // &:not([data-selected]):not([aria-disabled]):hover {
+  //   background-color: var(--c-control-hover);
+  // }
+  // &:not([data-selected]):not([data-disabled]):active,
+  // &:not([data-selected]):not([aria-disabled]):active {
+  //   background-color: var(--c-control-active);
+  // }
+
+  // &[data-accent]:not([data-disabled]) {
+  //   background-color: transparent;
+  //   color: var(--c-text);
+
+  //   &[data-selected] {
+  //     color: var(--c-accent);
+  //   }
+  // }
+
   .layout-header {
-    background-color: var(--c-primary-background);
-    border-bottom: solid var(--unit) var(--c-primary-border);
-    border-left: solid var(--unit) var(--c-primary-border);
+    background-color: var(--c-background);
+    border-bottom: solid var(--unit) var(--c-border);
+    border-left: solid var(--unit) var(--c-border);
   }
+
   .layout-nav {
-    background-color: var(--c-primary-background);
-    border-right: solid var(--unit) var(--c-primary-border);
+    background-color: var(--c-background);
+    border-right: solid var(--unit) var(--c-border);
   }
+
   .layout-nav-item[aria-selected] {
     color: var(--c-accent);
 
@@ -98,12 +202,26 @@
     }
   }
 
+  .layout-menu {
+    background-color: var(--c-background);
+    border-bottom: solid var(--unit) var(--c-border);
+  }
+
+  .layout-menu-panel {
+    background-color: var(--c-panel-base);
+    border-right: solid var(--unit) var(--c-border);
+  }
+
+  .layout-menu-cell {
+    background-color: var(--c-accent);
+  }
+
   .search-input {
     border: solid var(--unit) transparent;
     outline: solid var(--unit) transparent;
-    border-left: solid var(--unit) var(--c-primary-border);
-    background-color: var(--c-primary-panel-base);
-    color: var(--c-primary-text-med);
+    border-left: solid var(--unit) var(--c-border);
+    background-color: var(--c-panel-base);
+    color: var(--c-text-med);
 
     &:not([aria-disabled]):focus-visible,
     &:not([data-disabled]):focus-visible {
@@ -111,48 +229,38 @@
       outline-color: var(--c-blue) !important;
     }
   }
+
   .search-result {
-    background-color: var(--c-primary-background);
+    background-color: var(--c-background);
   }
+
   .search-result-item {
-    background-color: var(--c-primary-panel-base);
+    background-color: var(--c-panel-base);
 
     &:not([aria-disabled]):hover,
     &:not([data-disabled]):hover {
-      background-color: var(--c-primary-panel-hover);
+      background-color: var(--c-panel-hover);
     }
     &:not([aria-disabled]):active,
     &:not([data-disabled]):active {
-      background-color: var(--c-primary-panel-active);
+      background-color: var(--c-panel-active);
     }
 
     path {
-      fill: var(--c-primary-text-low);
+      fill: var(--c-text-low);
     }
     .text:first-of-type {
-      color: var(--c-primary-text-med);
+      color: var(--c-text-med);
     }
     .text:last-of-type {
-      color: var(--c-primary-text-low);
+      color: var(--c-text-low);
     }
-  }
-
-  .layout-menu {
-    background-color: var(--c-primary-background);
-    border-bottom: solid var(--unit) var(--c-primary-border);
-  }
-  .layout-menu-panel {
-    background-color: var(--c-primary-panel-base);
-    border-right: solid var(--unit) var(--c-primary-border);
-  }
-  .layout-menu-cell {
-    background-color: var(--c-accent);
   }
 
   .page-hero-content--home,
   .page-hero-content--default {
     h2.title {
-      color: var(--c-primary-text-med);
+      color: var(--c-text-med);
     }
     h1.title {
       color: var(--c-accent);

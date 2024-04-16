@@ -10,6 +10,7 @@
   align-items: var(--align);
   justify-content: var(--justify);
   flex-direction: var(--direction);
+  gap: var(--unit);
 
   &[aria-orientation='vertical'] {
     --direction: column;

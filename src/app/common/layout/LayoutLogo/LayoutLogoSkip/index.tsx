@@ -18,7 +18,7 @@ export type LayoutLogoSkipFactory = Factory.Config<{
 }>;
 
 export const LayoutLogoSkip = factory<LayoutLogoSkipFactory>((props, ref) => {
-  const { to = 'main_content', navigate, location, style, ...otherProps } = props;
+  const { to = 'main-content', navigate, location, style, ...otherProps } = props;
 
   const url = [location?.pathname, to].join('#');
 
