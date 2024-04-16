@@ -133,9 +133,21 @@ export const Demo: DemoRouteComponent = ({}) => {
         <Title h1>Demo</Title>
       </Page.Hero>
       <Page.Content>
-        <PreviewControl title="Control ( horizontal )" width="50%" orientation="horizontal" />
-        <TestSwatches />
-        {/* <PreviewControl title="Control ( vertical )" width="25%" orientation="vertical" /> */}
+        <PreviewControl
+          orientation="horizontal"
+          variant="accent"
+          title="Control ( horizontal )"
+          width="50%"
+          size="sm"
+        />
+
+        <PreviewControl
+          orientation="vertical"
+          variant="default"
+          title="Control ( vertical )"
+          width="25%"
+          size="lg"
+        />
       </Page.Content>
       <Page.Footer></Page.Footer>
     </Page>

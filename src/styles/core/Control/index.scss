@@ -12,16 +12,17 @@
 }
 
 .control,
-.control-thumb,
+.control-item,
 .control-track,
-.control-item {
+.control-thumb {
   --control-height-sm: calc(var(--gutter) * 1.5);
   --control-height-md: calc(var(--gutter) * 2);
   --control-height-lg: calc(var(--gutter) * 2.5);
 
   border-radius: calc(var(--unit) * 2);
-  height: var(--control-height, var(--control-height-sm));
+}
 
+.control {
   &--size-sm {
     --control-height: var(--control-height-sm);
   }
@@ -31,9 +32,7 @@
   &--size-lg {
     --control-height: var(--control-height-lg);
   }
-}
 
-.control {
   display: block;
   z-index: 0;
   isolation: isolate;
@@ -66,9 +65,11 @@
     user-select: none;
     justify-content: center;
     align-items: center;
+    height: var(--control-height, var(--control-height-sm));
   }
 
   &-thumb {
+    height: var(--control-height, var(--control-height-sm));
     z-index: -1;
     position: absolute;
     bottom: 0;

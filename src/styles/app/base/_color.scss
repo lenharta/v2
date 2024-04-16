@@ -193,46 +193,65 @@
 [data-prefers-mode='dim'] {
   --c-mix: var(--rgb-light-mode-surface-6);
   --c-base: var(--rgb-dark-mode-surface-5);
+
+  [data-scheme='secondary'] {
+    --c-mix: var(--rgb-dark-mode-surface-5);
+    --c-base: var(--rgb-light-mode-surface-6);
+  }
 }
 
 [data-prefers-mode='dark'] {
   --c-mix: var(--rgb-light-mode-surface-6);
   --c-base: var(--rgb-dark-mode-surface-6);
+
+  [data-scheme='secondary'] {
+    --c-mix: var(--rgb-dark-mode-surface-5);
+    --c-base: var(--rgb-light-mode-surface-6);
+  }
 }
 
 [data-prefers-mode='light'] {
   --c-mix: var(--rgb-dark-mode-surface-6);
   --c-base: var(--rgb-light-mode-surface-6);
+
+  [data-scheme='secondary'] {
+    --c-mix: var(--rgb-light-mode-surface-6);
+    --c-base: var(--rgb-dark-mode-surface-6);
+  }
 }
 
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
-  --c-primary-text: color-mix(in srgb, var(--c-base) 0%, var(--c-mix));
-  --c-primary-text-med: color-mix(in srgb, var(--c-base) 15%, var(--c-mix));
-  --c-primary-text-low: color-mix(in srgb, var(--c-base) 30%, var(--c-mix));
+  --c-text: color-mix(in srgb, var(--c-base) 0%, var(--c-mix));
+  --c-text-med: color-mix(in srgb, var(--c-base) 15%, var(--c-mix));
+  --c-text-low: color-mix(in srgb, var(--c-base) 30%, var(--c-mix));
 
-  --c-primary-border: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
-  --c-primary-background: color-mix(in srgb, var(--c-base) 100%, var(--c-mix));
-  --c-primary-panel-base: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
-  --c-primary-panel-hover: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
-  --c-primary-panel-active: color-mix(in srgb, var(--c-base) 88%, var(--c-mix));
+  --c-border: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
+  --c-background: color-mix(in srgb, var(--c-base) 100%, var(--c-mix));
+  --c-panel-base: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
+  --c-panel-hover: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
+  --c-panel-active: color-mix(in srgb, var(--c-base) 88%, var(--c-mix));
 
-  --c-primary-surface-1: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
-  --c-primary-surface-2: color-mix(in srgb, var(--c-base) 84%, var(--c-mix));
-  --c-primary-surface-3: color-mix(in srgb, var(--c-base) 76%, var(--c-mix));
-  --c-primary-surface-4: color-mix(in srgb, var(--c-base) 68%, var(--c-mix));
-  --c-primary-surface-5: color-mix(in srgb, var(--c-base) 60%, var(--c-mix));
+  --c-surface-1: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
+  --c-surface-2: color-mix(in srgb, var(--c-base) 84%, var(--c-mix));
+  --c-surface-3: color-mix(in srgb, var(--c-base) 76%, var(--c-mix));
+  --c-surface-4: color-mix(in srgb, var(--c-base) 68%, var(--c-mix));
+  --c-surface-5: color-mix(in srgb, var(--c-base) 60%, var(--c-mix));
 
-  --c-primary-button-base: color-mix(in srgb, var(--c-base) 100%, var(--c-mix));
-  --c-primary-button-hover: color-mix(in srgb, var(--c-base) 95%, var(--c-mix));
-  --c-primary-button-active: color-mix(in srgb, var(--c-base) 90%, var(--c-mix));
-  --c-primary-button-selected: color-mix(in srgb, var(--c-base) 85%, var(--c-mix));
+  --c-button-base: color-mix(in srgb, var(--c-base) 100%, var(--c-mix));
+  --c-button-hover: color-mix(in srgb, var(--c-base) 95%, var(--c-mix));
+  --c-button-active: color-mix(in srgb, var(--c-base) 90%, var(--c-mix));
+  --c-button-selected: color-mix(in srgb, var(--c-base) 85%, var(--c-mix));
 
-  --c-primary-input-base: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
-  --c-primary-input-hover: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
-  --c-primary-input-active: color-mix(in srgb, var(--c-base) 88%, var(--c-mix));
-  --c-primary-input-selected: color-mix(in srgb, var(--c-base) 84%, var(--c-mix));
+  --c-input-base: color-mix(in srgb, var(--c-base) 96%, var(--c-mix));
+  --c-input-hover: color-mix(in srgb, var(--c-base) 92%, var(--c-mix));
+  --c-input-active: color-mix(in srgb, var(--c-base) 88%, var(--c-mix));
+
+  --c-control-base: transparent;
+  --c-control-hover: color-mix(in srgb, var(--c-base) 95%, var(--c-mix));
+  --c-control-active: color-mix(in srgb, var(--c-base) 95%, var(--c-mix));
+  --c-control-thumb: color-mix(in srgb, var(--c-base) 90%, var(--c-mix));
 }
 
 [data-prefers-mode='dim'],
@@ -431,9 +450,13 @@
   &[data-prefers-accent='brown'],
   &[data-prefers-accent='gray'] {
     --c-accent-a100: rgba(var(--c-accent-alpha), 0.1);
+    --c-accent-a200: rgba(var(--c-accent-alpha), 0.2);
     --c-accent-a300: rgba(var(--c-accent-alpha), 0.3);
+    --c-accent-a400: rgba(var(--c-accent-alpha), 0.4);
     --c-accent-a500: rgba(var(--c-accent-alpha), 0.5);
+    --c-accent-a600: rgba(var(--c-accent-alpha), 0.6);
     --c-accent-a700: rgba(var(--c-accent-alpha), 0.7);
+    --c-accent-a800: rgba(var(--c-accent-alpha), 0.8);
     --c-accent-a900: rgba(var(--c-accent-alpha), 0.9);
 
     --c-mix-s100: white;

@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { Core } from '@/types';
-import { createEventCallback } from '@/utils';
-import { createKeyDownGroup } from '../utils';
+import { ControlSegment } from './ControlSegment';
 
 interface ControlGroupItem {
   value: string | number;
@@ -44,16 +43,20 @@ function parseControlGroupData(
 }
 
 export interface ControlProps {
+  data?: Omit<ControlGroupItem, 'disabled'>[] | undefined;
   value: string;
   size?: Core.Size3 | undefined;
-  data?: Omit<ControlGroupItem, 'disabled'>[] | undefined;
+  scheme?: Core.Scheme;
+  variant?: 'default' | 'accent';
   orientation?: Core.Orientation | undefined;
   onKeyDown?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
   onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
   onChange: (value: string) => void;
 }
 
-export type ControlFactory = React.FC<ControlProps> & {};
+export type ControlFactory = React.FC<ControlProps> & {
+  Segment: typeof ControlSegment;
+};
 
 interface ControlPosition {
   height: number;
@@ -63,7 +66,16 @@ interface ControlPosition {
 }
 
 export const Control: ControlFactory = (props) => {
-  const { size = 'sm', data, value, orientation = 'horizontal', onChange, ...otherProps } = props;
+  const {
+    size = 'sm',
+    data,
+    value,
+    scheme = 'primary',
+    variant = 'default',
+    orientation = 'horizontal',
+    onChange,
+    ...otherProps
+  } = props;
 
   const parsedData = React.useMemo(() => parseControlGroupData(data), [data]);
 
@@ -92,6 +104,7 @@ export const Control: ControlFactory = (props) => {
     targetRect: DOMRect | DOMRectReadOnly,
     parentRect: DOMRect | DOMRectReadOnly
   ) => {
+    if (!targetRect || !parentRect) return;
     setPosition({
       top: targetRect.top - parentRect.top,
       left: targetRect.left - parentRect.left,
@@ -100,22 +113,26 @@ export const Control: ControlFactory = (props) => {
     });
   };
 
-  const update = (target: Element, parent: Element) => {
-    const parentRect = parent?.getBoundingClientRect()!;
-    const targetRect = target?.getBoundingClientRect()!;
-    updatePosition(targetRect, parentRect);
+  const update = (target: HTMLElement | null, parent: HTMLElement | null) => {
+    if (!target || !parent) return;
+    const parentRect = parent?.getBoundingClientRect();
+    const targetRect = target?.getBoundingClientRect();
+    updatePosition(targetRect!, parentRect!);
     updateStyle();
   };
 
   React.useEffect(() => {
-    update(refs[value]!, parentRef.current!);
+    if (!parentRef.current || !refs[value]) return;
+    update(refs[value], parentRef.current);
   }, []);
 
   React.useEffect(() => {
     parentResizeObserver.current = new ResizeObserver(() => {
-      const parentRect = parentRef.current?.getBoundingClientRect()!;
-      const targetRect = refs[value]!.getBoundingClientRect()!;
-      updatePosition(targetRect, parentRect);
+      if (parentRef.current && refs[value]) {
+        const parentRect = parentRef.current.getBoundingClientRect();
+        const targetRect = refs[value]!.getBoundingClientRect();
+        updatePosition(targetRect, parentRect);
+      }
     });
 
     if (parentRef.current) {
@@ -132,43 +149,35 @@ export const Control: ControlFactory = (props) => {
     updateStyle();
   }, [position]);
 
-  const css = {
-    root: 'control',
-    item: clsx('control-item', `control-item--${size}`),
-    label: clsx('control-label', `control-label--${size}`),
-    track: clsx('control-track', `control-track--${size}`),
-    thumb: clsx('control-thumb', `control-thumb--${size}`),
-  };
-
   return (
-    <div className={css.root}>
-      <div className={css.track} ref={parentRef} aria-orientation={orientation}>
-        {parsedData.map((item) => {
-          const isSelected = item.value === value || undefined;
-          return (
-            <button
-              key={item.value}
-              ref={(node) => setElementRefs(node, item.value)}
-              type="button"
-              value={item.value}
-              className={css.item}
-              aria-selected={isSelected}
-              onClick={createEventCallback(otherProps.onClick, (event) => {
-                event.stopPropagation();
-                onChange(event.currentTarget.value);
-                update(refs[event.currentTarget.value]!, parentRef.current!);
-              })}
-              onKeyDown={createKeyDownGroup({
-                onKeyDown: otherProps.onKeyDown,
-                orientation,
-              })}
-            >
-              <span className={css.label}>{item.label}</span>
-            </button>
-          );
-        })}
+    <div
+      className={clsx('control', {
+        [`control--${variant}`]: variant,
+        [`control--size-${size}`]: size,
+      })}
+    >
+      <div className="control-track" ref={parentRef} aria-orientation={orientation}>
+        {parsedData.map((item) => (
+          <Control.Segment
+            key={item.value}
+            refs={refs}
+            ref={(node) => setElementRefs(node, item.value)}
+            css={{ item: 'control-item', label: 'control-label' }}
+            value={item.value}
+            label={item.label}
+            isSelected={item.value === value || undefined}
+            orientation={orientation}
+            onKeyDown={otherProps.onKeyDown}
+            onClick={otherProps.onClick}
+            onChange={onChange}
+            onUpdate={update}
+          />
+        ))}
       </div>
-      <div ref={thumbRef} className={css.thumb} />
+      <div ref={thumbRef} className="control-thumb" />
     </div>
   );
 };
+
+Control.displayName = '@v2/core/Control';
+Control.Segment = ControlSegment;
