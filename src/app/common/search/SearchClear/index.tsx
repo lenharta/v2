@@ -1,7 +1,8 @@
-import { Factory } from '@/types';
-import { factory } from '@/core/factory';
 import { Action } from '@/app/common/action';
+import { factory } from '@/core/factory';
+import { Factory } from '@/types';
 import { Transition } from '@/core';
+import { eventCodes } from '@/data';
 
 export type SearchClearFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -51,26 +52,15 @@ export const SearchClear = factory<SearchClearFactory>((props, ref) => {
           onKeyDown={(event) => {
             event.stopPropagation();
             event.preventDefault();
-
-            const Tab = () => {
-              if (event.shiftKey) {
-                onFocusInput?.();
-              } else {
-                onFocusSearch?.();
-              }
-            };
-
-            const Enter = () => {
-              onFocusInput?.();
-              onClearSearch?.();
-            };
-
             const events = {
-              Tab,
-              Enter,
-              Escape: () => onEscapeSearch(),
-              ArrowLeft: () => onFocusInput?.(),
-              ArrowRight: () => onFocusSearch?.(),
+              [eventCodes.ArrowRight]: () => onFocusSearch?.(),
+              [eventCodes.ArrowLeft]: () => onFocusInput?.(),
+              [eventCodes.Escape]: () => onEscapeSearch(),
+              [eventCodes.Tab]: () => (event.shiftKey ? onFocusInput?.() : onFocusSearch?.()),
+              [eventCodes.Enter]: () => {
+                onFocusInput?.();
+                onClearSearch?.();
+              },
             }[event.key];
 
             return events?.();

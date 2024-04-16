@@ -98,86 +98,6 @@
     }
   }
 
-  // .control-item {
-  //   &:not([data-disabled]) {
-  //     background-color: var(--c-control-base);
-  //     color: var(--c-text);
-
-  //     &:not([data-selected]):hover {
-  //       background-color: var(--c-control-hover);
-  //     }
-  //     &:not([data-selected]):active {
-  //       background-color: var(--c-control-active);
-  //     }
-  //   }
-
-  //   &[data-accent][data-selected]:not([data-disabled]) {
-  //     color: var(--c-accent);
-  //   }
-  // }
-
-  // .control-thumb {
-  //   @include transition-transform-interactive;
-  //   background-color: var(--c-control-thumb);
-  // }
-  // .control-thumb[data-accent] {
-  //   background-color: var(--c-accent-a100);
-  // }
-
-  // .control-item:not([data-disabled]) {
-  //   background-color: var(--c-control-base);
-  //
-
-  //   &:not([data-selected]):hover {
-  //     background-color: var(--c-control-hover);
-  //   }
-  //   &:not([data-selected]):active {
-  //     background-color: var(--c-control-active);
-  //   }
-
-  //   // &: not([data-]);
-
-  // }
-
-  // .control-thumb:not([data-disabled]) {
-  //   @include transition-transform-interactive;
-
-  //   &:not([data-accent]) {
-  //     background-color: var(--c-control-thumb);
-  //   }
-  //   &[data-accent] {
-  //     background-color: var(--c-accent-a100);
-  //   }
-  // }
-
-  // &[data-accent][data-selected] {
-  //   color: var(--c-accent);
-  // }
-
-  // &:not([data-selected]) {
-  //   color: var(--c-text);
-  // }
-
-  // background-color: var(--c-control-base);
-
-  // &:not([data-selected]):not([data-disabled]):hover,
-  // &:not([data-selected]):not([aria-disabled]):hover {
-  //   background-color: var(--c-control-hover);
-  // }
-  // &:not([data-selected]):not([data-disabled]):active,
-  // &:not([data-selected]):not([aria-disabled]):active {
-  //   background-color: var(--c-control-active);
-  // }
-
-  // &[data-accent]:not([data-disabled]) {
-  //   background-color: transparent;
-  //   color: var(--c-text);
-
-  //   &[data-selected] {
-  //     color: var(--c-accent);
-  //   }
-  // }
-
   .layout-header {
     background-color: var(--c-background);
     border-bottom: solid var(--unit) var(--c-border);
@@ -202,17 +122,17 @@
     }
   }
 
-  .layout-menu {
+  .menu {
     background-color: var(--c-background);
     border-bottom: solid var(--unit) var(--c-border);
   }
 
-  .layout-menu-panel {
+  .menu-panel {
     background-color: var(--c-panel-base);
     border-right: solid var(--unit) var(--c-border);
   }
 
-  .layout-menu-cell {
+  .menu-cell {
     background-color: var(--c-accent);
   }
 

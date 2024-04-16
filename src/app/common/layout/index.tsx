@@ -1,12 +1,10 @@
 import { LayoutContent, LayoutContentComponent } from './LayoutContent';
 import { LayoutHeader, LayoutHeaderComponent } from './LayoutHeader';
-import { LayoutMenu, LayoutMenuComponent } from './LayoutMenu';
 import { LayoutNav, LayoutNavComponent } from './LayoutNav';
 
 interface LayoutComponents {
   Content: LayoutContentComponent;
   Header: LayoutHeaderComponent;
-  Menu: LayoutMenuComponent;
   Nav: LayoutNavComponent;
 }
 
@@ -20,5 +18,4 @@ export const Layout: LayoutComponent & LayoutComponents = ({ children }) => {
 
 Layout.Content = LayoutContent;
 Layout.Header = LayoutHeader;
-Layout.Menu = LayoutMenu;
 Layout.Nav = LayoutNav;

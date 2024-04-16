@@ -1,6 +1,7 @@
-import { Factory } from '@/types';
-import { factory } from '@/core/factory';
 import { Action } from '@/app/common/action';
+import { factory } from '@/core/factory';
+import { Factory } from '@/types';
+import { eventCodes } from '@/data';
 
 export type SearchTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -30,10 +31,11 @@ export const SearchTarget = factory<SearchTargetFactory>((props, ref) => {
       }}
       onKeyDown={(event) => {
         event.stopPropagation();
-        const ArrowRight = () => onFocusInput?.();
-        const ArrowLeft = () => onFocusClear?.();
-        const Tab = () => event.shiftKey && onFocusClear?.();
-        const events = { ArrowRight, ArrowLeft, Tab }[event.key];
+        const events = {
+          [eventCodes.Tab]: () => event.shiftKey && onFocusClear?.(),
+          [eventCodes.ArrowLeft]: () => onFocusClear?.(),
+          [eventCodes.ArrowRight]: () => onFocusInput?.(),
+        }[event.code];
         events?.();
       }}
     />

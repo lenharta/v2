@@ -1,6 +1,7 @@
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { Transition } from '@/core';
+import { eventCodes } from '@/data';
 
 interface SearchInputProps {
   mounted: boolean;
@@ -65,11 +66,15 @@ export const SearchInput = factory<SearchInputFactory>((props, ref) => {
           tabIndex={0}
           onKeyDown={(event) => {
             event.stopPropagation();
-            const Escape = () => onEscapeSearch?.();
-            const ArrowDown = () => onFocusResult?.();
-            const ArrowLeft = () => !event.shiftKey && !event.ctrlKey && onFocusSearch?.();
-            const ArrowRight = () => !event.shiftKey && !event.ctrlKey && onFocusClear?.();
-            const events = { Escape, ArrowDown, ArrowLeft, ArrowRight }[event.key];
+            const events = {
+              [eventCodes.Escape]: () => onEscapeSearch?.(),
+              [eventCodes.ArrowLeft]: () => !event.shiftKey && !event.ctrlKey && onFocusSearch?.(),
+              [eventCodes.ArrowRight]: () => !event.shiftKey && !event.ctrlKey && onFocusClear?.(),
+              [eventCodes.ArrowDown]: () => {
+                event.preventDefault();
+                onFocusResult?.();
+              },
+            }[event.code];
             return events?.();
           }}
         />

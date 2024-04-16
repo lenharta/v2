@@ -3,13 +3,13 @@ import { factory } from '@/core/factory';
 import { useAppState } from '@/store';
 import { Box, Title, Transition } from '@/core';
 
-type LayoutMenuPanelFactory = Factory.Config<{
+type MenuPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: {};
 }>;
 
-export const LayoutMenuPanel = factory<LayoutMenuPanelFactory>((props, ref) => {
+export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
   const { ...otherProps } = props;
   const state = useAppState();
   return (
@@ -24,7 +24,7 @@ export const LayoutMenuPanel = factory<LayoutMenuPanelFactory>((props, ref) => {
       }}
     >
       {(transitionStyles) => (
-        <Box ref={ref} {...otherProps} style={transitionStyles} className="layout-menu-panel">
+        <Box ref={ref} {...otherProps} style={transitionStyles} className="menu-panel">
           <Title>Menu Panel</Title>
         </Box>
       )}
@@ -32,4 +32,4 @@ export const LayoutMenuPanel = factory<LayoutMenuPanelFactory>((props, ref) => {
   );
 });
 
-LayoutMenuPanel.displayName = '@v2/app/LayoutMenu.Panel';
+MenuPanel.displayName = '@v2/app/Menu.Panel';

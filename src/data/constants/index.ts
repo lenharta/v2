@@ -1,4 +1,5 @@
 export const eventCodes = {
+  Tab: 'Tab',
   End: 'End',
   Home: 'Home',
   Enter: 'Enter',
