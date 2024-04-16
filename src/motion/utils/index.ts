@@ -1,2 +1,4 @@
-export * from './get-motion-class';
-export * from './get-motion-selector';
+export * from './format-motion-class';
+export * from './format-motion-selector';
+export * from './format-transform';
+export * from './format-translate';

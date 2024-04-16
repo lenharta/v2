@@ -1,11 +1,11 @@
 import gsap from 'gsap';
 import * as React from 'react';
 import { useGSAP } from '@gsap/react';
-import { LayoutMenuPanel } from './LayoutMenuPanel';
-import { LayoutMenuTarget } from './LayoutMenuTarget';
-import { useMotionTimeline } from '@/motion';
+import { MenuPanel } from './MenuPanel';
+import { MenuTarget } from './MenuTarget';
 import { useAppDispatch, useAppState } from '@/store';
 import { useMergeRefs, useOutsideClick } from '@/hooks';
+import { transform, motionClass, motionSelector, useMotionTimeline } from '@/motion';
 
 const data = [
   { row: 'r-1', cells: ['r-1-c-1', 'r-1-c-2', 'r-1-c-3'] },
@@ -14,34 +14,17 @@ const data = [
 ];
 
 const css = {
-  grid: 'layout-menu-grid',
-  cell: 'layout-menu-cell',
-  row: 'layout-menu-row',
+  grid: 'menu-grid',
+  cell: 'menu-cell',
+  row: 'menu-row',
 };
 
-function translate(x: number, y: number): string {
-  return `translate(${x}%, ${y}%)`;
-}
-
-function transform(x: number, y: number, mounted?: boolean): gsap.TweenVars {
-  const pos = mounted ? { x, y } : { x: 0, y: 0 };
-  return { transform: translate(pos.x, pos.y) };
-}
-
-function createGridClass(cx: string, id: string) {
-  return [cx, [cx, id].join('-')].join(' ');
-}
-
-function createGridSelector(cx: string, id: string) {
-  return ['.', [cx, id].join('-')].join('');
-}
-
-export type LayoutMenuComponent = React.FC<{}> & {
-  Target: typeof LayoutMenuTarget;
-  Panel: typeof LayoutMenuPanel;
+export type MenuComponent = React.FC<{}> & {
+  Target: typeof MenuTarget;
+  Panel: typeof MenuPanel;
 };
 
-export const LayoutMenu: LayoutMenuComponent = ({}) => {
+export const Menu: MenuComponent = ({}) => {
   const state = useAppState();
   const dispatch = useAppDispatch();
   const { scope, timeline } = useMotionTimeline<HTMLButtonElement>();
@@ -76,26 +59,26 @@ export const LayoutMenu: LayoutMenuComponent = ({}) => {
     () => {
       timeline.current = gsap
         .timeline()
-        .to(createGridSelector(css.cell, 'r-1-c-1'), motion['r-1-c-1'])
-        .to(createGridSelector(css.cell, 'r-1-c-2'), motion['r-1-c-2'])
-        .to(createGridSelector(css.cell, 'r-1-c-3'), motion['r-1-c-3'])
-        .to(createGridSelector(css.cell, 'r-2-c-1'), motion['r-2-c-1'])
-        .to(createGridSelector(css.cell, 'r-2-c-2'), motion['r-2-c-2'])
-        .to(createGridSelector(css.cell, 'r-2-c-3'), motion['r-2-c-3'])
-        .to(createGridSelector(css.cell, 'r-3-c-1'), motion['r-3-c-1'])
-        .to(createGridSelector(css.cell, 'r-3-c-2'), motion['r-3-c-2'])
-        .to(createGridSelector(css.cell, 'r-3-c-3'), motion['r-3-c-3']);
+        .to(motionSelector(css.cell, 'r-1-c-1'), motion['r-1-c-1'])
+        .to(motionSelector(css.cell, 'r-1-c-2'), motion['r-1-c-2'])
+        .to(motionSelector(css.cell, 'r-1-c-3'), motion['r-1-c-3'])
+        .to(motionSelector(css.cell, 'r-2-c-1'), motion['r-2-c-1'])
+        .to(motionSelector(css.cell, 'r-2-c-2'), motion['r-2-c-2'])
+        .to(motionSelector(css.cell, 'r-2-c-3'), motion['r-2-c-3'])
+        .to(motionSelector(css.cell, 'r-3-c-1'), motion['r-3-c-1'])
+        .to(motionSelector(css.cell, 'r-3-c-2'), motion['r-3-c-2'])
+        .to(motionSelector(css.cell, 'r-3-c-3'), motion['r-3-c-3']);
     },
     { scope, dependencies: [state.isMenuOpen] }
   );
 
   return (
     <React.Fragment>
-      <LayoutMenu.Target
+      <Menu.Target
         ref={mergedScopeRefs}
         css={css}
         data={data}
-        format={createGridClass}
+        format={motionClass}
         onClick={() => {
           dispatch({
             isMenuOpen: !state.isMenuOpen ? true : undefined,
@@ -103,11 +86,11 @@ export const LayoutMenu: LayoutMenuComponent = ({}) => {
           });
         }}
       />
-      <LayoutMenu.Panel ref={boxRef} />
+      <Menu.Panel ref={boxRef} />
     </React.Fragment>
   );
 };
 
-LayoutMenu.displayName = '@v2/app/LayoutMenu';
-LayoutMenu.Target = LayoutMenuTarget;
-LayoutMenu.Panel = LayoutMenuPanel;
+Menu.displayName = '@v2/app/Menu';
+Menu.Target = MenuTarget;
+Menu.Panel = MenuPanel;
