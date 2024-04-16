@@ -1,4 +1,6 @@
-export const transitionTokens = {
+export const SPLASH_DURATION = 3000;
+
+export const TOKENS = {
   easing: {
     standard: {
       productive: 'cubic-bezier(0.2, 0, 0.38, 0.9)',
@@ -14,11 +16,11 @@ export const transitionTokens = {
     },
   },
   duration: {
-    fastest: '70ms',
-    faster: '110ms',
-    fast: '150ms',
-    slow: '240ms',
-    slower: '400ms',
-    slowest: '700ms',
+    fastest: 70,
+    faster: 110,
+    fast: 150,
+    slow: 240,
+    slower: 400,
+    slowest: 700,
   },
 };

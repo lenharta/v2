@@ -1,6 +1,6 @@
 import { Store } from '@/types';
 
-export const initialAppState: Store.AppState = {};
+export const initialAppState: Partial<Store.AppState> = {};
 
 export const initialThemeState: Store.ThemeState = {
   dir: 'ltr',

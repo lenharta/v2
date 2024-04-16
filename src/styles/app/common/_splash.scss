@@ -1,0 +1,13 @@
+@use '../mixins' as mixins;
+
+@layer reset {
+  .splash {
+    @include mixins.reset;
+  }
+}
+
+.splash {
+  // display: block;
+  // min-height: 100vh;
+  // position: relative;
+}

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Location } from 'react-router-dom';
 
 export namespace Store {
   export type StorageLocation = 'localStorage' | 'sessionStorage';
@@ -59,27 +60,34 @@ export namespace Store {
     setAccent(accent: Accent): void;
   }
 
+  export interface Middleware {
+    read(): boolean;
+    fetch(): Store.AppState | null;
+    write(data: Store.AppState): boolean;
+  }
+
   export interface AppState {
-    nonce?: (() => string) | undefined;
-    location?: Location | undefined;
     sessionKey?: string | undefined;
     searchQuery?: string | undefined;
     isTransition?: boolean | undefined;
     isSearchOpen?: boolean | undefined;
     isMenuOpen?: boolean | undefined;
     isLoading?: boolean | undefined;
+    isSplash?: boolean | undefined;
     isError?: string | undefined;
   }
 
   export interface AppContextValue {
     nonce: () => string;
-    location: Location;
-    sessionKey: string;
+    location: Location<any>;
+    middleware: Middleware;
+    sessionKey?: string;
     searchQuery?: string | undefined;
     isTransition?: boolean | undefined;
     isSearchOpen?: boolean | undefined;
     isMenuOpen?: boolean | undefined;
     isLoading?: boolean | undefined;
+    isSplash?: boolean | undefined;
     isError?: string | undefined;
   }
 
@@ -91,14 +99,13 @@ export namespace Store {
     dispatch: AppDispatch;
   }
 
+  interface CreateSession<T extends Store.AppState> {
+    dispatch: Store.AppDispatch;
+    sessionKey?: string | undefined;
+    middleware: Middleware;
+  }
+
   export interface ProviderProps {
     children: React.ReactNode;
   }
-
-  export type ControlValue<T> = T;
-
-  export type ControlData<T> = {
-    value: ControlValue<T>;
-    label: string;
-  };
 }

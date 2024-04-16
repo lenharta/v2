@@ -1,6 +1,15 @@
 import { Store } from '@/types';
 import { LOOKUP_STORE_STORAGE_LOCATION } from '@/data';
-import { deserializeJSON, serializeJSON } from '@/utils';
+import { deserializeJSON, serializeJSON, generateRandomId } from '@/utils';
+
+export function createLocalSession<T extends Store.AppState>(props: Store.CreateSession<T>): void {
+  if (!props.sessionKey) {
+    const key = generateRandomId(16);
+    const payload = { sessionKey: key };
+    props.middleware.write(payload as T);
+    props.dispatch(payload);
+  }
+}
 
 export function localMiddleware<T extends Record<string, any> = {}>(
   type: Store.StorageLocationKey = 'local'
