@@ -22,6 +22,12 @@
   color: var(--c-text);
   background-color: var(--c-background);
 
+  .page,
+  .layout {
+    color: var(--c-text);
+    background-color: var(--c-background);
+  }
+
   .button,
   .control-item,
   .action--link,

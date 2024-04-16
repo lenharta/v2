@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Store } from '@/types';
 import { localMiddleware } from '@/store/local';
 import { generateRandomId } from '@/utils';
+import { initialAppState } from '../config';
+import { useLocation } from 'react-router-dom';
 
-export const AppStateContext = React.createContext({} as Store.AppState);
+export const AppStateContext = React.createContext({} as Store.AppContextValue);
 export const AppDispatchContext = React.createContext({} as Store.AppDispatch);
 
 export const AppStateProvider = AppStateContext.Provider;
@@ -12,8 +14,6 @@ export const AppDispatchProvider = AppDispatchContext.Provider;
 export const useAppState = () => React.useContext(AppStateContext);
 export const useAppDispatch = () => React.useContext(AppDispatchContext);
 
-const initialState: Store.AppState = {};
-
 export const AppProvider = ({ children }: Store.ProviderProps) => {
   const reducer = (state: Store.AppState, update: Partial<Store.AppState>) => ({
     ...state,
@@ -21,27 +21,48 @@ export const AppProvider = ({ children }: Store.ProviderProps) => {
   });
 
   const middleware = localMiddleware<Store.AppState>('session');
+  const location = useLocation();
 
-  const connectSession = () => {
-    const connection = { sessionKey: generateRandomId(16) };
-    middleware.write(connection);
-    return connection;
-  };
+  const initializeState = (current: Store.AppState): Store.AppState => {
+    const currentSession = middleware.fetch()?.sessionKey;
 
-  const initializer = (current: Store.AppState) => {
-    if (!middleware.fetch()?.sessionKey) {
+    if (!currentSession) {
       return {
         ...current,
-        ...connectSession(),
+        isSplash: true,
+      };
+    } else {
+      return {
+        ...current,
+        sessionKey: middleware.fetch()?.sessionKey,
       };
     }
-    return current;
+
+    // if (currentSession) {
+    //   return {
+    //     ...current,
+    //     sessionKey: currentSession,
+    //   };
+    // } else {
+    //   const newSession = generateRandomId(16);
+    //   middleware.write({ ...current, sessionKey: newSession });
+    //   return {
+    //     ...current, isSplash: true, sessionKey: newSession,
+    //   };
+    // }
   };
 
-  const [state, dispatch] = React.useReducer(reducer, initialState, initializer);
+  const [state, dispatch] = React.useReducer(reducer, initialAppState, initializeState);
 
   return (
-    <AppStateProvider value={state}>
+    <AppStateProvider
+      value={{
+        ...state,
+        location,
+        middleware,
+        nonce: () => '',
+      }}
+    >
       <AppDispatchProvider value={dispatch}>{children}</AppDispatchProvider>
     </AppStateProvider>
   );
