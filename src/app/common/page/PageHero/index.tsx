@@ -1,15 +1,16 @@
+import clsx from 'clsx';
 import * as React from 'react';
 
 export type PageHeroComponent = React.FC<{
   children?: React.ReactNode | undefined;
-  variant?: 'default' | 'home';
+  className?: string | undefined;
 }>;
 
 export const PageHero: PageHeroComponent = (props) => {
-  const { children, variant = 'default' } = props;
+  const { children, className } = props;
   return (
-    <section className={`page-hero--${variant}`} role="presentation">
-      <div className={`page-hero-content--${variant}`}>{children}</div>
+    <section className={clsx('page-hero', className)} role="presentation">
+      {children}
     </section>
   );
 };

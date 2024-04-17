@@ -2,7 +2,6 @@
 
 .radio {
   @include mixins.reset;
-  @include mixins.transition-colors-interactive;
 }
 
 .radio-group {

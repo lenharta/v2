@@ -1,7 +1,7 @@
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { useAppState } from '@/store';
-import { Box, Title, Transition } from '@/core';
+import { useAppState, useThemeDispatch, useThemeState } from '@/store';
+import { Box, Control, Title, Transition } from '@/core';
 
 type MenuPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -12,6 +12,9 @@ type MenuPanelFactory = Factory.Config<{
 export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
   const { ...otherProps } = props;
   const state = useAppState();
+  const theme = useThemeState();
+  const { setMode } = useThemeDispatch();
+
   return (
     <Transition
       mounted={state.isMenuOpen ? true : false}
@@ -25,7 +28,17 @@ export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
     >
       {(transitionStyles) => (
         <Box ref={ref} {...otherProps} style={transitionStyles} className="menu-panel">
-          <Title>Menu Panel</Title>
+          <Box className="menu-panel-box">
+            <Control
+              value={theme.mode}
+              onChange={(event) => setMode(event.currentTarget.value as any)}
+              data={[
+                { value: 'light', label: 'Light' },
+                { value: 'dark', label: 'Dark' },
+                { value: 'dim', label: 'Dim' },
+              ]}
+            />
+          </Box>
         </Box>
       )}
     </Transition>

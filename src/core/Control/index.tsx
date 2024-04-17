@@ -51,7 +51,7 @@ export interface ControlProps {
   orientation?: Core.Orientation | undefined;
   onKeyDown?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
   onClick?: ((event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
-  onChange: (value: string) => void;
+  onChange: (value: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export type ControlFactory = React.FC<ControlProps> & {

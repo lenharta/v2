@@ -193,36 +193,69 @@
 [data-prefers-mode='dim'] {
   --c-mix: var(--rgb-light-mode-surface-6);
   --c-base: var(--rgb-dark-mode-surface-5);
-
   [data-scheme='secondary'] {
-    --c-mix: var(--rgb-dark-mode-surface-5);
+    --c-mix: var(--rgb-dark-mode-surface-6);
     --c-base: var(--rgb-light-mode-surface-6);
+  }
+}
+
+[data-prefers-mode='dim'][data-prefers-accessible-color='true'] {
+  --c-mix: var(--rgb-light-mode-surface-6-a11y);
+  --c-base: var(--rgb-dark-mode-surface-5-a11y);
+  [data-scheme='secondary'] {
+    --c-mix: var(--rgb-dark-mode-surface-6-a11y);
+    --c-base: var(--rgb-light-mode-surface-6-a11y);
   }
 }
 
 [data-prefers-mode='dark'] {
   --c-mix: var(--rgb-light-mode-surface-6);
   --c-base: var(--rgb-dark-mode-surface-6);
-
   [data-scheme='secondary'] {
-    --c-mix: var(--rgb-dark-mode-surface-5);
+    --c-mix: var(--rgb-dark-mode-surface-6);
     --c-base: var(--rgb-light-mode-surface-6);
+  }
+}
+
+[data-prefers-mode='dark'][data-prefers-accessible-color='true'] {
+  --c-mix: var(--rgb-light-mode-surface-6-a11y);
+  --c-base: var(--rgb-dark-mode-surface-6-a11y);
+  [data-scheme='secondary'] {
+    --c-mix: var(--rgb-dark-mode-surface-6-a11y);
+    --c-base: var(--rgb-light-mode-surface-6-a11y);
   }
 }
 
 [data-prefers-mode='light'] {
   --c-mix: var(--rgb-dark-mode-surface-6);
   --c-base: var(--rgb-light-mode-surface-6);
-
   [data-scheme='secondary'] {
     --c-mix: var(--rgb-light-mode-surface-6);
     --c-base: var(--rgb-dark-mode-surface-6);
   }
 }
 
+[data-prefers-mode='light'][data-prefers-accessible-color='true'] {
+  --c-mix: var(--rgb-dark-mode-surface-6-a11y);
+  --c-base: var(--rgb-light-mode-surface-6-a11y);
+  [data-scheme='secondary'] {
+    --c-mix: var(--rgb-light-mode-surface-6-a11y);
+    --c-base: var(--rgb-dark-mode-surface-6-a11y);
+  }
+}
+
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
-[data-prefers-mode='light'] {
+[data-prefers-mode='light'],
+[data-prefers-mode='dim'] [data-scheme='secondary'],
+[data-prefers-mode='dark'] [data-scheme='secondary'],
+[data-prefers-mode='light'] [data-scheme='secondary'],
+[data-prefers-mode='dim'][data-prefers-accessible-color='true'],
+[data-prefers-mode='dark'][data-prefers-accessible-color='true'],
+[data-prefers-mode='light'][data-prefers-accessible-color='true'],
+[data-prefers-mode='dim'][data-prefers-accessible-color='true'] [data-scheme='secondary'],
+[data-prefers-mode='dark'][data-prefers-accessible-color='true'] [data-scheme='secondary'],
+[data-prefers-mode='light'][data-prefers-accessible-color='true'] [data-scheme='secondary'] {
   --c-text: color-mix(in srgb, var(--c-base) 0%, var(--c-mix));
   --c-text-med: color-mix(in srgb, var(--c-base) 15%, var(--c-mix));
   --c-text-low: color-mix(in srgb, var(--c-base) 30%, var(--c-mix));
@@ -252,6 +285,10 @@
   --c-control-hover: color-mix(in srgb, var(--c-base) 95%, var(--c-mix));
   --c-control-active: color-mix(in srgb, var(--c-base) 95%, var(--c-mix));
   --c-control-thumb: color-mix(in srgb, var(--c-base) 90%, var(--c-mix));
+
+  --c-tile-base: color-mix(in srgb, var(--c-base) 95%, var(--c-mix));
+  --c-tile-hover: color-mix(in srgb, var(--c-base) 90%, var(--c-mix));
+  --c-tile-active: color-mix(in srgb, var(--c-base) 85%, var(--c-mix));
 }
 
 [data-prefers-mode='dim'],

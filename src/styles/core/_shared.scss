@@ -1,11 +1,12 @@
-.control-track,
 .tile-group,
 .action-group,
-.button-group {
+.button-group,
+.control-track {
   --align: row;
   --justify: row;
   --direction: row;
 
+  width: 100%;
   display: flex;
   align-items: var(--align);
   justify-content: var(--justify);
@@ -20,23 +21,28 @@
   }
 }
 
-.button,
 .action,
+.button,
 .control-item,
 .tile--clickable,
 .tile--expandable,
 .tile--selectable {
+  cursor: default;
+  border: solid var(--unit) transparent;
+  outline: solid var(--unit) transparent;
   user-select: none;
-  outline: solid var(--border-sm) transparent;
-  border: solid var(--border-sm) transparent;
 
-  &:not([aria-disabled]):hover,
-  &:not([data-disabled]):hover {
+  &:hover:not([data-disabled]),
+  &:hover:not([aria-disabled]) {
     cursor: pointer;
   }
-  &[aria-disabled]:hover,
-  &[data-disabled]:hover {
-    cursor: default;
+  &:focus:not(:focus-visible):not([aria-disabled]),
+  &:focus:not(:focus-visible):not([data-disabled]) {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible:not([aria-disabled]),
+  &:focus:focus-visible:not([data-disabled]) {
+    outline-color: var(--c-blue);
   }
 }
 

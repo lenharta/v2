@@ -32,11 +32,14 @@
   font-weight: var(--font-weight-2);
 }
 
-h1.title {
-  font-size: var(--font-size-title-xl);
-}
 h2.title {
-  font-size: var(--font-size-title-md);
+  font-size: var(--font-size-10);
+  font-weight: var(--font-weight-2);
+}
+h1.title {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-2);
+  margin-bottom: var(--gutter);
 }
 
 .text {

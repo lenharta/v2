@@ -12,21 +12,38 @@
 
 @mixin transition-transform-interactive {
   transition-property: transform;
-  transition-timing-function: var(--easing-standard-productive);
-  transition-duration: var(--easing-duration-4);
+  transition-timing-function: var(--easing-standard-expressive);
+  transition-duration: var(--easing-duration-3);
 }
 
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
-  color: var(--c-text);
-  background-color: var(--c-background);
+  // color: var(--c-text);
+  // background-color: var(--c-background);
+  // transition-property: color, background-color, border-color, outline-color, stroke, fill;
+  // transition-timing-function: var(--easing-standard-expressive);
+  // transition-duration: var(--easing-duration-5);
 
+  .box,
   .page,
-  .layout {
+  .menu,
+  .layout,
+  .layout-nav,
+  .layout-header {
     color: var(--c-text);
     background-color: var(--c-background);
+    transition-property: color, background-color, border-color, outline-color, stroke, fill;
+    transition-timing-function: var(--easing-standard-expressive);
+    transition-duration: var(--easing-duration-5);
   }
+
+  // [data-scheme='secondary'] {
+  //   transition-property: color, background-color, border-color, outline-color, stroke, fill;
+  //   transition-timing-function: var(--easing-standard-expressive);
+  //   transition-duration: var(--easing-duration-5);
+  //   transition-delay: 100ms;
+  // }
 
   .button,
   .control-item,
@@ -62,6 +79,22 @@
     &:not([aria-disabled]):active {
       color: var(--c-text);
       background-color: var(--c-button-active);
+    }
+  }
+
+  .tile--clickable {
+    &:not([data-disabled]),
+    &:not([aria-disabled]) {
+      color: var(--c-text);
+      background-color: var(--c-tile-base);
+    }
+    &:not([data-disabled]):hover,
+    &:not([aria-disabled]):hover {
+      background-color: var(--c-tile-hover);
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      background-color: var(--c-tile-active);
     }
   }
 
@@ -105,13 +138,11 @@
   }
 
   .layout-header {
-    background-color: var(--c-background);
     border-bottom: solid var(--unit) var(--c-border);
     border-left: solid var(--unit) var(--c-border);
   }
 
   .layout-nav {
-    background-color: var(--c-background);
     border-right: solid var(--unit) var(--c-border);
   }
 
@@ -129,7 +160,6 @@
   }
 
   .menu {
-    background-color: var(--c-background);
     border-bottom: solid var(--unit) var(--c-border);
   }
 
@@ -183,13 +213,14 @@
     }
   }
 
-  .page-hero-content--home,
-  .page-hero-content--default {
-    h2.title {
-      color: var(--c-text-med);
-    }
-    h1.title {
-      color: var(--c-accent);
-    }
+  .page-hero h2.title {
+    color: var(--c-text-med);
+  }
+
+  .sec-home-hero h1.title {
+    color: var(--c-accent);
+  }
+  .sec-home-overview-box--right {
+    background-color: var(--c-background);
   }
 }

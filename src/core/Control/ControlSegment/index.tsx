@@ -8,7 +8,7 @@ interface ControlSegmentProps {
   refs: Record<string, HTMLElement | null>;
   label: string;
   value: string;
-  onChange: (value: string) => void;
+  onChange: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onUpdate: (target: HTMLElement | null, parent: HTMLElement | null) => void;
   orientation: Core.Orientation;
   isSelected?: boolean | undefined;
@@ -45,7 +45,7 @@ export const ControlSegment = factory<ControlSegmentFactory>((props, ref) => {
       onKeyDown={createKeyDownGroup({ onKeyDown, orientation })}
       onClick={createEventCallback(onClick, (event) => {
         event.stopPropagation();
-        onChange(event.currentTarget.value);
+        onChange(event);
         onUpdate(refs.target!, refs.parent!);
       })}
     >
