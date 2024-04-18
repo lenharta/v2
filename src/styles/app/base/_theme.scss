@@ -19,12 +19,6 @@
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
-  // color: var(--c-text);
-  // background-color: var(--c-background);
-  // transition-property: color, background-color, border-color, outline-color, stroke, fill;
-  // transition-timing-function: var(--easing-standard-expressive);
-  // transition-duration: var(--easing-duration-5);
-
   .box,
   .page,
   .menu,
@@ -38,18 +32,19 @@
     transition-duration: var(--easing-duration-5);
   }
 
-  // [data-scheme='secondary'] {
-  //   transition-property: color, background-color, border-color, outline-color, stroke, fill;
-  //   transition-timing-function: var(--easing-standard-expressive);
-  //   transition-duration: var(--easing-duration-5);
-  //   transition-delay: 100ms;
-  // }
+  [data-scheme='secondary'] {
+    transition-property: color, background-color, border-color, outline-color, stroke, fill;
+    transition-timing-function: var(--easing-standard-expressive);
+    transition-duration: var(--easing-duration-5);
+    transition-delay: 100ms;
+  }
 
   .button,
   .control-item,
   .action--link,
   .action--button,
-  .search-result-item {
+  .search-result-item,
+  .sec-home-exp-item {
     @include transition-colors-interactive;
     outline: solid var(--unit) transparent;
     border: solid var(--unit) transparent;
@@ -66,7 +61,8 @@
 
   .button,
   .action--link,
-  .action--button {
+  .action--button,
+  .sec-home-exp-item {
     color: var(--c-text);
     background-color: var(--c-button);
 
@@ -177,7 +173,7 @@
     outline: solid var(--unit) transparent;
     border-left: solid var(--unit) var(--c-border);
     background-color: var(--c-panel-base);
-    color: var(--c-text-med);
+    color: var(--c-text-3);
 
     &:not([aria-disabled]):focus-visible,
     &:not([data-disabled]):focus-visible {
@@ -206,7 +202,7 @@
       fill: var(--c-text-low);
     }
     .text:first-of-type {
-      color: var(--c-text-med);
+      color: var(--c-text-3);
     }
     .text:last-of-type {
       color: var(--c-text-low);
@@ -214,13 +210,34 @@
   }
 
   .page-hero h2.title {
-    color: var(--c-text-med);
+    color: var(--c-text-3);
   }
 
   .sec-home-hero h1.title {
     color: var(--c-accent);
   }
-  .sec-home-overview-box--right {
-    background-color: var(--c-background);
+
+  .sec-home-exp-item {
+    &:not([data-disabled]) {
+      &::before {
+        @include transition-colors-interactive;
+        background-color: var(--c-accent-a100);
+      }
+      &:hover::before {
+        background-color: var(--c-accent-a600);
+      }
+      &:focus:focus-visible::before {
+        background-color: var(--c-accent-a600);
+      }
+      &::after {
+        background-color: var(--c-border);
+      }
+      .icon {
+        color: var(--c-text-5);
+      }
+      &:hover .icon {
+        color: var(--c-text-3);
+      }
+    }
   }
 }
