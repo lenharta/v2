@@ -7,7 +7,6 @@
   .control-item,
   .control-item-label {
     @include mixins.reset;
-    @include mixins.transition-colors-interactive;
   }
 }
 
@@ -15,9 +14,9 @@
 .control-item,
 .control-track,
 .control-thumb {
-  --control-height-sm: calc(var(--gutter) * 1.5);
-  --control-height-md: calc(var(--gutter) * 2);
-  --control-height-lg: calc(var(--gutter) * 2.5);
+  --control-height-sm: calc(var(--unit) * 18);
+  --control-height-md: calc(var(--unit) * 24);
+  --control-height-lg: calc(var(--unit) * 30);
 
   border-radius: calc(var(--unit) * 2);
 }
@@ -33,9 +32,7 @@
     --control-height: var(--control-height-lg);
   }
 
-  display: block;
   z-index: 0;
-  isolation: isolate;
   position: relative;
   bottom: 0;
   right: 0;
@@ -44,7 +41,7 @@
 
   &-track {
     z-index: 0;
-    isolation: isolate;
+    min-width: 100%;
     position: relative;
     bottom: 0;
     right: 0;
@@ -60,8 +57,8 @@
     left: 0;
     top: 0;
 
-    width: 100%;
-    display: inline-flex;
+    min-width: 100%;
+    display: flex;
     user-select: none;
     justify-content: center;
     align-items: center;

@@ -12,27 +12,39 @@
 
 @mixin transition-transform-interactive {
   transition-property: transform;
-  transition-timing-function: var(--easing-standard-productive);
-  transition-duration: var(--easing-duration-4);
+  transition-timing-function: var(--easing-standard-expressive);
+  transition-duration: var(--easing-duration-3);
 }
 
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
-  color: var(--c-text);
-  background-color: var(--c-background);
-
+  .box,
   .page,
-  .layout {
+  .menu,
+  .layout,
+  .layout-nav,
+  .layout-header {
     color: var(--c-text);
     background-color: var(--c-background);
+    transition-property: color, background-color, border-color, outline-color, stroke, fill;
+    transition-timing-function: var(--easing-standard-expressive);
+    transition-duration: var(--easing-duration-5);
+  }
+
+  [data-scheme='secondary'] {
+    transition-property: color, background-color, border-color, outline-color, stroke, fill;
+    transition-timing-function: var(--easing-standard-expressive);
+    transition-duration: var(--easing-duration-5);
+    transition-delay: 100ms;
   }
 
   .button,
   .control-item,
   .action--link,
   .action--button,
-  .search-result-item {
+  .search-result-item,
+  .sec-home-exp-item {
     @include transition-colors-interactive;
     outline: solid var(--unit) transparent;
     border: solid var(--unit) transparent;
@@ -49,7 +61,8 @@
 
   .button,
   .action--link,
-  .action--button {
+  .action--button,
+  .sec-home-exp-item {
     color: var(--c-text);
     background-color: var(--c-button);
 
@@ -62,6 +75,22 @@
     &:not([aria-disabled]):active {
       color: var(--c-text);
       background-color: var(--c-button-active);
+    }
+  }
+
+  .tile--clickable {
+    &:not([data-disabled]),
+    &:not([aria-disabled]) {
+      color: var(--c-text);
+      background-color: var(--c-tile-base);
+    }
+    &:not([data-disabled]):hover,
+    &:not([aria-disabled]):hover {
+      background-color: var(--c-tile-hover);
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      background-color: var(--c-tile-active);
     }
   }
 
@@ -105,13 +134,11 @@
   }
 
   .layout-header {
-    background-color: var(--c-background);
     border-bottom: solid var(--unit) var(--c-border);
     border-left: solid var(--unit) var(--c-border);
   }
 
   .layout-nav {
-    background-color: var(--c-background);
     border-right: solid var(--unit) var(--c-border);
   }
 
@@ -129,7 +156,6 @@
   }
 
   .menu {
-    background-color: var(--c-background);
     border-bottom: solid var(--unit) var(--c-border);
   }
 
@@ -147,7 +173,7 @@
     outline: solid var(--unit) transparent;
     border-left: solid var(--unit) var(--c-border);
     background-color: var(--c-panel-base);
-    color: var(--c-text-med);
+    color: var(--c-text-3);
 
     &:not([aria-disabled]):focus-visible,
     &:not([data-disabled]):focus-visible {
@@ -176,20 +202,42 @@
       fill: var(--c-text-low);
     }
     .text:first-of-type {
-      color: var(--c-text-med);
+      color: var(--c-text-3);
     }
     .text:last-of-type {
       color: var(--c-text-low);
     }
   }
 
-  .page-hero-content--home,
-  .page-hero-content--default {
-    h2.title {
-      color: var(--c-text-med);
-    }
-    h1.title {
-      color: var(--c-accent);
+  .page-hero h2.title {
+    color: var(--c-text-3);
+  }
+
+  .sec-home-hero h1.title {
+    color: var(--c-accent);
+  }
+
+  .sec-home-exp-item {
+    &:not([data-disabled]) {
+      &::before {
+        @include transition-colors-interactive;
+        background-color: var(--c-accent-a100);
+      }
+      &:hover::before {
+        background-color: var(--c-accent-a600);
+      }
+      &:focus:focus-visible::before {
+        background-color: var(--c-accent-a600);
+      }
+      &::after {
+        background-color: var(--c-border);
+      }
+      .icon {
+        color: var(--c-text-5);
+      }
+      &:hover .icon {
+        color: var(--c-text-3);
+      }
     }
   }
 }

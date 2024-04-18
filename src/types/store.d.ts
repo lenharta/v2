@@ -31,6 +31,15 @@ export namespace Store {
   export type LanguageCode = 'ar' | 'fr' | 'de' | 'es' | 'en' | 'ja';
   export type LanguageName = 'arabic' | 'french' | 'german' | 'spanish' | 'english' | 'japanese';
 
+  export interface CopyItem {
+    key: string;
+    text: string;
+    title?: string;
+    actions?: CopyItem[];
+  }
+
+  export type CopyData = Record<LanguageName, CopyItem[]>;
+
   export interface Language {
     code: LanguageCode;
     name: LanguageName;

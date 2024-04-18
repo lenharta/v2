@@ -2,12 +2,6 @@
 
 .tile {
   @include mixins.reset;
-
-  &--clickable,
-  &--selectable,
-  &--expandable {
-    @include mixins.transition-colors-interactive;
-  }
 }
 
 .tile {

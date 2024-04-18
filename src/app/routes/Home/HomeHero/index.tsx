@@ -1,13 +1,15 @@
 import { Page } from '@/app/common';
-import { Title } from '@/core';
+import { Box, Title } from '@/core';
 
 type HomeHeroComponent = React.FC<{}>;
 
 export const HomeHero: HomeHeroComponent = ({}) => {
   return (
-    <Page.Hero>
-      <Title h2>Andrew Lenhart</Title>
-      <Title h1>Software Engineer</Title>
+    <Page.Hero className="sec-home-hero">
+      <Box className="sec-home-hero-content">
+        <Title h1>Andrew Lenhart</Title>
+        <Title h2>Front-end Engineer, Human-Centered Problem Solver.</Title>
+      </Box>
     </Page.Hero>
   );
 };

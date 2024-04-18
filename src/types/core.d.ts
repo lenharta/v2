@@ -32,7 +32,7 @@ export namespace Core {
   export type Dimensions = { [key in Length]: number };
   export type ClientRect = Rect & SideObject;
 
-  export type Scheme = 'primary' | 'secondary' | 'tertiary';
+  export type Scheme = 'primary' | 'secondary' | 'tertiary' | 'accent';
   export type InteractionType = 'base' | 'clickable' | 'expandable' | 'selectable';
   export type InteractionState = 'hovered' | 'pressed' | 'disabled' | 'selected' | 'expanded';
 
