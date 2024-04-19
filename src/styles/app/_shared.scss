@@ -23,6 +23,9 @@
 .layout-header {
   z-index: var(--app-index-header);
 }
+.menu {
+  z-index: var(--app-index-panel);
+}
 .menu-panel {
   z-index: var(--app-index-panel);
 }

@@ -16,6 +16,21 @@
   transition-duration: var(--easing-duration-3);
 }
 
+@mixin focus-outline {
+  @include transition-colors-interactive;
+  outline: solid var(--unit) transparent;
+  border: solid var(--unit) transparent;
+
+  &:not([aria-disabled]):focus:not(:focus-visible),
+  &:not([data-disabled]):focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:not([aria-disabled]):focus:focus-visible,
+  &:not([data-disabled]):focus:focus-visible {
+    outline-color: var(--c-blue);
+  }
+}
+
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
@@ -39,46 +54,69 @@
     transition-delay: 100ms;
   }
 
-  .button,
-  .control-item,
-  .action--link,
-  .action--button,
-  .search-result-item,
-  .sec-home-exp-item {
-    @include transition-colors-interactive;
-    outline: solid var(--unit) transparent;
-    border: solid var(--unit) transparent;
-
-    &:not([aria-disabled]):focus:not(:focus-visible),
-    &:not([data-disabled]):focus:not(:focus-visible) {
-      outline-color: transparent;
-    }
-    &:not([aria-disabled]):focus:focus-visible,
-    &:not([data-disabled]):focus:focus-visible {
-      outline-color: var(--c-blue);
-    }
-  }
-
-  .button,
-  .action--link,
-  .action--button,
-  .sec-home-exp-item {
-    color: var(--c-text);
+  .button {
+    @include focus-outline;
     background-color: var(--c-button);
+    color: var(--c-text);
 
     &:not([data-disabled]):hover,
     &:not([aria-disabled]):hover {
-      color: var(--c-text);
       background-color: var(--c-button-hover);
+      color: var(--c-text);
     }
     &:not([data-disabled]):active,
     &:not([aria-disabled]):active {
-      color: var(--c-text);
       background-color: var(--c-button-active);
+      color: var(--c-text);
+    }
+  }
+
+  .action--link,
+  .action--button {
+    @include focus-outline;
+    background-color: var(--c-button);
+    color: var(--c-text);
+
+    &:not([data-disabled]):hover,
+    &:not([aria-disabled]):hover {
+      background-color: var(--c-button-hover);
+      color: var(--c-text);
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      background-color: var(--c-button-active);
+      color: var(--c-text);
+    }
+  }
+
+  .control-item {
+    @include focus-outline;
+  }
+
+  .search-result-item {
+    @include focus-outline;
+  }
+
+  .tablink-item {
+    @include focus-outline;
+    background-color: var(--c-button);
+    color: var(--c-text);
+
+    &:not([data-disabled]):hover,
+    &:not([aria-disabled]):hover {
+      background-color: var(--c-button-hover);
+      color: var(--c-text);
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      background-color: var(--c-button-active);
+      color: var(--c-text);
     }
   }
 
   .tile--clickable {
+    @include transition-colors-interactive;
+
     &:not([data-disabled]),
     &:not([aria-disabled]) {
       color: var(--c-text);
@@ -91,6 +129,24 @@
     &:not([data-disabled]):active,
     &:not([aria-disabled]):active {
       background-color: var(--c-tile-active);
+    }
+  }
+
+  .tile--clickable:last-of-type {
+    &:not([data-disabled]),
+    &:not([aria-disabled]) {
+      color: var(--c-on-accent-s550);
+      background-color: var(--c-accent-s550);
+    }
+    &:not([data-disabled]):hover,
+    &:not([aria-disabled]):hover {
+      color: var(--c-on-accent-s600);
+      background-color: var(--c-accent-s600);
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      color: var(--c-on-accent-s650);
+      background-color: var(--c-accent-s650);
     }
   }
 
@@ -209,19 +265,11 @@
     }
   }
 
-  .page-hero h2.title {
-    color: var(--c-text-3);
-  }
-
-  .sec-home-hero h1.title {
-    color: var(--c-accent);
-  }
-
-  .sec-home-exp-item {
+  .tablink-item {
     &:not([data-disabled]) {
       &::before {
         @include transition-colors-interactive;
-        background-color: var(--c-accent-a100);
+        background-color: var(--c-accent-a200);
       }
       &:hover::before {
         background-color: var(--c-accent-a600);
@@ -238,6 +286,83 @@
       &:hover .icon {
         color: var(--c-text-3);
       }
+    }
+  }
+
+  .page-hero h2.title {
+    color: var(--c-text-3);
+  }
+
+  .sec-home-hero h1.title {
+    color: var(--c-accent);
+  }
+
+  .sec-home-intro-card-unit {
+    color: var(--c-text-3);
+  }
+
+  .sec-home-exp-box:nth-of-type(1) {
+    .text {
+      color: var(--c-text-3);
+    }
+  }
+
+  .sec-home-chemistry {
+    &-header {
+      div:first-of-type {
+        background-color: var(--c-accent-s550);
+        color: var(--c-on-accent-s550);
+      }
+
+      .text {
+        color: var(--c-text-3);
+      }
+    }
+  }
+
+  .chemical-card {
+    @include transition-colors-interactive;
+    @include focus-outline;
+
+    border-color: var(--c-tile-border);
+
+    &:not([data-disabled]),
+    &:not([aria-disabled]) {
+      color: var(--c-text);
+      background-color: var(--c-tile-base);
+
+      &:not([data-disabled]):hover,
+      &:not([aria-disabled]):hover {
+        background-color: var(--c-tile-hover);
+      }
+      &:not([data-disabled]):active,
+      &:not([aria-disabled]):active {
+        background-color: var(--c-tile-active);
+      }
+    }
+
+    &-link {
+      &:not([data-disabled]):hover,
+      &:not([aria-disabled]):hover {
+        background-color: var(--c-tile-hover);
+      }
+      &:not([data-disabled]):active,
+      &:not([aria-disabled]):active {
+        background-color: var(--c-tile-active);
+      }
+    }
+
+    &-atomic {
+      color: var(--c-text-5);
+    }
+    &-name {
+      color: var(--c-text);
+    }
+    &-symbol {
+      color: var(--c-accent);
+    }
+    &-weight {
+      color: var(--c-text-5);
     }
   }
 }

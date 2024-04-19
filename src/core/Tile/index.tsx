@@ -21,8 +21,8 @@ export interface TileProps extends Core.BaseProps, Core.FocusProps {
 }
 
 export type TileFactory = Factory.Config<{
-  ref: HTMLDivElement;
-  comp: 'div';
+  ref: HTMLButtonElement;
+  comp: 'button';
   props: TileProps;
   comps: {
     Group: typeof TileGroup;
@@ -39,7 +39,7 @@ export const Tile = factoryPolymorphic<TileFactory>((props, ref) => {
     children,
     excludeTabOrder,
     allowDisabledFocus,
-    component: Component = 'div',
+    component: Component = 'button',
     ...otherProps
   } = props;
 

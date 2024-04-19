@@ -6,4 +6,7 @@ export * from './page';
 export * from './screen';
 export * from './search';
 export * from './section';
+export * from './shape';
 export * from './splash';
+export * from './tablink';
+export * from './tiles';
