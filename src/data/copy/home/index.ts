@@ -1,5 +1,110 @@
 import { Store } from '@/types';
 
+export const DATA_HOME_ROUTE_TILES: Store.CopyData = {
+  arabic: [
+    {
+      key: 'home-route-tile-1',
+      text: '',
+      value: '/experience',
+    },
+    {
+      key: 'home-route-tile-2',
+      text: '',
+      value: '/toolbox',
+    },
+    {
+      key: 'home-route-tile-3',
+      text: '',
+      value: '/contact',
+    },
+  ],
+  english: [
+    {
+      key: 'home-route-tile-1',
+      text: 'See Experience',
+      value: '/experience',
+    },
+    {
+      key: 'home-route-tile-2',
+      text: 'See Technologies',
+      value: '/toolbox',
+    },
+    {
+      key: 'home-route-tile-3',
+      text: 'Get In Touch',
+      value: '/contact',
+    },
+  ],
+  french: [
+    {
+      key: 'home-route-tile-1',
+      text: '',
+      value: '/experience',
+    },
+    {
+      key: 'home-route-tile-2',
+      text: '',
+      value: '/toolbox',
+    },
+    {
+      key: 'home-route-tile-3',
+      text: '',
+      value: '/contact',
+    },
+  ],
+  german: [
+    {
+      key: 'home-route-tile-1',
+      text: '',
+      value: '/experience',
+    },
+    {
+      key: 'home-route-tile-2',
+      text: '',
+      value: '/toolbox',
+    },
+    {
+      key: 'home-route-tile-3',
+      text: '',
+      value: '/contact',
+    },
+  ],
+  japanese: [
+    {
+      key: 'home-route-tile-1',
+      text: '',
+      value: '/experience',
+    },
+    {
+      key: 'home-route-tile-2',
+      text: '',
+      value: '/toolbox',
+    },
+    {
+      key: 'home-route-tile-3',
+      text: '',
+      value: '/contact',
+    },
+  ],
+  spanish: [
+    {
+      key: 'home-route-tile-1',
+      text: '',
+      value: '/experience',
+    },
+    {
+      key: 'home-route-tile-2',
+      text: '',
+      value: '/toolbox',
+    },
+    {
+      key: 'home-route-tile-3',
+      text: '',
+      value: '/contact',
+    },
+  ],
+};
+
 export const DATA_HOME_INTRO_CARD_COPY: Store.CopyData = {
   english: [
     {
@@ -223,8 +328,8 @@ export const DATA_HOME_EXPERIENCE_HEADLINE_COPY: Store.CopyData = {
   ],
   english: [
     {
-      title: `From Startups to Titans of Industries`,
-      text: `I've crafted a proven track record contributing to global projects across many sectors.`,
+      title: `Startups to Titans of Industries`,
+      text: `Proven track record of contributing to global projects across many sectors.`,
       key: `home-exp-headline`,
     },
   ],
@@ -262,21 +367,25 @@ export const DATA_HOME_EXPERIENCE_TILE_COPY: Store.CopyData = {
   arabic: [
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-1',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-2',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-3',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-4',
     },
@@ -284,21 +393,25 @@ export const DATA_HOME_EXPERIENCE_TILE_COPY: Store.CopyData = {
   english: [
     {
       title: `Doran Jones Inc.`,
+      value: '/experience',
       text: `Engineering and Development Firm, specializing in financial services, capital markets, risk, and regulatory compliance.`,
       key: 'home-exp-tile-1',
     },
     {
       title: `Hatch.co`,
+      value: '/experience',
       text: `Technology-driven start-up, that develops a suite of smart devices to help you sleep better at night.`,
       key: 'home-exp-tile-2',
     },
     {
       title: `Hawthorne Partners`,
+      value: '/experience',
       text: `Real Estate Firm that provides management services throughout the United States.`,
       key: 'home-exp-tile-3',
     },
     {
       title: `Pace Communications`,
+      value: '/experience',
       text: `Award winning Creative Marketing Agency specializing in brand storytelling, UX design, and web development.`,
       key: 'home-exp-tile-4',
     },
@@ -306,21 +419,25 @@ export const DATA_HOME_EXPERIENCE_TILE_COPY: Store.CopyData = {
   french: [
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-1',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-2',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-3',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-4',
     },
@@ -328,21 +445,25 @@ export const DATA_HOME_EXPERIENCE_TILE_COPY: Store.CopyData = {
   german: [
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-1',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-2',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-3',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-4',
     },
@@ -350,21 +471,25 @@ export const DATA_HOME_EXPERIENCE_TILE_COPY: Store.CopyData = {
   japanese: [
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-1',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-2',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-3',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-4',
     },
@@ -372,23 +497,304 @@ export const DATA_HOME_EXPERIENCE_TILE_COPY: Store.CopyData = {
   spanish: [
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-1',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-2',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-3',
     },
     {
       title: ``,
+      value: '/experience',
       text: ``,
       key: 'home-exp-tile-4',
+    },
+  ],
+};
+
+export const DATA_HOME_CHEMICAL_COMMON_INFO = {
+  javascript: {
+    atomic: 79,
+    weight: 196.97,
+    symbol: 'Js',
+    name: 'JavaScript',
+    href: 'https://www.javascript.com/',
+  },
+  typescript: {
+    atomic: 117,
+    weight: 294,
+    symbol: 'Ts',
+    name: 'TypeScript',
+    href: 'https://www.typescriptlang.org/',
+  },
+  react: {
+    atomic: 75,
+    weight: 186.21,
+    symbol: 'Re',
+    name: 'React/JSX',
+    href: 'https://react.dev/',
+  },
+  html: {
+    atomic: 1,
+    weight: 1.008,
+    symbol: 'H',
+    name: 'Html',
+    href: 'https://html.spec.whatwg.org/multipage/',
+  },
+  css: {
+    atomic: 6,
+    weight: 12.011,
+    symbol: 'C',
+    name: 'Css',
+    href: 'https://www.w3.org/Style/CSS/',
+  },
+  sass: {
+    atomic: 16,
+    weight: 32.06,
+    symbol: 'S',
+    name: 'Sass',
+    href: 'https://sass-lang.com/',
+  },
+  nodejs: {
+    atomic: 7,
+    weight: 14.007,
+    symbol: 'N',
+    name: 'NodeJS',
+    href: 'https://nodejs.org/',
+  },
+};
+
+export const DATA_HOME_CHEMICAL_CARDS = {
+  arabic: [
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.typescript,
+      text: 'تايب سكربت هو نوع من أنواع جافا سكريبت الذي يضيف الطبقات الثابتة الاختيارية، والفئات، والواجهات إلى اللغة، مما يعزز قابلية التوسع والصيانة للأكواد الكبيرة.',
+      key: 'home-chemical-card-1',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.javascript,
+      text: 'جافا سكريبت هي لغة برمجة مفسرة عالية المستوى تُستخدم بشكل أساسي لإضافة التفاعلية والسلوك الديناميكي إلى صفحات الويب. يتم دعمها من قبل جميع متصفحات الويب الحديثة ويمكن تشغيلها على بيئات الخادم أيضًا.',
+      key: 'home-chemical-card-2',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.react,
+      text: 'رياكت هو مكتبة جافا سكريبت مفتوحة المصدر تُستخدم لبناء واجهات المستخدم، وخاصة لتطبيقات الويب. يتيح للمطورين إنشاء مكونات واجهة مستخدم قابلة لإعادة الاستخدام تُحدث بكفاءة استجابةً لتفاعلات المستخدم أو تغييرات البيانات.',
+      key: 'home-chemical-card-3',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.html,
+      text: 'إتش تي أم إل (لغة ترميز النص التشعبي) هي لغة ترميز نصي قياسية تُستخدم لإنشاء وتنظيم المحتوى على صفحات الويب. تحدد هيكل وتخطيط مستندات الويب من خلال استخدام الوسوم والسمات لوصف العناصر وعلاقاتها.',
+      key: 'home-chemical-card-4',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.css,
+      text: 'سي إس إس (ورقات الأنماط التصاعدية) هي لغة ورقة أنماط تُستخدم للتحكم في العرض والتخطيط لمستندات إتش تي أم إل. تُتيح للمطورين تنسيق صفحات الويب عن طريق تحديد كيفية عرض العناصر، بما في ذلك جوانب مثل اللون والخط والحجم والتوضيب.',
+      key: 'home-chemical-card-5',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.sass,
+      text: 'ساس (أوراق الأنماط الرائعة بصريًا) هي لغة سكريبت مسبقة المعالجة يتم تفسيرها أو تجميعها إلى سي إس إس. إنها توسع وظائف سي إس إس من خلال توفير ميزات مثل المتغيرات والتضمين والمزج والتوريث، مما يجعل أوراق الأنماط أكثر صيانة وتعددًا.',
+      key: 'home-chemical-card-6',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.nodejs,
+      text: 'نود.جي.إس هو بيئة تشغيل جافا سكريبت على الخادم الجانبي مفتوحة المصدر مبنية على محرك جافا سكريبت فايت. يُتيح للمطورين تشغيل الشيفرة الجافا سكريبت خارج المتصفح، مما يتيح تطوير تطبيقات الشبكات المقيمة قابلة للتوسع وذات الأداء العالي.',
+      key: 'home-chemical-card-7',
+    },
+  ],
+  english: [
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.typescript,
+      text: 'TypeScript is a statically typed superset of JavaScript that adds optional static typing, classes, and interfaces to the language, enhancing its scalability and maintainability for large codebases.',
+      key: 'home-chemical-card-1',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.javascript,
+      text: 'JavaScript is a high-level, interpreted programming language primarily used for adding interactivity and dynamic behavior to web pages. It is supported by all modern web browsers and can be run on server-side environments as well.',
+      key: 'home-chemical-card-2',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.react,
+      text: 'React is an open-source JavaScript library used for building user interfaces, particularly for web applications. It enables developers to create reusable UI components that efficiently update in response to user interactions or data changes.',
+      key: 'home-chemical-card-3',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.html,
+      text: 'HTML (Hypertext Markup Language) is the standard markup language used to create and structure content on web pages. It defines the structure and layout of web documents by using tags and attributes to describe elements and their relationships.',
+      key: 'home-chemical-card-4',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.css,
+      text: 'CSS (Cascading Style Sheets) is a stylesheet language used to control the presentation and layout of HTML documents. It allows developers to style web pages by specifying how elements should be displayed, including aspects such as color, font, size, and positioning.',
+      key: 'home-chemical-card-5',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.sass,
+      text: 'Sass (Syntactically Awesome Style Sheets) is a preprocessor scripting language that is interpreted or compiled into CSS. It extends the functionality of CSS by providing features like variables, nesting, mixins, and inheritance, making stylesheets more maintainable and modular.',
+      key: 'home-chemical-card-6',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.nodejs,
+      text: "Node.js is an open-source, server-side JavaScript runtime environment built on Chrome's V8 JavaScript engine. It allows developers to run JavaScript code outside of a web browser, enabling the development of scalable and high-performance network applications.",
+      key: 'home-chemical-card-7',
+    },
+  ],
+  french: [
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.typescript,
+      text: 'TypeScript est un sur-ensemble de JavaScript typé de manière statique qui ajoute des typages statiques facultatifs, des classes et des interfaces au langage, améliorant ainsi sa scalabilité et sa maintenabilité pour les grands projets.',
+      key: 'home-chemical-card-1',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.javascript,
+      text: "JavaScript est un langage de programmation interprété de haut niveau principalement utilisé pour ajouter de l'interactivité et un comportement dynamique aux pages web. Il est pris en charge par tous les navigateurs web modernes et peut également être exécuté côté serveur.",
+      key: 'home-chemical-card-2',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.react,
+      text: "React est une bibliothèque JavaScript open-source utilisée pour construire des interfaces utilisateur, notamment pour les applications web. Elle permet aux développeurs de créer des composants d'interface utilisateur réutilisables qui se mettent à jour efficacement en réponse aux interactions utilisateur ou aux changements de données.",
+      key: 'home-chemical-card-3',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.html,
+      text: 'HTML (Hypertext Markup Language) est le langage de balisage standard utilisé pour créer et structurer le contenu des pages web. Il définit la structure et la mise en page des documents web en utilisant des balises et des attributs pour décrire les éléments et leurs relations.',
+      key: 'home-chemical-card-4',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.css,
+      text: 'CSS (Cascading Style Sheets) est un langage de feuilles de style utilisé pour contrôler la présentation et la mise en page des documents HTML. Il permet aux développeurs de styliser les pages web en spécifiant comment les éléments doivent être affichés, y compris des aspects tels que la couleur, la police, la taille et le positionnement.',
+      key: 'home-chemical-card-5',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.sass,
+      text: "Sass (Syntactically Awesome Style Sheets) est un langage de script de préprocesseur interprété ou compilé en CSS. Il étend les fonctionnalités de CSS en fournissant des fonctionnalités telles que les variables, l'imbrication, les mixins et l'héritage, rendant les feuilles de style plus maintenables et modulaires.",
+      key: 'home-chemical-card-6',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.nodejs,
+      text: "Node.js est un environnement d'exécution JavaScript côté serveur open-source construit sur le moteur JavaScript V8 de Chrome. Il permet aux développeurs d'exécuter du code JavaScript en dehors d'un navigateur web, ce qui permet le développement d'applications réseau évolutives et haute performance.",
+      key: 'home-chemical-card-7',
+    },
+  ],
+  german: [
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.typescript,
+      text: 'TypeScript ist ein statisch typisiertes Übermenge von JavaScript, das optionale statische Typisierung, Klassen und Schnittstellen zur Sprache hinzufügt und damit die Skalierbarkeit und Wartbarkeit für große Codebasen verbessert.',
+      key: 'home-chemical-card-1',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.javascript,
+      text: 'JavaScript ist eine interpretierte Hochsprache, die hauptsächlich zur Hinzufügung von Interaktivität und dynamischem Verhalten zu Webseiten verwendet wird. Es wird von allen modernen Webbrowsern unterstützt und kann auch auf serverseitigen Umgebungen ausgeführt werden.',
+      key: 'home-chemical-card-2',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.react,
+      text: 'React ist eine Open-Source-JavaScript-Bibliothek, die zur Erstellung von Benutzeroberflächen verwendet wird, insbesondere für Webanwendungen. Sie ermöglicht es Entwicklern, wiederverwendbare UI-Komponenten zu erstellen, die effizient auf Benutzerinteraktionen oder Datenänderungen reagieren.',
+      key: 'home-chemical-card-3',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.html,
+      text: 'HTML (Hypertext Markup Language) ist die standardisierte Auszeichnungssprache, die zur Erstellung und Strukturierung von Inhalten auf Webseiten verwendet wird. Sie definiert die Struktur und das Layout von Webdokumenten durch Verwendung von Tags und Attributen zur Beschreibung von Elementen und ihrer Beziehungen zueinander.',
+      key: 'home-chemical-card-4',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.css,
+      text: 'CSS (Cascading Style Sheets) ist eine Stylesheet-Sprache, die zur Steuerung der Präsentation und des Layouts von HTML-Dokumenten verwendet wird. Sie ermöglicht es Entwicklern, Webseiten zu gestalten, indem sie festlegen, wie Elemente angezeigt werden sollen, einschließlich Aspekten wie Farbe, Schriftart, Größe und Positionierung.',
+      key: 'home-chemical-card-5',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.sass,
+      text: 'Sass (Syntactically Awesome Style Sheets) ist eine Vorverarbeitersprache, die in CSS interpretiert oder kompiliert wird. Sie erweitert die Funktionalität von CSS durch Funktionen wie Variablen, Verschachtelung, Mixins und Vererbung und macht Stylesheets wartbarer und modularer.',
+      key: 'home-chemical-card-6',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.nodejs,
+      text: 'Node.js ist eine Open-Source-Serverseiten-JavaScript-Laufzeitumgebung, die auf dem V8-JavaScript-Motor von Chrome basiert. Sie ermöglicht es Entwicklern, JavaScript-Code außerhalb eines Webbrowsers auszuführen, was die Entwicklung skalierbarer und leistungsstarker Netzwerkanwendungen ermöglicht.',
+      key: 'home-chemical-card-7',
+    },
+  ],
+  japanese: [
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.typescript,
+      text: 'TypeScriptはJavaScriptの静的型付けのサブセットであり、オプションの静的型付け、クラス、およびインターフェースを言語に追加し、大規模なコードベースの拡張性と保守性を向上させます。',
+      key: 'home-chemical-card-1',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.javascript,
+      text: 'JavaScriptは、主にWebページに対する相互作用やダイナミックな動作を追加するために使用される高水準の解釈型プログラミング言語です。すべての最新のWebブラウザに対応しており、サーバーサイドの環境でも実行できます。',
+      key: 'home-chemical-card-2',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.react,
+      text: 'Reactは、Webアプリケーション向けに特に設計されたオープンソースのJavaScriptライブラリであり、ユーザーインターフェイスを構築するために使用されます。開発者は、ユーザーの操作やデータの変更に応じて効率的に更新される再利用可能なUIコンポーネントを作成できます。',
+      key: 'home-chemical-card-3',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.html,
+      text: 'HTML（ハイパーテキストマークアップ言語）は、Webページのコンテンツを作成および構造化するために使用される標準のマークアップ言語です。要素とその関係を記述するためにタグや属性を使用して、Webドキュメントの構造とレイアウトを定義します。',
+      key: 'home-chemical-card-4',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.css,
+      text: 'CSS（カスケーディングスタイルシート）は、HTMLドキュメントの表示とレイアウトを制御するために使用されるスタイルシート言語です。要素の表示方法を指定することによって、Webページのスタイルを設定できます。色、フォント、サイズ、配置などの要素も指定できます。',
+      key: 'home-chemical-card-5',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.sass,
+      text: 'Sass（Syntactically Awesome Style Sheets）は、CSSに解釈されるまたはコンパイルされるプリプロセッサスクリプト言語です。変数、ネスト、ミックスイン、継承などの機能を提供することで、CSSの機能を拡張し、スタイルシートをより保守可能でモジュラーにします。',
+      key: 'home-chemical-card-6',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.nodejs,
+      text: 'Node.jsは、ChromeのV8 JavaScriptエンジン上に構築されたオープンソースのサーバーサイドJavaScriptランタイム環境です。Webブラウザの外部でJavaScriptコードを実行することで、拡張可能で高性能なネットワークアプリケーションの開発を可能にします。',
+      key: 'home-chemical-card-7',
+    },
+  ],
+  spanish: [
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.typescript,
+      text: 'TypeScript es un subconjunto de JavaScript tipado estáticamente que agrega tipado estático opcional, clases e interfaces al lenguaje, mejorando así su escalabilidad y mantenibilidad para grandes bases de código.',
+      key: 'home-chemical-card-1',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.javascript,
+      text: 'JavaScript es un lenguaje de programación interpretado de alto nivel utilizado principalmente para agregar interactividad y comportamiento dinámico a las páginas web. Es compatible con todos los navegadores web modernos y también puede ejecutarse en entornos del lado del servidor.',
+      key: 'home-chemical-card-2',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.react,
+      text: 'React es una biblioteca de JavaScript de código abierto utilizada para construir interfaces de usuario, especialmente para aplicaciones web. Permite a los desarrolladores crear componentes de interfaz de usuario reutilizables que se actualizan eficientemente en respuesta a las interacciones del usuario o cambios en los datos.',
+      key: 'home-chemical-card-3',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.html,
+      text: 'HTML (Hypertext Markup Language) es el lenguaje de marcado estándar utilizado para crear y estructurar contenido en páginas web. Define la estructura y el diseño de los documentos web mediante el uso de etiquetas y atributos para describir elementos y sus relaciones.',
+      key: 'home-chemical-card-4',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.css,
+      text: 'CSS (Cascading Style Sheets) es un lenguaje de hojas de estilo utilizado para controlar la presentación y el diseño de documentos HTML. Permite a los desarrolladores dar estilo a las páginas web especificando cómo deben mostrarse los elementos, incluidos aspectos como color, fuente, tamaño y posicionamiento.',
+      key: 'home-chemical-card-5',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.sass,
+      text: 'Sass (Syntactically Awesome Style Sheets) es un lenguaje de script preprocesador que se interpreta o compila a CSS. Amplía la funcionalidad de CSS al proporcionar características como variables, anidación, mixins e herencia, lo que hace que las hojas de estilo sean más mantenibles y modulares.',
+      key: 'home-chemical-card-6',
+    },
+    {
+      ...DATA_HOME_CHEMICAL_COMMON_INFO.nodejs,
+      text: 'Node.js es un entorno de ejecución de JavaScript del lado del servidor de código abierto construido sobre el motor JavaScript V8 de Chrome. Permite a los desarrolladores ejecutar código JavaScript fuera de un navegador web, lo que permite el desarrollo de aplicaciones de red escalables y de alto rendimiento.',
+      key: 'home-chemical-card-7',
     },
   ],
 };

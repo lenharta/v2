@@ -291,6 +291,7 @@
   --c-tile-base: color-mix(in srgb, var(--c-base) 95%, var(--c-mix));
   --c-tile-hover: color-mix(in srgb, var(--c-base) 90%, var(--c-mix));
   --c-tile-active: color-mix(in srgb, var(--c-base) 85%, var(--c-mix));
+  --c-tile-border: color-mix(in srgb, var(--c-base) 80%, var(--c-mix));
 }
 
 [data-prefers-mode='dim'],
@@ -498,48 +499,44 @@
     --c-accent-a800: rgba(var(--c-accent-alpha), 0.8);
     --c-accent-a900: rgba(var(--c-accent-alpha), 0.9);
 
-    --c-mix-s100: white;
-    --c-mix-s200: white;
-    --c-mix-s300: white;
-    --c-mix-s400: white;
-    --c-mix-s500: white;
-    --c-mix-s600: black;
-    --c-mix-s700: black;
-    --c-mix-s800: black;
-    --c-mix-s900: black;
+    --c-accent-s050: color-mix(in srgb, var(--c-accent) 05%, white);
+    --c-accent-s100: color-mix(in srgb, var(--c-accent) 15%, white);
+    --c-accent-s150: color-mix(in srgb, var(--c-accent) 25%, white);
+    --c-accent-s200: color-mix(in srgb, var(--c-accent) 35%, white);
+    --c-accent-s250: color-mix(in srgb, var(--c-accent) 45%, white);
+    --c-accent-s300: color-mix(in srgb, var(--c-accent) 55%, white);
+    --c-accent-s350: color-mix(in srgb, var(--c-accent) 65%, white);
+    --c-accent-s400: color-mix(in srgb, var(--c-accent) 75%, white);
+    --c-accent-s450: color-mix(in srgb, var(--c-accent) 85%, white);
+    --c-accent-s500: var(--c-accent);
+    --c-accent-s550: color-mix(in srgb, var(--c-accent) 85%, black);
+    --c-accent-s600: color-mix(in srgb, var(--c-accent) 75%, black);
+    --c-accent-s650: color-mix(in srgb, var(--c-accent) 65%, black);
+    --c-accent-s700: color-mix(in srgb, var(--c-accent) 55%, black);
+    --c-accent-s750: color-mix(in srgb, var(--c-accent) 45%, black);
+    --c-accent-s800: color-mix(in srgb, var(--c-accent) 35%, black);
+    --c-accent-s850: color-mix(in srgb, var(--c-accent) 25%, black);
+    --c-accent-s900: color-mix(in srgb, var(--c-accent) 15%, black);
+    --c-accent-s950: color-mix(in srgb, var(--c-accent) 05%, black);
 
-    --c-mix-on-s100: black;
-    --c-mix-on-s200: black;
-    --c-mix-on-s300: black;
-    --c-mix-on-s400: black;
-    --c-mix-on-s500: black;
-    --c-mix-on-s600: white;
-    --c-mix-on-s700: white;
-    --c-mix-on-s800: white;
-    --c-mix-on-s900: white;
-
-    --c-accent-s100: color-mix(in srgb, var(--c-accent) 10%, var(--c-mix-s100));
-    --c-accent-s200: color-mix(in srgb, var(--c-accent) 20%, var(--c-mix-s200));
-    --c-accent-s300: color-mix(in srgb, var(--c-accent) 30%, var(--c-mix-s300));
-    --c-accent-s400: color-mix(in srgb, var(--c-accent) 40%, var(--c-mix-s400));
-    --c-accent-s500: color-mix(in srgb, var(--c-accent) 50%, var(--c-mix-s500));
-    --c-accent-s600: color-mix(in srgb, var(--c-accent) 40%, var(--c-mix-s600));
-    --c-accent-s700: color-mix(in srgb, var(--c-accent) 30%, var(--c-mix-s700));
-    --c-accent-s800: color-mix(in srgb, var(--c-accent) 20%, var(--c-mix-s800));
-    --c-accent-s900: color-mix(in srgb, var(--c-accent) 10%, var(--c-mix-s900));
-
-    --c-on-accent-s100: color-mix(in srgb, var(--c-accent) 10%, var(--c-mix-on-s100));
-    --c-on-accent-s200: color-mix(in srgb, var(--c-accent) 15%, var(--c-mix-on-s200));
-    --c-on-accent-s300: color-mix(in srgb, var(--c-accent) 20%, var(--c-mix-on-s300));
-    --c-on-accent-s400: color-mix(in srgb, var(--c-accent) 25%, var(--c-mix-on-s400));
-    --c-on-accent-s500: color-mix(in srgb, var(--c-accent) 30%, var(--c-mix-on-s500));
-    --c-on-accent-s600: color-mix(in srgb, var(--c-accent) 35%, var(--c-mix-on-s600));
-    --c-on-accent-s700: color-mix(in srgb, var(--c-accent) 40%, var(--c-mix-on-s700));
-    --c-on-accent-s800: color-mix(in srgb, var(--c-accent) 45%, var(--c-mix-on-s800));
-    --c-on-accent-s900: color-mix(in srgb, var(--c-accent) 50%, var(--c-mix-on-s900));
-  }
-
-  &[data-prefers-accent='mint'] {
-    --c-on-s500: black;
+    --c-on-accent-s050: color-mix(in srgb, var(--c-accent) 85%, black);
+    --c-on-accent-s100: color-mix(in srgb, var(--c-accent) 75%, black);
+    --c-on-accent-s150: color-mix(in srgb, var(--c-accent) 65%, black);
+    --c-on-accent-s200: color-mix(in srgb, var(--c-accent) 55%, black);
+    --c-on-accent-s250: color-mix(in srgb, var(--c-accent) 45%, black);
+    --c-on-accent-s300: color-mix(in srgb, var(--c-accent) 35%, black);
+    --c-on-accent-s350: color-mix(in srgb, var(--c-accent) 25%, black);
+    --c-on-accent-s400: color-mix(in srgb, var(--c-accent) 15%, black);
+    --c-on-accent-s450: color-mix(in srgb, var(--c-accent) 05%, black);
+    --c-on-accent-s500: white;
+    --c-on-accent-s550: color-mix(in srgb, var(--c-accent) 05%, white);
+    --c-on-accent-s600: color-mix(in srgb, var(--c-accent) 15%, white);
+    --c-on-accent-s650: color-mix(in srgb, var(--c-accent) 25%, white);
+    --c-on-accent-s700: color-mix(in srgb, var(--c-accent) 35%, white);
+    --c-on-accent-s750: color-mix(in srgb, var(--c-accent) 45%, white);
+    --c-on-accent-s800: color-mix(in srgb, var(--c-accent) 55%, white);
+    --c-on-accent-s850: color-mix(in srgb, var(--c-accent) 65%, white);
+    --c-on-accent-s900: color-mix(in srgb, var(--c-accent) 75%, white);
+    --c-on-accent-s950: color-mix(in srgb, var(--c-accent) 85%, white);
   }
 }

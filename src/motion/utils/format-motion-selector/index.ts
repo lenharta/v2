@@ -1,3 +1,4 @@
-export function motionSelector(cx: string, mod: string) {
-  return ['.', [cx, mod].join('-')].join('');
+export function motionSelector(cx: string, mods?: string) {
+  const data = mods ? [cx, mods].join('-') : cx;
+  return ['.', data].join('');
 }

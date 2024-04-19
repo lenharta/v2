@@ -34,6 +34,7 @@ export namespace Store {
   export interface CopyItem {
     key: string;
     text: string;
+    value?: string;
     title?: string;
     actions?: CopyItem[];
   }

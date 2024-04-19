@@ -1,10 +1,14 @@
 import * as React from 'react';
+import { Box } from '@/core';
 import { Page, Section } from '@/app/common';
-import { Box, Text, Title } from '@/core';
-import { HomeIntroSection } from './HomeIntro';
-import { HomeA11ySection } from './HomeA11y';
+import { useNavigate } from 'react-router-dom';
+
 import { HomeHero } from './HomeHero';
 import { HomeExpSection } from './HomeExp';
+import { HomeIntroSection } from './HomeIntro';
+import { HomeRouteTile } from './HomeTile';
+import { HomeChemistrySection } from './HomeChem';
+import { HomeForwardHero } from './HomeForward';
 
 type HomeRouteComponent = React.FC<{}>;
 
@@ -43,13 +47,15 @@ export const HomeSectionOverview = () => (
 );
 
 export const Home: HomeRouteComponent = ({}) => {
+  const navigate = useNavigate();
   return (
     <Page>
       <HomeHero />
       <Page.Content>
-        <HomeIntroSection />
-        <HomeExpSection />
-        {/* <HomeA11ySection /> */}
+        <HomeIntroSection lang="english" />
+        <HomeExpSection lang="english" navigate={navigate} />
+        <HomeChemistrySection />
+        <HomeForwardHero />
       </Page.Content>
     </Page>
   );
