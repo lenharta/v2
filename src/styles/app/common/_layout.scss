@@ -2,100 +2,104 @@
 
 @layer reset {
   .layout,
-  .layout-nav,
-  .layout-logo,
-  .layout-header {
+  .layout-nav {
     @include mixins.reset;
   }
 }
 
 .layout {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+
+  z-index: 0;
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+}
+
+.layout-nav {
+  display: none;
+
+  @media (min-width: 60em) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: calc(var(--action-size) + var(--unit));
+    padding-bottom: var(--unit);
+    position: fixed;
+    z-index: 100;
+    height: calc(100vh - calc(var(--action-size) + var(--unit)));
+    bottom: 0;
+    left: 0;
+    top: 0;
+
+    &-upper,
+    &-lower {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      margin: var(--unit);
+      gap: var(--unit);
+    }
+  }
+}
+
+.layout-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 101;
+  right: var(--unit);
+  left: calc(var(--action-size) + calc(var(--unit) * 2));
+  top: var(--unit);
+  gap: var(--unit);
+
+  &-left {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  &-right {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.layout-logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
   position: relative;
 
-  &-content {
-    display: block;
-    margin-top: var(--action-box);
-
-    @media (min-width: 60em) {
-      margin-left: var(--action-box);
-    }
-  }
-
-  &-nav {
-    display: none;
-
-    @media (min-width: 60em) {
-      top: 0;
-      left: 0;
-      bottom: 0;
-      display: flex;
-      position: fixed;
-      align-items: center;
-      flex-direction: column;
-      justify-content: space-between;
-      margin-top: calc(var(--action-box) + var(--unit));
-      height: calc(100% - var(--action-box));
-      gap: var(--unit);
-
-      &-lower,
-      &-upper {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: var(--unit);
-      }
-    }
-  }
-
-  &-logo {
+  &-skip,
+  &-link {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    position: relative;
-    top: 0;
-
-    &-skip,
-    &-link {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-direction: row;
-      position: absolute;
-      padding-inline: var(--gutter);
-    }
+    position: absolute;
+    padding-inline: var(--gutter);
   }
+}
 
-  &-header {
-    top: 0;
-    width: calc(100% - var(--action-box));
-    height: calc(var(--action-box) + var(--unit));
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: var(--action-box);
-    margin-right: var(--unit);
-    position: fixed;
-
-    &-left,
-    &-right {
-      display: flex;
-      align-items: center;
-    }
-    &-left {
-      width: 50%;
-      max-width: 25em;
-      justify-content: flex-start;
-    }
-    &-right {
-      width: 50%;
-      justify-content: flex-end;
-    }
+.layout-content {
+  display: block;
+  margin-top: calc(var(--action-size) + var(--unit));
+  @media (min-width: 60em) {
+    margin-left: calc(var(--action-size) + var(--unit));
   }
 }

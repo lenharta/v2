@@ -22,7 +22,6 @@ export const SearchTarget = factory<SearchTargetFactory>((props, ref) => {
       ref={ref}
       icon="search"
       label="search target"
-      variant="button"
       className="search-target"
       onClick={(event) => {
         event.stopPropagation();

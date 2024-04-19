@@ -23,3 +23,36 @@
     @content;
   }
 }
+
+@mixin transition-colors-static {
+  transition-property: color, background-color, border-color, outline-color, stroke, fill;
+  transition-timing-function: var(--easing-standard-expressive);
+  transition-duration: var(--easing-duration-3);
+}
+
+@mixin transition-colors-interactive {
+  transition-property: color, background-color, border-color, outline-color, stroke, fill;
+  transition-timing-function: var(--easing-standard-productive);
+  transition-duration: var(--easing-duration-3);
+}
+
+@mixin transition-transform-interactive {
+  transition-property: transform;
+  transition-timing-function: var(--easing-standard-expressive);
+  transition-duration: var(--easing-duration-3);
+}
+
+@mixin focus-outline {
+  @include transition-colors-interactive;
+  outline: solid var(--unit) transparent;
+  border: solid var(--unit) transparent;
+
+  &:not([aria-disabled]):focus:not(:focus-visible),
+  &:not([data-disabled]):focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:not([aria-disabled]):focus:focus-visible,
+  &:not([data-disabled]):focus:focus-visible {
+    outline-color: var(--c-blue);
+  }
+}

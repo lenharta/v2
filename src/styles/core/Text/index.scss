@@ -1,8 +1,14 @@
 @use '../mixins' as mixins;
 
+@layer reset {
+  .title {
+    @include mixins.reset;
+    font-size: inherit;
+  }
+}
+
 .text {
-  @include mixins.reset;
-  line-height: 1.4;
+  line-height: 1.2;
   font-weight: 500;
 
   &[data-truncate='start'] {

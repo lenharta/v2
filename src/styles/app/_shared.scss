@@ -10,6 +10,19 @@
   top: 0;
 }
 
+.bdr-red {
+  border: solid var(--unit) var(--c-red);
+}
+.bdr-orange {
+  border: solid var(--unit) var(--c-orange);
+}
+.bdr-mint {
+  border: solid var(--unit) var(--c-mint);
+}
+.bdr-purple {
+  border: solid var(--unit) var(--c-purple);
+}
+
 .accent {
   background-color: var(--c-accent);
 }
@@ -59,7 +72,6 @@ h1.title {
   &[aria-disabled]:hover {
     cursor: default;
   }
-
   &:not([data-disabled]):hover,
   &:not([aria-disabled]):hover {
     cursor: pointer;

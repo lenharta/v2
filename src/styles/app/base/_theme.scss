@@ -1,368 +1,50 @@
-@mixin transition-colors-static {
-  transition-property: color, background-color, border-color, outline-color, stroke, fill;
-  transition-timing-function: var(--easing-standard-expressive);
-  transition-duration: var(--easing-duration-3);
-}
+@use '../mixins' as mixins;
 
-@mixin transition-colors-interactive {
-  transition-property: color, background-color, border-color, outline-color, stroke, fill;
-  transition-timing-function: var(--easing-standard-productive);
-  transition-duration: var(--easing-duration-3);
-}
+.button {
+  color: var(--c-text-1);
+  background-color: var(--c-button-bb);
 
-@mixin transition-transform-interactive {
-  transition-property: transform;
-  transition-timing-function: var(--easing-standard-expressive);
-  transition-duration: var(--easing-duration-3);
-}
-
-@mixin focus-outline {
-  @include transition-colors-interactive;
-  outline: solid var(--unit) transparent;
-  border: solid var(--unit) transparent;
-
-  &:not([aria-disabled]):focus:not(:focus-visible),
-  &:not([data-disabled]):focus:not(:focus-visible) {
-    outline-color: transparent;
+  &:not([data-disabled]):hover,
+  &:not([aria-disabled]):hover {
+    background-color: var(--c-button-hh);
   }
-  &:not([aria-disabled]):focus:focus-visible,
-  &:not([data-disabled]):focus:focus-visible {
-    outline-color: var(--c-blue);
+  &:not([data-disabled]):active,
+  &:not([aria-disabled]):active {
+    background-color: var(--c-button-aa);
+  }
+
+  &[data-disabled],
+  &[aria-disabled] {
+    background-color: var(--c-button-aa);
   }
 }
 
-[data-prefers-mode='dim'],
-[data-prefers-mode='dark'],
-[data-prefers-mode='light'] {
-  .box,
-  .page,
-  .menu,
-  .layout,
-  .layout-nav,
-  .layout-header {
-    color: var(--c-text);
-    background-color: var(--c-background);
-    transition-property: color, background-color, border-color, outline-color, stroke, fill;
-    transition-timing-function: var(--easing-standard-expressive);
-    transition-duration: var(--easing-duration-5);
+.action {
+  color: var(--c-text-1);
+  background-color: var(--c-button-bb);
+
+  &:not([data-disabled]):hover,
+  &:not([aria-disabled]):hover {
+    background-color: var(--c-button-hh);
+  }
+  &:not([data-disabled]):active,
+  &:not([aria-disabled]):active {
+    background-color: var(--c-button-aa);
   }
 
-  [data-scheme='secondary'] {
-    transition-property: color, background-color, border-color, outline-color, stroke, fill;
-    transition-timing-function: var(--easing-standard-expressive);
-    transition-duration: var(--easing-duration-5);
-    transition-delay: 100ms;
+  &[data-disabled],
+  &[aria-disabled] {
+    background-color: var(--c-button-aa);
   }
+}
 
-  .button {
-    @include focus-outline;
-    background-color: var(--c-button);
-    color: var(--c-text);
+.menu-panel {
+  background-color: var(--c-base-2);
+}
 
-    &:not([data-disabled]):hover,
-    &:not([aria-disabled]):hover {
-      background-color: var(--c-button-hover);
-      color: var(--c-text);
-    }
-    &:not([data-disabled]):active,
-    &:not([aria-disabled]):active {
-      background-color: var(--c-button-active);
-      color: var(--c-text);
-    }
-  }
-
-  .action--link,
-  .action--button {
-    @include focus-outline;
-    background-color: var(--c-button);
-    color: var(--c-text);
-
-    &:not([data-disabled]):hover,
-    &:not([aria-disabled]):hover {
-      background-color: var(--c-button-hover);
-      color: var(--c-text);
-    }
-    &:not([data-disabled]):active,
-    &:not([aria-disabled]):active {
-      background-color: var(--c-button-active);
-      color: var(--c-text);
-    }
-  }
-
-  .control-item {
-    @include focus-outline;
-  }
-
-  .search-result-item {
-    @include focus-outline;
-  }
-
-  .tablink-item {
-    @include focus-outline;
-    background-color: var(--c-button);
-    color: var(--c-text);
-
-    &:not([data-disabled]):hover,
-    &:not([aria-disabled]):hover {
-      background-color: var(--c-button-hover);
-      color: var(--c-text);
-    }
-    &:not([data-disabled]):active,
-    &:not([aria-disabled]):active {
-      background-color: var(--c-button-active);
-      color: var(--c-text);
-    }
-  }
-
-  .tile--clickable {
-    @include transition-colors-interactive;
-
-    &:not([data-disabled]),
-    &:not([aria-disabled]) {
-      color: var(--c-text);
-      background-color: var(--c-tile-base);
-    }
-    &:not([data-disabled]):hover,
-    &:not([aria-disabled]):hover {
-      background-color: var(--c-tile-hover);
-    }
-    &:not([data-disabled]):active,
-    &:not([aria-disabled]):active {
-      background-color: var(--c-tile-active);
-    }
-  }
-
-  .tile--clickable:last-of-type {
-    &:not([data-disabled]),
-    &:not([aria-disabled]) {
-      color: var(--c-on-accent-s550);
-      background-color: var(--c-accent-s550);
-    }
-    &:not([data-disabled]):hover,
-    &:not([aria-disabled]):hover {
-      color: var(--c-on-accent-s600);
-      background-color: var(--c-accent-s600);
-    }
-    &:not([data-disabled]):active,
-    &:not([aria-disabled]):active {
-      color: var(--c-on-accent-s650);
-      background-color: var(--c-accent-s650);
-    }
-  }
-
-  .control-thumb {
-    @include transition-transform-interactive;
-  }
-
-  .control--default {
-    .control-item:not([data-disabled]) {
-      color: var(--c-text);
-      background-color: var(--c-control-base);
-    }
-    .control-item:not([data-disabled]):not([data-selected]):hover {
-      background-color: var(--c-control-hover);
-    }
-    .control-item:not([data-disabled]):not([data-selected]):active {
-      background-color: var(--c-control-active);
-    }
-    .control-thumb:not([data-disabled]) {
-      background-color: var(--c-control-thumb);
-    }
-  }
-
-  .control--accent {
-    .control-item:not([data-disabled]) {
-      color: var(--c-text);
-      background-color: var(--c-control-base);
-    }
-    .control-item[data-selected]:not([data-disabled]) {
-      color: var(--c-accent);
-    }
-    .control-item:not([data-disabled]):not([data-selected]):hover {
-      background-color: var(--c-control-hover);
-    }
-    .control-item:not([data-disabled]):not([data-selected]):active {
-      background-color: var(--c-control-active);
-    }
-    .control-thumb:not([data-disabled]) {
-      background-color: var(--c-accent-a100);
-    }
-  }
-
-  .layout-header {
-    border-bottom: solid var(--unit) var(--c-border);
-    border-left: solid var(--unit) var(--c-border);
-  }
-
-  .layout-nav {
-    border-right: solid var(--unit) var(--c-border);
-  }
-
-  .layout-nav-item[aria-selected] {
-    color: var(--c-accent);
-
-    &:not([data-disabled]):hover,
-    &:not([aria-disabled]):hover {
-      color: var(--c-accent);
-    }
-    &:not([data-disabled]):active,
-    &:not([aria-disabled]):active {
-      color: var(--c-accent);
-    }
-  }
-
-  .menu {
-    border-bottom: solid var(--unit) var(--c-border);
-  }
-
-  .menu-panel {
-    background-color: var(--c-panel-base);
-    border-right: solid var(--unit) var(--c-border);
-  }
-
-  .menu-cell {
-    background-color: var(--c-accent);
-  }
-
-  .search-input {
-    border: solid var(--unit) transparent;
-    outline: solid var(--unit) transparent;
-    border-left: solid var(--unit) var(--c-border);
-    background-color: var(--c-panel-base);
-    color: var(--c-text-3);
-
-    &:not([aria-disabled]):focus-visible,
-    &:not([data-disabled]):focus-visible {
-      outline: solid var(--unit) transparent !important;
-      outline-color: var(--c-blue) !important;
-    }
-  }
-
-  .search-result {
-    background-color: var(--c-background);
-  }
-
-  .search-result-item {
-    background-color: var(--c-panel-base);
-
-    &:not([aria-disabled]):hover,
-    &:not([data-disabled]):hover {
-      background-color: var(--c-panel-hover);
-    }
-    &:not([aria-disabled]):active,
-    &:not([data-disabled]):active {
-      background-color: var(--c-panel-active);
-    }
-
-    path {
-      fill: var(--c-text-low);
-    }
-    .text:first-of-type {
-      color: var(--c-text-3);
-    }
-    .text:last-of-type {
-      color: var(--c-text-low);
-    }
-  }
-
-  .tablink-item {
-    &:not([data-disabled]) {
-      &::before {
-        @include transition-colors-interactive;
-        background-color: var(--c-accent-a200);
-      }
-      &:hover::before {
-        background-color: var(--c-accent-a600);
-      }
-      &:focus:focus-visible::before {
-        background-color: var(--c-accent-a600);
-      }
-      &::after {
-        background-color: var(--c-border);
-      }
-      .icon {
-        color: var(--c-text-5);
-      }
-      &:hover .icon {
-        color: var(--c-text-3);
-      }
-    }
-  }
-
-  .page-hero h2.title {
-    color: var(--c-text-3);
-  }
-
-  .sec-home-hero h1.title {
-    color: var(--c-accent);
-  }
-
-  .sec-home-intro-card-unit {
-    color: var(--c-text-3);
-  }
-
-  .sec-home-exp-box:nth-of-type(1) {
-    .text {
-      color: var(--c-text-3);
-    }
-  }
-
-  .sec-home-chemistry {
-    &-header {
-      div:first-of-type {
-        background-color: var(--c-accent-s550);
-        color: var(--c-on-accent-s550);
-      }
-
-      .text {
-        color: var(--c-text-3);
-      }
-    }
-  }
-
-  .chemical-card {
-    @include transition-colors-interactive;
-    @include focus-outline;
-
-    border-color: var(--c-tile-border);
-
-    &:not([data-disabled]),
-    &:not([aria-disabled]) {
-      color: var(--c-text);
-      background-color: var(--c-tile-base);
-
-      &:not([data-disabled]):hover,
-      &:not([aria-disabled]):hover {
-        background-color: var(--c-tile-hover);
-      }
-      &:not([data-disabled]):active,
-      &:not([aria-disabled]):active {
-        background-color: var(--c-tile-active);
-      }
-    }
-
-    &-link {
-      &:not([data-disabled]):hover,
-      &:not([aria-disabled]):hover {
-        background-color: var(--c-tile-hover);
-      }
-      &:not([data-disabled]):active,
-      &:not([aria-disabled]):active {
-        background-color: var(--c-tile-active);
-      }
-    }
-
-    &-atomic {
-      color: var(--c-text-5);
-    }
-    &-name {
-      color: var(--c-text);
-    }
-    &-symbol {
-      color: var(--c-accent);
-    }
-    &-weight {
-      color: var(--c-text-5);
-    }
-  }
+.layout-nav {
+  background-color: var(--c-base-1);
+}
+.layout-header {
+  background-color: var(--c-base-1);
 }
