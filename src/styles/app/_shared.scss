@@ -1,13 +1,26 @@
 @use './mixins' as mixins;
 
-#root {
-  display: block;
-  position: relative;
-  min-height: 100vh;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
+// #root {
+//   display: block;
+//   position: relative;
+//   min-height: 100vh;
+//   bottom: 0;
+//   right: 0;
+//   left: 0;
+//   top: 0;
+// }
+
+.bdr-red {
+  border: solid var(--unit) var(--c-red);
+}
+.bdr-orange {
+  border: solid var(--unit) var(--c-orange);
+}
+.bdr-mint {
+  border: solid var(--unit) var(--c-mint);
+}
+.bdr-purple {
+  border: solid var(--unit) var(--c-purple);
 }
 
 .accent {
@@ -15,19 +28,6 @@
 }
 .accent-text {
   color: var(--c-accent);
-}
-
-.layout-nav {
-  z-index: var(--app-index-nav);
-}
-.layout-header {
-  z-index: var(--app-index-header);
-}
-.menu {
-  z-index: var(--app-index-panel);
-}
-.menu-panel {
-  z-index: var(--app-index-panel);
 }
 
 .title {
@@ -42,7 +42,6 @@ h2.title {
 h1.title {
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-2);
-  margin-bottom: var(--gutter);
 }
 
 .text {
@@ -52,14 +51,14 @@ h1.title {
 .button,
 .action--link,
 .action--button,
-.search-result-item {
+.search-result-item,
+.search-input {
   cursor: default;
 
   &[data-disabled]:hover,
   &[aria-disabled]:hover {
     cursor: default;
   }
-
   &:not([data-disabled]):hover,
   &:not([aria-disabled]):hover {
     cursor: pointer;

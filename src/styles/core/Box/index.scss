@@ -1,13 +1,12 @@
-@use '../query' as query;
 @use '../mixins' as mixins;
 
 @layer reset {
-  .section {
+  .box {
     @include mixins.reset;
   }
 }
 
-.section {
-  width: 100%;
+.box {
   display: block;
+  width: 100%;
 }

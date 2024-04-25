@@ -11,9 +11,7 @@ export default function App() {
             <Menu />
             <Layout.Header />
             <Layout.Nav />
-            <Layout.Content>
-              <Outlet />
-            </Layout.Content>
+            <Outlet />
           </Layout>
         </Splash>
       </ThemeProvider>
