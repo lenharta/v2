@@ -52,7 +52,8 @@ h1.title {
 .action--link,
 .action--button,
 .search-result-item,
-.search-input {
+.search-input,
+.color-group-item {
   cursor: default;
 
   &[data-disabled]:hover,

@@ -85,6 +85,12 @@ export const Menu: MenuComponent = ({}) => {
             isSearchOpen: undefined,
           });
         }}
+        onKeyDown={(event) => {
+          event.stopPropagation();
+          if (event.code === 'Escape') {
+            dispatch({ isMenuOpen: undefined });
+          }
+        }}
       />
       <Menu.Panel ref={boxRef} />
     </React.Fragment>

@@ -27,23 +27,31 @@
     z-index: var(--app-index-panel);
     display: block;
     position: fixed;
-
-    top: var(--action-box);
-    left: 0;
-    right: 0;
     bottom: 0;
-
-    .box {
-      margin: var(--unit);
-    }
+    right: 0;
+    left: 0;
+    top: var(--action-box);
 
     @media (min-width: 60em) {
       left: var(--action-box);
       width: var(--app-width-menu);
     }
 
-    &-group {
+    &-container {
+      height: 100%;
+      max-width: 100%;
       display: block;
+      padding-inline: calc(var(--gutter) / 3);
+      padding-block: calc(var(--gutter) / 3);
+      gap: var(--unit);
+    }
+
+    &-group {
+      max-width: 100%;
+      display: block;
+      padding: calc(var(--gutter) / 4);
+      margin-block: calc(var(--gutter) / 4);
+      border-radius: calc(var(--unit) * 4);
     }
   }
 
