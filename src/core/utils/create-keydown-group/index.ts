@@ -4,12 +4,17 @@ import { createEventCallback } from '@/utils';
 interface KeyDownGroupProps<T extends HTMLElement = HTMLButtonElement> {
   onKeyDown?: ((event: React.KeyboardEvent<T>) => void) | undefined;
   orientation?: Core.Orientation | undefined;
+  preventDefault?: boolean | undefined;
 }
 
 export function createKeyDownGroup<T extends HTMLElement>(props: KeyDownGroupProps) {
-  const { onKeyDown, orientation = 'horizontal' } = props;
+  const { onKeyDown, orientation = 'horizontal', preventDefault } = props;
   return createEventCallback(onKeyDown, (event) => {
     event.stopPropagation();
+
+    if (preventDefault) {
+      event.preventDefault();
+    }
 
     const parentElement = event.currentTarget.parentElement!;
     const elements = (Array.from(parentElement.children) as T[]) || [];
@@ -25,21 +30,25 @@ export function createKeyDownGroup<T extends HTMLElement>(props: KeyDownGroupPro
     const moveFocusToFirstIndex = () => elements[0]?.focus();
 
     const ArrowDown = () => {
+      event.preventDefault();
       if (orientation === 'vertical') moveFocusToNextIndex?.();
       if (orientation === 'horizontal') moveFocusToLastIndex?.();
     };
 
     const ArrowUp = () => {
+      event.preventDefault();
       if (orientation === 'vertical') moveFocusToPrevIndex?.();
       if (orientation === 'horizontal') moveFocusToFirstIndex?.();
     };
 
     const ArrowLeft = () => {
+      event.preventDefault();
       if (orientation === 'vertical') moveFocusToFirstIndex?.();
       if (orientation === 'horizontal') moveFocusToPrevIndex?.();
     };
 
     const ArrowRight = () => {
+      event.preventDefault();
       if (orientation === 'vertical') moveFocusToLastIndex?.();
       if (orientation === 'horizontal') moveFocusToNextIndex?.();
     };

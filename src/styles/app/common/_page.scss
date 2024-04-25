@@ -7,4 +7,24 @@
 }
 
 .page {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  display: block;
+  margin-top: var(--action-box);
+
+  &-content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--unit);
+  }
+
+  @media (min-width: 60em) {
+    margin-left: var(--action-box);
+    width: calc(100% - var(--action-box));
+  }
 }

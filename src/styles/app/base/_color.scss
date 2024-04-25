@@ -131,81 +131,93 @@
 }
 
 [data-prefers-mode='dim'] {
-  --c-m: white;
-  --c-b: rgb(21, 21, 21);
-  --c-s: 3%;
-  --c-h: 2%;
-  [data-scheme='secondary'] {
-    --c-m: rgb(21, 21, 21);
-    --c-b: white;
-    --c-s: 8%;
-    --c-h: 4%;
-  }
+  --p-b: rgb(33, 33, 33);
+  --p-m: rgb(255, 255, 255);
+  --p-s: 3%;
+  --p-h: 2%;
+  --s-b: rgb(255, 255, 255);
+  --s-m: rgb(33, 33, 33);
+  --s-s: 5%;
+  --s-h: 4%;
+  --t-b: rgb(43, 43, 43);
+  --t-m: rgb(255, 255, 255);
+  --t-s: 3%;
+  --t-h: 2%;
 }
 
 [data-prefers-mode='dim'][data-prefers-accessible-color='true'] {
-  --c-m: white;
-  --c-b: rgb(21, 21, 21);
-  --c-s: 3%;
-  --c-h: 2%;
-  [data-scheme='secondary'] {
-    --c-m: rgb(21, 21, 21);
-    --c-b: white;
-    --c-s: 8%;
-    --c-h: 4%;
-  }
+  --p-b: rgb(33, 33, 33);
+  --p-m: rgb(255, 255, 255);
+  --p-s: 3%;
+  --p-h: 2%;
+  --s-b: rgb(255, 255, 255);
+  --s-m: rgb(33, 33, 33);
+  --s-s: 5%;
+  --s-h: 4%;
+  --t-b: rgb(43, 43, 43);
+  --t-m: rgb(255, 255, 255);
+  --t-s: 3%;
+  --t-h: 2%;
 }
 
 [data-prefers-mode='dark'] {
-  --c-m: white;
-  --c-b: rgb(21, 21, 21);
-  --c-s: 3%;
-  --c-h: 2%;
-  [data-scheme='secondary'] {
-    --c-m: rgb(21, 21, 21);
-    --c-b: white;
-    --c-s: 8%;
-    --c-h: 4%;
-  }
+  --p-b: rgb(18, 18, 18);
+  --p-m: rgb(255, 255, 255);
+  --p-s: 3%;
+  --p-h: 2%;
+  --s-b: rgb(255, 255, 255);
+  --s-m: rgb(18, 18, 18);
+  --s-s: 5%;
+  --s-h: 4%;
+  --t-b: rgb(28, 28, 28);
+  --t-m: rgb(255, 255, 255);
+  --t-s: 3%;
+  --t-h: 2%;
 }
 
 [data-prefers-mode='dark'][data-prefers-accessible-color='true'] {
-  --c-m: white;
-  --c-b: rgb(21, 21, 21);
-  --c-s: 3%;
-  --c-h: 2%;
-  [data-scheme='secondary'] {
-    --c-m: rgb(21, 21, 21);
-    --c-b: white;
-    --c-s: 8%;
-    --c-h: 4%;
-  }
+  --p-b: rgb(18, 18, 18);
+  --p-m: rgb(255, 255, 255);
+  --p-s: 3%;
+  --p-h: 2%;
+  --s-b: rgb(255, 255, 255);
+  --s-m: rgb(18, 18, 18);
+  --s-s: 5%;
+  --s-h: 4%;
+  --t-b: rgb(28, 28, 28);
+  --t-m: rgb(255, 255, 255);
+  --t-s: 3%;
+  --t-h: 2%;
 }
 
 [data-prefers-mode='light'] {
-  --c-m: rgb(21, 21, 21);
-  --c-b: white;
-  --c-s: 8%;
-  --c-h: 4%;
-  [data-scheme='secondary'] {
-    --c-m: white;
-    --c-b: rgb(21, 21, 21);
-    --c-s: 3%;
-    --c-h: 2%;
-  }
+  --p-b: rgb(255, 255, 255);
+  --p-m: rgb(18, 18, 18);
+  --p-s: 5%;
+  --p-h: 4%;
+  --s-b: rgb(18, 18, 18);
+  --s-m: rgb(255, 255, 255);
+  --s-s: 3%;
+  --s-h: 2%;
+  --t-b: rgb(235, 235, 235);
+  --t-m: rgb(18, 18, 18);
+  --t-s: 5%;
+  --t-h: 4%;
 }
 
 [data-prefers-mode='light'][data-prefers-accessible-color='true'] {
-  --c-m: rgb(21, 21, 21);
-  --c-b: white;
-  --c-s: 8%;
-  --c-h: 4%;
-  [data-scheme='secondary'] {
-    --c-m: white;
-    --c-b: rgb(21, 21, 21);
-    --c-s: 3%;
-    --c-h: 2%;
-  }
+  --p-b: rgb(255, 255, 255);
+  --p-m: rgb(18, 18, 18);
+  --p-s: 5%;
+  --p-h: 4%;
+  --s-b: rgb(18, 18, 18);
+  --s-m: rgb(255, 255, 255);
+  --s-s: 3%;
+  --s-h: 2%;
+  --t-b: rgb(235, 235, 235);
+  --t-m: rgb(18, 18, 18);
+  --t-s: 5%;
+  --t-h: 4%;
 }
 
 [data-prefers-mode='dim'],
@@ -213,30 +225,61 @@
 [data-prefers-mode='light'],
 [data-prefers-mode='dim'][data-prefers-accessible-color='true'],
 [data-prefers-mode='dark'][data-prefers-accessible-color='true'],
-[data-prefers-mode='light'][data-prefers-accessible-color='true'],
-[data-prefers-mode='dim'] [data-scheme='secondary'],
-[data-prefers-mode='dark'] [data-scheme='secondary'],
-[data-prefers-mode='light'] [data-scheme='secondary'],
-[data-prefers-mode='dim'][data-prefers-accessible-color='true'] [data-scheme='secondary'],
-[data-prefers-mode='dark'][data-prefers-accessible-color='true'] [data-scheme='secondary'],
-[data-prefers-mode='light'][data-prefers-accessible-color='true'] [data-scheme='secondary'] {
-  --c-text-1: color-mix(in srgb, var(--c-b) calc(var(--c-s) * 0), var(--c-m));
-  --c-text-2: color-mix(in srgb, var(--c-b) calc(var(--c-s) * 1), var(--c-m));
-  --c-text-3: color-mix(in srgb, var(--c-b) calc(var(--c-s) * 2), var(--c-m));
-  --c-text-4: color-mix(in srgb, var(--c-b) calc(var(--c-s) * 3), var(--c-m));
-  --c-text-5: color-mix(in srgb, var(--c-b) calc(var(--c-s) * 4), var(--c-m));
+[data-prefers-mode='light'][data-prefers-accessible-color='true'] {
+  --c-text-1: color-mix(in srgb, var(--p-b) calc(var(--p-s) * 1), var(--p-m));
+  --c-text-2: color-mix(in srgb, var(--p-b) calc(var(--p-s) * 3), var(--p-m));
+  --c-text-3: color-mix(in srgb, var(--p-b) calc(var(--p-s) * 5), var(--p-m));
+  --c-text-4: color-mix(in srgb, var(--p-b) calc(var(--p-s) * 7), var(--p-m));
+  --c-text-5: color-mix(in srgb, var(--p-b) calc(var(--p-s) * 9), var(--p-m));
 
-  --c-base-1: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-s) * 0)), var(--c-m));
-  --c-base-2: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-s) * 1)), var(--c-m));
-  --c-base-3: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-s) * 2)), var(--c-m));
-  --c-base-4: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-s) * 3)), var(--c-m));
-  --c-base-5: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-s) * 4)), var(--c-m));
+  --c-s-text-1: color-mix(in srgb, var(--s-b) calc(var(--s-s) * 1), var(--s-m));
+  --c-s-text-2: color-mix(in srgb, var(--s-b) calc(var(--s-s) * 3), var(--s-m));
+  --c-s-text-3: color-mix(in srgb, var(--s-b) calc(var(--s-s) * 5), var(--s-m));
+  --c-s-text-4: color-mix(in srgb, var(--s-b) calc(var(--s-s) * 7), var(--s-m));
+  --c-s-text-5: color-mix(in srgb, var(--s-b) calc(var(--s-s) * 9), var(--s-m));
 
-  --c-button-bb: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-s) * 1)), var(--c-m));
-  --c-button-hh: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-h) * 2)), var(--c-m));
-  --c-button-aa: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-h) * 3)), var(--c-m));
-  --c-button-ss: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-h) * 4)), var(--c-m));
-  --c-button-dd: color-mix(in srgb, var(--c-b) calc(100% - calc(var(--c-h) * 9)), var(--c-m));
+  --c-t-text-1: color-mix(in srgb, var(--t-b) calc(var(--t-s) * 1), var(--t-m));
+  --c-t-text-2: color-mix(in srgb, var(--t-b) calc(var(--t-s) * 3), var(--t-m));
+  --c-t-text-3: color-mix(in srgb, var(--t-b) calc(var(--t-s) * 5), var(--t-m));
+  --c-t-text-4: color-mix(in srgb, var(--t-b) calc(var(--t-s) * 7), var(--t-m));
+  --c-t-text-5: color-mix(in srgb, var(--t-b) calc(var(--t-s) * 9), var(--t-m));
+
+  --c-base-1: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-s) * 0)), var(--p-m));
+  --c-base-2: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-s) * 1)), var(--p-m));
+  --c-base-3: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-s) * 2)), var(--p-m));
+  --c-base-4: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-s) * 3)), var(--p-m));
+  --c-base-5: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-s) * 4)), var(--p-m));
+
+  --c-s-base-1: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-s) * 0)), var(--s-m));
+  --c-s-base-2: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-s) * 1)), var(--s-m));
+  --c-s-base-3: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-s) * 2)), var(--s-m));
+  --c-s-base-4: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-s) * 3)), var(--s-m));
+  --c-s-base-5: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-s) * 4)), var(--s-m));
+
+  --c-t-base-1: color-mix(in srgb, var(--t-b) calc(100% - calc(var(--t-s) * 0)), var(--t-m));
+  --c-t-base-2: color-mix(in srgb, var(--t-b) calc(100% - calc(var(--t-s) * 1)), var(--t-m));
+  --c-t-base-3: color-mix(in srgb, var(--t-b) calc(100% - calc(var(--t-s) * 2)), var(--t-m));
+  --c-t-base-4: color-mix(in srgb, var(--t-b) calc(100% - calc(var(--t-s) * 3)), var(--t-m));
+  --c-t-base-5: color-mix(in srgb, var(--t-b) calc(100% - calc(var(--t-s) * 4)), var(--t-m));
+
+  --c-button-bb: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-s) * 1)), var(--p-m));
+  --c-button-hh: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 2)), var(--p-m));
+  --c-button-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 3)), var(--p-m));
+  --c-button-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 4)), var(--p-m));
+  --c-button-dd: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 9)), var(--p-m));
+
+  --c-on-button-bb: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-s) * 1)), var(--s-m));
+  --c-on-button-hh: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-h) * 2)), var(--s-m));
+  --c-on-button-aa: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-h) * 3)), var(--s-m));
+  --c-on-button-ss: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-h) * 4)), var(--s-m));
+  --c-on-button-dd: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-h) * 9)), var(--s-m));
+}
+
+[data-prefers-mode='dim'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='light'] {
+  background-color: var(--c-base-1);
+  color: var(--c-text-2);
 }
 
 [data-prefers-mode='dim'],

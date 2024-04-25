@@ -7,6 +7,8 @@ export type SearchTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   props: {
+    isSearchOpen: boolean | undefined;
+    onFocusResult: () => void;
     onFocusInput: () => void;
     onFocusClear: () => void;
     onSearchOpen: () => void;
@@ -15,7 +17,15 @@ export type SearchTargetFactory = Factory.Config<{
 }>;
 
 export const SearchTarget = factory<SearchTargetFactory>((props, ref) => {
-  const { onFocusInput, onFocusClear, onSearchOpen, onSearchClose, ...otherProps } = props;
+  const {
+    isSearchOpen,
+    onFocusInput,
+    onFocusClear,
+    onSearchOpen,
+    onSearchClose,
+    onFocusResult,
+    ...otherProps
+  } = props;
   return (
     <Action
       {...otherProps}
@@ -30,8 +40,14 @@ export const SearchTarget = factory<SearchTargetFactory>((props, ref) => {
       }}
       onKeyDown={(event) => {
         event.stopPropagation();
+
+        const Tab = () => {
+          if (isSearchOpen) onFocusResult?.();
+          event.shiftKey && onFocusClear?.();
+        };
+
         const events = {
-          [eventCodes.Tab]: () => event.shiftKey && onFocusClear?.(),
+          [eventCodes.Tab]: Tab,
           [eventCodes.ArrowLeft]: () => onFocusClear?.(),
           [eventCodes.ArrowRight]: () => onFocusInput?.(),
         }[event.code];

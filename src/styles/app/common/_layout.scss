@@ -8,16 +8,9 @@
 }
 
 .layout {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  min-height: 100vh;
   width: 100%;
-
-  z-index: 0;
+  display: block;
   position: relative;
-  isolation: isolate;
   overflow-x: hidden;
 }
 
@@ -29,11 +22,10 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: calc(var(--action-size) + var(--unit));
-    padding-bottom: var(--unit);
     position: fixed;
-    z-index: 100;
-    height: calc(100vh - calc(var(--action-size) + var(--unit)));
+    margin-top: var(--action-box);
+    z-index: var(--app-index-nav);
+    gap: var(--unit);
     bottom: 0;
     left: 0;
     top: 0;
@@ -44,8 +36,13 @@
       align-items: flex-start;
       justify-content: flex-start;
       flex-direction: column;
-      margin: var(--unit);
+      margin-inline: var(--unit);
       gap: var(--unit);
+    }
+
+    &-spacer {
+      flex-grow: 1;
+      width: var(--action-size);
     }
   }
 }
@@ -56,23 +53,26 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  z-index: 101;
-  right: var(--unit);
-  left: calc(var(--action-size) + calc(var(--unit) * 2));
-  top: var(--unit);
+  height: var(--action-box);
+  z-index: var(--app-index-header);
+  right: 0;
+  left: var(--action-box);
   gap: var(--unit);
 
-  &-left {
-    width: 35%;
+  &-left,
+  &-right {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    height: var(--action-size);
+  }
+
+  &-left {
+    min-width: var(--app-width-menu);
   }
   &-right {
-    width: 65%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    width: 100%;
+    margin-right: var(--unit);
   }
 }
 
@@ -93,13 +93,5 @@
     flex-direction: row;
     position: absolute;
     padding-inline: var(--gutter);
-  }
-}
-
-.layout-content {
-  display: block;
-  margin-top: calc(var(--action-size) + var(--unit));
-  @media (min-width: 60em) {
-    margin-left: calc(var(--action-size) + var(--unit));
   }
 }

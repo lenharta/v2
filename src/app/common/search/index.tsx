@@ -71,6 +71,11 @@ export const Search = factory<SearchFactory>((props, ref) => {
     dispatch({ searchQuery: undefined });
   };
 
+  const onFocusInput = () => inputRef.current?.focus();
+  const onFocusClear = () => clearRef.current?.focus();
+  const onFocusSearch = () => searchRef.current?.focus();
+  const onFocusResult = () => (resultRef.current?.children[0] as HTMLButtonElement).focus();
+
   useOutsideClick([clearRef, inputRef, searchRef, resultRef], () => {
     dispatch({
       searchQuery: undefined,
@@ -88,13 +93,13 @@ export const Search = factory<SearchFactory>((props, ref) => {
             onExit={onTransitionExit}
             onEnter={onTransitionEnter}
             onEscapeSearch={handleEscape}
-            onFocusInput={() => inputRef.current?.focus()}
-            onFocusClear={() => clearRef.current?.focus()}
-            onFocusSearch={() => searchRef.current?.focus()}
-            onFocusResult={() => (resultRef.current?.children[0] as HTMLButtonElement).focus()}
+            onFocusInput={onFocusInput}
+            onFocusClear={onFocusClear}
+            onFocusSearch={onFocusSearch}
+            onFocusResult={onFocusResult}
             aria-controls={getResultBoxId()}
-            aria-expanded={state.isSearchOpen}
             aria-haspopup="listbox"
+            aria-expanded={state.isSearchOpen}
             mounted={!state.isSearchOpen ? false : true}
             value={state.searchQuery ?? ''}
             onClick={(event) => {
@@ -110,9 +115,9 @@ export const Search = factory<SearchFactory>((props, ref) => {
           <Search.Clear
             ref={clearRef}
             mounted={!state.isSearchOpen ? false : true}
-            onFocusInput={() => inputRef.current?.focus()}
-            onFocusClear={() => clearRef.current?.focus()}
-            onFocusSearch={() => searchRef.current?.focus()}
+            onFocusInput={onFocusInput}
+            onFocusClear={onFocusClear}
+            onFocusSearch={onFocusSearch}
             onClearSearch={() => dispatch({ searchQuery: undefined })}
             onEscapeSearch={handleEscape}
             onClick={(event) => {
@@ -126,7 +131,8 @@ export const Search = factory<SearchFactory>((props, ref) => {
             ref={resultRef}
             results={DATA_MATTER_ROUTES}
             mounted={state.searchQuery ? true : false}
-            onExitKeyDown={() => inputRef.current?.focus()}
+            onExitKeyDown={onFocusInput}
+            tabIndex={state.isSearchOpen ? 0 : undefined}
             onEscapeKeyDown={handleEscape}
             onEnterKeyDown={(url: string) => {
               url && navigate(url);
@@ -141,10 +147,14 @@ export const Search = factory<SearchFactory>((props, ref) => {
 
         <Search.Target
           ref={searchRef}
+          isSearchOpen={state.isSearchOpen}
           onFocusInput={() => inputRef.current?.focus()}
           onFocusClear={() => clearRef.current?.focus()}
           onSearchOpen={() => !state.isSearchOpen && dispatch({ isSearchOpen: true })}
           onSearchClose={() => state.isSearchOpen && dispatch({ isSearchOpen: undefined })}
+          onFocusResult={() => {
+            if (state.isSearchOpen) (resultRef.current as HTMLDivElement).focus();
+          }}
         />
       </div>
     </Box>

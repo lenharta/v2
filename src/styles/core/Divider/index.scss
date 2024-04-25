@@ -1,9 +1,66 @@
-@use '../mixins' as mixins;
-
-.divider {
-  @include mixins.reset;
+@layer reset {
+  .divider {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+  }
 }
 
-.divider-label {
-  @include mixins.reset;
+@layer tokens {
+  :root {
+    --divider-height-xs: 1px;
+    --divider-height-sm: 2px;
+    --divider-height-md: 3px;
+    --divider-height-lg: 4px;
+    --divider-height-xl: 5px;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: calc(var(--divider-height) + calc(var(--unit) * 4));
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: var(--spacing-3);
+
+  [data-prefers-dir='rtl'] & {
+    flex-direction: row-reverse;
+  }
+
+  &-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: var(--fw-med);
+    font-size: var(--fz-m);
+    color: var(--c-border-3);
+    margin-bottom: calc(var(--unit) * 2);
+    white-space: nowrap;
+    isolation: isolate;
+    position: relative;
+    line-height: 1;
+    z-index: 1;
+  }
+
+  &-seperator {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: var(--divider-height, var(--divider-height-xs));
+    background-color: var(--c-border-3);
+  }
+
+  &[data-size='sm'] {
+    --divider-height: var(--divider-height-sm);
+  }
+  &[data-size='md'] {
+    --divider-height: var(--divider-height-md);
+  }
+  &[data-size='lg'] {
+    --divider-height: var(--divider-height-lg);
+  }
 }

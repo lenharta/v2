@@ -70,23 +70,14 @@ export const Button = factory<ButtonFactory>((props, ref) => {
   const buttonSizeMod = ctx.size || size;
   const buttonVariantMod = ctx.variant || variant;
 
-  const a11yProps = {
-    role: buttonRole,
-    'aria-busy': isLoading,
-    'aria-label': otherProps['aria-label'],
-    'aria-disabled': isDisabled,
-  };
-
-  const dataProps = {
-    'data-loading': isLoading,
-  };
-
   return (
     <button
       {...otherProps}
-      {...a11yProps}
-      {...dataProps}
       ref={ref}
+      role={buttonRole}
+      data-loading={isLoading}
+      aria-disabled={isDisabled}
+      aria-busy={isLoading}
       className={clsx(
         'button',
         `button--${buttonVariantMod}`,

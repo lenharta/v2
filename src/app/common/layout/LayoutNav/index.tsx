@@ -35,8 +35,8 @@ export const LayoutNav: LayoutNavComponent = ({}) => {
   };
 
   return (
-    <nav className="layout-nav">
-      <Box className="layout-nav-upper">
+    <nav className="layout-nav" role="menuitem">
+      <Box className="layout-nav-upper" role="presentation">
         {upperData.map(({ to, icon, label }) => (
           <LayoutNav.Item
             to={to}
@@ -50,7 +50,9 @@ export const LayoutNav: LayoutNavComponent = ({}) => {
         ))}
       </Box>
 
-      <Box className="layout-nav-lower">
+      <Box className="layout-nav-spacer"></Box>
+
+      <Box className="layout-nav-lower" role="presentation">
         {lowerData.map(({ to, icon, label }) => (
           <LayoutNav.Item
             to={to}

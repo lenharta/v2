@@ -1,6 +1,35 @@
 @use '../mixins' as mixins;
 
+html[data-prefers-mode='dim'],
+html[data-prefers-mode='dark'],
+html[data-prefers-mode='light'] {
+  transition-property: color, background-color, border-color, outline-color, stroke, fill;
+  transition-timing-function: ease;
+  transition-duration: 600ms;
+
+  .action,
+  .button,
+  .layout-nav,
+  .layout-nav-spacer,
+  .layout-header,
+  .layout-header-left,
+  .layout-header-right,
+  .menu,
+  .menu-cell,
+  .menu-panel,
+  .menu-grid,
+  .search-input,
+  .search-result,
+  .search-result-item,
+  .box {
+    transition-property: color, background-color, border-color, outline-color, stroke, fill;
+    transition-timing-function: ease;
+    transition-duration: 600ms;
+  }
+}
+
 .button {
+  @include mixins.focus-outline;
   color: var(--c-text-1);
   background-color: var(--c-button-bb);
 
@@ -20,6 +49,7 @@
 }
 
 .action {
+  @include mixins.focus-outline;
   color: var(--c-text-1);
   background-color: var(--c-button-bb);
 
@@ -38,13 +68,108 @@
   }
 }
 
-.menu-panel {
-  background-color: var(--c-base-2);
-}
-
 .layout-nav {
   background-color: var(--c-base-1);
 }
+
+.layout-nav-spacer {
+  background-color: var(--c-base-2);
+}
+
 .layout-header {
   background-color: var(--c-base-1);
+  border-color: transparent;
+}
+
+.layout-header-left,
+.layout-header-right {
+  background-color: var(--c-base-2);
+}
+
+.menu {
+  background-color: var(--c-base-1);
+}
+
+.menu-cell {
+  background-color: var(--c-accent-s500);
+}
+
+.menu-panel {
+  background-color: var(--c-base-2);
+
+  .control-thumb {
+    background-color: var(--c-base-3);
+  }
+}
+
+.search-input {
+  @include mixins.focus-outline;
+  background-color: var(--c-base-1);
+  color: var(--c-text-5);
+}
+
+.search-input::placeholder {
+  color: var(--c-text-5);
+}
+
+.search-result {
+  background-color: var(--c-base-1);
+}
+
+.search-result-item {
+  @include mixins.focus-outline;
+  color: var(--c-text-5);
+  background-color: var(--c-button-bb);
+
+  &:not([data-disabled]):hover,
+  &:not([aria-disabled]):hover {
+    background-color: var(--c-button-hh);
+  }
+  &:not([data-disabled]):active,
+  &:not([aria-disabled]):active {
+    background-color: var(--c-button-aa);
+  }
+
+  &[data-disabled],
+  &[aria-disabled] {
+    background-color: var(--c-button-aa);
+  }
+}
+
+.search-result-item .icon {
+  color: var(--c-text-5);
+}
+
+.search-result-item-copy .text:first-of-type {
+  color: var(--c-t-text-2);
+}
+
+.sec-home-hero h1.title {
+  color: var(--c-accent-s500);
+}
+
+.sec-home-test-1 .box:nth-of-type(1) {
+  background-color: var(--c-t-base-1);
+  color: var(--c-t-text-1);
+}
+.sec-home-test-1 .box:nth-of-type(2) {
+  background-color: var(--c-t-base-1);
+  color: var(--c-t-text-1);
+}
+.sec-home-test-1 .box:nth-of-type(3) {
+  background-color: var(--c-t-base-1);
+  color: var(--c-t-text-1);
+}
+.sec-home-test-1 .box:nth-of-type(4) {
+  background-color: var(--c-t-base-1);
+  color: var(--c-t-text-1);
+}
+
+.sec-home-overview .box:nth-of-type(1) {
+  background-color: var(--c-accent-a200);
+  color: var(--c-accent-a900);
+}
+.sec-home-overview .box:nth-of-type(2) {
+  // background-color: var(--c-t-base-1);
+  // color: var(--c-t-text-1);
 }
