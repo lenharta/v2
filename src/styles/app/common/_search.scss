@@ -34,7 +34,6 @@
       position: relative;
       padding-inline: calc(var(--gutter) / 2);
       z-index: calc(var(--app-index-header) + 1);
-      @include mixins.focus-outline;
     }
 
     &-result {

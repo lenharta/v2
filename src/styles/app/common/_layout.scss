@@ -1,3 +1,4 @@
+@use '../query' as query;
 @use '../mixins' as mixins;
 
 @layer reset {
@@ -44,6 +45,24 @@
       flex-grow: 1;
       width: var(--action-size);
     }
+
+    .action {
+      position: relative;
+    }
+    .action::before {
+      content: '';
+      position: absolute;
+      bottom: calc(var(--unit) * -1);
+      width: calc(var(--unit) * 1.5);
+      left: calc(var(--unit) * -2);
+      top: calc(var(--unit) * -1);
+    }
+    .action:not([aria-selected])::before {
+      opacity: 0;
+    }
+    .action[aria-selected]::before {
+      opacity: 1;
+    }
   }
 }
 
@@ -68,11 +87,19 @@
   }
 
   &-left {
-    min-width: var(--app-width-menu);
+    width: 100%;
+    @include query.lg {
+      min-width: var(--app-width-menu);
+      max-width: var(--app-width-menu);
+    }
   }
   &-right {
-    width: 100%;
-    margin-right: var(--unit);
+    display: none;
+    @include query.lg {
+      display: block;
+      width: 100%;
+      margin-right: var(--unit);
+    }
   }
 }
 
@@ -89,9 +116,22 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
+    justify-content: flex-end;
     position: absolute;
-    padding-inline: var(--gutter);
+    padding-inline: calc(var(--gutter) / 2);
+  }
+
+  @include query.lg {
+    justify-content: flex-start;
+
+    &-skip,
+    &-link {
+      justify-content: flex-start;
+    }
+  }
+
+  svg {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
   }
 }

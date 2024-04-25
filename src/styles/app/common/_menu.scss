@@ -23,14 +23,15 @@
   }
 
   &-panel {
+    width: 100%;
+    z-index: var(--app-index-panel);
+    display: block;
+    position: fixed;
+
     top: var(--action-box);
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: var(--app-index-panel);
-    position: fixed;
-    display: block;
-    width: 100%;
 
     .box {
       margin: var(--unit);
@@ -39,6 +40,10 @@
     @media (min-width: 60em) {
       left: var(--action-box);
       width: var(--app-width-menu);
+    }
+
+    &-group {
+      display: block;
     }
   }
 
