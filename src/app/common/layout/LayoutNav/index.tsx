@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Box } from '@/core';
 import { useAppDispatch } from '@/store';
 import { LayoutNavItem } from './LayoutNavItem';
@@ -34,6 +34,14 @@ export const LayoutNav: LayoutNavComponent = ({}) => {
     });
   };
 
+  const findSelectedItem = (to: string) => {
+    const { pathname } = location;
+    const isHome = pathname === '/' && to === '/' && to.length <= 1;
+    const isRoute = pathname.includes(to) && to.length >= 2;
+    if ((isHome && !isRoute) || (!isHome && isRoute)) return true;
+    return undefined;
+  };
+
   return (
     <nav className="layout-nav" role="menuitem">
       <Box className="layout-nav-upper" role="presentation">
@@ -44,7 +52,7 @@ export const LayoutNav: LayoutNavComponent = ({}) => {
             icon={icon}
             label={label}
             navigate={navigate}
-            selected={location.pathname === to || undefined}
+            selected={findSelectedItem(to)}
             onClick={closePanels}
           />
         ))}
@@ -60,7 +68,7 @@ export const LayoutNav: LayoutNavComponent = ({}) => {
             icon={icon}
             label={label}
             navigate={navigate}
-            selected={location.pathname === to || undefined}
+            selected={findSelectedItem(to)}
             onClick={closePanels}
           />
         ))}

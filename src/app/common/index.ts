@@ -1,6 +1,7 @@
 export * from './action';
 export * from './errors';
 export * from './layout';
+export * from './logo';
 export * from './menu';
 export * from './page';
 export * from './screen';

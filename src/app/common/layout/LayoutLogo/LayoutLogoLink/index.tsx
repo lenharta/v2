@@ -1,3 +1,5 @@
+import React from 'react';
+import { Logo } from '@/app/common/logo';
 import { Action } from '@/app/common/action';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
@@ -25,6 +27,7 @@ export const LayoutLogoLink = factory<LayoutLogoLinkFactory>((props, ref) => {
       {...otherProps}
       ref={ref}
       variant="link"
+      label="Andrew Lenhart"
       aria-label="site logo"
       className="layout-logo-link"
       onClick={createEventCallback(otherProps.onClick, (event) => {
@@ -32,7 +35,7 @@ export const LayoutLogoLink = factory<LayoutLogoLinkFactory>((props, ref) => {
         navigate && navigate(to);
       })}
     >
-      {label}
+      <Logo />
     </Action>
   );
 });

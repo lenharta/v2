@@ -1,93 +1,106 @@
 @use '../mixins' as mixins;
+@use './schemes' as schemes;
+
+@mixin color-motion-interactive {
+  transition-property: color, background-color, border-color, stroke, fill;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+}
+
+@mixin color-motion-base {
+  transition-property: color, background-color, border-color, stroke, fill;
+  transition-timing-function: ease-in-out;
+  transition-duration: 600ms;
+}
+
+@mixin color-focus-outline {
+  outline: solid var(--unit) transparent;
+  border: solid var(--unit) transparent;
+
+  &:not([aria-disabled]):focus:not(:focus-visible),
+  &:not([data-disabled]):focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:not([aria-disabled]):focus:focus-visible,
+  &:not([data-disabled]):focus:focus-visible {
+    outline-color: var(--c-blue);
+  }
+}
 
 html[data-prefers-mode='dim'],
 html[data-prefers-mode='dark'],
 html[data-prefers-mode='light'] {
-  transition-property: color, background-color, border-color, outline-color, stroke, fill;
-  transition-timing-function: ease;
-  transition-duration: 600ms;
-
-  .action,
-  .button,
-  .layout-nav,
-  .layout-nav-spacer,
-  .layout-header,
-  .layout-header-left,
-  .layout-header-right,
-  .menu,
-  .menu-cell,
-  .menu-panel,
-  .menu-grid,
-  .search-input,
-  .search-result,
-  .search-result-item,
-  .box {
-    transition-property: color, background-color, border-color, outline-color, stroke, fill;
-    transition-timing-function: ease;
-    transition-duration: 600ms;
-  }
+  @include schemes.primary-1;
+  @include color-motion-base;
 }
 
 .button {
-  @include mixins.focus-outline;
-  color: var(--c-text-1);
-  background-color: var(--c-button-bb);
-
-  &:not([data-disabled]):hover,
-  &:not([aria-disabled]):hover {
-    background-color: var(--c-button-hh);
-  }
-  &:not([data-disabled]):active,
-  &:not([aria-disabled]):active {
-    background-color: var(--c-button-aa);
-  }
-
-  &[data-disabled],
-  &[aria-disabled] {
-    background-color: var(--c-button-aa);
-  }
+  @include schemes.primary-2;
+  @include schemes.primary-2-hh;
+  @include schemes.primary-2-aa;
+  @include color-focus-outline;
+  @include color-motion-base;
 }
 
 .action {
-  @include mixins.focus-outline;
-  color: var(--c-text-1);
-  background-color: var(--c-button-bb);
+  @include schemes.primary-2;
+  @include schemes.primary-2-hh;
+  @include schemes.primary-2-aa;
+  @include color-focus-outline;
+  @include color-motion-base;
+}
 
-  &:not([data-disabled]):hover,
-  &:not([aria-disabled]):hover {
-    background-color: var(--c-button-hh);
-  }
-  &:not([data-disabled]):active,
-  &:not([aria-disabled]):active {
-    background-color: var(--c-button-aa);
-  }
+.layout {
+  @include schemes.primary-1;
+  @include color-motion-base;
+}
 
-  &[data-disabled],
-  &[aria-disabled] {
-    background-color: var(--c-button-aa);
-  }
+.layout-logo {
+  @include color-motion-base;
 }
 
 .layout-nav {
-  background-color: var(--c-base-1);
+  @include schemes.primary-1;
+  @include color-motion-base;
+
+  .action::before {
+    transition-property: opacity, background-color;
+    transition-timing-function: ease;
+    transition-duration: 300ms;
+  }
+  .action:not([aria-selected])::before {
+    background-color: transparent;
+  }
+  .action[aria-selected]::before {
+    background-color: var(--c-accent-a900);
+  }
 }
 
 .layout-nav-spacer {
-  background-color: var(--c-base-2);
+  @include schemes.primary-2;
+  @include color-motion-base;
 }
 
 .layout-header {
-  background-color: var(--c-base-1);
+  @include schemes.primary-1;
+  @include color-motion-base;
   border-color: transparent;
 }
 
 .layout-header-left,
 .layout-header-right {
-  background-color: var(--c-base-2);
+  @include schemes.primary-2;
+  @include color-motion-base;
+}
+
+.layout-logo svg {
+  @include color-motion-base;
+  color: var(--c-accent-s500);
 }
 
 .menu {
-  background-color: var(--c-base-1);
+  @include schemes.primary-1;
+  @include color-motion-base;
 }
 
 .menu-cell {
@@ -95,81 +108,100 @@ html[data-prefers-mode='light'] {
 }
 
 .menu-panel {
-  background-color: var(--c-base-2);
+  @include schemes.primary-2;
+  @include color-motion-base;
+
+  .control-item {
+    @include color-focus-outline;
+    background-color: inherit;
+
+    &:not([data-selected]):hover,
+    &:not([aria-selected]):hover {
+      @include schemes.primary-2-hh;
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      @include schemes.primary-2-hh;
+    }
+  }
 
   .control-thumb {
-    background-color: var(--c-base-3);
+    @include schemes.primary-3;
+
+    &:not([data-disabled]):hover,
+    &:not([aria-disabled]):hover {
+      @include schemes.primary-3;
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      @include schemes.primary-3;
+    }
   }
 }
 
 .search-input {
-  @include mixins.focus-outline;
-  background-color: var(--c-base-1);
-  color: var(--c-text-5);
+  @include color-focus-outline;
+  @include color-motion-base;
+  @include schemes.tertiary-1;
+  color: var(--c-sec-5);
 }
-
 .search-input::placeholder {
-  color: var(--c-text-5);
+  @include color-motion-base;
+  color: var(--c-pri-3);
 }
-
 .search-result {
-  background-color: var(--c-base-1);
+  @include schemes.primary-1;
+  @include color-motion-base;
 }
-
 .search-result-item {
-  @include mixins.focus-outline;
-  color: var(--c-text-5);
-  background-color: var(--c-button-bb);
-
-  &:not([data-disabled]):hover,
-  &:not([aria-disabled]):hover {
-    background-color: var(--c-button-hh);
-  }
-  &:not([data-disabled]):active,
-  &:not([aria-disabled]):active {
-    background-color: var(--c-button-aa);
-  }
-
-  &[data-disabled],
-  &[aria-disabled] {
-    background-color: var(--c-button-aa);
-  }
+  @include color-focus-outline;
+  @include color-motion-base;
+  @include schemes.tertiary-1;
+  @include schemes.tertiary-1-hh;
+  @include schemes.tertiary-1-aa;
+  color: var(--c-sec-5);
 }
-
 .search-result-item .icon {
-  color: var(--c-text-5);
+  @include color-motion-base;
+  color: var(--c-sec-5);
 }
-
-.search-result-item-copy .text:first-of-type {
-  color: var(--c-t-text-2);
+.search-result-item-copy .text:nth-of-type(1) {
+  @include color-motion-base;
+  color: var(--c-sec-2);
+}
+.search-result-item-copy .text:nth-of-type(2) {
+  @include color-motion-base;
+  color: var(--c-sec-5);
 }
 
 .sec-home-hero h1.title {
+  @include color-motion-base;
   color: var(--c-accent-s500);
 }
 
 .sec-home-test-1 .box:nth-of-type(1) {
-  background-color: var(--c-t-base-1);
-  color: var(--c-t-text-1);
+  @include color-motion-base;
+  @include schemes.tertiary-1;
 }
 .sec-home-test-1 .box:nth-of-type(2) {
-  background-color: var(--c-t-base-1);
-  color: var(--c-t-text-1);
+  @include color-motion-base;
+  @include schemes.tertiary-1;
 }
 .sec-home-test-1 .box:nth-of-type(3) {
-  background-color: var(--c-t-base-1);
-  color: var(--c-t-text-1);
+  @include color-motion-base;
+  @include schemes.tertiary-1;
 }
 .sec-home-test-1 .box:nth-of-type(4) {
-  background-color: var(--c-t-base-1);
-  color: var(--c-t-text-1);
+  @include color-motion-base;
+  @include schemes.tertiary-1;
 }
 
 .sec-home-overview .box:nth-of-type(1) {
-  background-color: var(--c-accent-a200);
+  @include color-motion-base;
+  background-color: var(--c-accent-a100);
   color: var(--c-accent-a900);
 }
 .sec-home-overview .box:nth-of-type(2) {
-  // background-color: var(--c-t-base-1);
-  // color: var(--c-t-text-1);
+  @include color-motion-base;
+  @include schemes.primary-1;
 }

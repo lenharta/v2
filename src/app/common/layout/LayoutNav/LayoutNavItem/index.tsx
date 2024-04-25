@@ -3,7 +3,6 @@ import { Action } from '@/app/common/action';
 import { factory } from '@/core/factory';
 import { Factory } from '@/types';
 import { createKeyDownGroup } from '@/core/utils';
-import React from 'react';
 
 interface LayoutNavItemProps {
   to: string;
@@ -11,7 +10,6 @@ interface LayoutNavItemProps {
   label: string;
   selected?: boolean | undefined;
   navigate: (to: string) => void;
-  isLastIndex?: boolean | undefined;
 }
 
 type LayoutNavItemFactory = Factory.Config<{
@@ -21,7 +19,7 @@ type LayoutNavItemFactory = Factory.Config<{
 }>;
 
 export const LayoutNavItem = factory<LayoutNavItemFactory>((props, ref) => {
-  const { to, icon, label, selected, navigate, isLastIndex, ...otherProps } = props;
+  const { to, icon, label, selected, navigate, ...otherProps } = props;
 
   return (
     <Action

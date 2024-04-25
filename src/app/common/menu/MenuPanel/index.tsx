@@ -1,6 +1,6 @@
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Box, Control, Text, Transition } from '@/core';
+import { Box, Control, Transition } from '@/core';
 import { useAppState, useThemeDispatch, useThemeState } from '@/store';
 
 type MenuPanelFactory = Factory.Config<{
@@ -28,9 +28,7 @@ export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
     >
       {(transitionStyles) => (
         <Box ref={ref} {...otherProps} style={transitionStyles} className="menu-panel">
-          <Box className="menu-panel-group">
-            <Text>{new Date().getTime()}</Text>
-          </Box>
+          <Box className="menu-panel-group"></Box>
           <Box className="menu-panel-group">
             <Control
               value={theme.mode}
