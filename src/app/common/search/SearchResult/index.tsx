@@ -52,7 +52,14 @@ const onKeyDown = <T extends HTMLButtonElement = HTMLButtonElement>(
       elements[elements[prevIndex] ? prevIndex : currentIndex].focus();
     };
 
+    const Tab = () => {
+      if (event.shiftKey && currentIndex === 0) return onExitKeyDown?.();
+      if (event.shiftKey) elements[elements[prevIndex] ? prevIndex : currentIndex].focus();
+      if (!event.shiftKey) elements[elements[nextIndex] ? nextIndex : currentIndex].focus();
+    };
+
     const events = {
+      [eventCodes.Tab]: () => Tab?.(),
       [eventCodes.Space]: () => onEnterKeyDown?.(url),
       [eventCodes.Enter]: () => onEnterKeyDown?.(url),
       [eventCodes.Escape]: () => onEscapeKeyDown?.(),

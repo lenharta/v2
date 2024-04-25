@@ -21,7 +21,47 @@
   border-radius: calc(var(--unit) * 2);
 }
 
+.control,
+.control-track,
+.control-item,
+.control-thumb {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
 .control {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 0;
+
+  &-track {
+    z-index: 0;
+    position: relative;
+  }
+
+  &-item {
+    flex: 1;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    user-select: none;
+    align-items: center;
+    justify-content: center;
+    height: var(--control-height, var(--control-height-sm));
+  }
+
+  &-thumb {
+    height: var(--control-height, var(--control-height-sm));
+    z-index: -1;
+    position: absolute;
+    transition-property: transform;
+    transition-timing-function: ease;
+    transition-duration: 250ms;
+  }
+
   &--size-sm {
     --control-height: var(--control-height-sm);
   }
@@ -30,48 +70,5 @@
   }
   &--size-lg {
     --control-height: var(--control-height-lg);
-  }
-
-  z-index: 0;
-  position: relative;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-
-  &-track {
-    z-index: 0;
-    min-width: 100%;
-    position: relative;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-  }
-
-  &-item {
-    z-index: 1;
-    position: relative;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-
-    min-width: 100%;
-    display: flex;
-    user-select: none;
-    justify-content: center;
-    align-items: center;
-    height: var(--control-height, var(--control-height-sm));
-  }
-
-  &-thumb {
-    height: var(--control-height, var(--control-height-sm));
-    z-index: -1;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
   }
 }

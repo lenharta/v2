@@ -41,10 +41,8 @@
 }
 
 :root {
-  --action-box-mobile: calc(var(--unit) * 30);
-  --action-size-mobile: calc(var(--unit) * 28);
-  --action-box-desktop: calc(var(--unit) * 30);
-  --action-size-desktop: calc(var(--unit) * 28);
+  --action-box: calc(var(--unit) * 30);
+  --action-size: calc(var(--unit) * 28);
 
   --icon-size-sm-mobile: calc(var(--spacing) * 10);
   --icon-size-md-mobile: calc(var(--spacing) * 12);
@@ -105,20 +103,16 @@
   --font-size-15: var(--font-size-15-mobile);
   --font-size-16: var(--font-size-16-mobile);
 
-  --action-box: var(--action-box-mobile);
-  --action-size: var(--action-size-mobile);
-  --action-offset: calc(var(--action-size) - var(--action-box));
-
   --icon-size-sm: var(--icon-size-sm-mobile);
   --icon-size-md: var(--icon-size-md-mobile);
   --icon-size-lg: var(--icon-size-lg-mobile);
 
   @media (min-width: 60em) {
-    --gutter: calc(var(--spacing) * 20);
     --gap: calc(var(--spacing) * 6);
+    --gutter: calc(var(--spacing) * 20);
 
-    --action-box: var(--action-box-desktop);
-    --action-size: var(--action-size-desktop);
+    --action-box: calc(var(--unit) * 30);
+    --action-size: calc(var(--unit) * 28);
 
     --icon-size-sm: var(--icon-size-sm-desktop);
     --icon-size-md: var(--icon-size-md-desktop);

@@ -14,18 +14,10 @@ export type BoxFactory = Factory.Config<{
 }>;
 
 export const Box = factoryPolymorphic<BoxFactory>((props, ref) => {
-  const {
-    scheme = 'primary',
-    children,
-    className,
-    component: Component = 'div',
-    ...otherProps
-  } = props;
-
-  const dataProps = { 'data-scheme': scheme };
+  const { children, className, component: Component = 'div', ...otherProps } = props;
 
   return (
-    <Component {...otherProps} {...dataProps} ref={ref} className={clsx('box', className)}>
+    <Component {...otherProps} ref={ref} className={clsx('box', className)}>
       {children}
     </Component>
   );

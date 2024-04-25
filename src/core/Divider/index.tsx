@@ -1,33 +1,40 @@
 import clsx from 'clsx';
-import { factory } from '@/core/factory';
-import { Core, Factory } from '@/types';
+import React from 'react';
+import { Core } from '@/types';
 
-export interface DividerProps extends Core.BaseProps {
-  /** Specifies a `label` for the `Divider` element to give additional context, can be render to the `left` or `right` side of the container. */
+export interface DividerProps {
+  orientation?: Core.Orientation | undefined;
+  className?: string | undefined;
+  position?: Core.Alignment | 'center';
   label?: React.ReactNode | undefined;
-
-  /** Specifies the position of the `label` element relative to its `Divider` container. */
-  labelPosition?: 'left' | 'right' | undefined;
+  size?: Core.Size5 | undefined;
 }
 
-export type DividerFactory = Factory.Config<{
-  ref: HTMLDivElement;
-  comp: 'div';
-  props: DividerProps;
-  omits: 'children';
-}>;
+export const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
+  const {
+    size = 'xs',
+    label,
+    position,
+    className,
+    orientation = 'horizontal',
+    ...forwardedProps
+  } = props;
 
-export const Divider = factory<DividerFactory>((props, ref) => {
-  const { className, label, labelPosition = 'left', ...otherProps } = props;
   return (
-    <div {...otherProps} ref={ref} className={clsx('divider', className)}>
-      {label && (
-        <span data-position={labelPosition} className="label">
-          {label}
-        </span>
-      )}
+    <div
+      {...forwardedProps}
+      ref={ref}
+      role="separator"
+      className={clsx('divider', className)}
+      data-orientation={orientation}
+      data-with-label={label !== undefined ? true : undefined}
+      data-position={position}
+      data-size={size}
+    >
+      {label && <span className="divider-label">{label}</span>}
+      <div className="divider-seperator" />
     </div>
   );
 });
 
-Divider.displayName = '@v2/core/Divider';
+Divider.displayName = 'common/Divider';

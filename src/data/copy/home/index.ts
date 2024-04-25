@@ -1,5 +1,122 @@
 import { Store } from '@/types';
 
+export const COPY_HOME_KEYNOTE_TABLE_ENGLISH = [
+  {
+    label: 'Drive & Momentum',
+    text: `Shape the future of the world's biggest brands-and have fun while doing it. That's what drives me to create with courage, think freely, and image possibilities!`,
+    key: 'home-keynote-row-1',
+  },
+  {
+    label: 'Creative Collaboration',
+    text: 'The ability to support the collective potential of a team, discover new paths for connection and creativity, and work together to tackle big challenges that grow our clients and move society forward.',
+    key: 'home-keynote-row-2',
+  },
+  {
+    label: 'Emerging Technologies',
+    text: 'A dynamic environment that leverages the power of emerging technologies to drive innovation, and deliver transformative outcomes.',
+    key: 'home-keynote-row-3',
+  },
+];
+
+export const COPY_HOME_KEYNOTE_TABLE_ARABIC = [
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-1',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-2',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-3',
+  },
+];
+
+export const COPY_HOME_KEYNOTE_TABLE_GERMAN = [
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-1',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-2',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-3',
+  },
+];
+
+export const COPY_HOME_KEYNOTE_TABLE_FRENCH = [
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-1',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-2',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-3',
+  },
+];
+
+export const COPY_HOME_KEYNOTE_TABLE_JAPANESE = [
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-1',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-2',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-3',
+  },
+];
+
+export const COPY_HOME_KEYNOTE_TABLE_SPANISH = [
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-1',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-2',
+  },
+  {
+    label: '',
+    text: '',
+    key: 'home-keynote-row-3',
+  },
+];
+
+export const COPY_HOME_KEYNOTE_TABLE = {
+  arabic: COPY_HOME_KEYNOTE_TABLE_ARABIC,
+  english: COPY_HOME_KEYNOTE_TABLE_ENGLISH,
+  german: COPY_HOME_KEYNOTE_TABLE_GERMAN,
+  french: COPY_HOME_KEYNOTE_TABLE_FRENCH,
+  japanese: COPY_HOME_KEYNOTE_TABLE_JAPANESE,
+  spanish: COPY_HOME_KEYNOTE_TABLE_SPANISH,
+};
+
 export const DATA_HOME_ROUTE_TILES: Store.CopyData = {
   arabic: [
     {

@@ -1,7 +1,7 @@
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { Box, Control, Text, Transition } from '@/core';
 import { useAppState, useThemeDispatch, useThemeState } from '@/store';
-import { Box, Control, Title, Transition } from '@/core';
 
 type MenuPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -13,7 +13,7 @@ export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
   const { ...otherProps } = props;
   const state = useAppState();
   const theme = useThemeState();
-  const { setMode } = useThemeDispatch();
+  const { setMode, setDir } = useThemeDispatch();
 
   return (
     <Transition
@@ -28,7 +28,10 @@ export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
     >
       {(transitionStyles) => (
         <Box ref={ref} {...otherProps} style={transitionStyles} className="menu-panel">
-          <Box className="menu-panel-box">
+          <Box className="menu-panel-group">
+            <Text>{new Date().getTime()}</Text>
+          </Box>
+          <Box className="menu-panel-group">
             <Control
               value={theme.mode}
               onChange={(event) => setMode(event.currentTarget.value as any)}
@@ -36,6 +39,17 @@ export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
                 { value: 'light', label: 'Light' },
                 { value: 'dark', label: 'Dark' },
                 { value: 'dim', label: 'Dim' },
+              ]}
+            />
+          </Box>
+
+          <Box className="menu-panel-group">
+            <Control
+              value={theme.dir}
+              onChange={(event) => setDir(event.currentTarget.value as any)}
+              data={[
+                { value: 'ltr', label: 'LTR' },
+                { value: 'rtl', label: 'RTL' },
               ]}
             />
           </Box>

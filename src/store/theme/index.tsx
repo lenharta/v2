@@ -28,7 +28,11 @@ export function ThemeProvider({ children }: Store.ProviderProps) {
   React.useEffect(() => {
     middleware.write(theme);
 
-    const root = document.getElementById('root')!;
+    const root = document.getElementsByTagName('html')[0]!;
+
+    // if (theme.mode === 'dark') {
+    //   console.log();
+    // }
 
     DATA_STORE_GLOBAL_ATTRIBUTES.forEach((key) => {
       root.setAttribute(LOOKUP_STORE_GLOBAL_ATTRIBUTES[key], theme[key]);

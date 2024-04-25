@@ -1,0 +1,35 @@
+@mixin xs {
+  @media (min-width: 30em) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: 40em) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: 50em) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: 60em) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: 80em) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: 100em) {
+    @content;
+  }
+}

@@ -12,39 +12,48 @@
   display: none;
 
   @media (min-width: 60em) {
-    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--unit);
+    width: 100%;
 
     &-box {
       width: 100%;
+      height: var(--action-size);
       display: flex;
       position: relative;
       justify-content: flex-end;
+      align-items: center;
+      gap: var(--unit);
     }
 
     &-input {
       width: 100%;
-      margin: var(--unit);
-      height: calc(100% - calc(var(--unit) * 2));
-      padding-inline: var(--gutter);
+      height: 100%;
+      position: relative;
+      padding-inline: calc(var(--gutter) / 2);
+      z-index: calc(var(--app-index-header) + 1);
+      @include mixins.focus-outline;
     }
 
     &-result {
-      top: 100%;
+      top: calc(100% - var(--unit));
       left: 0;
-      width: calc(100% - calc(var(--action-box) + calc(var(--unit) * 2)));
-      margin: var(--unit);
+      right: var(--action-box);
+      z-index: calc(var(--app-index-header) - 1);
       display: flex;
       position: absolute;
       align-items: center;
       flex-direction: column;
+      margin-top: var(--unit);
+      padding: var(--unit);
       gap: var(--unit);
     }
 
     &-result-item {
       gap: calc(var(--gutter) / 2);
       width: 100%;
-      max-width: 100%;
       display: flex;
       justify-content: center;
       text-align: start;
@@ -54,30 +63,28 @@
       svg {
         min-width: var(--icon-size-sm);
         min-height: var(--icon-size-sm);
-        margin-top: calc(var(--gutter) / 4);
-        align-self: start;
         justify-self: center;
+        align-self: center;
       }
+    }
 
-      &-copy {
-        width: 100%;
-        max-width: 100%;
-        display: flex;
-        overflow: hidden;
-        flex-direction: column;
-        margin: var(--unit);
-
-        .text {
-          display: block;
-        }
-        .text:first-of-type {
-          font-size: var(--font-size-2);
-          font-weight: var(--font-weight-3);
-        }
-        .text:last-of-type {
-          font-size: 12px;
-          font-weight: var(--font-weight-1);
-        }
+    &-result-item-copy {
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      overflow: hidden;
+      flex-direction: column;
+      margin: var(--unit);
+      .text {
+        display: block;
+      }
+      .text:first-of-type {
+        font-size: var(--font-size-1);
+        font-weight: var(--font-weight-3);
+      }
+      .text:last-of-type {
+        font-size: 12px;
+        font-weight: var(--font-weight-1);
       }
     }
   }

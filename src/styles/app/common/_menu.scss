@@ -1,11 +1,7 @@
 @use '../mixins' as mixins;
 
 @layer reset {
-  .menu,
-  .menu-grid,
-  .menu-row,
-  .menu-cell,
-  .menu-panel {
+  .menu {
     @include mixins.reset;
   }
 }
@@ -13,7 +9,38 @@
 .menu {
   top: 0;
   left: 0;
+  z-index: var(--app-index-menu);
   position: fixed;
+  padding: var(--unit);
+  width: var(--action-box);
+  height: var(--action-box);
+
+  &-target {
+    top: var(--unit);
+    left: var(--unit);
+    z-index: var(--app-index-menu);
+    position: fixed;
+  }
+
+  &-panel {
+    top: var(--action-box);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--app-index-panel);
+    position: fixed;
+    display: block;
+    width: 100%;
+
+    .box {
+      margin: var(--unit);
+    }
+
+    @media (min-width: 60em) {
+      left: var(--action-box);
+      width: var(--app-width-menu);
+    }
+  }
 
   &-grid {
     display: flex;
@@ -34,32 +61,5 @@
   &-cell {
     width: calc(var(--unit) * 2);
     height: calc(var(--unit) * 2);
-  }
-
-  &-panel {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    position: fixed;
-    top: calc(var(--action-box) + var(--unit));
-    width: 100%;
-    bottom: 0;
-    right: 0;
-    left: 0;
-
-    &-box {
-      padding: calc(var(--gutter) / 3);
-      display: flex;
-      width: 100%;
-    }
-
-    @media (min-width: 60em) {
-      left: var(--action-box);
-      width: 30em;
-    }
-
-    .title {
-      width: 100%;
-    }
   }
 }

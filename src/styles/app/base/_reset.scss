@@ -37,22 +37,15 @@ body {
 }
 
 #root {
+  display: block;
   margin: 0;
   padding: 0;
   z-index: 0;
-  display: flex;
   font-size: inherit;
   box-sizing: border-box;
-  max-width: 100%;
   position: relative;
-  isolation: isolate;
-  min-width: var(--root-body-width);
-  max-width: none;
-  overflow-y: auto;
   overflow-x: hidden;
-  margin-left: auto;
-  margin-right: auto;
-  flex-direction: column;
+  overflow-y: auto;
 }
 
 h1,
