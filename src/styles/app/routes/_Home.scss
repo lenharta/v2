@@ -20,11 +20,11 @@
     min-height: 35rem;
 
     @include query.md {
-      padding-block: calc(var(--gutter) * 3);
+      padding-block: calc(var(--gutter) * 2);
       min-height: 25rem;
     }
     @include query.lg {
-      padding-block: calc(var(--gutter) * 2);
+      padding-block: calc(var(--gutter) * 1.5);
       min-height: 15rem;
     }
 

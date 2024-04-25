@@ -50,6 +50,15 @@ html[data-prefers-mode='light'] {
   @include color-motion-base;
 }
 
+.divider {
+  &-label {
+    color: var(--c-pri-9);
+  }
+  &-seperator {
+    background-color: var(--c-pri-9);
+  }
+}
+
 .layout {
   @include schemes.primary-1;
   @include color-motion-base;
@@ -64,9 +73,8 @@ html[data-prefers-mode='light'] {
   @include color-motion-base;
 
   .action::before {
+    @include color-motion-interactive;
     transition-property: opacity, background-color;
-    transition-timing-function: ease;
-    transition-duration: 300ms;
   }
   .action:not([aria-selected])::before {
     background-color: transparent;
@@ -104,37 +112,61 @@ html[data-prefers-mode='light'] {
 }
 
 .menu-cell {
+  @include color-motion-base;
   background-color: var(--c-accent-s500);
 }
 
 .menu-panel {
-  @include schemes.primary-2;
-  @include color-motion-base;
+  &-container {
+    @include schemes.primary-2;
+    @include color-motion-base;
+  }
+
+  &-group {
+    @include schemes.primary-1;
+    @include color-motion-base;
+  }
 
   .control-item {
     @include color-focus-outline;
+    transition-property: background-color;
     background-color: inherit;
 
     &:not([data-selected]):hover,
     &:not([aria-selected]):hover {
-      @include schemes.primary-2-hh;
+      @include schemes.primary-1-hh;
     }
     &:not([data-disabled]):active,
     &:not([aria-disabled]):active {
-      @include schemes.primary-2-hh;
+      @include schemes.primary-1-hh;
     }
   }
 
   .control-thumb {
-    @include schemes.primary-3;
+    @include schemes.primary-2;
 
     &:not([data-disabled]):hover,
     &:not([aria-disabled]):hover {
-      @include schemes.primary-3;
+      @include schemes.primary-2;
     }
     &:not([data-disabled]):active,
     &:not([aria-disabled]):active {
-      @include schemes.primary-3;
+      @include schemes.primary-2;
+    }
+  }
+
+  .color-group-item {
+    @include schemes.primary-1;
+    @include color-focus-outline;
+    @include color-motion-base;
+
+    &:not([data-selected]):hover,
+    &:not([aria-selected]):hover {
+      @include schemes.primary-1-hh;
+    }
+    &:not([data-disabled]):active,
+    &:not([aria-disabled]):active {
+      @include schemes.primary-1-aa;
     }
   }
 }

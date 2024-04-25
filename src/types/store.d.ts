@@ -12,21 +12,17 @@ export namespace Store {
   export type Accent =
     | 'red'
     | 'orange'
-    | 'amber'
     | 'yellow'
-    | 'lime'
     | 'green'
-    | 'emerald'
+    | 'mint'
     | 'teal'
     | 'cyan'
-    | 'sky'
     | 'blue'
     | 'indigo'
-    | 'violet'
     | 'purple'
-    | 'fuchsia'
     | 'pink'
-    | 'rose';
+    | 'brown'
+    | 'gray';
 
   export type LanguageCode = 'ar' | 'fr' | 'de' | 'es' | 'en' | 'ja';
   export type LanguageName = 'arabic' | 'french' | 'german' | 'spanish' | 'english' | 'japanese';

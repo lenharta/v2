@@ -1,7 +1,10 @@
+import React from 'react';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Box, Control, Transition } from '@/core';
-import { useAppState, useThemeDispatch, useThemeState } from '@/store';
+import { useEventListener, useMergeRefs } from '@/hooks';
+import { ColorGroup, colorItemData } from '../../color';
+import { Box, Control, Divider, Transition } from '@/core';
+import { useAppDispatch, useAppState, useThemeDispatch, useThemeState } from '@/store';
 
 type MenuPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -13,7 +16,23 @@ export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
   const { ...otherProps } = props;
   const state = useAppState();
   const theme = useThemeState();
+
+  const dispatch = useAppDispatch();
   const { setMode, setDir } = useThemeDispatch();
+
+  const menuBoxRef = React.useRef<HTMLDivElement>(null);
+
+  // useEventListener(
+  //   'keydown',
+  //   (event: any) => {
+  //     if (event.code === 'Escape') {
+  //       dispatch({ isMenuOpen: undefined });
+  //     }
+  //   },
+  //   menuBoxRef
+  // );
+
+  const mergedRef = useMergeRefs(ref, menuBoxRef);
 
   return (
     <Transition
@@ -27,30 +46,52 @@ export const MenuPanel = factory<MenuPanelFactory>((props, ref) => {
       }}
     >
       {(transitionStyles) => (
-        <Box ref={ref} {...otherProps} style={transitionStyles} className="menu-panel">
-          <Box className="menu-panel-group"></Box>
-          <Box className="menu-panel-group">
-            <Control
-              value={theme.mode}
-              onChange={(event) => setMode(event.currentTarget.value as any)}
-              data={[
-                { value: 'light', label: 'Light' },
-                { value: 'dark', label: 'Dark' },
-                { value: 'dim', label: 'Dim' },
-              ]}
-            />
-          </Box>
+        <Box
+          ref={mergedRef}
+          {...otherProps}
+          style={transitionStyles}
+          className="menu-panel"
+          onKeyDownCapture={(event) => {
+            event.stopPropagation();
+            if (event.code === 'Escape') {
+              dispatch({ isMenuOpen: undefined });
+            }
+          }}
+        >
+          <aside className="menu-panel-container">
+            <Divider label="Theme Mode" />
 
-          <Box className="menu-panel-group">
-            <Control
-              value={theme.dir}
-              onChange={(event) => setDir(event.currentTarget.value as any)}
-              data={[
-                { value: 'ltr', label: 'LTR' },
-                { value: 'rtl', label: 'RTL' },
-              ]}
-            />
-          </Box>
+            <Box className="menu-panel-group">
+              <Control
+                value={theme.mode}
+                onChange={(event) => setMode(event.currentTarget.value as any)}
+                data={[
+                  { value: 'light', label: 'Light' },
+                  { value: 'dark', label: 'Dark' },
+                  { value: 'dim', label: 'Dim' },
+                ]}
+              />
+            </Box>
+
+            <Divider label="Writing Mode" />
+
+            <Box className="menu-panel-group">
+              <Control
+                value={theme.dir}
+                onChange={(event) => setDir(event.currentTarget.value as any)}
+                data={[
+                  { value: 'ltr', label: 'LTR' },
+                  { value: 'rtl', label: 'RTL' },
+                ]}
+              />
+            </Box>
+
+            <Divider label="Accent Color" />
+
+            <Box className="menu-panel-group">
+              <ColorGroup group="menu-accent-group" items={colorItemData} />
+            </Box>
+          </aside>
         </Box>
       )}
     </Transition>
