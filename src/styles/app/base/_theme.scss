@@ -34,6 +34,11 @@ html[data-prefers-mode='light'] {
   @include color-motion-base;
 }
 
+.splash {
+  @include schemes.primary-1;
+  @include color-motion-base;
+}
+
 .button {
   @include schemes.primary-2;
   @include schemes.primary-2-hh;
@@ -106,6 +111,13 @@ html[data-prefers-mode='light'] {
   color: var(--c-accent-s500);
 }
 
+.page-hero--default {
+  @include schemes.primary-2;
+  @include color-motion-base;
+  border-bottom: solid var(--unit) transparent;
+  border-bottom-color: var(--c-pri-1);
+}
+
 .menu {
   @include schemes.primary-1;
   @include color-motion-base;
@@ -117,6 +129,13 @@ html[data-prefers-mode='light'] {
 }
 
 .menu-panel {
+  @include color-motion-base;
+  border-right: solid var(--unit) transparent;
+  border-right-color: var(--c-pri-1);
+
+  .divider {
+    color: var(--c-pri-8);
+  }
   &-container {
     @include schemes.primary-2;
     @include color-motion-base;
@@ -162,11 +181,11 @@ html[data-prefers-mode='light'] {
 
     &:not([data-selected]):hover,
     &:not([aria-selected]):hover {
-      @include schemes.primary-1-hh;
+      @include schemes.primary-2-hh;
     }
     &:not([data-disabled]):active,
     &:not([aria-disabled]):active {
-      @include schemes.primary-1-aa;
+      @include schemes.primary-2-aa;
     }
   }
 }
@@ -179,7 +198,7 @@ html[data-prefers-mode='light'] {
 }
 .search-input::placeholder {
   @include color-motion-base;
-  color: var(--c-pri-3);
+  color: var(--c-pri-8);
 }
 .search-result {
   @include schemes.primary-1;

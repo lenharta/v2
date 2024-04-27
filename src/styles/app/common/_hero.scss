@@ -1,7 +1,11 @@
+@use '../query' as query;
 @use '../mixins' as mixins;
 
 @layer reset {
-  .input {
+  .hero--default {
     @include mixins.reset;
   }
+}
+
+.hero--default {
 }

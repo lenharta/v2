@@ -1,0 +1,45 @@
+@use '../mixins' as mixins;
+
+@layer reset {
+  .textbox {
+    @include mixins.reset;
+  }
+}
+
+.textbox {
+  cursor: default;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--action-size);
+  min-height: var(--action-size);
+  border: solid var(--unit) transparent;
+  outline: solid var(--unit) transparent;
+
+  &[data-disabled]:hover,
+  &[aria-disabled]:hover {
+    cursor: default;
+  }
+  &:not([data-disabled]):hover,
+  &:not([aria-disabled]):hover {
+    cursor: pointer;
+  }
+  &:not([aria-disabled]):focus:not(:focus-visible),
+  &:not([data-disabled]):focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:not([aria-disabled]):focus:focus-visible,
+  &:not([data-disabled]):focus:focus-visible {
+    outline-color: var(--c-blue);
+  }
+}
+
+.textbox {
+  padding-inline: calc(var(--gutter) / 2);
+  background-color: var(--c-pri-2);
+  color: var(--c-sec-8);
+}
+.textbox::placeholder {
+  color: var(--c-sec-8);
+}

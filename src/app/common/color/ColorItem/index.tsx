@@ -40,7 +40,6 @@ type ColorItemFactory = Factory.Config<{
 export const ColorItem = factory<ColorItemFactory>((props, ref) => {
   const { id, label, value, className, ...forwardedProps } = props;
   const { setAccent } = useThemeDispatch();
-
   return (
     <button
       {...forwardedProps}

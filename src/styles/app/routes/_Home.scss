@@ -15,17 +15,14 @@
     align-items: flex-start;
     flex-direction: column;
     justify-content: flex-end;
-    padding-block: calc(var(--gutter) * 4);
     margin-inline: var(--gutter);
-    min-height: 35rem;
+    height: calc(calc(var(--action-size) + var(--unit)) * 12);
 
     @include query.md {
-      padding-block: calc(var(--gutter) * 2);
-      min-height: 25rem;
+      height: calc(calc(var(--action-size) + var(--unit)) * 6);
     }
     @include query.lg {
-      padding-block: calc(var(--gutter) * 1.5);
-      min-height: 15rem;
+      height: calc(calc(var(--action-size) + var(--unit)) * 5);
     }
 
     h1.title {
@@ -37,10 +34,7 @@
       line-height: 1.4;
       font-weight: var(--font-weight-1);
       font-size: var(--font-size-12);
-
-      @include query.lg {
-        width: 40%;
-      }
+      margin-bottom: calc(var(--gutter) * 1);
     }
   }
 }
@@ -107,7 +101,6 @@
       flex: 0 1 calc(100% - var(--unit));
     }
 
-    // display: flex;
     @include query.lg {
       &:nth-of-type(1) {
         flex: 0 1 calc(50% - var(--unit));

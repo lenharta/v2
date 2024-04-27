@@ -12,14 +12,21 @@
   display: block;
   line-height: 1.4;
   font-weight: 500;
+  text-align: left;
+  direction: ltr;
+
+  @include mixins.rtl {
+    text-align: right;
+    direction: rtl;
+  }
 
   &[data-truncate='start'] {
-    direction: rtl;
     text-align: right;
+    direction: rtl;
 
     @include mixins.rtl {
-      direction: ltr;
       text-align: left;
+      direction: ltr;
     }
   }
 
