@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Page, Section } from '@/app/common';
-import { HomeHero } from './HomeHero';
-import { Box, Stack, Text } from '@/core';
+import { Box, Text, Title } from '@/core';
 
 type HomeRouteComponent = React.FC<{}>;
 
@@ -52,7 +51,7 @@ const HomeKeynote = () => {
 export const Home: HomeRouteComponent = ({}) => {
   return (
     <Page>
-      <HomeHero />
+      <Page.Hero title="Overview" />
       <Page.Content>
         <Section className="sec-home-overview">
           <Box>
@@ -62,9 +61,34 @@ export const Home: HomeRouteComponent = ({}) => {
             </Text>
           </Box>
           <Box>
+            <Title h2>Front-end Engineer, Human-Centered Problem Solver.</Title>
+          </Box>
+        </Section>
+        <Section className="sec-home-test-1">
+          <Box>
             <Text>
-              Seeking opportunities with a team of talented engineers that impact and drive
-              transformative thinking.
+              Creative expertise and technical acumen in product engineering to deliver world-class
+              solutions that create meaningful customer experiences.
+            </Text>
+          </Box>
+          <Box>
+            <Text>
+              Total Market Capitalization of indutry giants I've had the privilege of collaborating
+              with and delivered production-used technologies for.
+            </Text>
+          </Box>
+          <Box>
+            <Text>
+              Unique and re-usable interfaces delivered to clients on-time and under budget,
+              including a full-featured, customizable library for a Fortune 500 Company in the
+              Financial Sector.
+            </Text>
+          </Box>
+          <Box>
+            <Text>
+              Putting your heart into your work and rigor to execute the best result possible, the
+              formula tends to equate long hours. Although a passion for development and a good cup
+              of coffee will see you through!
             </Text>
           </Box>
         </Section>

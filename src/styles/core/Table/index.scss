@@ -1,0 +1,118 @@
+@use '../mixins' as mixins;
+@use '../query' as query;
+
+@layer reset {
+  .table,
+  .table-row,
+  .table-cell,
+  .table-head,
+  .table-body,
+  .table-header {
+    @include mixins.reset;
+  }
+}
+
+@layer tokens {
+  :root {
+    --table-height-row: calc(var(--unit) * 20);
+  }
+}
+
+.table {
+  gap: var(--unit);
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: stretch;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-1);
+
+  &-color-badge-cell {
+    width: calc(var(--action-size) / 3);
+    height: calc(var(--action-size) / 3);
+    border-radius: 1000px;
+  }
+
+  &-tag-cell {
+    gap: calc(var(--unit) * 2);
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &-tag-cell-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: calc(var(--unit) * 2);
+    padding-inline: calc(var(--unit) * 4);
+    border: solid 1px transparent;
+    border-radius: calc(var(--unit) * 4);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-3);
+    font-size: var(--font-size-2);
+  }
+
+  &-head,
+  &-body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: stretch;
+    gap: var(--unit);
+  }
+
+  &-row {
+    gap: var(--unit);
+    width: 100%;
+    display: flex;
+  }
+
+  &-cell,
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: var(--action-size);
+    padding: calc(var(--unit) * 4);
+    font-size: var(--font-size-3);
+    font-family: var(--font-family);
+
+    span {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  &-cell {
+    font-weight: var(--font-weight-1);
+  }
+  &-header {
+    font-weight: var(--font-weight-2);
+  }
+}
+
+.table-header {
+  color: var(--c-sec-1);
+  background-color: var(--c-pri-3);
+}
+.table-cell {
+  color: var(--c-sec-6);
+  background-color: var(--c-pri-2);
+
+  [data-row-selected] & {
+    background-color: var(--c-accent-a100);
+  }
+}
+
+.table-tag-item {
+  color: var(--c-accent-a900);
+  border-color: var(--c-accent-a900);
+  background-color: var(--c-accent-a100);
+}

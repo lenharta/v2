@@ -1,63 +1,28 @@
 import clsx from 'clsx';
-import { factory } from '@/core/factory';
-import { Core, Factory } from '@/types';
-import { InputMessage } from './InputMessage';
-import { InputLabel } from './InputLabel';
+import { Factory } from '@/types';
+import { factory } from '../factory';
+import { Text, Label, Box } from '@/core';
 
-export interface InputConfiguration {
-  /** A unique identifier for the input. */
-  id: string;
-}
-
-export interface InputLabelConfiguration {
-  /** A unique identifier for the input message. */
-  id: string | undefined;
-
-  /** Defines the content of the input message, If not provided, no message is rendered. */
-  text?: string | undefined;
-}
-
-export interface InputMessageConfiguration {
-  /** A unique identifier for the input message. */
-  id: string | undefined;
-
-  /** Defines the content of the input message, If not provided, no message is rendered. */
-  text?: string | undefined;
-}
-
-export interface InputProps extends Core.BaseProps {
-  /** A configuration object providing context for the input element */
-  input: InputConfiguration;
-
-  /** A configuration object providing context for the input label element. */
-  label: InputLabelConfiguration;
-
-  /** A configuration object providing context for the input message element. */
-  message: InputLabelConfiguration;
+export interface InputProps {
+  label: { text: string; id: string };
+  message: { text?: string; id: string };
 }
 
 export type InputFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: InputProps;
-  omits: 'id';
-  comps: {
-    Label: typeof InputLabel;
-    Message: typeof InputMessage;
-  };
 }>;
 
 export const Input = factory<InputFactory>((props, ref) => {
-  const { input, label, message, className, children, ...otherProps } = props;
+  const { label, message, children, className, ...forwardedProps } = props;
   return (
-    <div {...otherProps} ref={ref} className={clsx('input-layout', className)}>
+    <Box {...forwardedProps} ref={ref} className={clsx('input', className)}>
       {children}
-      <div className="input-inner">
-        <Input.Label input={input} label={label} />
-        <Input.Message input={input} message={message} />
-      </div>
-    </div>
+      <Box>
+        <Label htmlFor={label.id} children={label.text} aria-describedby={message.id} />
+        {message.text && <Text id={message.id} children={message.text} />}
+      </Box>
+    </Box>
   );
 });
-
-Input.displayName = '@v2/core/Input';
