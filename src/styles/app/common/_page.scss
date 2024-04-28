@@ -16,6 +16,7 @@
   display: block;
   margin-top: var(--action-box);
   min-height: calc(100vh - var(--action-box));
+  padding-inline: var(--unit);
 
   &-hero--default {
     display: block;

@@ -28,34 +28,6 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-1);
 
-  &-color-badge-cell {
-    width: calc(var(--action-size) / 3);
-    height: calc(var(--action-size) / 3);
-    border-radius: 1000px;
-  }
-
-  &-tag-cell {
-    gap: calc(var(--unit) * 2);
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  &-tag-cell-item {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding-block: calc(var(--unit) * 2);
-    padding-inline: calc(var(--unit) * 4);
-    border: solid 1px transparent;
-    border-radius: calc(var(--unit) * 4);
-    font-family: var(--font-family);
-    font-weight: var(--font-weight-3);
-    font-size: var(--font-size-2);
-  }
-
   &-head,
   &-body {
     width: 100%;
@@ -84,9 +56,17 @@
     font-family: var(--font-family);
 
     span {
+      width: 100%;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+      direction: ltr;
+      text-align: left;
+
+      @include mixins.rtl {
+        direction: rtl;
+        text-align: right;
+      }
     }
   }
 
@@ -96,23 +76,4 @@
   &-header {
     font-weight: var(--font-weight-2);
   }
-}
-
-.table-header {
-  color: var(--c-sec-1);
-  background-color: var(--c-pri-3);
-}
-.table-cell {
-  color: var(--c-sec-6);
-  background-color: var(--c-pri-2);
-
-  [data-row-selected] & {
-    background-color: var(--c-accent-a100);
-  }
-}
-
-.table-tag-item {
-  color: var(--c-accent-a900);
-  border-color: var(--c-accent-a900);
-  background-color: var(--c-accent-a100);
 }

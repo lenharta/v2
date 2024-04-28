@@ -16,6 +16,7 @@
   min-height: var(--action-size);
   border: solid var(--unit) transparent;
   outline: solid var(--unit) transparent;
+  padding-inline: calc(var(--gutter) / 2);
 
   &[data-disabled]:hover,
   &[aria-disabled]:hover {
@@ -33,13 +34,4 @@
   &:not([data-disabled]):focus:focus-visible {
     outline-color: var(--c-blue);
   }
-}
-
-.textbox {
-  padding-inline: calc(var(--gutter) / 2);
-  background-color: var(--c-pri-2);
-  color: var(--c-sec-8);
-}
-.textbox::placeholder {
-  color: var(--c-sec-8);
 }

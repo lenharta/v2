@@ -75,7 +75,7 @@
   height: var(--action-box);
   z-index: var(--app-index-header);
   right: 0;
-  left: var(--action-box);
+  left: calc(var(--action-box) + var(--unit));
   gap: var(--unit);
 
   &-left,
@@ -89,8 +89,8 @@
   &-left {
     width: 100%;
     @include query.lg {
-      min-width: var(--app-width-menu);
-      max-width: var(--app-width-menu);
+      min-width: calc(var(--app-width-menu) - var(--unit));
+      max-width: calc(var(--app-width-menu) - var(--unit));
     }
   }
   &-right {
@@ -118,7 +118,7 @@
     align-items: center;
     justify-content: flex-end;
     position: absolute;
-    padding-inline: calc(var(--gutter) / 2);
+    padding-inline: calc(var(--gutter) / 2.5);
   }
 
   @include query.lg {
