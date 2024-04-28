@@ -4,5 +4,6 @@ export * from './core';
 export * from './demo';
 export * from './icons';
 export * from './locale';
+export * from './routes';
 export * from './site';
 export * from './store';

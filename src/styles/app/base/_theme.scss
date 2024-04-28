@@ -31,12 +31,16 @@ html[data-prefers-mode='dim'],
 html[data-prefers-mode='dark'],
 html[data-prefers-mode='light'] {
   @include schemes.primary-1;
-  @include color-motion-base;
+}
+
+[data-prefers-mode='dim'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='light'] {
+  @include schemes.primary-1;
 }
 
 .splash {
   @include schemes.primary-1;
-  @include color-motion-base;
 }
 
 .button {
@@ -44,7 +48,6 @@ html[data-prefers-mode='light'] {
   @include schemes.primary-2-hh;
   @include schemes.primary-2-aa;
   @include color-focus-outline;
-  @include color-motion-base;
 }
 
 .action {
@@ -52,7 +55,6 @@ html[data-prefers-mode='light'] {
   @include schemes.primary-2-hh;
   @include schemes.primary-2-aa;
   @include color-focus-outline;
-  @include color-motion-base;
 }
 
 .divider {
@@ -64,18 +66,21 @@ html[data-prefers-mode='light'] {
   }
 }
 
-.layout {
-  @include schemes.primary-1;
-  @include color-motion-base;
+.textbox {
+  background-color: var(--c-pri-2);
+  color: var(--c-sec-8);
 }
 
-.layout-logo {
-  @include color-motion-base;
+.textbox::placeholder {
+  color: var(--c-sec-8);
+}
+
+.layout {
+  @include schemes.primary-1;
 }
 
 .layout-nav {
   @include schemes.primary-1;
-  @include color-motion-base;
 
   .action::before {
     @include color-motion-interactive;
@@ -91,59 +96,51 @@ html[data-prefers-mode='light'] {
 
 .layout-nav-spacer {
   @include schemes.primary-2;
-  @include color-motion-base;
 }
 
 .layout-header {
   @include schemes.primary-1;
-  @include color-motion-base;
   border-color: transparent;
 }
 
 .layout-header-left,
 .layout-header-right {
   @include schemes.primary-2;
-  @include color-motion-base;
 }
 
 .layout-logo svg {
-  @include color-motion-base;
   color: var(--c-accent-s500);
 }
 
 .page-hero--default {
   @include schemes.primary-2;
-  @include color-motion-base;
   border-bottom: solid var(--unit) transparent;
   border-bottom-color: var(--c-pri-1);
 }
 
 .menu {
   @include schemes.primary-1;
-  @include color-motion-base;
 }
 
 .menu-cell {
-  @include color-motion-base;
   background-color: var(--c-accent-s500);
 }
 
 .menu-panel {
-  @include color-motion-base;
-  border-right: solid var(--unit) transparent;
-  border-right-color: var(--c-pri-1);
+  @include schemes.primary-1;
+  // border-right: solid var(--unit) transparent;
+  // border-right-color: var(--c-pri-1);
+  // transition-property: color, background-color, border-right-color, stroke, fill;
 
   .divider {
     color: var(--c-pri-8);
   }
   &-container {
     @include schemes.primary-2;
-    @include color-motion-base;
   }
 
   &-group {
     @include schemes.primary-1;
-    @include color-motion-base;
   }
 
   .control-item {
@@ -177,7 +174,6 @@ html[data-prefers-mode='light'] {
   .color-group-item {
     @include schemes.primary-1;
     @include color-focus-outline;
-    @include color-motion-base;
 
     &:not([data-selected]):hover,
     &:not([aria-selected]):hover {
@@ -192,67 +188,78 @@ html[data-prefers-mode='light'] {
 
 .search-input {
   @include color-focus-outline;
-  @include color-motion-base;
   @include schemes.tertiary-1;
   color: var(--c-sec-5);
 }
 .search-input::placeholder {
-  @include color-motion-base;
   color: var(--c-pri-8);
 }
 .search-result {
   @include schemes.primary-1;
-  @include color-motion-base;
 }
 .search-result-item {
   @include color-focus-outline;
-  @include color-motion-base;
   @include schemes.tertiary-1;
   @include schemes.tertiary-1-hh;
   @include schemes.tertiary-1-aa;
   color: var(--c-sec-5);
 }
 .search-result-item .icon {
-  @include color-motion-base;
   color: var(--c-sec-5);
 }
 .search-result-item-copy .text:nth-of-type(1) {
-  @include color-motion-base;
   color: var(--c-sec-2);
 }
 .search-result-item-copy .text:nth-of-type(2) {
-  @include color-motion-base;
   color: var(--c-sec-5);
 }
 
+// .table-controls .action {
+// }
+// .table-controls .textbox {
+// }
+
+.table-header {
+  background-color: var(--c-pri-3);
+  color: var(--c-sec-1);
+}
+
+.table-cell {
+  background-color: var(--c-pri-2);
+  color: var(--c-sec-6);
+}
+
+.table-cell[data-row-selected] {
+  background-color: var(--c-accent-a100);
+}
+
+.table-tag-item {
+  color: var(--c-accent-a900);
+  border-color: var(--c-accent-a900);
+  background-color: var(--c-accent-a100);
+}
+
 .sec-home-hero h1.title {
-  @include color-motion-base;
   color: var(--c-accent-s500);
 }
 
 .sec-home-test-1 .box:nth-of-type(1) {
-  @include color-motion-base;
   @include schemes.tertiary-1;
 }
 .sec-home-test-1 .box:nth-of-type(2) {
-  @include color-motion-base;
   @include schemes.tertiary-1;
 }
 .sec-home-test-1 .box:nth-of-type(3) {
-  @include color-motion-base;
   @include schemes.tertiary-1;
 }
 .sec-home-test-1 .box:nth-of-type(4) {
-  @include color-motion-base;
   @include schemes.tertiary-1;
 }
 
 .sec-home-overview .box:nth-of-type(1) {
-  @include color-motion-base;
   background-color: var(--c-accent-a100);
   color: var(--c-accent-a900);
 }
 .sec-home-overview .box:nth-of-type(2) {
-  @include color-motion-base;
   @include schemes.primary-1;
 }

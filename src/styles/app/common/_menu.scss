@@ -33,13 +33,14 @@
     top: var(--action-box);
 
     @media (min-width: 60em) {
-      left: var(--action-box);
+      left: calc(var(--action-box) + var(--unit));
       width: var(--app-width-menu);
     }
 
     &-container {
       height: 100%;
-      max-width: 100%;
+      // width: 100%;
+      margin-right: var(--unit);
       display: block;
       padding-inline: calc(var(--gutter) / 3);
       padding-block: calc(var(--gutter) / 3);
@@ -47,7 +48,7 @@
     }
 
     &-group {
-      max-width: 100%;
+      // max-width: 100%;
       display: block;
       padding: calc(var(--gutter) / 6);
       margin-block: calc(var(--gutter) / 4);
