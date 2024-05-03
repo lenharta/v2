@@ -1,5 +1,6 @@
 import { ICON } from '@/core';
 import { Site } from '@/types';
+import React from 'react';
 
 export const DATA_SITE_LINKS: Site.LinkItem[] = [
   { value: '/', label: 'Home', icon: 'home' },
@@ -34,6 +35,37 @@ export const LOOKUP_SITE_SOCIAL_LOGOS: Partial<Record<Site.SocialKey, ICON>> = {
   linkedin: 'logo_linkedin',
   codesandbox: 'logo_codesandbox',
 };
+
+interface SearchItem {
+  id: string;
+  url: string;
+  tags: string[];
+  icon: ICON;
+  title: string;
+  search: string;
+  description: string;
+}
+
+export const DATA_SEARCH_ITEMS: SearchItem[] = [
+  // {
+  //   id: 'onsifnej24lkn23u',
+  // },
+  // {
+  //   id: 'idojsfien824jn23',
+  // },
+  // {
+  //   id: '39joub4eiw938iof',
+  // },
+  // {
+  //   id: 'onsifnej24lkn23u',
+  // },
+  // {
+  //   id: 'onsifnej24lkn23u',
+  // },
+  // {
+  //   id: 'onsifnej24lkn23u',
+  // },
+];
 
 export const DATA_MATTER_ROUTES: Site.FrontMatterObj[] = [
   {
