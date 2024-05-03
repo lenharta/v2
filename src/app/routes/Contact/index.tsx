@@ -8,7 +8,6 @@ export const Contact: ContactRouteComponent = ({}) => {
     <Page>
       <Page.Hero title="Contact" />
       <Page.Content></Page.Content>
-      <Page.Footer></Page.Footer>
     </Page>
   );
 };
