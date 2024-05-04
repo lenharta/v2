@@ -4,6 +4,7 @@ import { ICON, Icon, Image, Table, Text, Title } from '@/core';
 import { Action, Page, Section } from '@/app/common';
 import { Factory } from '@/types';
 import { useNavigate } from 'react-router-dom';
+import { factory } from '@/core/factory';
 
 type DemoRouteComponent = React.FC<{}>;
 
@@ -285,6 +286,34 @@ const DemoSearch = () => {
     <Section className="sec-demo-search">
       <SearchBox onChange={onInputChange} />
       <SearchResult results={isQuery ? getResults() : []} onNavigate={navigate} />
+    </Section>
+  );
+};
+
+export interface ComboboxProps {
+  dropdownOpened?: boolean;
+  children?: React.ReactNode;
+}
+
+type ComboboxFactory = Factory.Config<{
+  comp: 'div';
+  ref: HTMLDivElement;
+  props: ComboboxProps;
+}>;
+
+const Combobox = factory((props, ref) => {
+  const { children } = props;
+  return (
+    <div className="combobox" ref={ref}>
+      {children}
+    </div>
+  );
+});
+
+export const DemoCombobox = () => {
+  return (
+    <Section>
+      <Title>Demo Combobox</Title>
     </Section>
   );
 };

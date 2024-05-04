@@ -1,114 +1,65 @@
-// export interface ComboboxItem {
-//   value: string | number;
-//   label?: string | undefined;
-//   disabled?: boolean | undefined;
-// }
+import { Core } from '@/types';
 
-// export interface ComboboxItemParsed {
-//   value: string;
-//   label: string;
-//   disabled?: boolean;
-// }
+interface ComboboxItem {
+  value: string | number;
+  label?: string | number;
+  disabled?: boolean;
+}
 
-// export interface ComboboxItemGroup<T = ComboboxItem | string> {
-//   group: string;
-//   items: T[];
-// }
+interface ComboboxItemParsed {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
 
-// export interface ComboboxItemGroupParsed<T = ComboboxItemParsed> {
-//   group: string;
-//   items: T[];
-// }
+interface ComboboxItemGroup {
+  group: string;
+  items: (string | ComboboxItem | ComboboxItemGroup)[];
+}
 
-// export function getParsedComboboxItem(
-//   item: string | ComboboxItem | ComboboxItemGroup
-// ): ComboboxItemParsed | ComboboxItemGroupParsed {
-//   if (typeof item === 'string') {
-//     return {
-//       label: item,
-//       value: item,
-//     };
-//   }
+interface ComboboxItemGroupParsed {
+  group: string;
+  items: (ComboboxItemParsed | ComboboxItemGroupParsed)[];
+}
 
-//   if ('value' in item && !('label' in item)) {
-//     return {
-//       label: (item.value as number).toString(),
-//       value: (item.value as number).toString(),
-//       disabled: item.disabled,
-//     };
-//   }
+export function getParsedComboBoxItem(
+  item: string | ComboboxItem | ComboboxItemGroup
+): ComboboxItemParsed | ComboboxItemGroupParsed {
+  if (typeof item === 'string') {
+    return {
+      value: item.toString(),
+      label: item.toString(),
+    };
+  }
 
-//   if (typeof item === 'number') {
-//     return {
-//       label: (item as number).toString(),
-//       value: (item as number).toString(),
-//     };
-//   }
+  if (typeof item === 'number') {
+    return {
+      value: (item as number).toString(),
+      label: (item as number).toString(),
+    };
+  }
 
-//   if ('group' in item) {
-//     return {
-//       group: item.group,
-//       items: item.items.map(getParsedComboboxItem),
-//     };
-//   }
+  if ('value' in item && !('label' in item)) {
+    return {
+      value: (item.value as number).toString(),
+      label: (item.value as number).toString(),
+      disabled: item.disabled,
+    };
+  }
 
-//   return item;
-// }
+  if ('group' in item) {
+    return {
+      group: item.group,
+      items: item.items.map((i) => getParsedComboBoxItem(i) as ComboboxItemParsed),
+    };
+  }
 
-// // export interface ComboboxItem {
-// //   value: string;
-// //   label?: string | undefined;
-// //   disabled?: boolean | undefined;
-// // }
+  return item as Core.ComboboxItemParsed;
+}
 
-// // export interface ParsedComboboxItem {
-// //   value: string;
-// //   label: string;
-// //   disabled?: boolean | undefined;
-// // }
-
-// // export interface ComboboxItemGroup {
-// //   group: string;
-// //   items: (string | ComboboxItem | ComboboxItemGroup)[];
-// // }
-
-// // export interface ParsedComboboxItemGroup {
-// //   group: string;
-// //   items: (ParsedComboboxItem | ParsedComboboxItemGroup)[];
-// // }
-
-// // export function getParsedComboboxItem(item: string | ComboboxItem | ComboboxItemGroup): ParsedComboboxItem | ParsedComboboxItemGroup {
-
-// //   if (typeof item === 'string') {
-// //     return {
-// //       label: item,
-// //       value: item,
-// //     }
-// //   }
-
-// //   if (typeof item === 'number') {
-// //     return {
-// //       label: (item as number).toString(),
-// //       value: (item as number).toString(),
-// //     }
-// //   }
-
-// //   if ('value' in item && !('label' in item)) {
-// //     return {
-// //       label: item.value,
-// //       value: item.value,
-// //       disabled: item.disabled,
-// //     }
-// //   }
-
-// //   if ('group' in item) {
-// //     return {
-// //       group: item.group,
-// //       items: item.items.map((i) => getParsedComboboxItem(i)),
-// //     }
-// //   }
-
-// //   return item;
-// // }
-
-// // export function getParsedComboboxData() {}
+export function getParsedComboBoxData(
+  data: (string | ComboboxItem | ComboboxItemGroup)[]
+): (ComboboxItemParsed | ComboboxItemGroupParsed)[] {
+  if (!data) return [];
+  return data.map((i) => getParsedComboBoxItem(i));
+}
