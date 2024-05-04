@@ -47,24 +47,69 @@ interface SearchItem {
 }
 
 export const DATA_SEARCH_ITEMS: SearchItem[] = [
-  // {
-  //   id: 'onsifnej24lkn23u',
-  // },
-  // {
-  //   id: 'idojsfien824jn23',
-  // },
-  // {
-  //   id: '39joub4eiw938iof',
-  // },
-  // {
-  //   id: 'onsifnej24lkn23u',
-  // },
-  // {
-  //   id: 'onsifnej24lkn23u',
-  // },
-  // {
-  //   id: 'onsifnej24lkn23u',
-  // },
+  {
+    id: 'a94ue23xlp7v8hsk',
+    url: '/',
+    tags: ['route', 'page'],
+    icon: 'document',
+    title: 'Overview',
+    search: 'route/routes/page/pages/home/overview/summary/index/info/welcome/intro/introduction',
+    description: 'Some route description here.',
+  },
+  {
+    id: 'jsoda324lmlnk234',
+    url: '/contact',
+    tags: ['route', 'page'],
+    icon: 'document',
+    title: 'Contact',
+    search: 'route/routes/page/pages/contact/phone/email/location/email/social/links/card/address',
+    description: 'Some route description here.',
+  },
+  {
+    id: 'lmlnk2bensa32434',
+    url: '/toolbox',
+    tags: ['route', 'page'],
+    icon: 'document',
+    title: 'Toolbox',
+    search: `route/routes/page/pages/toolbox/tech/technologies/languages/frameworks/framework/tests/testing/stack/javascript/typescript/front-end/next/node/nodejs/react/css/html/scss/sass/jest`,
+    description: 'Some route description here.',
+  },
+  {
+    id: 'fdaoidfn203nlk22',
+    url: '/sandbox',
+    tags: ['route', 'page'],
+    icon: 'document',
+    title: 'Sandbox',
+    search: `route/routes/page/pages/sandbox/ui/components/library/design/design system/core/colors/user interface/interface/portfolio`,
+    description: 'Some route description here.',
+  },
+  {
+    id: 'so213sdhei92dsik',
+    url: '/experience',
+    tags: ['route', 'page'],
+    icon: 'document',
+    title: 'Experience',
+    search: `route/routes/page/pages/resume/cv/work/history/application/previous/employment/position/positions/employers`,
+    description: 'Some route description here.',
+  },
+  {
+    id: 'jd8su2n3049kend8',
+    url: '/projects',
+    tags: ['route', 'page'],
+    icon: 'document',
+    title: 'Projects',
+    search: `route/routes/page/work/github/examples/technologies/demo/technology/practice/responsive/animation/development/ui/ux/design/interactive/showcase/apps/mobile`,
+    description: 'Some route description here.',
+  },
+  {
+    id: 'sdu32kjb209fdaks',
+    url: '/demo',
+    tags: ['route', 'page'],
+    icon: 'document',
+    title: 'Demo',
+    search: 'route/routes/page/pages/demo/test/work/construction/temporary',
+    description: 'Some route description here.',
+  },
 ];
 
 export const DATA_MATTER_ROUTES: Site.FrontMatterObj[] = [

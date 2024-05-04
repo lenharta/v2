@@ -172,6 +172,36 @@ export namespace Core {
     in: React.CSSProperties;
   }
 
+  export interface ComboboxItem {
+    value: string | number;
+    label: string;
+    disabled?: boolean;
+  }
+
+  export interface ComboboxItemParsed {
+    value: string;
+    label: string;
+    disabled?: boolean;
+  }
+
+  export interface ComboboxItemGroup {
+    group: string;
+    items: (string | ComboboxItem | ComboboxItemGroup)[];
+  }
+
+  export interface ComboboxItemGroupParsed {
+    group: string;
+    items: (ComboboxItemParsed | ComboboxItemGroupParsed)[];
+  }
+
+  export type ComboboxItemInputObj = string | ComboboxItem | ComboboxItemGroup;
+
+  export type ComboboxItemInputObjParsed = ComboboxItemParsed | ComboboxItemGroupParsed;
+
+  export type ComboboxItemInputData = ComboboxInputItemObj[];
+
+  export type ComboboxItemInputDataParsed = ComboboxInputItemObjParsed[];
+
   export interface TransitionOptions {
     mounted: boolean;
     duration: number;
