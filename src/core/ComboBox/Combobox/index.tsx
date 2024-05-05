@@ -92,7 +92,11 @@ export type ComboboxFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: ComboboxProps;
-  comps: {};
+  comps: {
+    List: typeof ComboboxList;
+    Group: typeof ComboboxGroup;
+    Option: typeof ComboboxOption;
+  };
 }>;
 
 export const Combobox = factory<ComboboxFactory>((props, ref) => {
@@ -105,3 +109,11 @@ export const Combobox = factory<ComboboxFactory>((props, ref) => {
 });
 
 Combobox.displayName = '@v2/Combobox';
+
+Combobox.List.displayName = '@v2/Combobox.List';
+Combobox.Group.displayName = '@v2/Combobox.Group';
+Combobox.Option.displayName = '@v2/Combobox.Option';
+
+Combobox.List = ComboboxList;
+Combobox.Group = ComboboxGroup;
+Combobox.Option = ComboboxOption;

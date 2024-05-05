@@ -3,6 +3,32 @@ import { factory } from '@/core/factory';
 import { Factory } from '@/types';
 import { Transition } from '@/core';
 import { eventCodes } from '@/data';
+import React from 'react';
+
+export type SearchContextValue = {
+  listRef: React.RefObject<HTMLDivElement>;
+  inputRef: React.RefObject<HTMLInputElement>;
+  clearRef: React.RefObject<HTMLButtonElement>;
+  targetRef: React.RefObject<HTMLButtonElement>;
+  onFocusList: () => void;
+  onFocusInput: () => void;
+  onFocusClear: () => void;
+  onFocusTarget: () => void;
+};
+
+export const SearchContext = React.createContext({} as any);
+
+export const SearchProvider = () => {
+  const listRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const clearRef = React.useRef<HTMLButtonElement>(null);
+  const targetRef = React.useRef<HTMLButtonElement>(null);
+
+  const focusList = () => listRef.current?.focus();
+  const focusClear = () => clearRef.current?.focus();
+  const focusInput = () => inputRef.current?.focus();
+  const focusTarget = () => targetRef.current?.focus();
+};
 
 export type SearchClearFactory = Factory.Config<{
   ref: HTMLButtonElement;
