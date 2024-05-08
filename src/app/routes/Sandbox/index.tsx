@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { Page } from '@/app/common';
+import React from 'react';
+import { Text } from '@/core';
+import { SandboxHero } from './SandboxHero';
+import { Page, Section } from '@/app/layouts';
 
-type SandboxRouteComponent = React.FC<{}>;
-
-export const Sandbox: SandboxRouteComponent = ({}) => {
+export const Sandbox: React.FC<{}> = ({}) => {
   return (
-    <Page>
-      <Page.Hero title="Sandbox" />
-      <Page.Content></Page.Content>
-      <Page.Footer></Page.Footer>
+    <Page hero={<SandboxHero />}>
+      <Section>
+        <Text>Content</Text>
+      </Section>
     </Page>
   );
 };
 
-Sandbox.displayName = '@v2/app/Route.Sandbox';
+Sandbox.displayName = '@v2/route/Sandbox';

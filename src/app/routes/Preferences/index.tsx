@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { Page } from '@/app/common';
+import React from 'react';
+import { Text } from '@/core';
+import { PreferencesHero } from './PreferencesHero';
+import { Page, Section } from '@/app/layouts';
 
-type PreferencesRouteComponent = React.FC<{}>;
-
-export const Preferences: PreferencesRouteComponent = ({}) => {
+export const Preferences: React.FC<{}> = ({}) => {
   return (
-    <Page>
-      <Page.Hero title="Preferences" />
-      <Page.Content></Page.Content>
-      <Page.Footer></Page.Footer>
+    <Page hero={<PreferencesHero />}>
+      <Section>
+        <Text>Content</Text>
+      </Section>
     </Page>
   );
 };
 
-Preferences.displayName = '@v2/app/Route.Preferences';
+Preferences.displayName = '@v2/route/Preferences';

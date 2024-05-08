@@ -2,48 +2,29 @@
 @use '../mixins' as mixins;
 
 @layer reset {
-  .sec-home-hero {
+  .v2-sec-home-hero {
     @include mixins.reset;
   }
 }
 
-.sec-home-hero {
-  display: block;
+.v2-sec-home-hero h1.title {
+  line-height: 1.6;
+  font-weight: var(--font-weight-2);
+  font-size: var(--font-size-9);
+}
 
-  .box {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-inline: var(--gutter);
-    height: calc(calc(var(--action-size) + var(--unit)) * 12);
-
-    @include query.md {
-      height: calc(calc(var(--action-size) + var(--unit)) * 6);
-    }
-    @include query.lg {
-      height: calc(calc(var(--action-size) + var(--unit)) * 5);
-    }
-
-    h1.title {
-      line-height: 1.6;
-      font-weight: var(--font-weight-2);
-      font-size: var(--font-size-9);
-    }
-    h2.title {
-      line-height: 1.4;
-      font-weight: var(--font-weight-1);
-      font-size: var(--font-size-12);
-      margin-bottom: calc(var(--gutter) * 1);
-    }
-  }
+.v2-sec-home-hero h2.title {
+  line-height: 1.4;
+  margin-bottom: calc(var(--gutter) * 1);
+  font-weight: var(--font-weight-1);
+  font-size: var(--font-size-12);
 }
 
 .sec-home-overview {
+  gap: var(--unit);
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--unit);
 
   .box {
     flex: 0 1 calc(100% - var(--unit));

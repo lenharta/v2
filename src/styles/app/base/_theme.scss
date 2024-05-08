@@ -31,6 +31,13 @@ html[data-prefers-mode='dim'],
 html[data-prefers-mode='dark'],
 html[data-prefers-mode='light'] {
   @include schemes.primary-1;
+
+  #root {
+    @include schemes.primary-1;
+  }
+  .v2-page {
+    @include schemes.primary-1;
+  }
 }
 
 [data-prefers-mode='dim'],
@@ -39,7 +46,7 @@ html[data-prefers-mode='light'] {
   @include schemes.primary-1;
 }
 
-.splash {
+.v2-splash {
   @include schemes.primary-1;
 }
 
@@ -75,7 +82,7 @@ html[data-prefers-mode='light'] {
   color: var(--c-sec-8);
 }
 
-.layout {
+.v2-page {
   @include schemes.primary-1;
 }
 
@@ -213,11 +220,6 @@ html[data-prefers-mode='light'] {
 .search-result-item-copy .text:nth-of-type(2) {
   color: var(--c-sec-5);
 }
-
-// .table-controls .action {
-// }
-// .table-controls .textbox {
-// }
 
 .table-header {
   background-color: var(--c-pri-3);

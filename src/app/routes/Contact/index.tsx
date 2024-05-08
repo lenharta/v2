@@ -1,15 +1,16 @@
-import * as React from 'react';
-import { Page } from '@/app/common';
+import React from 'react';
+import { Text } from '@/core';
+import { ContactHero } from './ContactHero';
+import { Page, Section } from '@/app/layouts';
 
-type ContactRouteComponent = React.FC<{}>;
-
-export const Contact: ContactRouteComponent = ({}) => {
+export const Contact: React.FC = () => {
   return (
-    <Page>
-      <Page.Hero title="Contact" />
-      <Page.Content></Page.Content>
+    <Page hero={<ContactHero />}>
+      <Section>
+        <Text>Content</Text>
+      </Section>
     </Page>
   );
 };
 
-Contact.displayName = '@v2/app/Route.Contact';
+Contact.displayName = '@v2/route/Contact';
