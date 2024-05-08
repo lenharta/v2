@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { Page } from '@/app/common';
+import React from 'react';
+import { Text } from '@/core';
+import { ProjectsHero } from './ProjectsHero';
+import { Page, Section } from '@/app/layouts';
 
-type ProjectsRouteComponent = React.FC<{}>;
-
-export const Projects: ProjectsRouteComponent = ({}) => {
+export const Projects: React.FC<{}> = ({}) => {
   return (
-    <Page>
-      <Page.Hero title="Projects" />
-      <Page.Content></Page.Content>
-      <Page.Footer></Page.Footer>
+    <Page hero={<ProjectsHero />}>
+      <Section>
+        <Text>Content</Text>
+      </Section>
     </Page>
   );
 };
 
-Projects.displayName = '@v2/app/Route.Projects';
+Projects.displayName = '@v2/route/Projects';

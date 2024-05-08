@@ -1,13 +1,12 @@
-import { Box, Title } from '@/core';
+import { Hero } from '@/app/components';
+import { Title } from '@/core';
 
-type HomeHeroComponent = React.FC<{}>;
-
-export const HomeHero: HomeHeroComponent = ({}) => {
+export const HomeHero: React.FC = () => {
   return (
-    <div className="sec-home-hero">
-      <Box>
-        <Title h1>Andrew Lenhart</Title>
-      </Box>
-    </div>
+    <Hero>
+      <Title>Home</Title>
+    </Hero>
   );
 };
+
+HomeHero.displayName = '@v2/route/Home.Hero';

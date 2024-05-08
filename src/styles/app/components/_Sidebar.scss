@@ -1,0 +1,90 @@
+@use '../query' as query;
+@use '../mixins' as mixins;
+
+@layer reset {
+  .v2-sidebar {
+    @include mixins.reset;
+  }
+}
+
+.v2-sidebar {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  gap: var(--unit);
+  top: var(--action-box);
+  left: 0;
+  bottom: 0;
+
+  &-group {
+    gap: var(--unit);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &-spacer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--action-box);
+    height: 100%;
+  }
+
+  &-spacer-inner {
+    width: var(--action-size);
+    height: 100%;
+    background-color: var(--c-pri-2);
+  }
+
+  &-action {
+    width: var(--action-box);
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    outline: solid var(--unit) transparent;
+
+    &::before {
+      background-color: transparent;
+      width: var(--unit);
+      height: 100%;
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: 0;
+      top: 0;
+    }
+
+    &[data-selected='true']::before {
+      background-color: var(--c-accent-a900);
+      transition-timing-function: ease;
+      transition-duration: 250ms;
+      transition-property: background-color;
+    }
+
+    &:not(:focus:focus-visible) {
+      outline-color: transparent;
+    }
+    &:focus:focus-visible {
+      outline-color: var(--c-blue);
+      outline-offset: calc(var(--unit) * -1);
+    }
+  }
+
+  &-action-inner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: var(--action-size);
+    height: var(--action-size);
+    background-color: var(--c-pri-2);
+    color: var(--c-sec-4);
+  }
+}

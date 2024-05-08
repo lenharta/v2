@@ -1,6 +1,15 @@
 import { ICON } from '@/core';
 
 export declare namespace Site {
+  interface SearchItem {
+    id: string;
+    icon: ICON;
+    name: string;
+    value: string;
+    keywords: string;
+    description: string;
+  }
+
   export interface FrontMatterObj {
     url: string;
     icon: ICON;
