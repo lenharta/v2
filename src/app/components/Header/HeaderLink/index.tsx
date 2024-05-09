@@ -42,11 +42,13 @@ export const HeaderLink = factory<HeaderLinkFactory>((props, ref) => {
   });
 
   return (
-    <button {...forwardedProps} ref={ref} className={cx('header-link')} onKeyDown={onKeyDown}>
-      <span className={cx('header-link-inner')}>
-        <Logo />
-      </span>
-    </button>
+    <button
+      {...forwardedProps}
+      ref={ref}
+      className={cx('header-link-logo')}
+      onKeyDown={onKeyDown}
+      children={<Logo />}
+    />
   );
 });
 

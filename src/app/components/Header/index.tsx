@@ -33,16 +33,17 @@ export const Header = factory<HeaderFactory>((props, ref) => {
 
   return (
     <header {...forwardedProps} ref={ref} className={cx('header')}>
-      {active === 'link' && (
-        <Header.Link
-          ref={focusCTX.headerRef}
-          onFocusMenu={focusCTX.onFocusMenu}
-          onFocusSearchInput={focusCTX.onFocusSearchInput}
-        />
-      )}
-
-      {active === 'skip' && <Header.Skip />}
-      <Header.Search />
+      <span className={cx('header-inner')}>
+        {active === 'link' && (
+          <Header.Link
+            ref={focusCTX.headerRef}
+            onFocusMenu={focusCTX.onFocusMenu}
+            onFocusSearchInput={focusCTX.onFocusSearchInput}
+          />
+        )}
+        {active === 'skip' && <Header.Skip />}
+        <Header.Search />
+      </span>
     </header>
   );
 });

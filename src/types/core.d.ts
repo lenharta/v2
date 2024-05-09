@@ -36,6 +36,31 @@ export namespace Core {
   export type InteractionType = 'base' | 'clickable' | 'expandable' | 'selectable';
   export type InteractionState = 'hovered' | 'pressed' | 'disabled' | 'selected' | 'expanded';
 
+  export type Item = {
+    value: string;
+    label?: string | undefined;
+    disabled?: boolean | undefined;
+  };
+
+  export type ItemParsed = {
+    value: string;
+    label: string;
+    disabled?: boolean | undefined;
+  };
+
+  export type ItemGroup = {
+    group: string;
+    items: (string | Item | ItemGroup)[];
+  };
+
+  export type ItemGroupParsed = {
+    group: string;
+    items: (ItemParsed | ItemGroupParsed)[];
+  };
+
+  export type ItemData = string | Item | ItemGroup;
+  export type ItemParsedData = ItemParsed | ItemGroupParsed;
+
   export interface BaseProps {
     /** Defines a unique identifier for the element. */
     id?: string | undefined;
