@@ -3,6 +3,7 @@ import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
 
 export interface SidebarGroupProps {
+  children: React.ReactNode | undefined;
   orientation?: Core.Orientation | undefined;
 }
 
@@ -13,7 +14,7 @@ export type SidebarGroupFactory = Factory.Config<{
 }>;
 
 export const SidebarGroup = factory<SidebarGroupFactory>((props, ref) => {
-  const { children, orientation = 'vertical', ...forwardedProps } = props;
+  const { orientation = 'vertical', ...forwardedProps } = props;
   return (
     <div
       {...forwardedProps}
@@ -21,9 +22,7 @@ export const SidebarGroup = factory<SidebarGroupFactory>((props, ref) => {
       className={cx('sidebar-group')}
       data-orientation={orientation}
       aria-orientation={orientation}
-    >
-      {children}
-    </div>
+    />
   );
 });
 

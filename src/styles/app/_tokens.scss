@@ -4,6 +4,8 @@
   --app-index-panel: 899;
   --app-index-menu: 1000;
 
+  --app-index-sidebar: 1001;
+
   --app-width-menu: 30em;
 
   --app-height-hero-mobile: 30vh;
@@ -14,4 +16,10 @@
   @media (min-width: 60em) {
     --app-height-hero: var(--app-height-hero-desktop);
   }
+}
+
+:root {
+  --v2-index-sidebar: 1000;
+  --v2-index-sidebar-option: 1001;
+  --v2-index-sidebar-option-list: 999;
 }

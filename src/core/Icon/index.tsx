@@ -36,10 +36,10 @@ export const Icon = factory<IconFactory>((props, ref) => {
     ...otherProps
   } = props;
 
-  let iconPath = LOOKUP_ICON_PATH[type][name];
-  let iconLabel = otherProps['aria-label'] || name;
+  const iconPath = LOOKUP_ICON_PATH[type][name];
+  const iconLabel = otherProps['aria-label'] || name;
 
-  let accessibleProps = {
+  const accessibleProps = {
     ...(iconLabel ? { title: iconLabel } : {}),
     ...(iconLabel ? { 'aria-label': iconLabel } : {}),
   };
@@ -48,6 +48,7 @@ export const Icon = factory<IconFactory>((props, ref) => {
     <svg
       {...otherProps}
       {...accessibleProps}
+      data-icon-name={name}
       className={clsx('icon', className)}
       viewBox={viewBox}
       xmlns={xmlns}
