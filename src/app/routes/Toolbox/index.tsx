@@ -1,18 +1,16 @@
 import React from 'react';
-import { Page } from '@/app/common';
-import { TechTable } from './TechTable';
+import { Text } from '@/core';
+import { ToolboxHero } from './ToolboxHero';
+import { Page, Section } from '@/app/layouts';
 
-type ToolboxRouteComponent = React.FC<{}>;
-
-export const Toolbox: ToolboxRouteComponent = ({}) => {
+export const Toolbox: React.FC<{}> = ({}) => {
   return (
-    <Page>
-      <Page.Hero title="Toolbox" />
-      <Page.Content>
-        <TechTable />
-      </Page.Content>
+    <Page hero={<ToolboxHero />}>
+      <Section>
+        <Text>Content</Text>
+      </Section>
     </Page>
   );
 };
 
-Toolbox.displayName = '@v2/app/Route.Toolbox';
+Toolbox.displayName = '@v2/route/Toolbox';

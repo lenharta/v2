@@ -14,10 +14,9 @@ export type BoxFactory = Factory.Config<{
 }>;
 
 export const Box = factoryPolymorphic<BoxFactory>((props, ref) => {
-  const { children, className, component: Component = 'div', ...otherProps } = props;
-
+  const { children, className, component: Component = 'div', ...forwardedProps } = props;
   return (
-    <Component {...otherProps} ref={ref} className={clsx('box', className)}>
+    <Component {...forwardedProps} ref={ref} className={clsx('box', className)}>
       {children}
     </Component>
   );

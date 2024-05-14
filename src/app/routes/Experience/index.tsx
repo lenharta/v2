@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { Page } from '@/app/common';
+import React from 'react';
+import { Text } from '@/core';
+import { Page, Section } from '@/app/layouts';
+import { ExperienceHero } from './ExperienceHero';
 
-type ExperienceRouteComponent = React.FC<{}>;
-
-export const Experience: ExperienceRouteComponent = ({}) => {
+export const Experience: React.FC<{}> = ({}) => {
   return (
-    <Page>
-      <Page.Hero title="Experience" />
-      <Page.Content></Page.Content>
-      <Page.Footer></Page.Footer>
+    <Page hero={<ExperienceHero />}>
+      <Section>
+        <Text>Content</Text>
+      </Section>
     </Page>
   );
 };
 
-Experience.displayName = '@v2/app/Route.Experience';
+Experience.displayName = '@v2/route/Experience';

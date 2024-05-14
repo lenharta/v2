@@ -1,0 +1,55 @@
+@use '../mixins' as mixins;
+
+@layer reset {
+  .v2-menu {
+    @include mixins.reset;
+  }
+}
+
+.v2-menu {
+  &-target {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    outline: solid var(--unit) transparent;
+    height: var(--action-box);
+    width: var(--action-box);
+    left: 0;
+    top: 0;
+
+    &:not(:focus:focus-visible) {
+      outline-color: transparent;
+    }
+    &:focus:focus-visible {
+      outline-color: var(--c-blue);
+      outline-offset: calc(var(--unit) * -1);
+    }
+  }
+
+  &-target-grid {
+    gap: calc(var(--unit) * 2);
+    width: var(--action-size);
+    height: var(--action-size);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--c-pri-2);
+  }
+
+  &-target-row {
+    gap: calc(var(--unit) * 2);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-target-cell {
+    width: calc(var(--unit) * 2);
+    height: calc(var(--unit) * 2);
+    background-color: var(--c-accent-a900);
+  }
+}

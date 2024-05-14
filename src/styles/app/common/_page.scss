@@ -2,12 +2,12 @@
 @use '../query' as query;
 
 @layer reset {
-  .page {
+  .v2-page {
     @include mixins.reset;
   }
 }
 
-.page {
+.v2-page {
   top: 0;
   left: 0;
   right: 0;
@@ -17,28 +17,6 @@
   margin-top: var(--action-box);
   min-height: calc(100vh - var(--action-box));
   padding-inline: var(--unit);
-
-  &-hero--default {
-    display: block;
-    .box {
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      margin-inline: var(--gutter);
-      height: calc(calc(var(--action-size) + var(--unit)) * 12);
-
-      @include query.md {
-        height: calc(calc(var(--action-size) + var(--unit)) * 6);
-      }
-      @include query.lg {
-        height: calc(calc(calc(var(--action-size) + var(--unit)) * 5) - var(--unit));
-      }
-
-      .title {
-        margin-bottom: var(--gutter);
-      }
-    }
-  }
 
   &-content {
     display: flex;
