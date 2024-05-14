@@ -10,6 +10,9 @@
 .v2-sidebar {
   display: none;
   background-color: var(--c-pri-1);
+  transition-property: color, background-color, border-color, stroke, fill;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
 
   @include query.lg {
     display: flex;
@@ -42,6 +45,9 @@
         width: var(--action-size);
         height: 100%;
         background-color: var(--c-pri-2);
+        transition-property: color, background-color, border-color, stroke, fill;
+        transition-timing-function: ease-in-out;
+        transition-duration: 300ms;
       }
     }
 
@@ -55,6 +61,9 @@
       justify-content: center;
       outline: solid var(--unit) transparent;
       background-color: var(--c-pri-1);
+      transition-property: color, background-color, border-color, stroke, fill;
+      transition-timing-function: ease-in-out;
+      transition-duration: 300ms;
 
       &::before {
         background-color: transparent;
@@ -70,7 +79,7 @@
       &[data-active='true']::before {
         background-color: var(--c-accent-a900);
         transition-timing-function: ease;
-        transition-duration: 250ms;
+        transition-duration: 300ms;
         transition-property: background-color;
       }
 
@@ -84,14 +93,25 @@
       }
 
       &-inner {
+        width: var(--action-size);
+        height: var(--action-size);
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
-        width: var(--action-size);
-        height: var(--action-size);
-        background-color: var(--c-pri-2);
+
         color: var(--c-sec-4);
+        background-color: var(--c-pri-2);
+        transition-property: color, background-color, border-color, stroke, fill;
+        transition-timing-function: ease-in-out;
+        transition-duration: 300ms;
+
+        &:hover {
+          background-color: var(--c-pri-2-hh);
+        }
+        &:active {
+          background-color: var(--c-pri-2-aa);
+        }
       }
     }
 
@@ -106,30 +126,54 @@
     }
 
     &-drawer {
+      right: 0;
+      z-index: -1;
+      position: absolute;
+      transform: translate(100%);
+
+      height: var(--action-size);
       display: flex;
       align-items: center;
       flex-direction: row;
       justify-content: flex-start;
-      position: absolute;
-      right: 0;
-      transform: translate(100%);
-      height: var(--action-size);
-      background-color: var(--c-pri-2);
+
       color: var(--c-sec-4);
-      z-index: -1;
+      background-color: var(--c-pri-2);
+      transition-property: color, background-color, border-color, stroke, fill;
+      transition-timing-function: ease-in-out;
+      transition-duration: 300ms;
     }
 
     &-option {
       cursor: pointer;
       width: var(--action-box);
       height: var(--action-size);
+      z-index: 1;
       display: flex;
       position: relative;
       align-items: center;
       flex-direction: column;
       justify-content: center;
+
+      color: var(--c-sec-4);
       outline: solid var(--unit) transparent;
-      z-index: 1;
+      background-color: var(--c-pri-2);
+      transition-property: color, background-color, border-color, stroke, fill;
+      transition-timing-function: ease-in-out;
+      transition-duration: 300ms;
+
+      &:hover {
+        background-color: var(--c-pri-2-hh);
+      }
+      &:active {
+        background-color: var(--c-pri-2-aa);
+      }
+
+      &[data-selected],
+      &[data-selected]:hover,
+      &[data-selected]:active {
+        background-color: var(--c-pri-2-ss);
+      }
 
       &:not(:focus:focus-visible) {
         outline-color: transparent;
@@ -139,27 +183,6 @@
         outline-color: var(--c-blue);
         outline-offset: calc(var(--unit) * -1);
       }
-
-      .icon[data-icon-name='sun'] {
-        color: var(--c-orange);
-      }
-      .icon[data-icon-name='moon'] {
-        color: var(--c-yellow);
-      }
-      .icon[data-icon-name='dim'] {
-        color: var(--c-gray);
-      }
-    }
-
-    &-option-inner {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-      width: var(--action-size);
-      height: var(--action-size);
-      background-color: var(--c-pri-2);
-      color: var(--c-sec-4);
     }
   }
 }

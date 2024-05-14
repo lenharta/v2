@@ -15,7 +15,6 @@ import { SidebarSpacer } from './SidebarSpacer';
 import { SidebarSelect } from './SidebarSelect';
 import { SidebarDrawer } from './SidebarDrawer';
 import { SidebarOption } from './SidebarOption';
-import { SidebarTarget } from './SidebarTarget';
 
 export interface SidebarProps {
   children?: React.ReactNode;
@@ -31,7 +30,6 @@ export type SidebarFactory = Factory.Config<{
     Action: typeof SidebarAction;
     Spacer: typeof SidebarSpacer;
     Select: typeof SidebarSelect;
-    Target: typeof SidebarTarget;
     Option: typeof SidebarOption;
     Drawer: typeof SidebarDrawer;
   };
@@ -187,9 +185,9 @@ export const Sidebar = factory<SidebarFactory>((props, ref) => {
 
         <Sidebar.Action
           icon="settings"
-          label="Preferences"
-          value="/preferences"
-          active={location.pathname === '/preferences'}
+          label="Settings"
+          value="/settings"
+          active={location.pathname === '/settings'}
           onEnter={(event) => navigate(event.currentTarget.value)}
           onClick={(event) => navigate(event.currentTarget.value)}
         />
@@ -199,7 +197,6 @@ export const Sidebar = factory<SidebarFactory>((props, ref) => {
 });
 
 Sidebar.displayName = '@v2/Sidebar';
-Sidebar.Target = SidebarTarget;
 Sidebar.Option = SidebarOption;
 Sidebar.Drawer = SidebarDrawer;
 Sidebar.Spacer = SidebarSpacer;

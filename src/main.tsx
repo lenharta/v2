@@ -17,9 +17,9 @@ const router = createBrowserRouter([
       { path: '/contact', element: <Route.Contact />, errorElement: <div>404</div> },
       { path: '/toolbox', element: <Route.Toolbox />, errorElement: <div>404</div> },
       { path: '/sandbox', element: <Route.Sandbox />, errorElement: <div>404</div> },
+      { path: '/settings', element: <Route.Settings />, errorElement: <div>404</div> },
       { path: '/projects', element: <Route.Projects />, errorElement: <div>404</div> },
       { path: '/experience', element: <Route.Experience />, errorElement: <div>404</div> },
-      { path: '/preferences', element: <Route.Preferences />, errorElement: <div>404</div> },
     ],
   },
 ]);

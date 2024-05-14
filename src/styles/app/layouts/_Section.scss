@@ -11,19 +11,19 @@
   width: 100%;
   display: block;
 
-  & > .box {
-    margin-inline: var(--gutter);
+  // & > .box {
+  //   margin-inline: var(--gutter);
 
-    @include query.lg {
-      &[data-position='left'] {
-        margin-left: var(--gutter);
-        margin-right: 0;
-      }
+  //   @include query.lg {
+  //     &[data-position='left'] {
+  //       margin-left: var(--gutter);
+  //       margin-right: 0;
+  //     }
 
-      &[data-position='right'] {
-        margin-left: 0;
-        margin-right: var(--gutter);
-      }
-    }
-  }
+  //     &[data-position='right'] {
+  //       margin-left: 0;
+  //       margin-right: var(--gutter);
+  //     }
+  //   }
+  // }
 }

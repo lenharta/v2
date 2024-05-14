@@ -8,7 +8,7 @@ import { createEventCallback } from '@/utils';
 
 export interface SidebarOptionProps extends SidebarItem {
   icon?: ICON | React.ReactNode | undefined;
-  active?: boolean | undefined;
+  selected?: boolean | undefined;
   onEnter?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   onEscape?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
@@ -20,7 +20,7 @@ export type SidebarOptionFactory = Factory.Config<{
 }>;
 
 export const SidebarOption = factory<SidebarOptionFactory>((props, ref) => {
-  const { icon, value, label, active, onEscape, onEnter, ...forwardedProps } = props;
+  const { icon, value, label, selected, onEscape, onEnter, ...forwardedProps } = props;
 
   const isIconElement = typeof icon === 'object';
   const iconElement = isIconElement ? icon : <Icon name={icon as ICON} />;
@@ -58,7 +58,7 @@ export const SidebarOption = factory<SidebarOptionFactory>((props, ref) => {
       children={iconElement}
       className={cx('sidebar-option')}
       aria-label={label.toLowerCase()}
-      data-active={active || undefined}
+      data-selected={selected || undefined}
     />
   );
 });

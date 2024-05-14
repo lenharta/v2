@@ -41,7 +41,7 @@ export const Page = factory<PageFactory>((props, ref) => {
       <Transition
         mounted={mounted}
         duration={DURATION.slowest}
-        timingFunction={EASING.standard.expressive}
+        timingFunction="ease-in-out"
         transition={{
           transitionProperty: 'opacity',
           out: { opacity: 0 },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { cx } from '@/app/utils';
-import { ICON, Icon } from '@/core';
+import { ICON } from '@/core';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { Sidebar } from '..';
@@ -80,6 +80,7 @@ export const SidebarSelect = factory<SidebarSelectFactory>((props, ref) => {
             onClick={onOptionClick}
             onEnter={onOptionEnter}
             onEscape={onOptionEscape}
+            selected={item.value === selectedValue || undefined}
           />
         ))}
       </Sidebar.Drawer>

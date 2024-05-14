@@ -246,15 +246,25 @@
   --c-pri-8-hh: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 8)), var(--p-m));
   --c-pri-9-hh: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 9)), var(--p-m));
 
-  --c-pri-1-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 2)), var(--p-m));
-  --c-pri-2-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 3)), var(--p-m));
-  --c-pri-3-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 4)), var(--p-m));
-  --c-pri-4-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 5)), var(--p-m));
-  --c-pri-5-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 6)), var(--p-m));
-  --c-pri-6-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 7)), var(--p-m));
-  --c-pri-7-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 8)), var(--p-m));
-  --c-pri-8-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 9)), var(--p-m));
-  --c-pri-9-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 10)), var(--p-m));
+  --c-pri-1-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 1.5)), var(--p-m));
+  --c-pri-2-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 2.5)), var(--p-m));
+  --c-pri-3-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 3.5)), var(--p-m));
+  --c-pri-4-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 4.5)), var(--p-m));
+  --c-pri-5-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 5.5)), var(--p-m));
+  --c-pri-6-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 6.5)), var(--p-m));
+  --c-pri-7-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 7.5)), var(--p-m));
+  --c-pri-8-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 8.5)), var(--p-m));
+  --c-pri-9-aa: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 9.5)), var(--p-m));
+
+  --c-pri-1-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 2)), var(--p-m));
+  --c-pri-2-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 3)), var(--p-m));
+  --c-pri-3-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 4)), var(--p-m));
+  --c-pri-4-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 5)), var(--p-m));
+  --c-pri-5-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 6)), var(--p-m));
+  --c-pri-6-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 7)), var(--p-m));
+  --c-pri-7-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 8)), var(--p-m));
+  --c-pri-8-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 9)), var(--p-m));
+  --c-pri-9-ss: color-mix(in srgb, var(--p-b) calc(100% - calc(var(--p-h) * 10)), var(--p-m));
 
   --c-sec-1: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-s) * 0)), var(--s-m));
   --c-sec-2: color-mix(in srgb, var(--s-b) calc(100% - calc(var(--s-s) * 1)), var(--s-m));
