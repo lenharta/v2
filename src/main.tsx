@@ -2,24 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import './styles/main.scss';
-import App from './app';
-import * as Route from './app/routes';
-
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <div>App</div>,
     errorElement: <div>App Error</div>,
     children: [
-      { index: true, element: <Route.Home />, errorElement: <div>404</div> },
-      { path: '/demo', element: <Route.Demo />, errorElement: <div>404</div> },
-      { path: '/contact', element: <Route.Contact />, errorElement: <div>404</div> },
-      { path: '/toolbox', element: <Route.Toolbox />, errorElement: <div>404</div> },
-      { path: '/sandbox', element: <Route.Sandbox />, errorElement: <div>404</div> },
-      { path: '/settings', element: <Route.Settings />, errorElement: <div>404</div> },
-      { path: '/projects', element: <Route.Projects />, errorElement: <div>404</div> },
-      { path: '/experience', element: <Route.Experience />, errorElement: <div>404</div> },
+      { index: true, element: <div>Home</div>, errorElement: <div>404</div> },
+      { path: '/demo', element: <div>Demo</div>, errorElement: <div>404</div> },
     ],
   },
 ]);
