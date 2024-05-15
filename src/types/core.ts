@@ -79,7 +79,7 @@ export declare namespace Core {
   export type InlineStyles = {
     selector: string;
     styles?: React.CSSProperties | undefined;
-    media?: StylesMediaQuery[] | undefined;
+    media?: InlineStylesMediaQuery[] | undefined;
   };
 
   export type TransitionState = 'in' | 'out';
@@ -151,7 +151,7 @@ export declare namespace Core {
     top?: number;
   };
 
-  export type FloatingDir = Dir;
+  export type FloatingDir = 'ltr' | 'rtl';
   export type FloatingSide = Side;
   export type FloatingAlign = Align;
   export type FloatingWidth = 'target' | string | number | null;
