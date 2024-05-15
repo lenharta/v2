@@ -1,6 +1,7 @@
 import clsx from 'clsx';
-import { Core, Factory } from '@/types';
+import { Box } from '@/core/components/Box';
 import { factory } from '@/core/factory';
+import { Core, Factory } from '@/types';
 
 interface ActionGroupProps extends Core.GroupProps {}
 
@@ -13,7 +14,7 @@ type ActionGroupFactory = Factory.Config<{
 const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
   const { className, orientation = 'vertical', ...forwardedProps } = props;
   return (
-    <div
+    <Box
       {...forwardedProps}
       className={clsx('v2-action-group', className)}
       data-orientation={orientation}

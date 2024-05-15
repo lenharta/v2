@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { UnstyledButton } from '../UnstyledButton';
-import { ActionGroup } from './Group';
+import { ActionGroup } from '@/core/components/Action/Group';
+import { UnstyledButton } from '@/core/components/UnstyledButton';
 
 interface ActionProps {
   icon: React.ReactNode;
