@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
+import { UnstyledButton } from '@/core/components/UnstyledButton';
 import { factoryPolymorphic } from '@/core/factory';
 
 interface ButtonProps {
@@ -16,21 +17,26 @@ type ButtonFactory = Factory.Config<{
 const Button = factoryPolymorphic<ButtonFactory>((props, ref) => {
   const {
     children,
+    component = 'button',
     className,
     leftContent,
     rightContent,
-    component: Component = 'button',
     ...forwardedProps
   } = props;
 
   return (
-    <Component ref={ref} {...forwardedProps} className={clsx('v2-button', className)}>
+    <UnstyledButton
+      {...forwardedProps}
+      className={clsx('v2-button', className)}
+      component={component}
+      ref={ref}
+    >
       <span className="v2-button-inner">
         {leftContent && <div>{leftContent}</div>}
         {children}
         {rightContent && <div>{rightContent}</div>}
       </span>
-    </Component>
+    </UnstyledButton>
   );
 });
 

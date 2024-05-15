@@ -1,30 +1,11 @@
 import React from 'react';
+import { App } from '@/types';
 import { useStorage } from '@/hooks';
-import { useStoreReducer } from './reducer';
+import { useStoreReducer } from '@/store/hooks';
+import { StoreStateContext } from '@/store/context/state';
+import { StoreDispatchContext } from '@/store/context/dispatch';
+import { globalAttributes, initialStore } from '@/store/constants';
 import { createRandomId, objectKeys } from '@/utils';
-import { ACCENT, App, DIR, LANGUAGE, MODE } from '@/types';
-
-const StoreStateContext = React.createContext(
-  {} as ReturnType<typeof useStoreReducer<App.Store>>[0]
-);
-
-const StoreDispatchContext = React.createContext(
-  {} as ReturnType<typeof useStoreReducer<App.Store>>[1]
-);
-
-const rootAttributes = {
-  accent: 'data-prefers-accent',
-  mode: 'data-prefers-mode',
-  dir: 'data-prefers-dir',
-};
-
-const initialStore: App.Store = {
-  nonce: () => '',
-  accent: ACCENT.blue,
-  lang: LANGUAGE.en,
-  mode: MODE.dark,
-  dir: DIR.ltr,
-};
 
 function StoreProvider(props: { children: React.ReactNode }) {
   const { children } = props;
@@ -47,10 +28,10 @@ function StoreProvider(props: { children: React.ReactNode }) {
 
   React.useEffect(() => {
     const root = document.getElementById('root')!;
-    const attributes = objectKeys(rootAttributes);
+    const attributes = objectKeys(globalAttributes);
 
     attributes.forEach((key) => {
-      root.setAttribute(rootAttributes[key], store[key]);
+      root.setAttribute(globalAttributes[key], store[key]);
     });
     console.log(store);
   }, [store]);
