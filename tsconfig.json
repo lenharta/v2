@@ -24,11 +24,14 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/common/*": ["./src/common/*"],
+      "@/core/*": ["./src/core/*"],
+      "@/data/*": ["./src/data/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/routes/*": ["./src/routes/*"],
       "@/store/*": ["./src/store/*"],
       "@/styles/*": ["./src/styles/*"],
-      "@/types/*": ["./src/types/*"]
+      "@/types/*": ["./src/types/*"],
+      "@/utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src"],
