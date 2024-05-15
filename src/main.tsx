@@ -2,14 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import { Overview, Root } from './routes';
+
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>App</div>,
-    errorElement: <div>App Error</div>,
+    element: <Root />,
+    errorElement: <Root.Error />,
     children: [
-      { index: true, element: <div>Home</div>, errorElement: <div>404</div> },
-      { path: '/demo', element: <div>Demo</div>, errorElement: <div>404</div> },
+      {
+        index: true,
+        element: <Overview />,
+        errorElement: <Overview.Error />,
+      },
     ],
   },
 ]);
