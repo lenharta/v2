@@ -1,0 +1,51 @@
+@layer reset {
+  .v2-action,
+  .v2-action-group {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.v2-action {
+  width: var(--action-size);
+  height: var(--action-size);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-primary-text-1);
+  background-color: var(--c-primary-2);
+
+  &[data-disabled],
+  &[data-disabled]:hover,
+  &[data-disabled]:active {
+    color: var(--c-primary-disabled-text);
+    background-color: var(--c-primary-disabled);
+  }
+
+  &:not([data-disabled]):hover {
+    background-color: var(--c-primary-2-hover);
+    cursor: pointer;
+  }
+  &:not([data-disabled]):active {
+    background-color: var(--c-primary-2-active);
+    cursor: pointer;
+  }
+}
+
+.v2-action-group {
+  display: flex;
+  gap: var(--unit);
+
+  &[data-orientation='horizontal'] {
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  &[data-orientation='vertical'] {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

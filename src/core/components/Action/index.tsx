@@ -2,11 +2,12 @@ import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { ActionGroup } from '@/core/components/Action/Group';
-import { UnstyledButton } from '@/core/components/UnstyledButton';
+import { UnstyledButton } from '@/core/components';
 
 interface ActionProps {
   icon: React.ReactNode;
   label: string;
+  disabled?: boolean | undefined;
 }
 
 interface ActionComponents {
@@ -22,15 +23,17 @@ type ActionFactory = Factory.Config<{
 }>;
 
 const Action = factory<ActionFactory>((props, ref) => {
-  const { icon, label, className, ...forwardedProps } = props;
+  const { icon, label, disabled, className, ...forwardedProps } = props;
 
   return (
     <UnstyledButton
       ref={ref}
       {...forwardedProps}
-      children={<div>{icon}</div>}
-      className={clsx('v2-action', className)}
+      data-disabled={disabled}
+      aria-disabled={disabled}
       aria-label={label}
+      className={clsx('v2-action', className)}
+      children={icon}
     />
   );
 });
