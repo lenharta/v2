@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Label } from '@/core/components/Label';
-import { UnstyledButton } from '@/core/components/UnstyledButton';
+import { Label, UnstyledButton } from '@/core/components';
 
 interface AccordionTargetProps {
   value: string;

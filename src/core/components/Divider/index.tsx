@@ -41,4 +41,4 @@ const Divider = factory<DividerFactory>((props, ref) => {
 });
 
 Divider.displayName = '@v2/Divider';
-export { Divider };
+export { Divider, type DividerProps };

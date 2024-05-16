@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Box } from '@/core/components/Box';
-import { factory } from '@/core/factory';
 import { Factory } from '@/types';
+import { factory } from '@/core/factory';
+import { Box } from '@/core/components';
 
 interface AccordionPanelProps {}
 
