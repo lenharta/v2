@@ -12,7 +12,7 @@ type ActionGroupFactory = Factory.Config<{
 }>;
 
 const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
-  const { className, orientation = 'vertical', ...forwardedProps } = props;
+  const { className, orientation = 'horizontal', ...forwardedProps } = props;
   return (
     <Box
       {...forwardedProps}

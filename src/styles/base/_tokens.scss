@@ -1,0 +1,6 @@
+:root {
+  --scale: 1;
+  --unit: calc(0.125rem * var(--scale));
+  --icon-size: 1.5rem;
+  --action-size: calc(var(--unit) * 24);
+}

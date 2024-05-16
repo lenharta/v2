@@ -100,15 +100,51 @@
 }
 
 [data-prefers-mode='light'] {
-  --c-primary-1: hsl(0, 0%, 96%);
-  --c-primary-2: hsl(0, 0%, 93%);
-  --c-primary-3: hsl(0, 0%, 90%);
-  --c-primary-4: hsl(0, 0%, 87%);
+  --c-primary-disabled: hsl(240, 1%, 70%);
+  --c-primary-disabled-text: hsl(240, 1%, 0%, 0.5);
 
-  --c-primary-text-1: hsla(0, 0%, 0%, 0.97);
-  --c-primary-text-2: hsla(0, 0%, 0%, 0.87);
-  --c-primary-text-3: hsla(0, 0%, 0%, 0.67);
-  --c-primary-text-4: hsla(0, 0%, 0%, 0.47);
+  --c-primary-1: hsl(240, 1%, 96%);
+  --c-primary-2: hsl(240, 1%, 93%);
+  --c-primary-3: hsl(240, 1%, 90%);
+  --c-primary-4: hsl(240, 1%, 87%);
+
+  --c-primary-1-hover: hsl(240, 1%, 93%);
+  --c-primary-2-hover: hsl(240, 1%, 90%);
+  --c-primary-3-hover: hsl(240, 1%, 87%);
+  --c-primary-4-hover: hsl(240, 1%, 84%);
+
+  --c-primary-1-active: hsl(240, 1%, 91%);
+  --c-primary-2-active: hsl(240, 1%, 88%);
+  --c-primary-3-active: hsl(240, 1%, 85%);
+  --c-primary-4-active: hsl(240, 1%, 82%);
+
+  --c-primary-text-1: hsla(240, 1%, 0%, 0.97);
+  --c-primary-text-2: hsla(240, 1%, 0%, 0.87);
+  --c-primary-text-3: hsla(240, 1%, 0%, 0.67);
+  --c-primary-text-4: hsla(240, 1%, 0%, 0.57);
+
+  --c-secondary-disabled: hsl(240, 1%, 40%);
+  --c-secondary-disabled-text: hsl(240, 1%, 0%, 0.5);
+
+  --c-secondary-1: hsl(240, 1%, 9%);
+  --c-secondary-2: hsl(240, 1%, 13%);
+  --c-secondary-3: hsl(240, 1%, 17%);
+  --c-secondary-4: hsl(240, 1%, 21%);
+
+  --c-secondary-1-hover: hsl(240, 1%, 13%);
+  --c-secondary-2-hover: hsl(240, 1%, 17%);
+  --c-secondary-3-hover: hsl(240, 1%, 21%);
+  --c-secondary-4-hover: hsl(240, 1%, 25%);
+
+  --c-secondary-1-active: hsl(240, 1%, 15%);
+  --c-secondary-2-active: hsl(240, 1%, 19%);
+  --c-secondary-3-active: hsl(240, 1%, 23%);
+  --c-secondary-4-active: hsl(240, 1%, 27%);
+
+  --c-secondary-text-1: hsla(240, 1%, 100%, 0.97);
+  --c-secondary-text-2: hsla(240, 1%, 100%, 0.87);
+  --c-secondary-text-3: hsla(240, 1%, 100%, 0.67);
+  --c-secondary-text-4: hsla(240, 1%, 100%, 0.57);
 
   --c-red: var(--c-red-light);
   --c-orange: var(--c-orange-light);
@@ -177,15 +213,51 @@
 }
 
 [data-prefers-mode='dark'] {
-  --c-primary-1: hsl(0, 0%, 9%);
-  --c-primary-2: hsl(0, 0%, 13%);
-  --c-primary-3: hsl(0, 0%, 17%);
-  --c-primary-4: hsl(0, 0%, 21%);
+  --c-primary-disabled: hsl(240, 1%, 40%);
+  --c-primary-disabled-text: hsl(240, 1%, 0%, 0.5);
 
-  --c-primary-text-1: hsla(0, 0%, 100%, 0.97);
-  --c-primary-text-2: hsla(0, 0%, 100%, 0.87);
-  --c-primary-text-3: hsla(0, 0%, 100%, 0.67);
-  --c-primary-text-4: hsla(0, 0%, 100%, 0.47);
+  --c-primary-1: hsl(240, 1%, 9%);
+  --c-primary-2: hsl(240, 1%, 13%);
+  --c-primary-3: hsl(240, 1%, 17%);
+  --c-primary-4: hsl(240, 1%, 21%);
+
+  --c-primary-1-hover: hsl(240, 1%, 13%);
+  --c-primary-2-hover: hsl(240, 1%, 17%);
+  --c-primary-3-hover: hsl(240, 1%, 21%);
+  --c-primary-4-hover: hsl(240, 1%, 25%);
+
+  --c-primary-1-active: hsl(240, 1%, 15%);
+  --c-primary-2-active: hsl(240, 1%, 19%);
+  --c-primary-3-active: hsl(240, 1%, 23%);
+  --c-primary-4-active: hsl(240, 1%, 27%);
+
+  --c-primary-text-1: hsla(240, 1%, 100%, 0.97);
+  --c-primary-text-2: hsla(240, 1%, 100%, 0.87);
+  --c-primary-text-3: hsla(240, 1%, 100%, 0.67);
+  --c-primary-text-4: hsla(240, 1%, 100%, 0.57);
+
+  --c-secondary-disabled: hsl(240, 1%, 70%);
+  --c-secondary-disabled-text: hsl(240, 1%, 0%, 0.5);
+
+  --c-secondary-1: hsl(240, 1%, 96%);
+  --c-secondary-2: hsl(240, 1%, 93%);
+  --c-secondary-3: hsl(240, 1%, 90%);
+  --c-secondary-4: hsl(240, 1%, 87%);
+
+  --c-secondary-1-hover: hsl(240, 1%, 93%);
+  --c-secondary-2-hover: hsl(240, 1%, 90%);
+  --c-secondary-3-hover: hsl(240, 1%, 87%);
+  --c-secondary-4-hover: hsl(240, 1%, 84%);
+
+  --c-secondary-1-active: hsl(240, 1%, 91%);
+  --c-secondary-2-active: hsl(240, 1%, 88%);
+  --c-secondary-3-active: hsl(240, 1%, 85%);
+  --c-secondary-4-active: hsl(240, 1%, 82%);
+
+  --c-secondary-text-1: hsla(240, 1%, 0%, 0.97);
+  --c-secondary-text-2: hsla(240, 1%, 0%, 0.87);
+  --c-secondary-text-3: hsla(240, 1%, 0%, 0.67);
+  --c-secondary-text-4: hsla(240, 1%, 0%, 0.57);
 
   --c-red: var(--c-red-dark);
   --c-orange: var(--c-orange-dark);
@@ -254,15 +326,51 @@
 }
 
 [data-prefers-mode='dim'] {
-  --c-primary-1: hsl(0, 0%, 15%);
-  --c-primary-2: hsl(0, 0%, 18%);
-  --c-primary-3: hsl(0, 0%, 21%);
-  --c-primary-4: hsl(0, 0%, 24%);
+  --c-primary-disabled: hsl(240, 1%, 46%);
+  --c-primary-disabled-text: hsl(240, 1%, 0%, 0.5);
 
-  --c-primary-text-1: hsla(0, 0%, 100%, 0.97);
-  --c-primary-text-2: hsla(0, 0%, 100%, 0.87);
-  --c-primary-text-3: hsla(0, 0%, 100%, 0.67);
-  --c-primary-text-4: hsla(0, 0%, 100%, 0.47);
+  --c-primary-1: hsl(240, 1%, 15%);
+  --c-primary-2: hsl(240, 1%, 18%);
+  --c-primary-3: hsl(240, 1%, 21%);
+  --c-primary-4: hsl(240, 1%, 24%);
+
+  --c-primary-1-hover: hsl(240, 1%, 18%);
+  --c-primary-2-hover: hsl(240, 1%, 21%);
+  --c-primary-3-hover: hsl(240, 1%, 24%);
+  --c-primary-4-hover: hsl(240, 1%, 28%);
+
+  --c-primary-1-active: hsl(240, 1%, 20%);
+  --c-primary-2-active: hsl(240, 1%, 23%);
+  --c-primary-3-active: hsl(240, 1%, 26%);
+  --c-primary-4-active: hsl(240, 1%, 30%);
+
+  --c-primary-text-1: hsla(240, 1%, 100%, 0.97);
+  --c-primary-text-2: hsla(240, 1%, 100%, 0.87);
+  --c-primary-text-3: hsla(240, 1%, 100%, 0.67);
+  --c-primary-text-4: hsla(240, 1%, 100%, 0.57);
+
+  --c-secondary-disabled: hsl(240, 1%, 64%);
+  --c-secondary-disabled-text: hsl(240, 1%, 0%, 0.5);
+
+  --c-secondary-1: hsl(240, 1%, 96%);
+  --c-secondary-2: hsl(240, 1%, 93%);
+  --c-secondary-3: hsl(240, 1%, 90%);
+  --c-secondary-4: hsl(240, 1%, 87%);
+
+  --c-secondary-1-hover: hsl(240, 1%, 93%);
+  --c-secondary-2-hover: hsl(240, 1%, 90%);
+  --c-secondary-3-hover: hsl(240, 1%, 87%);
+  --c-secondary-4-hover: hsl(240, 1%, 84%);
+
+  --c-secondary-1-active: hsl(240, 1%, 91%);
+  --c-secondary-2-active: hsl(240, 1%, 88%);
+  --c-secondary-3-active: hsl(240, 1%, 85%);
+  --c-secondary-4-active: hsl(240, 1%, 82%);
+
+  --c-secondary-text-1: hsla(240, 1%, 0%, 0.97);
+  --c-secondary-text-2: hsla(240, 1%, 0%, 0.87);
+  --c-secondary-text-3: hsla(240, 1%, 0%, 0.67);
+  --c-secondary-text-4: hsla(240, 1%, 0%, 0.57);
 
   --c-red: var(--c-red-dim);
   --c-orange: var(--c-orange-dim);
