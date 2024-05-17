@@ -1,0 +1,54 @@
+@use './focus' as focus;
+@use './cursor' as cursor;
+@use './surface' as surface;
+
+[data-prefers-mode='light'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='dim'],
+html[data-prefers-mode='light'],
+html[data-prefers-mode='dark'],
+html[data-prefers-mode='dim'] {
+  @include surface.primary-1-static();
+}
+
+.v2-button {
+  @include cursor.clickable();
+  @include surface.primary-2-clickable();
+}
+
+.v2-action-spacer {
+  @include cursor.default();
+  @include surface.primary-2-static();
+}
+
+.v2-action {
+  @include cursor.selectable();
+  @include surface.primary-2-selectable();
+}
+
+.v2-action-group {
+  @include cursor.selectable();
+  @include surface.primary-1-static();
+}
+
+.v2-action[data-orientation='vertical'][data-selected] {
+  &:before {
+    background-color: var(--c-accent);
+  }
+}
+.v2-action[data-orientation='horizontal'][data-selected] {
+  &:before {
+    background-color: var(--c-accent);
+  }
+}
+
+.v2-action[data-orientation='vertical']:not([data-selected]) {
+  &:before {
+    background-color: transparent;
+  }
+}
+.v2-action[data-orientation='horizontal']:not([data-selected]) {
+  &:before {
+    background-color: transparent;
+  }
+}
