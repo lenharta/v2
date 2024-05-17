@@ -1,14 +1,21 @@
 @use './focus' as focus;
 @use './cursor' as cursor;
+@use './motion' as motion;
 @use './surface' as surface;
 
-[data-prefers-mode='light'],
-[data-prefers-mode='dark'],
-[data-prefers-mode='dim'],
-html[data-prefers-mode='light'],
-html[data-prefers-mode='dark'],
-html[data-prefers-mode='dim'] {
+html,
+body,
+#root {
   @include surface.primary-1-static();
+}
+
+.v2-page,
+.v2-main {
+  @include surface.primary-1-static();
+}
+
+.v2-hero {
+  @include surface.primary-2-static();
 }
 
 .v2-button {
@@ -31,24 +38,28 @@ html[data-prefers-mode='dim'] {
   @include surface.primary-1-static();
 }
 
-.v2-action[data-orientation='vertical'][data-selected] {
-  &:before {
-    background-color: var(--c-accent);
-  }
-}
-.v2-action[data-orientation='horizontal'][data-selected] {
-  &:before {
-    background-color: var(--c-accent);
-  }
+.v2-action[data-selected]:before,
+.v2-action:not([data-selected]):before {
+  @include motion.color-static;
+  transition-duration: 400ms;
 }
 
-.v2-action[data-orientation='vertical']:not([data-selected]) {
-  &:before {
-    background-color: transparent;
-  }
+.v2-action[data-orientation='vertical'][data-selected]:before {
+  background-color: var(--c-accent);
 }
-.v2-action[data-orientation='horizontal']:not([data-selected]) {
-  &:before {
-    background-color: transparent;
-  }
+
+.v2-action[data-orientation='horizontal'][data-selected]:before {
+  background-color: var(--c-accent);
+}
+
+.v2-action[data-orientation='vertical']:not([data-selected]):before {
+  background-color: transparent;
+}
+
+.v2-action[data-orientation='horizontal']:not([data-selected]):before {
+  background-color: transparent;
+}
+
+.v2-menu-grid-cell {
+  background-color: var(--c-accent);
 }

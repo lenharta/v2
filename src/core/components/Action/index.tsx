@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { ActionGroup } from '@/core/components/Action/Group';
-import { UnstyledButton } from '@/core/components';
 import { ActionSpacer } from './Spacer';
+import { UnstyledButton } from '@/core/components';
 import { useActionContext } from './context';
 
 interface ActionProps {
@@ -53,14 +53,14 @@ const Action = factory<ActionFactory>((props, ref) => {
       {...forwardedProps}
       id={uid || undefined}
       aria-label={label}
-      aria-orientation={ctx.orientation}
-      data-orientation={ctx.orientation}
       aria-disabled={isDisabledValue || undefined}
-      data-disabled={isDisabledValue || undefined}
       aria-selected={(isValueGroup && isSelectedValue) || undefined}
       data-selected={(isValueGroup && isSelectedValue) || undefined}
+      data-disabled={isDisabledValue || undefined}
+      data-orientation={ctx.orientation}
       className={clsx('v2-action', className)}
       children={icon}
+      value={value}
       title={label}
       ref={ref}
     />

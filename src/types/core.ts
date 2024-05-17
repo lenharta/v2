@@ -184,7 +184,7 @@ export declare namespace Core {
     placement: FloatingPlacement;
   };
 
-  export type FloatingProps = {
+  export type FloatingOptions = {
     opened?: boolean | undefined;
     offset: number | FloatingAxis;
     placement: FloatingPlacement;

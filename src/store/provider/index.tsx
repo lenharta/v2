@@ -4,7 +4,7 @@ import { useStorage } from '@/hooks';
 import { useStoreReducer } from '@/store/hooks';
 import { StoreStateContext } from '@/store/context/state';
 import { StoreDispatchContext } from '@/store/context/dispatch';
-import { globalAttributes, initialStore } from '@/store/constants';
+import { lookupThemeAttributes, initialStore } from '@/store/constants';
 import { createRandomId, objectKeys } from '@/utils';
 
 function StoreProvider(props: { children: React.ReactNode }) {
@@ -29,8 +29,8 @@ function StoreProvider(props: { children: React.ReactNode }) {
   React.useEffect(() => {
     const rootElement = document.getElementsByTagName('html')[0]!;
 
-    objectKeys(globalAttributes).forEach((key) => {
-      rootElement.setAttribute(globalAttributes[key], store[key]);
+    objectKeys(lookupThemeAttributes).forEach((key) => {
+      rootElement.setAttribute(lookupThemeAttributes[key], store[key]);
     });
   }, [store]);
 

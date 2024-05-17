@@ -1,25 +1,28 @@
-import clsx from 'clsx';
-import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { Box } from '@/core/components';
+import React from 'react';
+import { MenuGrid } from './MenuGrid';
+import { MenuPanel } from './MenuPanel';
+import { MenuTarget } from './MenuTarget';
 
 interface MenuProps {}
 
-type MenuFactory = Factory.Config<{
-  ref: HTMLDivElement;
-  comp: 'div';
-  props: MenuProps;
-  omits: 'children';
-}>;
+type MenuComponent = React.FC<MenuProps> & {
+  Target: typeof MenuTarget;
+  Panel: typeof MenuPanel;
+  Grid: typeof MenuGrid;
+};
 
-const Menu = factory<MenuFactory>((props, ref) => {
-  const { className, ...forwardedProps } = props;
+const Menu: MenuComponent = (props) => {
+  const {} = props;
   return (
-    <Box {...forwardedProps} ref={ref} component="div" className={clsx('v2-menu', className)}>
-      <span>Menu</span>
-    </Box>
+    <React.Fragment>
+      <Menu.Target children={<Menu.Grid />} />
+      <Menu.Panel />
+    </React.Fragment>
   );
-});
+};
 
+Menu.Grid = MenuGrid;
+Menu.Panel = MenuPanel;
+Menu.Target = MenuTarget;
 Menu.displayName = '@v2/Menu';
 export { Menu, type MenuProps };

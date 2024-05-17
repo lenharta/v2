@@ -1,4 +1,12 @@
-export enum ACCENT {
+import { Icons } from '@/core';
+
+export enum GlobalThemeKey {
+  accent = 'accent',
+  mode = 'mode',
+  dir = 'dir',
+}
+
+export enum GlobalAccentColors {
   red = 'red',
   orange = 'orange',
   yellow = 'yellow',
@@ -13,7 +21,7 @@ export enum ACCENT {
   brown = 'brown',
 }
 
-export enum LANGUAGE {
+export enum GlobalLanguageCodes {
   en = 'english',
   es = 'spanish',
   fr = 'french',
@@ -24,15 +32,33 @@ export enum LANGUAGE {
   ko = 'korean',
 }
 
-export enum DIR {
+export enum GlobalWritingModes {
   ltr = 'ltr',
   rtl = 'rtl',
 }
 
-export enum MODE {
+export enum GlobalThemeModes {
   light = 'light',
   dark = 'dark',
   dim = 'dim',
+}
+
+export enum GlobalRoutePaths {
+  home = '/',
+  experience = '/experience',
+  projects = '/projects',
+  toolbox = '/toolbox',
+  sandbox = '/sandbox',
+  settings = '/settings',
+}
+
+export enum GlobalRouteIcons {
+  home = 'home',
+  experience = 'work',
+  projects = 'project',
+  toolbox = 'toolbox',
+  sandbox = 'stack',
+  settings = 'settings',
 }
 
 export declare namespace App {
@@ -41,20 +67,19 @@ export declare namespace App {
   export type StorageAttributes = 'dir' | 'mode' | 'accent';
 
   export type Store = {
-    dir: DIR;
-    mode: MODE;
-    lang: LANGUAGE;
-    accent: ACCENT;
+    dir: GlobalWritingModes;
+    mode: GlobalThemeModes;
+    lang: GlobalLanguageCodes;
+    accent: GlobalAccentColors;
     error?: string | undefined;
     query?: string | undefined;
     session?: string | undefined;
     loading?: boolean | undefined;
-    // storage?: Middleware | undefined;
-    // location?: Location<any> | undefined;
     menuOpen?: boolean | undefined;
+    transition?: boolean | undefined;
     splashOpen?: boolean | undefined;
     searchOpen?: boolean | undefined;
-    transition?: boolean | undefined;
+    sidebarOpen?: boolean | undefined;
     nonce: () => string;
   };
 

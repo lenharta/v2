@@ -3,7 +3,17 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import './styles/index.scss';
-import { Overview, Root } from './routes';
+
+import {
+  Contact,
+  Experience,
+  Overview,
+  Projects,
+  Root,
+  Sandbox,
+  Settings,
+  Toolbox,
+} from '@/routes';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +25,36 @@ const router = createBrowserRouter([
         index: true,
         element: <Overview />,
         errorElement: <Overview.Error />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
+        errorElement: <Contact.Error />,
+      },
+      {
+        path: '/experience',
+        element: <Experience />,
+        errorElement: <Experience.Error />,
+      },
+      {
+        path: '/projects',
+        element: <Projects />,
+        errorElement: <Projects.Error />,
+      },
+      {
+        path: '/sandbox',
+        element: <Sandbox />,
+        errorElement: <Sandbox.Error />,
+      },
+      {
+        path: '/settings',
+        element: <Settings />,
+        errorElement: <Settings.Error />,
+      },
+      {
+        path: '/toolbox',
+        element: <Toolbox />,
+        errorElement: <Toolbox.Error />,
       },
     ],
   },
