@@ -97,6 +97,38 @@
   --hsl-brown-light: 34, 27%, 50%;
   --hsl-brown-dark: 34, 29%, 54%;
   --hsl-brown-dim: 34, 29%, 54%;
+
+  --c-info-light: #009ec1;
+  --c-info-dark: #99deea;
+  --c-info-dim: #00bde3;
+
+  --hsl-info-light: 191, 100%, 38%;
+  --hsl-info-dark: 189, 66%, 76%;
+  --hsl-info-dim: 190, 100%, 45%;
+
+  --c-error-light: #b50909;
+  --c-error-dark: #f39268;
+  --c-error-dim: #d54309;
+
+  --hsl-error-light: 0, 91%, 37%;
+  --hsl-error-dark: 18, 85%, 68%;
+  --hsl-error-dim: 17, 92%, 44%;
+
+  --c-warning-light: #e5a000;
+  --c-warning-dark: #fee685;
+  --c-warning-dim: #ffbe2e;
+
+  --hsl-warning-light: 42, 100%, 45%;
+  --hsl-warning-dark: 48, 98%, 76%;
+  --hsl-warning-dim: 41, 100%, 59%;
+
+  --c-success-light: #008817;
+  --c-success-dark: #70e17b;
+  --c-success-dim: #00a91c;
+
+  --hsl-success-light: 130, 100%, 27%;
+  --hsl-success-dark: 126, 65%, 66%;
+  --hsl-success-dim: 130, 100%, 33%;
 }
 
 [data-prefers-mode='light'] {
@@ -145,6 +177,31 @@
   --c-secondary-text-2: hsla(240, 1%, 100%, 0.87);
   --c-secondary-text-3: hsla(240, 1%, 100%, 0.67);
   --c-secondary-text-4: hsla(240, 1%, 100%, 0.57);
+
+  --c-info: var(--c-info-light);
+  --c-error: var(--c-error-light);
+  --c-warning: var(--c-warning-light);
+  --c-success: var(--c-success-light);
+
+  --c-info-A100: hsla(var(--hsl-info-light), 0.1);
+  --c-error-A100: hsla(var(--hsl-error-light), 0.1);
+  --c-warning-A100: hsla(var(--hsl-warning-light), 0.1);
+  --c-success-A100: hsla(var(--hsl-success-light), 0.1);
+
+  --c-info-A300: hsla(var(--hsl-info-light), 0.3);
+  --c-error-A300: hsla(var(--hsl-error-light), 0.3);
+  --c-warning-A300: hsla(var(--hsl-warning-light), 0.3);
+  --c-success-A300: hsla(var(--hsl-success-light), 0.3);
+
+  --c-info-A500: hsla(var(--hsl-info-light), 0.5);
+  --c-error-A500: hsla(var(--hsl-error-light), 0.5);
+  --c-warning-A500: hsla(var(--hsl-warning-light), 0.5);
+  --c-success-A500: hsla(var(--hsl-success-light), 0.5);
+
+  --c-info-A700: hsla(var(--hsl-info-light), 0.7);
+  --c-error-A700: hsla(var(--hsl-error-light), 0.7);
+  --c-warning-A700: hsla(var(--hsl-warning-light), 0.7);
+  --c-success-A700: hsla(var(--hsl-success-light), 0.7);
 
   --c-red: var(--c-red-light);
   --c-orange: var(--c-orange-light);
@@ -259,6 +316,31 @@
   --c-secondary-text-3: hsla(240, 1%, 0%, 0.67);
   --c-secondary-text-4: hsla(240, 1%, 0%, 0.57);
 
+  --c-info: var(--c-info-dark);
+  --c-error: var(--c-error-dark);
+  --c-warning: var(--c-warning-dark);
+  --c-success: var(--c-success-dark);
+
+  --c-info-A100: hsla(var(--hsl-info-dark), 0.1);
+  --c-error-A100: hsla(var(--hsl-error-dark), 0.1);
+  --c-warning-A100: hsla(var(--hsl-warning-dark), 0.1);
+  --c-success-A100: hsla(var(--hsl-success-dark), 0.1);
+
+  --c-info-A300: hsla(var(--hsl-info-dark), 0.3);
+  --c-error-A300: hsla(var(--hsl-error-dark), 0.3);
+  --c-warning-A300: hsla(var(--hsl-warning-dark), 0.3);
+  --c-success-A300: hsla(var(--hsl-success-dark), 0.3);
+
+  --c-info-A500: hsla(var(--hsl-info-dark), 0.5);
+  --c-error-A500: hsla(var(--hsl-error-dark), 0.5);
+  --c-warning-A500: hsla(var(--hsl-warning-dark), 0.5);
+  --c-success-A500: hsla(var(--hsl-success-dark), 0.5);
+
+  --c-info-A700: hsla(var(--hsl-info-dark), 0.7);
+  --c-error-A700: hsla(var(--hsl-error-dark), 0.7);
+  --c-warning-A700: hsla(var(--hsl-warning-dark), 0.7);
+  --c-success-A700: hsla(var(--hsl-success-dark), 0.7);
+
   --c-red: var(--c-red-dark);
   --c-orange: var(--c-orange-dark);
   --c-yellow: var(--c-yellow-dark);
@@ -371,6 +453,31 @@
   --c-secondary-text-2: hsla(240, 1%, 0%, 0.87);
   --c-secondary-text-3: hsla(240, 1%, 0%, 0.67);
   --c-secondary-text-4: hsla(240, 1%, 0%, 0.57);
+
+  --c-info: var(--c-info-dim);
+  --c-error: var(--c-error-dim);
+  --c-warning: var(--c-warning-dim);
+  --c-success: var(--c-success-dim);
+
+  --c-info-A100: hsla(var(--hsl-info-dim), 0.1);
+  --c-error-A100: hsla(var(--hsl-error-dim), 0.1);
+  --c-warning-A100: hsla(var(--hsl-warning-dim), 0.1);
+  --c-success-A100: hsla(var(--hsl-success-dim), 0.1);
+
+  --c-info-A300: hsla(var(--hsl-info-dim), 0.3);
+  --c-error-A300: hsla(var(--hsl-error-dim), 0.3);
+  --c-warning-A300: hsla(var(--hsl-warning-dim), 0.3);
+  --c-success-A300: hsla(var(--hsl-success-dim), 0.3);
+
+  --c-info-A500: hsla(var(--hsl-info-dim), 0.5);
+  --c-error-A500: hsla(var(--hsl-error-dim), 0.5);
+  --c-warning-A500: hsla(var(--hsl-warning-dim), 0.5);
+  --c-success-A500: hsla(var(--hsl-success-dim), 0.5);
+
+  --c-info-A700: hsla(var(--hsl-info-dim), 0.7);
+  --c-error-A700: hsla(var(--hsl-error-dim), 0.7);
+  --c-warning-A700: hsla(var(--hsl-warning-dim), 0.7);
+  --c-success-A700: hsla(var(--hsl-success-dim), 0.7);
 
   --c-red: var(--c-red-dim);
   --c-orange: var(--c-orange-dim);

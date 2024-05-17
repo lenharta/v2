@@ -1,3 +1,9 @@
+.v2-text,
+.v2-title {
+  font-family: var(--ff);
+  font-weight: var(--fw-3);
+}
+
 .v2-action-group {
   gap: var(--unit);
   display: flex;

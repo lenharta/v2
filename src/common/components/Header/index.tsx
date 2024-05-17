@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { Action, Box, Icon } from '@/core/components';
+import { Menu } from '@/common/components';
 
 interface HeaderProps {}
 
@@ -17,7 +18,7 @@ const Header = factory<HeaderFactory>((props, ref) => {
   return (
     <Box {...forwardedProps} ref={ref} component="header" className={clsx('v2-header', className)}>
       <Action.Group>
-        <Action label="menu target" icon={<Icon name="menu" />} />
+        <Menu />
         <Action.Spacer />
         <Action label="search target" icon={<Icon name="search" />} />
         <Action label="logo link" icon={<Icon name="account" />} />

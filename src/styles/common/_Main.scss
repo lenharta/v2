@@ -7,6 +7,13 @@
 }
 
 .v2-main {
-  color: var(--c-primary-text-1);
-  background-color: var(--c-primary-1);
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  @media (min-width: 60em) {
+    width: calc(100% - var(--action-box));
+  }
 }

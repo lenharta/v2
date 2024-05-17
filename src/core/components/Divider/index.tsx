@@ -32,6 +32,7 @@ const Divider = factory<DividerFactory>((props, ref) => {
       data-orientation={orientation}
       aria-orientation={orientation}
       className={clsx('v2-divider', className)}
+      role="separator"
       ref={ref}
     >
       {label && <Label component="span" data-position={position} children={label} />}
