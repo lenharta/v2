@@ -27,13 +27,11 @@ function StoreProvider(props: { children: React.ReactNode }) {
   }, []);
 
   React.useEffect(() => {
-    const root = document.getElementById('root')!;
-    const attributes = objectKeys(globalAttributes);
+    const rootElement = document.getElementsByTagName('html')[0]!;
 
-    attributes.forEach((key) => {
-      root.setAttribute(globalAttributes[key], store[key]);
+    objectKeys(globalAttributes).forEach((key) => {
+      rootElement.setAttribute(globalAttributes[key], store[key]);
     });
-    console.log(store);
   }, [store]);
 
   return (

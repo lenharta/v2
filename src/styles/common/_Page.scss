@@ -9,7 +9,12 @@
 .v2-page {
   width: 100%;
   display: block;
-
   color: var(--c-primary-text-1);
   background-color: var(--c-primary-1);
+
+  @media (min-width: 60em) {
+    width: calc(100% - var(--action-box));
+    margin-top: var(--action-box);
+    margin-left: var(--action-box);
+  }
 }

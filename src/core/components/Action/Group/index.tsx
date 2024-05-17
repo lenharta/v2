@@ -1,9 +1,15 @@
 import clsx from 'clsx';
-import { Box } from '@/core/components/Box';
+import React from 'react';
+import { Box } from '@/core/components';
 import { factory } from '@/core/factory';
 import { Core, Factory } from '@/types';
+import { ActionProvider } from '../context';
 
-interface ActionGroupProps extends Core.GroupProps {}
+interface ActionGroupProps {
+  value?: string | undefined;
+  disabled?: boolean | undefined;
+  orientation?: Core.Orientation | undefined;
+}
 
 type ActionGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -12,15 +18,21 @@ type ActionGroupFactory = Factory.Config<{
 }>;
 
 const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
-  const { className, orientation = 'horizontal', ...forwardedProps } = props;
+  const { value, className, disabled, orientation = 'horizontal', ...forwardedProps } = props;
+
+  const uid = React.useId();
+  const getActionId = () => `action${uid}item`;
+
   return (
-    <Box
-      {...forwardedProps}
-      className={clsx('v2-action-group', className)}
-      data-orientation={orientation}
-      aria-orientation={orientation}
-      ref={ref}
-    />
+    <ActionProvider value={{ value, orientation, disabled, getActionId }}>
+      <Box
+        {...forwardedProps}
+        className={clsx('v2-action-group', className)}
+        data-orientation={orientation}
+        aria-orientation={orientation}
+        ref={ref}
+      />
+    </ActionProvider>
   );
 });
 

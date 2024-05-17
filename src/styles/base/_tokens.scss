@@ -1,6 +1,37 @@
 :root {
   --scale: 1;
   --unit: calc(0.125rem * var(--scale));
-  --icon-size: 1.5rem;
-  --action-size: calc(var(--unit) * 24);
+  --gutter: calc(var(--unit) * 12);
+
+  --ff: 'Satoshi';
+
+  --fw-1: 300;
+  --fw-2: 400;
+  --fw-3: 500;
+  --fw-4: 600;
+  --fw-5: 700;
+
+  --fz-1: calc(var(--unit) * 6);
+  --fz-2: calc(var(--unit) * 8);
+  --fz-3: calc(var(--unit) * 10);
+  --fz-4: calc(var(--unit) * 12);
+  --fz-5: calc(var(--unit) * 14);
+  --fz-6: calc(var(--unit) * 16);
+  --fz-7: calc(var(--unit) * 18);
+  --fz-8: calc(var(--unit) * 20);
+  --fz-9: calc(var(--unit) * 22);
+  --fz-10: calc(var(--unit) * 24);
+  --fz-11: calc(var(--unit) * 26);
+  --fz-12: calc(var(--unit) * 28);
+  --fz-13: calc(var(--unit) * 30);
+  --fz-14: calc(var(--unit) * 32);
+  --fz-15: calc(var(--unit) * 34);
+  --fz-16: calc(var(--unit) * 36);
+
+  --action-box: calc(var(--unit) * 28);
+  --action-size: calc(var(--unit) * 26);
+
+  --icon-size-sm: calc(var(--unit) * 16);
+  --icon-size-md: calc(var(--unit) * 20);
+  --icon-size-lg: calc(var(--unit) * 24);
 }

@@ -1,0 +1,40 @@
+@mixin default() {
+  cursor: default;
+  &:hover,
+  &:active {
+    cursor: default;
+  }
+}
+
+@mixin clickable() {
+  &[data-disabled],
+  &[data-disabled]:hover,
+  &[data-disabled]:active {
+    cursor: not-allowed;
+  }
+  &:not([data-disabled]) {
+    cursor: default;
+  }
+  &:not([data-disabled]):hover,
+  &:not([data-disabled]):active {
+    cursor: pointer;
+  }
+}
+
+@mixin selectable() {
+  &[data-disabled],
+  &[data-disabled]:hover,
+  &[data-disabled]:active {
+    cursor: not-allowed;
+  }
+  &:not([data-disabled])[data-selected],
+  &:not([data-disabled]):not([data-selected]) {
+    cursor: default;
+  }
+  &:not([data-disabled])[data-selected]:hover,
+  &:not([data-disabled])[data-selected]:active,
+  &:not([data-disabled]):not([data-selected]):hover,
+  &:not([data-disabled]):not([data-selected]):active {
+    cursor: pointer;
+  }
+}
