@@ -1,5 +1,3 @@
-import { Icons } from '@/core';
-
 export enum GlobalThemeKey {
   accent = 'accent',
   mode = 'mode',
