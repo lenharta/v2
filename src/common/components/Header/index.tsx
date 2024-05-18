@@ -1,16 +1,16 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { Menu, Search } from '@/common/components';
 import { Action, Box, Icon } from '@/core/components';
-import { Menu } from '@/common/components';
 
 interface HeaderProps {}
 
 type HeaderFactory = Factory.Config<{
   ref: HTMLElement;
   comp: 'header';
-  props: HeaderProps;
   omits: 'children';
+  props: HeaderProps;
 }>;
 
 const Header = factory<HeaderFactory>((props, ref) => {
@@ -20,7 +20,7 @@ const Header = factory<HeaderFactory>((props, ref) => {
       <Action.Group>
         <Menu />
         <Action.Spacer />
-        <Action label="search target" icon={<Icon name="search" />} />
+        <Search />
         <Action label="logo link" icon={<Icon name="account" />} />
       </Action.Group>
     </Box>

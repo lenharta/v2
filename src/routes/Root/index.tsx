@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { RootError } from './error';
 import { StoreProvider } from '@/store';
-import { Header, Sidebar } from '@/common';
+import { Header, Sidebar, InteractionProvider } from '@/common';
 
 type Component = React.FC<{}> & {
   Error: typeof RootError;
@@ -11,9 +11,11 @@ type Component = React.FC<{}> & {
 const Root: Component = ({}) => {
   return (
     <StoreProvider>
-      <Header />
-      <Sidebar />
-      <Outlet />
+      <InteractionProvider>
+        <Header />
+        <Sidebar />
+        <Outlet />
+      </InteractionProvider>
     </StoreProvider>
   );
 };

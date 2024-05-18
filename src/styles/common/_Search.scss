@@ -7,6 +7,15 @@
 }
 
 .v2-search {
-  color: var(--c-primary-text-1);
-  background-color: var(--c-primary-1);
+  gap: var(--unit);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.v2-search-input {
+  height: var(--action-size);
+  padding-inline: var(--gutter);
+  display: flex;
 }

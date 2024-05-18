@@ -154,7 +154,7 @@ export declare namespace Core {
   export type FloatingDir = 'ltr' | 'rtl';
   export type FloatingSide = Side;
   export type FloatingAlign = Align;
-  export type FloatingWidth = 'target' | string | number | null;
+  export type FloatingWidth = 'target' | React.CSSProperties['width'] | null;
   export type FloatingStrategy = 'absolute' | 'fixed';
   export type FloatingPlacement = FloatingSide | `${FloatingSide}-${FloatingAlign}`;
 

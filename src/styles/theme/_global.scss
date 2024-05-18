@@ -63,3 +63,8 @@ body,
 .v2-menu-grid-cell {
   background-color: var(--c-accent);
 }
+
+.v2-search-input {
+  @include cursor.clickable();
+  @include surface.primary-2-clickable();
+}
