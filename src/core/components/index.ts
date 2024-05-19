@@ -5,6 +5,8 @@ export * from './Button';
 export * from './Checkbox';
 export * from './Control';
 export * from './Divider';
+export * from './Floating';
+export * from './Icon';
 export * from './Icon';
 export * from './Image';
 export * from './InlineInput';

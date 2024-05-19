@@ -1,29 +1,34 @@
 import { Core } from '@/types';
+import { FloatingPlacement } from './types';
 import { createSafeContext } from '@/core/utils';
 
+type FloatingType = React.RefObject<HTMLDivElement>;
+type ReferenceType = React.RefObject<HTMLElement>;
+
 type FloatingContextValue = {
-  // x: number;
-  // y: number;
-  // open: boolean;
-  // width?: Core.FloatingWidth | undefined;
-  // zIndex?: string | number | undefined;
-  // variant?: string | undefined;
-  // disabled?: boolean | undefined;
-  // placement: Core.FloatingPlacement;
-  // withRoles?: boolean | undefined;
-  // keepMounted?: boolean | undefined;
-  // closeOnEscape?: boolean | undefined;
-  // targetProps: Record<string, any>;
-  // getDropdownId: () => string;
-  // getTargetId: () => string;
-  // reference: (node: HTMLElement) => void;
-  // floating: (node: HTMLElement) => void;
-  // onToggle: () => void | undefined;
-  // onClose?: () => void | undefined;
+  isOpen: boolean;
+  onChange: (isOpen: boolean) => void;
+  getBoxId: () => string;
+  getTargetId: () => string;
+  floatingStyles: React.CSSProperties;
+  transitionProps?: Partial<Core.TransitionProps> | undefined;
+  placement: FloatingPlacement;
+  refs: {
+    floating: React.RefObject<HTMLDivElement> | null;
+    reference: React.RefObject<HTMLElement> | null;
+    // setReference: (node: HTMLElement | null) => void;
+    // setFloating: (node: HTMLDivElement | null) => void;
+  };
 };
 
 const [FloatingProvider, useFloatingContext] = createSafeContext<FloatingContextValue>(
   'Popover component was not found in the tree'
 );
 
-export { FloatingProvider, useFloatingContext, type FloatingContextValue };
+export {
+  FloatingProvider,
+  useFloatingContext,
+  type FloatingType,
+  type ReferenceType,
+  type FloatingContextValue,
+};

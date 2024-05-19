@@ -6,6 +6,7 @@ import './styles/index.scss';
 
 import {
   Contact,
+  Demo,
   Experience,
   Overview,
   Projects,
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
         index: true,
         element: <Overview />,
         errorElement: <Overview.Error />,
+      },
+      {
+        path: '/demo',
+        element: <Demo />,
+        errorElement: <Demo.Error />,
       },
       {
         path: '/contact',
