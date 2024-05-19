@@ -1,9 +1,13 @@
 import clsx from 'clsx';
-import { Box } from '@/core/components/Box';
-import { factory } from '@/core/factory';
 import { Factory } from '@/types';
+import { factory } from '@/core/factory';
+import { useMergeRefs } from '@/hooks';
+import { Box, Transition } from '@/core/components';
+import { useFloatingContext } from '../context';
 
-interface FloatingBoxProps {}
+interface FloatingBoxProps {
+  style?: React.CSSProperties | undefined;
+}
 
 type FloatingBoxFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -12,13 +16,26 @@ type FloatingBoxFactory = Factory.Config<{
 }>;
 
 const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
-  const { className, ...forwardedProps } = props;
+  const { className, style, ...forwardedProps } = props;
+
+  const ctx = useFloatingContext();
+  const refs = useMergeRefs(ref, ctx.refs.floating);
+
   return (
-    <Box {...forwardedProps} ref={ref} className={clsx('v2-floating-box', className)}>
-      <span>Floating Box</span>
-    </Box>
+    <Transition {...ctx.transitionProps} mounted={ctx.isOpen}>
+      {(transitionStyles) => (
+        <Box
+          {...forwardedProps}
+          className={clsx('v2-floating-box', className)}
+          style={{ ...style, ...transitionStyles, ...ctx.floatingStyles }}
+          ref={refs}
+        >
+          <span>Floating Box</span>
+        </Box>
+      )}
+    </Transition>
   );
 });
 
 FloatingBox.displayName = '@v2/Floating.Box';
-export { FloatingBox };
+export { FloatingBox, type FloatingBoxProps };
