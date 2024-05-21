@@ -24,3 +24,19 @@
     }
   }
 }
+
+.v2-sidebar-select-target {
+  position: relative;
+}
+
+.v2-sidebar-select-drawer {
+  // border: solid var(--unit) palegoldenrod;
+  gap: var(--unit);
+  padding-inline: var(--unit);
+  position: absolute;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}

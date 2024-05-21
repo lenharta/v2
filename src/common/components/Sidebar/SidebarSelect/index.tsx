@@ -1,15 +1,18 @@
 import React from 'react';
-import { Icon } from '@/core';
+import { Floating, Icons } from '@/core';
 import { SidebarSelectTarget } from '../SidebarSelectTarget';
 import { SidebarSelectDrawer } from '../SidebarSelectDrawer';
 import { SidebarSelectOption } from '../SidebarSelectOption';
-import { useStoreDispatch, useStoreState } from '@/store';
 
 interface SidebarSelectProps {
-  icon: string;
+  icon: keyof typeof Icons;
   label: string;
   value: string;
-  selected?: boolean | undefined;
+  items: {
+    label: string;
+    value: string;
+    icon: keyof typeof Icons;
+  }[];
 }
 
 type SidebarSelectComponent = React.FC<SidebarSelectProps> & {
@@ -19,19 +22,16 @@ type SidebarSelectComponent = React.FC<SidebarSelectProps> & {
 };
 
 const SidebarSelect: SidebarSelectComponent = (props) => {
-  const { icon, label, value, selected } = props;
-  const dispatch = useStoreDispatch();
-  const store = useStoreState();
+  const { icon, label, value, items } = props;
+  const [open, setOpen] = React.useState<boolean>(false);
+
+  console.log(open);
 
   return (
-    <React.Fragment>
-      <SidebarSelect.Target label={label} value={value} icon={icon} selected={selected} />
-      <SidebarSelect.Drawer>
-        <SidebarSelect.Option children={<Icon name="account" />} />
-        <SidebarSelect.Option children={<Icon name="account" />} />
-        <SidebarSelect.Option children={<Icon name="account" />} />
-      </SidebarSelect.Drawer>
-    </React.Fragment>
+    <Floating isOpen={open} onChange={setOpen} placement="right-start">
+      <SidebarSelect.Target label={label} value={value} icon={icon} />
+      <SidebarSelect.Drawer items={items} />
+    </Floating>
   );
 };
 
