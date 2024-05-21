@@ -1,14 +1,14 @@
 import React from 'react';
-import { Core } from '@/types';
+import { UseFloatingConfig } from '../../Floating.types';
 import { autoUpdate } from '@floating-ui/react';
 import { useDidUpdate } from '@/hooks';
 
-function useFloatingUpdate(props: Core.FloatingPayload) {
-  const { opened, floating, placement, placementDependencies } = props;
+const useFloatingUpdate = (config: UseFloatingConfig) => {
+  const { floating, open, placement, placementDependencies } = config;
   const [delayedUpdate, setDelayedUpdate] = React.useState(0);
 
   React.useEffect(() => {
-    if (floating.refs.reference.current && floating.refs.floating.current) {
+    if (floating.refs.floating.current && floating.refs.floating.current) {
       return autoUpdate(
         floating.refs.reference.current,
         floating.refs.floating.current,
@@ -17,11 +17,11 @@ function useFloatingUpdate(props: Core.FloatingPayload) {
     }
     return undefined;
   }, [
-    floating.refs.floating.current,
     floating.refs.reference.current,
-    delayedUpdate,
+    floating.refs.floating.current,
     placement,
-    opened,
+    delayedUpdate,
+    open,
   ]);
 
   useDidUpdate(() => {
@@ -29,8 +29,8 @@ function useFloatingUpdate(props: Core.FloatingPayload) {
   }, placementDependencies);
 
   useDidUpdate(() => {
-    setDelayedUpdate((current) => current + 1);
-  }, [opened]);
-}
+    setDelayedUpdate((c) => c + 1);
+  }, [open]);
+};
 
 export { useFloatingUpdate };

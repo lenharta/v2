@@ -2,12 +2,9 @@ import React from 'react';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { useMergeRefs } from '@/hooks';
-import { useFloatingContext } from '../context';
 import { createEventCallback } from '@/utils';
-
-interface FloatingTargetProps {
-  children: React.ReactElement;
-}
+import { useFloatingContext } from '../Floating.context';
+import { FloatingTargetProps } from '../Floating.types';
 
 type FloatingTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -16,23 +13,31 @@ type FloatingTargetFactory = Factory.Config<{
 }>;
 
 const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
-  const { children, ...forwardedProps } = props;
+  const { children, ...otherProps } = props;
 
+  const forwardedProps: any = otherProps;
   const ctx = useFloatingContext();
-  const refs = useMergeRefs(ref, ctx.refs.reference);
+  const refs = useMergeRefs(ctx.reference, (children as any).ref, ref);
 
-  const handleClick = createEventCallback(forwardedProps.onClick, () => {
-    ctx.onChange(!ctx.isOpen);
+  if (!React.isValidElement(children)) {
+    throw new Error(
+      'Popover.Target component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
+    );
+  }
+
+  const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+    if (event.code === 'Enter') {
+      ctx.onChange(ctx.isOpen ? true : false);
+    }
   });
-
-  const handleKeyDown = createEventCallback(forwardedProps.onKeyDown, () => {
-    ctx.onChange(!ctx.isOpen);
+  const handleClick = createEventCallback(otherProps.onClick, () => {
+    ctx.onChange(ctx.isOpen ? true : false);
   });
 
   return React.cloneElement(children, {
     ...forwardedProps,
-    onKeyDown: handleKeyDown,
     onClick: handleClick,
+    onKeyDown: handleKeyDown,
     ref: refs,
   });
 });

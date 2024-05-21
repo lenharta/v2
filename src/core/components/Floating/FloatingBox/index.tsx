@@ -3,11 +3,8 @@ import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { useMergeRefs } from '@/hooks';
 import { Box, Transition } from '@/core/components';
-import { useFloatingContext } from '../context';
-
-interface FloatingBoxProps {
-  style?: React.CSSProperties | undefined;
-}
+import { FloatingBoxProps } from '../Floating.types';
+import { useFloatingContext } from '../Floating.context';
 
 type FloatingBoxFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -16,10 +13,14 @@ type FloatingBoxFactory = Factory.Config<{
 }>;
 
 const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
-  const { className, style, ...forwardedProps } = props;
+  const { className, style, children, ...forwardedProps } = props;
 
   const ctx = useFloatingContext();
-  const refs = useMergeRefs(ref, ctx.refs.floating);
+  const refs = useMergeRefs(ref, ctx.floating);
+
+  if (ctx.disabled) {
+    return null;
+  }
 
   return (
     <Transition {...ctx.transitionProps} mounted={ctx.isOpen}>
@@ -27,10 +28,16 @@ const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
         <Box
           {...forwardedProps}
           className={clsx('v2-floating-box', className)}
-          style={{ ...style, ...transitionStyles, ...ctx.floatingStyles }}
+          style={{
+            ...style,
+            ...transitionStyles,
+            top: ctx.y ?? 0,
+            left: ctx.x ?? 0,
+            width: ctx.width === 'target' ? undefined : (ctx.width as React.CSSProperties['width']),
+          }}
           ref={refs}
         >
-          <span>Floating Box</span>
+          {children}
         </Box>
       )}
     </Transition>

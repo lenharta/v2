@@ -1,18 +1,21 @@
-import { Section } from '@/common';
-import { Box, Button, Floating, Title } from '@/core';
 import React from 'react';
+import { Box, Button, Floating } from '@/core';
+import { Section } from '@/common';
 
 const DemoFloating = () => {
-  const [isOpen, setOpen] = React.useState(true);
+  const [isOpen, setOpen] = React.useState(false);
+
   return (
     <Section>
       <Box className="v2-demo-floating-root">
-        <Floating isOpen={isOpen} onChange={setOpen}>
+        <Floating isOpen={isOpen} onChange={setOpen} placement="right">
           <Floating.Target>
             <Button>Floating Target</Button>
           </Floating.Target>
-          <Floating.Box className="v2-demo-floating-box">
-            <span>Floating Box</span>
+          <Floating.Box>
+            <div className="v2-demo-floating-box">
+              <span>Floating Box</span>
+            </div>
           </Floating.Box>
         </Floating>
       </Box>
