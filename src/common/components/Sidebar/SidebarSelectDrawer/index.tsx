@@ -1,10 +1,16 @@
 import clsx from 'clsx';
 import React from 'react';
 import { Factory } from '@/types';
-import { Box, factory } from '@/core';
+import { Box, Floating, Icons, factory } from '@/core';
+import { SidebarSelectOption } from '../SidebarSelectOption';
 
 interface SidebarSelectDrawerProps {
-  children: React.ReactNode;
+  // children: React.ReactNode;
+  items: {
+    icon: keyof typeof Icons;
+    value: string;
+    label: string;
+  }[];
 }
 
 type SidebarSelectDrawerFactory = Factory.Config<{
@@ -14,15 +20,25 @@ type SidebarSelectDrawerFactory = Factory.Config<{
 }>;
 
 const SidebarSelectDrawer = factory<SidebarSelectDrawerFactory>((props, ref) => {
-  const { className, children, ...forwardedProps } = props;
+  const { className, items, ...forwardedProps } = props;
   return (
-    <Box
-      {...forwardedProps}
-      className={clsx('v2-sidebar-select-drawer', className)}
-      children={children}
-      role="menubar"
-      ref={ref}
-    />
+    <Floating.Box>
+      <Box
+        {...forwardedProps}
+        className={clsx('v2-sidebar-select-drawer', className)}
+        role="menubar"
+        ref={ref}
+      >
+        {items.map((item) => (
+          <SidebarSelectOption
+            label={item.label}
+            value={item.value}
+            icon={item.icon}
+            key={item.value}
+          />
+        ))}
+      </Box>
+    </Floating.Box>
   );
 });
 

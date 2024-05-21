@@ -25,19 +25,22 @@ const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
     );
   }
 
-  const handleKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+  const onKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     if (event.code === 'Enter') {
-      ctx.onChange(ctx.isOpen ? true : false);
+      ctx.onChange(ctx.isOpen);
     }
   });
-  const handleClick = createEventCallback(otherProps.onClick, () => {
-    ctx.onChange(ctx.isOpen ? true : false);
+  const onClick = createEventCallback(otherProps.onClick, (event) => {
+    event.stopPropagation();
+    ctx.onChange(ctx.isOpen);
   });
 
   return React.cloneElement(children, {
     ...forwardedProps,
-    onClick: handleClick,
-    onKeyDown: handleKeyDown,
+    onKeyDown,
+    onClick,
     ref: refs,
   });
 });

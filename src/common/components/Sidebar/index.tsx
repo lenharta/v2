@@ -1,9 +1,16 @@
 import clsx from 'clsx';
 import { factory } from '@/core/factory';
 import { SidebarSelect } from './SidebarSelect';
-import { Action, Box, Icon } from '@/core/components';
+import { Action, Box, Icon, Icons } from '@/core/components';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Factory, GlobalRouteIcons, GlobalRoutePaths } from '@/types';
+import { Factory, GlobalAccentColors, GlobalRouteIcons, GlobalRoutePaths } from '@/types';
+import {
+  lookupThemeModeIcon,
+  lookupWritingModeIcon,
+  useStoreDispatch,
+  useStoreState,
+} from '@/store';
+import { capitalizeString } from '@/utils';
 
 interface SidebarProps {}
 
@@ -21,6 +28,8 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
   const { className, ...forwardedProps } = props;
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useStoreDispatch();
+  const store = useStoreState();
 
   return (
     <Box {...forwardedProps} ref={ref} component="div" className={clsx('v2-sidebar', className)}>
@@ -67,25 +76,39 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
 
         <Action.Spacer />
 
-        <Action
-          value="ltr"
-          label="writing direction control"
-          icon={<Icon name="ltr" />}
+        <Sidebar.Select
           data-sidebar-item
+          label="Writing Direction"
+          value={store.dir}
+          icon={lookupWritingModeIcon[store.dir]}
+          items={[
+            { icon: 'ltr', label: 'Left To Right', value: 'ltr' },
+            { icon: 'rtl', label: ' Right To Left', value: 'rtl' },
+          ]}
         />
 
-        <Action
-          value="dark"
-          label="theme mode control"
-          icon={<Icon name="modeDark" />}
+        <Sidebar.Select
           data-sidebar-item
+          label="Theme Mode"
+          value={store.mode}
+          icon={lookupThemeModeIcon[store.mode]}
+          items={[
+            { icon: 'modeLight', label: 'Light Mode', value: 'light' },
+            { icon: 'modeDark', label: 'Dark Mode', value: 'dark' },
+            { icon: 'modeDim', label: 'Dim Mode', value: 'dim' },
+          ]}
         />
 
-        <Action
-          value="blue"
-          label="accent color control"
-          icon={<Icon name="palette" />}
+        <Sidebar.Select
           data-sidebar-item
+          label="Writing Direction"
+          value={store.dir}
+          icon="palette"
+          items={Object.keys(GlobalAccentColors).map((item) => ({
+            icon: 'circleFilled',
+            value: item,
+            label: capitalizeString(item),
+          }))}
         />
 
         <Action
@@ -100,5 +123,6 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
   );
 });
 
+Sidebar.Select = SidebarSelect;
 Sidebar.displayName = '@v2/Sidebar';
 export { Sidebar, type SidebarProps };

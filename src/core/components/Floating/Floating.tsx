@@ -65,8 +65,6 @@ const Floating: FloatingFactory = (props) => {
     [floating.payload.refs.setFloating]
   );
 
-  console.log(isOpen);
-
   return (
     <React.Fragment>
       <FloatingProvider
