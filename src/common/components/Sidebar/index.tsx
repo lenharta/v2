@@ -10,7 +10,7 @@ import {
   useStoreDispatch,
   useStoreState,
 } from '@/store';
-import { capitalizeString } from '@/utils';
+import { capitalizeString, objectKeys } from '@/utils';
 
 interface SidebarProps {}
 
@@ -101,13 +101,13 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
 
         <Sidebar.Select
           data-sidebar-item
-          label="Writing Direction"
+          label="Accent Color"
           value={store.dir}
           icon="palette"
-          items={Object.keys(GlobalAccentColors).map((item) => ({
-            icon: 'circleFilled',
-            value: item,
+          items={objectKeys(GlobalAccentColors).map((item) => ({
+            icon: 'account',
             label: capitalizeString(item),
+            value: item,
           }))}
         />
 

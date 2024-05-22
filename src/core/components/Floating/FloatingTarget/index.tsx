@@ -32,6 +32,7 @@ const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
       ctx.onChange(ctx.isOpen);
     }
   });
+
   const onClick = createEventCallback(otherProps.onClick, (event) => {
     event.stopPropagation();
     ctx.onChange(ctx.isOpen);

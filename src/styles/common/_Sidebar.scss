@@ -30,9 +30,10 @@
 }
 
 .v2-sidebar-select-drawer {
-  // border: solid var(--unit) palegoldenrod;
   gap: var(--unit);
   padding-inline: var(--unit);
+  max-width: calc(var(--action-box) * 6);
+  flex-wrap: wrap;
   position: absolute;
   width: max-content;
   display: flex;

@@ -1,9 +1,9 @@
+import React from 'react';
 import { useDidUpdate } from '@/hooks';
 import { useFloatingUpdate } from '../use-floating-update';
 import { UseFloatingOptions } from '../../Floating.types';
 import { getFloatingMiddleware } from '../../utils/get-floating-middleware';
 import { useFloating as useFloatingPayload, UseFloatingReturn } from '@floating-ui/react';
-import React from 'react';
 
 const useFloating = <E extends Element = Element>(opts: UseFloatingOptions) => {
   const onClose = React.useCallback(
