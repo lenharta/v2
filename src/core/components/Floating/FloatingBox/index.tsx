@@ -22,19 +22,20 @@ const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
     return null;
   }
 
+  const boxWidth = ctx.width === 'target' ? undefined : (ctx.width as React.CSSProperties['width']);
+  const boxStyles = { top: ctx.y ?? 0, left: ctx.x ?? 0, width: boxWidth };
+
   return (
     <Transition {...ctx.transitionProps} mounted={ctx.isOpen}>
       {(transitionStyles) => (
         <Box
           {...forwardedProps}
+          id={ctx.getBoxId()}
+          role="dialog"
+          style={{ ...style, ...boxStyles, ...transitionStyles }}
           className={clsx('v2-floating-box', className)}
-          style={{
-            ...style,
-            ...transitionStyles,
-            top: ctx.y ?? 0,
-            left: ctx.x ?? 0,
-            width: ctx.width === 'target' ? undefined : (ctx.width as React.CSSProperties['width']),
-          }}
+          aria-labelledby={ctx.getBoxId()}
+          tabIndex={-1}
           ref={refs}
         >
           {children}
