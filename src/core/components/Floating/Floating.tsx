@@ -4,6 +4,7 @@ import { FloatingProps } from './Floating.types';
 import { FloatingTarget } from './FloatingTarget';
 import { FloatingProvider } from './Floating.context';
 import { useFloating } from './hooks';
+import { getFloatingPlacement } from './utils';
 
 type FloatingFactory = React.FC<FloatingProps> & {
   Target: typeof FloatingTarget;
@@ -12,6 +13,7 @@ type FloatingFactory = React.FC<FloatingProps> & {
 
 const Floating: FloatingFactory = (props) => {
   const {
+    dir = 'ltr',
     width = 'max-content',
     offset = 0,
     isOpen,
@@ -41,7 +43,7 @@ const Floating: FloatingFactory = (props) => {
     offset,
     strategy,
     middleware,
-    placement,
+    placement: getFloatingPlacement(dir, placement!),
     placementDependencies,
     onPlacementChange,
     onChange,
@@ -69,19 +71,19 @@ const Floating: FloatingFactory = (props) => {
     <React.Fragment>
       <FloatingProvider
         value={{
-          isOpen,
           width,
+          isOpen,
           disabled,
           onChange: floating.onChange,
           floating: floatingRef,
           reference: referenceRef,
           getBoxId: createBoxId,
           getTargetId: createTargetId,
+          onPlacementChange,
+          placement: floating.payload.placement,
+          placementDependencies,
           x: floating.payload.x!,
           y: floating.payload.y!,
-          placement: floating.payload.placement,
-          onPlacementChange,
-          placementDependencies,
           transitionProps: {
             mounted: isOpen,
             duration: transitionProps?.duration || 150,

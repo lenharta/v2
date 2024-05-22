@@ -1,6 +1,7 @@
 import React from 'react';
 import { Core } from '@/types';
 
+type FloatingDir = 'ltr' | 'rtl';
 type FloatingSide = 'top' | 'bottom' | 'right' | 'left';
 type FloatingAlign = 'start' | 'end';
 type FloatingWidth = 'target' | React.CSSProperties['width'] | null;
@@ -19,6 +20,7 @@ interface FloatingPlacementProps {
 }
 
 interface FloatingProps {
+  dir?: FloatingDir;
   isOpen: boolean;
   children: React.ReactNode;
   disabled?: boolean | undefined;

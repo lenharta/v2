@@ -1,12 +1,14 @@
-import { FloatingAlign, FloatingPlacementProps, FloatingSide } from '../../Floating.types';
+import { FloatingAlign, FloatingPlacement, FloatingSide } from '../../Floating.types';
 
-const getFloatingPlacement = (dir: 'ltr' | 'rtl', placement: FloatingPlacementProps) => {
-  const { value } = placement;
-  const isInlinePlacement = value.includes('left') || value.includes('right');
+const getFloatingPlacement = (
+  dir: 'ltr' | 'rtl',
+  placement: FloatingPlacement
+): FloatingPlacement => {
+  const isInlinePlacement = placement.includes('left') || placement.includes('right');
   const isRightToLeft = dir === 'rtl';
 
   if (isRightToLeft && isInlinePlacement) {
-    const [side, alignment] = value.split('-') as [FloatingSide, FloatingAlign];
+    const [side, alignment] = placement.split('-') as [FloatingSide, FloatingAlign];
     const oppositePlacement = side === 'right' ? 'left' : 'right';
 
     if (placement === undefined) {
@@ -15,7 +17,7 @@ const getFloatingPlacement = (dir: 'ltr' | 'rtl', placement: FloatingPlacementPr
     return `${oppositePlacement}-${alignment}`;
   }
 
-  return value;
+  return placement;
 };
 
 export { getFloatingPlacement };

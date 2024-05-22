@@ -25,8 +25,6 @@ const SidebarSelect: SidebarSelectComponent = (props) => {
   const { icon, label, value, items } = props;
   const [open, setOpen] = React.useState<boolean>(false);
 
-  console.log(open);
-
   return (
     <Floating isOpen={open} onChange={setOpen} placement="right-start">
       <SidebarSelect.Target label={label} value={value} icon={icon} />
