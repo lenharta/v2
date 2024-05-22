@@ -55,8 +55,10 @@ interface FloatingContext {
 }
 
 interface FloatingTargetProps {
+  style?: React.CSSProperties | undefined;
+  refProp?: string | undefined;
+  popupType?: React.AriaAttributes['aria-haspopup'] | undefined;
   children: React.ReactElement;
-  style?: React.CSSProperties;
 }
 
 interface FloatingBoxProps {

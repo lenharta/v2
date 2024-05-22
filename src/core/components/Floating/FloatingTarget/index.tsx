@@ -2,9 +2,9 @@ import React from 'react';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { useMergeRefs } from '@/hooks';
-import { createEventCallback } from '@/utils';
 import { useFloatingContext } from '../Floating.context';
 import { FloatingTargetProps } from '../Floating.types';
+import { createEventCallback } from '@/utils';
 
 type FloatingTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -13,11 +13,7 @@ type FloatingTargetFactory = Factory.Config<{
 }>;
 
 const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
-  const { children, ...otherProps } = props;
-
-  const forwardedProps: any = otherProps;
-  const ctx = useFloatingContext();
-  const refs = useMergeRefs(ctx.reference, (children as any).ref, ref);
+  const { children, popupType = 'dialog', refProp = 'ref', ...otherProps } = props;
 
   if (!React.isValidElement(children)) {
     throw new Error(
@@ -25,24 +21,21 @@ const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
     );
   }
 
-  const onKeyDown = createEventCallback(otherProps.onKeyDown, (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    if (event.code === 'Enter') {
-      ctx.onChange(ctx.isOpen);
-    }
-  });
-
-  const onClick = createEventCallback(otherProps.onClick, (event) => {
-    event.stopPropagation();
-    ctx.onChange(ctx.isOpen);
-  });
+  const forwardedProps: any = otherProps;
+  const ctx = useFloatingContext();
+  const refs = useMergeRefs(ctx.reference, (children as any).ref, ref);
 
   return React.cloneElement(children, {
     ...forwardedProps,
-    onKeyDown,
-    onClick,
-    ref: refs,
+    [refProp]: refs,
+    id: ctx.getTargetId(),
+    'aria-haspopup': forwardedProps['aria-haspopup'] || popupType,
+    'aria-expanded': forwardedProps['aria-expanded'] || ctx.isOpen,
+    'aria-controls': forwardedProps['aria-controls'] || ctx.getBoxId(),
+    onClick: createEventCallback(otherProps.onClick, (event) => {
+      event.stopPropagation();
+      ctx.onChange(ctx.isOpen);
+    }),
   });
 });
 
