@@ -1,12 +1,15 @@
-import { Factory } from '@/types';
-import { Action, Floating, Icon, Icons, factory } from '@/core';
 import clsx from 'clsx';
+import { Factory } from '@/types';
+import { Action, Floating, factory, useFloatingContext } from '@/core';
+import { createEventCallback } from '@/utils';
 
 interface SidebarSelectTargetProps {
-  icon: keyof typeof Icons;
+  icon?: React.ReactNode | undefined;
   label: string;
-  value: string;
-  selected?: boolean | undefined;
+  groupId: string;
+  groupValue?: string | undefined;
+  activeGroup: string;
+  setActiveGroup: (activeGroup: string) => void;
 }
 
 type SidebarSelectTargetFactory = Factory.Config<{
@@ -16,17 +19,34 @@ type SidebarSelectTargetFactory = Factory.Config<{
 }>;
 
 const SidebarSelectTarget = factory<SidebarSelectTargetFactory>((props, ref) => {
-  const { icon, label, value, selected, className, ...forwardedProps } = props;
+  const {
+    icon,
+    label,
+    value,
+    groupId,
+    groupValue,
+    className,
+    activeGroup,
+    setActiveGroup,
+    ...forwardedProps
+  } = props;
+
+  const ctx = useFloatingContext();
+
   return (
     <Floating.Target>
       <Action
         {...forwardedProps}
-        className={clsx('v2-sidebar-select-target', className)}
-        selected={selected}
+        ref={ref}
+        icon={icon}
         value={value}
         label={label}
-        icon={<Icon name={icon} />}
-        ref={ref}
+        className={clsx('v2-sidebar-select-target', className)}
+        selected={ctx.isOpen && groupId === activeGroup ? true : undefined}
+        onClick={createEventCallback(
+          forwardedProps.onClick,
+          () => ctx.isOpen && setActiveGroup('')
+        )}
       />
     </Floating.Target>
   );
