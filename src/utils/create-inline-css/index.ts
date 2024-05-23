@@ -1,18 +1,18 @@
 import { camelToKebabCase } from '@/utils';
 
-export const formatCssKey = (key?: string | number | symbol) => {
+const formatCssKey = (key?: string | number | symbol) => {
   return camelToKebabCase(String(key));
 };
 
-export const formatCssProp = (key: string, value: any) => {
+const formatCssProp = (key: string, value: any) => {
   return `${key}: ${value};`;
 };
 
-export const formatCssClass = (selector: string, properties: string) => {
+const formatCssClass = (selector: string, properties: string) => {
   return `.${selector}{${properties}}`;
 };
 
-export const createInlineCSS = <T extends React.CSSProperties, K extends keyof T>(
+const createInlineCSS = <T extends React.CSSProperties, K extends keyof T>(
   selector: string,
   css?: T
 ): string => {
@@ -21,3 +21,5 @@ export const createInlineCSS = <T extends React.CSSProperties, K extends keyof T
   const properties = keys.map((key) => formatCssProp(formatCssKey(key), css[key]));
   return formatCssClass(selector, properties.join(''));
 };
+
+export { formatCssKey, formatCssProp, formatCssClass, createInlineCSS };

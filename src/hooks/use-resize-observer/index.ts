@@ -26,7 +26,7 @@ type ResizeObserverReturn<T extends HTMLElement = HTMLElement> = [
   ResizeObserverRect,
 ];
 
-export function useResizeObserver<T extends HTMLElement = any>(
+function useResizeObserver<T extends HTMLElement = any>(
   options: ResizeObserverOptions
 ): ResizeObserverReturn<T> {
   const ref = React.useRef<T>();
@@ -64,3 +64,5 @@ export function useResizeObserver<T extends HTMLElement = any>(
 
   return [ref, rect];
 }
+
+export { useResizeObserver };

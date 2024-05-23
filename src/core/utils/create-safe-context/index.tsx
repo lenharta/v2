@@ -5,7 +5,7 @@ interface SafeProviderProps<Value> {
   value: Value;
 }
 
-export function createSafeContext<T>(errorMessage: string) {
+function createSafeContext<T>(errorMessage: string) {
   const Context = React.createContext<T | null>(null);
 
   const useSafeContext = () => {
@@ -20,3 +20,5 @@ export function createSafeContext<T>(errorMessage: string) {
 
   return [Provider, useSafeContext] as const;
 }
+
+export { createSafeContext };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useIsomorphicEffect } from '@/hooks/use-isomorphic-effect';
 
-export function useEventListener<
+function useEventListener<
   KW extends keyof WindowEventMap,
   KH extends keyof HTMLElementEventMap,
   KM extends keyof MediaQueryListEventMap,
@@ -32,3 +32,5 @@ export function useEventListener<
     return () => targetElement.removeEventListener(eventName, listener, options);
   }, [eventName, element, options]);
 }
+
+export { useEventListener };

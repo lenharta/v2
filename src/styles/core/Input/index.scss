@@ -1,7 +1,0 @@
-@use '../mixins' as mixins;
-
-@layer reset {
-  .input {
-    @include mixins.reset;
-  }
-}

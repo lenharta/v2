@@ -1,0 +1,98 @@
+@layer reset {
+  .v2-sidebar {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.v2-sidebar {
+  color: var(--c-primary-text-1);
+  background-color: var(--c-primary-1);
+  display: none;
+
+  @media (min-width: 60em) {
+    width: var(--action-box);
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: var(--action-box);
+
+    .v2-action-group {
+      padding-top: 0;
+    }
+  }
+}
+
+.v2-sidebar-select-target {
+  position: relative;
+}
+
+.v2-sidebar-select-drawer {
+  gap: var(--unit);
+  padding-inline: var(--unit);
+  max-width: calc(var(--action-box) * 6);
+  flex-wrap: wrap;
+  position: absolute;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.v2-sidebar-color-icon-red {
+  background-color: var(--c-red);
+}
+.v2-sidebar-color-icon-orange {
+  background-color: var(--c-orange);
+}
+.v2-sidebar-color-icon-yellow {
+  background-color: var(--c-yellow);
+}
+.v2-sidebar-color-icon-green {
+  background-color: var(--c-green);
+}
+.v2-sidebar-color-icon-mint {
+  background-color: var(--c-mint);
+}
+.v2-sidebar-color-icon-teal {
+  background-color: var(--c-teal);
+}
+.v2-sidebar-color-icon-cyan {
+  background-color: var(--c-cyan);
+}
+.v2-sidebar-color-icon-blue {
+  background-color: var(--c-blue);
+}
+.v2-sidebar-color-icon-indigo {
+  background-color: var(--c-indigo);
+}
+.v2-sidebar-color-icon-purple {
+  background-color: var(--c-purple);
+}
+.v2-sidebar-color-icon-pink {
+  background-color: var(--c-pink);
+}
+.v2-sidebar-color-icon-brown {
+  background-color: var(--c-brown);
+}
+
+.v2-sidebar-color-icon-red,
+.v2-sidebar-color-icon-orange,
+.v2-sidebar-color-icon-yellow,
+.v2-sidebar-color-icon-green,
+.v2-sidebar-color-icon-mint,
+.v2-sidebar-color-icon-teal,
+.v2-sidebar-color-icon-cyan,
+.v2-sidebar-color-icon-blue,
+.v2-sidebar-color-icon-indigo,
+.v2-sidebar-color-icon-purple,
+.v2-sidebar-color-icon-pink,
+.v2-sidebar-color-icon-brown {
+  width: 45%;
+  height: 45%;
+  display: flex;
+  border-radius: 1000px;
+}

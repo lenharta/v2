@@ -1,0 +1,41 @@
+@layer reset {
+  .v2-menu-target,
+  .v2-menu-panel {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.v2-menu-panel {
+  display: none;
+
+  &[data-menu-open] & {
+    display: block;
+  }
+}
+
+.v2-menu-target {
+}
+
+.v2-menu-grid {
+  gap: calc(var(--unit) * 2);
+  display: grid;
+  place-content: center;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.v2-menu-grid-row {
+  gap: calc(var(--unit) * 2);
+  display: grid;
+  place-content: center;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.v2-menu-grid-cell {
+  width: calc(var(--unit) * 2);
+  height: calc(var(--unit) * 2);
+  display: inline-flex;
+}

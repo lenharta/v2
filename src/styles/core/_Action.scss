@@ -1,0 +1,61 @@
+@layer reset {
+  .v2-action,
+  .v2-action-group,
+  .v2-action-spacer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.v2-action {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: var(--action-size);
+  width: var(--action-size);
+
+  &:before {
+    top: 0;
+    left: calc(var(--unit) * -1);
+    width: var(--unit);
+    bottom: 0;
+    content: '';
+    position: absolute;
+  }
+}
+
+.v2-action-spacer {
+  flex: 1;
+  display: flex;
+
+  &[data-orientation='horizontal'] {
+    height: var(--action-size);
+    width: 100%;
+  }
+  &[data-orientation='vertical'] {
+    width: var(--action-size);
+    height: 100%;
+  }
+}
+
+.v2-action-group {
+  padding-block: var(--unit);
+  padding-inline: var(--unit);
+
+  &[data-orientation='horizontal'] {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  &[data-orientation='vertical'] {
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

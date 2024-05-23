@@ -1,4 +1,4 @@
-export function valueClamp(value: number, min: number | undefined, max: number | undefined) {
+function valueClamp(value: number, min: number | undefined, max: number | undefined) {
   if (min === undefined && max === undefined) {
     return value;
   }
@@ -13,3 +13,5 @@ export function valueClamp(value: number, min: number | undefined, max: number |
 
   return Math.min(Math.max(value, min!), max!);
 }
+
+export { valueClamp };

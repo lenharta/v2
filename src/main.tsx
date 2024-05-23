@@ -2,24 +2,66 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import './styles/main.scss';
-import App from './app';
-import * as Route from './app/routes';
+import './styles/index.scss';
+
+import {
+  Contact,
+  Demo,
+  Experience,
+  Overview,
+  Projects,
+  Root,
+  Sandbox,
+  Settings,
+  Toolbox,
+} from '@/routes';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
-    errorElement: <div>App Error</div>,
+    element: <Root />,
+    errorElement: <Root.Error />,
     children: [
-      { index: true, element: <Route.Home />, errorElement: <div>404</div> },
-      { path: '/demo', element: <Route.Demo />, errorElement: <div>404</div> },
-      { path: '/contact', element: <Route.Contact />, errorElement: <div>404</div> },
-      { path: '/toolbox', element: <Route.Toolbox />, errorElement: <div>404</div> },
-      { path: '/sandbox', element: <Route.Sandbox />, errorElement: <div>404</div> },
-      { path: '/settings', element: <Route.Settings />, errorElement: <div>404</div> },
-      { path: '/projects', element: <Route.Projects />, errorElement: <div>404</div> },
-      { path: '/experience', element: <Route.Experience />, errorElement: <div>404</div> },
+      {
+        index: true,
+        element: <Overview />,
+        errorElement: <Overview.Error />,
+      },
+      {
+        path: '/demo',
+        element: <Demo />,
+        errorElement: <Demo.Error />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
+        errorElement: <Contact.Error />,
+      },
+      {
+        path: '/experience',
+        element: <Experience />,
+        errorElement: <Experience.Error />,
+      },
+      {
+        path: '/projects',
+        element: <Projects />,
+        errorElement: <Projects.Error />,
+      },
+      {
+        path: '/sandbox',
+        element: <Sandbox />,
+        errorElement: <Sandbox.Error />,
+      },
+      {
+        path: '/settings',
+        element: <Settings />,
+        errorElement: <Settings.Error />,
+      },
+      {
+        path: '/toolbox',
+        element: <Toolbox />,
+        errorElement: <Toolbox.Error />,
+      },
     ],
   },
 ]);

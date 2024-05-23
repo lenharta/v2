@@ -23,16 +23,16 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/app/*": ["./src/app/*"],
-      "@/data/*": ["./src/data/*"],
+      "@/common/*": ["./src/common/*"],
       "@/core/*": ["./src/core/*"],
-      "@/utils/*": ["./src/utils/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/demo/*": ["./src/demo/*"],
       "@/hooks/*": ["./src/hooks/*"],
-      "@/tests/*": ["./src/tests/*"],
-      "@/types/*": ["./src/types/*"],
+      "@/routes/*": ["./src/routes/*"],
       "@/store/*": ["./src/store/*"],
-      "@/motion/*": ["./src/motion/*"],
-      "@/assets/*": ["./src/assets/*"]
+      "@/styles/*": ["./src/styles/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src"],
