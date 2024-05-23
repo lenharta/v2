@@ -75,10 +75,30 @@ export declare namespace App {
     loading?: boolean | undefined;
     menuOpen?: boolean | undefined;
     transition?: boolean | undefined;
+    resultOpen?: boolean | undefined;
     splashOpen?: boolean | undefined;
     searchOpen?: boolean | undefined;
     sidebarOpen?: boolean | undefined;
     nonce: () => string;
+  };
+
+  export type StoreContextValue = {
+    dir: GlobalWritingModes;
+    mode: GlobalThemeModes;
+    lang: GlobalLanguageCodes;
+    accent: GlobalAccentColors;
+    error?: string | undefined;
+    query?: string | undefined;
+    session?: string | undefined;
+    loading?: boolean | undefined;
+    menuOpen?: boolean | undefined;
+    transition?: boolean | undefined;
+    resultOpen?: boolean | undefined;
+    splashOpen?: boolean | undefined;
+    searchOpen?: boolean | undefined;
+    sidebarOpen?: boolean | undefined;
+    nonce: () => string;
+    closePanels: () => void;
   };
 
   export type LocalStore = Partial<{

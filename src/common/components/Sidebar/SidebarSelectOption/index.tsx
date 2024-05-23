@@ -1,10 +1,14 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createEventCallback } from '@/utils';
-import { Action, ActionProps, Icon, Icons, factory, useFloatingContext } from '@/core';
+import { Action, ActionProps, factory, useFloatingContext } from '@/core';
 
 interface SidebarSelectOptionProps extends ActionProps {
-  icon: keyof typeof Icons;
+  icon?: React.ReactNode | undefined;
+  groupId: string;
+  groupValue?: string | undefined;
+  activeGroup: string;
+  setActiveGroup: (activeGroup: string) => void;
 }
 
 type SidebarSelectOptionFactory = Factory.Config<{
@@ -14,18 +18,34 @@ type SidebarSelectOptionFactory = Factory.Config<{
 }>;
 
 const SidebarSelectOption = factory<SidebarSelectOptionFactory>((props, ref) => {
-  const { className, value, icon, label, ...forwardedProps } = props;
+  const {
+    className,
+    value,
+    icon,
+    label,
+    groupId,
+    groupValue,
+    activeGroup,
+    setActiveGroup,
+    ...forwardedProps
+  } = props;
+
   const ctx = useFloatingContext();
+
   return (
     <Action
       {...forwardedProps}
-      className={clsx('v2-sidebar-select-option', className)}
-      onClick={createEventCallback(forwardedProps.onClick, () => ctx.onChange(ctx.isOpen))}
-      label={label}
-      value={value}
-      role="menuitem"
-      icon={<Icon name={icon} />}
       ref={ref}
+      icon={icon}
+      value={value}
+      label={label}
+      role="menuitem"
+      selected={value === groupValue ? true : undefined}
+      className={clsx('v2-sidebar-select-option', className)}
+      onClick={createEventCallback(forwardedProps.onClick, () => {
+        ctx.onChange(ctx.isOpen);
+        setActiveGroup('');
+      })}
     />
   );
 });
