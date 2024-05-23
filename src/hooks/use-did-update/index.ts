@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useDidUpdate(cb: React.EffectCallback, dependencies?: React.DependencyList) {
+function useDidUpdate(cb: React.EffectCallback, dependencies?: React.DependencyList) {
   const mounted = React.useRef(false);
 
   React.useEffect(
@@ -20,3 +20,5 @@ export function useDidUpdate(cb: React.EffectCallback, dependencies?: React.Depe
     return undefined;
   }, dependencies);
 }
+
+export { useDidUpdate };

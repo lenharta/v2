@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { Core } from '@/types';
 import { getScrollPosition } from '@/utils';
 
-const initialPosition: Core.ScrollPosition = { x: 0, y: 0 };
+interface ScrollPosition {
+  x: number;
+  y: number;
+}
 
-export const useScrollPosition = () => {
+const initialPosition: ScrollPosition = { x: 0, y: 0 };
+
+const useScrollPosition = () => {
   const [position, setPosition] = React.useState(initialPosition);
 
   React.useEffect(() => {
@@ -24,3 +28,5 @@ export const useScrollPosition = () => {
 
   return [position, scrollTo] as const;
 };
+
+export { useScrollPosition };

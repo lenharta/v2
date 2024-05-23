@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useLatestRef<T>(value: T) {
+function useLatestRef<T>(value: T) {
   const ref = React.useRef<T>(value);
 
   React.useEffect(() => {
@@ -9,3 +9,5 @@ export function useLatestRef<T>(value: T) {
 
   return ref;
 }
+
+export { useLatestRef };

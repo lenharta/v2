@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function isReactElement(value: any): value is React.ReactElement {
+function isReactElement(value: any): value is React.ReactElement {
   if (Array.isArray(value) || value === null) return false;
 
   if (typeof value === 'object') {
@@ -9,3 +9,5 @@ export function isReactElement(value: any): value is React.ReactElement {
   }
   return false;
 }
+
+export { isReactElement };

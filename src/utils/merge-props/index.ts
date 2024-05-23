@@ -1,6 +1,6 @@
 import { filterProps } from '../filter-props';
 
-export function mergeProps<T extends Record<string, any>, U extends Partial<T> = {}>(
+function mergeProps<T extends Record<string, any>, U extends Partial<T> = {}>(
   defaultProps: U,
   props: T
 ): T & {
@@ -8,3 +8,5 @@ export function mergeProps<T extends Record<string, any>, U extends Partial<T> =
 } {
   return { ...defaultProps, ...filterProps(props) };
 }
+
+export { mergeProps };

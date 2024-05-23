@@ -1,0 +1,17 @@
+@layer reset {
+  .v2-screen {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.v2-screen {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  isolation: isolate;
+  position: fixed;
+  z-index: 10000;
+}

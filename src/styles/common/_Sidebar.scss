@@ -1,0 +1,43 @@
+@layer reset {
+  .v2-sidebar {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.v2-sidebar {
+  color: var(--c-primary-text-1);
+  background-color: var(--c-primary-1);
+  display: none;
+
+  @media (min-width: 60em) {
+    width: var(--action-box);
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: var(--action-box);
+
+    .v2-action-group {
+      padding-top: 0;
+    }
+  }
+}
+
+.v2-sidebar-select-target {
+  position: relative;
+}
+
+.v2-sidebar-select-drawer {
+  gap: var(--unit);
+  padding-inline: var(--unit);
+  max-width: calc(var(--action-box) * 6);
+  flex-wrap: wrap;
+  position: absolute;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}

@@ -1,7 +1,4 @@
-export function createEventCallback<
-  T extends HTMLElement,
-  E extends React.SyntheticEvent<T, Event>,
->(
+function createEventCallback<T extends HTMLElement, E extends React.SyntheticEvent<T, Event>>(
   eventHandler?: (event: E) => void,
   eventCallback?: (event: E) => void,
   options?: {
@@ -20,3 +17,5 @@ export function createEventCallback<
     eventHandler?.(event);
   };
 }
+
+export { createEventCallback };

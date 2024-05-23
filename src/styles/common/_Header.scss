@@ -1,0 +1,16 @@
+@layer reset {
+  .v2-header {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.v2-header {
+  color: var(--c-primary-text-1);
+  background-color: var(--c-primary-1);
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+}

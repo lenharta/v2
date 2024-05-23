@@ -1,0 +1,27 @@
+@mixin clickable() {
+  outline-style: solid;
+  outline-width: var(--unit);
+  outline-color: transparent;
+
+  &:not(:focus:focus-visible),
+  &:not(:focus):focus-visible {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: var(--c-focus);
+  }
+}
+
+@mixin selectable() {
+  outline-style: solid;
+  outline-width: var(--unit);
+  outline-color: transparent;
+
+  &:not(:focus:focus-visible),
+  &:not(:focus):focus-visible {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: var(--c-focus);
+  }
+}
