@@ -1,14 +1,14 @@
-import { I18N, LANGUAGE, UNITED_STATES } from '@/types';
+import { GlobalLanguageCodes, I18N, UNITED_STATES } from '@/types';
 
 export const DATA_LANGUAGES: I18N.LanguageObject[] = [
-  { name: LANGUAGE.ar, code: 'ar' },
-  { name: LANGUAGE.de, code: 'de' },
-  { name: LANGUAGE.en, code: 'en' },
-  { name: LANGUAGE.es, code: 'es' },
-  { name: LANGUAGE.fr, code: 'fr' },
-  { name: LANGUAGE.ja, code: 'ja' },
-  { name: LANGUAGE.ko, code: 'ko' },
-  { name: LANGUAGE.zh, code: 'zh' },
+  { name: GlobalLanguageCodes.ar, code: 'ar' },
+  { name: GlobalLanguageCodes.de, code: 'de' },
+  { name: GlobalLanguageCodes.en, code: 'en' },
+  { name: GlobalLanguageCodes.es, code: 'es' },
+  { name: GlobalLanguageCodes.fr, code: 'fr' },
+  { name: GlobalLanguageCodes.ja, code: 'ja' },
+  { name: GlobalLanguageCodes.ko, code: 'ko' },
+  { name: GlobalLanguageCodes.zh, code: 'zh' },
 ];
 
 export const DATA_UNITED_STATES: I18N.UnitedStatesObject[] = [
