@@ -1,15 +1,13 @@
 import clsx from 'clsx';
-import { useActionContext } from '../context';
-
-interface ActionSpacerProps {
-  className?: string | undefined;
-}
+import { useActionContext } from '../Action.context';
+import { ActionSpacerProps } from '../Action.types';
 
 const ActionSpacer: React.FC<ActionSpacerProps> = (props) => {
-  const { className } = props;
+  const { className, ...forwardedProps } = props;
   const ctx = useActionContext();
   return (
     <div
+      {...forwardedProps}
       data-orientation={ctx.orientation}
       className={clsx('v2-action-spacer', className)}
       role="separator"

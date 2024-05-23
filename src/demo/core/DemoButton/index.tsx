@@ -1,17 +1,17 @@
-import React from 'react';
 import { Button } from '@/core';
-import { Section } from '@/common';
 
-const DemoButton = () => {
-  return (
-    <React.Fragment>
-      <Section>
-        <Button>Button (default)</Button>
-        <Button>Button (content left)</Button>
-        <Button>Button (content right)</Button>
-      </Section>
-    </React.Fragment>
-  );
-};
+interface DemoButtonProps {}
 
-export { DemoButton };
+const DemoButton = (props: DemoButtonProps) => <Button {...props}>Button</Button>;
+
+interface DemoButtonGroupProps {}
+
+const DemoButtonGroup = (props: DemoButtonGroupProps) => (
+  <Button.Group {...props}>
+    <Button>Button 1</Button>
+    <Button>Button 2</Button>
+    <Button>Button 3</Button>
+  </Button.Group>
+);
+
+export { DemoButton, DemoButtonGroup };

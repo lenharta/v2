@@ -1,17 +1,17 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
+import { ButtonGroup } from './Group';
+import { ButtonProps } from './Button.types';
 import { UnstyledButton } from '@/core/components/UnstyledButton';
 import { factoryPolymorphic } from '@/core/factory';
-
-interface ButtonProps {
-  leftContent?: React.ReactNode;
-  rightContent?: React.ReactNode;
-}
 
 type ButtonFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   props: ButtonProps;
+  comps: {
+    Group: typeof ButtonGroup;
+  };
 }>;
 
 const Button = factoryPolymorphic<ButtonFactory>((props, ref) => {
@@ -40,5 +40,6 @@ const Button = factoryPolymorphic<ButtonFactory>((props, ref) => {
   );
 });
 
+Button.Group = ButtonGroup;
 Button.displayName = '@v2/Button';
-export { Button, type ButtonProps };
+export { Button, type ButtonFactory };

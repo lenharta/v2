@@ -1,29 +1,21 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { ActionGroup } from '@/core/components/Action/Group';
+import { ActionProps } from './Action.types';
+import { ActionGroup } from './Group';
 import { ActionSpacer } from './Spacer';
 import { UnstyledButton } from '@/core/components';
-import { useActionContext } from './context';
-
-interface ActionProps {
-  label: string;
-  icon?: React.ReactNode | undefined;
-  disabled?: boolean | undefined;
-  selected?: boolean | undefined;
-}
-
-interface ActionComponents {
-  Group: typeof ActionGroup;
-  Spacer: typeof ActionSpacer;
-}
+import { useActionContext } from './Action.context';
 
 type ActionFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   omits: 'children';
   props: ActionProps;
-  comps: ActionComponents;
+  comps: {
+    Group: typeof ActionGroup;
+    Spacer: typeof ActionSpacer;
+  };
 }>;
 
 const Action = factory<ActionFactory>((props, ref) => {

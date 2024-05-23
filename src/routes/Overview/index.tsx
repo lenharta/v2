@@ -1,27 +1,34 @@
 import React from 'react';
-import { Title } from '@/core';
+import { Text, Title } from '@/core';
 import { OverviewError } from './error';
-import { Hero, Main, Page } from '@/common';
-import { DemoAction, DemoTabs } from '@/demo';
+import { Hero, Main, Page, Section } from '@/common';
 
-type Component = React.FC<{}> & {
+interface OverviewProps {}
+
+type OverviewComponent = React.FC<OverviewProps> & {
   Error: typeof OverviewError;
 };
 
-const Overview: Component = ({}) => {
+const Overview: OverviewComponent = () => {
   return (
     <Page>
       <Hero>
         <Title>Overview</Title>
       </Hero>
       <Main>
-        <DemoTabs />
-        <DemoAction />
+        <Section>
+          <Title>Section Title</Title>
+          <Text>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas numquam ex recusandae
+            velit sequi quae qui! Animi ea unde, asperiores ratione dolorem facere consectetur fuga
+            iusto, quae impedit perferendis deserunt.t
+          </Text>
+        </Section>
       </Main>
     </Page>
   );
 };
 
-Overview.displayName = '@v2/Overview';
 Overview.Error = OverviewError;
+Overview.displayName = '@v2/Overview';
 export { Overview };

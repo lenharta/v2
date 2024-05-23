@@ -3,6 +3,7 @@ import { Title } from '@/core';
 import { DemoError } from './error';
 import { DemoFloating } from '@/demo';
 import { Hero, Main, Page, Section } from '@/common';
+import { DemoDivider } from '@/demo/core/DemoDivider';
 
 interface DemoProps {}
 
@@ -19,6 +20,7 @@ const Demo: DemoComponent = () => {
       <Main>
         <Section>
           <DemoFloating />
+          <DemoDivider />
         </Section>
       </Main>
     </Page>

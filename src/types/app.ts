@@ -81,6 +81,14 @@ export declare namespace App {
     nonce: () => string;
   };
 
+  export type LocalStore = Partial<{
+    dir: GlobalWritingModes;
+    mode: GlobalThemeModes;
+    lang: GlobalLanguageCodes;
+    accent: GlobalAccentColors;
+    session: string;
+  }>;
+
   export type StoreProps<T extends Store = Store> = {
     dispatch: (value: Partial<T>) => void;
     store: T;

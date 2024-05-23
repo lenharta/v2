@@ -1,30 +1,18 @@
-import { Section } from '@/common';
-import { Box, Checkbox, Title } from '@/core';
+import { Checkbox } from '@/core';
 
 interface DemoCheckboxProps {}
 
-const DemoCheckbox = (props: DemoCheckboxProps) => {
-  return (
-    <Section>
-      <Title>Demo | Checkbox</Title>
-      <Box>
-        <Checkbox.Group group="cbx-group-a">
-          <Checkbox label="Option 1a" />
-          <Checkbox label="Option 2a" />
-          <Checkbox label="Option 3a" />
-          <Checkbox label="Option 4a" />
-        </Checkbox.Group>
-      </Box>
-      <Box>
-        <Checkbox.Group group="cbx-group-b">
-          <Checkbox label="Option 1b" />
-          <Checkbox label="Option 2b" />
-          <Checkbox label="Option 3b" />
-          <Checkbox label="Option 4b" />
-        </Checkbox.Group>
-      </Box>
-    </Section>
-  );
-};
+const DemoCheckbox = (props: DemoCheckboxProps) => <Checkbox label="Checkbox Label" {...props} />;
 
-export { DemoCheckbox };
+interface DemoCheckboxGroupProps {}
+
+const DemoCheckboxGroup = (props: DemoCheckboxGroupProps) => (
+  <Checkbox.Group group="cbx-group-a" {...props}>
+    <Checkbox label="Option 1a" />
+    <Checkbox label="Option 2a" />
+    <Checkbox label="Option 3a" />
+    <Checkbox label="Option 4a" />
+  </Checkbox.Group>
+);
+
+export { DemoCheckbox, DemoCheckboxGroup };
