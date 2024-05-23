@@ -70,9 +70,9 @@ const TabsItem = factory<TabsItemFactory>((props, ref) => {
       onClick={handleClick}
     >
       <span className="v2-tabs-item-inner">
-        {leftContent && <div data-position="left">{leftContent}</div>}
+        {leftContent && <div data-position="start">{leftContent}</div>}
         {<Label component="div">{label}</Label>}
-        {rightContent && <div data-position="right">{rightContent}</div>}
+        {rightContent && <div data-position="end">{rightContent}</div>}
       </span>
     </UnstyledButton>
   );

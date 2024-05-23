@@ -1,14 +1,11 @@
-import clsx from 'clsx';
 import React from 'react';
 import { factory } from '@/core/factory';
 import { useLocation } from 'react-router-dom';
 import { Core, Factory } from '@/types';
 import { Box, Transition } from '@/core';
-import { useStoreDispatch, useStoreState } from '@/store';
 
 interface PageProps {
   children: React.ReactNode;
-  className?: string;
 }
 
 type PageFactory = Factory.Config<{
@@ -18,8 +15,8 @@ type PageFactory = Factory.Config<{
 }>;
 
 const pageTransition: Partial<Core.TransitionProps> = {
-  duration: 600,
-  timingFunction: 'ease',
+  duration: 400,
+  timingFunction: 'ease-in-out',
   transition: {
     transitionProperty: 'opacity',
     out: { opacity: 0 },
@@ -28,24 +25,17 @@ const pageTransition: Partial<Core.TransitionProps> = {
 };
 
 const Page = factory<PageFactory>((props, ref) => {
-  const { className, ...forwardedProps } = props;
-
-  const state = useStoreState();
-  const location = useLocation();
-  const dispatch = useStoreDispatch();
+  const { children, ...forwardedProps } = props;
   const [isMounted, setMounted] = React.useState(false);
+  const location = useLocation();
 
   React.useEffect(() => {
-    dispatch({ transition: true });
-
     if (isMounted !== true) {
       setMounted(true);
     }
     if (isMounted === true) {
       setMounted(false);
     }
-
-    dispatch({ transition: undefined });
   }, [location.pathname]);
 
   return (
@@ -54,11 +44,13 @@ const Page = factory<PageFactory>((props, ref) => {
         {(transitionStyles) => (
           <Box
             {...forwardedProps}
-            className={clsx('v2-page', className)}
             style={transitionStyles}
+            className="v2-page"
             role="document"
             ref={ref}
-          />
+          >
+            {children}
+          </Box>
         )}
       </Transition>
     </React.Fragment>
