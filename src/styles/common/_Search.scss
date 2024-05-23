@@ -7,15 +7,22 @@
 }
 
 .v2-search {
-  gap: var(--unit);
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
+  display: none;
+
+  @media (min-width: 60em) {
+    gap: var(--unit);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .v2-search-input {
-  height: var(--action-size);
-  padding-inline: var(--gutter);
-  display: flex;
+  @media (min-width: 60em) {
+    height: var(--action-size);
+    padding-inline: var(--gutter);
+    display: flex;
+    min-width: calc(var(--action-box) * 10);
+  }
 }

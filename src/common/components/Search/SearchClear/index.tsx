@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Action, Icon, factory } from '@/core';
+import { createEventCallback } from '@/utils';
 
 interface SearchClearProps {
   label: string;
-  value: string;
-  disabled?: string;
+  onFocusSearchInput: (() => void) | undefined;
+  onFocusSearchTarget: (() => void) | undefined;
 }
 
 type SearchClearFactory = Factory.Config<{
@@ -15,11 +16,43 @@ type SearchClearFactory = Factory.Config<{
 }>;
 
 const SearchClear = factory<SearchClearFactory>((props, ref) => {
-  const { label, value, disabled, className, ...forwardedProps } = props;
+  const { label, disabled, className, onFocusSearchInput, onFocusSearchTarget, ...forwardedProps } =
+    props;
+
+  const handleKeyDown = createEventCallback(forwardedProps.onKeyDown, (event) => {
+    const ArrowRight = () => {
+      event.preventDefault();
+      event.stopPropagation();
+      onFocusSearchTarget?.();
+    };
+
+    const ArrowLeft = () => {
+      event.preventDefault();
+      event.stopPropagation();
+      onFocusSearchInput?.();
+    };
+
+    const Tab = () => {
+      event.preventDefault();
+      event.stopPropagation();
+      if (event.shiftKey) onFocusSearchInput?.();
+      if (!event.shiftKey) onFocusSearchTarget?.();
+    };
+
+    const fireEvents = {
+      Tab,
+      ArrowLeft,
+      ArrowRight,
+    }[event.code];
+
+    fireEvents?.();
+  });
+
   return (
     <Action
       {...forwardedProps}
       disabled={disabled}
+      onKeyDown={handleKeyDown}
       className={clsx('v2-search-clear', className)}
       icon={<Icon name="closeCircle" />}
       label={label}
