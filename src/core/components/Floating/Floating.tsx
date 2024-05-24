@@ -3,7 +3,7 @@ import { useFloating } from './hooks';
 import { FloatingBox } from './FloatingBox';
 import { FloatingProps } from './Floating.types';
 import { FloatingTarget } from './FloatingTarget';
-import { useClickOutside } from '@/hooks';
+import { useClickOutside, useEventListener } from '@/hooks';
 import { FloatingProvider } from './Floating.context';
 import { getFloatingPlacement } from './utils';
 
@@ -24,6 +24,7 @@ const Floating: FloatingFactory = (props) => {
     placement = 'bottom',
     middleware = { flip: true, shift: true, inline: false },
     transitionProps,
+    closeOnEscape = true,
     closeOnClickOutside = true,
     placementDependencies,
     onPlacementChange,
@@ -59,6 +60,12 @@ const Floating: FloatingFactory = (props) => {
     'mousedown'
   );
 
+  useEventListener('keydown', (event: any) => {
+    if (event?.code === 'Escape') {
+      closeOnEscape && floating.onClose();
+    }
+  });
+
   const referenceRef = React.useCallback(
     (node: HTMLElement) => {
       floating.payload.refs.setReference(node);
@@ -90,6 +97,7 @@ const Floating: FloatingFactory = (props) => {
           placement: floating.payload.placement,
           placementDependencies,
           closeOnClickOutside,
+          closeOnEscape,
           x: floating.payload.x!,
           y: floating.payload.y!,
           transitionProps: {

@@ -122,6 +122,7 @@ const Control = factory<ControlFactory>((props, ref) => {
         aria-orientation={orientation}
         data-orientation={orientation}
         className="control-track"
+        data-core-control-track
         ref={trackRef}
       >
         {(itemData as Core.Item[]).map((item) => (

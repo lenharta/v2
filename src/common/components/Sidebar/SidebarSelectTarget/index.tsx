@@ -1,8 +1,23 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Action, Floating, factory, useFloatingContext } from '@/core';
+import { createEventCallback } from '@/utils';
 
-interface SidebarSelectTargetProps {
+interface SidebarSelectTargetActions<T = React.KeyboardEvent<HTMLButtonElement>> {
+  onTab?: ((event: T) => void) | undefined;
+  onEnd?: ((event: T) => void) | undefined;
+  onHome?: ((event: T) => void) | undefined;
+  onEnter?: ((event: T) => void) | undefined;
+  onPageUp?: ((event: T) => void) | undefined;
+  onPageDown?: ((event: T) => void) | undefined;
+  onShiftTab?: ((event: T) => void) | undefined;
+  onArrowRight?: ((event: T) => void) | undefined;
+  onArrowLeft?: ((event: T) => void) | undefined;
+  onArrowDown?: ((event: T) => void) | undefined;
+  onArrowUp?: ((event: T) => void) | undefined;
+}
+
+interface SidebarSelectTargetProps extends SidebarSelectTargetActions {
   icon?: React.ReactNode | undefined;
   label: string;
   groupId: string;
@@ -27,6 +42,17 @@ const SidebarSelectTarget = factory<SidebarSelectTargetFactory>((props, ref) => 
     className,
     activeGroup,
     setActiveGroup,
+    onTab,
+    onEnd,
+    onHome,
+    onEnter,
+    onPageUp,
+    onPageDown,
+    onArrowUp,
+    onArrowDown,
+    onArrowLeft,
+    onArrowRight,
+    onShiftTab,
     ...forwardedProps
   } = props;
 
@@ -40,8 +66,58 @@ const SidebarSelectTarget = factory<SidebarSelectTargetFactory>((props, ref) => 
         icon={icon}
         value={value}
         label={label}
+        selected={groupId === activeGroup}
         className={clsx('v2-sidebar-select-target', className)}
-        selected={ctx.isOpen && groupId === activeGroup ? true : undefined}
+        onKeyDown={createEventCallback(forwardedProps.onKeyDown, (event) => {
+          const fireEvents = {
+            End: () => {
+              event.preventDefault();
+              event.stopPropagation();
+              onEnd?.(event);
+            },
+            Home: () => {
+              event.preventDefault();
+              event.stopPropagation();
+              onHome?.(event);
+            },
+            PageUp: () => {
+              event.preventDefault();
+              event.stopPropagation();
+              onPageUp?.(event);
+            },
+            PageDown: () => {
+              event.preventDefault();
+              event.stopPropagation();
+              onPageDown?.(event);
+            },
+            ArrowDown: () => {
+              event.preventDefault();
+              event.stopPropagation();
+              onArrowDown?.(event);
+            },
+            ArrowUp: () => {
+              event.preventDefault();
+              event.stopPropagation();
+              onArrowUp?.(event);
+            },
+            ArrowLeft: () => {
+              event.preventDefault();
+              event.stopPropagation();
+              onArrowLeft?.(event);
+            },
+            ArrowRight: () => {
+              event.preventDefault();
+              event.stopPropagation();
+              onArrowRight?.(event);
+              if (ctx.isOpen) {
+                const drawerNode = document.querySelector('[data-sidebar-drawer]')!;
+                (drawerNode.childNodes as NodeListOf<HTMLButtonElement>)[0]?.focus();
+              }
+            },
+          }[event.code];
+
+          fireEvents?.();
+        })}
       />
     </Floating.Target>
   );

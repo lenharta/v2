@@ -8,6 +8,7 @@ import { createEventCallback } from '@/utils';
 
 interface ControlSegmentProps extends Core.ItemParsed {
   orientation?: Core.Orientation | undefined;
+  trapFocus?: boolean | undefined;
   selected?: boolean | undefined;
   refs: Record<string, HTMLElement | null>;
   onChange: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -29,6 +30,7 @@ const ControlSegment = factory<ControlSegmentFactory>((props, ref) => {
     disabled,
     selected,
     className,
+    trapFocus,
     orientation,
     onClick,
     onUpdate,
@@ -47,7 +49,14 @@ const ControlSegment = factory<ControlSegmentFactory>((props, ref) => {
       data-disabled={disabled}
       aria-selected={selected || undefined}
       aria-disabled={disabled}
-      onKeyDown={createKeyDownGroup({ onKeyDown, orientation })}
+      data-core-control-item
+      onKeyDown={createKeyDownGroup({
+        parentSelector: '[data-core-control-track]',
+        childSelector: '[data-core-control-item]',
+        orientation,
+        onKeyDown,
+        loop: trapFocus,
+      })}
       onClick={createEventCallback(onClick, (event) => {
         event.stopPropagation();
         onChange(event);
