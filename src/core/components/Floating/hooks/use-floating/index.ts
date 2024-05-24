@@ -6,15 +6,12 @@ import { getFloatingMiddleware } from '../../utils/get-floating-middleware';
 import { useFloating as useFloatingPayload, UseFloatingReturn } from '@floating-ui/react';
 
 const useFloating = <E extends Element = Element>(opts: UseFloatingOptions) => {
-  const onClose = React.useCallback(
-    (open: boolean) => {
-      if (open) {
-        opts.onChange?.(false);
-        opts.onClose?.();
-      }
-    },
-    [opts.onChange, opts.onClose]
-  );
+  const onClose = React.useCallback(() => {
+    if (opts.open) {
+      opts.onChange?.(false);
+      opts.onClose?.();
+    }
+  }, [opts.open, opts.onChange, opts.onClose]);
 
   const onChange = React.useCallback(
     (open: boolean) => {

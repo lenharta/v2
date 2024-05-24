@@ -1,5 +1,7 @@
 import clsx from 'clsx';
+import React from 'react';
 import { factory } from '@/core/factory';
+import { SidebarLink } from './SidebarLink';
 import { SidebarSelect } from './SidebarSelect';
 import { Action, Box, Icon } from '@/core/components';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -19,7 +21,7 @@ import {
   useStoreDispatch,
   useStoreState,
 } from '@/store';
-import React from 'react';
+import { createEventCallback } from '@/utils';
 
 interface SidebarProps {}
 
@@ -29,6 +31,7 @@ type SidebarFactory = Factory.Config<{
   props: SidebarProps;
   omits: 'children';
   comps: {
+    Link: typeof SidebarLink;
     Select: typeof SidebarSelect;
   };
 }>;
@@ -43,46 +46,80 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
 
   const [activeGroup, setActiveGroup] = React.useState('');
 
+  const closeActivePanels = () => {
+    setActiveGroup('');
+    dispatch({
+      menuOpen: undefined,
+      resultOpen: undefined,
+      splashOpen: undefined,
+      sidebarOpen: undefined,
+    });
+  };
+
+  const handleHotKeyCapture = createEventCallback(forwardedProps.onKeyDownCapture, (event) => {
+    if (event.code === 'Escape') {
+      event.stopPropagation();
+      event.preventDefault();
+      closeActivePanels();
+    }
+  });
+
   return (
-    <Box {...forwardedProps} ref={ref} component="div" className={clsx('v2-sidebar', className)}>
+    <Box
+      {...forwardedProps}
+      onKeyDownCapture={handleHotKeyCapture}
+      className={clsx('v2-sidebar', className)}
+      component="div"
+      ref={ref}
+    >
       <Action.Group orientation="vertical" value={location.pathname}>
-        <Action
-          label="Home"
-          value={GlobalRoutePaths.home}
+        <Sidebar.Link
+          label="home"
           icon={<Icon name={GlobalRouteIcons.home} />}
-          onClick={(event) => navigate(event.currentTarget.value)}
+          value={GlobalRoutePaths.home}
+          pathname={location.pathname}
+          closeActivePanels={closeActivePanels}
+          navigate={navigate}
           data-sidebar-item
         />
 
-        <Action
-          label="Experience"
-          value={GlobalRoutePaths.experience}
+        <Sidebar.Link
+          label="experience"
           icon={<Icon name={GlobalRouteIcons.experience} />}
-          onClick={(event) => navigate(event.currentTarget.value)}
+          value={GlobalRoutePaths.experience}
+          pathname={location.pathname}
+          closeActivePanels={closeActivePanels}
+          navigate={navigate}
           data-sidebar-item
         />
 
-        <Action
-          label="Projects"
-          value={GlobalRoutePaths.projects}
+        <Sidebar.Link
+          label="projects"
           icon={<Icon name={GlobalRouteIcons.projects} />}
-          onClick={(event) => navigate(event.currentTarget.value)}
+          value={GlobalRoutePaths.projects}
+          pathname={location.pathname}
+          closeActivePanels={closeActivePanels}
+          navigate={navigate}
           data-sidebar-item
         />
 
-        <Action
-          label="Toolbox"
-          value={GlobalRoutePaths.toolbox}
+        <Sidebar.Link
+          label="toolbox"
           icon={<Icon name={GlobalRouteIcons.toolbox} />}
-          onClick={(event) => navigate(event.currentTarget.value)}
+          value={GlobalRoutePaths.toolbox}
+          pathname={location.pathname}
+          closeActivePanels={closeActivePanels}
+          navigate={navigate}
           data-sidebar-item
         />
 
-        <Action
-          label="Sandbox"
-          value={GlobalRoutePaths.sandbox}
+        <Sidebar.Link
+          label="sandbox"
           icon={<Icon name={GlobalRouteIcons.sandbox} />}
-          onClick={(event) => navigate(event.currentTarget.value)}
+          value={GlobalRoutePaths.sandbox}
+          pathname={location.pathname}
+          closeActivePanels={closeActivePanels}
+          navigate={navigate}
           data-sidebar-item
         />
 
@@ -95,6 +132,7 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
           groupValue={store.dir}
           activeGroup={activeGroup}
           setActiveGroup={setActiveGroup}
+          closeActivePanels={closeActivePanels}
           data-sidebar-item
           items={[
             {
@@ -119,6 +157,7 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
           groupValue={store.mode}
           activeGroup={activeGroup}
           setActiveGroup={setActiveGroup}
+          closeActivePanels={closeActivePanels}
           data-sidebar-item
           items={[
             {
@@ -147,6 +186,7 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
           label="accent color"
           groupId="accent"
           groupValue={store.accent}
+          closeActivePanels={closeActivePanels}
           activeGroup={activeGroup}
           setActiveGroup={setActiveGroup}
           data-sidebar-item
@@ -226,11 +266,13 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
           ]}
         />
 
-        <Action
-          label="Settings"
-          value={GlobalRoutePaths.settings}
+        <Sidebar.Link
+          label="settings"
           icon={<Icon name={GlobalRouteIcons.settings} />}
-          onClick={(event) => navigate(event.currentTarget.value)}
+          value={GlobalRoutePaths.settings}
+          pathname={location.pathname}
+          closeActivePanels={closeActivePanels}
+          navigate={navigate}
           data-sidebar-item
         />
       </Action.Group>
@@ -238,6 +280,7 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
   );
 });
 
+Sidebar.Link = SidebarLink;
 Sidebar.Select = SidebarSelect;
 Sidebar.displayName = '@v2/Sidebar';
 export { Sidebar, type SidebarProps };
