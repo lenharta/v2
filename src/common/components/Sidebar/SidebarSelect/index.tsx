@@ -3,6 +3,7 @@ import { Floating } from '@/core';
 import { SidebarSelectTarget } from '../SidebarSelectTarget';
 import { SidebarSelectDrawer } from '../SidebarSelectDrawer';
 import { SidebarSelectOption } from '../SidebarSelectOption';
+import { useClickOutside } from '@/hooks';
 
 interface SidebarSelectProps {
   icon?: React.ReactNode | undefined;

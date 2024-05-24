@@ -1,36 +1,41 @@
 import clsx from 'clsx';
 import React from 'react';
 import { factory } from '@/core/factory';
-import { SearchItem } from './SearchItem';
-import { SearchClear } from './SearchClear';
-import { SearchInput } from './SearchInput';
-import { SearchResult } from './SearchResult';
-import { SearchTarget } from './SearchTarget';
 import { Core, Factory } from '@/types';
 import { Box, Transition } from '@/core/components';
 import { useInteractionContext } from '@/common/interaction';
 import { useStoreDispatch, useStoreState } from '@/store';
+import { SearchTarget } from './SearchTarget';
+import { SearchResult } from './SearchResult';
+import { SearchInput } from './SearchInput';
+import { SearchClear } from './SearchClear';
+import { SearchItem } from './SearchItem';
+import { useNavigate } from 'react-router-dom';
 
 const sampleSearchData = [
   {
-    value: 'search-item-1',
-    label: 'Search Item 1',
+    value: '/',
+    label: 'Overview',
   },
   {
-    value: 'search-item-2',
-    label: 'Search Item 2',
+    value: '/experience',
+    label: 'Experience',
   },
   {
-    value: 'search-item-3',
-    label: 'Search Item 3',
+    value: '/projects',
+    label: 'Projects',
   },
   {
-    value: 'search-item-4',
-    label: 'Search Item 4',
+    value: '/sandbox',
+    label: 'Sandbox',
   },
   {
-    value: 'search-item-5',
-    label: 'Search Item 5',
+    value: '/toolbox',
+    label: 'Toolbox',
+  },
+  {
+    value: '/settings',
+    label: 'Settings',
   },
 ] as const;
 
@@ -65,17 +70,9 @@ const Search = factory<SearchFactory>((props, ref) => {
   const { className, ...forwardedProps } = props;
 
   const store = useStoreState();
+  const navigate = useNavigate();
   const dispatch = useStoreDispatch();
   const interaction = useInteractionContext();
-
-  const onOpenChange: () => void = () => {
-    if (store.searchOpen === true) {
-      dispatch({ searchOpen: undefined, resultOpen: undefined });
-    }
-    if (store.searchOpen === undefined) {
-      dispatch({ searchOpen: true });
-    }
-  };
 
   const onFocusResult = () => {
     if (store.searchOpen) {
@@ -86,17 +83,25 @@ const Search = factory<SearchFactory>((props, ref) => {
     }
   };
 
-  React.useEffect(() => {
-    const isBlank = store.query === '';
-    const isEmpty = store.query === undefined;
+  const onOpenChange: () => void = () => {
+    if (store.searchOpen === true) {
+      dispatch({ searchOpen: undefined, resultOpen: undefined });
+    }
+    if (store.searchOpen === undefined) {
+      dispatch({ searchOpen: true });
+    }
+  };
 
-    if (!isBlank || !isEmpty) {
+  const [term, setTerm] = React.useState<string>('');
+
+  React.useEffect(() => {
+    if (term.length > 0 && !store.resultOpen) {
       dispatch({ resultOpen: true });
     }
-    if (isBlank || isEmpty) {
+    if (term.length <= 0) {
       dispatch({ resultOpen: undefined });
     }
-  }, [store.query]);
+  }, [term]);
 
   return (
     <React.Fragment>
@@ -106,21 +111,22 @@ const Search = factory<SearchFactory>((props, ref) => {
             <React.Fragment>
               <Search.Input
                 ref={interaction.searchInputRef}
-                value={store.query}
+                value={term}
                 style={transitionStyles}
-                onChange={(event) => dispatch({ query: event.currentTarget.value })}
+                onChange={(event) => setTerm(event.currentTarget.value)}
                 onTab={interaction.onFocusSearchClear}
                 onShiftTab={interaction.onFocusSearchTarget}
                 onArrowRight={interaction.onFocusSearchClear}
                 onArrowLeft={interaction.onFocusSearchTarget}
                 onArrowDown={onFocusResult}
+                onClick={() => term.length > 0 && dispatch({ resultOpen: true })}
               />
 
               <Search.Clear
                 ref={interaction.searchClearRef}
                 label="search clear"
                 style={transitionStyles}
-                onClick={() => dispatch({ query: undefined })}
+                onClick={() => setTerm('')}
                 onTab={interaction.onFocusSearchTarget}
                 onShiftTab={interaction.onFocusSearchInput}
                 onArrowRight={interaction.onFocusSearchTarget}
@@ -146,7 +152,11 @@ const Search = factory<SearchFactory>((props, ref) => {
                     ref={interaction.searchItemRef}
                     label={item.label}
                     value={item.value}
-                    onClick={(event) => console.log(event.currentTarget.value)}
+                    onClick={(event) => {
+                      navigate(event.currentTarget.value);
+                      dispatch({ resultOpen: undefined });
+                      setTerm('');
+                    }}
                   />
                 ))}
               </Search.Result>
@@ -163,7 +173,10 @@ const Search = factory<SearchFactory>((props, ref) => {
           onArrowLeft={interaction.onFocusSearchClear}
           onArrowDown={onFocusResult}
           onEnter={onOpenChange}
-          onClick={onOpenChange}
+          onClick={() => {
+            onOpenChange();
+            dispatch({ query: term });
+          }}
         />
       </Box>
     </React.Fragment>
