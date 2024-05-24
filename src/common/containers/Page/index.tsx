@@ -26,8 +26,9 @@ const pageTransition: Partial<Core.TransitionProps> = {
 
 const Page = factory<PageFactory>((props, ref) => {
   const { children, ...forwardedProps } = props;
-  const [isMounted, setMounted] = React.useState(false);
+
   const location = useLocation();
+  const [isMounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
     if (isMounted !== true) {

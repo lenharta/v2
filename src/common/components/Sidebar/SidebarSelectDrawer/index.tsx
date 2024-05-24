@@ -1,13 +1,15 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Factory } from '@/types';
-import { Box, Floating, factory } from '@/core';
+import { App, Factory } from '@/types';
 import { SidebarSelectOption } from '../SidebarSelectOption';
+import { Box, Floating, createKeyDownGroup, factory } from '@/core';
 
 interface SidebarSelectDrawerProps {
+  name: keyof App.Store;
   groupId: string;
   groupValue?: string | undefined;
   activeGroup: string;
+  storeDispatch?: ((value: Partial<App.Store>) => void) | undefined;
   setActiveGroup: (activeGroup: string) => void;
   closeActivePanels: () => void;
   items: {
@@ -26,11 +28,13 @@ type SidebarSelectDrawerFactory = Factory.Config<{
 
 const SidebarSelectDrawer = factory<SidebarSelectDrawerFactory>((props, ref) => {
   const {
-    className,
+    name,
     items,
-    groupValue,
     groupId,
+    className,
+    groupValue,
     activeGroup,
+    storeDispatch,
     setActiveGroup,
     closeActivePanels,
     ...forwardedProps
@@ -43,18 +47,28 @@ const SidebarSelectDrawer = factory<SidebarSelectDrawerFactory>((props, ref) => 
         ref={ref}
         role="menubar"
         className={clsx('v2-sidebar-select-drawer', className)}
+        data-sidebar-drawer
       >
         {items.map((item) => (
           <SidebarSelectOption
+            key={item.value}
+            name={name}
+            icon={item.icon}
+            value={item.value}
+            label={item.label}
             onClick={item.onClick}
+            groupId={groupId}
+            groupValue={groupValue}
             activeGroup={activeGroup}
             setActiveGroup={setActiveGroup}
-            groupValue={groupValue}
-            groupId={groupId}
-            label={item.label}
-            value={item.value}
-            icon={item.icon}
-            key={item.value}
+            storeDispatch={storeDispatch}
+            data-sidebar-option
+            onKeyDown={createKeyDownGroup({
+              parentSelector: '[data-sidebar-drawer]',
+              childSelector: '[data-sidebar-option]',
+              orientation: 'horizontal',
+              preventDefault: false,
+            })}
           />
         ))}
       </Box>

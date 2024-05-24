@@ -1,15 +1,18 @@
 import React from 'react';
-import { Floating } from '@/core';
+import { App } from '@/types';
+import { Floating, FloatingProps } from '@/core';
 import { SidebarSelectTarget } from '../SidebarSelectTarget';
 import { SidebarSelectDrawer } from '../SidebarSelectDrawer';
 import { SidebarSelectOption } from '../SidebarSelectOption';
 
-interface SidebarSelectProps {
+interface SidebarSelectProps extends Partial<FloatingProps> {
+  name: keyof App.Store;
   icon?: React.ReactNode | undefined;
   label: string;
   groupId: string;
   groupValue?: string | undefined;
   activeGroup: string;
+  storeDispatch?: ((value: Partial<App.Store>) => void) | undefined;
   setActiveGroup: (activeGroup: string) => void;
   closeActivePanels: () => void;
   items: {
@@ -28,24 +31,29 @@ type SidebarSelectComponent = React.FC<SidebarSelectProps> & {
 
 const SidebarSelect: SidebarSelectComponent = (props) => {
   const {
+    name,
     icon,
     label,
     items,
     groupId,
     groupValue,
     activeGroup,
+    storeDispatch,
     setActiveGroup,
     closeActivePanels,
+    ...floatingProps
   } = props;
 
   const [open, setOpen] = React.useState<boolean>(false);
 
   return (
     <Floating
-      isOpen={open && activeGroup === groupId ? true : false}
+      isOpen={open}
       onChange={setOpen}
       placement="right-start"
       onOpen={() => setActiveGroup(groupId)}
+      onClose={() => setActiveGroup('')}
+      {...floatingProps}
     >
       <SidebarSelect.Target
         icon={icon}
@@ -57,10 +65,12 @@ const SidebarSelect: SidebarSelectComponent = (props) => {
       />
 
       <SidebarSelect.Drawer
+        name={name}
         items={items}
         groupId={groupId}
         groupValue={groupValue}
         activeGroup={activeGroup}
+        storeDispatch={storeDispatch}
         setActiveGroup={setActiveGroup}
         closeActivePanels={closeActivePanels}
       />

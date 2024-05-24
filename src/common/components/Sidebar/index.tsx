@@ -2,8 +2,10 @@ import clsx from 'clsx';
 import React from 'react';
 import { factory } from '@/core/factory';
 import { SidebarLink } from './SidebarLink';
+import { SidebarColor } from './SidebarColor';
 import { SidebarSelect } from './SidebarSelect';
 import { Action, Box, Icon } from '@/core/components';
+import { createKeyDownGroup } from '@/core';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -21,7 +23,7 @@ import {
   useStoreDispatch,
   useStoreState,
 } from '@/store';
-import { createEventCallback } from '@/utils';
+import { dataGlobalAccentColors } from '@/data';
 
 interface SidebarProps {}
 
@@ -32,6 +34,7 @@ type SidebarFactory = Factory.Config<{
   omits: 'children';
   comps: {
     Link: typeof SidebarLink;
+    Color: typeof SidebarColor;
     Select: typeof SidebarSelect;
   };
 }>;
@@ -47,93 +50,98 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
   const [activeGroup, setActiveGroup] = React.useState('');
 
   const closeActivePanels = () => {
-    setActiveGroup('');
     dispatch({
       menuOpen: undefined,
       resultOpen: undefined,
       splashOpen: undefined,
-      sidebarOpen: undefined,
     });
   };
 
-  const handleHotKeyCapture = createEventCallback(forwardedProps.onKeyDownCapture, (event) => {
-    if (event.code === 'Escape') {
-      event.stopPropagation();
-      event.preventDefault();
-      closeActivePanels();
-    }
-  });
-
   return (
-    <Box
-      {...forwardedProps}
-      onKeyDownCapture={handleHotKeyCapture}
-      className={clsx('v2-sidebar', className)}
-      component="div"
-      ref={ref}
-    >
-      <Action.Group orientation="vertical" value={location.pathname}>
+    <Box {...forwardedProps} className={clsx('v2-sidebar', className)} ref={ref}>
+      <Action.Group
+        data-sidebar-group
+        value={location.pathname}
+        orientation="vertical"
+        onKeyDown={createKeyDownGroup({
+          parentSelector: '[data-sidebar-group]',
+          childSelector: '[data-sidebar-item]',
+          orientation: 'vertical',
+          loop: false,
+        })}
+      >
         <Sidebar.Link
+          data-sidebar-item
           label="home"
           icon={<Icon name={GlobalRouteIcons.home} />}
           value={GlobalRoutePaths.home}
           pathname={location.pathname}
           closeActivePanels={closeActivePanels}
           navigate={navigate}
-          data-sidebar-item
         />
 
         <Sidebar.Link
+          data-sidebar-item
           label="experience"
           icon={<Icon name={GlobalRouteIcons.experience} />}
           value={GlobalRoutePaths.experience}
           pathname={location.pathname}
           closeActivePanels={closeActivePanels}
           navigate={navigate}
-          data-sidebar-item
         />
 
         <Sidebar.Link
+          data-sidebar-item
           label="projects"
           icon={<Icon name={GlobalRouteIcons.projects} />}
           value={GlobalRoutePaths.projects}
           pathname={location.pathname}
           closeActivePanels={closeActivePanels}
           navigate={navigate}
-          data-sidebar-item
         />
 
         <Sidebar.Link
+          data-sidebar-item
           label="toolbox"
           icon={<Icon name={GlobalRouteIcons.toolbox} />}
           value={GlobalRoutePaths.toolbox}
           pathname={location.pathname}
           closeActivePanels={closeActivePanels}
           navigate={navigate}
-          data-sidebar-item
         />
 
         <Sidebar.Link
+          data-sidebar-item
           label="sandbox"
           icon={<Icon name={GlobalRouteIcons.sandbox} />}
           value={GlobalRoutePaths.sandbox}
           pathname={location.pathname}
           closeActivePanels={closeActivePanels}
           navigate={navigate}
+        />
+
+        <Sidebar.Link
           data-sidebar-item
+          label="settings"
+          icon={<Icon name={GlobalRouteIcons.settings} />}
+          value={GlobalRoutePaths.settings}
+          pathname={location.pathname}
+          closeActivePanels={closeActivePanels}
+          navigate={navigate}
         />
 
         <Action.Spacer />
 
         <Sidebar.Select
+          name="dir"
           icon={<Icon name={lookupWritingModeIcon[store.dir]} />}
           label="writing mode"
           groupId="writing"
           groupValue={store.dir}
           activeGroup={activeGroup}
+          storeDispatch={dispatch}
           setActiveGroup={setActiveGroup}
           closeActivePanels={closeActivePanels}
-          data-sidebar-item
           items={[
             {
               icon: <Icon name={lookupWritingModeIcon.ltr} />,
@@ -151,14 +159,33 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
         />
 
         <Sidebar.Select
+          name="accent"
+          icon={<Sidebar.Color accent={store.accent} />}
+          label="accent color"
+          groupId="accent"
+          groupValue={store.accent}
+          activeGroup={activeGroup}
+          storeDispatch={dispatch}
+          setActiveGroup={setActiveGroup}
+          closeActivePanels={closeActivePanels}
+          items={dataGlobalAccentColors.map((token) => ({
+            icon: <Sidebar.Color accent={GlobalAccentColors[token]} />,
+            onClick: () => dispatch({ accent: GlobalAccentColors[token] }),
+            value: GlobalAccentColors[token],
+            label: token,
+          }))}
+        />
+
+        <Sidebar.Select
+          name="mode"
           icon={<Icon name={lookupThemeModeIcon[store.mode]} />}
           label="theme mode"
           groupId="theme"
           groupValue={store.mode}
           activeGroup={activeGroup}
+          storeDispatch={dispatch}
           setActiveGroup={setActiveGroup}
           closeActivePanels={closeActivePanels}
-          data-sidebar-item
           items={[
             {
               icon: <Icon name={lookupThemeModeIcon.light} />,
@@ -180,107 +207,13 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
             },
           ]}
         />
-
-        <Sidebar.Select
-          icon={<Icon name="palette" />}
-          label="accent color"
-          groupId="accent"
-          groupValue={store.accent}
-          closeActivePanels={closeActivePanels}
-          activeGroup={activeGroup}
-          setActiveGroup={setActiveGroup}
-          data-sidebar-item
-          items={[
-            {
-              icon: <div className="v2-sidebar-color-icon-red" />,
-              label: 'red',
-              value: GlobalAccentColors.red,
-              onClick: () => dispatch({ accent: GlobalAccentColors.red }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-orange" />,
-              label: 'orange',
-              value: GlobalAccentColors.orange,
-              onClick: () => dispatch({ accent: GlobalAccentColors.orange }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-yellow" />,
-              label: 'yellow',
-              value: GlobalAccentColors.yellow,
-              onClick: () => dispatch({ accent: GlobalAccentColors.yellow }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-green" />,
-              label: 'green',
-              value: GlobalAccentColors.green,
-              onClick: () => dispatch({ accent: GlobalAccentColors.green }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-mint" />,
-              label: 'mint',
-              value: GlobalAccentColors.mint,
-              onClick: () => dispatch({ accent: GlobalAccentColors.mint }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-teal" />,
-              label: 'teal',
-              value: GlobalAccentColors.teal,
-              onClick: () => dispatch({ accent: GlobalAccentColors.teal }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-cyan" />,
-              label: 'cyan',
-              value: GlobalAccentColors.cyan,
-              onClick: () => dispatch({ accent: GlobalAccentColors.cyan }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-blue" />,
-              label: 'blue',
-              value: GlobalAccentColors.blue,
-              onClick: () => dispatch({ accent: GlobalAccentColors.blue }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-indigo" />,
-              label: 'indigo',
-              value: GlobalAccentColors.indigo,
-              onClick: () => dispatch({ accent: GlobalAccentColors.indigo }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-purple" />,
-              label: 'purple',
-              value: GlobalAccentColors.purple,
-              onClick: () => dispatch({ accent: GlobalAccentColors.purple }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-pink" />,
-              label: 'pink',
-              value: GlobalAccentColors.pink,
-              onClick: () => dispatch({ accent: GlobalAccentColors.pink }),
-            },
-            {
-              icon: <div className="v2-sidebar-color-icon-brown" />,
-              label: 'brown',
-              value: GlobalAccentColors.brown,
-              onClick: () => dispatch({ accent: GlobalAccentColors.brown }),
-            },
-          ]}
-        />
-
-        <Sidebar.Link
-          label="settings"
-          icon={<Icon name={GlobalRouteIcons.settings} />}
-          value={GlobalRoutePaths.settings}
-          pathname={location.pathname}
-          closeActivePanels={closeActivePanels}
-          navigate={navigate}
-          data-sidebar-item
-        />
       </Action.Group>
     </Box>
   );
 });
 
 Sidebar.Link = SidebarLink;
+Sidebar.Color = SidebarColor;
 Sidebar.Select = SidebarSelect;
 Sidebar.displayName = '@v2/Sidebar';
 export { Sidebar, type SidebarProps };

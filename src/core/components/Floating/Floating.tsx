@@ -3,8 +3,8 @@ import { useFloating } from './hooks';
 import { FloatingBox } from './FloatingBox';
 import { FloatingProps } from './Floating.types';
 import { FloatingTarget } from './FloatingTarget';
+import { useClickOutside, useEventListener } from '@/hooks';
 import { FloatingProvider } from './Floating.context';
-import { useEventListener } from '@/hooks';
 import { getFloatingPlacement } from './utils';
 
 type FloatingFactory = React.FC<FloatingProps> & {
@@ -24,6 +24,7 @@ const Floating: FloatingFactory = (props) => {
     placement = 'bottom',
     middleware = { flip: true, shift: true, inline: false },
     transitionProps,
+    closeOnEscape = true,
     closeOnClickOutside = true,
     placementDependencies,
     onPlacementChange,
@@ -50,6 +51,21 @@ const Floating: FloatingFactory = (props) => {
     onOpen,
   });
 
+  useClickOutside(
+    [
+      floating.payload.refs.floating as React.RefObject<HTMLElement>,
+      floating.payload.refs.reference as React.RefObject<HTMLElement>,
+    ],
+    () => closeOnClickOutside && floating.onClose(),
+    'mousedown'
+  );
+
+  useEventListener('keydown', (event: any) => {
+    if (event?.code === 'Escape') {
+      closeOnEscape && floating.onClose();
+    }
+  });
+
   const referenceRef = React.useCallback(
     (node: HTMLElement) => {
       floating.payload.refs.setReference(node);
@@ -62,35 +78,6 @@ const Floating: FloatingFactory = (props) => {
       floating.payload.refs.setFloating(node);
     },
     [floating.payload.refs.setFloating]
-  );
-
-  useEventListener(
-    'mousedown',
-    (event: any) => {
-      const target = event.target as Node;
-
-      if (!target || !target.isConnected) {
-        return;
-      }
-
-      const floatingClickRef = floating.payload.refs.floating as React.RefObject<HTMLDivElement>;
-      const referenceClickRef = floating.payload.refs.reference as React.RefObject<HTMLElement>;
-
-      const floatingNode = floatingClickRef.current!;
-      const referenceNode = referenceClickRef.current!;
-
-      const isOutsideFloating = floatingNode && !floatingNode?.contains(target);
-      const isOutsideReference = referenceNode && !referenceNode?.contains(target);
-
-      if (!isOutsideFloating || !isOutsideReference) {
-        return;
-      }
-      if (isOutsideFloating || isOutsideReference) {
-        closeOnClickOutside && floating.onClose();
-      }
-    },
-    undefined,
-    {}
   );
 
   return (
@@ -110,6 +97,7 @@ const Floating: FloatingFactory = (props) => {
           placement: floating.payload.placement,
           placementDependencies,
           closeOnClickOutside,
+          closeOnEscape,
           x: floating.payload.x!,
           y: floating.payload.y!,
           transitionProps: {
