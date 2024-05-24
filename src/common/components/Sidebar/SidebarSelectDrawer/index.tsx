@@ -62,10 +62,10 @@ const SidebarSelectDrawer = factory<SidebarSelectDrawerFactory>((props, ref) => 
             activeGroup={activeGroup}
             setActiveGroup={setActiveGroup}
             storeDispatch={storeDispatch}
-            data-sidebar-item
+            data-sidebar-option
             onKeyDown={createKeyDownGroup({
               parentSelector: '[data-sidebar-drawer]',
-              childSelector: '[data-sidebar-item]',
+              childSelector: '[data-sidebar-option]',
               orientation: 'horizontal',
               preventDefault: false,
             })}

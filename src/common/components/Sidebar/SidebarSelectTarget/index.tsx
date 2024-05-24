@@ -62,6 +62,7 @@ const SidebarSelectTarget = factory<SidebarSelectTargetFactory>((props, ref) => 
     <Floating.Target>
       <Action
         {...forwardedProps}
+        data-sidebar-item
         ref={ref}
         icon={icon}
         value={value}
@@ -70,41 +71,6 @@ const SidebarSelectTarget = factory<SidebarSelectTargetFactory>((props, ref) => 
         className={clsx('v2-sidebar-select-target', className)}
         onKeyDown={createEventCallback(forwardedProps.onKeyDown, (event) => {
           const fireEvents = {
-            End: () => {
-              event.preventDefault();
-              event.stopPropagation();
-              onEnd?.(event);
-            },
-            Home: () => {
-              event.preventDefault();
-              event.stopPropagation();
-              onHome?.(event);
-            },
-            PageUp: () => {
-              event.preventDefault();
-              event.stopPropagation();
-              onPageUp?.(event);
-            },
-            PageDown: () => {
-              event.preventDefault();
-              event.stopPropagation();
-              onPageDown?.(event);
-            },
-            ArrowDown: () => {
-              event.preventDefault();
-              event.stopPropagation();
-              onArrowDown?.(event);
-            },
-            ArrowUp: () => {
-              event.preventDefault();
-              event.stopPropagation();
-              onArrowUp?.(event);
-            },
-            ArrowLeft: () => {
-              event.preventDefault();
-              event.stopPropagation();
-              onArrowLeft?.(event);
-            },
             ArrowRight: () => {
               event.preventDefault();
               event.stopPropagation();

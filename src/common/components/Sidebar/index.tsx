@@ -2,8 +2,10 @@ import clsx from 'clsx';
 import React from 'react';
 import { factory } from '@/core/factory';
 import { SidebarLink } from './SidebarLink';
+import { SidebarColor } from './SidebarColor';
 import { SidebarSelect } from './SidebarSelect';
 import { Action, Box, Icon } from '@/core/components';
+import { createKeyDownGroup } from '@/core';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -21,9 +23,7 @@ import {
   useStoreDispatch,
   useStoreState,
 } from '@/store';
-import { createEventCallback } from '@/utils';
-import { SidebarColor } from './SidebarColor';
-import { createKeyDownGroup } from '@/core';
+import { dataGlobalAccentColors } from '@/data';
 
 interface SidebarProps {}
 
@@ -60,18 +60,18 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
   return (
     <Box {...forwardedProps} className={clsx('v2-sidebar', className)} ref={ref}>
       <Action.Group
-        data-sidebar-link-group
+        data-sidebar-group
         value={location.pathname}
         orientation="vertical"
         onKeyDown={createKeyDownGroup({
-          parentSelector: '[data-sidebar-link-group]',
-          childSelector: '[data-sidebar-link-item]',
+          parentSelector: '[data-sidebar-group]',
+          childSelector: '[data-sidebar-item]',
           orientation: 'vertical',
           loop: false,
         })}
       >
         <Sidebar.Link
-          data-sidebar-link-item
+          data-sidebar-item
           label="home"
           icon={<Icon name={GlobalRouteIcons.home} />}
           value={GlobalRoutePaths.home}
@@ -81,7 +81,7 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
         />
 
         <Sidebar.Link
-          data-sidebar-link-item
+          data-sidebar-item
           label="experience"
           icon={<Icon name={GlobalRouteIcons.experience} />}
           value={GlobalRoutePaths.experience}
@@ -91,7 +91,7 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
         />
 
         <Sidebar.Link
-          data-sidebar-link-item
+          data-sidebar-item
           label="projects"
           icon={<Icon name={GlobalRouteIcons.projects} />}
           value={GlobalRoutePaths.projects}
@@ -101,7 +101,7 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
         />
 
         <Sidebar.Link
-          data-sidebar-link-item
+          data-sidebar-item
           label="toolbox"
           icon={<Icon name={GlobalRouteIcons.toolbox} />}
           value={GlobalRoutePaths.toolbox}
@@ -111,10 +111,20 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
         />
 
         <Sidebar.Link
-          data-sidebar-link-item
+          data-sidebar-item
           label="sandbox"
           icon={<Icon name={GlobalRouteIcons.sandbox} />}
           value={GlobalRoutePaths.sandbox}
+          pathname={location.pathname}
+          closeActivePanels={closeActivePanels}
+          navigate={navigate}
+        />
+
+        <Sidebar.Link
+          data-sidebar-item
+          label="settings"
+          icon={<Icon name={GlobalRouteIcons.settings} />}
+          value={GlobalRoutePaths.settings}
           pathname={location.pathname}
           closeActivePanels={closeActivePanels}
           navigate={navigate}
@@ -149,6 +159,24 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
         />
 
         <Sidebar.Select
+          name="accent"
+          icon={<Sidebar.Color accent={store.accent} />}
+          label="accent color"
+          groupId="accent"
+          groupValue={store.accent}
+          activeGroup={activeGroup}
+          storeDispatch={dispatch}
+          setActiveGroup={setActiveGroup}
+          closeActivePanels={closeActivePanels}
+          items={dataGlobalAccentColors.map((token) => ({
+            icon: <Sidebar.Color accent={GlobalAccentColors[token]} />,
+            onClick: () => dispatch({ accent: GlobalAccentColors[token] }),
+            value: GlobalAccentColors[token],
+            label: token,
+          }))}
+        />
+
+        <Sidebar.Select
           name="mode"
           icon={<Icon name={lookupThemeModeIcon[store.mode]} />}
           label="theme mode"
@@ -178,101 +206,6 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
               onClick: () => dispatch({ mode: GlobalThemeModes.dim }),
             },
           ]}
-        />
-
-        <Sidebar.Select
-          name="accent"
-          icon={<Sidebar.Color accent={store.accent} />}
-          label="accent color"
-          groupId="accent"
-          groupValue={store.accent}
-          activeGroup={activeGroup}
-          storeDispatch={dispatch}
-          setActiveGroup={setActiveGroup}
-          closeActivePanels={closeActivePanels}
-          items={[
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.red} />,
-              label: 'red',
-              value: GlobalAccentColors.red,
-              onClick: () => dispatch({ accent: GlobalAccentColors.red }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.orange} />,
-              label: 'orange',
-              value: GlobalAccentColors.orange,
-              onClick: () => dispatch({ accent: GlobalAccentColors.orange }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.yellow} />,
-              label: 'yellow',
-              value: GlobalAccentColors.yellow,
-              onClick: () => dispatch({ accent: GlobalAccentColors.yellow }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.green} />,
-              label: 'green',
-              value: GlobalAccentColors.green,
-              onClick: () => dispatch({ accent: GlobalAccentColors.green }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.mint} />,
-              label: 'mint',
-              value: GlobalAccentColors.mint,
-              onClick: () => dispatch({ accent: GlobalAccentColors.mint }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.teal} />,
-              label: 'teal',
-              value: GlobalAccentColors.teal,
-              onClick: () => dispatch({ accent: GlobalAccentColors.teal }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.cyan} />,
-              label: 'cyan',
-              value: GlobalAccentColors.cyan,
-              onClick: () => dispatch({ accent: GlobalAccentColors.cyan }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.blue} />,
-              label: 'blue',
-              value: GlobalAccentColors.blue,
-              onClick: () => dispatch({ accent: GlobalAccentColors.blue }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.indigo} />,
-              label: 'indigo',
-              value: GlobalAccentColors.indigo,
-              onClick: () => dispatch({ accent: GlobalAccentColors.indigo }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.purple} />,
-              label: 'purple',
-              value: GlobalAccentColors.purple,
-              onClick: () => dispatch({ accent: GlobalAccentColors.purple }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.pink} />,
-              label: 'pink',
-              value: GlobalAccentColors.pink,
-              onClick: () => dispatch({ accent: GlobalAccentColors.pink }),
-            },
-            {
-              icon: <Sidebar.Color accent={GlobalAccentColors.brown} />,
-              label: 'brown',
-              value: GlobalAccentColors.brown,
-              onClick: () => dispatch({ accent: GlobalAccentColors.brown }),
-            },
-          ]}
-        />
-
-        <Sidebar.Link
-          label="settings"
-          icon={<Icon name={GlobalRouteIcons.settings} />}
-          value={GlobalRoutePaths.settings}
-          pathname={location.pathname}
-          closeActivePanels={closeActivePanels}
-          navigate={navigate}
         />
       </Action.Group>
     </Box>

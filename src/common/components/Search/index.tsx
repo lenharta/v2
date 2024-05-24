@@ -11,6 +11,7 @@ import { SearchInput } from './SearchInput';
 import { SearchClear } from './SearchClear';
 import { SearchItem } from './SearchItem';
 import { useNavigate } from 'react-router-dom';
+import { useEventListener } from '@/hooks';
 
 const sampleSearchData = [
   {
@@ -73,6 +74,25 @@ const Search = factory<SearchFactory>((props, ref) => {
   const navigate = useNavigate();
   const dispatch = useStoreDispatch();
   const interaction = useInteractionContext();
+  const [term, setTerm] = React.useState<string>('');
+
+  React.useEffect(() => {
+    if (term.length > 0 && !store.resultOpen) {
+      dispatch({ resultOpen: true });
+    }
+    if (term.length <= 0) {
+      dispatch({ resultOpen: undefined });
+    }
+  }, [term]);
+
+  useEventListener('keydown', (event: any) => {
+    if (event.ctrlKey && event.altKey && event.code === 'KeyK') {
+      event.preventDefault();
+      event.stopPropagation();
+      dispatch({ searchOpen: true });
+      interaction.onFocusSearchInput();
+    }
+  });
 
   const onFocusResult = () => {
     if (store.searchOpen) {
@@ -92,40 +112,29 @@ const Search = factory<SearchFactory>((props, ref) => {
     }
   };
 
-  const [term, setTerm] = React.useState<string>('');
-
-  React.useEffect(() => {
-    if (term.length > 0 && !store.resultOpen) {
-      dispatch({ resultOpen: true });
-    }
-    if (term.length <= 0) {
-      dispatch({ resultOpen: undefined });
-    }
-  }, [term]);
-
   return (
     <React.Fragment>
       <Box {...forwardedProps} className={clsx('v2-search', className)} role="searchbox" ref={ref}>
         <Transition mounted={store.searchOpen ? true : false} {...searchTransition}>
-          {(transitionStyles) => (
+          {(commonTransitionStyles) => (
             <React.Fragment>
               <Search.Input
                 ref={interaction.searchInputRef}
                 value={term}
-                style={transitionStyles}
+                style={commonTransitionStyles}
+                onClick={() => term.length > 0 && dispatch({ resultOpen: true })}
                 onChange={(event) => setTerm(event.currentTarget.value)}
                 onTab={interaction.onFocusSearchClear}
                 onShiftTab={interaction.onFocusSearchTarget}
                 onArrowRight={interaction.onFocusSearchClear}
                 onArrowLeft={interaction.onFocusSearchTarget}
                 onArrowDown={onFocusResult}
-                onClick={() => term.length > 0 && dispatch({ resultOpen: true })}
               />
 
               <Search.Clear
                 ref={interaction.searchClearRef}
                 label="search clear"
-                style={transitionStyles}
+                style={commonTransitionStyles}
                 onClick={() => setTerm('')}
                 onTab={interaction.onFocusSearchTarget}
                 onShiftTab={interaction.onFocusSearchInput}
