@@ -1,15 +1,17 @@
 import clsx from 'clsx';
+import React from 'react';
 import { Factory } from '@/types';
 import { createEventCallback } from '@/utils';
 import { Action, Icon, factory } from '@/core';
 
 interface SearchTargetProps {
   label: string;
-  onOpenChange?: (() => void) | undefined;
-  onClearQuery?: (() => void) | undefined;
-  onClosePanels?: (() => void) | undefined;
-  onFocusSearchInput?: (() => void) | undefined;
-  onFocusSearchClear?: (() => void) | undefined;
+  onTab?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onEnter?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onShiftTab?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onArrowLeft?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onArrowDown?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onArrowRight?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
 }
 
 type SearchTargetFactory = Factory.Config<{
@@ -23,67 +25,55 @@ const SearchTarget = factory<SearchTargetFactory>((props, ref) => {
     label,
     disabled,
     className,
-    onOpenChange,
-    onClearQuery,
-    onClosePanels,
-    onFocusSearchInput,
-    onFocusSearchClear,
+    onTab,
+    onEnter,
+    onShiftTab,
+    onArrowDown,
+    onArrowLeft,
+    onArrowRight,
     ...forwardedProps
   } = props;
-
-  const handleClick = createEventCallback(forwardedProps.onClick, (event) => {
-    event.stopPropagation();
-    onOpenChange?.();
-    onClearQuery?.();
-    onClosePanels?.();
-  });
-
-  const handleKeyDown = createEventCallback(forwardedProps.onKeyDown, (event) => {
-    const Enter = () => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      if (!disabled) {
-        onOpenChange?.();
-        onClearQuery?.();
-        onClosePanels?.();
-      }
-    };
-
-    const ArrowRight = () => {
-      event.preventDefault();
-      event.stopPropagation();
-      onFocusSearchInput?.();
-    };
-
-    const ArrowLeft = () => {
-      event.preventDefault();
-      event.stopPropagation();
-      onFocusSearchClear?.();
-    };
-
-    const Tab = () => {
-      event.preventDefault();
-      event.stopPropagation();
-      if (event.shiftKey) onFocusSearchClear?.();
-      if (!event.shiftKey) onFocusSearchInput?.();
-    };
-
-    const fireEvents = { Tab, Enter, ArrowLeft, ArrowRight }[event.code];
-
-    fireEvents?.();
-  });
 
   return (
     <Action
       {...forwardedProps}
-      disabled={disabled}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      className={clsx('v2-search-target', className)}
+      ref={ref}
       icon={<Icon name="search" />}
       label={label}
-      ref={ref}
+      disabled={disabled}
+      className={clsx('v2-search-target', className)}
+      onKeyDown={createEventCallback(forwardedProps.onKeyDown, (event) => {
+        const fireEvents = {
+          Tab: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            if (event.shiftKey) onShiftTab?.(event);
+            if (!event.shiftKey) onTab?.(event);
+          },
+          Enter: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            onEnter?.(event);
+          },
+          ArrowDown: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            onArrowDown?.(event);
+          },
+          ArrowLeft: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            onArrowLeft?.(event);
+          },
+          ArrowRight: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            onArrowRight?.(event);
+          },
+        }[event.code];
+
+        fireEvents?.();
+      })}
     />
   );
 });

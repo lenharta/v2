@@ -4,52 +4,72 @@ import { Textbox, factory } from '@/core';
 import { createEventCallback } from '@/utils';
 
 interface SearchInputProps {
-  onFocusSearchClear?: (() => void) | undefined;
-  onFocusSearchTarget?: (() => void) | undefined;
+  onTab?: ((event: React.KeyboardEvent<HTMLInputElement>) => void) | undefined;
+  onShiftTab?: ((event: React.KeyboardEvent<HTMLInputElement>) => void) | undefined;
+  onArrowDown?: ((event: React.KeyboardEvent<HTMLInputElement>) => void) | undefined;
+  onArrowLeft?: ((event: React.KeyboardEvent<HTMLInputElement>) => void) | undefined;
+  onArrowRight?: ((event: React.KeyboardEvent<HTMLInputElement>) => void) | undefined;
 }
 
 type SearchInputFactory = Factory.Config<{
   ref: HTMLInputElement;
-  comp: typeof Textbox;
+  comp: 'input';
   props: SearchInputProps;
 }>;
 
 const SearchInput = factory<SearchInputFactory>((props, ref) => {
-  const { className, onFocusSearchTarget, onFocusSearchClear, ...forwardedProps } = props;
-
-  const handleKeyDown = createEventCallback(forwardedProps.onKeyDown, (event) => {
-    const ArrowRight = () => {
-      event.preventDefault();
-      event.stopPropagation();
-      onFocusSearchClear?.();
-    };
-
-    const ArrowLeft = () => {
-      event.preventDefault();
-      event.stopPropagation();
-      onFocusSearchTarget?.();
-    };
-
-    const Tab = () => {
-      event.preventDefault();
-      event.stopPropagation();
-      if (event.shiftKey) onFocusSearchTarget?.();
-      if (!event.shiftKey) onFocusSearchClear?.();
-    };
-
-    const fireEvents = { Tab, ArrowLeft, ArrowRight }[event.code];
-
-    fireEvents?.();
-  });
+  const {
+    value,
+    className,
+    onTab,
+    onShiftTab,
+    onArrowDown,
+    onArrowLeft,
+    onArrowRight,
+    ...forwardedProps
+  } = props;
 
   return (
     <Textbox
       {...forwardedProps}
-      onKeyDown={handleKeyDown}
+      ref={ref}
+      role="search"
+      value={value}
       className={clsx('v2-search-input', className)}
       placeholder="Search"
-      role="search"
-      ref={ref}
+      onKeyDown={createEventCallback(forwardedProps.onKeyDown, (event) => {
+        const fireEvents = {
+          ArrowRight: () => {
+            if (!(event.shiftKey || event.ctrlKey)) {
+              event.preventDefault();
+              event.stopPropagation();
+              onArrowRight?.(event);
+            }
+          },
+          ArrowLeft: () => {
+            if (!(event.shiftKey || event.ctrlKey)) {
+              event.preventDefault();
+              event.stopPropagation();
+              onArrowLeft?.(event);
+            }
+          },
+          ArrowDown: () => {
+            if (!(event.shiftKey || event.ctrlKey)) {
+              event.preventDefault();
+              event.stopPropagation();
+              onArrowDown?.(event);
+            }
+          },
+          Tab: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            if (!event.shiftKey) onTab?.(event);
+            if (event.shiftKey) onShiftTab?.(event);
+          },
+        }[event.code];
+
+        fireEvents?.();
+      })}
     />
   );
 });

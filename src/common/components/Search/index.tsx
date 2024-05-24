@@ -1,15 +1,38 @@
 import clsx from 'clsx';
 import React from 'react';
-import { App, Core, Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { SearchItem } from './SearchItem';
 import { SearchClear } from './SearchClear';
 import { SearchInput } from './SearchInput';
 import { SearchResult } from './SearchResult';
 import { SearchTarget } from './SearchTarget';
+import { Core, Factory } from '@/types';
 import { Box, Transition } from '@/core/components';
-import { useStoreDispatch, useStoreState } from '@/store';
 import { useInteractionContext } from '@/common/interaction';
+import { useStoreDispatch, useStoreState } from '@/store';
+
+const sampleSearchData = [
+  {
+    value: 'search-item-1',
+    label: 'Search Item 1',
+  },
+  {
+    value: 'search-item-2',
+    label: 'Search Item 2',
+  },
+  {
+    value: 'search-item-3',
+    label: 'Search Item 3',
+  },
+  {
+    value: 'search-item-4',
+    label: 'Search Item 4',
+  },
+  {
+    value: 'search-item-5',
+    label: 'Search Item 5',
+  },
+] as const;
 
 interface SearchProps {}
 
@@ -47,58 +70,86 @@ const Search = factory<SearchFactory>((props, ref) => {
 
   const onOpenChange: () => void = () => {
     if (store.searchOpen === true) {
-      dispatch({ searchOpen: undefined });
+      dispatch({ searchOpen: undefined, resultOpen: undefined });
     }
     if (store.searchOpen === undefined) {
       dispatch({ searchOpen: true });
     }
   };
 
-  const onClearQuery: () => void = () => {
-    if (store.query !== undefined) {
-      dispatch({ query: undefined });
+  const onFocusResult = () => {
+    if (store.searchOpen) {
+      const resultParentNode = interaction.searchResultRef.current!;
+      if (resultParentNode && resultParentNode.childNodes[0]) {
+        (resultParentNode.childNodes[0] as HTMLButtonElement).focus();
+      }
     }
   };
 
-  const onClosePanels: () => void = () => {
-    dispatch({
-      sidebarOpen: undefined,
-      menuOpen: undefined,
-    });
-  };
+  React.useEffect(() => {
+    const isBlank = store.query === '';
+    const isEmpty = store.query === undefined;
 
-  const onCloseSearch: () => void = () => {
-    if (store.searchOpen !== undefined) {
-      dispatch({ searchOpen: undefined });
+    if (!isBlank || !isEmpty) {
+      dispatch({ resultOpen: true });
     }
-  };
+    if (isBlank || isEmpty) {
+      dispatch({ resultOpen: undefined });
+    }
+  }, [store.query]);
 
   return (
     <React.Fragment>
-      <Box
-        {...forwardedProps}
-        className={clsx('v2-search', className)}
-        component="div"
-        role="searchbox"
-        ref={ref}
-      >
+      <Box {...forwardedProps} className={clsx('v2-search', className)} role="searchbox" ref={ref}>
         <Transition mounted={store.searchOpen ? true : false} {...searchTransition}>
           {(transitionStyles) => (
             <React.Fragment>
               <Search.Input
-                style={transitionStyles}
                 ref={interaction.searchInputRef}
-                onFocusSearchClear={interaction.onFocusSearchClear}
-                onFocusSearchTarget={interaction.onFocusSearchTarget}
+                value={store.query}
+                style={transitionStyles}
+                onChange={(event) => dispatch({ query: event.currentTarget.value })}
+                onTab={interaction.onFocusSearchClear}
+                onShiftTab={interaction.onFocusSearchTarget}
+                onArrowRight={interaction.onFocusSearchClear}
+                onArrowLeft={interaction.onFocusSearchTarget}
+                onArrowDown={onFocusResult}
               />
 
               <Search.Clear
+                ref={interaction.searchClearRef}
                 label="search clear"
                 style={transitionStyles}
-                ref={interaction.searchClearRef}
-                onFocusSearchInput={interaction.onFocusSearchInput}
-                onFocusSearchTarget={interaction.onFocusSearchTarget}
+                onClick={() => dispatch({ query: undefined })}
+                onTab={interaction.onFocusSearchTarget}
+                onShiftTab={interaction.onFocusSearchInput}
+                onArrowRight={interaction.onFocusSearchTarget}
+                onArrowLeft={interaction.onFocusSearchInput}
+                onArrowDown={onFocusResult}
               />
+
+              <Search.Result
+                ref={interaction.searchResultRef}
+                resultOpen={store.resultOpen}
+                onCloseOnOutsideClick={() => dispatch({ resultOpen: undefined })}
+                omitOutsideClickElements={[
+                  interaction.searchItemRef,
+                  interaction.searchInputRef,
+                  interaction.searchClearRef,
+                  interaction.searchResultRef,
+                  interaction.searchTargetRef,
+                ]}
+              >
+                {sampleSearchData.map((item) => (
+                  <Search.Item
+                    key={item.value}
+                    ref={interaction.searchItemRef}
+                    label={item.label}
+                    value={item.value}
+                    onClick={(event) => console.log(event.currentTarget.value)}
+                  />
+                ))}
+              </Search.Result>
             </React.Fragment>
           )}
         </Transition>
@@ -106,11 +157,13 @@ const Search = factory<SearchFactory>((props, ref) => {
         <Search.Target
           label="search target"
           ref={interaction.searchTargetRef}
-          onOpenChange={onOpenChange}
-          onClearQuery={onClearQuery}
-          onClosePanels={onClosePanels}
-          onFocusSearchClear={interaction.onFocusSearchClear}
-          onFocusSearchInput={interaction.onFocusSearchInput}
+          onTab={interaction.onFocusSearchInput}
+          onShiftTab={interaction.onFocusSearchClear}
+          onArrowRight={interaction.onFocusSearchInput}
+          onArrowLeft={interaction.onFocusSearchClear}
+          onArrowDown={onFocusResult}
+          onEnter={onOpenChange}
+          onClick={onOpenChange}
         />
       </Box>
     </React.Fragment>

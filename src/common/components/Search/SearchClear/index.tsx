@@ -5,58 +5,69 @@ import { createEventCallback } from '@/utils';
 
 interface SearchClearProps {
   label: string;
-  onFocusSearchInput: (() => void) | undefined;
-  onFocusSearchTarget: (() => void) | undefined;
+  onTab?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onShiftTab?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onArrowLeft?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onArrowDown?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onArrowRight?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
 }
 
 type SearchClearFactory = Factory.Config<{
   ref: HTMLButtonElement;
-  comp: typeof Action;
+  comp: 'button';
   props: SearchClearProps;
 }>;
 
 const SearchClear = factory<SearchClearFactory>((props, ref) => {
-  const { label, disabled, className, onFocusSearchInput, onFocusSearchTarget, ...forwardedProps } =
-    props;
-
-  const handleKeyDown = createEventCallback(forwardedProps.onKeyDown, (event) => {
-    const ArrowRight = () => {
-      event.preventDefault();
-      event.stopPropagation();
-      onFocusSearchTarget?.();
-    };
-
-    const ArrowLeft = () => {
-      event.preventDefault();
-      event.stopPropagation();
-      onFocusSearchInput?.();
-    };
-
-    const Tab = () => {
-      event.preventDefault();
-      event.stopPropagation();
-      if (event.shiftKey) onFocusSearchInput?.();
-      if (!event.shiftKey) onFocusSearchTarget?.();
-    };
-
-    const fireEvents = {
-      Tab,
-      ArrowLeft,
-      ArrowRight,
-    }[event.code];
-
-    fireEvents?.();
-  });
+  const {
+    label,
+    value,
+    disabled,
+    className,
+    onTab,
+    onShiftTab,
+    onArrowLeft,
+    onArrowDown,
+    onArrowRight,
+    ...forwardedProps
+  } = props;
 
   return (
     <Action
       {...forwardedProps}
-      disabled={disabled}
-      onKeyDown={handleKeyDown}
-      className={clsx('v2-search-clear', className)}
+      ref={ref}
       icon={<Icon name="closeCircle" />}
       label={label}
-      ref={ref}
+      value={value}
+      disabled={disabled}
+      className={clsx('v2-search-clear', className)}
+      onKeyDown={createEventCallback(forwardedProps.onKeyDown, (event) => {
+        const fireEvents = {
+          Tab: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            if (!event.shiftKey) onTab?.(event);
+            if (event.shiftKey) onShiftTab?.(event);
+          },
+          ArrowDown: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            onArrowDown?.(event);
+          },
+          ArrowLeft: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            onArrowLeft?.(event);
+          },
+          ArrowRight: () => {
+            event.preventDefault();
+            event.stopPropagation();
+            onArrowRight?.(event);
+          },
+        }[event.code];
+
+        fireEvents?.();
+      })}
     />
   );
 });

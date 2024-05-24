@@ -84,4 +84,23 @@ body,
 .v2-search-input {
   @include cursor.clickable();
   @include surface.primary-2-clickable();
+  color: var(--c-primary-text-2);
+}
+
+.v2-search-input::placeholder {
+  color: var(--c-primary-text-4);
+}
+
+.v2-search-result {
+  @include surface.primary-1-static();
+}
+
+.v2-search-item {
+  @include cursor.clickable();
+  @include surface.primary-2-clickable();
+  color: var(--c-primary-text-3);
+}
+
+.v2-search-item svg {
+  color: var(--c-primary-text-4);
 }
