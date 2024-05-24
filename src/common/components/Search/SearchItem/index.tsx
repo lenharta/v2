@@ -13,6 +13,7 @@ interface SearchItemProps {
 type SearchItemFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
+  omits: 'children';
   props: SearchItemProps;
 }>;
 
@@ -21,12 +22,22 @@ const SearchItem = factory<SearchItemFactory>((props, ref) => {
   return (
     <UnstyledButton {...forwardedProps} className={clsx('v2-search-item', className)} ref={ref}>
       <span className="v2-search-item-inner">
-        <Icon name={icon} />
-        <div>
+        <div
+          data-position="start"
+          className="v2-search-item-iconbox"
+          children={<Icon name={icon} />}
+        />
+
+        <div className="v2-search-item-copy">
           {<Text className="v2-search-item-label">{label}</Text>}
           {<Text className="v2-search-item-description">{description}</Text>}
         </div>
-        <Icon name="arrowNorthEast" />
+
+        <div
+          data-position="end"
+          className="v2-search-item-iconbox"
+          children={<Icon name="arrowNorthEast" />}
+        />
       </span>
     </UnstyledButton>
   );
