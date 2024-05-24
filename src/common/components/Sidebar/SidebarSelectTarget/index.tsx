@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Action, Floating, factory, useFloatingContext } from '@/core';
-import { createEventCallback } from '@/utils';
 
 interface SidebarSelectTargetProps {
   icon?: React.ReactNode | undefined;
@@ -43,10 +42,6 @@ const SidebarSelectTarget = factory<SidebarSelectTargetFactory>((props, ref) => 
         label={label}
         className={clsx('v2-sidebar-select-target', className)}
         selected={ctx.isOpen && groupId === activeGroup ? true : undefined}
-        onClick={createEventCallback(
-          forwardedProps.onClick,
-          () => ctx.isOpen && setActiveGroup('')
-        )}
       />
     </Floating.Target>
   );

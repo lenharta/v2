@@ -11,6 +11,7 @@ interface SidebarSelectProps {
   groupValue?: string | undefined;
   activeGroup: string;
   setActiveGroup: (activeGroup: string) => void;
+  closeActivePanels: () => void;
   items: {
     label: string;
     value: string;
@@ -26,12 +27,22 @@ type SidebarSelectComponent = React.FC<SidebarSelectProps> & {
 };
 
 const SidebarSelect: SidebarSelectComponent = (props) => {
-  const { icon, label, groupId, groupValue, activeGroup, setActiveGroup, items } = props;
+  const {
+    icon,
+    label,
+    items,
+    groupId,
+    groupValue,
+    activeGroup,
+    setActiveGroup,
+    closeActivePanels,
+  } = props;
+
   const [open, setOpen] = React.useState<boolean>(false);
 
   return (
     <Floating
-      isOpen={open && groupId === activeGroup}
+      isOpen={open && activeGroup === groupId ? true : false}
       onChange={setOpen}
       placement="right-start"
       onOpen={() => setActiveGroup(groupId)}
@@ -51,6 +62,7 @@ const SidebarSelect: SidebarSelectComponent = (props) => {
         groupValue={groupValue}
         activeGroup={activeGroup}
         setActiveGroup={setActiveGroup}
+        closeActivePanels={closeActivePanels}
       />
     </Floating>
   );

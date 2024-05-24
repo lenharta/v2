@@ -1,3 +1,4 @@
+export * from './use-click-outside';
 export * from './use-did-update';
 export * from './use-event-listener';
 export * from './use-isomorphic-effect';

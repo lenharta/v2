@@ -27,6 +27,7 @@ interface FloatingProps {
   placement?: FloatingPlacement | undefined;
   placementDependencies?: React.DependencyList | any[] | undefined;
   onPlacementChange?: ((placement: FloatingPlacement) => void) | undefined;
+  closeOnClickOutside?: boolean | undefined;
   transitionProps?: Partial<Core.TransitionProps> | undefined;
   width?: FloatingWidth | undefined;
   offset?: number | FloatingOffsetAxisProps | undefined;
@@ -47,11 +48,13 @@ interface FloatingContext {
   placementDependencies?: React.DependencyList | any[] | undefined;
   onPlacementChange?: ((placement: FloatingPlacement) => void) | undefined;
   transitionProps?: Partial<Core.TransitionProps> | undefined;
+  closeOnClickOutside: boolean;
+  onClose: () => void;
   onChange: (isOpen: boolean) => void;
   getBoxId: () => string;
   getTargetId: () => string;
   reference: (node: HTMLElement) => void;
-  floating: (node: HTMLElement) => void;
+  floating: (node: HTMLDivElement) => void;
 }
 
 interface FloatingTargetProps {

@@ -1,9 +1,10 @@
 import React from 'react';
+import { useFloating } from './hooks';
 import { FloatingBox } from './FloatingBox';
 import { FloatingProps } from './Floating.types';
 import { FloatingTarget } from './FloatingTarget';
 import { FloatingProvider } from './Floating.context';
-import { useFloating } from './hooks';
+import { useEventListener } from '@/hooks';
 import { getFloatingPlacement } from './utils';
 
 type FloatingFactory = React.FC<FloatingProps> & {
@@ -23,15 +24,13 @@ const Floating: FloatingFactory = (props) => {
     placement = 'bottom',
     middleware = { flip: true, shift: true, inline: false },
     transitionProps,
+    closeOnClickOutside = true,
     placementDependencies,
     onPlacementChange,
     onChange,
     onClose,
     onOpen,
   } = props;
-
-  const [targetNode, setTargetNode] = React.useState<HTMLElement | null>(null);
-  const [dropdownNode, setDropdownNode] = React.useState<HTMLElement | null>(null);
 
   const uid = React.useId();
   const createBoxId = () => `floating${uid}box`;
@@ -53,18 +52,45 @@ const Floating: FloatingFactory = (props) => {
 
   const referenceRef = React.useCallback(
     (node: HTMLElement) => {
-      setTargetNode(node);
       floating.payload.refs.setReference(node);
     },
     [floating.payload.refs.setReference]
   );
 
   const floatingRef = React.useCallback(
-    (node: HTMLElement) => {
-      setDropdownNode(node);
+    (node: HTMLDivElement) => {
       floating.payload.refs.setFloating(node);
     },
     [floating.payload.refs.setFloating]
+  );
+
+  useEventListener(
+    'mousedown',
+    (event: any) => {
+      const target = event.target as Node;
+
+      if (!target || !target.isConnected) {
+        return;
+      }
+
+      const floatingClickRef = floating.payload.refs.floating as React.RefObject<HTMLDivElement>;
+      const referenceClickRef = floating.payload.refs.reference as React.RefObject<HTMLElement>;
+
+      const floatingNode = floatingClickRef.current!;
+      const referenceNode = referenceClickRef.current!;
+
+      const isOutsideFloating = floatingNode && !floatingNode?.contains(target);
+      const isOutsideReference = referenceNode && !referenceNode?.contains(target);
+
+      if (!isOutsideFloating || !isOutsideReference) {
+        return;
+      }
+      if (isOutsideFloating || isOutsideReference) {
+        closeOnClickOutside && floating.onClose();
+      }
+    },
+    undefined,
+    {}
   );
 
   return (
@@ -74,6 +100,7 @@ const Floating: FloatingFactory = (props) => {
           width,
           isOpen,
           disabled,
+          onClose: floating.onClose,
           onChange: floating.onChange,
           floating: floatingRef,
           reference: referenceRef,
@@ -82,6 +109,7 @@ const Floating: FloatingFactory = (props) => {
           onPlacementChange,
           placement: floating.payload.placement,
           placementDependencies,
+          closeOnClickOutside,
           x: floating.payload.x!,
           y: floating.payload.y!,
           transitionProps: {

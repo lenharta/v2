@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import React from 'react';
 import { Factory } from '@/types';
 import { Box, Floating, factory } from '@/core';
 import { SidebarSelectOption } from '../SidebarSelectOption';
@@ -8,6 +9,7 @@ interface SidebarSelectDrawerProps {
   groupValue?: string | undefined;
   activeGroup: string;
   setActiveGroup: (activeGroup: string) => void;
+  closeActivePanels: () => void;
   items: {
     icon?: React.ReactNode | undefined;
     value: string;
@@ -23,15 +25,24 @@ type SidebarSelectDrawerFactory = Factory.Config<{
 }>;
 
 const SidebarSelectDrawer = factory<SidebarSelectDrawerFactory>((props, ref) => {
-  const { className, items, groupValue, groupId, activeGroup, setActiveGroup, ...forwardedProps } =
-    props;
+  const {
+    className,
+    items,
+    groupValue,
+    groupId,
+    activeGroup,
+    setActiveGroup,
+    closeActivePanels,
+    ...forwardedProps
+  } = props;
+
   return (
     <Floating.Box>
       <Box
         {...forwardedProps}
-        className={clsx('v2-sidebar-select-drawer', className)}
-        role="menubar"
         ref={ref}
+        role="menubar"
+        className={clsx('v2-sidebar-select-drawer', className)}
       >
         {items.map((item) => (
           <SidebarSelectOption

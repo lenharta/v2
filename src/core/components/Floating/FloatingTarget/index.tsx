@@ -27,7 +27,7 @@ const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
 
   return React.cloneElement(children, {
     ...forwardedProps,
-    [refProp]: refs,
+    [refProp!]: refs,
     id: ctx.getTargetId(),
     'aria-haspopup': forwardedProps['aria-haspopup'] || popupType,
     'aria-expanded': forwardedProps['aria-expanded'] || ctx.isOpen,

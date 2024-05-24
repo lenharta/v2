@@ -43,7 +43,7 @@ const SidebarSelectOption = factory<SidebarSelectOptionFactory>((props, ref) => 
       selected={value === groupValue ? true : undefined}
       className={clsx('v2-sidebar-select-option', className)}
       onClick={createEventCallback(forwardedProps.onClick, () => {
-        ctx.onChange(ctx.isOpen);
+        ctx.onChange(false);
         setActiveGroup('');
       })}
     />
