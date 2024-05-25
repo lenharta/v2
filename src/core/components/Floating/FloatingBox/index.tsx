@@ -24,7 +24,7 @@ const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
   }
 
   const boxWidth = ctx.width === 'target' ? undefined : (ctx.width as React.CSSProperties['width']);
-  const boxStyles = { top: ctx.y ?? 0, left: ctx.x ?? 0, width: boxWidth };
+  const boxStyles = { top: ctx.y ?? 0, left: ctx.x ?? 0, width: boxWidth, zIndex: ctx.zIndex };
 
   return (
     <Transition {...ctx.transitionProps} mounted={ctx.isOpen}>

@@ -64,6 +64,16 @@ body,
   background-color: transparent;
 }
 
+.v2-control-segment {
+  @include cursor.clickable();
+  // background-color: transparent;
+  // @include surface.primary-1-clickable();
+}
+
+.v2-control-thumb {
+  @include surface.primary-2-static();
+}
+
 .v2-menu-grid-cell {
   background-color: var(--c-accent);
 }
