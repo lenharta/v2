@@ -17,6 +17,7 @@ const Floating: FloatingFactory = (props) => {
     dir = 'ltr',
     width = 'max-content',
     offset = 0,
+    zIndex = 300,
     isOpen,
     children,
     disabled,
@@ -85,6 +86,7 @@ const Floating: FloatingFactory = (props) => {
       <FloatingProvider
         value={{
           width,
+          zIndex,
           isOpen,
           disabled,
           onClose: floating.onClose,

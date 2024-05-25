@@ -22,6 +22,7 @@ interface FloatingPlacementProps {
 interface FloatingProps {
   dir?: FloatingDir;
   isOpen: boolean;
+  zIndex?: number | undefined;
   children: React.ReactNode;
   disabled?: boolean | undefined;
   placement?: FloatingPlacement | undefined;
@@ -42,7 +43,8 @@ interface FloatingProps {
 interface FloatingContext {
   x: number;
   y: number;
-  width?: FloatingWidth | undefined;
+  width: FloatingWidth;
+  zIndex: number;
   isOpen: boolean;
   disabled?: boolean | undefined;
   placement: FloatingPlacement;
