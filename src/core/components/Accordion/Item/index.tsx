@@ -1,24 +1,27 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Box } from '@/core/components';
-
-interface AccordionItemProps {}
+import { AccordionItemProps } from '../Accordion.types';
 
 type AccordionItemFactory = Factory.Config<{
-  ref: HTMLLIElement;
-  comp: 'li';
+  ref: HTMLDivElement;
+  comp: 'div';
   props: AccordionItemProps;
 }>;
 
 const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
-  const { children, ...forwardedProps } = props;
+  const { className, children, ...forwardedProps } = props;
   return (
-    <Box component="li" {...forwardedProps} className={clsx('v2-accordion-item')} ref={ref}>
+    <div
+      {...forwardedProps}
+      data-accordion-item
+      className={clsx('v2-accordion-item', className)}
+      ref={ref}
+    >
       {children}
-    </Box>
+    </div>
   );
 });
 
 AccordionItem.displayName = '@v2/Accordion.Item';
-export { AccordionItem, type AccordionItemProps };
+export { AccordionItem };

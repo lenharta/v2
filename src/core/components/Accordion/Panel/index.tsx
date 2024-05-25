@@ -1,9 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Box } from '@/core/components';
-
-interface AccordionPanelProps {}
+import { AccordionPanelProps } from '../Accordion.types';
 
 type AccordionPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -14,11 +12,16 @@ type AccordionPanelFactory = Factory.Config<{
 const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
   const { className, children, ...forwardedProps } = props;
   return (
-    <Box {...forwardedProps} ref={ref} className={clsx('v2-accordion-panel', className)}>
+    <div
+      {...forwardedProps}
+      data-accordion-panel
+      className={clsx('v2-accordion-panel', className)}
+      ref={ref}
+    >
       {children}
-    </Box>
+    </div>
   );
 });
 
 AccordionPanel.displayName = '@v2/Accordion.Panel';
-export { AccordionPanel, type AccordionPanelProps };
+export { AccordionPanel };

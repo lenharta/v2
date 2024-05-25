@@ -4,6 +4,7 @@ export * from './Box';
 export * from './Button';
 export * from './Checkbox';
 export * from './Control';
+export * from './Disclosure';
 export * from './Divider';
 export * from './Floating';
 export * from './Icon';

@@ -1,0 +1,21 @@
+@layer reset {
+  .v2-accordion-item,
+  .v2-accordion-panel,
+  .v2-accordion-target {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.v2-accordion-item {
+  display: block;
+}
+
+.v2-accordion-panel {
+  display: block;
+}
+
+.v2-accordion-target {
+  display: block;
+}

@@ -1,33 +1,28 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Label, UnstyledButton } from '@/core/components';
-
-interface AccordionTargetProps {
-  value: string;
-  label: string;
-  disabled?: boolean | undefined;
-}
+import { UnstyledButton } from '../../UnstyledButton';
+import { AccordionTargetProps } from '../Accordion.types';
 
 type AccordionTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   props: AccordionTargetProps;
-  omits: 'children';
 }>;
 
 const AccordionTarget = factory<AccordionTargetFactory>((props, ref) => {
-  const { label, value, ...forwardedProps } = props;
+  const { className, children, ...forwardedProps } = props;
   return (
     <UnstyledButton
       {...forwardedProps}
-      className={clsx('v2-accordion-target')}
-      children={<Label component="div">{label}</Label>}
-      value={value}
+      data-accordion-target
+      className={clsx('v2-accordion-target', className)}
       ref={ref}
-    />
+    >
+      {children}
+    </UnstyledButton>
   );
 });
 
 AccordionTarget.displayName = '@v2/Accordion.Target';
-export { AccordionTarget, type AccordionTargetProps };
+export { AccordionTarget };
