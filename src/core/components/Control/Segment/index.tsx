@@ -1,70 +1,64 @@
-import clsx from 'clsx';
-import { Label } from '@/core/components/Label';
+import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Core, Factory } from '@/types';
-import { UnstyledButton } from '@/core/components/UnstyledButton';
+import { UnstyledButton } from '../../UnstyledButton';
 import { createKeyDownGroup } from '@/core/utils';
 import { createEventCallback } from '@/utils';
-
-interface ControlSegmentProps extends Core.ItemParsed {
-  orientation?: Core.Orientation | undefined;
-  trapFocus?: boolean | undefined;
-  selected?: boolean | undefined;
-  refs: Record<string, HTMLElement | null>;
-  onChange: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onUpdate: (target: HTMLElement | null, parent: HTMLElement | null) => void;
-}
+import { ControlSegmentProps } from '../Control.types';
 
 type ControlSegmentFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   props: ControlSegmentProps;
-  omits: 'onChange' | 'children';
+  omits: 'children';
 }>;
 
 const ControlSegment = factory<ControlSegmentFactory>((props, ref) => {
   const {
+    css,
     refs,
+    item,
     value,
-    label,
-    disabled,
-    selected,
-    className,
+    trackRef,
     trapFocus,
     orientation,
-    onClick,
-    onUpdate,
-    onChange,
-    onKeyDown,
+    setElementRefs,
+    onItemChange,
+    update,
     ...forwardedProps
   } = props;
 
   return (
     <UnstyledButton
       {...forwardedProps}
+      key={item.value}
       ref={ref}
-      value={value}
-      className={clsx('v2-control-segment', className)}
-      data-selected={selected || undefined}
-      data-disabled={disabled}
-      aria-selected={selected || undefined}
-      aria-disabled={disabled}
-      data-core-control-item
-      onKeyDown={createKeyDownGroup({
-        parentSelector: '[data-core-control-track]',
-        childSelector: '[data-core-control-item]',
-        orientation,
-        onKeyDown,
-        loop: trapFocus,
+      data-control-segment
+      value={item.value}
+      className={css.segment}
+      aria-label={item.label}
+      data-disabled={item.disabled}
+      aria-disabled={item.disabled}
+      data-selected={item.value === value ? true : undefined}
+      aria-selected={item.value === value ? true : undefined}
+      onClick={createEventCallback(forwardedProps.onClick, (event) => {
+        onItemChange(event.currentTarget.value);
+        update(refs[item.value]!, trackRef.current!);
       })}
-      onClick={createEventCallback(onClick, (event) => {
-        event.stopPropagation();
-        onChange(event);
-        onUpdate(refs.target!, refs.parent!);
+      onKeyDown={createKeyDownGroup({
+        childSelector: '[data-control-segment]',
+        parentSelector: '[data-control-track]',
+        orientation: orientation,
+        loop: trapFocus,
+        onKeyDown: (event) => {
+          if (event.code === 'Enter') {
+            onItemChange(event.currentTarget.value);
+            update(refs[item.value]!, trackRef.current!);
+          }
+        },
       })}
     >
-      <span className="v2-control-segment-inner">
-        <Label component="div">{label}</Label>
+      <span className={css.segmentInner}>
+        <div className={css.segmentLabel}>{item.label}</div>
       </span>
     </UnstyledButton>
   );
