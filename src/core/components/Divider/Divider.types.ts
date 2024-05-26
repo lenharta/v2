@@ -1,9 +1,12 @@
 import { Core } from '@/types';
+import React from 'react';
 
 interface DividerProps {
+  icon?: React.ReactNode | undefined;
   label?: React.ReactNode | undefined;
-  position?: Core.Align | undefined;
+  position?: Core.Align | 'center' | undefined;
   orientation?: Core.Orientation | undefined;
+  iconPosition?: Core.Align | undefined;
 }
 
 interface DividerContentProps {

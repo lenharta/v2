@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Box } from '@/core/components/Box';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
+import { Box, Text } from '@/core/components';
 import { DividerProps } from './Divider.types';
 import { DividerContent } from './Content';
 import { DividerSeparator } from './Seperator';
@@ -17,55 +17,40 @@ type DividerFactory = Factory.Config<{
   };
 }>;
 
-enum css {
-  root = 'v2-divider-root',
-  content = 'v2-divider-content',
-  separator = 'v2-divider-separator',
-}
-
 const Divider = factory<DividerFactory>((props, ref) => {
   const {
+    icon,
     label,
     position = 'start',
     className,
     orientation = 'horizontal',
+    iconPosition = 'start',
     ...forwardedProps
   } = props;
 
   return (
     <Box
       {...forwardedProps}
+      data-position={position}
       data-orientation={orientation}
       aria-orientation={orientation}
-      className={clsx(css.root, className)}
+      className={clsx('v2-divider', className)}
       role="separator"
       ref={ref}
     >
-      <Divider.Content
-        show={position === 'start' ? true : false}
-        className={css.content}
-        position={position}
-        label={label}
-      />
-
-      <Divider.Separator className={css.separator} />
-
-      <Divider.Content
-        show={position === 'end' ? true : false}
-        className={css.content}
-        position={position}
-        label={label}
-      />
+      {(icon || label) && (
+        <span className="v2-divider-inner">
+          {icon && iconPosition === 'start' && icon}
+          {label && <Text>{label}</Text>}
+          {icon && iconPosition === 'end' && icon}
+        </span>
+      )}
     </Box>
   );
 });
 
 Divider.Content = DividerContent;
-
 Divider.Separator = DividerSeparator;
-
 Divider.displayName = '@v2/Divider';
 
-type DividerClasses = keyof typeof css;
-
-export { Divider, type DividerProps, type DividerClasses };
+export { Divider, type DividerProps };

@@ -10,6 +10,16 @@
   width: 600px;
 }
 
+.v2-demo-box-divider {
+  width: 600px;
+  display: block;
+}
+
+.v2-demo-box-divider--vertical {
+  width: max-content;
+  display: flex;
+}
+
 .v2-demo-box-button {
   display: block;
 }

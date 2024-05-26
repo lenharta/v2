@@ -74,10 +74,24 @@ body,
   @include surface.primary-2-clickable();
 }
 
+.v2-divider {
+  background-color: transparent;
+}
+
+.v2-divider::after {
+  background-color: var(--c-primary-border-4);
+}
+
+.v2-divider-inner {
+  background-color: var(--c-primary-1);
+}
+.v2-divider-inner .v2-text,
+.v2-divider-inner .v2-icon {
+  color: var(--c-primary-border-2);
+}
+
 .v2-control-segment {
   @include cursor.clickable();
-  // background-color: transparent;
-  // @include surface.primary-1-clickable();
 }
 
 .v2-control-thumb {
