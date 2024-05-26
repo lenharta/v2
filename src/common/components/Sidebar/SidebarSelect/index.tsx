@@ -35,6 +35,7 @@ const SidebarSelect: SidebarSelectComponent = (props) => {
     icon,
     label,
     items,
+    width,
     groupId,
     groupValue,
     activeGroup,
@@ -45,11 +46,15 @@ const SidebarSelect: SidebarSelectComponent = (props) => {
   } = props;
 
   const [open, setOpen] = React.useState<boolean>(false);
+  const maxWidth = 'calc(calc(var(--action-box) * 6) - calc(var(--unit) * 5))';
 
   return (
     <Floating
+      width={width}
       isOpen={open}
+      zIndex={1000}
       onChange={setOpen}
+      strategy="fixed"
       placement="right-start"
       onOpen={() => setActiveGroup(groupId)}
       onClose={() => setActiveGroup('')}
@@ -67,6 +72,7 @@ const SidebarSelect: SidebarSelectComponent = (props) => {
       <SidebarSelect.Drawer
         name={name}
         items={items}
+        style={{ maxWidth }}
         groupId={groupId}
         groupValue={groupValue}
         activeGroup={activeGroup}

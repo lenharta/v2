@@ -5,13 +5,17 @@ import { AccordionPanel } from './Panel';
 import { AccordionTarget } from './Target';
 import { AccordionProvider } from './Accordion.context';
 import { AccordionProps, AccordionValue } from './Accordion.types';
+import clsx from 'clsx';
 
 const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multiple>) => {
   const {
     value,
     children,
+    elevated,
     multiple = false,
     trapFocus = false,
+    className,
+    chevronRotation = true,
     chevronPosition = 'right',
     onValueChange,
   } = props;
@@ -40,7 +44,9 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multi
   return (
     <AccordionProvider
       value={{
+        elevated,
         trapFocus,
+        chevronRotation,
         chevronPosition,
         onValueChange: handleChange,
         isValueActive,
@@ -48,9 +54,12 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multi
         getPanelId,
       }}
     >
-      <Box id={getRootId()} data-accordion-root>
-        {children}
-      </Box>
+      <Box
+        id={getRootId()}
+        children={children}
+        className={clsx('v2-accordion', className)}
+        data-accordion-root
+      />
     </AccordionProvider>
   );
 };

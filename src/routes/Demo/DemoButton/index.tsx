@@ -1,53 +1,63 @@
-import { Button, Title } from '@/core';
 import { DemoRoot } from '../DemoRoot';
+import { Box, Button, Title } from '@/core';
+
+const DemoButtonDefault = () => {
+  return (
+    <Box className="v2-demo-box-button">
+      <Button>Button</Button>
+    </Box>
+  );
+};
+
+const DemoButtonGroupDefault = () => (
+  <Box className="v2-demo-box-button">
+    <Button.Group>
+      <Button>Button</Button>
+      <Button>Button</Button>
+      <Button>Button</Button>
+    </Button.Group>
+  </Box>
+);
+
+const DemoButtonGroupVertical = () => (
+  <Box className="v2-demo-box-button">
+    <Button.Group orientation="vertical">
+      <Button>Button</Button>
+      <Button>Button</Button>
+      <Button>Button</Button>
+    </Button.Group>
+  </Box>
+);
+
+const DemoButtonGroupHorizontal = () => (
+  <Box className="v2-demo-box-button">
+    <Button.Group orientation="horizontal">
+      <Button>Button</Button>
+      <Button>Button</Button>
+      <Button>Button</Button>
+    </Button.Group>
+  </Box>
+);
 
 const DemoButton = () => {
   return (
     <DemoRoot>
-      <Button>Button</Button>
+      <Title>Button | Default</Title>
+      <DemoButtonDefault />
+      <Title>Button.Group | Default</Title>
+      <DemoButtonGroupDefault />
+      <Title>Button.Group | Vertical</Title>
+      <DemoButtonGroupVertical />
+      <Title>Button.Group | Horizontal</Title>
+      <DemoButtonGroupHorizontal />
     </DemoRoot>
   );
 };
 
-const DemoButtonGroupHorizontal = () => (
-  <Button.Group orientation="horizontal">
-    <Button>Button Start</Button>
-    <Button>Button Center</Button>
-    <Button>Button End</Button>
-  </Button.Group>
-);
-
-const DemoButtonGroupVertical = () => (
-  <Button.Group orientation="vertical">
-    <Button>Button Top</Button>
-    <Button>Button Middle</Button>
-    <Button>Button Bottom</Button>
-  </Button.Group>
-);
-
-const DemoButtonGroup = () => {
-  return (
-    <DemoRoot>
-      <Title>Button Group | Default</Title>
-      <Button.Group>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Button>Button 3</Button>
-      </Button.Group>
-      <Title>Button Group | Vertical</Title>
-      <Button.Group>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Button>Button 3</Button>
-      </Button.Group>
-      <Title>Button Group | Horizontal</Title>
-      <Button.Group>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Button>Button 3</Button>
-      </Button.Group>
-    </DemoRoot>
-  );
+export {
+  DemoButton,
+  DemoButtonDefault,
+  DemoButtonGroupDefault,
+  DemoButtonGroupVertical,
+  DemoButtonGroupHorizontal,
 };
-
-export { DemoButton, DemoButtonGroup };

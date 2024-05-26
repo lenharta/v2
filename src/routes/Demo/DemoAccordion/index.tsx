@@ -1,29 +1,76 @@
 import React from 'react';
-import { Accordion } from '@/core';
 import { DemoRoot } from '../DemoRoot';
+import { dataSampleGroceries } from '@/data';
+import { Accordion, Box, Icon, Text, Title } from '@/core';
 
-const DemoAccordion = () => {
-  // const [active, setActive] = React.useState<string | null>(null);
+const items = dataSampleGroceries.map(({ value, description }) => (
+  <Accordion.Item key={value} value={value}>
+    <Accordion.Target icon={<Icon name="folder" />}>{value}</Accordion.Target>
+    <Accordion.Panel>
+      <Text>{description}</Text>
+    </Accordion.Panel>
+  </Accordion.Item>
+));
+
+const DemoAccordionSingle = () => {
+  const [active, setActive] = React.useState<string | null>(null);
+  return (
+    <Box className="v2-demo-box-accordion">
+      <Accordion value={active} onValueChange={setActive}>
+        {items}
+      </Accordion>
+    </Box>
+  );
+};
+
+const DemoAccordionMultiple = () => {
   const [active, setActive] = React.useState<string[]>([]);
   return (
-    <DemoRoot>
-      {/* <Accordion value={active} onValueChange={setActive}> */}
+    <Box className="v2-demo-box-accordion">
       <Accordion value={active} onValueChange={setActive} multiple>
-        <Accordion.Item value="accordion-item-1">
-          <Accordion.Target>Target 1</Accordion.Target>
-          <Accordion.Panel>Panel 1</Accordion.Panel>
-        </Accordion.Item>
-
-        <Accordion.Item value="accordion-item-2">
-          <Accordion.Target>Target 2</Accordion.Target>
-          <Accordion.Panel>Panel 2</Accordion.Panel>
-        </Accordion.Item>
-
-        <Accordion.Item value="accordion-item-3">
-          <Accordion.Target>Target 3</Accordion.Target>
-          <Accordion.Panel>Panel 3</Accordion.Panel>
-        </Accordion.Item>
+        {items}
       </Accordion>
+    </Box>
+  );
+};
+
+const DemoAccordionElevated = () => {
+  const [active, setActive] = React.useState<string | null>(null);
+  return (
+    <Box className="v2-demo-box-accordion">
+      <Accordion value={active} onValueChange={setActive} elevated>
+        {items}
+      </Accordion>
+    </Box>
+  );
+};
+
+const DemoAccordionNoRotation = () => {
+  const [active, setActive] = React.useState<string | null>(null);
+  return (
+    <Box className="v2-demo-box-accordion">
+      <Accordion
+        value={active}
+        onValueChange={setActive}
+        chevronRotation={false}
+        children={items}
+        elevated
+      />
+    </Box>
+  );
+};
+
+const DemoAccordion = () => {
+  return (
+    <DemoRoot>
+      <Title>Accordion | Single Select</Title>
+      <DemoAccordionSingle />
+      <Title>Accordion | Multiple Select</Title>
+      <DemoAccordionMultiple />
+      <Title>Accordion | Elevated</Title>
+      <DemoAccordionElevated />
+      <Title>Accordion | No Chevron Rotation</Title>
+      <DemoAccordionNoRotation />
     </DemoRoot>
   );
 };

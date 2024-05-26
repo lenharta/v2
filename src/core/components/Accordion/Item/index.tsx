@@ -16,12 +16,16 @@ const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
 
   const ctx = useAccordionContext();
 
+  const classNames = {
+    ['v2-accordion-item--elevated']: ctx.elevated,
+  };
+
   return (
     <AccordionItemProvider value={{ value }}>
       <div
         {...forwardedProps}
-        data-active={ctx.isValueActive(value)}
-        className={clsx('v2-accordion-item', className)}
+        {...(ctx.chevronRotation ? { 'data-active': ctx.isValueActive(value) } : {})}
+        className={clsx('v2-accordion-item', classNames, className)}
         ref={ref}
       />
     </AccordionItemProvider>

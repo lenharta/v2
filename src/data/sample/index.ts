@@ -1,4 +1,4 @@
-export const DataSampleGroceries = [
+export const dataSampleGroceries = [
   {
     emoji: '🍎',
     value: 'Apples',
