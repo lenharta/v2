@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { AccordionItemProps } from '../Accordion.types';
+import { useAccordionContext } from '../Accordion.context';
+import { AccordionItemProvider } from '../AccordionItem.context';
 
 type AccordionItemFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -10,16 +12,19 @@ type AccordionItemFactory = Factory.Config<{
 }>;
 
 const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
-  const { className, children, ...forwardedProps } = props;
+  const { value, className, ...forwardedProps } = props;
+
+  const ctx = useAccordionContext();
+
   return (
-    <div
-      {...forwardedProps}
-      data-accordion-item
-      className={clsx('v2-accordion-item', className)}
-      ref={ref}
-    >
-      {children}
-    </div>
+    <AccordionItemProvider value={{ value }}>
+      <div
+        {...forwardedProps}
+        data-active={ctx.isValueActive(value)}
+        className={clsx('v2-accordion-item', className)}
+        ref={ref}
+      />
+    </AccordionItemProvider>
   );
 });
 

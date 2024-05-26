@@ -3,6 +3,9 @@ import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { UnstyledButton } from '../../UnstyledButton';
 import { AccordionTargetProps } from '../Accordion.types';
+import { useAccordionItemContext } from '../AccordionItem.context';
+import { useAccordionContext } from '../Accordion.context';
+import { createKeyDownGroup } from '@/core/utils';
 
 type AccordionTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -11,13 +14,35 @@ type AccordionTargetFactory = Factory.Config<{
 }>;
 
 const AccordionTarget = factory<AccordionTargetFactory>((props, ref) => {
-  const { className, children, ...forwardedProps } = props;
+  const { disabled, className, children, ...forwardedProps } = props;
+
+  const { value } = useAccordionItemContext();
+  const ctx = useAccordionContext();
+  const isActive = ctx.isValueActive(value);
+
   return (
     <UnstyledButton
       {...forwardedProps}
-      data-accordion-target
-      className={clsx('v2-accordion-target', className)}
       ref={ref}
+      id={ctx.getTargetId(value)}
+      data-accordion-target
+      data-disabled={disabled}
+      aria-disabled={disabled}
+      aria-expanded={isActive}
+      aria-controls={ctx.getPanelId(value)}
+      className={clsx('v2-accordion-target', className)}
+      onClick={(event) => {
+        forwardedProps.onClick?.(event);
+        ctx.onValueChange(value);
+      }}
+      onKeyDown={createKeyDownGroup({
+        preventDefault: false,
+        childSelector: '[data-accordion-target]',
+        parentSelector: '[data-accordion-root]',
+        orientation: 'vertical',
+        onKeyDown: forwardedProps.onKeyDown,
+        loop: ctx.trapFocus,
+      })}
     >
       {children}
     </UnstyledButton>
