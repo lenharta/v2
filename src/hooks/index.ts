@@ -1,5 +1,6 @@
 export * from './use-click-outside';
 export * from './use-did-update';
+export * from './use-disclosure';
 export * from './use-event-listener';
 export * from './use-isomorphic-effect';
 export * from './use-latest-ref';

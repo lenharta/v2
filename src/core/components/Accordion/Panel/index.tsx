@@ -1,24 +1,38 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Box } from '@/core/components';
-
-interface AccordionPanelProps {}
+import { AccordionPanelProps } from '../Accordion.types';
+import { useAccordionContext } from '../Accordion.context';
+import { useAccordionItemContext } from '../AccordionItem.context';
+import { Disclosure, DisclosureProps } from '../../Disclosure';
 
 type AccordionPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
-  props: AccordionPanelProps;
+  props: AccordionPanelProps & Partial<DisclosureProps>;
 }>;
 
 const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
   const { className, children, ...forwardedProps } = props;
+
+  const { value } = useAccordionItemContext();
+  const ctx = useAccordionContext();
+
   return (
-    <Box {...forwardedProps} ref={ref} className={clsx('v2-accordion-panel', className)}>
+    <Disclosure
+      {...forwardedProps}
+      id={ctx.getPanelId(value)}
+      ref={ref}
+      role="region"
+      isOpen={ctx.isValueActive(value)}
+      className={clsx('v2-accordion-panel', className)}
+      aria-labelledby={ctx.getTargetId(value)}
+      data-accordion-panel
+    >
       {children}
-    </Box>
+    </Disclosure>
   );
 });
 
 AccordionPanel.displayName = '@v2/Accordion.Panel';
-export { AccordionPanel, type AccordionPanelProps };
+export { AccordionPanel };
