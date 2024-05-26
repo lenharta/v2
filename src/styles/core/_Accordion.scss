@@ -12,13 +12,17 @@
 }
 
 .v2-accordion {
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  gap: var(--unit);
 }
 
 .v2-accordion-item {
+  width: 100%;
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -51,14 +55,19 @@
 }
 
 .v2-accordion-target-inner {
+  gap: calc(var(--gutter) / 2);
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-inline: calc(var(--gutter) / 2);
 }
 
-.v2-accordion-target-content {
+.v2-accordion-target-contentbox {
+  flex: 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .v2-accordion-target-iconbox {
@@ -87,7 +96,6 @@
   }
 }
 
-// .v2-accordion-target-iconbox .v2-icon[data-icon-name='caretDown'] {
-//   width: calc(var(--action-size) * 0.4);
-//   height: calc(var(--action-size) * 0.4);
-// }
+.v2-accordion-target-iconbox[data-position='right'] {
+  place-self: flex-end;
+}

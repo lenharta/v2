@@ -69,7 +69,7 @@ body,
   @include surface.primary-1-clickable();
 }
 
-.v2-accordion-target.elevated {
+.v2-accordion-target--elevated {
   @include cursor.clickable();
   @include surface.primary-2-clickable();
 }
@@ -123,4 +123,8 @@ body,
 
 .v2-search-item svg {
   color: var(--c-primary-text-4);
+}
+
+.v2-sidebar-select-drawer {
+  @include surface.primary-1-static();
 }

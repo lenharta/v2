@@ -167,6 +167,7 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
           activeGroup={activeGroup}
           storeDispatch={dispatch}
           setActiveGroup={setActiveGroup}
+          width="calc(var(--action-box) * 6)"
           closeActivePanels={closeActivePanels}
           items={dataGlobalAccentColors.map((token) => ({
             icon: <Sidebar.Color accent={GlobalAccentColors[token]} />,

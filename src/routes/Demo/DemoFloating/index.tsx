@@ -11,7 +11,7 @@ const DemoFloatingContent = () => (
 const DemoFloating = () => {
   const [isOpen, setOpen] = React.useState(false);
   return (
-    <DemoRoot>
+    <DemoRoot className="v2-demo-box-floating">
       <Floating isOpen={isOpen} onChange={setOpen} placement="bottom">
         <Floating.Target children={<Button>Floating Target</Button>} />
         <Floating.Box children={<DemoFloatingContent />} />

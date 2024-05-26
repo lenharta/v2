@@ -5,7 +5,7 @@ import { Button, Disclosure, Text } from '@/core';
 const DemoDisclosure = () => {
   const [isOpen, { toggle }] = useDisclosure(false);
   return (
-    <DemoRoot>
+    <DemoRoot className="v2-demo-box-disclosure">
       <Button onClick={toggle}>Toggle Disclosure</Button>
 
       <Disclosure isOpen={isOpen}>

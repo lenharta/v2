@@ -31,16 +31,25 @@
 
 .v2-sidebar-select-drawer {
   gap: var(--unit);
+  padding-block: var(--unit);
   padding-inline: var(--unit);
-  max-width: calc(var(--action-box) * 6);
+  width: max-content;
   flex-wrap: wrap;
   position: absolute;
-  width: max-content;
   display: flex;
+  top: calc(var(--unit) * -1);
   align-items: center;
   flex-direction: row;
   justify-content: flex-start;
 }
+
+.v2-sidebar-select[data-accent-select] {
+  .v2-sidebar-select-drawer {
+    max-width: calc(var(--action-box) * 6);
+  }
+}
+// .v2-sidebar-select {
+// }
 
 .v2-sidebar-color-icon-red {
   background-color: var(--c-red);

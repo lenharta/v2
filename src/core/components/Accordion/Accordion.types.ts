@@ -7,14 +7,19 @@ interface AccordionContext<Multiple extends boolean = false> {
   onValueChange: (value: AccordionValue<Multiple>) => void;
   isValueActive: (value: string) => boolean;
   chevronPosition: AccordionChevronPosition;
+  chevronRotation?: boolean | undefined;
   trapFocus?: boolean | undefined;
+  elevated?: boolean | undefined;
 }
 
 interface AccordionProps<Multiple extends boolean = false> {
   value: AccordionValue<Multiple>;
   children: React.ReactNode;
-  trapFocus?: boolean | undefined;
   multiple?: Multiple | undefined;
+  elevated?: boolean | undefined;
+  trapFocus?: boolean | undefined;
+  className?: string | undefined;
+  chevronRotation?: boolean | undefined;
   chevronPosition?: AccordionChevronPosition | undefined;
   onValueChange: (value: AccordionValue<Multiple>) => void;
 }

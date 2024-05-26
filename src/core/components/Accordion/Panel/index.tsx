@@ -18,6 +18,10 @@ const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
   const { value } = useAccordionItemContext();
   const ctx = useAccordionContext();
 
+  const classNames = {
+    ['v2-accordion-item--elevated']: ctx.elevated,
+  };
+
   return (
     <Disclosure
       {...forwardedProps}
@@ -25,7 +29,7 @@ const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
       ref={ref}
       role="region"
       isOpen={ctx.isValueActive(value)}
-      className={clsx('v2-accordion-panel', className)}
+      className={clsx('v2-accordion-panel', classNames, className)}
       aria-labelledby={ctx.getTargetId(value)}
       data-accordion-panel
     >

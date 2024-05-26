@@ -1,32 +1,21 @@
 import React from 'react';
 import { Title } from '@/core';
 import { DemoError } from './error';
-import { Hero, Main, Page, Section } from '@/common';
+import { Hero, Main, Page } from '@/common';
 
-// import { DemoControl } from './DemoControl';
-// import { DemoFloating } from './DemoFloating';
 import { DemoAccordion } from './DemoAccordion';
-// import { DemoDisclosure } from './DemoDisclosure';
 
-interface DemoProps {}
-
-type DemoComponent = React.FC<DemoProps> & {
+type DemoComponent = React.FC<{}> & {
   Error: typeof DemoError;
 };
 
 const Demo: DemoComponent = () => {
   return (
     <Page>
-      <Hero>
-        <Title>Demo</Title>
-      </Hero>
+      <Hero children={<Title>Demo</Title>} />
       <Main>
-        <Section>
-          <DemoAccordion />
-          {/* <DemoDisclosure /> */}
-          {/* <DemoFloating /> */}
-          {/* <DemoControl /> */}
-        </Section>
+        <DemoAccordion />
+        {/* <DemoAccordion /> */}
       </Main>
     </Page>
   );
