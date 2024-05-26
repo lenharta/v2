@@ -2,6 +2,7 @@ import React from 'react';
 
 interface DemoRootProps {
   children: React.ReactNode;
+  className?: string | undefined;
 }
 
 const DemoRoot = (props: DemoRootProps) => {

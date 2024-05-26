@@ -1,5 +1,6 @@
 import { factory } from '@/core/factory';
 import { Factory } from '@/types';
+import clsx from 'clsx';
 
 interface IconProps {
   name: keyof typeof Icons;
@@ -12,11 +13,13 @@ type IconFactory = Factory.Config<{
 }>;
 
 const Icon = factory<IconFactory>((props, ref) => {
-  const { name = 'account', ...forwardedProps } = props;
+  const { name = 'account', className, ...forwardedProps } = props;
   return (
     <svg
       {...forwardedProps}
+      data-icon-name={name}
       xmlns="http://www.w3.org/2000/svg"
+      className={clsx('v2-icon', className)}
       children={<path d={Icons[name]} fill="currentColor" />}
       viewBox="0 0 24 24"
       height="24"

@@ -6,6 +6,7 @@ import { AccordionTargetProps } from '../Accordion.types';
 import { useAccordionItemContext } from '../AccordionItem.context';
 import { useAccordionContext } from '../Accordion.context';
 import { createKeyDownGroup } from '@/core/utils';
+import { Icon } from '../../Icon';
 
 type AccordionTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -14,11 +15,12 @@ type AccordionTargetFactory = Factory.Config<{
 }>;
 
 const AccordionTarget = factory<AccordionTargetFactory>((props, ref) => {
-  const { disabled, className, children, ...forwardedProps } = props;
+  const { icon, chevron, disabled, className, children, ...forwardedProps } = props;
 
   const { value } = useAccordionItemContext();
   const ctx = useAccordionContext();
   const isActive = ctx.isValueActive(value);
+  const chevronElement = chevron || <Icon name="caretDown" />;
 
   return (
     <UnstyledButton
@@ -44,7 +46,23 @@ const AccordionTarget = factory<AccordionTargetFactory>((props, ref) => {
         loop: ctx.trapFocus,
       })}
     >
-      {children}
+      <span className="v2-accordion-target-inner">
+        <div
+          children={ctx.chevronPosition === 'left' ? chevronElement : icon}
+          className="v2-accordion-target-iconbox"
+          data-active={isActive ? true : false}
+          data-position="left"
+        />
+
+        {children}
+
+        <div
+          children={ctx.chevronPosition === 'right' ? chevronElement : icon}
+          className="v2-accordion-target-iconbox"
+          data-active={isActive ? true : false}
+          data-position="right"
+        />
+      </span>
     </UnstyledButton>
   );
 });

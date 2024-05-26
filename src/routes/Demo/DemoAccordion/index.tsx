@@ -1,29 +1,53 @@
 import React from 'react';
-import { Accordion } from '@/core';
+import { Accordion, Box, Icon, Text, Title } from '@/core';
 import { DemoRoot } from '../DemoRoot';
+import { dataSampleGroceries } from '@/data';
+
+const DemoAccordionMultiple = () => {
+  const [active, setActive] = React.useState<string[]>([]);
+
+  const items = dataSampleGroceries.map(({ value, description }) => (
+    <Accordion.Item key={value} value={value}>
+      <Accordion.Target icon={<Icon name="taskComplete" />}>{value}</Accordion.Target>
+      <Accordion.Panel>
+        <Text>{description}</Text>
+      </Accordion.Panel>
+    </Accordion.Item>
+  ));
+
+  return (
+    <Accordion value={active} onValueChange={setActive} multiple>
+      {items}
+    </Accordion>
+  );
+};
+
+const DemoAccordionSingle = () => {
+  const [active, setActive] = React.useState<string | null>(null);
+
+  const items = dataSampleGroceries.map(({ value, description }) => (
+    <Accordion.Item key={value} value={value}>
+      <Accordion.Target icon={<Icon name="folder" />}>{value}</Accordion.Target>
+      <Accordion.Panel>
+        <Text>{description}</Text>
+      </Accordion.Panel>
+    </Accordion.Item>
+  ));
+
+  return (
+    <Accordion value={active} onValueChange={setActive}>
+      {items}
+    </Accordion>
+  );
+};
 
 const DemoAccordion = () => {
-  // const [active, setActive] = React.useState<string | null>(null);
-  const [active, setActive] = React.useState<string[]>([]);
   return (
-    <DemoRoot>
-      {/* <Accordion value={active} onValueChange={setActive}> */}
-      <Accordion value={active} onValueChange={setActive} multiple>
-        <Accordion.Item value="accordion-item-1">
-          <Accordion.Target>Target 1</Accordion.Target>
-          <Accordion.Panel>Panel 1</Accordion.Panel>
-        </Accordion.Item>
-
-        <Accordion.Item value="accordion-item-2">
-          <Accordion.Target>Target 2</Accordion.Target>
-          <Accordion.Panel>Panel 2</Accordion.Panel>
-        </Accordion.Item>
-
-        <Accordion.Item value="accordion-item-3">
-          <Accordion.Target>Target 3</Accordion.Target>
-          <Accordion.Panel>Panel 3</Accordion.Panel>
-        </Accordion.Item>
-      </Accordion>
+    <DemoRoot className="v2-demo-root-accordion">
+      <Title>Accordion | Single Select</Title>
+      <DemoAccordionSingle />
+      <Title>Accordion | Multiple Select</Title>
+      <DemoAccordionMultiple />
     </DemoRoot>
   );
 };

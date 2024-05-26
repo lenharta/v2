@@ -3,10 +3,10 @@ import { Title } from '@/core';
 import { DemoError } from './error';
 import { Hero, Main, Page, Section } from '@/common';
 
-import { DemoControl } from './DemoControl';
-import { DemoFloating } from './DemoFloating';
+// import { DemoControl } from './DemoControl';
+// import { DemoFloating } from './DemoFloating';
 import { DemoAccordion } from './DemoAccordion';
-import { DemoDisclosure } from './DemoDisclosure';
+// import { DemoDisclosure } from './DemoDisclosure';
 
 interface DemoProps {}
 
@@ -22,10 +22,10 @@ const Demo: DemoComponent = () => {
       </Hero>
       <Main>
         <Section>
-          <DemoDisclosure />
           <DemoAccordion />
-          <DemoFloating />
-          <DemoControl />
+          {/* <DemoDisclosure /> */}
+          {/* <DemoFloating /> */}
+          {/* <DemoControl /> */}
         </Section>
       </Main>
     </Page>
