@@ -25,11 +25,7 @@ function parseItem(
     };
   }
 
-  return {
-    value: item.value,
-    label: item.label,
-    disabled: item.disabled,
-  };
+  return item as Core.ItemParsed;
 }
 
 function parseItemData(

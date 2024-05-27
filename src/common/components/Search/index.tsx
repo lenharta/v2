@@ -13,7 +13,7 @@ import { SearchItem } from './SearchItem';
 import { useNavigate } from 'react-router-dom';
 import { useEventListener } from '@/hooks';
 
-const sampleSearchData = [
+const sampleSearchData: Core.Item[] = [
   {
     value: '/',
     label: 'Overview',
@@ -37,6 +37,10 @@ const sampleSearchData = [
   {
     value: '/settings',
     label: 'Settings',
+  },
+  {
+    value: '/demo',
+    label: 'Demo',
   },
 ] as const;
 
@@ -145,6 +149,10 @@ const Search = factory<SearchFactory>((props, ref) => {
 
               <Search.Result
                 ref={interaction.searchResultRef}
+                items={sampleSearchData}
+                setTerm={setTerm}
+                navigate={navigate}
+                dispatch={dispatch}
                 resultOpen={store.resultOpen}
                 onCloseOnOutsideClick={() => dispatch({ resultOpen: undefined })}
                 omitOutsideClickElements={[
@@ -154,21 +162,7 @@ const Search = factory<SearchFactory>((props, ref) => {
                   interaction.searchResultRef,
                   interaction.searchTargetRef,
                 ]}
-              >
-                {sampleSearchData.map((item) => (
-                  <Search.Item
-                    key={item.value}
-                    ref={interaction.searchItemRef}
-                    label={item.label}
-                    value={item.value}
-                    onClick={(event) => {
-                      navigate(event.currentTarget.value);
-                      dispatch({ resultOpen: undefined });
-                      setTerm('');
-                    }}
-                  />
-                ))}
-              </Search.Result>
+              />
             </React.Fragment>
           )}
         </Transition>

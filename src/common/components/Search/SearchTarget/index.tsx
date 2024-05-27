@@ -7,6 +7,8 @@ import { Action, Icon, factory } from '@/core';
 interface SearchTargetProps {
   label: string;
   onTab?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onEnd?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
+  onHome?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
   onEnter?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
   onShiftTab?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
   onArrowLeft?: ((event: React.KeyboardEvent<HTMLButtonElement>) => void) | undefined;
@@ -26,6 +28,8 @@ const SearchTarget = factory<SearchTargetFactory>((props, ref) => {
     disabled,
     className,
     onTab,
+    onEnd,
+    onHome,
     onEnter,
     onShiftTab,
     onArrowDown,
@@ -44,16 +48,15 @@ const SearchTarget = factory<SearchTargetFactory>((props, ref) => {
       className={clsx('v2-search-target', className)}
       onKeyDown={createEventCallback(forwardedProps.onKeyDown, (event) => {
         const fireEvents = {
-          Tab: () => {
+          End: () => {
             event.preventDefault();
             event.stopPropagation();
-            if (event.shiftKey) onShiftTab?.(event);
-            if (!event.shiftKey) onTab?.(event);
+            onEnd?.(event);
           },
-          Enter: () => {
+          Home: () => {
             event.preventDefault();
             event.stopPropagation();
-            onEnter?.(event);
+            onHome?.(event);
           },
           ArrowDown: () => {
             event.preventDefault();
