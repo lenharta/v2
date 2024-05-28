@@ -16,8 +16,19 @@
 }
 
 .v2-demo-box-divider--vertical {
-  width: max-content;
+  width: 600px;
   display: flex;
+
+  & > .v2-box {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .v2-text {
+      width: 100%;
+      margin-inline: var(--gutter);
+    }
+  }
 }
 
 .v2-demo-box-button {

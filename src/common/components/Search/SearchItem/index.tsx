@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { Icon, Icons, Text, UnstyledButton, factory } from '@/core';
+import { Icon, Icons, Text, UnstyledButton, createKeyDownGroup, factory } from '@/core';
 
 interface SearchItemProps {
   label: string;
@@ -20,7 +20,19 @@ type SearchItemFactory = Factory.Config<{
 const SearchItem = factory<SearchItemFactory>((props, ref) => {
   const { className, label, icon = 'document', description, ...forwardedProps } = props;
   return (
-    <UnstyledButton {...forwardedProps} className={clsx('v2-search-item', className)} ref={ref}>
+    <UnstyledButton
+      {...forwardedProps}
+      ref={ref}
+      data-search-result-item
+      className={clsx('v2-search-item', className)}
+      onKeyDown={createKeyDownGroup({
+        onKeyDown: forwardedProps.onKeyDown,
+        parentSelector: '[data-search-result-box]',
+        childSelector: '[data-search-result-item]',
+        orientation: 'vertical',
+        loop: false,
+      })}
+    >
       <span className="v2-search-item-inner">
         <div
           data-position="start"

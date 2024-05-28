@@ -1,14 +1,8 @@
 import clsx from 'clsx';
-import { Box } from '../../Box';
+import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Core, Factory } from '@/types';
-import { CheckboxProvider } from '../context';
-
-interface CheckboxGroupProps extends Core.GroupProps {
-  group: string;
-  label?: React.ReactNode;
-  message?: React.ReactNode;
-}
+import { CheckboxGroupProps } from '../Checkbox.types';
+import { CheckboxProvider } from '../Checkbox.context';
 
 type CheckboxGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -17,23 +11,13 @@ type CheckboxGroupFactory = Factory.Config<{
 }>;
 
 const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
-  const { children, className, message, orientation, ...forwardedProps } = props;
-
+  const { value, children, className, ...forwardedProps } = props;
   return (
-    <Box
-      {...forwardedProps}
-      aria-orientation={orientation}
-      data-orientation={orientation}
-      className={clsx('v2-checkbox-group', className)}
-      ref={ref}
-    >
-      <CheckboxProvider value={{}}>
-        {children}
-        {message}
-      </CheckboxProvider>
-    </Box>
+    <div {...forwardedProps} className={clsx('v2-checkbox-group', className)} ref={ref}>
+      <CheckboxProvider value={{ value }}>{children}</CheckboxProvider>
+    </div>
   );
 });
 
-export { CheckboxGroup, type CheckboxGroupProps };
 CheckboxGroup.displayName = '@v2/Checkbox.Group';
+export { CheckboxGroup };

@@ -57,7 +57,7 @@ export declare namespace Core {
 
   export type ItemParsed = {
     value: string;
-    label: string | undefined;
+    label: string;
     disabled?: boolean | undefined;
   };
 
