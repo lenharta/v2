@@ -1,42 +1,56 @@
 import React from 'react';
+import { Box, Stack, Text } from '@/core';
 import { DemoRoot } from '../DemoRoot';
-import { Icon, Text } from '@/core';
+import { Checkbox } from '@/core/components/Checkbox';
 
 const data = [
-  { value: 'light', label: 'Theme Light', icon: <Icon name="modeLight" />, indeterminate: true },
-  { value: 'dark', label: 'Theme Dark', icon: <Icon name="modeDark" /> },
-  { value: 'dim', label: 'Theme Dim', icon: <Icon name="modeDim" /> },
-] as const;
+  { value: 'light', label: 'Theme Light' },
+  { value: 'dark', label: 'Theme Dark' },
+  { value: 'dim', label: 'Theme Dim' },
+];
 
-// const DemoCheckboxSingle = () => {
-//   const [isChecked, setChecked] = React.useState<boolean>(false);
-//   return (
-//     <Checkbox
-//       value="accepted-terms"
-//       label="Accept Terms & Conditions"
-//       onChange={() => setChecked(!isChecked)}
-//       checked={isChecked}
-//     />
-//   );
-// };
+const DemoCheckboxSingle = () => {
+  const [acceptTerms, setAcceptTerms] = React.useState<boolean>(false);
+  const [allowNotifications, setAllowNotifications] = React.useState<boolean>(false);
 
-// const items = data.map(({ value, ...otherProps }) => {
-//   return <Checkbox key={value} value={value} {...otherProps} />;
-// });
+  console.log('acceptTerms', acceptTerms);
+  console.log('allowNotifications', allowNotifications);
 
-// const DemoCheckboxGroup = () => {
-//   const [value, setValue] = React.useState<string[]>([]);
-//   return (
-//     <Checkbox.Group value={value} onChange={setValue}>
-//       {items}
-//     </Checkbox.Group>
-//   );
-// };
+  return (
+    <Stack>
+      <Checkbox
+        label="Accept Terms & Conditions"
+        checked={acceptTerms}
+        onChange={(event) => setAcceptTerms(event.currentTarget.checked)}
+      />
+
+      <Checkbox
+        label="Allow Push Notifications"
+        checked={allowNotifications}
+        onChange={(event) => setAllowNotifications(event.currentTarget.checked)}
+      />
+    </Stack>
+  );
+};
+
+const DemoCheckboxMultiple = () => {
+  const [selected, setSelected] = React.useState<string[]>([]);
+
+  return (
+    <Checkbox.Group value={selected} onChange={setSelected}>
+      <Checkbox value="option-1" label="Option 1" />
+      <Checkbox value="option-2" label="Option 2" />
+      <Checkbox value="option-3" label="Option 3" />
+    </Checkbox.Group>
+  );
+};
 
 const DemoCheckbox = () => {
   return (
     <DemoRoot>
       <Text>Checkbox</Text>
+      <DemoCheckboxSingle />
+      <DemoCheckboxMultiple />
     </DemoRoot>
   );
 };

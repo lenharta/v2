@@ -2,6 +2,7 @@
 .v2-title {
   font-family: var(--ff);
   font-weight: var(--fw-3);
+  line-height: 1.2;
 }
 
 .v2-action-group {
@@ -17,5 +18,42 @@
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
+  }
+}
+
+.v2-stack {
+  &-justify--center {
+    --v2-justify: center;
+  }
+  &-justify--start {
+    --v2-justify: flex-start;
+  }
+  &-justify--end {
+    --v2-justify: flex-end;
+  }
+
+  &-align--center {
+    --v2-align: center;
+  }
+  &-align--start {
+    --v2-align: flex-start;
+  }
+  &-align--end {
+    --v2-align: flex-end;
+  }
+
+  [data-prefers-dir='rtl'] & {
+    &-justify--start {
+      --v2-justify: flex-end;
+    }
+    &-justify--end {
+      --v2-justify: flex-start;
+    }
+    &-align--start {
+      --v2-align: flex-end;
+    }
+    &-align--end {
+      --v2-align: flex-start;
+    }
   }
 }

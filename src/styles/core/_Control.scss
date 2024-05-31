@@ -25,15 +25,11 @@
 
 .v2-control-track {
   gap: var(--unit);
-  // z-index: 1;
   display: flex;
   position: relative;
   isolation: isolate;
   align-items: center;
   justify-content: flex-start;
-  // position: relative;
-  // isolation: isolate;
-  // border: solid var(--unit) orange;
   bottom: 0;
   right: 0;
   left: 0;
@@ -41,7 +37,6 @@
 }
 
 .v2-control-thumb {
-  // z-index: -1;
   top: 0;
   left: 0;
   position: absolute;
