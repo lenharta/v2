@@ -8,9 +8,45 @@
 
 .v2-checkbox {
   width: 100%;
-  cursor: pointer;
-  z-index: 0;
-  display: block;
+  height: calc(var(--unit) * 16);
+  border: solid 2px orange;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+
+  .v2-icon {
+    width: calc(var(--unit) * 16);
+    height: calc(var(--unit) * 16);
+  }
+}
+
+.v2-checkbox-inner {
+  width: 100%;
+  gap: calc(var(--unit) * 4);
+  height: calc(var(--unit) * 16);
+  display: flex;
   position: relative;
-  isolation: isolate;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.v2-checkbox-input {
+  cursor: pointer;
+  appearance: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+.v2-checkbox-label {
+  width: 100%;
+  height: calc(var(--unit) * 16);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  line-height: 1;
 }

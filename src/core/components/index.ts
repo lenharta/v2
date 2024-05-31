@@ -11,6 +11,7 @@ export * from './Icon';
 export * from './Image';
 export * from './InlineInput';
 export * from './Label';
+export * from './NavLink';
 export * from './Radio';
 export * from './Stack';
 export * from './Tabs';

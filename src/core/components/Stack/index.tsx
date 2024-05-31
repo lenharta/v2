@@ -16,7 +16,7 @@ type StackFactory = Factory.Config<{
 
 const Stack = factoryPolymorphic<StackFactory>((props, ref) => {
   const {
-    gap = 'sm',
+    gap,
     style,
     align = 'start',
     justify = 'start',
@@ -34,9 +34,9 @@ const Stack = factoryPolymorphic<StackFactory>((props, ref) => {
       aria-orientation="vertical"
       className={clsx(
         'v2-stack',
-        `v2-stack-gap--${gap}`,
-        `v2-stack-align--${align}`,
-        `v2-stack-justify--${justify}`,
+        gap && `v2-stack-gap--${gap}`,
+        align && `v2-stack-align--${align}`,
+        justify && `v2-stack-justify--${justify}`,
         className
       )}
     >
