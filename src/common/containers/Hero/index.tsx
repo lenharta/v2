@@ -4,16 +4,19 @@ import { Box } from '@/core/components';
 import { factory } from '@/core/factory';
 import { Factory } from '@/types';
 
-interface HeroProps {}
+interface HeroProps {
+  title?: React.ReactElement | undefined;
+}
 
 type HeroFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: HeroProps;
+  omits: 'title';
 }>;
 
 const Hero = factory<HeroFactory>((props, ref) => {
-  const { children, className, ...forwardedProps } = props;
+  const { title, children, className, ...forwardedProps } = props;
   return (
     <Box
       {...forwardedProps}
@@ -23,6 +26,7 @@ const Hero = factory<HeroFactory>((props, ref) => {
       ref={ref}
     >
       <Box className="v2-hero-content">
+        {title && title}
         <React.Fragment>{children}</React.Fragment>
       </Box>
     </Box>

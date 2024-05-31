@@ -11,11 +11,19 @@ type DemoComponent = React.FC<{}> & {
 const Demo: DemoComponent = () => {
   return (
     <Page>
-      <Hero children={<Title>Demo</Title>} />
+      <Hero title={<Title>Demo</Title>} />
       <Main>
         <DemoCheckbox />
-        {/* <DemoDivider /> */}
         {/* <DemoAccordion /> */}
+        {/* <DemoButton /> */}
+        {/* <DemoControl /> */}
+        {/* <DemoDisclosure /> */}
+        {/* <DemoDivider /> */}
+        {/* <DemoFloating /> */}
+        {/* <DemoRadio /> */}
+        {/* <DemoSection /> */}
+        {/* <DemoTabs /> */}
+        {/* <DemoToggle /> */}
       </Main>
     </Page>
   );

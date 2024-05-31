@@ -1,11 +1,11 @@
-import { Link as RouterLink } from 'react-router-dom';
+import { Link, Link as RouterLink } from 'react-router-dom';
 import { Main, Page, Section } from '@/common';
-import { Link, Text, Title } from '@/core';
+import { Text, Title } from '@/core';
 
 interface DemoErrorProps {}
 
 const DemoError: React.FC<DemoErrorProps> = () => {
-  const homeLink = <Link component={RouterLink} to="/" label="Go Home" inline />;
+  const homeLink = <Link to="/">Go Home</Link>;
   return (
     <Page>
       <Main>

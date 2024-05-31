@@ -1,11 +1,11 @@
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Text, Title } from '@/core';
 import { Main, Page, Section } from '@/common';
-import { Link, Text, Title } from '@/core';
 
 interface ExperienceErrorProps {}
 
 const ExperienceError: React.FC<ExperienceErrorProps> = () => {
-  const homeLink = <Link component={RouterLink} to="/" label="Go Home" inline />;
+  const homeLink = <Link to="/">Go Home</Link>;
   return (
     <Page>
       <Main>

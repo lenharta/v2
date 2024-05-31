@@ -3,9 +3,9 @@ import { Core, Factory } from '@/types';
 import { factoryPolymorphic } from '@/core/factory';
 
 interface StackProps {
-  gap?: Core.Size;
-  align?: Core.Align | 'center';
-  justify?: Core.Align | 'center';
+  gap?: Core.Size | undefined;
+  align?: 'start' | 'end' | 'center' | undefined;
+  justify?: 'start' | 'end' | 'center' | undefined;
 }
 
 type StackFactory = Factory.Config<{
@@ -16,11 +16,13 @@ type StackFactory = Factory.Config<{
 
 const Stack = factoryPolymorphic<StackFactory>((props, ref) => {
   const {
-    gap = 'xs',
+    gap = 'sm',
+    style,
     align = 'start',
     justify = 'start',
-    component: Component = 'div',
+    children,
     className,
+    component: Component = 'div',
     ...forwardedProps
   } = props;
 
@@ -32,12 +34,14 @@ const Stack = factoryPolymorphic<StackFactory>((props, ref) => {
       aria-orientation="vertical"
       className={clsx(
         'v2-stack',
-        `v2-stack--gap-${gap}`,
-        `v2-stack--align-${align}`,
-        `v2-stack--justify-${justify}`,
+        `v2-stack-gap--${gap}`,
+        `v2-stack-align--${align}`,
+        `v2-stack-justify--${justify}`,
         className
       )}
-    />
+    >
+      {children}
+    </Component>
   );
 });
 

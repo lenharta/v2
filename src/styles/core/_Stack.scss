@@ -1,0 +1,32 @@
+@layer reset {
+  .v2-stack {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.v2-stack {
+  gap: var(--v2-stack-gap);
+  width: 100%;
+  display: flex;
+  align-items: var(--v2-align, flex-start);
+  justify-content: var(--v2-justify, flex-start);
+  flex-direction: column;
+
+  &-gap--xs {
+    --v2-stack-gap: calc(var(--unit) * 1);
+  }
+  &-gap--sm {
+    --v2-stack-gap: calc(var(--unit) * 4);
+  }
+  &-gap--md {
+    --v2-stack-gap: calc(var(--unit) * 8);
+  }
+  &-gap--lg {
+    --v2-stack-gap: calc(var(--unit) * 16);
+  }
+  &-gap--xl {
+    --v2-stack-gap: calc(var(--unit) * 24);
+  }
+}
