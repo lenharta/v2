@@ -2,8 +2,7 @@ import React from 'react';
 import { Title } from '@/core';
 import { DemoError } from './error';
 import { Hero, Main, Page } from '@/common';
-
-import { DemoDivider } from './DemoDivider';
+import { DemoCheckbox } from './DemoCheckbox';
 
 type DemoComponent = React.FC<{}> & {
   Error: typeof DemoError;
@@ -14,7 +13,8 @@ const Demo: DemoComponent = () => {
     <Page>
       <Hero children={<Title>Demo</Title>} />
       <Main>
-        <DemoDivider />
+        <DemoCheckbox />
+        {/* <DemoDivider /> */}
         {/* <DemoAccordion /> */}
       </Main>
     </Page>

@@ -1,22 +1,24 @@
 import React from 'react';
 import { DemoRoot } from '../DemoRoot';
-import { Checkbox, CheckboxProps, Icon, Text } from '@/core';
+import { Icon, Text } from '@/core';
 
-const DemoCheckboxSingle = () => {
-  return (
-    <Checkbox
-      value="accept-terms"
-      label="Accept Terms & Conditions"
-      aria-label="accept terms and conditions"
-    />
-  );
-};
+const data = [
+  { value: 'light', label: 'Theme Light', icon: <Icon name="modeLight" />, indeterminate: true },
+  { value: 'dark', label: 'Theme Dark', icon: <Icon name="modeDark" /> },
+  { value: 'dim', label: 'Theme Dim', icon: <Icon name="modeDim" /> },
+] as const;
 
-const data: CheckboxProps[] = [
-  { value: 'light', label: 'theme mode light', icon: <Icon name="modeLight" /> },
-  { value: 'dark', label: 'theme mode dark', icon: <Icon name="modeDark" /> },
-  { value: 'dim', label: 'theme mode dim', icon: <Icon name="modeDim" /> },
-];
+// const DemoCheckboxSingle = () => {
+//   const [isChecked, setChecked] = React.useState<boolean>(false);
+//   return (
+//     <Checkbox
+//       value="accepted-terms"
+//       label="Accept Terms & Conditions"
+//       onChange={() => setChecked(!isChecked)}
+//       checked={isChecked}
+//     />
+//   );
+// };
 
 // const items = data.map(({ value, ...otherProps }) => {
 //   return <Checkbox key={value} value={value} {...otherProps} />;
@@ -25,7 +27,7 @@ const data: CheckboxProps[] = [
 // const DemoCheckboxGroup = () => {
 //   const [value, setValue] = React.useState<string[]>([]);
 //   return (
-//     <Checkbox.Group value={value}>
+//     <Checkbox.Group value={value} onChange={setValue}>
 //       {items}
 //     </Checkbox.Group>
 //   );
@@ -35,8 +37,6 @@ const DemoCheckbox = () => {
   return (
     <DemoRoot>
       <Text>Checkbox</Text>
-      {/* <DemoCheckboxSingle /> */}
-      {/* <DemoCheckboxGroup /> */}
     </DemoRoot>
   );
 };

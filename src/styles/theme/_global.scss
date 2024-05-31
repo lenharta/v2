@@ -90,6 +90,15 @@ body,
   color: var(--c-primary-border-2);
 }
 
+// .v2-checkbox {
+//   @include cursor.clickable();
+//   @include surface.primary-2-clickable();
+// }
+
+// .v2-checkbox-input {
+//   @include focus.clickable();
+// }
+
 .v2-control-segment {
   @include cursor.clickable();
 }
