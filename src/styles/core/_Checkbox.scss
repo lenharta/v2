@@ -9,10 +9,17 @@
 .v2-checkbox {
   width: 100%;
   height: calc(var(--unit) * 16);
-  border: solid 2px orange;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  justify-content: center;
+}
+
+.v2-checkbox-indicator {
+  width: calc(var(--unit) * 16);
+  height: calc(var(--unit) * 16);
+  display: flex;
+  align-items: center;
   justify-content: center;
 
   .v2-icon {

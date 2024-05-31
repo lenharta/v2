@@ -5,6 +5,7 @@ type CheckboxStatus = 'true' | 'false' | 'mixed';
 interface CheckboxContext {
   value: string[];
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  orientation: Core.Orientation;
 }
 
 interface CheckboxProps {

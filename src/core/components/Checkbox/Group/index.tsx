@@ -37,9 +37,10 @@ const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
       className={clsx('v2-checkbox-group', className)}
       data-orientation={orientation}
       aria-orientation={orientation}
+      data-checkbox-group
       ref={ref}
     >
-      <CheckboxGroupProvider value={{ value, onChange }}>
+      <CheckboxGroupProvider value={{ value, onChange, orientation }}>
         <React.Fragment>{children}</React.Fragment>
       </CheckboxGroupProvider>
     </Box>
