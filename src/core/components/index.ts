@@ -2,7 +2,7 @@ export * from './Accordion';
 export * from './Action';
 export * from './Box';
 export * from './Button';
-export * from './Checkbox';
+// export * from './Checkbox';
 export * from './Control';
 export * from './Disclosure';
 export * from './Divider';
