@@ -1,0 +1,24 @@
+@layer reset {
+  .v2-navlink,
+  .v2-navlink-inner,
+  .v2-navlink-icon,
+  .v2-navlink-label {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.v2-navlink {
+  width: max-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &-inner {
+    gap: calc(var(--unit) * 4);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
