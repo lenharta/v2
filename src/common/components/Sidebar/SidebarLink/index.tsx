@@ -28,6 +28,9 @@ const SidebarLink = factory<SidebarLinkFactory>((props, ref) => {
     closeActivePanels();
   });
 
+  const isHome = value === '/' && pathname === '/' && pathname.length === 0;
+  const isActive = value !== '/' && pathname.length > 0 && pathname.includes(value);
+
   return (
     <Action
       {...forwardedProps}
@@ -36,7 +39,7 @@ const SidebarLink = factory<SidebarLinkFactory>((props, ref) => {
       value={value}
       label={label}
       onClick={handleClick}
-      selected={value === label ? true : undefined}
+      selected={isHome || isActive || undefined}
     />
   );
 });

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, Title } from '@/core';
+import { Page } from '@/common';
+import { Outlet } from 'react-router-dom';
 import { SandboxError } from './error';
-import { Hero, Main, Page, Section } from '@/common';
 
 interface SandboxProps {}
 
@@ -12,19 +12,7 @@ type SandboxComponent = React.FC<SandboxProps> & {
 const Sandbox: SandboxComponent = () => {
   return (
     <Page>
-      <Hero>
-        <Title>Sandbox</Title>
-      </Hero>
-      <Main>
-        <Section>
-          <Title>Section Title</Title>
-          <Text>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas numquam ex recusandae
-            velit sequi quae qui! Animi ea unde, asperiores ratione dolorem facere consectetur fuga
-            iusto, quae impedit perferendis deserunt.t
-          </Text>
-        </Section>
-      </Main>
+      <Outlet />
     </Page>
   );
 };

@@ -31,10 +31,10 @@ const Image = factory<ImageFactory>((props, ref) => {
     role = 'img',
     style,
     width = 'auto',
-    height = 500,
+    height = 'auto',
     radius = 0,
     className,
-    fallbackSrc,
+    fallbackSrc = 'https://placehold.co/150x150/svg',
     ...otherProps
   } = props;
 

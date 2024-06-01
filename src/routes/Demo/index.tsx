@@ -2,7 +2,19 @@ import React from 'react';
 import { Title } from '@/core';
 import { DemoError } from './error';
 import { Hero, Main, Page } from '@/common';
-import { DemoCheckbox } from './DemoCheckbox';
+
+import { DemoImage } from './DemoImage';
+// import { DemoCheckbox } from './DemoCheckbox';
+// import { DemoAccordion } from './DemoAccordion';
+// import { DemoButton } from './DemoButton';
+// import { DemoControl } from './DemoControl';
+// import { DemoDisclosure } from './DemoDisclosure';
+// import { DemoDivider } from './DemoDivider';
+// import { DemoFloating } from './DemoFloating';
+// import { DemoRadio } from './DemoRadio';
+// import { DemoSection } from './DemoSection';
+// import { DemoTabs } from './DemoTabs';
+// import { DemoToggle } from './DemoToggle';
 
 type DemoComponent = React.FC<{}> & {
   Error: typeof DemoError;
@@ -13,7 +25,8 @@ const Demo: DemoComponent = () => {
     <Page>
       <Hero title={<Title>Demo</Title>} />
       <Main>
-        <DemoCheckbox />
+        <DemoImage />
+        {/* <DemoCheckbox /> */}
         {/* <DemoAccordion /> */}
         {/* <DemoButton /> */}
         {/* <DemoControl /> */}

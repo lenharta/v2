@@ -16,6 +16,15 @@ import {
   Toolbox,
 } from '@/routes';
 
+import {
+  SandboxButton,
+  SandboxCheckbox,
+  SandboxControl,
+  SandboxGallery,
+  SandboxImage,
+  SandboxRadio,
+} from '@/routes/Sandbox/subroutes';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -51,6 +60,32 @@ const router = createBrowserRouter([
         path: '/sandbox',
         element: <Sandbox />,
         errorElement: <Sandbox.Error />,
+        children: [
+          {
+            index: true,
+            element: <SandboxGallery />,
+          },
+          {
+            path: '/sandbox/button',
+            element: <SandboxButton />,
+          },
+          {
+            path: '/sandbox/checkbox',
+            element: <SandboxCheckbox />,
+          },
+          {
+            path: '/sandbox/control',
+            element: <SandboxControl />,
+          },
+          {
+            path: '/sandbox/image',
+            element: <SandboxImage />,
+          },
+          {
+            path: '/sandbox/radio',
+            element: <SandboxRadio />,
+          },
+        ],
       },
       {
         path: '/settings',
