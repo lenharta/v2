@@ -1,14 +1,9 @@
 import clsx from 'clsx';
-import { Box } from '../../Box';
+import React from 'react';
+import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Core, Factory } from '@/types';
-import { RadioProvider } from '../context';
-
-interface RadioGroupProps extends Core.GroupProps {
-  group: string;
-  label?: React.ReactNode;
-  message?: React.ReactNode;
-}
+import { RadioGroupProps } from '../Radio.types';
+import { RadioGroupProvider } from '../Radio.context';
 
 type RadioGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -17,23 +12,15 @@ type RadioGroupFactory = Factory.Config<{
 }>;
 
 const RadioGroup = factory<RadioGroupFactory>((props, ref) => {
-  const { children, className, message, orientation, ...forwardedProps } = props;
-
+  const { className, children, orientation = 'vertical', ...forwardedProps } = props;
   return (
-    <Box
-      {...forwardedProps}
-      aria-orientation={orientation}
-      data-orientation={orientation}
-      className={clsx('v2-radio-group', className)}
-      ref={ref}
-    >
-      <RadioProvider value={{}}>
-        {children}
-        {message}
-      </RadioProvider>
-    </Box>
+    <div {...forwardedProps} className={clsx('v2-radio-group', className)} ref={ref}>
+      <RadioGroupProvider value={{ orientation }}>
+        <React.Fragment>{children}</React.Fragment>
+      </RadioGroupProvider>
+    </div>
   );
 });
 
-export { RadioGroup, type RadioGroupProps };
 RadioGroup.displayName = '@v2/Radio.Group';
+export { RadioGroup };

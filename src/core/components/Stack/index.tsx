@@ -17,7 +17,6 @@ type StackFactory = Factory.Config<{
 const Stack = factoryPolymorphic<StackFactory>((props, ref) => {
   const {
     gap,
-    style,
     align = 'start',
     justify = 'start',
     children,

@@ -103,6 +103,13 @@ body,
   @include focus.clickable();
 }
 
+.v2-checkbox-desc {
+  color: var(--c-primary-text-3);
+}
+.v2-checkbox-error {
+  color: var(--c-red);
+}
+
 .v2-control-segment {
   @include cursor.clickable();
 }

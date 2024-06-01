@@ -5,8 +5,10 @@
   line-height: 1.2;
 }
 
-.v2-action-group {
+.v2-action-group,
+.v2-checkbox-group {
   gap: var(--unit);
+  width: 100%;
   display: flex;
 
   &[data-orientation='horizontal'] {
