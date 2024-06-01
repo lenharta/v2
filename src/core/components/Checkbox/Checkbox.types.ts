@@ -10,9 +10,13 @@ interface CheckboxContext {
 
 interface CheckboxProps {
   label: string;
+  variant?: 'default' | 'elevated';
   checked?: boolean | undefined;
   disabled?: boolean | undefined;
+  readOnly?: boolean | undefined;
   indeterminate?: boolean | undefined;
+  description?: React.ReactNode | undefined;
+  error?: React.ReactNode | undefined;
 }
 
 interface CheckboxGroupProps {

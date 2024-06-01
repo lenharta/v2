@@ -7,53 +7,81 @@
 }
 
 .v2-checkbox {
+  --v2-checkbox-spacing-y: calc(var(--unit) * 4);
+  --v2-checkbox-spacing-x: calc(var(--unit) * 4);
+
   width: 100%;
-  height: calc(var(--unit) * 16);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-}
 
-.v2-checkbox-indicator {
-  width: calc(var(--unit) * 16);
-  height: calc(var(--unit) * 16);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .v2-icon {
-    width: calc(var(--unit) * 16);
-    height: calc(var(--unit) * 16);
+  &-inner {
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-inline: calc(var(--unit) * 4);
+    margin-block: calc(var(--unit) * 2);
   }
-}
 
-.v2-checkbox-inner {
-  width: 100%;
-  gap: calc(var(--unit) * 4);
-  height: calc(var(--unit) * 16);
-  display: flex;
-  position: relative;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-}
+  &-input {
+    cursor: pointer;
+    appearance: none;
+    position: absolute;
+    bottom: var(--unit);
+    right: var(--unit);
+    left: var(--unit);
+    top: var(--unit);
+  }
 
-.v2-checkbox-input {
-  cursor: pointer;
-  appearance: none;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-}
+  &-copy {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 
-.v2-checkbox-label {
-  width: 100%;
-  height: calc(var(--unit) * 16);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  line-height: 1;
+  &-indicator {
+    width: calc(var(--unit) * 12);
+    height: calc(var(--unit) * 16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: calc(var(--unit) * 4);
+
+    .v2-icon {
+      height: calc(var(--unit) * 12);
+      width: calc(var(--unit) * 12);
+    }
+  }
+
+  &-label {
+    width: 100%;
+    height: calc(var(--unit) * 16);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: calc(var(--unit) * 7);
+    font-family: var(--ff);
+    font-weight: var(--fw-2);
+    line-height: 1;
+  }
+
+  &-desc,
+  &-error {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: calc(var(--unit) * 6);
+    font-size: var(--fz-1);
+    font-family: var(--ff);
+    font-weight: var(--fw-2);
+    line-height: 1;
+  }
 }

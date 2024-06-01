@@ -7,6 +7,7 @@ import { CheckboxIndicator } from './Indicator';
 import { createKeyDownGroup } from '@/core/utils';
 import { useCheckboxContext } from './Checkbox.context';
 import { CheckboxProps, CheckboxStatus } from './Checkbox.types';
+import { getCheckboxProps, getCheckboxStatus } from './utils';
 
 type CheckboxFactory = Factory.Config<{
   ref: HTMLInputElement;
@@ -19,34 +20,21 @@ type CheckboxFactory = Factory.Config<{
   };
 }>;
 
-function getCheckboxStatus(props: {
-  ctx: { value?: string[] | undefined };
-  value?: string | number | readonly string[] | undefined;
-  checked?: boolean | undefined;
-  disabled?: boolean | undefined;
-  indeterminate?: boolean | undefined;
-}) {
-  const { checked, ctx, value, disabled, indeterminate } = props;
-
-  let checkedStatus: CheckboxStatus = 'false';
-
-  if (ctx && ctx.value) {
-    if (!disabled && ctx.value.includes(value as string)) {
-      checkedStatus = 'true';
-    }
-  }
-  if (!disabled && checked) {
-    checkedStatus = 'true';
-  }
-  if (!disabled && indeterminate) {
-    checkedStatus = 'mixed';
-  }
-
-  return checkedStatus;
-}
-
 const Checkbox = factory<CheckboxFactory>((props, ref) => {
-  const { label, className, indeterminate, onChange, checked, disabled, ...forwardedProps } = props;
+  const {
+    label,
+    error,
+    variant = 'default',
+    checked,
+    disabled,
+    readOnly,
+    onChange,
+    onKeyDown,
+    className,
+    description,
+    indeterminate,
+    ...forwardedProps
+  } = props;
 
   const ctx = useCheckboxContext() || {};
 
@@ -54,30 +42,24 @@ const Checkbox = factory<CheckboxFactory>((props, ref) => {
     ctx: { value: ctx.value },
     value: forwardedProps.value,
     indeterminate,
+    readOnly,
     disabled,
     checked,
   });
 
-  const contextProps = ctx
-    ? {
-        'data-checkbox-item': true,
-        checked: ctx.value?.includes(forwardedProps.value as string),
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-          ctx.onChange?.(event);
-          onChange?.(event);
-        },
-        onKeyDown: createKeyDownGroup({
-          parentSelector: '[data-checkbox-group]',
-          childSelector: '[data-checkbox-item]',
-          orientation: ctx.orientation,
-          onKeyDown: forwardedProps.onKeyDown,
-          loop: false,
-        }),
-      }
-    : {};
+  const contextProps = getCheckboxProps({
+    ctx,
+    value: forwardedProps.value,
+    disabled,
+    readOnly,
+    parentSelector: '[data-checkbox-group]',
+    childSelector: '[data-checkbox-item]',
+    onKeyDown,
+    onChange,
+  });
 
   return (
-    <Box className={clsx('v2-checkbox', className)}>
+    <Box className={clsx('v2-checkbox', `v2-checkbox--${variant}`, className)}>
       <span className="v2-checkbox-inner">
         <input
           ref={ref}
@@ -86,14 +68,21 @@ const Checkbox = factory<CheckboxFactory>((props, ref) => {
           className="v2-checkbox-input"
           aria-checked={checkedStatus}
           aria-disabled={disabled}
+          aria-readonly={readOnly}
           data-disabled={disabled}
+          data-readonly={readOnly}
           onChange={onChange}
           {...forwardedProps}
           {...contextProps}
         />
 
         <Checkbox.Indicator status={checkedStatus} />
-        {label && <div className="v2-checkbox-label">{label}</div>}
+
+        <div className="v2-checkbox-copy">
+          {label && <div className="v2-checkbox-label">{label}</div>}
+          {description && <div className="v2-checkbox-desc">{description}</div>}
+          {error && <div className="v2-checkbox-error">{error}</div>}
+        </div>
       </span>
     </Box>
   );
