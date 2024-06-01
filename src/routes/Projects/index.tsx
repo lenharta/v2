@@ -12,9 +12,7 @@ type ProjectsComponent = React.FC<ProjectsProps> & {
 const Projects: ProjectsComponent = () => {
   return (
     <Page>
-      <Hero>
-        <Title>Projects</Title>
-      </Hero>
+      <Hero title={<Title>Projects</Title>} />
       <Main>
         <Section>
           <Title>Section Title</Title>

@@ -12,9 +12,7 @@ type OverviewComponent = React.FC<OverviewProps> & {
 const Overview: OverviewComponent = () => {
   return (
     <Page>
-      <Hero>
-        <Title>Overview</Title>
-      </Hero>
+      <Hero title={<Title>Overview</Title>} />
       <Main>
         <Section>
           <Title>Section Title</Title>

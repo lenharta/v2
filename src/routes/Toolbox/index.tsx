@@ -12,9 +12,7 @@ type ToolboxComponent = React.FC<ToolboxProps> & {
 const Toolbox: ToolboxComponent = () => {
   return (
     <Page>
-      <Hero>
-        <Title>Toolbox</Title>
-      </Hero>
+      <Hero title={<Title>Toolbox</Title>} />
       <Main>
         <Section>
           <Title>Section Title</Title>
