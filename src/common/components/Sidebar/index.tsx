@@ -7,7 +7,6 @@ import { SidebarSelect } from './SidebarSelect';
 import { Action, Box, Icon } from '@/core/components';
 import { createKeyDownGroup } from '@/core';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { DATA_COLOR_KEYS, DATA_COLOR_MAP } from '@/data';
 
 import {
   Factory,
@@ -23,6 +22,8 @@ import {
   useStoreDispatch,
   useStoreState,
 } from '@/store';
+import { DATA_THEME_MAP_COLOR } from '@/data';
+import { objectKeys } from '@/utils';
 
 interface SidebarProps {}
 
@@ -168,10 +169,10 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
           setActiveGroup={setActiveGroup}
           width="calc(var(--action-box) * 6)"
           closeActivePanels={closeActivePanels}
-          items={DATA_COLOR_KEYS.map((token) => ({
-            icon: <Sidebar.Color accent={DATA_COLOR_MAP[token] as any} />,
-            onClick: () => dispatch({ accent: DATA_COLOR_MAP[token] as any }),
-            value: DATA_COLOR_MAP[token],
+          items={objectKeys(DATA_THEME_MAP_COLOR).map((token) => ({
+            icon: <Sidebar.Color accent={DATA_THEME_MAP_COLOR[token] as any} />,
+            onClick: () => dispatch({ accent: DATA_THEME_MAP_COLOR[token] as any }),
+            value: DATA_THEME_MAP_COLOR[token],
             label: token,
           }))}
         />

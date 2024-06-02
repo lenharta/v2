@@ -1,8 +1,10 @@
-@forward 'color-tokens';
-@forward 'color-accents';
-@forward 'color-surfaces';
+@forward 'color-token';
+@forward 'color-alpha';
+@forward 'color-shade';
+@forward 'color-accent';
+@forward 'color-surface';
 
 @forward 'mode-dim';
 @forward 'mode-dark';
 @forward 'mode-light';
-@forward 'mode-surfaces';
+@forward 'mode-surface';
