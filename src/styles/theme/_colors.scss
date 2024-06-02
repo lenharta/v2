@@ -140,26 +140,43 @@
   --c-primary-2: hsl(240, 1%, 93%);
   --c-primary-3: hsl(240, 1%, 90%);
   --c-primary-4: hsl(240, 1%, 87%);
+  --c-primary-5: hsl(240, 1%, 84%);
 
   --c-primary-1-hover: hsl(240, 1%, 93%);
   --c-primary-2-hover: hsl(240, 1%, 90%);
   --c-primary-3-hover: hsl(240, 1%, 87%);
   --c-primary-4-hover: hsl(240, 1%, 84%);
+  --c-primary-5-hover: hsl(240, 1%, 81%);
 
   --c-primary-1-active: hsl(240, 1%, 91%);
   --c-primary-2-active: hsl(240, 1%, 88%);
   --c-primary-3-active: hsl(240, 1%, 85%);
   --c-primary-4-active: hsl(240, 1%, 82%);
+  --c-primary-5-active: hsl(240, 1%, 79%);
+
+  --c-primary-1-selected: hsl(240, 1%, 89%);
+  --c-primary-2-selected: hsl(240, 1%, 86%);
+  --c-primary-3-selected: hsl(240, 1%, 83%);
+  --c-primary-4-selected: hsl(240, 1%, 80%);
+  --c-primary-5-selected: hsl(240, 1%, 77%);
+
+  --c-primary-1-disabled: hsl(240, 1%, 59%);
+  --c-primary-2-disabled: hsl(240, 1%, 56%);
+  --c-primary-3-disabled: hsl(240, 1%, 53%);
+  --c-primary-4-disabled: hsl(240, 1%, 50%);
+  --c-primary-5-disabled: hsl(240, 1%, 47%);
 
   --c-primary-text-1: hsla(240, 1%, 0%, 0.97);
   --c-primary-text-2: hsla(240, 1%, 0%, 0.87);
   --c-primary-text-3: hsla(240, 1%, 0%, 0.67);
   --c-primary-text-4: hsla(240, 1%, 0%, 0.57);
+  --c-primary-text-5: hsla(240, 1%, 0%, 0.47);
 
   --c-primary-border-1: hsla(240, 1%, 0%, 0.47);
   --c-primary-border-2: hsla(240, 1%, 0%, 0.37);
   --c-primary-border-3: hsla(240, 1%, 0%, 0.27);
   --c-primary-border-4: hsla(240, 1%, 0%, 0.17);
+  --c-primary-border-5: hsla(240, 1%, 0%, 0.07);
 
   --c-secondary-disabled: hsl(240, 1%, 40%);
   --c-secondary-disabled-text: hsl(240, 1%, 0%, 0.5);
@@ -168,26 +185,49 @@
   --c-secondary-2: hsl(240, 1%, 13%);
   --c-secondary-3: hsl(240, 1%, 17%);
   --c-secondary-4: hsl(240, 1%, 21%);
+  --c-secondary-5: hsl(240, 1%, 24%);
 
   --c-secondary-1-hover: hsl(240, 1%, 13%);
   --c-secondary-2-hover: hsl(240, 1%, 17%);
   --c-secondary-3-hover: hsl(240, 1%, 21%);
   --c-secondary-4-hover: hsl(240, 1%, 25%);
+  --c-secondary-5-hover: hsl(240, 1%, 29%);
 
   --c-secondary-1-active: hsl(240, 1%, 15%);
   --c-secondary-2-active: hsl(240, 1%, 19%);
   --c-secondary-3-active: hsl(240, 1%, 23%);
   --c-secondary-4-active: hsl(240, 1%, 27%);
+  --c-secondary-5-active: hsl(240, 1%, 31%);
+
+  --c-secondary-1-selected: hsl(240, 1%, 19%);
+  --c-secondary-2-selected: hsl(240, 1%, 23%);
+  --c-secondary-3-selected: hsl(240, 1%, 27%);
+  --c-secondary-4-selected: hsl(240, 1%, 31%);
+  --c-secondary-5-selected: hsl(240, 1%, 35%);
+
+  --c-secondary-1-disabled: hsl(240, 1%, 49%);
+  --c-secondary-2-disabled: hsl(240, 1%, 53%);
+  --c-secondary-3-disabled: hsl(240, 1%, 57%);
+  --c-secondary-4-disabled: hsl(240, 1%, 61%);
+  --c-secondary-5-disabled: hsl(240, 1%, 65%);
 
   --c-secondary-text-1: hsla(240, 1%, 100%, 0.97);
   --c-secondary-text-2: hsla(240, 1%, 100%, 0.87);
   --c-secondary-text-3: hsla(240, 1%, 100%, 0.67);
   --c-secondary-text-4: hsla(240, 1%, 100%, 0.57);
+  --c-secondary-text-5: hsla(240, 1%, 100%, 0.47);
+
+  --c-secondary-text-1-disabled: hsla(240, 1%, 50%, 0.97);
+  --c-secondary-text-2-disabled: hsla(240, 1%, 50%, 0.87);
+  --c-secondary-text-3-disabled: hsla(240, 1%, 50%, 0.67);
+  --c-secondary-text-4-disabled: hsla(240, 1%, 50%, 0.57);
+  --c-secondary-text-5-disabled: hsla(240, 1%, 50%, 0.47);
 
   --c-primary-border-1: hsla(240, 1%, 100%, 0.47);
   --c-primary-border-2: hsla(240, 1%, 100%, 0.37);
   --c-primary-border-3: hsla(240, 1%, 100%, 0.27);
   --c-primary-border-4: hsla(240, 1%, 100%, 0.17);
+  --c-primary-border-5: hsla(240, 1%, 100%, 0.07);
 
   --c-info: var(--c-info-light);
   --c-error: var(--c-error-light);

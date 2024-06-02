@@ -7,9 +7,79 @@
 }
 
 .v2-button {
-  height: 56px;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1rem;
-  padding-inline: calc(var(--unit) * 8);
+  --v2-button-height-xs: calc(var(--unit) * 18);
+  --v2-button-height-sm: calc(var(--unit) * 22);
+  --v2-button-height-md: calc(var(--unit) * 26);
+  --v2-button-height-lg: calc(var(--unit) * 30);
+  --v2-button-height-xl: calc(var(--unit) * 34);
+
+  --v2-button-spacing-x-xs: calc(var(--unit) * 4);
+  --v2-button-spacing-x-sm: calc(var(--unit) * 6);
+  --v2-button-spacing-x-md: calc(var(--unit) * 8);
+  --v2-button-spacing-x-lg: calc(var(--unit) * 10);
+  --v2-button-spacing-x-xl: calc(var(--unit) * 12);
+
+  --v2-button-spacing-y-xs: calc(var(--unit) * 4);
+  --v2-button-spacing-y-sm: calc(var(--unit) * 5);
+  --v2-button-spacing-y-md: calc(var(--unit) * 6);
+  --v2-button-spacing-y-lg: calc(var(--unit) * 7);
+  --v2-button-spacing-y-xl: calc(var(--unit) * 8);
+
+  --v2-button-fz-xs: calc(var(--unit) * 6);
+  --v2-button-fz-sm: calc(var(--unit) * 7);
+  --v2-button-fz-md: calc(var(--unit) * 8);
+  --v2-button-fz-lg: calc(var(--unit) * 9);
+  --v2-button-fz-xl: calc(var(--unit) * 10);
+
+  width: var(--v2-button-width, max-content);
+  height: var(--v2-button-height, var(--v2-button-height-xs));
+  display: var(--v2-button-display, inline-flex);
+  align-items: var(--v2-button-align);
+  justify-content: var(--v2-button-justify);
+  padding-block: var(--v2-button-spacing-y, var(--v2-button-spacing-y-xs));
+  padding-inline: var(--v2-button-spacing-x, var(--v2-button-spacing-x-xs));
+  font-size: var(--v2-button-fz, var(--v2-button-fz-xs));
+  font-weight: var(--fw-2);
+  line-height: 1;
+
+  [data-block] {
+    --v2-button-display: block;
+    --v2-button-width: 100%;
+  }
+
+  &:not([data-block]) {
+    --v2-button-align: center;
+    --v2-button-justify: center;
+  }
+
+  &-size--xs {
+    --v2-button-spacing-y: var(--v2-button-spacing-y-xs);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-xs);
+    --v2-button-height: var(--v2-button-height-xs);
+    --v2-button-fz: var(--v2-button-fz-xs);
+  }
+  &-size--sm {
+    --v2-button-spacing-y: var(--v2-button-spacing-y-sm);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-sm);
+    --v2-button-height: var(--v2-button-height-sm);
+    --v2-button-fz: var(--v2-button-fz-sm);
+  }
+  &-size--md {
+    --v2-button-spacing-y: var(--v2-button-spacing-y-md);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-md);
+    --v2-button-height: var(--v2-button-height-md);
+    --v2-button-fz: var(--v2-button-fz-md);
+  }
+  &-size--lg {
+    --v2-button-spacing-y: var(--v2-button-spacing-y-lg);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-lg);
+    --v2-button-height: var(--v2-button-height-lg);
+    --v2-button-fz: var(--v2-button-fz-lg);
+  }
+  &-size--xl {
+    --v2-button-spacing-y: var(--v2-button-spacing-y-xl);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-xl);
+    --v2-button-height: var(--v2-button-height-xl);
+    --v2-button-fz: var(--v2-button-fz-xl);
+  }
 }

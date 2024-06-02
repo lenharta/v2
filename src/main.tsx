@@ -23,6 +23,7 @@ import {
   SandboxGallery,
   SandboxImage,
   SandboxRadio,
+  SandboxTile,
 } from '@/routes/Sandbox/subroutes';
 
 const router = createBrowserRouter([
@@ -61,30 +62,13 @@ const router = createBrowserRouter([
         element: <Sandbox />,
         errorElement: <Sandbox.Error />,
         children: [
-          {
-            index: true,
-            element: <SandboxGallery />,
-          },
-          {
-            path: '/sandbox/button',
-            element: <SandboxButton />,
-          },
-          {
-            path: '/sandbox/checkbox',
-            element: <SandboxCheckbox />,
-          },
-          {
-            path: '/sandbox/control',
-            element: <SandboxControl />,
-          },
-          {
-            path: '/sandbox/image',
-            element: <SandboxImage />,
-          },
-          {
-            path: '/sandbox/radio',
-            element: <SandboxRadio />,
-          },
+          { index: true, element: <SandboxGallery /> },
+          { path: '/sandbox/button', element: <SandboxButton /> },
+          { path: '/sandbox/checkbox', element: <SandboxCheckbox /> },
+          { path: '/sandbox/control', element: <SandboxControl /> },
+          { path: '/sandbox/image', element: <SandboxImage /> },
+          { path: '/sandbox/radio', element: <SandboxRadio /> },
+          { path: '/sandbox/tile', element: <SandboxTile /> },
         ],
       },
       {

@@ -1,0 +1,24 @@
+[data-prefers-mode='light'] {
+  --c-h: 240;
+  --c-s: 4%;
+
+  [data-prefers-scheme='primary'] {
+    --c-base-h: var(--c-h);
+    --c-base-s: var(--c-s);
+    --c-base-l: 99%;
+
+    --c-text-h: var(--c-h);
+    --c-text-s: var(--c-s);
+    --c-text-l: 1%;
+  }
+
+  [data-prefers-scheme='secondary'] {
+    --c-base-h: var(--c-h);
+    --c-base-s: var(--c-s);
+    --c-base-l: 1%;
+
+    --c-text-h: var(--c-h);
+    --c-text-s: var(--c-s);
+    --c-text-l: 99%;
+  }
+}

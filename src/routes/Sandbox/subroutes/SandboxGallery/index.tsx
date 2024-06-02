@@ -9,6 +9,7 @@ const data = [
   { value: '/sandbox/control', label: 'Control' },
   { value: '/sandbox/image', label: 'Image' },
   { value: '/sandbox/radio', label: 'Radio' },
+  { value: '/sandbox/tile', label: 'Tile' },
 ];
 
 const SandboxGallery = () => {

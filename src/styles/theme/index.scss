@@ -1,2 +1,8 @@
-@forward 'colors';
-@forward 'global';
+@forward 'color-tokens';
+@forward 'color-accents';
+@forward 'color-surfaces';
+
+@forward 'mode-dim';
+@forward 'mode-dark';
+@forward 'mode-light';
+@forward 'mode-surfaces';

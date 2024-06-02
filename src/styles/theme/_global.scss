@@ -118,6 +118,23 @@ body,
   @include surface.primary-2-static();
 }
 
+.v2-tile--basic,
+.v2-tile--expandable {
+  @include surface.primary-2-static();
+}
+
+.v2-tile--optionable,
+.v2-tile--selectable,
+.v2-tile--clickable {
+  @include cursor.clickable();
+  @include surface.primary-2-clickable();
+
+  .v2-button {
+    @include cursor.clickable();
+    @include surface.primary-3-clickable();
+  }
+}
+
 .v2-menu-grid-cell {
   background-color: var(--c-accent);
 }

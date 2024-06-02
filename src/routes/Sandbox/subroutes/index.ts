@@ -4,3 +4,4 @@ export * from './SandboxControl';
 export * from './SandboxGallery';
 export * from './SandboxImage';
 export * from './SandboxRadio';
+export * from './SandboxTile';

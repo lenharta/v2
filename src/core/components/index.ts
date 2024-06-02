@@ -17,7 +17,7 @@ export * from './Stack';
 export * from './Tabs';
 export * from './Text';
 export * from './Textbox';
-export * from './TextInput';
+export * from './Tile';
 export * from './Title';
 export * from './Toggle';
 export * from './Transition';

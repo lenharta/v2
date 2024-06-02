@@ -16,6 +16,7 @@ type ButtonFactory = Factory.Config<{
 
 const Button = factoryPolymorphic<ButtonFactory>((props, ref) => {
   const {
+    size = 'sm',
     children,
     component = 'button',
     className,
@@ -27,7 +28,7 @@ const Button = factoryPolymorphic<ButtonFactory>((props, ref) => {
   return (
     <UnstyledButton
       {...forwardedProps}
-      className={clsx('v2-button', className)}
+      className={clsx('v2-button', `v2-button-size--${size}`, className)}
       component={component}
       ref={ref}
     >
