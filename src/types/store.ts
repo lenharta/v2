@@ -1,14 +1,19 @@
 import { I18N } from './i18n';
 import { Theme } from './theme';
+
 import {
   DATA_STORE_STORAGE_LOCATION,
   DATA_STORE_STORAGE_LOCATION_KEY,
-  DATA_STORE_STORAGE_ROOT_ATTRIBUTE,
+  DATA_THEME_MAP_ROOT_ATTRIBUTES,
 } from '@/data';
 
 export declare namespace Store {
   export type State = {
-    session?: string | undefined;
+    nonce: () => string;
+    error?: string | undefined;
+    query?: string | undefined;
+    loading?: boolean | undefined;
+    sessionKey?: string | undefined;
     language: I18N.LanguageCode;
     accent: Theme.Color;
     mode: Theme.Mode;
@@ -16,7 +21,11 @@ export declare namespace Store {
   };
 
   export type Context = {
-    session: string;
+    nonce: () => string;
+    error?: string | undefined;
+    query?: string | undefined;
+    loading?: boolean | undefined;
+    sessionKey?: string | undefined;
     language: I18N.LanguageCode;
     accent: Theme.Color;
     mode: Theme.Mode;
@@ -25,30 +34,34 @@ export declare namespace Store {
 
   export type StorageKey = keyof typeof DATA_STORE_STORAGE_LOCATION_KEY;
   export type StorageLocation = keyof typeof DATA_STORE_STORAGE_LOCATION;
-  export type StorageAttributes = keyof typeof DATA_STORE_STORAGE_ROOT_ATTRIBUTE;
+  export type StorageAttributes = keyof typeof DATA_THEME_MAP_ROOT_ATTRIBUTES;
 
-  export type StorageProps = Partial<{
-    session: string;
+  export type StorageState = Partial<{
+    sessionKey: string;
     language: I18N.LanguageCode;
     accent: Theme.Color;
     mode: Theme.Mode;
     dir: Theme.Dir;
   }>;
 
-  export type Props<T extends State = State> = {
-    dispatch: (value: Partial<T>) => void;
-    store: T;
+  export type Props = {
+    dispatch: (value: Partial<State>) => void;
+    store: State;
   };
 
-  export type Middleware<T extends Record<string, any>> = {
+  export type Middleware = {
     read: () => boolean;
-    fetch: () => T | null;
-    write: (data: T) => void;
+    fetch: () => StorageState | null;
+    write: (data: StorageState) => void;
   };
 
-  export type SessionProps<T extends Record<string, any>> = {
-    middleware: Middleware<T>;
-    dispatch: React.Dispatch<T>;
-    store: T;
+  export type StorageProps = {
+    store: State;
+    dispatch: React.Dispatch<State>;
+    middleware: {
+      read: () => boolean;
+      fetch: () => StorageState | null;
+      write: (data: StorageState) => void;
+    };
   };
 }

@@ -1,21 +1,21 @@
 import React from 'react';
 import { useEventListener } from '../use-event-listener';
 
-enum EventType {
-  mousedown = 'mousedown',
-  mouseup = 'mouseup',
-  touchstart = 'touchstart',
-  touchend = 'touchend',
-  focusin = 'focusin',
-  focusout = 'focusout',
-}
+const outsideEvents = {
+  mousedown: 'mousedown',
+  mouseup: 'mouseup',
+  touchstart: 'touchstart',
+  touchend: 'touchend',
+  focusin: 'focusin',
+  focusout: 'focusout',
+} as const;
 
-const useClickOutside = <T extends HTMLElement = HTMLElement>(
+function useClickOutside<T extends HTMLElement = HTMLElement>(
   ref: React.RefObject<T> | Array<React.RefObject<T>>,
   handler: (event: MouseEvent | TouchEvent | FocusEvent) => void,
-  eventType: keyof typeof EventType = EventType.mousedown,
+  eventType: keyof typeof outsideEvents = outsideEvents.mousedown,
   eventOptions: AddEventListenerOptions = {}
-) => {
+) {
   useEventListener(
     eventType,
     (event: any) => {
@@ -38,6 +38,6 @@ const useClickOutside = <T extends HTMLElement = HTMLElement>(
     undefined,
     eventOptions
   );
-};
+}
 
 export { useClickOutside };

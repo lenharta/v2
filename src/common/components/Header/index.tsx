@@ -1,7 +1,7 @@
 import clsx from 'clsx';
+import { Menu } from '@/common/components';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { Menu, Search } from '@/common/components';
 import { Action, Box, Icon } from '@/core/components';
 
 interface HeaderProps {}
@@ -20,7 +20,7 @@ const Header = factory<HeaderFactory>((props, ref) => {
       <Action.Group>
         <Menu />
         <Action.Spacer />
-        <Search />
+        {/* <Search /> */}
         <Action label="logo link" icon={<Icon name="account" />} />
       </Action.Group>
     </Box>
