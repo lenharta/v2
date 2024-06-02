@@ -1,4 +1,4 @@
-export const dataSampleGroceries = [
+const DATA_SAMPLE_GROCERY_LIST = [
   {
     emoji: '🍎',
     value: 'Apples',
@@ -15,3 +15,5 @@ export const dataSampleGroceries = [
     description: `Nutrient-packed green vegetable. Broccoli is packed with vitamins, minerals, and fiber. It has a distinct flavor and can be enjoyed steamed, roasted, or added to stir-fries.`,
   },
 ];
+
+export { DATA_SAMPLE_GROCERY_LIST };

@@ -1,16 +1,19 @@
 import { Core } from '@/types';
 
 interface ButtonContext {
-  orientation?: Core.Orientation;
+  size?: Core.Size | undefined;
+  orientation?: Core.Orientation | undefined;
 }
 
 interface ButtonGroupProps {
-  orientation?: Core.Orientation;
+  size?: Core.Size | undefined;
+  orientation?: Core.Orientation | undefined;
 }
 
 interface ButtonProps {
-  leftContent?: React.ReactNode;
-  rightContent?: React.ReactNode;
+  size?: Core.Size | undefined;
+  leftContent?: React.ReactNode | undefined;
+  rightContent?: React.ReactNode | undefined;
 }
 
 export type { ButtonProps, ButtonGroupProps, ButtonContext };

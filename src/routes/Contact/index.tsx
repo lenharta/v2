@@ -12,9 +12,7 @@ type ContactComponent = React.FC<ContactProps> & {
 const Contact: ContactComponent = () => {
   return (
     <Page>
-      <Hero>
-        <Title>Contact</Title>
-      </Hero>
+      <Hero title={<Title>Contact</Title>} />
       <Main>
         <Section>
           <Title>Section Title</Title>

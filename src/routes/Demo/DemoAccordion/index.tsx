@@ -1,9 +1,9 @@
 import React from 'react';
 import { DemoRoot } from '../DemoRoot';
-import { dataSampleGroceries } from '@/data';
+import { DATA_SAMPLE_GROCERY_LIST } from '@/data';
 import { Accordion, Box, Icon, Text, Title } from '@/core';
 
-const items = dataSampleGroceries.map(({ value, description }) => (
+const items = DATA_SAMPLE_GROCERY_LIST.map(({ value, description }) => (
   <Accordion.Item key={value} value={value}>
     <Accordion.Target icon={<Icon name="folder" />}>{value}</Accordion.Target>
     <Accordion.Panel>

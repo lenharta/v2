@@ -1,6 +1,18 @@
 import React from 'react';
-import { Stack, Text, Title } from '@/core';
+import { Button, Stack, Text, Title } from '@/core';
 import { Hero, Main, Section } from '@/common';
+
+const SandboxButtonSizes = () => {
+  return (
+    <Stack gap="xs">
+      <Button size="xs">Button</Button>
+      <Button size="sm">Button</Button>
+      <Button size="md">Button</Button>
+      <Button size="lg">Button</Button>
+      <Button size="xl">Button</Button>
+    </Stack>
+  );
+};
 
 const SandboxButton = () => {
   return (
@@ -9,8 +21,8 @@ const SandboxButton = () => {
       <Main>
         <Section>
           <Stack gap="sm">
-            <Title h2>Button | Default</Title>
-            <Text>Demo</Text>
+            <Title h2>Button | Sizes</Title>
+            <SandboxButtonSizes />
           </Stack>
         </Section>
       </Main>

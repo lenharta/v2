@@ -1,0 +1,38 @@
+[data-prefers-mode='dim'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='light'] {
+  --c-text-1: hsl(var(--c-text-h), var(--c-text-s), var(--c-text-l), 0.97);
+  --c-text-2: hsl(var(--c-text-h), var(--c-text-s), var(--c-text-l), 0.87);
+  --c-text-3: hsl(var(--c-text-h), var(--c-text-s), var(--c-text-l), 0.67);
+  --c-text-4: hsl(var(--c-text-h), var(--c-text-s), var(--c-text-l), 0.57);
+  --c-text-5: hsl(var(--c-text-h), var(--c-text-s), var(--c-text-l), 0.37);
+  --c-text-6: hsl(var(--c-text-h), var(--c-text-s), var(--c-text-l), 0.27);
+
+  --c-base-1: hsl(var(--c-base-h), var(--c-base-s), var(--c-base-l));
+  --c-base-2: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -1));
+  --c-base-3: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -2));
+  --c-base-4: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -3));
+  --c-base-5: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -4));
+  --c-base-6: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -5));
+
+  --c-base-1-hover: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -1));
+  --c-base-2-hover: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -2));
+  --c-base-3-hover: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -3));
+  --c-base-4-hover: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -4));
+  --c-base-5-hover: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -5));
+  --c-base-6-hover: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -6));
+
+  --c-base-1-active: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -2));
+  --c-base-2-active: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -3));
+  --c-base-3-active: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -4));
+  --c-base-4-active: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -5));
+  --c-base-5-active: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -6));
+  --c-base-6-active: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -7));
+
+  --c-base-1-selected: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -3));
+  --c-base-2-selected: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -4));
+  --c-base-3-selected: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -5));
+  --c-base-4-selected: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -6));
+  --c-base-5-selected: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -7));
+  --c-base-6-selected: hsl(var(--c-base-h), var(--c-base-s), calc(var(--c-base-l) * -8));
+}

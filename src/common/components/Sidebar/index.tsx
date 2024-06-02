@@ -10,7 +10,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   Factory,
-  GlobalAccentColors,
   GlobalRouteIcons,
   GlobalRoutePaths,
   GlobalThemeModes,
@@ -23,7 +22,8 @@ import {
   useStoreDispatch,
   useStoreState,
 } from '@/store';
-import { dataGlobalAccentColors } from '@/data';
+import { DATA_THEME_MAP_COLOR } from '@/data';
+import { objectKeys } from '@/utils';
 
 interface SidebarProps {}
 
@@ -169,10 +169,10 @@ const Sidebar = factory<SidebarFactory>((props, ref) => {
           setActiveGroup={setActiveGroup}
           width="calc(var(--action-box) * 6)"
           closeActivePanels={closeActivePanels}
-          items={dataGlobalAccentColors.map((token) => ({
-            icon: <Sidebar.Color accent={GlobalAccentColors[token]} />,
-            onClick: () => dispatch({ accent: GlobalAccentColors[token] }),
-            value: GlobalAccentColors[token],
+          items={objectKeys(DATA_THEME_MAP_COLOR).map((token) => ({
+            icon: <Sidebar.Color accent={DATA_THEME_MAP_COLOR[token] as any} />,
+            onClick: () => dispatch({ accent: DATA_THEME_MAP_COLOR[token] as any }),
+            value: DATA_THEME_MAP_COLOR[token],
             label: token,
           }))}
         />

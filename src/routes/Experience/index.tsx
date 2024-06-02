@@ -12,9 +12,7 @@ type ExperienceComponent = React.FC<ExperienceProps> & {
 const Experience: ExperienceComponent = () => {
   return (
     <Page>
-      <Hero>
-        <Title>Experience</Title>
-      </Hero>
+      <Hero title={<Title>Experience</Title>} />
       <Main>
         <Section>
           <Title>Section Title</Title>

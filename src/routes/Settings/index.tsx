@@ -12,9 +12,7 @@ type SettingsComponent = React.FC<SettingsProps> & {
 const Settings: SettingsComponent = () => {
   return (
     <Page>
-      <Hero>
-        <Title>Settings</Title>
-      </Hero>
+      <Hero title={<Title>Settings</Title>} />
       <Main>
         <Section>
           <Title>Section Title</Title>
