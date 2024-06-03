@@ -1,5 +1,5 @@
 import { Text, Title } from '@/core';
-import { ToolboxError } from './ToolboxError';
+import { ToolboxError } from './toolbox-error';
 import { Hero, Main, Page, Section } from '@/common';
 
 type ToolboxRouteFactory = React.FC<{}> & {

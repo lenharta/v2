@@ -1,5 +1,5 @@
 import { Text, Title } from '@/core';
-import { LandingError } from './LandingError';
+import { LandingError } from './landing-error';
 import { Hero, Main, Page, Section } from '@/common';
 
 type LandingRouteFactory = React.FC<{}> & {

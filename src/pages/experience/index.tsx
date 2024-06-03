@@ -1,5 +1,5 @@
 import { Text, Title } from '@/core';
-import { ExperienceError } from './ExperienceError';
+import { ExperienceError } from './experience-error';
 import { Hero, Main, Page, Section } from '@/common';
 
 type ExperienceRouteFactory = React.FC<{}> & {

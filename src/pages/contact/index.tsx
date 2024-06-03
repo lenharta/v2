@@ -1,5 +1,5 @@
 import { Text, Title } from '@/core';
-import { ContactError } from './ContactError';
+import { ContactError } from './contact-error';
 import { Hero, Main, Page, Section } from '@/common';
 
 type ContactRouteFactory = React.FC<{}> & {

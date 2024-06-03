@@ -1,5 +1,5 @@
 import { Text, Title } from '@/core';
-import { SettingsError } from './SettingsError';
+import { SettingsError } from './settings-error';
 import { Hero, Main, Page, Section } from '@/common';
 
 type SettingsRouteFactory = React.FC<{}> & {
