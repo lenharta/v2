@@ -1,0 +1,23 @@
+.v2-hero {
+  width: 100%;
+  display: block;
+  padding-inline: var(--gutter);
+}
+
+.v2-hero-title {
+  font-size: var(--fz-12);
+  font-weight: var(--fw-1);
+  line-height: 1.2;
+  margin-bottom: var(--gutter);
+}
+
+.v2-hero-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  @media (min-width: 60em) {
+    min-height: calc(calc(var(--action-box) * 5) - calc(var(--unit) * 6));
+  }
+}

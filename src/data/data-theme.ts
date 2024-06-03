@@ -88,6 +88,12 @@ const DATA_THEME_MAP_MODE = {
   dim: 'dim',
 } as const;
 
+const DATA_THEME_MAP_ROOT_ATTRIBUTES = {
+  accent: 'data-prefers-accent',
+  mode: 'data-prefers-mode',
+  dir: 'data-prefers-dir',
+} as const;
+
 const DATA_THEME_MAP_SCHEME = {
   accent: 'accent',
   primary: 'primary',
@@ -132,6 +138,7 @@ export {
   DATA_THEME_MAP_COLOR,
   DATA_THEME_MAP_DIR,
   DATA_THEME_MAP_MODE,
+  DATA_THEME_MAP_ROOT_ATTRIBUTES,
   DATA_THEME_MAP_SCHEME,
   formatColor,
   formatColorAlpha,

@@ -1,0 +1,76 @@
+$breakpoint-map: (
+  'mobile': (
+    'sm': 320px,
+    'md': 400px,
+    'lg': 480px,
+  ),
+  'tablet': (
+    'sm': 640px,
+    'md': 760px,
+    'lg': 880px,
+  ),
+  'desktop': (
+    'sm': 1024px,
+    'md': 1200px,
+    'lg': 1400px,
+  ),
+);
+
+@mixin query($device: 'desktop', $size: 'sm') {
+  $device-map: map-get($breakpoint-map, $device);
+  $size-key: map-get($device-map, $size);
+
+  @media screen and (min-width: #{$size-key}) {
+    @content;
+  }
+}
+
+@mixin theme-modes {
+  [data-prefers-mode='dim'],
+  [data-prefers-mode='dark'],
+  [data-prefers-mode='light'] {
+    @content;
+  }
+}
+
+@mixin theme-mode($mode: 'dark') {
+  [data-prefers-mode='#{$mode}'] {
+    @content;
+  }
+}
+
+@mixin where-theme-mode($mode: 'dark') {
+  [data-prefers-mode='#{$mode}'] & {
+    @content;
+  }
+}
+
+@mixin accent-mode($color: 'red') {
+  [data-prefers-accent='#{$color}'] {
+    @content;
+  }
+}
+
+@mixin has-accent-mode($color: 'red') {
+  &[data-prefers-accent='#{$color}'] {
+    @content;
+  }
+}
+
+@mixin where-accent-mode($color: 'red') {
+  [data-prefers-accent='#{$color}'] & {
+    @content;
+  }
+}
+
+@mixin scheme($mode: 'primary') {
+  [data-scheme='#{$mode}'] {
+    @content;
+  }
+}
+
+@mixin where-scheme($mode: 'dark') {
+  [data-prefers-mode='#{$mode}'] & {
+    @content;
+  }
+}

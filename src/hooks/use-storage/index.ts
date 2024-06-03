@@ -1,17 +1,17 @@
 import { JSONDeserialize, JSONSerialize } from '@/utils';
 
-const storageLocations = {
-  session: 'sessionStorage',
+const STORAGE_LOCATION_LOOKUP = {
   local: 'localStorage',
+  session: 'sessionStorage',
 } as const;
 
-type UseStorageProps = {
-  type?: keyof typeof storageLocations;
-};
+interface StorageProps {
+  type?: keyof typeof STORAGE_LOCATION_LOOKUP;
+}
 
-function useStorage<T extends Record<string, any> = {}>(props?: UseStorageProps) {
+function useStorage<T extends Record<string, any> = {}>(props?: StorageProps) {
   const { type = 'local' } = props ?? {};
-  const location = storageLocations[type];
+  const location = STORAGE_LOCATION_LOOKUP[type];
   const storage = window[location];
 
   const read = (): boolean => {

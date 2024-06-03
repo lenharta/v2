@@ -1,18 +1,35 @@
-import * as React from 'react';
+import React from 'react';
 
-type Axis = 'x' | 'y';
-type Side = 'top' | 'left' | 'right' | 'bottom';
-type Length = 'width' | 'height';
+interface ResizeObserverCoords {
+  x: number;
+  y: number;
+}
 
-type Coords = { [K in Axis]: number };
-type Placement = { [K in Side]: number };
-type Dimension = { [K in Length]: number };
+interface ResizeObserverPlacement {
+  bottom: number;
+  right: number;
+  left: number;
+  top: number;
+}
 
-export interface ResizeObserverRect extends Coords, Dimension, Placement {}
+interface ResizeObserverDimensions {
+  height: number;
+  width: number;
+}
 
-const defaultObserverRect: ResizeObserverRect = {
-  height: 0,
+interface ResizeObserverRect
+  extends ResizeObserverCoords,
+    ResizeObserverPlacement,
+    ResizeObserverDimensions {}
+
+type ResizeObserverReturn<T extends HTMLElement = HTMLElement> = [
+  React.MutableRefObject<T | undefined>,
+  ResizeObserverRect,
+];
+
+const defaultRect: ResizeObserverRect = {
   width: 0,
+  height: 0,
   bottom: 0,
   right: 0,
   left: 0,
@@ -21,25 +38,18 @@ const defaultObserverRect: ResizeObserverRect = {
   y: 0,
 };
 
-type ResizeObserverReturn<T extends HTMLElement = HTMLElement> = [
-  React.MutableRefObject<T | undefined>,
-  ResizeObserverRect,
-];
-
 function useResizeObserver<T extends HTMLElement = any>(
   options: ResizeObserverOptions
 ): ResizeObserverReturn<T> {
-  const ref = React.useRef<T>();
+  const [rect, setRect] = React.useState(defaultRect);
   const frame = React.useRef(0);
-  const [rect, setRect] = React.useState(defaultObserverRect);
+  const ref = React.useRef<T>();
 
   const observer = React.useMemo(() => {
     return new ResizeObserver((entries: any) => {
       const entry = entries[0];
-
       if (entry) {
         cancelAnimationFrame(frame.current);
-
         frame.current = requestAnimationFrame(() => {
           if (ref.current) {
             setRect(entry.contentRect);
@@ -53,7 +63,6 @@ function useResizeObserver<T extends HTMLElement = any>(
     if (ref.current) {
       observer?.observe(ref.current, options);
     }
-
     return () => {
       observer?.disconnect();
       if (frame.current) {

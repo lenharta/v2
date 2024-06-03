@@ -1,0 +1,111 @@
+.v2-divider {
+  z-index: 0;
+  display: block;
+  position: relative;
+  isolation: isolate;
+
+  svg {
+    width: calc(var(--unit) * 10);
+    height: calc(var(--unit) * 10);
+  }
+
+  &[data-orientation='horizontal'] {
+    width: 100%;
+    height: calc(var(--unit) * 12);
+  }
+
+  &[data-orientation='horizontal']::after {
+    content: '';
+    width: 100%;
+    height: var(--unit);
+    position: absolute;
+    z-index: -1;
+    bottom: 50%;
+    right: 0;
+    left: 0;
+    top: 50%;
+  }
+
+  &[data-orientation='vertical'] {
+    width: var(--unit);
+    height: 100%;
+  }
+
+  &[data-orientation='vertical']::after {
+    content: '';
+    width: var(--unit);
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+}
+
+.v2-divider-inner {
+  [data-orientation='horizontal'] & {
+    gap: calc(var(--unit) * 2);
+    top: 0;
+    left: 0;
+    width: max-content;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    line-height: 1.6;
+    font-weight: var(--fw-3);
+    font-family: var(--ff);
+    font-size: var(--fz-2);
+
+    [data-prefers-dir='rtl'] & {
+      flex-direction: row-reverse;
+    }
+  }
+
+  [data-orientation='horizontal'][data-position='center'] & {
+    padding-left: calc(var(--unit) * 4);
+    padding-right: calc(var(--unit) * 4);
+    transform: translateX(-100%);
+    left: 50%;
+
+    [data-prefers-dir='rtl'] & {
+      padding-left: calc(var(--unit) * 4);
+      padding-right: calc(var(--unit) * 4);
+      transform: translateX(-100%);
+      left: 50%;
+    }
+  }
+
+  [data-orientation='horizontal'][data-position='start'] & {
+    padding-right: calc(var(--unit) * 4);
+    padding-left: 0;
+
+    [data-prefers-dir='rtl'] & {
+      padding-left: calc(var(--unit) * 4);
+      padding-right: 0;
+      transform: translateX(-100%);
+      left: 100%;
+    }
+  }
+
+  [data-orientation='horizontal'][data-position='end'] & {
+    padding-left: calc(var(--unit) * 4);
+    padding-right: 0;
+    transform: translateX(-100%);
+    left: 100%;
+
+    [data-prefers-dir='rtl'] & {
+      padding-right: calc(var(--unit) * 4);
+      padding-left: 0;
+      transform: translateX(0);
+      left: 0;
+    }
+  }
+
+  [data-orienation='vertical'] & {
+    display: none;
+  }
+}

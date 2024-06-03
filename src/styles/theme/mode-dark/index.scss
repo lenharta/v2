@@ -1,24 +1,16 @@
-[data-prefers-mode='dark'] {
-  --c-h: 240;
-  --c-s: 4%;
+@use '../../mixins' as mixins;
 
-  [data-prefers-scheme='primary'] {
-    --c-base-h: var(--c-h);
-    --c-base-s: var(--c-s);
-    --c-base-l: 1%;
+@include mixins.theme-mode('dark') {
+  --c-base: hsl(230, 1%, 10%);
+  --c-text: hsla(230, 1%, 99%, 0.87);
 
-    --c-text-h: var(--c-h);
-    --c-text-s: var(--c-s);
-    --c-text-l: 99%;
+  @include mixins.scheme('primary') {
+    --c-base: hsl(230, 1%, 10%);
+    --c-text: hsla(230, 1%, 99%, 0.87);
   }
 
-  [data-prefers-scheme='secondary'] {
-    --c-base-h: var(--c-h);
-    --c-base-s: var(--c-s);
-    --c-base-l: 99%;
-
-    --c-text-h: var(--c-h);
-    --c-text-s: var(--c-s);
-    --c-text-l: 1%;
+  @include mixins.scheme('secondary') {
+    --c-base: hsl(230, 1%, 96%);
+    --c-text: hsla(230, 1%, 1%, 0.87);
   }
 }
