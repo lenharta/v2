@@ -1,0 +1,15 @@
+.v2-page {
+  --v2-page-width: 100%;
+  --v2-page-height: calc(100vh - var(--action-box));
+
+  display: block;
+  min-height: var(--v2-page-height);
+  width: var(--v2-page-width);
+
+  @media (min-width: 60em) {
+    --v2-page-width: calc(100% - var(--action-box));
+
+    margin-left: var(--action-box);
+    margin-top: var(--action-box);
+  }
+}

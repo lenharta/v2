@@ -1,13 +1,18 @@
-import React from 'react';
-import { Box } from '../Box';
-import { AccordionItem } from './Item';
-import { AccordionPanel } from './Panel';
-import { AccordionTarget } from './Target';
-import { AccordionProvider } from './Accordion.context';
-import { AccordionProps, AccordionValue } from './Accordion.types';
 import clsx from 'clsx';
+import React from 'react';
+import { Box } from '@/core/components';
 
-const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multiple>) => {
+import { AccordionItem } from './AccordionItem';
+import { AccordionPanel } from './AccordionPanel';
+import { AccordionTarget } from './AccordionTarget';
+import { AccordionProvider } from './Accordion.context';
+import { AccordionRootCSS, AccordionRootProps, AccordionValue } from './types';
+
+const css: AccordionRootCSS = {
+  root: 'v2-accordion-root',
+};
+
+const Accordion = <Multiple extends boolean = false>(props: AccordionRootProps<Multiple>) => {
   const {
     value,
     children,
@@ -16,12 +21,22 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multi
     trapFocus = false,
     className,
     chevronRotation = true,
-    chevronPosition = 'right',
+    chevronPosition = 'end',
     onValueChange,
   } = props;
 
+  const classNames = clsx(
+    css.root,
+    {
+      [`${css.root}--default`]: !elevated,
+      [`${css.root}--elevated`]: elevated,
+    },
+    className
+  );
+
   const uid = React.useId();
-  const getRootId = () => `accordion${uid}`;
+
+  const getRootId = () => `accordion${uid}:root`;
   const getPanelId = (v: string) => `accordion${uid}${v}:panel`;
   const getTargetId = (v: string) => `accordion${uid}${v}:target`;
 
@@ -52,14 +67,12 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multi
         isValueActive,
         getTargetId,
         getPanelId,
+        getRootId,
       }}
     >
-      <Box
-        id={getRootId()}
-        children={children}
-        className={clsx('v2-accordion', className)}
-        data-accordion-root
-      />
+      <Box id={getRootId()} className={classNames} data-accordion-root>
+        {children}
+      </Box>
     </AccordionProvider>
   );
 };
@@ -69,73 +82,3 @@ Accordion.Panel = AccordionPanel;
 Accordion.Target = AccordionTarget;
 Accordion.displayName = '@v2/Accordion';
 export { Accordion };
-
-// type AccordionFactory<Multiple extends boolean = false> = React.FC<
-//   AccordionRootProps<Multiple>
-// > & {
-//   Item: typeof AccordionItem;
-//   Panel: typeof AccordionPanel;
-//   Target: typeof AccordionTarget;
-// };
-
-// const useAccordionValue = <Multiple extends boolean = false>(props: {
-//   value: AccordionValue<Multiple>;
-//   onValueChange: (value: AccordionValue<Multiple>) => void;
-// }) => {
-//   const isMultiValue = <T extends AccordionValue<Multiple>>(value: T) => {
-//     return value && Array.isArray(props.value) ? true : false;
-//   }
-
-//   const isActiveValue = <T extends AccordionValue<Multiple>>(value: T) => {
-//     if (value && props.value && isMultiValue(value)) {
-//       return props.value.includes(value as string)
-//     }
-//     return props.value === value;
-//   };
-
-//   return {
-//     isActiveValue,
-//   }
-// };
-
-// const Accordion: AccordionFactory = (props) => {
-//   const { value, onValueChange, Multiple = false, children } = props;
-
-//   const uid = React.useId();
-//   const getPanelId = (value: string) => `accordionPanel${uid}${value}`;
-//   const getTargetId = (value: string) => `accordionTarget${uid}${value}`;
-
-//   const { isActiveValue } = useAccordionValue({
-//     onValueChange,
-//     value,
-//   })
-
-//   // const isActiveValue = (itemValue: string) => {
-//   //   const isMultiValue = value && Array.isArray(value);
-//   //   return isMultiValue ? value.includes(itemValue) : value === itemValue;
-//   // };
-
-//   // const handleChange = (itemValue: string) => {
-//   //   const findNextValue = () => {
-//   //     if (Array.isArray(value) && value.includes(itemValue)) {
-//   //       return value.filter((current) => current !== itemValue);
-//   //     }
-//   //     if (Array.isArray(value) && !value.includes(itemValue)) {
-//   //       return [...value, itemValue];
-//   //     }
-//   //     if (Array.isArray(value) && value !== itemValue) {
-//   //       return itemValue;
-//   //     }
-//   //     if (!Array.isArray(value) && value === itemValue) {
-//   //       return null;
-//   //     }
-//   //   };
-//   //   onValueChange(findNextValue());
-//   // };
-
-//   return (
-//     <AccordionProvider value={{ getPanelId, getTargetId, isActiveValue, activeValue: value }}>
-//       <React.Fragment>{children}</React.Fragment>
-//     </AccordionProvider>
-//   );
-// };

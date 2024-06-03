@@ -28,7 +28,7 @@
       "@/data/*": ["./src/data/*"],
       "@/demo/*": ["./src/demo/*"],
       "@/hooks/*": ["./src/hooks/*"],
-      "@/routes/*": ["./src/routes/*"],
+      "@/pages/*": ["./src/pages/*"],
       "@/store/*": ["./src/store/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/types/*": ["./src/types/*"],

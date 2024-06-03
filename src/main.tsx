@@ -3,28 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import './styles/index.scss';
-
-import {
-  Contact,
-  Demo,
-  Experience,
-  Overview,
-  Projects,
-  Root,
-  Sandbox,
-  Settings,
-  Toolbox,
-} from '@/routes';
-
-import {
-  SandboxButton,
-  SandboxCheckbox,
-  SandboxControl,
-  SandboxGallery,
-  SandboxImage,
-  SandboxRadio,
-  SandboxTile,
-} from '@/routes/Sandbox/subroutes';
+import { Root } from './root';
+import * as DATA from './data';
+import * as PAGES from './pages';
 
 const router = createBrowserRouter([
   {
@@ -33,53 +14,44 @@ const router = createBrowserRouter([
     errorElement: <Root.Error />,
     children: [
       {
-        index: true,
-        element: <Overview />,
-        errorElement: <Overview.Error />,
+        path: DATA.SITE_ROUTE_MAP.contact.path,
+        element: <PAGES.Contact />,
+        errorElement: <PAGES.Contact.Error />,
       },
       {
-        path: '/demo',
-        element: <Demo />,
-        errorElement: <Demo.Error />,
+        path: DATA.SITE_ROUTE_MAP.experience.path,
+        element: <PAGES.Experience />,
+        errorElement: <PAGES.Experience.Error />,
       },
       {
-        path: '/contact',
-        element: <Contact />,
-        errorElement: <Contact.Error />,
+        path: DATA.SITE_ROUTE_MAP.landing.path,
+        element: <PAGES.Landing />,
+        errorElement: <PAGES.Landing.Error />,
       },
       {
-        path: '/experience',
-        element: <Experience />,
-        errorElement: <Experience.Error />,
+        path: DATA.SITE_ROUTE_MAP.profile.path,
+        element: <PAGES.Profile />,
+        errorElement: <PAGES.Profile.Error />,
       },
       {
-        path: '/projects',
-        element: <Projects />,
-        errorElement: <Projects.Error />,
+        path: DATA.SITE_ROUTE_MAP.projects.path,
+        element: <PAGES.Projects />,
+        errorElement: <PAGES.Projects.Error />,
       },
       {
-        path: '/sandbox',
-        element: <Sandbox />,
-        errorElement: <Sandbox.Error />,
-        children: [
-          { index: true, element: <SandboxGallery /> },
-          { path: '/sandbox/button', element: <SandboxButton /> },
-          { path: '/sandbox/checkbox', element: <SandboxCheckbox /> },
-          { path: '/sandbox/control', element: <SandboxControl /> },
-          { path: '/sandbox/image', element: <SandboxImage /> },
-          { path: '/sandbox/radio', element: <SandboxRadio /> },
-          { path: '/sandbox/tile', element: <SandboxTile /> },
-        ],
+        path: DATA.SITE_ROUTE_MAP.sandbox.path,
+        element: <PAGES.Sandbox />,
+        errorElement: <PAGES.Sandbox.Error />,
       },
       {
-        path: '/settings',
-        element: <Settings />,
-        errorElement: <Settings.Error />,
+        path: DATA.SITE_ROUTE_MAP.settings.path,
+        element: <PAGES.Settings />,
+        errorElement: <PAGES.Settings.Error />,
       },
       {
-        path: '/toolbox',
-        element: <Toolbox />,
-        errorElement: <Toolbox.Error />,
+        path: DATA.SITE_ROUTE_MAP.toolbox.path,
+        element: <PAGES.Toolbox />,
+        errorElement: <PAGES.Toolbox.Error />,
       },
     ],
   },

@@ -1,113 +1,16 @@
-[data-prefers-mode='dark'] {
-  --c-base-0: hsl(240, 4%, 5%);
-  --c-base-1: hsl(240, 4%, 10%);
-  --c-base-2: hsl(240, 4%, 15%);
-  --c-base-3: hsl(240, 4%, 20%);
-  --c-base-4: hsl(240, 4%, 25%);
+@use '../../mixins' as mixins;
 
-  --c-button-0: hsl(240, 4%, 10%);
-  --c-button-1: hsl(240, 4%, 15%);
-  --c-button-2: hsl(240, 4%, 20%);
-  --c-button-3: hsl(240, 4%, 25%);
-  --c-button-4: hsl(240, 4%, 30%);
+@include mixins.theme-mode('dark') {
+  --c-base: hsl(230, 1%, 10%);
+  --c-text: hsla(230, 1%, 99%, 0.87);
 
-  --c-button-0-hover: hsl(240, 4%, 13%);
-  --c-button-1-hover: hsl(240, 4%, 18%);
-  --c-button-2-hover: hsl(240, 4%, 23%);
-  --c-button-3-hover: hsl(240, 4%, 28%);
-  --c-button-4-hover: hsl(240, 4%, 33%);
-
-  --c-button-0-active: hsl(240, 4%, 16%);
-  --c-button-1-active: hsl(240, 4%, 21%);
-  --c-button-2-active: hsl(240, 4%, 26%);
-  --c-button-3-active: hsl(240, 4%, 31%);
-  --c-button-4-active: hsl(240, 4%, 36%);
-
-  --c-button-0-selected: hsl(240, 4%, 19%);
-  --c-button-1-selected: hsl(240, 4%, 24%);
-  --c-button-2-selected: hsl(240, 4%, 29%);
-  --c-button-3-selected: hsl(240, 4%, 34%);
-  --c-button-4-selected: hsl(240, 4%, 39%);
-
-  --c-button-0-disabled: hsl(240, 4%, 29%);
-  --c-button-1-disabled: hsl(240, 4%, 34%);
-  --c-button-2-disabled: hsl(240, 4%, 39%);
-  --c-button-3-disabled: hsl(240, 4%, 44%);
-  --c-button-4-disabled: hsl(240, 4%, 49%);
-
-  [data-prefers-scheme='primary'] {
-    --c-base-0: hsl(240, 4%, 5%);
-    --c-base-1: hsl(240, 4%, 10%);
-    --c-base-2: hsl(240, 4%, 15%);
-    --c-base-3: hsl(240, 4%, 20%);
-    --c-base-4: hsl(240, 4%, 25%);
-
-    --c-button-0: hsl(240, 4%, 10%);
-    --c-button-1: hsl(240, 4%, 15%);
-    --c-button-2: hsl(240, 4%, 20%);
-    --c-button-3: hsl(240, 4%, 25%);
-    --c-button-4: hsl(240, 4%, 30%);
-
-    --c-button-0-hover: hsl(240, 4%, 13%);
-    --c-button-1-hover: hsl(240, 4%, 18%);
-    --c-button-2-hover: hsl(240, 4%, 23%);
-    --c-button-3-hover: hsl(240, 4%, 28%);
-    --c-button-4-hover: hsl(240, 4%, 33%);
-
-    --c-button-0-active: hsl(240, 4%, 16%);
-    --c-button-1-active: hsl(240, 4%, 21%);
-    --c-button-2-active: hsl(240, 4%, 26%);
-    --c-button-3-active: hsl(240, 4%, 31%);
-    --c-button-4-active: hsl(240, 4%, 36%);
-
-    --c-button-0-selected: hsl(240, 4%, 19%);
-    --c-button-1-selected: hsl(240, 4%, 24%);
-    --c-button-2-selected: hsl(240, 4%, 29%);
-    --c-button-3-selected: hsl(240, 4%, 34%);
-    --c-button-4-selected: hsl(240, 4%, 39%);
-
-    --c-button-0-disabled: hsl(240, 4%, 29%);
-    --c-button-1-disabled: hsl(240, 4%, 34%);
-    --c-button-2-disabled: hsl(240, 4%, 39%);
-    --c-button-3-disabled: hsl(240, 4%, 44%);
-    --c-button-4-disabled: hsl(240, 4%, 49%);
+  @include mixins.scheme('primary') {
+    --c-base: hsl(230, 1%, 10%);
+    --c-text: hsla(230, 1%, 99%, 0.87);
   }
 
-  [data-prefers-scheme='secondary'] {
-    --c-base-0: hsl(240, 4%, 99%);
-    --c-base-1: hsl(240, 4%, 95%);
-    --c-base-2: hsl(240, 4%, 90%);
-    --c-base-3: hsl(240, 4%, 85%);
-    --c-base-4: hsl(240, 4%, 80%);
-
-    --c-button-0: hsl(240, 4%, 95%);
-    --c-button-1: hsl(240, 4%, 90%);
-    --c-button-2: hsl(240, 4%, 85%);
-    --c-button-3: hsl(240, 4%, 80%);
-    --c-button-4: hsl(240, 4%, 75%);
-
-    --c-button-0-hover: hsl(240, 4%, 92%);
-    --c-button-1-hover: hsl(240, 4%, 87%);
-    --c-button-2-hover: hsl(240, 4%, 82%);
-    --c-button-3-hover: hsl(240, 4%, 77%);
-    --c-button-4-hover: hsl(240, 4%, 72%);
-
-    --c-button-0-active: hsl(240, 4%, 89%);
-    --c-button-1-active: hsl(240, 4%, 84%);
-    --c-button-2-active: hsl(240, 4%, 79%);
-    --c-button-3-active: hsl(240, 4%, 74%);
-    --c-button-4-active: hsl(240, 4%, 69%);
-
-    --c-button-0-selected: hsl(240, 4%, 86%);
-    --c-button-1-selected: hsl(240, 4%, 81%);
-    --c-button-2-selected: hsl(240, 4%, 76%);
-    --c-button-3-selected: hsl(240, 4%, 71%);
-    --c-button-4-selected: hsl(240, 4%, 66%);
-
-    --c-button-0-disabled: hsl(240, 4%, 76%);
-    --c-button-1-disabled: hsl(240, 4%, 71%);
-    --c-button-2-disabled: hsl(240, 4%, 66%);
-    --c-button-3-disabled: hsl(240, 4%, 61%);
-    --c-button-4-disabled: hsl(240, 4%, 56%);
+  @include mixins.scheme('secondary') {
+    --c-base: hsl(230, 1%, 96%);
+    --c-text: hsla(230, 1%, 1%, 0.87);
   }
 }

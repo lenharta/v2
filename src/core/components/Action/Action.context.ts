@@ -1,4 +1,4 @@
-import { ActionContext } from './Action.types';
+import { ActionContext } from './types';
 import { createSafeContext } from '@/core/utils';
 
 const [ActionProvider, useActionContext] = createSafeContext<ActionContext>(
