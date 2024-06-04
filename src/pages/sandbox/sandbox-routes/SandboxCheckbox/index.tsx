@@ -1,17 +1,15 @@
 import React from 'react';
 import { Title } from '@/core';
-import { Hero, Main, Section } from '@/common';
+import { Hero, Section } from '@/common';
 
 type SandboxCheckboxRouteFactory = React.FC<{}> & {};
 
 const SandboxCheckbox: SandboxCheckboxRouteFactory = () => (
   <React.Fragment>
-    <Hero title={<Title h1>Sandbox | Checkbox</Title>} />
-    <Main>
-      <Section>
-        <Title h2>Demo</Title>
-      </Section>
-    </Main>
+    <Hero title="Sandbox | Checkbox" />
+    <Section>
+      <Title h2>Demo</Title>
+    </Section>
   </React.Fragment>
 );
 

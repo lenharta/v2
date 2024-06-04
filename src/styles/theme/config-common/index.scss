@@ -1,34 +1,31 @@
-body {
-  background-color: var(--c-base);
-  color: var(--c-text);
+html,
+body,
+#root {
+  color: var(--c-root-text);
+  background-color: var(--c-root);
 }
 
 .v2-page {
-  background-color: var(--c-base);
-  color: var(--c-text);
+  color: var(--c-root-text);
+  background-color: var(--c-root);
 }
 
 .v2-main {
-  background-color: var(--c-base);
-  color: var(--c-text);
+  color: var(--c-root-text);
+  background-color: var(--c-root);
 }
 
 .v2-hero {
+  color: var(--c-base-text);
   background-color: var(--c-base);
-  color: var(--c-text);
-}
-
-.v2-sidebar {
-  background-color: var(--c-base);
-  color: var(--c-text);
 }
 
 .v2-header {
-  background-color: var(--c-base);
-  color: var(--c-text);
+  color: var(--c-root-text);
+  background-color: var(--c-root);
 }
 
 .v2-footer {
-  background-color: var(--c-base);
-  color: var(--c-text);
+  color: var(--c-root-text);
+  background-color: var(--c-root);
 }

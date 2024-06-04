@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Box, factory } from '@/core';
-import { MainRootCSS, MainRootProps } from './types';
+import { MainCSS, MainRootProps } from './types';
 
-const css: MainRootCSS = {
-  root: 'v2-main-root',
+const css: Partial<MainCSS> = {
+  root: 'v2-main',
 };
 
 type MainFactory = Factory.Config<{

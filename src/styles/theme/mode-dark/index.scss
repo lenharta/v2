@@ -1,66 +1,80 @@
 @use '../../mixins' as mixins;
 
 @include mixins.theme-mode('dark') {
-  --c-text: hsla(0, 0%, 100%, 0.87);
-  --c-base: hsl(230, 1%, 8%);
+  --c-root: hsl(230, 1%, 8%);
+  --c-root-text: hsla(0, 0%, 99%, 0.87);
 
-  --c-layer-1: hsl(230, 1%, 8%);
-  --c-layer-2: hsl(230, 1%, 10%);
-  --c-layer-3: hsl(230, 1%, 12%);
-  --c-layer-4: hsl(230, 1%, 14%);
+  --c-base: hsl(230, 1%, 10%);
+  --c-base--enabled: hsl(230, 1%, 10%);
+  --c-base--hovered: hsl(230, 1%, 12%);
+  --c-base--focused: hsl(230, 1%, 12%);
+  --c-base--pressed: hsl(230, 1%, 14%);
+  --c-base--selected: hsl(230, 1%, 16%);
+  --c-base--disabled: hsl(230, 1%, 26%);
 
-  --c-action-text--disabled: hsla(230, 1%, 0%, 0.87);
-  --c-action-base--disabled: hsl(230, 1%, 30%);
+  --c-base-text: hsla(0, 0%, 99%, 0.87);
+  --c-base-text--enabled: hsla(0, 0%, 99%, 0.87);
+  --c-base-text--hovered: hsla(0, 0%, 99%, 0.9);
+  --c-base-text--focused: hsla(0, 0%, 99%, 0.9);
+  --c-base-text--pressed: hsla(0, 0%, 99%, 0.96);
+  --c-base-text--selected: hsla(0, 0%, 99%, 0.96);
+  --c-base-text--disabled: hsla(0, 0%, 99%, 0.48);
 
-  --c-action-text--default: hsla(0, 0%, 100%, 0.97);
-  --c-action-base--default: hsl(230, 1%, 8%);
-  --c-action-hover--default: hsl(230, 1%, 12%);
-  --c-action-active--default: hsl(230, 1%, 16%);
-  --c-action-selected--default: hsl(230, 1%, 14%);
+  --c-base-icon: hsla(0, 0%, 99%, 0.87);
+  --c-base-icon--enabled: hsla(0, 0%, 99%, 0.87);
+  --c-base-icon--hovered: hsla(0, 0%, 99%, 0.9);
+  --c-base-icon--focused: hsla(0, 0%, 99%, 0.9);
+  --c-base-icon--pressed: hsla(0, 0%, 99%, 0.96);
+  --c-base-icon--selected: hsla(0, 0%, 99%, 0.96);
+  --c-base-icon--disabled: hsla(0, 0%, 99%, 0.48);
 
-  --c-action-text--elevated: hsla(0, 0%, 100%, 0.97);
-  --c-action-base--elevated: hsl(230, 1%, 12%);
-  --c-action-hover--elevated: hsl(230, 1%, 16%);
-  --c-action-active--elevated: hsl(230, 1%, 20%);
-  --c-action-selected--elevated: hsl(230, 1%, 18%);
+  --c-base-border: hsla(0, 0%, 99%, 0.87);
+  --c-base-border--enabled: hsla(0, 0%, 99%, 0.87);
+  --c-base-border--hovered: hsla(0, 0%, 99%, 0.9);
+  --c-base-border--focused: hsla(0, 0%, 99%, 0.9);
+  --c-base-border--pressed: hsla(0, 0%, 99%, 0.96);
+  --c-base-border--selected: hsla(0, 0%, 99%, 0.96);
+  --c-base-border--disabled: hsla(0, 0%, 99%, 0.48);
 
-  @include mixins.scheme('primary') {
-    --c-text: hsla(0, 0%, 100%, 0.87);
-    --c-base: hsl(230, 1%, 8%);
+  @include mixins.theme-scheme('primary') {
+    --c-root: hsl(230, 1%, 8%);
+    --c-root-text: hsla(0, 0%, 99%, 0.87);
 
-    --c-action-text--disabled: hsla(230, 1%, 0%, 0.87);
-    --c-action-base--disabled: hsl(230, 1%, 30%);
+    --c-base: hsl(230, 1%, 10%);
+    --c-base--enabled: hsl(230, 1%, 10%);
+    --c-base--hovered: hsl(230, 1%, 12%);
+    --c-base--focused: hsl(230, 1%, 12%);
+    --c-base--pressed: hsl(230, 1%, 14%);
+    --c-base--selected: hsl(230, 1%, 16%);
+    --c-base--disabled: hsl(230, 1%, 26%);
 
-    --c-action-text--default: hsla(0, 0%, 100%, 0.97);
-    --c-action-base--default: hsl(230, 1%, 8%);
-    --c-action-hover--default: hsl(230, 1%, 12%);
-    --c-action-active--default: hsl(230, 1%, 16%);
-    --c-action-selected--default: hsl(230, 1%, 14%);
+    --c-base-text: hsla(0, 0%, 99%, 0.87);
+    --c-base-text--enabled: hsla(0, 0%, 99%, 0.87);
+    --c-base-text--hovered: hsla(0, 0%, 99%, 0.9);
+    --c-base-text--focused: hsla(0, 0%, 99%, 0.9);
+    --c-base-text--pressed: hsla(0, 0%, 99%, 0.96);
+    --c-base-text--selected: hsla(0, 0%, 99%, 0.96);
+    --c-base-text--disabled: hsla(0, 0%, 99%, 0.48);
 
-    --c-action-text--elevated: hsla(0, 0%, 100%, 0.97);
-    --c-action-base--elevated: hsl(230, 1%, 12%);
-    --c-action-hover--elevated: hsl(230, 1%, 16%);
-    --c-action-active--elevated: hsl(230, 1%, 20%);
-    --c-action-selected--elevated: hsl(230, 1%, 18%);
+    --c-base-icon: hsla(0, 0%, 99%, 0.87);
+    --c-base-icon--enabled: hsla(0, 0%, 99%, 0.87);
+    --c-base-icon--hovered: hsla(0, 0%, 99%, 0.9);
+    --c-base-icon--focused: hsla(0, 0%, 99%, 0.9);
+    --c-base-icon--pressed: hsla(0, 0%, 99%, 0.96);
+    --c-base-icon--selected: hsla(0, 0%, 99%, 0.96);
+    --c-base-icon--disabled: hsla(0, 0%, 99%, 0.48);
+
+    --c-base-border: hsla(0, 0%, 99%, 0.87);
+    --c-base-border--enabled: hsla(0, 0%, 99%, 0.87);
+    --c-base-border--hovered: hsla(0, 0%, 99%, 0.9);
+    --c-base-border--focused: hsla(0, 0%, 99%, 0.9);
+    --c-base-border--pressed: hsla(0, 0%, 99%, 0.96);
+    --c-base-border--selected: hsla(0, 0%, 99%, 0.96);
+    --c-base-border--disabled: hsla(0, 0%, 99%, 0.48);
   }
 
-  @include mixins.scheme('secondary') {
-    --c-text: hsla(0, 0%, 0%, 0.87);
-    --c-base: hsl(230, 1%, 96%);
-
-    --c-action-text--disabled: hsla(230, 1%, 0%, 0.87);
-    --c-action-base--disabled: hsl(230, 1%, 70%);
-
-    --c-action-text--default: hsla(0, 0%, 0%, 0.97);
-    --c-action-base--default: hsl(230, 1%, 96%);
-    --c-action-hover--default: hsl(230, 1%, 90%);
-    --c-action-active--default: hsl(230, 1%, 84%);
-    --c-action-selected--default: hsl(230, 1%, 87%);
-
-    --c-action-text--elevated: hsla(0, 0%, 0%, 0.97);
-    --c-action-base--elevated: hsl(230, 1%, 92%);
-    --c-action-hover--elevated: hsl(230, 1%, 86%);
-    --c-action-active--elevated: hsl(230, 1%, 80%);
-    --c-action-selected--elevated: hsl(230, 1%, 83%);
+  @include mixins.theme-scheme('secondary') {
+    --c-root: hsl(230, 1%, 99%);
+    --c-root-text: hsla(0, 0%, 1%, 0.87);
   }
 }

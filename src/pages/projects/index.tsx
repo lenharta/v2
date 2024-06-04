@@ -8,17 +8,15 @@ type ProjectsRouteFactory = React.FC<{}> & {
 
 const Projects: ProjectsRouteFactory = () => (
   <Page>
-    <Hero title={<Title h1>Projects</Title>} />
-    <Main>
-      <Section>
-        <Title h2>Section Title</Title>
-        <Text>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur harum ab corrupti
-          eos repellendus maiores hic quo nulla cum, dolorem soluta quis saepe aliquid quibusdam?
-          Doloribus veritatis corrupti consequuntur eius.
-        </Text>
-      </Section>
-    </Main>
+    <Hero title="Projects" />
+    <Section>
+      <Title h2>Section Title</Title>
+      <Text>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur harum ab corrupti eos
+        repellendus maiores hic quo nulla cum, dolorem soluta quis saepe aliquid quibusdam?
+        Doloribus veritatis corrupti consequuntur eius.
+      </Text>
+    </Section>
   </Page>
 );
 

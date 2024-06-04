@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import { Footer } from '@/common';
 import { Factory } from '@/types';
 import { Box, factory } from '@/core';
-import { PageRootCSS, PageRootProps } from './types';
+import { PageCSS, PageRootProps } from './types';
 
-const css: PageRootCSS = {
+const css: Partial<PageCSS> = {
   root: 'v2-page-root',
 };
 

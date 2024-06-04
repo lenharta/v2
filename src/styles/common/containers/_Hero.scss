@@ -1,27 +1,22 @@
-.v2-hero-root {
+.v2-hero {
   width: 100%;
-  height: 100%;
   display: block;
-  padding-inline: var(--gutter);
+  margin-top: var(--size-action-offset);
 }
 
 .v2-hero-title {
+  padding-bottom: var(--gutter);
   font-size: var(--fz-12);
   font-weight: var(--fw-1);
   line-height: 1.2;
-  margin-bottom: var(--gutter);
 }
 
 .v2-hero-content {
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  @media (min-width: 60em) {
-    width: var(--v2-width-hero-content);
-    height: var(--v2-height-hero-content);
-  }
+  height: calc(var(--size-action-offset) * 5);
+  // display: flex;
+  // align-items: flex-start;
+  // flex-direction: column;
+  // justify-content: flex-end;
+  // margin-inline: var(--gutter);
 }

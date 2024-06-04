@@ -1,11 +1,10 @@
 import React from 'react';
 
-type MainRootClasses = 'root';
-type MainRootCSS = Record<MainRootClasses, string>;
+type MainCSS = Record<'root', string>;
 
 interface MainRootProps {
   children: React.ReactNode;
   className?: string | undefined;
 }
 
-export type { MainRootClasses, MainRootCSS, MainRootProps };
+export type { MainCSS, MainRootProps };

@@ -1,17 +1,15 @@
 import React from 'react';
 import { Title } from '@/core';
-import { Hero, Main, Section } from '@/common';
+import { Hero, Section } from '@/common';
 
 type SandboxDisclosureRouteFactory = React.FC<{}> & {};
 
 const SandboxDisclosure: SandboxDisclosureRouteFactory = () => (
   <React.Fragment>
-    <Hero title={<Title h1>Sandbox | Disclosure</Title>} />
-    <Main>
-      <Section>
-        <Title h2>Demo</Title>
-      </Section>
-    </Main>
+    <Hero title="Sandbox | Disclosure" />
+    <Section>
+      <Title h2>Demo</Title>
+    </Section>
   </React.Fragment>
 );
 

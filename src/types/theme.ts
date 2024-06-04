@@ -67,7 +67,7 @@ export declare namespace Theme {
   export type ColorMapByName<T> = Record<Color, T>;
   export type ColorMapByFormat<T> = Record<ColorFormat, T>;
 
-  export type SurfaceLevel = 1 | 2 | 3 | 4 | 5;
+  export type SurfaceLevel = 1 | 2 | 3 | 4;
   export type SurfaceElement = 'base' | 'layer';
   export type SurfaceElements = 'text' | 'trim' | 'icon';
 

@@ -1,4 +1,6 @@
-[data-prefers-accent='red'] {
+@use '../mixins' as mixins;
+
+@include mixins.theme-color('red') {
   --c-accent: var(--c-red);
   --c-accent-100: var(--c-red-100);
   --c-accent-200: var(--c-red-200);
@@ -20,7 +22,7 @@
   --c-accent-A900: var(--c-red-A900);
 }
 
-[data-prefers-accent='orange'] {
+@include mixins.theme-color('orange') {
   --c-accent: var(--c-orange);
   --c-accent-100: var(--c-orange-100);
   --c-accent-200: var(--c-orange-200);
@@ -42,7 +44,7 @@
   --c-accent-A900: var(--c-orange-A900);
 }
 
-[data-prefers-accent='yellow'] {
+@include mixins.theme-color('yellow') {
   --c-accent: var(--c-yellow);
   --c-accent-100: var(--c-yellow-100);
   --c-accent-200: var(--c-yellow-200);
@@ -64,7 +66,7 @@
   --c-accent-A900: var(--c-yellow-A900);
 }
 
-[data-prefers-accent='green'] {
+@include mixins.theme-color('green') {
   --c-accent: var(--c-green);
   --c-accent-100: var(--c-green-100);
   --c-accent-200: var(--c-green-200);
@@ -86,7 +88,7 @@
   --c-accent-A900: var(--c-green-A900);
 }
 
-[data-prefers-accent='mint'] {
+@include mixins.theme-color('mint') {
   --c-accent: var(--c-mint);
   --c-accent-100: var(--c-mint-100);
   --c-accent-200: var(--c-mint-200);
@@ -108,7 +110,7 @@
   --c-accent-A900: var(--c-mint-A900);
 }
 
-[data-prefers-accent='teal'] {
+@include mixins.theme-color('teal') {
   --c-accent: var(--c-teal);
   --c-accent-100: var(--c-teal-100);
   --c-accent-200: var(--c-teal-200);
@@ -130,7 +132,7 @@
   --c-accent-A900: var(--c-teal-A900);
 }
 
-[data-prefers-accent='cyan'] {
+@include mixins.theme-color('cyan') {
   --c-accent: var(--c-cyan);
   --c-accent-100: var(--c-cyan-100);
   --c-accent-200: var(--c-cyan-200);
@@ -152,7 +154,7 @@
   --c-accent-A900: var(--c-cyan-A900);
 }
 
-[data-prefers-accent='blue'] {
+@include mixins.theme-color('blue') {
   --c-accent: var(--c-blue);
   --c-accent-100: var(--c-blue-100);
   --c-accent-200: var(--c-blue-200);
@@ -174,7 +176,7 @@
   --c-accent-A900: var(--c-blue-A900);
 }
 
-[data-prefers-accent='indigo'] {
+@include mixins.theme-color('indigo') {
   --c-accent: var(--c-indigo);
   --c-accent-100: var(--c-indigo-100);
   --c-accent-200: var(--c-indigo-200);
@@ -196,7 +198,7 @@
   --c-accent-A900: var(--c-indigo-A900);
 }
 
-[data-prefers-accent='purple'] {
+@include mixins.theme-color('purple') {
   --c-accent: var(--c-purple);
   --c-accent-100: var(--c-purple-100);
   --c-accent-200: var(--c-purple-200);
@@ -218,7 +220,7 @@
   --c-accent-A900: var(--c-purple-A900);
 }
 
-[data-prefers-accent='pink'] {
+@include mixins.theme-color('pink') {
   --c-accent: var(--c-pink);
   --c-accent-100: var(--c-pink-100);
   --c-accent-200: var(--c-pink-200);
@@ -240,7 +242,7 @@
   --c-accent-A900: var(--c-pink-A900);
 }
 
-[data-prefers-accent='brown'] {
+@include mixins.theme-color('brown') {
   --c-accent: var(--c-brown);
   --c-accent-100: var(--c-brown-100);
   --c-accent-200: var(--c-brown-200);

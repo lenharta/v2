@@ -1,7 +1,6 @@
 import React from 'react';
 
-type HeroRootCSS = Record<HeroRootClasses, string>;
-type HeroRootClasses = 'root' | 'title' | 'content';
+type HeroCSS = Record<'root' | 'title' | 'content', string>;
 
 interface HeroRootProps {
   title?: string | undefined;
@@ -9,4 +8,4 @@ interface HeroRootProps {
   className?: string | undefined;
 }
 
-export type { HeroRootClasses, HeroRootCSS, HeroRootProps };
+export type { HeroCSS, HeroRootProps };

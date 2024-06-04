@@ -1,13 +1,12 @@
 @use '../../mixins' as mixins;
 
-.v2-page-root {
-  width: 100%;
-  display: block;
-  min-height: calc(100vh - var(--v2-height-action-root));
-
-  @include mixins.query('desktop', 'sm') {
-    width: calc(100% - var(--v2-height-action-root));
-    margin-left: var(--v2-height-action-root);
-    margin-top: var(--v2-height-action-root);
-  }
+.v2-page {
+  display: flex;
+  min-width: var(--width-page-min);
+  max-width: none;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
 }

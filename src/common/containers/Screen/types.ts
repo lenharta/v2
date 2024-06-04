@@ -1,9 +1,8 @@
-type ScreenRootClasses = 'root';
-type ScreenRootCSS = Record<ScreenRootClasses, string>;
+type ScreenCSS = Record<'root', string>;
 
 interface ScreenRootProps {
   children?: React.ReactNode | undefined;
   className?: string | undefined;
 }
 
-export type { ScreenRootCSS, ScreenRootProps, ScreenRootClasses };
+export type { ScreenCSS, ScreenRootProps };

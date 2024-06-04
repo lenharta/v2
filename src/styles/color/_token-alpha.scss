@@ -1,6 +1,6 @@
-[data-prefers-mode='dim'],
-[data-prefers-mode='dark'],
-[data-prefers-mode='light'] {
+@use '../mixins' as mixins;
+
+@include mixins.theme-modes {
   --c-red-A100: hsla(var(--hsl-red), 0.1);
   --c-orange-A100: hsla(var(--hsl-orange), 0.1);
   --c-yellow-A100: hsla(var(--hsl-yellow), 0.1);

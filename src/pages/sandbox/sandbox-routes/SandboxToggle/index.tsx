@@ -1,17 +1,15 @@
 import React from 'react';
 import { Title } from '@/core';
-import { Hero, Main, Section } from '@/common';
+import { Hero, Section } from '@/common';
 
 type SandboxToggleRouteFactory = React.FC<{}> & {};
 
 const SandboxToggle: SandboxToggleRouteFactory = () => (
   <React.Fragment>
-    <Hero title={<Title h1>Sandbox | Toggle</Title>} />
-    <Main>
-      <Section>
-        <Title h2>Demo</Title>
-      </Section>
-    </Main>
+    <Hero title="Sandbox | Toggle" />
+    <Section>
+      <Title h2>Demo</Title>
+    </Section>
   </React.Fragment>
 );
 
