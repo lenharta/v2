@@ -6,17 +6,17 @@ import { AccordionItem } from './AccordionItem';
 import { AccordionPanel } from './AccordionPanel';
 import { AccordionTarget } from './AccordionTarget';
 import { AccordionProvider } from './Accordion.context';
-import { AccordionRootCSS, AccordionRootProps, AccordionValue } from './types';
+import { AccordionCSS, AccordionRootProps, AccordionValue } from './types';
 
-const css: AccordionRootCSS = {
-  root: 'v2-accordion-root',
+const css: Partial<AccordionCSS> = {
+  root: 'v2-accordion',
 };
 
 const Accordion = <Multiple extends boolean = false>(props: AccordionRootProps<Multiple>) => {
   const {
     value,
+    variant = 'default',
     children,
-    elevated,
     multiple = false,
     trapFocus = false,
     className,
@@ -28,8 +28,7 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionRootProps<M
   const classNames = clsx(
     css.root,
     {
-      [`${css.root}--default`]: !elevated,
-      [`${css.root}--elevated`]: elevated,
+      [`${css.root}--${variant}`]: variant,
     },
     className
   );
@@ -59,7 +58,7 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionRootProps<M
   return (
     <AccordionProvider
       value={{
-        elevated,
+        variant,
         trapFocus,
         chevronRotation,
         chevronPosition,
@@ -70,7 +69,7 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionRootProps<M
         getRootId,
       }}
     >
-      <Box id={getRootId()} className={classNames} data-accordion-root>
+      <Box id={getRootId()} className={classNames}>
         {children}
       </Box>
     </AccordionProvider>

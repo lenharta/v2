@@ -8,7 +8,7 @@ type ContactRouteFactory = React.FC<{}> & {
 
 const Contact: ContactRouteFactory = () => (
   <Page>
-    <Hero title={<Title h1>Contact</Title>} />
+    <Hero title="Contact" />
     <Main>
       <Section>
         <Title h2>Section Title</Title>

@@ -1,9 +1,9 @@
-type HeaderRootClasses = 'root' | 'content';
-type HeaderRootCSS = Record<HeaderRootClasses, string>;
+type HeaderCSSElements = 'root';
+type HeaderCSS = Record<HeaderCSSElements, string>;
 
 interface HeaderRootProps {
   children?: React.ReactNode | undefined;
   className?: string | undefined;
 }
 
-export type { HeaderRootCSS, HeaderRootProps, HeaderRootClasses };
+export type { HeaderCSS, HeaderCSSElements, HeaderRootProps };

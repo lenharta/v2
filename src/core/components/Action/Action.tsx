@@ -7,11 +7,10 @@ import { createKeyDownGroup } from '@/core/utils';
 import { ActionGroup } from './ActionGroup';
 import { ActionSpacer } from './ActionSpacer';
 import { useActionContext } from './Action.context';
-import { ActionRootProps, ActionRootCSS } from './types';
+import { ActionCSS, ActionRootProps } from './types';
 
-const css: ActionRootCSS = {
-  root: 'v2-action-root',
-  inner: 'v2-action-inner',
+const css: Partial<ActionCSS> = {
+  root: 'v2-action',
 };
 
 type ActionRootFactory = Factory.Config<{
@@ -30,7 +29,7 @@ const Action = factory<ActionRootFactory>((props, ref) => {
     icon,
     label,
     value,
-    elevated,
+    variant = 'default',
     disabled,
     selected,
     withTitle,
@@ -43,21 +42,23 @@ const Action = factory<ActionRootFactory>((props, ref) => {
   const classNames = clsx(
     css.root,
     {
-      [`${css.root}--default`]: !ctx.elevated || !elevated,
-      [`${css.root}--elevated`]: ctx.elevated || elevated,
+      [`${css.root}--${variant}`]: variant && !ctx.variant,
+      [`${css.root}--${ctx.variant}`]: ctx.variant,
     },
     className
   );
 
   const contextProps = ctx
     ? {
-        id: ctx.getActionId(forwardedProps.id || ctx.value || value),
+        id: ctx.getActionId(label.toLowerCase().split(' ').join('')),
         title: ctx.withTitle ? label : undefined,
-        'aria-disabled': ctx.disabled,
-        'data-disabled': ctx.disabled,
-        'aria-selected': ctx.value === value || undefined,
-        'data-selected': ctx.value === value || undefined,
+        'aria-label': forwardedProps['aria-label'] || label,
+        'aria-disabled': ctx.disabled || disabled,
+        'data-disabled': ctx.disabled || disabled,
+        'aria-selected': ctx.value === value || selected,
+        'data-selected': ctx.value === value || selected,
         'data-orientation': ctx.orientation,
+        'data-core-action-item': true,
         onKeyDown: createKeyDownGroup({
           onKeyDown: forwardedProps.onKeyDown,
           preventDefault: false,
@@ -67,24 +68,25 @@ const Action = factory<ActionRootFactory>((props, ref) => {
           loop: false,
         }),
       }
-    : {};
+    : {
+        title: withTitle ? label : undefined,
+        'aria-label': forwardedProps['aria-label'] || label,
+        'aria-disabled': disabled,
+        'aria-selected': selected,
+        'data-disabled': disabled,
+        'data-selected': selected,
+        'data-core-action-item': true,
+      };
 
   return (
     <UnstyledButton
       ref={ref}
       value={value}
-      title={withTitle ? label : undefined}
       className={classNames}
-      aria-label={forwardedProps['aria-label'] || label}
-      aria-disabled={selected}
-      aria-selected={selected}
-      data-selected={selected}
-      data-disabled={selected}
-      data-core-action-item
       {...forwardedProps}
       {...contextProps}
     >
-      <span className={css.inner}>{icon}</span>
+      {icon}
     </UnstyledButton>
   );
 });

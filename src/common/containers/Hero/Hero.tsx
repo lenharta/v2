@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { Box, factory } from '@/core';
+import { Box, Title, factory } from '@/core';
 import { HeroRootCSS, HeroRootProps } from './types';
 
 const css: HeroRootCSS = {
   root: 'v2-hero-root',
-  titlebox: 'v2-hero-titlebox',
-  contentbox: 'v2-hero-contentbox',
+  title: 'v2-hero-title',
+  content: 'v2-hero-content',
 };
 
 type HeroRootFactory = Factory.Config<{
@@ -20,8 +20,12 @@ const Hero = factory<HeroRootFactory>((props, ref) => {
   const { title, children, className, ...forwardedProps } = props;
   return (
     <Box {...forwardedProps} className={clsx(css.root, className)} role="presentation" ref={ref}>
-      <Box className={css.contentbox}>
-        {title && <Box className={css.titlebox}>{title}</Box>}
+      <Box className={css.content}>
+        {title && (
+          <Title className={css.title} h1>
+            {title}
+          </Title>
+        )}
         {children}
       </Box>
     </Box>

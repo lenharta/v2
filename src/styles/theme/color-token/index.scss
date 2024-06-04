@@ -1,11 +1,13 @@
 :root {
-  // GLOBAL COLOR TOKENS
+  // TOKEN | COLORS | GLOBAL
 
+  --c-transparent: transparent;
+  --c-inherit: inherit;
   --c-focus: #007aff;
   --c-white: #ffffff;
   --c-black: #000000;
 
-  // LIGHT MODE COLOR TOKENS
+  // TOKEN | COLORS | LIGHT-MODE
 
   --hue-red-light: 3, 100%;
   --hue-orange-light: 35, 100%;
@@ -46,7 +48,7 @@
   --hsl-pink-light: var(--hue-pink), 59%;
   --hsl-brown-light: var(--hue-brown), 50%;
 
-  // DARK MODE COLOR TOKENS
+  // TOKEN | COLORS | DARK-MODE
 
   --hue-red-dark: 3, 100%;
   --hue-orange-dark: 36, 100%;
@@ -87,7 +89,7 @@
   --hsl-pink-dark: var(--hue-pink), 60%;
   --hsl-brown-dark: var(--hue-brown), 54%;
 
-  // DIM MODE COLOR TOKENS
+  // TOKEN | COLORS | DIM-MODE
 
   --hue-red-dim: 3, 100%;
   --hue-orange-dim: 36, 100%;

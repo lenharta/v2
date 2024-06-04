@@ -1,8 +1,8 @@
-import { ButtonContext } from './Button.types';
-import { createSafeContext } from '@/core/utils';
+import React from 'react';
+import { ButtonContext } from './types';
 
-const [ButtonProvider, useButtonContext] = createSafeContext<ButtonContext>(
-  '[@v2/core/Button/Button.context]: could not locate component in context tree'
-);
+const ButtonGroupContext = React.createContext<ButtonContext | null>(null);
+const ButtonProvider = ButtonGroupContext.Provider;
+const useButtonContext = () => React.useContext(ButtonGroupContext);
 
 export { ButtonProvider, useButtonContext };

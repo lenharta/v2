@@ -1,11 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { createKeyDownGroup } from '@/core/utils';
 import { createEventCallback } from '@/utils';
-import { Box, Icon, UnstyledButton } from '@/core/components';
-
-import { AccordionTargetCSS, AccordionTargetProps } from '../types';
+import { factory, Box, Icon, UnstyledButton } from '@/core';
+import { AccordionCSS, AccordionTargetProps } from '../types';
 import { useAccordionContext, useAccordionItemContext } from '../Accordion.context';
 
 type AccordionTargetFactory = Factory.Config<{
@@ -14,33 +11,38 @@ type AccordionTargetFactory = Factory.Config<{
   props: AccordionTargetProps;
 }>;
 
-const css: AccordionTargetCSS = {
-  root: 'v2-accordion-target-root',
-  inner: 'v2-accordion-target-inner',
-  iconbox: 'v2-accordion-target-iconbox',
-  contentbox: 'v2-accordion-target-contentbox',
+const css: Partial<AccordionCSS> = {
+  target: 'v2-accordion-target',
+  iconbox: 'v2-accordion-iconbox',
+  labelbox: 'v2-accordion-labelbox',
 };
 
 const AccordionTarget = factory<AccordionTargetFactory>((props, ref) => {
-  const { icon, chevron, disabled, className, children, ...forwardedProps } = props;
+  const {
+    icon,
+    chevron = <Icon name="caretDown" />,
+    variant,
+    disabled,
+    className,
+    children,
+    onClick,
+    ...forwardedProps
+  } = props;
 
-  const { value } = useAccordionItemContext();
   const ctx = useAccordionContext();
-  const isActive = ctx.isValueActive(value);
-  const chevronElement = chevron || <Icon name="caretDown" />;
+  const { value } = useAccordionItemContext();
 
-  const handleKeyDown = createKeyDownGroup({
-    preventDefault: false,
-    childSelector: '[data-accordion-target]',
-    parentSelector: '[data-accordion-root]',
-    orientation: 'vertical',
-    onKeyDown: forwardedProps.onKeyDown,
-    loop: ctx.trapFocus,
-  });
+  const handleChange = () => ctx.onValueChange(value);
+  const handleClick = createEventCallback(onClick, handleChange);
 
-  const handleClick = createEventCallback(forwardedProps.onClick, () => {
-    ctx.onValueChange(value);
-  });
+  const classNames = clsx(
+    css.target,
+    {
+      [`${css.target}--${variant}`]: variant && !ctx.variant,
+      [`${css.target}--${ctx.variant}`]: ctx.variant,
+    },
+    className
+  );
 
   return (
     <UnstyledButton
@@ -48,29 +50,22 @@ const AccordionTarget = factory<AccordionTargetFactory>((props, ref) => {
       ref={ref}
       id={ctx.getTargetId(value)}
       onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      className={clsx(css.root, className)}
+      className={classNames}
       aria-controls={ctx.getPanelId(value)}
-      aria-expanded={isActive}
-      aria-disabled={disabled}
-      data-disabled={disabled}
-      data-accordion-target
+      aria-expanded={ctx.isValueActive(value)}
+      aria-disabled={ctx.disabled || disabled}
+      data-expanded={ctx.isValueActive(value)}
+      data-disabled={ctx.disabled || disabled}
     >
-      <div className={css.inner}>
-        {(chevronElement || icon) && (
-          <Box className={css.iconbox} data-active={isActive ? true : false} data-position="start">
-            {(ctx.chevronPosition === 'start' ? chevronElement : icon) || null}
-          </Box>
-        )}
+      <Box className={css.iconbox} data-active={ctx.isValueActive(value)} data-position="start">
+        {(ctx.chevronPosition === 'start' ? chevron : icon) ?? null}
+      </Box>
 
-        <Box className={css.contentbox}>{children}</Box>
+      <Box className={css.labelbox}>{children}</Box>
 
-        {(chevronElement || icon) && (
-          <Box className={css.iconbox} data-active={isActive ? true : false} data-position="end">
-            {(ctx.chevronPosition === 'end' ? chevronElement : icon) || null}
-          </Box>
-        )}
-      </div>
+      <Box className={css.iconbox} data-active={ctx.isValueActive(value)} data-position="end">
+        {(ctx.chevronPosition === 'end' ? chevron : icon) ?? null}
+      </Box>
     </UnstyledButton>
   );
 });

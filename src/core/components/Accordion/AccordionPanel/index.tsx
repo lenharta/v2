@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { Disclosure, DisclosureProps } from '@/core/components';
-import { AccordionPanelCSS, AccordionPanelProps } from '../types';
+import { factory, Disclosure, DisclosureProps } from '@/core';
+import { AccordionCSS, AccordionPanelProps } from '../types';
 import { useAccordionContext, useAccordionItemContext } from '../Accordion.context';
 
 type AccordionPanelFactory = Factory.Config<{
@@ -11,26 +10,25 @@ type AccordionPanelFactory = Factory.Config<{
   props: AccordionPanelProps & Partial<DisclosureProps>;
 }>;
 
-const css: AccordionPanelCSS = {
-  root: 'v2-accordion-panel-root',
+const css: Partial<AccordionCSS> = {
+  panel: 'v2-accordion-panel',
 };
 
 const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
   const { className, children, ...forwardedProps } = props;
 
-  const { value } = useAccordionItemContext();
   const ctx = useAccordionContext();
+  const { value } = useAccordionItemContext();
 
   return (
     <Disclosure
-      {...forwardedProps}
       id={ctx.getPanelId(value)}
       ref={ref}
       role="region"
       isOpen={ctx.isValueActive(value)}
-      className={clsx(css.root, className)}
+      className={clsx(css.panel, className)}
       aria-labelledby={ctx.getTargetId(value)}
-      data-accordion-panel
+      {...forwardedProps}
     >
       {children}
     </Disclosure>

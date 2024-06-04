@@ -8,7 +8,7 @@ type ExperienceRouteFactory = React.FC<{}> & {
 
 const Experience: ExperienceRouteFactory = () => (
   <Page>
-    <Hero title={<Title h1>Experience</Title>} />
+    <Hero title="Experience" />
     <Main>
       <Section>
         <Title h2>Section Title</Title>

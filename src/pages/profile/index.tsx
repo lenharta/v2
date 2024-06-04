@@ -8,7 +8,7 @@ type ProfileRouteFactory = React.FC<{}> & {
 
 const Profile: ProfileRouteFactory = () => (
   <Page>
-    <Hero title={<Title h1>Profile</Title>} />
+    <Hero title="Profile" />
     <Main>
       <Section>
         <Title h2>Section Title</Title>

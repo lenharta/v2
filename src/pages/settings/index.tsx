@@ -8,7 +8,7 @@ type SettingsRouteFactory = React.FC<{}> & {
 
 const Settings: SettingsRouteFactory = () => (
   <Page>
-    <Hero title={<Title h1>Settings</Title>} />
+    <Hero title="Settings" />
     <Main>
       <Section>
         <Title h2>Section Title</Title>

@@ -1,9 +1,19 @@
+@use '../../mixins' as mixins;
+
 .v2-header {
-  color: var(--c-primary-text-1);
-  background-color: var(--c-primary-1);
+  width: 100%;
+  height: var(--size-action-offset);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: var(--index-header);
   position: fixed;
   right: 0;
   left: 0;
   top: 0;
+
+  // @include mixins.query('desktop', 'sm') {
+  //   width: calc(100% - var(--size-action-offset));
+  //   left: var(--size-action-offset);
+  // }
 }

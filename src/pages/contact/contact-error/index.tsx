@@ -8,7 +8,7 @@ const ContactError: ContactErrorFactory = () => {
   const homepage = <Link to="/">homepage.</Link>;
   return (
     <Page>
-      <Hero title={<Title h1>Page Not Found | 404</Title>} />
+      <Hero title="Page Not Found | 404" />
       <Main>
         <Section>
           <Title h2>Sorry, we couldn't find that page.</Title>
