@@ -3,9 +3,18 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import './styles/index.scss';
+import { SITE_ROUTE_MAP } from './data';
 import { Root } from './root';
-import * as DATA from './data';
-import * as PAGES from './pages';
+import {
+  Contact,
+  Experience,
+  Landing,
+  Profile,
+  Projects,
+  Sandbox,
+  Settings,
+  Toolbox,
+} from './pages';
 
 const router = createBrowserRouter([
   {
@@ -14,44 +23,44 @@ const router = createBrowserRouter([
     errorElement: <Root.Error />,
     children: [
       {
-        path: DATA.SITE_ROUTE_MAP.contact.path,
-        element: <PAGES.Contact />,
-        errorElement: <PAGES.Contact.Error />,
+        path: SITE_ROUTE_MAP.contact.path,
+        element: <Contact />,
+        errorElement: <Contact.Error />,
       },
       {
-        path: DATA.SITE_ROUTE_MAP.experience.path,
-        element: <PAGES.Experience />,
-        errorElement: <PAGES.Experience.Error />,
+        path: SITE_ROUTE_MAP.experience.path,
+        element: <Experience />,
+        errorElement: <Experience.Error />,
       },
       {
-        path: DATA.SITE_ROUTE_MAP.landing.path,
-        element: <PAGES.Landing />,
-        errorElement: <PAGES.Landing.Error />,
+        path: SITE_ROUTE_MAP.landing.path,
+        element: <Landing />,
+        errorElement: <Landing.Error />,
       },
       {
-        path: DATA.SITE_ROUTE_MAP.profile.path,
-        element: <PAGES.Profile />,
-        errorElement: <PAGES.Profile.Error />,
+        path: SITE_ROUTE_MAP.profile.path,
+        element: <Profile />,
+        errorElement: <Profile.Error />,
       },
       {
-        path: DATA.SITE_ROUTE_MAP.projects.path,
-        element: <PAGES.Projects />,
-        errorElement: <PAGES.Projects.Error />,
+        path: SITE_ROUTE_MAP.projects.path,
+        element: <Projects />,
+        errorElement: <Projects.Error />,
       },
       {
-        path: DATA.SITE_ROUTE_MAP.sandbox.path,
-        element: <PAGES.Sandbox />,
-        errorElement: <PAGES.Sandbox.Error />,
+        path: SITE_ROUTE_MAP.sandbox.path,
+        element: <Sandbox />,
+        errorElement: <Sandbox.Error />,
       },
       {
-        path: DATA.SITE_ROUTE_MAP.settings.path,
-        element: <PAGES.Settings />,
-        errorElement: <PAGES.Settings.Error />,
+        path: SITE_ROUTE_MAP.settings.path,
+        element: <Settings />,
+        errorElement: <Settings.Error />,
       },
       {
-        path: DATA.SITE_ROUTE_MAP.toolbox.path,
-        element: <PAGES.Toolbox />,
-        errorElement: <PAGES.Toolbox.Error />,
+        path: SITE_ROUTE_MAP.toolbox.path,
+        element: <Toolbox />,
+        errorElement: <Toolbox.Error />,
       },
     ],
   },

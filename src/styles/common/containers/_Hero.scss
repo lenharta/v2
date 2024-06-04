@@ -1,5 +1,6 @@
-.v2-hero {
+.v2-hero-root {
   width: 100%;
+  height: 100%;
   display: block;
   padding-inline: var(--gutter);
 }
@@ -12,12 +13,15 @@
 }
 
 .v2-hero-content {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
   flex-direction: column;
+  justify-content: flex-end;
 
   @media (min-width: 60em) {
-    min-height: calc(calc(var(--action-box) * 5) - calc(var(--unit) * 6));
+    width: var(--v2-width-hero-content);
+    height: var(--v2-height-hero-content);
   }
 }

@@ -3,7 +3,7 @@ import { Box } from '@/core/components';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 
-import { AccordionItemProps, AccordionItemCSS } from '../types';
+import { AccordionItemProps, AccordionCSS } from '../types';
 import { useAccordionContext, AccordionItemProvider } from '../Accordion.context';
 
 type AccordionItemFactory = Factory.Config<{
@@ -12,8 +12,8 @@ type AccordionItemFactory = Factory.Config<{
   props: AccordionItemProps;
 }>;
 
-const css: AccordionItemCSS = {
-  root: 'v2-accordion-item-root',
+const css: Partial<AccordionCSS> = {
+  item: 'v2-accordion-item',
 };
 
 const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
@@ -25,9 +25,9 @@ const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
     <AccordionItemProvider value={{ value }}>
       <Box
         {...forwardedProps}
-        {...(ctx.chevronRotation ? { 'data-active': ctx.isValueActive(value) } : {})}
-        className={clsx(css.root, className)}
         ref={ref}
+        className={clsx(css.item, className)}
+        {...(ctx.chevronRotation ? { 'data-active': ctx.isValueActive(value) } : {})}
       />
     </AccordionItemProvider>
   );

@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import { Text, Title } from '@/core';
 import { Hero, Main, Page, Section } from '@/common';
 
-type ExperienceErrorFactory = React.FC<{}> & {};
+type ToolboxErrorFactory = React.FC<{}> & {};
 
-const ExperienceError: ExperienceErrorFactory = () => {
+const ToolboxError: ToolboxErrorFactory = () => {
   const homepage = <Link to="/">homepage.</Link>;
   return (
     <Page>
-      <Hero title={<Title h1>Page Not Found | 404</Title>} />
+      <Hero title="Page Not Found | 404" />
       <Main>
         <Section>
           <Title h2>Sorry, we couldn't find that page.</Title>
@@ -22,5 +22,5 @@ const ExperienceError: ExperienceErrorFactory = () => {
   );
 };
 
-ExperienceError.displayName = '@v2/Experience.Error';
-export { ExperienceError };
+ToolboxError.displayName = '@v2/Toolbox.Error';
+export { ToolboxError };

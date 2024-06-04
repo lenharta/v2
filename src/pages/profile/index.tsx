@@ -1,5 +1,5 @@
 import { Text, Title } from '@/core';
-import { ProfileError } from './ProfileError';
+import { ProfileError } from './profile-error';
 import { Hero, Main, Page, Section } from '@/common';
 
 type ProfileRouteFactory = React.FC<{}> & {
@@ -8,7 +8,7 @@ type ProfileRouteFactory = React.FC<{}> & {
 
 const Profile: ProfileRouteFactory = () => (
   <Page>
-    <Hero title={<Title h1>Profile</Title>} />
+    <Hero title="Profile" />
     <Main>
       <Section>
         <Title h2>Section Title</Title>

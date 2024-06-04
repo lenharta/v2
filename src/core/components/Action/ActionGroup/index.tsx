@@ -4,10 +4,10 @@ import { Box } from '@/core/components';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
 import { ActionProvider } from '../Action.context';
-import { ActionGroupProps } from '../types';
+import { ActionCSS, ActionGroupProps } from '../types';
 
-const css = {
-  groupBox: 'v2-action-group-box',
+const css: Partial<ActionCSS> = {
+  group: 'v2-action-group',
 };
 
 type ActionGroupFactory = Factory.Config<{
@@ -19,6 +19,7 @@ type ActionGroupFactory = Factory.Config<{
 const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
   const {
     value,
+    variant = 'default',
     children,
     disabled,
     className,
@@ -30,10 +31,10 @@ const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
   const getActionId = (v: string) => `action${uid}${v}:item`;
 
   return (
-    <ActionProvider value={{ value, orientation, disabled, getActionId }}>
+    <ActionProvider value={{ value, variant, orientation, disabled, getActionId }}>
       <Box
         ref={ref}
-        className={clsx(css.groupBox, className)}
+        className={clsx(css.group, className)}
         aria-orientation={orientation}
         data-orientation={orientation}
         data-core-action-group
@@ -46,5 +47,4 @@ const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
 });
 
 ActionGroup.displayName = '@v2/Action.Group';
-type ActionGroupCSS = keyof typeof css;
-export { ActionGroup, type ActionGroupProps, type ActionGroupCSS };
+export { ActionGroup };

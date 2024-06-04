@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import { Text, Title } from '@/core';
 import { Hero, Main, Page, Section } from '@/common';
 
-type ProfileErrorFactory = React.FC<{}> & {};
+type ExperienceErrorFactory = React.FC<{}> & {};
 
-const ProfileError: ProfileErrorFactory = () => {
+const ExperienceError: ExperienceErrorFactory = () => {
   const homepage = <Link to="/">homepage.</Link>;
   return (
     <Page>
-      <Hero title={<Title h1>Page Not Found | 404</Title>} />
+      <Hero title="Page Not Found | 404" />
       <Main>
         <Section>
           <Title h2>Sorry, we couldn't find that page.</Title>
@@ -22,5 +22,5 @@ const ProfileError: ProfileErrorFactory = () => {
   );
 };
 
-ProfileError.displayName = '@v2/Profile.Error';
-export { ProfileError };
+ExperienceError.displayName = '@v2/Experience.Error';
+export { ExperienceError };

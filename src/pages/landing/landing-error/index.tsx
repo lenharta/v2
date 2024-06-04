@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import { Text, Title } from '@/core';
 import { Hero, Main, Page, Section } from '@/common';
 
-type ProjectsErrorFactory = React.FC<{}> & {};
+type LandingErrorFactory = React.FC<{}> & {};
 
-const ProjectsError: ProjectsErrorFactory = () => {
+const LandingError: LandingErrorFactory = () => {
   const homepage = <Link to="/">homepage.</Link>;
   return (
     <Page>
-      <Hero title={<Title h1>Page Not Found | 404</Title>} />
+      <Hero title="Page Not Found | 404" />
       <Main>
         <Section>
           <Title h2>Sorry, we couldn't find that page.</Title>
@@ -22,5 +22,5 @@ const ProjectsError: ProjectsErrorFactory = () => {
   );
 };
 
-ProjectsError.displayName = '@v2/Projects.Error';
-export { ProjectsError };
+LandingError.displayName = '@v2/Landing.Error';
+export { LandingError };

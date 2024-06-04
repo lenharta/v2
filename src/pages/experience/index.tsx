@@ -1,5 +1,5 @@
 import { Text, Title } from '@/core';
-import { ExperienceError } from './ExperienceError';
+import { ExperienceError } from './experience-error';
 import { Hero, Main, Page, Section } from '@/common';
 
 type ExperienceRouteFactory = React.FC<{}> & {
@@ -8,7 +8,7 @@ type ExperienceRouteFactory = React.FC<{}> & {
 
 const Experience: ExperienceRouteFactory = () => (
   <Page>
-    <Hero title={<Title h1>Experience</Title>} />
+    <Hero title="Experience" />
     <Main>
       <Section>
         <Title h2>Section Title</Title>

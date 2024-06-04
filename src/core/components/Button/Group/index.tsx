@@ -1,9 +1,13 @@
 import clsx from 'clsx';
-import { Box } from '@/core/components';
+import React from 'react';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
+import { factory, Box } from '@/core';
 import { ButtonProvider } from '../Button.context';
-import { ButtonGroupProps } from '../Button.types';
+import { ButtonCSS, ButtonGroupProps } from '../types';
+
+const css: Partial<ButtonCSS> = {
+  group: 'v2-button-group',
+};
 
 type ButtonGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -12,16 +16,31 @@ type ButtonGroupFactory = Factory.Config<{
 }>;
 
 const ButtonGroup = factory<ButtonGroupFactory>((props, ref) => {
-  const { className, orientation = 'horizontal', ...forwardedProps } = props;
+  const {
+    size,
+    theme,
+    variant,
+    disabled,
+    children,
+    className,
+    orientation = 'horizontal',
+    ...forwardedProps
+  } = props;
+
+  const uid = React.useId();
+  const getItemId = () => `button:group${uid}item`;
+
   return (
-    <ButtonProvider value={{}}>
+    <ButtonProvider value={{ orientation, size, theme, variant, getItemId }}>
       <Box
         {...forwardedProps}
-        className={clsx('v2-button-group', className)}
-        data-orientation={orientation}
-        aria-orientation={orientation}
         ref={ref}
-      />
+        className={clsx(css.group, className)}
+        aria-orientation={orientation}
+        data-orientation={orientation}
+      >
+        {children}
+      </Box>
     </ButtonProvider>
   );
 });

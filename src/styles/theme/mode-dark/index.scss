@@ -1,16 +1,66 @@
 @use '../../mixins' as mixins;
 
 @include mixins.theme-mode('dark') {
-  --c-base: hsl(230, 1%, 10%);
-  --c-text: hsla(230, 1%, 99%, 0.87);
+  --c-text: hsla(0, 0%, 100%, 0.87);
+  --c-base: hsl(230, 1%, 8%);
+
+  --c-layer-1: hsl(230, 1%, 8%);
+  --c-layer-2: hsl(230, 1%, 10%);
+  --c-layer-3: hsl(230, 1%, 12%);
+  --c-layer-4: hsl(230, 1%, 14%);
+
+  --c-action-text--disabled: hsla(230, 1%, 0%, 0.87);
+  --c-action-base--disabled: hsl(230, 1%, 30%);
+
+  --c-action-text--default: hsla(0, 0%, 100%, 0.97);
+  --c-action-base--default: hsl(230, 1%, 8%);
+  --c-action-hover--default: hsl(230, 1%, 12%);
+  --c-action-active--default: hsl(230, 1%, 16%);
+  --c-action-selected--default: hsl(230, 1%, 14%);
+
+  --c-action-text--elevated: hsla(0, 0%, 100%, 0.97);
+  --c-action-base--elevated: hsl(230, 1%, 12%);
+  --c-action-hover--elevated: hsl(230, 1%, 16%);
+  --c-action-active--elevated: hsl(230, 1%, 20%);
+  --c-action-selected--elevated: hsl(230, 1%, 18%);
 
   @include mixins.scheme('primary') {
-    --c-base: hsl(230, 1%, 10%);
-    --c-text: hsla(230, 1%, 99%, 0.87);
+    --c-text: hsla(0, 0%, 100%, 0.87);
+    --c-base: hsl(230, 1%, 8%);
+
+    --c-action-text--disabled: hsla(230, 1%, 0%, 0.87);
+    --c-action-base--disabled: hsl(230, 1%, 30%);
+
+    --c-action-text--default: hsla(0, 0%, 100%, 0.97);
+    --c-action-base--default: hsl(230, 1%, 8%);
+    --c-action-hover--default: hsl(230, 1%, 12%);
+    --c-action-active--default: hsl(230, 1%, 16%);
+    --c-action-selected--default: hsl(230, 1%, 14%);
+
+    --c-action-text--elevated: hsla(0, 0%, 100%, 0.97);
+    --c-action-base--elevated: hsl(230, 1%, 12%);
+    --c-action-hover--elevated: hsl(230, 1%, 16%);
+    --c-action-active--elevated: hsl(230, 1%, 20%);
+    --c-action-selected--elevated: hsl(230, 1%, 18%);
   }
 
   @include mixins.scheme('secondary') {
+    --c-text: hsla(0, 0%, 0%, 0.87);
     --c-base: hsl(230, 1%, 96%);
-    --c-text: hsla(230, 1%, 1%, 0.87);
+
+    --c-action-text--disabled: hsla(230, 1%, 0%, 0.87);
+    --c-action-base--disabled: hsl(230, 1%, 70%);
+
+    --c-action-text--default: hsla(0, 0%, 0%, 0.97);
+    --c-action-base--default: hsl(230, 1%, 96%);
+    --c-action-hover--default: hsl(230, 1%, 90%);
+    --c-action-active--default: hsl(230, 1%, 84%);
+    --c-action-selected--default: hsl(230, 1%, 87%);
+
+    --c-action-text--elevated: hsla(0, 0%, 0%, 0.97);
+    --c-action-base--elevated: hsl(230, 1%, 92%);
+    --c-action-hover--elevated: hsl(230, 1%, 86%);
+    --c-action-active--elevated: hsl(230, 1%, 80%);
+    --c-action-selected--elevated: hsl(230, 1%, 83%);
   }
 }

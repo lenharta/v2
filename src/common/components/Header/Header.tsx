@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Action, Box, Icon, factory } from '@/core';
-import { HeaderRootCSS, HeaderRootProps } from './types';
+import { HeaderCSS, HeaderRootProps } from './types';
+import React from 'react';
 
-const css: HeaderRootCSS = {
-  root: 'v2-header-root',
-  content: 'v2-header-content',
+const css: Partial<HeaderCSS> = {
+  root: 'v2-header',
 };
 
 type HeaderRootFactory = Factory.Config<{
@@ -17,37 +17,34 @@ type HeaderRootFactory = Factory.Config<{
 
 const Header = factory<HeaderRootFactory>((props, ref) => {
   const { className, ...forwardedProps } = props;
+  const [selected, setSelected] = React.useState(false);
   return (
     <Box {...forwardedProps} ref={ref} component="header" className={clsx(css.root, className)}>
-      <Box className={css.content}>
-        <Action.Group>
-          <Action
-            icon={<Icon name="circleFilled" />}
-            label="logo link"
-            value="/"
-            onClick={(event) => console.log(event.currentTarget.value)}
-            elevated
-          />
+      <Action.Group variant="elevated" orientation="horizontal">
+        <Action
+          icon={<Icon name="home" />}
+          selected={selected ? true : undefined}
+          onClick={() => setSelected((c) => !c)}
+          label="home"
+          value="/"
+        />
 
-          <Action.Spacer elevated />
+        <Action.Spacer />
 
-          <Action
-            icon={<Icon name="account" />}
-            label="Profile"
-            value="/"
-            onClick={(event) => console.log(event.currentTarget.value)}
-            elevated
-          />
+        <Action
+          icon={<Icon name="search" />}
+          onClick={(event) => console.log(event.currentTarget.value)}
+          label="search"
+          value="/"
+        />
 
-          <Action
-            icon={<Icon name="menu" />}
-            label="Open/Close Menu"
-            value="/"
-            onClick={(event) => console.log(event.currentTarget.value)}
-            elevated
-          />
-        </Action.Group>
-      </Box>
+        <Action
+          icon={<Icon name="menu" />}
+          onClick={(event) => console.log(event.currentTarget.value)}
+          label="menu"
+          value="/"
+        />
+      </Action.Group>
     </Box>
   );
 });

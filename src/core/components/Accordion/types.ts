@@ -1,76 +1,65 @@
 import { Core } from '@/types';
 
-type AccordionRootClasses = 'root';
-type AccordionItemClasses = 'root';
-type AccordionPanelClasses = 'root';
-type AccordionTargetClasses = 'root' | 'inner' | 'iconbox' | 'contentbox';
-
-type AccordionRootCSS = Record<AccordionRootClasses, string>;
-type AccordionItemCSS = Record<AccordionItemClasses, string>;
-type AccordionPanelCSS = Record<AccordionPanelClasses, string>;
-type AccordionTargetCSS = Record<AccordionTargetClasses, string>;
+type AccordionCSS = Record<'root' | 'item' | 'panel' | 'target' | 'iconbox' | 'labelbox', string>;
 
 type AccordionValue<Multiple> = Multiple extends true ? string[] : string | null;
-type AccordionChevronPosition = Core.Align;
+type AccordionVariant = 'default' | 'elevated';
 
-interface AccordionBaseProps {
-  className?: string | undefined;
-}
-
-interface AccordionSharedProps extends AccordionBaseProps {
-  elevated?: boolean | undefined;
-  trapFocus?: boolean | undefined;
-}
-
-interface AccordionContext<Multiple extends boolean = false> extends AccordionSharedProps {
+interface AccordionContext<Multiple extends boolean = false> {
   getRootId: (id: string) => string;
   getPanelId: (id: string) => string;
   getTargetId: (id: string) => string;
   onValueChange: (value: AccordionValue<Multiple>) => void;
   isValueActive: (value: string) => boolean;
-  chevronPosition: AccordionChevronPosition;
+  variant: AccordionVariant | undefined;
+  disabled?: boolean | undefined;
+  children?: React.ReactNode | undefined;
+  trapFocus?: boolean | undefined;
+  chevronPosition: Core.Align;
   chevronRotation?: boolean | undefined;
 }
 
-interface AccordionRootProps<V extends boolean = false> extends AccordionSharedProps {
+interface AccordionRootProps<V extends boolean = false> {
   value: AccordionValue<V>;
-  children: React.ReactNode;
   multiple?: V | undefined;
-  elevated?: boolean | undefined;
-  className?: string | undefined;
   chevronRotation?: boolean | undefined;
-  chevronPosition?: AccordionChevronPosition | undefined;
+  chevronPosition?: Core.Align | undefined;
   onValueChange: (value: AccordionValue<V>) => void;
+  disabled?: boolean | undefined;
+  children?: React.ReactNode | undefined;
+  className?: string | undefined;
+  variant?: AccordionVariant | undefined;
+  trapFocus?: boolean | undefined;
 }
 
 interface AccordionItemContext {
   value: string;
 }
 
-interface AccordionItemProps extends AccordionBaseProps {
+interface AccordionItemProps {
   value: string;
+  children?: React.ReactNode | undefined;
+  disabled?: boolean | undefined;
+  className?: string | undefined;
 }
 
-interface AccordionPanelProps extends AccordionBaseProps {
-  children: React.ReactNode;
+interface AccordionPanelProps {
+  children?: React.ReactNode | undefined;
+  className?: string | undefined;
 }
 
 interface AccordionTargetProps {
   icon?: React.ReactNode | undefined;
+  variant?: AccordionVariant | undefined;
   chevron?: React.ReactNode | undefined;
-  children?: React.ReactNode | undefined;
   disabled?: boolean | undefined;
+  children?: React.ReactNode | undefined;
+  className?: string | undefined;
+  trapFocus?: boolean | undefined;
 }
 
 export type {
-  AccordionRootClasses,
-  AccordionItemClasses,
-  AccordionPanelClasses,
-  AccordionTargetClasses,
-  AccordionRootCSS,
-  AccordionItemCSS,
-  AccordionPanelCSS,
-  AccordionTargetCSS,
+  AccordionCSS,
   AccordionValue,
   AccordionContext,
   AccordionRootProps,
@@ -78,5 +67,4 @@ export type {
   AccordionItemProps,
   AccordionPanelProps,
   AccordionTargetProps,
-  AccordionChevronPosition,
 };

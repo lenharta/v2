@@ -1,5 +1,5 @@
 import { Text, Title } from '@/core';
-import { ContactError } from './ContactError';
+import { ContactError } from './contact-error';
 import { Hero, Main, Page, Section } from '@/common';
 
 type ContactRouteFactory = React.FC<{}> & {
@@ -8,7 +8,7 @@ type ContactRouteFactory = React.FC<{}> & {
 
 const Contact: ContactRouteFactory = () => (
   <Page>
-    <Hero title={<Title h1>Contact</Title>} />
+    <Hero title="Contact" />
     <Main>
       <Section>
         <Title h2>Section Title</Title>

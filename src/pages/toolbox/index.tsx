@@ -1,5 +1,5 @@
 import { Text, Title } from '@/core';
-import { ToolboxError } from './ToolboxError';
+import { ToolboxError } from './toolbox-error';
 import { Hero, Main, Page, Section } from '@/common';
 
 type ToolboxRouteFactory = React.FC<{}> & {
@@ -8,7 +8,7 @@ type ToolboxRouteFactory = React.FC<{}> & {
 
 const Toolbox: ToolboxRouteFactory = () => (
   <Page>
-    <Hero title={<Title h1>Toolbox</Title>} />
+    <Hero title="Toolbox" />
     <Main>
       <Section>
         <Title h2>Section Title</Title>

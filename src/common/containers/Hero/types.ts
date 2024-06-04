@@ -1,10 +1,10 @@
 import React from 'react';
 
 type HeroRootCSS = Record<HeroRootClasses, string>;
-type HeroRootClasses = 'root' | 'titlebox' | 'contentbox';
+type HeroRootClasses = 'root' | 'title' | 'content';
 
 interface HeroRootProps {
-  title?: React.ReactElement | undefined;
+  title?: string | undefined;
   children?: React.ReactNode | undefined;
   className?: string | undefined;
 }
