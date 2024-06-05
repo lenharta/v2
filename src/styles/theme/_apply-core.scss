@@ -3,19 +3,26 @@
 .v2-action,
 .v2-button {
   --cursor: default;
+  --user-select: none;
   --outline-style: solid;
   --outline-width: var(--unit);
   --outline-color: transparent;
   --outline-offset: 0;
+  --transition-property: background-color, color, border-color, opacity, fill, stroke;
+  --transition-duration: 250ms;
+  --transition-easing: ease;
 
   cursor: var(--cursor);
   outline-style: var(--outline-style);
   outline-width: var(--outline-width);
   outline-color: var(--outline-color);
   outline-offset: var(--outline-offset);
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  transition-property: var(--transition-property);
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-easing);
+  -webkit-user-select: var(--user-select);
+  -ms-user-select: var(--user-select);
+  user-select: var(--user-select);
 
   &:not([data-disabled]),
   &:not([data-disabled]):hover,
@@ -145,18 +152,35 @@
 }
 
 .v2-button--scheme-accent.v2-button--variant-default:not([data-disabled]) {
-  --c-button-background: hsla(var(--c-accent-hue), 0);
+  --c-button-background: hsla(var(--c-accent-hsl), 0);
   --c-button-color: var(--c-accent);
 }
 
 .v2-button--scheme-accent.v2-button--variant-default:not([data-disabled]):hover {
-  --c-button-background: hsla(var(--c-accent-hue), 0.05);
+  --c-button-background: hsla(var(--c-accent-hsl), 0.05);
 }
 
 .v2-button--scheme-accent.v2-button--variant-default:not([data-disabled]):active {
-  --c-button-background: hsla(var(--c-accent-hue), 0.1);
+  --c-button-background: hsla(var(--c-accent-hsl), 0.1);
 }
 
 .v2-button--scheme-accent.v2-button--variant-default:not([data-disabled])[data-selected] {
-  --c-button-background: hsla(var(--c-accent-hue), 0.15);
+  --c-button-background: hsla(var(--c-accent-hsl), 0.15);
+}
+
+.v2-button--scheme-accent.v2-button--variant-elevated:not([data-disabled]) {
+  --c-button-background: hsla(var(--c-accent-hsl), 0.05);
+  --c-button-color: var(--c-accent);
+}
+
+.v2-button--scheme-accent.v2-button--variant-elevated:not([data-disabled]):hover {
+  --c-button-background: hsla(var(--c-accent-hsl), 0.1);
+}
+
+.v2-button--scheme-accent.v2-button--variant-elevated:not([data-disabled]):active {
+  --c-button-background: hsla(var(--c-accent-hsl), 0.15);
+}
+
+.v2-button--scheme-accent.v2-button--variant-elevated:not([data-disabled])[data-selected] {
+  --c-button-background: hsla(var(--c-accent-hsl), 0.2);
 }

@@ -1,10 +1,14 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Box } from '@/core/components';
+import { Box } from '@/core';
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { CheckboxGroupProps } from '../Checkbox.types';
-import { CheckboxGroupProvider } from '../Checkbox.context';
+import { CheckboxProvider } from '../Checkbox.context';
+import { CheckboxCSS, CheckboxGroupProps } from '../types';
+
+const css: Partial<CheckboxCSS> = {
+  group: 'v2-checkbox-group',
+};
 
 type CheckboxGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -15,7 +19,11 @@ type CheckboxGroupFactory = Factory.Config<{
 
 const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
   const {
+    id,
+    size,
     value,
+    scheme,
+    variant,
     children,
     className,
     orientation = 'vertical',
@@ -31,18 +39,25 @@ const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
     );
   };
 
+  const uid = React.useId();
+
+  const getItemId = (value: string) => `checkbox-item${uid}${value}`;
+  const getGroupId = () => `checkbox:group${!id ? uid : uid + id}`;
+
+  const contextProps = {
+    id: getGroupId(),
+    'aria-orientation': orientation,
+    'data-orientation': orientation,
+    'data-checkbox-group': true,
+  };
+
   return (
-    <Box
-      {...forwardedProps}
-      className={clsx('v2-checkbox-group', className)}
-      data-orientation={orientation}
-      aria-orientation={orientation}
-      data-checkbox-group
-      ref={ref}
-    >
-      <CheckboxGroupProvider value={{ value, onChange, orientation }}>
-        <React.Fragment>{children}</React.Fragment>
-      </CheckboxGroupProvider>
+    <Box ref={ref} className={clsx(css.group, className)} {...forwardedProps} {...contextProps}>
+      <CheckboxProvider
+        value={{ size, value, scheme, variant, orientation, getItemId, getGroupId, onChange }}
+      >
+        {children}
+      </CheckboxProvider>
     </Box>
   );
 });

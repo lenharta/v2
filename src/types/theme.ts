@@ -101,7 +101,15 @@ export declare namespace Theme {
 
   export type Attributes = 'dir' | 'mode' | 'color';
 
-  export type ColorLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  export type Value3 = 1 | 2 | 3;
+  export type Value6 = Value3 | 4 | 5 | 6;
+  export type Value9 = Value6 | 7 | 8 | 9;
+  export type Value12 = Value9 | 10 | 11 | 12;
+  export type Value16 = Value12 | 13 | 14 | 15 | 16;
+  export type Value20 = Value16 | 17 | 18 | 19 | 20;
+  export type Value24 = Value20 | 21 | 22 | 23 | 24;
+
+  export type ColorLevel = Value9;
   export type ColorShade = `${ColorLevel}00`;
   export type ColorAlpha = `A${ColorLevel}00`;
   export type ColorFormat = 'hsl' | 'hex' | 'rgb';

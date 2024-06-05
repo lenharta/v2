@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { Box, Title, factory } from '@/core';
+import { Box, factory } from '@/core';
+
+import { HeroTitle } from './HeroTitle';
 import { HeroCSS, HeroRootProps } from './types';
 
 const css: Partial<HeroCSS> = {
   root: 'v2-hero',
-  title: 'v2-hero-title',
   content: 'v2-hero-content',
 };
 
@@ -14,6 +15,9 @@ type HeroRootFactory = Factory.Config<{
   comp: 'div';
   omits: 'title';
   props: HeroRootProps;
+  comps: {
+    Title: typeof HeroTitle;
+  };
 }>;
 
 const Hero = factory<HeroRootFactory>((props, ref) => {
@@ -21,16 +25,13 @@ const Hero = factory<HeroRootFactory>((props, ref) => {
   return (
     <Box {...forwardedProps} className={clsx(css.root, className)} role="presentation" ref={ref}>
       <Box className={css.content}>
-        {title && (
-          <Title className={css.title} h1>
-            {title}
-          </Title>
-        )}
+        <Hero.Title title={title} />
         {children}
       </Box>
     </Box>
   );
 });
 
+Hero.Title = HeroTitle;
 Hero.displayName = '@v2/Hero.Root';
 export { Hero };

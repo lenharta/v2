@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { Factory } from '@/types';
 import { ButtonGroup } from './Group';
 import { useButtonContext } from './Button.context';
@@ -24,12 +23,6 @@ type ButtonFactory = Factory.Config<{
   };
 }>;
 
-const defaultProps: Partial<ButtonRootProps> = {
-  size: 'sm',
-  scheme: 'default',
-  variant: 'default',
-};
-
 const Button = factory<ButtonFactory>((props, ref) => {
   const {
     size,
@@ -51,30 +44,12 @@ const Button = factory<ButtonFactory>((props, ref) => {
   const ctx = useButtonContext();
 
   const themeClasses = useThemeClasses({
-    props: { size, scheme, variant },
-    context: ctx ? { size: ctx.size, scheme: ctx.scheme, variant: ctx.variant } : null,
     prefix: css.root!,
-    defaultProps,
+    props: { size, scheme, variant },
+    context: { size: ctx?.size, scheme: ctx?.scheme, variant: ctx?.variant },
+    defaultProps: { size: 'sm', scheme: 'default', variant: 'default' },
     className,
   });
-
-  // const schemeClassNames = ctx
-  //   ? {
-  //       [`${css.root}--size-${size}`]: !ctx.size,
-  //       [`${css.root}--scheme-${scheme}`]: !ctx.scheme,
-  //       [`${css.root}--variant-${variant}`]: !ctx.variant,
-  //       [`${css.root}--size-${size}`]: !!ctx.size && size !== defaultProps.size,
-  //       [`${css.root}--scheme-${scheme}`]: !!ctx.scheme && scheme !== defaultProps.scheme,
-  //       [`${css.root}--variant-${variant}`]: !!ctx.variant && variant !== defaultProps.variant,
-  //       [`${css.root}--size-${ctx.size}`]: !!ctx.size && size === defaultProps.size,
-  //       [`${css.root}--scheme-${ctx.scheme}`]: !!ctx.scheme && scheme === defaultProps.scheme,
-  //       [`${css.root}--variant-${ctx.variant}`]: !!ctx.variant && variant === defaultProps.variant,
-  //     }
-  //   : {
-  //       [`${css.root}--size-${size}`]: size,
-  //       [`${css.root}--scheme-${scheme}`]: scheme,
-  //       [`${css.root}--variant-${variant}`]: variant,
-  //     };
 
   const contextProps = ctx
     ? {

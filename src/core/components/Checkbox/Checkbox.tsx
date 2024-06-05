@@ -1,94 +1,155 @@
-import clsx from 'clsx';
-import { Box } from '@/core/components';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
 import { CheckboxGroup } from './Group';
-import { CheckboxIndicator } from './Indicator';
-import { createKeyDownGroup } from '@/core/utils';
 import { useCheckboxContext } from './Checkbox.context';
-import { CheckboxProps, CheckboxStatus } from './Checkbox.types';
-import { getCheckboxProps, getCheckboxStatus } from './utils';
+import { CheckboxCSS, CheckboxRootProps, CheckboxStatus, CheckboxStatusProps } from './types';
+import { Box, Icon, IconProps, Text, createKeyDownGroup, factory, useThemeClasses } from '@/core';
+
+const css: Partial<CheckboxCSS> = {
+  root: 'v2-checkbox',
+  copy: 'v2-checkbox-copy',
+  input: 'v2-checkbox-input',
+  label: 'v2-checkbox-label',
+  error: 'v2-checkbox-error',
+  message: 'v2-checkbox-description',
+};
+
+const CHECKBOX_ICON_MAP: Record<CheckboxStatus, IconProps['name']> = {
+  ['true']: 'checkboxChecked',
+  ['false']: 'checkboxUnchecked',
+  ['mixed']: 'checkboxIndeterminate',
+};
 
 type CheckboxFactory = Factory.Config<{
   ref: HTMLInputElement;
   comp: 'input';
-  props: CheckboxProps;
-  omits: 'children';
+  props: CheckboxRootProps;
+  omits: 'children' | 'size';
   comps: {
     Group: typeof CheckboxGroup;
-    Indicator: typeof CheckboxIndicator;
   };
 }>;
 
+function getCheckboxStatus(props: CheckboxStatusProps) {
+  const { checked, ctx, value, disabled, readOnly, indeterminate } = props;
+
+  const isDisabled = readOnly && disabled;
+  const isChecked = !isDisabled && !!checked;
+  const isSelected = isChecked && !!(ctx.value && ctx.value.includes(value as string));
+  const isIndeterminate = indeterminate !== undefined;
+
+  let checkedStatus: CheckboxStatus = 'false';
+
+  const conditions: { value: CheckboxStatus; condition?: boolean | undefined }[] = [
+    { value: 'true', condition: isSelected && !isIndeterminate },
+    { value: 'mixed', condition: isSelected && isIndeterminate },
+    { value: 'true', condition: isChecked && !isIndeterminate },
+    { value: 'mixed', condition: isChecked && isIndeterminate },
+  ];
+
+  conditions.forEach((item) => {
+    if (item.condition === true) {
+      checkedStatus = item.value;
+    }
+  });
+  return checkedStatus;
+}
+
 const Checkbox = factory<CheckboxFactory>((props, ref) => {
   const {
+    size,
+    value,
     label,
     error,
-    variant = 'default',
+    scheme,
+    rootRef,
+    variant,
+    message,
     checked,
     disabled,
     readOnly,
-    onChange,
-    onKeyDown,
     className,
-    description,
     indeterminate,
+    onChange,
     ...forwardedProps
   } = props;
 
-  const ctx = useCheckboxContext() || {};
+  const ctx = useCheckboxContext();
 
-  const checkedStatus = getCheckboxStatus({
-    ctx: { value: ctx.value },
-    value: forwardedProps.value,
-    indeterminate,
-    readOnly,
-    disabled,
-    checked,
+  let checkedStatus: CheckboxStatus = 'false';
+
+  const conditions: { value: CheckboxStatus; condition?: boolean | undefined }[] = [
+    { value: 'true', condition: ctx && ctx.value && ctx.value.includes(value as string) },
+    { value: 'true', condition: checked && !indeterminate },
+    { value: 'mixed', condition: checked && indeterminate },
+  ];
+
+  conditions.forEach((item) => {
+    if (item.condition === true) {
+      checkedStatus = item.value;
+    }
   });
 
-  const contextProps = getCheckboxProps({
-    ctx,
-    value: forwardedProps.value,
-    disabled,
-    readOnly,
-    parentSelector: '[data-checkbox-group]',
-    childSelector: '[data-checkbox-item]',
-    onKeyDown,
-    onChange,
+  const themeClasses = useThemeClasses({
+    prefix: css.root!,
+    props: { size, scheme, variant },
+    context: { size: ctx.size, scheme: ctx.scheme, variant: ctx.variant },
+    defaultProps: { size: 'sm', scheme: 'default', variant: 'default' },
+    className,
   });
+
+  const contextProps = ctx
+    ? {
+        checked: ctx.value?.includes(value as string),
+        onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+          if (!disabled || !readOnly) {
+            ctx.onChange?.(event);
+            onChange?.(event);
+          }
+        },
+        onKeyDown: createKeyDownGroup({
+          orientation: ctx.orientation,
+          preventDefault: false,
+          parentSelector: '[data-checkbox-group]',
+          childSelector: '[data-checkbox-item]',
+          onKeyDown: forwardedProps.onKeyDown,
+          loop: false,
+        }),
+        'data-checkbox-item': true,
+        'aria-disabled': ctx.disabled || disabled,
+        'data-disabled': ctx.disabled || disabled,
+        'aria-checked': checkedStatus,
+        'data-checked': checkedStatus,
+      }
+    : {
+        checked,
+        onChange,
+        'aria-disabled': disabled,
+        'data-disabled': disabled,
+        'aria-checked': checkedStatus,
+        'data-checked': checkedStatus,
+      };
 
   return (
-    <Box className={clsx('v2-checkbox', `v2-checkbox--${variant}`, className)}>
-      <span className="v2-checkbox-inner">
-        <input
-          ref={ref}
-          type="checkbox"
-          checked={checked}
-          className="v2-checkbox-input"
-          aria-checked={checkedStatus}
-          aria-disabled={disabled}
-          aria-readonly={readOnly}
-          data-disabled={disabled}
-          data-readonly={readOnly}
-          onChange={onChange}
-          {...forwardedProps}
-          {...contextProps}
-        />
+    <Box ref={rootRef} className={css.root} component="div">
+      <input
+        ref={ref}
+        type="checkbox"
+        className={themeClasses}
+        {...forwardedProps}
+        {...contextProps}
+      />
 
-        <Checkbox.Indicator status={checkedStatus} />
+      <Icon name={CHECKBOX_ICON_MAP[checkedStatus]} />
 
-        <div className="v2-checkbox-copy">
-          {label && <div className="v2-checkbox-label">{label}</div>}
-          {description && <div className="v2-checkbox-desc">{description}</div>}
-          {error && <div className="v2-checkbox-error">{error}</div>}
-        </div>
-      </span>
+      <Box className={css.copy}>
+        <Text className={css.label}>{label}</Text>
+        {error && <Text className={css.error}>{error}</Text>}
+        {message && <Text className={css.message}>{message}</Text>}
+      </Box>
     </Box>
   );
 });
 
 Checkbox.Group = CheckboxGroup;
-Checkbox.Indicator = CheckboxIndicator;
 Checkbox.displayName = '@v2/Checkbox';
 export { Checkbox };

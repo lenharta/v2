@@ -1,14 +1,9 @@
-import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { UnstyledButton } from '@/core/components';
-import { createKeyDownGroup } from '@/core/utils';
-
 import { ActionGroup } from './ActionGroup';
 import { ActionSpacer } from './ActionSpacer';
 import { useActionContext } from './Action.context';
 import { ActionCSS, ActionRootProps } from './types';
-import { useThemeClasses } from '@/core/hooks';
+import { factory, UnstyledButton, useThemeClasses, createKeyDownGroup } from '@/core';
 
 const css: Partial<ActionCSS> = {
   root: 'v2-action',
@@ -24,11 +19,6 @@ type ActionRootFactory = Factory.Config<{
     Spacer: typeof ActionSpacer;
   };
 }>;
-
-const defaultProps: Partial<ActionRootProps> = {
-  scheme: 'default',
-  variant: 'default',
-};
 
 const Action = factory<ActionRootFactory>((props, ref) => {
   const {
@@ -47,10 +37,10 @@ const Action = factory<ActionRootFactory>((props, ref) => {
   const ctx = useActionContext();
 
   const themeClasses = useThemeClasses({
-    props: { scheme, variant },
-    context: { scheme: ctx.scheme, variant: ctx.variant },
     prefix: css.root!,
-    defaultProps,
+    props: { scheme, variant },
+    context: { scheme: ctx?.scheme, variant: ctx?.variant },
+    defaultProps: { scheme: 'default', variant: 'default' },
     className,
   });
 

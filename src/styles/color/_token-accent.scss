@@ -3,48 +3,60 @@
 [data-prefers-accent='red'] {
   --c-accent: var(--c-red);
   --c-accent-hue: var(--c-red-hue);
+  --c-accent-hsl: var(--c-red-hsl);
 }
 [data-prefers-accent='orange'] {
   --c-accent: var(--c-orange);
   --c-accent-hue: var(--c-orange-hue);
+  --c-accent-hsl: var(--c-orange-hsl);
 }
 [data-prefers-accent='yellow'] {
   --c-accent: var(--c-yellow);
   --c-accent-hue: var(--c-yellow-hue);
+  --c-accent-hsl: var(--c-yellow-hsl);
 }
 [data-prefers-accent='green'] {
   --c-accent: var(--c-green);
   --c-accent-hue: var(--c-green-hue);
+  --c-accent-hsl: var(--c-green-hsl);
 }
 [data-prefers-accent='mint'] {
   --c-accent: var(--c-mint);
   --c-accent-hue: var(--c-mint-hue);
+  --c-accent-hsl: var(--c-mint-hsl);
 }
 [data-prefers-accent='teal'] {
   --c-accent: var(--c-teal);
   --c-accent-hue: var(--c-teal-hue);
+  --c-accent-hsl: var(--c-teal-hsl);
 }
 [data-prefers-accent='cyan'] {
   --c-accent: var(--c-cyan);
   --c-accent-hue: var(--c-cyan-hue);
+  --c-accent-hsl: var(--c-cyan-hsl);
 }
 [data-prefers-accent='blue'] {
   --c-accent: var(--c-blue);
   --c-accent-hue: var(--c-blue-hue);
+  --c-accent-hsl: var(--c-blue-hsl);
 }
 [data-prefers-accent='indigo'] {
   --c-accent: var(--c-indigo);
   --c-accent-hue: var(--c-indigo-hue);
+  --c-accent-hsl: var(--c-indigo-hsl);
 }
 [data-prefers-accent='purple'] {
   --c-accent: var(--c-purple);
   --c-accent-hue: var(--c-purple-hue);
+  --c-accent-hsl: var(--c-purple-hsl);
 }
 [data-prefers-accent='pink'] {
   --c-accent: var(--c-pink);
   --c-accent-hue: var(--c-pink-hue);
+  --c-accent-hsl: var(--c-pink-hsl);
 }
 [data-prefers-accent='brown'] {
   --c-accent: var(--c-brown);
   --c-accent-hue: var(--c-brown-hue);
+  --c-accent-hsl: var(--c-brown-hsl);
 }

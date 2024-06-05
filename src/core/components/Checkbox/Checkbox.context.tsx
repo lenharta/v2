@@ -1,8 +1,8 @@
 import React from 'react';
-import { CheckboxContext } from './Checkbox.types';
+import { CheckboxContext } from './types';
 
 const CheckboxGroupContext = React.createContext({} as CheckboxContext);
-const CheckboxGroupProvider = CheckboxGroupContext.Provider;
+const CheckboxProvider = CheckboxGroupContext.Provider;
 const useCheckboxContext = () => React.useContext(CheckboxGroupContext);
 
-export { CheckboxGroupProvider, useCheckboxContext };
+export { CheckboxProvider, useCheckboxContext };

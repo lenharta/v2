@@ -1,16 +1,20 @@
 :root {
-  // CORE TOKENS
+  // BASE | TOKENS | CONSTANTS
 
   --scale: 1;
-
   --unit: calc(var(--scale) * 0.125rem);
-  --space: calc(var(--scale) * calc(var(--unit) * 4));
-  --gutter: calc(var(--space) * 4);
 
-  --spacing-1: calc(var(--unit) * 1);
-  --spacing-2: calc(var(--unit) * 2);
-  --spacing-3: calc(var(--unit) * 4);
-  --spacing-4: calc(var(--unit) * 8);
+  // BASE | TOKENS | SPACING
+
+  --s-1: calc(calc(var(--unit)) * 1);
+  --s-2: calc(calc(var(--unit)) * 2);
+  --s-3: calc(calc(var(--unit)) * 4);
+  --s-4: calc(calc(var(--unit)) * 8);
+  --s-5: calc(calc(var(--unit)) * 12);
+  --s-6: calc(calc(var(--unit)) * 16);
+  --s-7: calc(calc(var(--unit)) * 20);
+  --s-8: calc(calc(var(--unit)) * 24);
+  --s-9: calc(calc(var(--unit)) * 28);
 
   --index-root: 0;
   --index-base: 1;
