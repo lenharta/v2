@@ -20,7 +20,7 @@ const Header = factory<HeaderRootFactory>((props, ref) => {
   const [selected, setSelected] = React.useState(false);
   return (
     <Box {...forwardedProps} ref={ref} component="header" className={clsx(css.root, className)}>
-      <Action.Group variant="elevated" orientation="horizontal">
+      <Action.Group scheme="default" variant="elevated" orientation="horizontal">
         <Action
           icon={<Icon name="home" />}
           selected={selected ? true : undefined}

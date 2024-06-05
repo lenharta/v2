@@ -1,6 +1,6 @@
 import { Text, Title } from '@/core';
 import { ProfileError } from './profile-error';
-import { Hero, Main, Page, Section } from '@/common';
+import { Hero, Page, Section } from '@/common';
 
 type ProfileRouteFactory = React.FC<{}> & {
   Error: typeof ProfileError;

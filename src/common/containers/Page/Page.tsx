@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Footer } from '@/common';
+import { Footer, Header, Main } from '@/common';
 import { Factory } from '@/types';
 import { Box, factory } from '@/core';
 import { PageCSS, PageRootProps } from './types';
@@ -18,8 +18,11 @@ const Page = factory<PageFactory>((props, ref) => {
   const { children, className, ...forwardedProps } = props;
   return (
     <Box {...forwardedProps} className={clsx(css.root, className)} role="document" ref={ref}>
-      {children}
-      <Footer />
+      <Header />
+      <Main>
+        {children}
+        <Footer />
+      </Main>
     </Box>
   );
 });

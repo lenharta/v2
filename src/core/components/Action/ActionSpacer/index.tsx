@@ -9,19 +9,37 @@ const css: Partial<ActionCSS> = {
 
 type ActionSpacerFactory = React.FC<ActionSpacerProps>;
 
+const defaultProps: Partial<ActionSpacerProps> = {
+  scheme: 'default',
+  variant: 'default',
+};
+
 const ActionSpacer: ActionSpacerFactory = (props) => {
-  const { className, variant, children, ...forwardedProps } = props;
+  const {
+    scheme = defaultProps.scheme,
+    variant = defaultProps.variant,
+    children,
+    className,
+    ...forwardedProps
+  } = props;
 
   const ctx = useActionContext();
 
-  const classNames = clsx(
-    css.spacer,
-    {
-      [`${css.spacer}--${variant}`]: variant && !ctx.variant,
-      [`${css.spacer}--${ctx.variant}`]: ctx.variant,
-    },
-    className
-  );
+  const contextClasses = {
+    [`${css.spacer}--scheme-${scheme}`]: !ctx.scheme && scheme,
+    [`${css.spacer}--variant-${variant}`]: !ctx.variant && scheme,
+    [`${css.spacer}--scheme-${scheme}`]: !!ctx.scheme && scheme !== defaultProps.scheme,
+    [`${css.spacer}--variant-${variant}`]: !!ctx.variant && variant !== defaultProps.variant,
+    [`${css.spacer}--scheme-${ctx.scheme}`]: !!ctx.scheme && scheme === defaultProps.scheme,
+    [`${css.spacer}--variant-${ctx.variant}`]: !!ctx.variant && variant === defaultProps.variant,
+  };
+
+  const schemeClassNames = ctx
+    ? contextClasses
+    : {
+        [`${css.spacer}--scheme-${scheme}`]: scheme,
+        [`${css.spacer}--variant-${variant}`]: variant,
+      };
 
   const contextProps = ctx
     ? {
@@ -30,7 +48,12 @@ const ActionSpacer: ActionSpacerFactory = (props) => {
     : {};
 
   return (
-    <Box role="separator" className={classNames} {...forwardedProps} {...contextProps}>
+    <Box
+      role="separator"
+      className={clsx(css.spacer, schemeClassNames, className)}
+      {...forwardedProps}
+      {...contextProps}
+    >
       {children}
     </Box>
   );

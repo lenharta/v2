@@ -5,8 +5,7 @@
 }
 
 .v2-hero-title {
-  padding-bottom: var(--gutter);
-  font-size: var(--fz-12);
+  font-size: var(--fz-16);
   font-weight: var(--fw-1);
   line-height: 1.2;
 }
@@ -14,9 +13,9 @@
 .v2-hero-content {
   width: 100%;
   height: calc(var(--size-action-offset) * 5);
-  // display: flex;
-  // align-items: flex-start;
-  // flex-direction: column;
-  // justify-content: flex-end;
-  // margin-inline: var(--gutter);
+  padding: var(--gutter);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
 }

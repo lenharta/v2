@@ -1,9 +1,0 @@
-@use '../../mixins' as mixins;
-
-@include mixins.theme-mode('dim') {
-  @include mixins.theme-scheme('primary') {
-  }
-
-  @include mixins.theme-scheme('secondary') {
-  }
-}

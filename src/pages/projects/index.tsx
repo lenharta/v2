@@ -1,6 +1,6 @@
 import { Text, Title } from '@/core';
 import { ProjectsError } from './projects-error';
-import { Hero, Main, Page, Section } from '@/common';
+import { Hero, Page, Section } from '@/common';
 
 type ProjectsRouteFactory = React.FC<{}> & {
   Error: typeof ProjectsError;

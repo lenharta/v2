@@ -8,6 +8,7 @@ import { ActionGroup } from './ActionGroup';
 import { ActionSpacer } from './ActionSpacer';
 import { useActionContext } from './Action.context';
 import { ActionCSS, ActionRootProps } from './types';
+import { useThemeClasses } from '@/core/hooks';
 
 const css: Partial<ActionCSS> = {
   root: 'v2-action',
@@ -24,12 +25,18 @@ type ActionRootFactory = Factory.Config<{
   };
 }>;
 
+const defaultProps: Partial<ActionRootProps> = {
+  scheme: 'default',
+  variant: 'default',
+};
+
 const Action = factory<ActionRootFactory>((props, ref) => {
   const {
     icon,
     label,
     value,
-    variant = 'default',
+    scheme,
+    variant,
     disabled,
     selected,
     withTitle,
@@ -39,18 +46,17 @@ const Action = factory<ActionRootFactory>((props, ref) => {
 
   const ctx = useActionContext();
 
-  const classNames = clsx(
-    css.root,
-    {
-      [`${css.root}--${variant}`]: variant && !ctx.variant,
-      [`${css.root}--${ctx.variant}`]: ctx.variant,
-    },
-    className
-  );
+  const themeClasses = useThemeClasses({
+    props: { scheme, variant },
+    context: { scheme: ctx.scheme, variant: ctx.variant },
+    prefix: css.root!,
+    defaultProps,
+    className,
+  });
 
   const contextProps = ctx
     ? {
-        id: ctx.getActionId(label.toLowerCase().split(' ').join('')),
+        id: ctx.getActionId(label),
         title: ctx.withTitle ? label : undefined,
         'aria-label': forwardedProps['aria-label'] || label,
         'aria-disabled': ctx.disabled || disabled,
@@ -82,7 +88,7 @@ const Action = factory<ActionRootFactory>((props, ref) => {
     <UnstyledButton
       ref={ref}
       value={value}
-      className={classNames}
+      className={themeClasses}
       {...forwardedProps}
       {...contextProps}
     >

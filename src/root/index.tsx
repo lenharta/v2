@@ -1,7 +1,5 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-
-import { Header } from '@/common';
 import { RootError } from './root-error';
 import { StoreProvider } from '@/store';
 
@@ -11,7 +9,6 @@ type RootFactory = React.FC<{}> & {
 
 const Root: RootFactory = ({}) => (
   <StoreProvider>
-    <Header />
     <Outlet />
   </StoreProvider>
 );
