@@ -1,0 +1,132 @@
+:root {
+  // TOKEN | COLOR | GLOBAL
+
+  --c-focus: #007aff;
+  --c-white: #ffffff;
+  --c-black: #000000;
+  --c-inherit: inherit;
+  --c-transparent: transparent;
+
+  // TOKEN | COLOR | MODE | LIGHT
+
+  --c-red-hex-light: #ff3b30;
+  --c-orange-hex-light: #ff9500;
+  --c-yellow-hex-light: #ffcc00;
+  --c-green-hex-light: #34c759;
+  --c-mint-hex-light: #00c7be;
+  --c-teal-hex-light: #30b0c7;
+  --c-cyan-hex-light: #32ade6;
+  --c-blue-hex-light: #007aff;
+  --c-indigo-hex-light: #5856d6;
+  --c-purple-hex-light: #af52de;
+  --c-pink-hex-light: #ff2d55;
+  --c-brown-hex-light: #a2845e;
+
+  --c-red-hue-light: 3, 100%;
+  --c-orange-hue-light: 35, 100%;
+  --c-yellow-hue-light: 48, 100%;
+  --c-green-hue-light: 135, 59%;
+  --c-mint-hue-light: 177, 100%;
+  --c-teal-hue-light: 189, 61%;
+  --c-cyan-hue-light: 199, 78%;
+  --c-blue-hue-light: 211, 100%;
+  --c-indigo-hue-light: 241, 61%;
+  --c-purple-hue-light: 280, 68%;
+  --c-pink-hue-light: 349, 100%;
+  --c-brown-hue-light: 34, 27%;
+
+  --c-red-hue-light-level: 59%;
+  --c-orange-hue-light-level: 50%;
+  --c-yellow-hue-light-level: 50%;
+  --c-green-hue-light-level: 49%;
+  --c-mint-hue-light-level: 39%;
+  --c-teal-hue-light-level: 48%;
+  --c-cyan-hue-light-level: 55%;
+  --c-blue-hue-light-level: 50%;
+  --c-indigo-hue-light-level: 59%;
+  --c-purple-hue-light-level: 60%;
+  --c-pink-hue-light-level: 59%;
+  --c-brown-hue-light-level: 50%;
+
+  // TOKEN | COLOR | MODE | DARK
+
+  --c-red-hex-dark: #ff453a;
+  --c-orange-hex-dark: #ff9f0a;
+  --c-yellow-hex-dark: #ffd60a;
+  --c-green-hex-dark: #30d158;
+  --c-mint-hex-dark: #66d4cf;
+  --c-teal-hex-dark: #40c8e0;
+  --c-cyan-hex-dark: #64d2ff;
+  --c-blue-hex-dark: #0a84ff;
+  --c-indigo-hex-dark: #5e5ce6;
+  --c-purple-hex-dark: #bf5af2;
+  --c-pink-hex-dark: #ff375f;
+  --c-brown-hex-dark: #ac8e68;
+
+  --c-red-hue-dark: 3, 100%;
+  --c-orange-hue-dark: 36, 100%;
+  --c-yellow-hue-dark: 50, 100%;
+  --c-green-hue-dark: 135, 64%;
+  --c-mint-hue-dark: 177, 56%;
+  --c-teal-hue-dark: 189, 72%;
+  --c-cyan-hue-dark: 197, 100%;
+  --c-blue-hue-dark: 210, 100%;
+  --c-indigo-hue-dark: 241, 73%;
+  --c-purple-hue-dark: 280, 85%;
+  --c-pink-hue-dark: 348, 100%;
+  --c-brown-hue-dark: 34, 29%;
+
+  --c-red-hue-dark-level: 61%;
+  --c-orange-hue-dark-level: 52%;
+  --c-yellow-hue-dark-level: 52%;
+  --c-green-hue-dark-level: 50%;
+  --c-mint-hue-dark-level: 62%;
+  --c-teal-hue-dark-level: 57%;
+  --c-cyan-hue-dark-level: 70%;
+  --c-blue-hue-dark-level: 52%;
+  --c-indigo-hue-dark-level: 63%;
+  --c-purple-hue-dark-level: 65%;
+  --c-pink-hue-dark-level: 60%;
+  --c-brown-hue-dark-level: 54%;
+
+  // TOKEN | COLOR | MODE | DIM
+
+  --c-red-hex-dim: #ff453a;
+  --c-orange-hex-dim: #ff9f0a;
+  --c-yellow-hex-dim: #ffd60a;
+  --c-green-hex-dim: #30d158;
+  --c-mint-hex-dim: #66d4cf;
+  --c-teal-hex-dim: #40c8e0;
+  --c-cyan-hex-dim: #64d2ff;
+  --c-blue-hex-dim: #0a84ff;
+  --c-indigo-hex-dim: #5e5ce6;
+  --c-purple-hex-dim: #bf5af2;
+  --c-pink-hex-dim: #ff375f;
+  --c-brown-hex-dim: #ac8e68;
+
+  --c-red-hue-dim: 3, 100%;
+  --c-orange-hue-dim: 36, 100%;
+  --c-yellow-hue-dim: 50, 100%;
+  --c-green-hue-dim: 135, 64%;
+  --c-mint-hue-dim: 177, 56%;
+  --c-teal-hue-dim: 189, 72%;
+  --c-cyan-hue-dim: 197, 100%;
+  --c-blue-hue-dim: 210, 100%;
+  --c-indigo-hue-dim: 241, 73%;
+  --c-purple-hue-dim: 280, 85%;
+  --c-pink-hue-dim: 348, 100%;
+  --c-brown-hue-dim: 34, 29%;
+
+  --c-red-hue-dim-level: 61%;
+  --c-orange-hue-dim-level: 52%;
+  --c-yellow-hue-dim-level: 52%;
+  --c-green-hue-dim-level: 50%;
+  --c-mint-hue-dim-level: 62%;
+  --c-teal-hue-dim-level: 57%;
+  --c-cyan-hue-dim-level: 70%;
+  --c-blue-hue-dim-level: 52%;
+  --c-indigo-hue-dim-level: 63%;
+  --c-purple-hue-dim-level: 65%;
+  --c-pink-hue-dim-level: 60%;
+  --c-brown-hue-dim-level: 54%;
+}

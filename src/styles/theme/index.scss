@@ -1,13 +1,9 @@
-@use 'color-token';
-@use 'color-alpha';
-@use 'color-shade';
-@use 'color-accent';
-@use 'color-surface';
+@forward 'mode-dim';
+@forward 'mode-dark';
+@forward 'mode-light';
 
-@use 'mode-dim';
-@use 'mode-dark';
-@use 'mode-light';
-@use 'mode-surface';
+@forward 'tokens-core';
+@forward 'tokens-common';
 
-@use 'config-core';
-@use 'config-common';
+@forward 'apply-core';
+@forward 'apply-common';

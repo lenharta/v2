@@ -1,3 +1,5 @@
+// MIXINS | BREAKPOINTS
+
 $breakpoint-map: (
   'mobile': (
     'sm': 320px,
@@ -25,6 +27,8 @@ $breakpoint-map: (
   }
 }
 
+// MIXINS | THEME | PREFERENCE | MODE
+
 @mixin theme-modes {
   [data-prefers-mode='dim'],
   [data-prefers-mode='dark'],
@@ -33,44 +37,77 @@ $breakpoint-map: (
   }
 }
 
-@mixin theme-mode($mode: 'dark') {
-  [data-prefers-mode='#{$mode}'] {
+@mixin theme-mode($value: 'dark') {
+  [data-prefers-mode='#{$value}'] {
     @content;
   }
 }
 
-@mixin where-theme-mode($mode: 'dark') {
-  [data-prefers-mode='#{$mode}'] & {
+@mixin theme-has-mode($value: 'dark') {
+  &[data-prefers-mode='#{$value}'] {
     @content;
   }
 }
 
-@mixin accent-mode($color: 'red') {
-  [data-prefers-accent='#{$color}'] {
+@mixin theme-where-mode($value: 'dark') {
+  [data-prefers-mode='#{$value}'] & {
     @content;
   }
 }
 
-@mixin has-accent-mode($color: 'red') {
-  &[data-prefers-accent='#{$color}'] {
+// MIXINS | THEME | PREFERENCE | COLOR
+
+@mixin theme-colors {
+  [data-prefers-color='red'],
+  [data-prefers-color='orange'],
+  [data-prefers-color='yellow'],
+  [data-prefers-color='green'],
+  [data-prefers-color='mint'],
+  [data-prefers-color='teal'],
+  [data-prefers-color='cyan'],
+  [data-prefers-color='blue'],
+  [data-prefers-color='indigo'],
+  [data-prefers-color='purple'],
+  [data-prefers-color='pink'],
+  [data-prefers-color='brown'] {
     @content;
   }
 }
 
-@mixin where-accent-mode($color: 'red') {
-  [data-prefers-accent='#{$color}'] & {
+@mixin theme-color($value: 'red') {
+  [data-prefers-color='#{$value}'] {
     @content;
   }
 }
 
-@mixin scheme($mode: 'primary') {
-  [data-scheme='#{$mode}'] {
+@mixin theme-has-color($value: 'red') {
+  &[data-prefers-color='#{$value}'] {
     @content;
   }
 }
 
-@mixin where-scheme($mode: 'dark') {
-  [data-prefers-mode='#{$mode}'] & {
+@mixin theme-where-color($value: 'red') {
+  [data-prefers-color='#{$value}'] & {
+    @content;
+  }
+}
+
+// MIXINS | THEME | SCHEME
+
+@mixin theme-scheme($value: 'primary') {
+  [data-scheme='#{$value}'] {
+    @content;
+  }
+}
+
+@mixin theme-has-scheme($value: 'primary') {
+  &[data-scheme='#{$value}'] {
+    @content;
+  }
+}
+
+@mixin theme-where-scheme($value: 'primary') {
+  [data-scheme='#{$value}'] & {
     @content;
   }
 }

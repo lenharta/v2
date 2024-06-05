@@ -1,13 +1,12 @@
-import { Core } from '@/types';
+import { Core, Theme } from '@/types';
 
 type ButtonCSS = Record<'root' | 'group' | 'label' | 'content', string>;
-
-type ButtonTheme = 'default' | 'error' | 'warning' | 'success' | 'info';
-type ButtonVariant = 'solid' | 'outlined' | 'tonal' | 'ghost' | 'skeleton' | 'text';
+type ButtonScheme = 'default' | 'contrast' | 'accent' | Theme.Color;
+type ButtonVariant = 'default' | 'elevated';
 
 interface ButtonContext {
   size?: Core.Size | undefined;
-  theme?: ButtonTheme | undefined;
+  scheme?: ButtonScheme | undefined;
   variant?: ButtonVariant | undefined;
   disabled?: boolean | undefined;
   orientation: Core.Orientation;
@@ -16,7 +15,7 @@ interface ButtonContext {
 
 interface ButtonGroupProps {
   size?: Core.Size | undefined;
-  theme?: ButtonTheme | undefined;
+  scheme?: ButtonScheme | undefined;
   variant?: ButtonVariant | undefined;
   disabled?: boolean | undefined;
   orientation?: Core.Orientation | undefined;
@@ -24,7 +23,7 @@ interface ButtonGroupProps {
 
 interface ButtonRootProps {
   size?: Core.Size | undefined;
-  theme?: ButtonTheme | undefined;
+  scheme?: ButtonScheme | undefined;
   label?: string | undefined;
   variant?: ButtonVariant | undefined;
   disabled?: boolean | undefined;
@@ -33,4 +32,11 @@ interface ButtonRootProps {
   rightContent?: React.ReactNode | undefined;
 }
 
-export type { ButtonCSS, ButtonContext, ButtonRootProps, ButtonGroupProps };
+export type {
+  ButtonCSS,
+  ButtonScheme,
+  ButtonVariant,
+  ButtonContext,
+  ButtonRootProps,
+  ButtonGroupProps,
+};

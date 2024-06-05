@@ -1,17 +1,9 @@
-// import clsx from 'clsx';
-// import { Factory } from '@/types';
-// import { ButtonGroup } from './Group';
-// import { ButtonProps } from './Button.types';
-// import { UnstyledButton } from '@/core/components/UnstyledButton';
-// import { factoryPolymorphic } from '@/core/factory';
-
 import clsx from 'clsx';
-import React from 'react';
 import { Factory } from '@/types';
-import { Box, factory, UnstyledButton } from '@/core';
 import { ButtonGroup } from './Group';
 import { useButtonContext } from './Button.context';
 import { ButtonCSS, ButtonRootProps } from './types';
+import { Box, factory, UnstyledButton, useThemeClasses } from '@/core';
 
 const css: Partial<ButtonCSS> = {
   root: 'v2-button',
@@ -34,16 +26,16 @@ type ButtonFactory = Factory.Config<{
 
 const defaultProps: Partial<ButtonRootProps> = {
   size: 'sm',
-  theme: 'default',
-  variant: 'solid',
+  scheme: 'default',
+  variant: 'default',
 };
 
 const Button = factory<ButtonFactory>((props, ref) => {
   const {
-    size = defaultProps.size,
-    theme = defaultProps.theme,
+    size,
     label,
-    variant = defaultProps.variant,
+    scheme,
+    variant,
     disabled,
     children,
     className,
@@ -58,20 +50,31 @@ const Button = factory<ButtonFactory>((props, ref) => {
 
   const ctx = useButtonContext();
 
-  const themeClassNames = ctx
-    ? {
-        [`${css.root}--${size}`]: !!ctx.size && size !== defaultProps.size,
-        [`${css.root}--${theme}`]: !!ctx.theme && theme !== defaultProps.theme,
-        [`${css.root}--${variant}`]: !!ctx.variant && variant !== defaultProps.variant,
-        [`${css.root}--${ctx.size}`]: !!ctx.size && size === defaultProps.size,
-        [`${css.root}--${ctx.theme}`]: !!ctx.theme && theme === defaultProps.theme,
-        [`${css.root}--${ctx.variant}`]: !!ctx.variant && variant === defaultProps.variant,
-      }
-    : {
-        [`${css.root}--${size}`]: size,
-        [`${css.root}--${theme}`]: theme,
-        [`${css.root}--${variant}`]: variant,
-      };
+  const themeClasses = useThemeClasses({
+    props: { size, scheme, variant },
+    context: ctx ? { size: ctx.size, scheme: ctx.scheme, variant: ctx.variant } : null,
+    prefix: css.root!,
+    defaultProps,
+    className,
+  });
+
+  // const schemeClassNames = ctx
+  //   ? {
+  //       [`${css.root}--size-${size}`]: !ctx.size,
+  //       [`${css.root}--scheme-${scheme}`]: !ctx.scheme,
+  //       [`${css.root}--variant-${variant}`]: !ctx.variant,
+  //       [`${css.root}--size-${size}`]: !!ctx.size && size !== defaultProps.size,
+  //       [`${css.root}--scheme-${scheme}`]: !!ctx.scheme && scheme !== defaultProps.scheme,
+  //       [`${css.root}--variant-${variant}`]: !!ctx.variant && variant !== defaultProps.variant,
+  //       [`${css.root}--size-${ctx.size}`]: !!ctx.size && size === defaultProps.size,
+  //       [`${css.root}--scheme-${ctx.scheme}`]: !!ctx.scheme && scheme === defaultProps.scheme,
+  //       [`${css.root}--variant-${ctx.variant}`]: !!ctx.variant && variant === defaultProps.variant,
+  //     }
+  //   : {
+  //       [`${css.root}--size-${size}`]: size,
+  //       [`${css.root}--scheme-${scheme}`]: scheme,
+  //       [`${css.root}--variant-${variant}`]: variant,
+  //     };
 
   const contextProps = ctx
     ? {
@@ -88,8 +91,8 @@ const Button = factory<ButtonFactory>((props, ref) => {
   return (
     <UnstyledButton
       ref={ref}
-      className={clsx(css.root, themeClassNames, className)}
       aria-label={label}
+      className={themeClasses}
       {...forwardedProps}
       {...contextProps}
     >

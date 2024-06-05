@@ -18,7 +18,7 @@ type ButtonGroupFactory = Factory.Config<{
 const ButtonGroup = factory<ButtonGroupFactory>((props, ref) => {
   const {
     size,
-    theme,
+    scheme,
     variant,
     disabled,
     children,
@@ -31,7 +31,7 @@ const ButtonGroup = factory<ButtonGroupFactory>((props, ref) => {
   const getItemId = () => `button:group${uid}item`;
 
   return (
-    <ButtonProvider value={{ orientation, size, theme, variant, getItemId }}>
+    <ButtonProvider value={{ orientation, size, scheme, variant, getItemId }}>
       <Box
         {...forwardedProps}
         ref={ref}

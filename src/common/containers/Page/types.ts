@@ -1,9 +1,8 @@
-type PageRootCSS = Record<PageRootClasses, string>;
-type PageRootClasses = 'root';
+type PageCSS = Record<'root', string>;
 
 interface PageRootProps {
   children?: React.ReactNode | undefined;
   className?: string | undefined;
 }
 
-export type { PageRootCSS, PageRootClasses, PageRootProps };
+export type { PageCSS, PageRootProps };

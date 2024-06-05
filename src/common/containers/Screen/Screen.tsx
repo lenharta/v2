@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Box, factory } from '@/core';
-import { ScreenRootCSS, ScreenRootProps } from './types';
+import { ScreenCSS, ScreenRootProps } from './types';
 
-const css: ScreenRootCSS = {
-  root: 'v2-screen-root',
+const css: Partial<ScreenCSS> = {
+  root: 'v2-screen',
 };
 
 type ScreenRootFactory = Factory.Config<{

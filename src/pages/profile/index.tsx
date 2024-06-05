@@ -1,6 +1,6 @@
 import { Text, Title } from '@/core';
 import { ProfileError } from './profile-error';
-import { Hero, Main, Page, Section } from '@/common';
+import { Hero, Page, Section } from '@/common';
 
 type ProfileRouteFactory = React.FC<{}> & {
   Error: typeof ProfileError;
@@ -9,16 +9,14 @@ type ProfileRouteFactory = React.FC<{}> & {
 const Profile: ProfileRouteFactory = () => (
   <Page>
     <Hero title="Profile" />
-    <Main>
-      <Section>
-        <Title h2>Section Title</Title>
-        <Text>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur harum ab corrupti
-          eos repellendus maiores hic quo nulla cum, dolorem soluta quis saepe aliquid quibusdam?
-          Doloribus veritatis corrupti consequuntur eius.
-        </Text>
-      </Section>
-    </Main>
+    <Section>
+      <Title h2>Section Title</Title>
+      <Text>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur harum ab corrupti eos
+        repellendus maiores hic quo nulla cum, dolorem soluta quis saepe aliquid quibusdam?
+        Doloribus veritatis corrupti consequuntur eius.
+      </Text>
+    </Section>
   </Page>
 );
 

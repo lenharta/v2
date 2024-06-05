@@ -11,9 +11,4 @@
   right: 0;
   left: 0;
   top: 0;
-
-  // @include mixins.query('desktop', 'sm') {
-  //   width: calc(100% - var(--size-action-offset));
-  //   left: var(--size-action-offset);
-  // }
 }

@@ -77,6 +77,9 @@
 
   // COMMON TOKENS
 
+  --width-page-min: 320px;
+  --width-page-max: 1920px;
+
   --size-action-unit: calc(var(--unit) * 2);
   --size-action-root: calc(var(--unit) * 26);
   --size-action-inset: calc(var(--size-action-root) - var(--size-action-unit));

@@ -30,12 +30,40 @@ export enum THEME_SCHEME {
   secondary = 'secondary',
 }
 
-export enum THEME_INTERACTION_TYPE {
-  moveable = 'moveable',
-  clickable = 'clickable',
-  togglable = 'togglable',
-  expandable = 'expandable',
-  selectable = 'selectable',
+export enum THEME_SIZE_COMPACT {
+  sm = 'small',
+  md = 'medium',
+  lg = 'large',
+}
+
+export enum THEME_SIZE {
+  xs = 'x-small',
+  sm = 'small',
+  md = 'medium',
+  lg = 'large',
+  xl = 'x-large',
+}
+
+export enum THEME_SIZE_EXPANDED {
+  xxs = '2x-small',
+  xs = 'x-small',
+  sm = 'small',
+  md = 'medium',
+  lg = 'large',
+  xl = 'x-large',
+  xxl = '2x-large',
+}
+
+export enum THEME_STATUS {
+  error = 'error',
+  warning = 'warning',
+  success = 'success',
+}
+
+export enum THEME_PRIORITY {
+  low = 'low',
+  medium = 'medium',
+  high = 'high',
 }
 
 export enum THEME_INTERACTION_STATE {
@@ -47,14 +75,29 @@ export enum THEME_INTERACTION_STATE {
   disabled = 'disabled',
 }
 
+export enum THEME_INTERACTION_VARIANT {
+  moveable = 'moveable',
+  clickable = 'clickable',
+  togglable = 'togglable',
+  expandable = 'expandable',
+  selectable = 'selectable',
+}
+
 export declare namespace Theme {
   export type Dir = keyof typeof THEME_DIR;
   export type Mode = keyof typeof THEME_MODE;
   export type Color = keyof typeof THEME_COLOR;
   export type Scheme = keyof typeof THEME_SCHEME;
 
-  export type InteractionType = keyof typeof THEME_INTERACTION_TYPE;
+  export type Status = keyof typeof THEME_STATUS;
+  export type Priority = keyof typeof THEME_PRIORITY;
+
+  export type Size = keyof typeof THEME_SIZE;
+  export type SizeCompact = keyof typeof THEME_SIZE_COMPACT;
+  export type SizeExpanded = keyof typeof THEME_SIZE_EXPANDED;
+
   export type InteractionState = keyof typeof THEME_INTERACTION_STATE;
+  export type InteractionVariant = keyof typeof THEME_INTERACTION_VARIANT;
 
   export type Attributes = 'dir' | 'mode' | 'color';
 
@@ -67,7 +110,7 @@ export declare namespace Theme {
   export type ColorMapByName<T> = Record<Color, T>;
   export type ColorMapByFormat<T> = Record<ColorFormat, T>;
 
-  export type SurfaceLevel = 1 | 2 | 3 | 4 | 5;
+  export type SurfaceLevel = 1 | 2 | 3 | 4;
   export type SurfaceElement = 'base' | 'layer';
   export type SurfaceElements = 'text' | 'trim' | 'icon';
 

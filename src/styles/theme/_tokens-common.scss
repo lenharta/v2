@@ -1,0 +1,11 @@
+[data-prefers-mode='dim'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='light'] {
+  --c-root-base: var(--c-base-1);
+  --c-root-text: var(--c-text-1);
+  --c-root-icon: var(--c-text-2);
+
+  --c-page-base: var(--c-base-2);
+  --c-page-text: var(--c-text-2);
+  --c-page-icon: var(--c-text-3);
+}

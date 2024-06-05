@@ -19,7 +19,8 @@ type ActionGroupFactory = Factory.Config<{
 const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
   const {
     value,
-    variant = 'default',
+    scheme,
+    variant,
     children,
     disabled,
     className,
@@ -31,7 +32,7 @@ const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
   const getActionId = (v: string) => `action${uid}${v}:item`;
 
   return (
-    <ActionProvider value={{ value, variant, orientation, disabled, getActionId }}>
+    <ActionProvider value={{ value, variant, scheme, orientation, disabled, getActionId }}>
       <Box
         ref={ref}
         className={clsx(css.group, className)}

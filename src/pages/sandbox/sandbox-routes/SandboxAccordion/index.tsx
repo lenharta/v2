@@ -1,17 +1,15 @@
 import React from 'react';
 import { Title } from '@/core';
-import { Hero, Main, Section } from '@/common';
+import { Hero, Section } from '@/common';
 
 type SandboxAccordionRouteFactory = React.FC<{}> & {};
 
 const SandboxAccordion: SandboxAccordionRouteFactory = () => (
   <React.Fragment>
-    <Hero title={<Title h1>Sandbox | Accordion</Title>} />
-    <Main>
-      <Section>
-        <Title h2>Demo</Title>
-      </Section>
-    </Main>
+    <Hero title="Sandbox | Accordion" />
+    <Section>
+      <Title h2>Demo</Title>
+    </Section>
   </React.Fragment>
 );
 

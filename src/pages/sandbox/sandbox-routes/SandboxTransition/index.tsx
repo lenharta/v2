@@ -1,17 +1,15 @@
 import React from 'react';
 import { Title } from '@/core';
-import { Hero, Main, Section } from '@/common';
+import { Hero, Section } from '@/common';
 
 type SandboxTransitionRouteFactory = React.FC<{}> & {};
 
 const SandboxTransition: SandboxTransitionRouteFactory = () => (
   <React.Fragment>
-    <Hero title={<Title h1>Sandbox | Transition</Title>} />
-    <Main>
-      <Section>
-        <Title h2>Demo</Title>
-      </Section>
-    </Main>
+    <Hero title="Sandbox | Transition" />
+    <Section>
+      <Title h2>Demo</Title>
+    </Section>
   </React.Fragment>
 );
 

@@ -1,0 +1,85 @@
+@use '../mixins' as mixins;
+
+@include mixins.theme-mode('light') {
+  --c-red: var(--c-red-hex-light);
+  --c-orange: var(--c-orange-hex-light);
+  --c-yellow: var(--c-yellow-hex-light);
+  --c-green: var(--c-green-hex-light);
+  --c-mint: var(--c-mint-hex-light);
+  --c-teal: var(--c-teal-hex-light);
+  --c-cyan: var(--c-cyan-hex-light);
+  --c-blue: var(--c-blue-hex-light);
+  --c-indigo: var(--c-indigo-hex-light);
+  --c-purple: var(--c-purple-hex-light);
+  --c-pink: var(--c-pink-hex-light);
+  --c-brown: var(--c-brown-hex-light);
+
+  --c-red-hue: var(--c-red-hue-light);
+  --c-orange-hue: var(--c-orange-hue-light);
+  --c-yellow-hue: var(--c-yellow-hue-light);
+  --c-green-hue: var(--c-green-hue-light);
+  --c-mint-hue: var(--c-mint-hue-light);
+  --c-teal-hue: var(--c-teal-hue-light);
+  --c-cyan-hue: var(--c-cyan-hue-light);
+  --c-blue-hue: var(--c-blue-hue-light);
+  --c-indigo-hue: var(--c-indigo-hue-light);
+  --c-purple-hue: var(--c-purple-hue-light);
+  --c-pink-hue: var(--c-pink-hue-light);
+  --c-brown-hue: var(--c-brown-hue-light);
+}
+
+@include mixins.theme-mode('dark') {
+  --c-red: var(--c-red-hex-dark);
+  --c-orange: var(--c-orange-hex-dark);
+  --c-yellow: var(--c-yellow-hex-dark);
+  --c-green: var(--c-green-hex-dark);
+  --c-mint: var(--c-mint-hex-dark);
+  --c-teal: var(--c-teal-hex-dark);
+  --c-cyan: var(--c-cyan-hex-dark);
+  --c-blue: var(--c-blue-hex-dark);
+  --c-indigo: var(--c-indigo-hex-dark);
+  --c-purple: var(--c-purple-hex-dark);
+  --c-pink: var(--c-pink-hex-dark);
+  --c-brown: var(--c-brown-hex-dark);
+
+  --c-red-hue: var(--c-red-hue-dark);
+  --c-orange-hue: var(--c-orange-hue-dark);
+  --c-yellow-hue: var(--c-yellow-hue-dark);
+  --c-green-hue: var(--c-green-hue-dark);
+  --c-mint-hue: var(--c-mint-hue-dark);
+  --c-teal-hue: var(--c-teal-hue-dark);
+  --c-cyan-hue: var(--c-cyan-hue-dark);
+  --c-blue-hue: var(--c-blue-hue-dark);
+  --c-indigo-hue: var(--c-indigo-hue-dark);
+  --c-purple-hue: var(--c-purple-hue-dark);
+  --c-pink-hue: var(--c-pink-hue-dark);
+  --c-brown-hue: var(--c-brown-hue-dark);
+}
+
+@include mixins.theme-mode('dim') {
+  --c-red: var(--c-red-hex-dim);
+  --c-orange: var(--c-orange-hex-dim);
+  --c-yellow: var(--c-yellow-hex-dim);
+  --c-green: var(--c-green-hex-dim);
+  --c-mint: var(--c-mint-hex-dim);
+  --c-teal: var(--c-teal-hex-dim);
+  --c-cyan: var(--c-cyan-hex-dim);
+  --c-blue: var(--c-blue-hex-dim);
+  --c-indigo: var(--c-indigo-hex-dim);
+  --c-purple: var(--c-purple-hex-dim);
+  --c-pink: var(--c-pink-hex-dim);
+  --c-brown: var(--c-brown-hex-dim);
+
+  --c-red-hue: var(--c-red-hue-dim);
+  --c-orange-hue: var(--c-orange-hue-dim);
+  --c-yellow-hue: var(--c-yellow-hue-dim);
+  --c-green-hue: var(--c-green-hue-dim);
+  --c-mint-hue: var(--c-mint-hue-dim);
+  --c-teal-hue: var(--c-teal-hue-dim);
+  --c-cyan-hue: var(--c-cyan-hue-dim);
+  --c-blue-hue: var(--c-blue-hue-dim);
+  --c-indigo-hue: var(--c-indigo-hue-dim);
+  --c-purple-hue: var(--c-purple-hue-dim);
+  --c-pink-hue: var(--c-pink-hue-dim);
+  --c-brown-hue: var(--c-brown-hue-dim);
+}

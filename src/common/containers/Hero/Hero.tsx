@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Box, Title, factory } from '@/core';
-import { HeroRootCSS, HeroRootProps } from './types';
+import { HeroCSS, HeroRootProps } from './types';
 
-const css: HeroRootCSS = {
-  root: 'v2-hero-root',
+const css: Partial<HeroCSS> = {
+  root: 'v2-hero',
   title: 'v2-hero-title',
   content: 'v2-hero-content',
 };
