@@ -1,11 +1,13 @@
 import clsx from 'clsx';
-import React from 'react';
-import { Factory } from '@/types';
-import { factory } from '@/core/factory';
 import { useMergeRefs } from '@/hooks';
-import { Box, Transition } from '@/core/components';
-import { FloatingBoxProps } from '../Floating.types';
+import { Core, Factory } from '@/types';
+import { FloatingBoxProps } from '../types';
 import { useFloatingContext } from '../Floating.context';
+import { factory, Box, Transition } from '@/core';
+
+const css = {
+  box: 'v2-floating-box',
+};
 
 type FloatingBoxFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -19,24 +21,35 @@ const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
   const ctx = useFloatingContext();
   const refs = useMergeRefs(ref, ctx.floating);
 
-  if (ctx.disabled) {
-    return null;
-  }
+  if (ctx.disabled) return null;
 
-  const boxWidth = ctx.width === 'target' ? undefined : (ctx.width as React.CSSProperties['width']);
-  const boxStyles = { top: ctx.y ?? 0, left: ctx.x ?? 0, width: boxWidth, zIndex: ctx.zIndex };
+  const contextProps = ctx
+    ? {
+        id: ctx.getBoxId(),
+        'aria-labellabledby': ctx.getBoxId(),
+      }
+    : {};
+
+  const contextStyles = ctx
+    ? {
+        ...style,
+        top: ctx.y ?? 0,
+        left: ctx.x ?? 0,
+        width: ctx.width === 'target' ? undefined : (ctx.width as Core.CSS['width']),
+        zIndex: ctx.zIndex,
+      }
+    : {};
 
   return (
     <Transition {...ctx.transitionProps} mounted={ctx.isOpen}>
       {(transitionStyles) => (
         <Box
           {...forwardedProps}
-          id={ctx.getBoxId()}
-          role="dialog"
-          style={{ ...style, ...boxStyles, ...transitionStyles }}
-          className={clsx('v2-floating-box', className)}
-          aria-labelledby={ctx.getBoxId()}
+          {...contextProps}
+          style={{ ...contextStyles, ...transitionStyles }}
+          className={clsx(css.box, className)}
           tabIndex={-1}
+          role="dialog"
           ref={refs}
         >
           {children}

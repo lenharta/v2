@@ -1,7 +1,10 @@
-import { Icon } from '@/core/components';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { RadioIndicatorProps } from '../Radio.types';
+import { Box, Icon, factory } from '@/core';
+import { RadioIndicatorProps } from '../types';
+
+const css = {
+  indicator: 'v2-radio-indicator',
+};
 
 export type RadioIndicatorFactory = Factory.Config<{
   comp: 'div';
@@ -12,9 +15,9 @@ export type RadioIndicatorFactory = Factory.Config<{
 const RadioIndicator = factory((props, ref) => {
   const { ...forwardedProps } = props;
   return (
-    <div {...forwardedProps} ref={ref} className="v2-radio-indicator">
+    <Box {...forwardedProps} ref={ref} className={css.indicator}>
       <Icon name="radioChecked" />
-    </div>
+    </Box>
   );
 });
 

@@ -1,105 +1,134 @@
-export enum THEME_COLOR {
-  red = 'red',
-  orange = 'orange',
-  yellow = 'yellow',
-  green = 'green',
-  mint = 'mint',
-  teal = 'teal',
-  cyan = 'cyan',
-  blue = 'blue',
-  indigo = 'indigo',
-  purple = 'purple',
-  pink = 'pink',
-  brown = 'brown',
-}
+const COLOR = {
+  red: 'data-color-red',
+  orange: 'data-color-orange',
+  yellow: 'data-color-yellow',
+  green: 'data-color-green',
+  mint: 'data-color-mint',
+  teal: 'data-color-teal',
+  cyan: 'data-color-cyan',
+  blue: 'data-color-blue',
+  indigo: 'data-color-indigo',
+  purple: 'data-color-purple',
+  pink: 'data-color-pink',
+  brown: 'data-color-brown',
+};
 
-export enum THEME_DIR {
-  ltr = 'ltr',
-  rtl = 'rtl',
-}
+const ACCENT = {
+  red: 'data-prefers-accent-red',
+  orange: 'data-prefers-accent-orange',
+  yellow: 'data-prefers-accent-yellow',
+  green: 'data-prefers-accent-green',
+  mint: 'data-prefers-accent-mint',
+  teal: 'data-prefers-accent-teal',
+  cyan: 'data-prefers-accent-cyan',
+  blue: 'data-prefers-accent-blue',
+  indigo: 'data-prefers-accent-indigo',
+  purple: 'data-prefers-accent-purple',
+  pink: 'data-prefers-accent-pink',
+  brown: 'data-prefers-accent-brown',
+};
 
-export enum THEME_MODE {
-  dim = 'dim',
-  dark = 'dark',
-  light = 'light',
-}
+const ORIENTAION = {
+  vertical: 'data-orientation-vertical',
+  horizontal: 'data-orientation-horizontal',
+};
 
-export enum THEME_SCHEME {
-  accent = 'accent',
-  primary = 'primary',
-  secondary = 'secondary',
-}
+const DIR = {
+  ltr: 'data-prefers-dir-ltr',
+  rtl: 'data-prefers-dir-rtl',
+};
 
-export enum THEME_SIZE_COMPACT {
-  sm = 'small',
-  md = 'medium',
-  lg = 'large',
-}
+const MODE = {
+  dim: 'data-prefers-mode-dim',
+  dark: 'data-prefers-mode-dark',
+  light: 'data-prefers-mode-light',
+};
 
-export enum THEME_SIZE {
-  xs = 'x-small',
-  sm = 'small',
-  md = 'medium',
-  lg = 'large',
-  xl = 'x-large',
-}
+const SCHEME = {
+  accent: 'data-scheme-accent',
+  primary: 'data-scheme-primary',
+  secondary: 'data-scheme-secondary',
+};
 
-export enum THEME_SIZE_EXPANDED {
-  xxs = '2x-small',
-  xs = 'x-small',
-  sm = 'small',
-  md = 'medium',
-  lg = 'large',
-  xl = 'x-large',
-  xxl = '2x-large',
-}
+const SIZE_COMPACT = {
+  sm: 'data-size-sm',
+  md: 'data-size-md',
+  lg: 'data-size-lg',
+};
 
-export enum THEME_STATUS {
-  error = 'error',
-  warning = 'warning',
-  success = 'success',
-}
+const SIZE = {
+  xs: 'data-size-xs',
+  sm: 'data-size-sm',
+  md: 'data-size-md',
+  lg: 'data-size-lg',
+  xl: 'data-size-xl',
+};
 
-export enum THEME_PRIORITY {
-  low = 'low',
-  medium = 'medium',
-  high = 'high',
-}
+const SIZE_EXPANDED = {
+  xxs: 'data-size-xxs',
+  xs: 'data-size-xs',
+  sm: 'data-size-sm',
+  md: 'data-size-md',
+  lg: 'data-size-lg',
+  xl: 'data-size-xl',
+  xxl: 'data-size-xxl',
+};
 
-export enum THEME_INTERACTION_STATE {
-  enabled = 'enabled',
-  focused = 'focused',
-  hovered = 'hovered',
-  pressed = 'pressed',
-  selected = 'selected',
-  disabled = 'disabled',
-}
+const STATUS = {
+  error: 'data-status-error',
+  danger: 'data-status-danger',
+  warning: 'data-status-warning',
+  success: 'data-status-success',
+};
 
-export enum THEME_INTERACTION_VARIANT {
-  moveable = 'moveable',
-  clickable = 'clickable',
-  togglable = 'togglable',
-  expandable = 'expandable',
-  selectable = 'selectable',
-}
+const PRIORITY = {
+  low: 'data-priority-low',
+  high: 'data-priority-high',
+  medium: 'data-priority-medium',
+};
+
+const INTERACTION_STATE = {
+  default: 'data-state-default',
+  hovered: 'data-state-hovered',
+  pressed: 'data-state-pressed',
+  focused: 'data-state-focused',
+  disabled: 'data-state-disabled',
+  selected: 'data-state-selected',
+  expanded: 'data-state-expanded',
+};
+
+const INTERACTION_VARIANT = {
+  moveable: 'data-moveable',
+  clickable: 'data-clickable',
+  togglable: 'data-togglable',
+  expandable: 'data-expandable',
+  selectable: 'data-selectable',
+};
+
+const MODE_ATTRIBUTES = {
+  dir: 'data-prefers-mode-dir',
+  mode: 'data-prefers-mode-mode',
+  color: 'data-prefers-mode-color',
+};
 
 export declare namespace Theme {
-  export type Dir = keyof typeof THEME_DIR;
-  export type Mode = keyof typeof THEME_MODE;
-  export type Color = keyof typeof THEME_COLOR;
-  export type Scheme = keyof typeof THEME_SCHEME;
+  export type Dir = keyof typeof DIR;
+  export type Mode = keyof typeof MODE;
+  export type Color = keyof typeof COLOR;
+  export type Accent = keyof typeof ACCENT;
+  export type Scheme = keyof typeof SCHEME;
+  export type Orientation = keyof typeof ORIENTAION;
+  export type Priority = keyof typeof PRIORITY;
+  export type Status = keyof typeof STATUS;
 
-  export type Status = keyof typeof THEME_STATUS;
-  export type Priority = keyof typeof THEME_PRIORITY;
+  export type Size = keyof typeof SIZE;
+  export type SizeCompact = keyof typeof SIZE_COMPACT;
+  export type SizeExpanded = keyof typeof SIZE_EXPANDED;
 
-  export type Size = keyof typeof THEME_SIZE;
-  export type SizeCompact = keyof typeof THEME_SIZE_COMPACT;
-  export type SizeExpanded = keyof typeof THEME_SIZE_EXPANDED;
+  export type InteractionState = keyof typeof INTERACTION_STATE;
+  export type InteractionVariant = keyof typeof INTERACTION_VARIANT;
 
-  export type InteractionState = keyof typeof THEME_INTERACTION_STATE;
-  export type InteractionVariant = keyof typeof THEME_INTERACTION_VARIANT;
-
-  export type Attributes = 'dir' | 'mode' | 'color';
+  export type Attributes = keyof typeof MODE_ATTRIBUTES;
 
   export type Value3 = 1 | 2 | 3;
   export type Value6 = Value3 | 4 | 5 | 6;

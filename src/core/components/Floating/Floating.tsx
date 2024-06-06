@@ -1,11 +1,11 @@
 import React from 'react';
-import { useFloating } from './hooks';
+import { useFloating } from './use-floating';
 import { FloatingBox } from './FloatingBox';
-import { FloatingProps } from './Floating.types';
+import { FloatingProps } from './types';
 import { FloatingTarget } from './FloatingTarget';
-import { useClickOutside, useEventListener } from '@/hooks';
 import { FloatingProvider } from './Floating.context';
-import { getFloatingPlacement } from './utils';
+import { getFloatingPlacement } from './get-floating-placement';
+import { useClickOutside, useEventListener } from '@/hooks';
 
 type FloatingFactory = React.FC<FloatingProps> & {
   Target: typeof FloatingTarget;
@@ -81,37 +81,39 @@ const Floating: FloatingFactory = (props) => {
     [floating.payload.refs.setFloating]
   );
 
+  const transition = !transitionProps
+    ? {
+        duration: 159,
+        transition: {
+          transitionProperty: 'opacity',
+          out: { opacity: 0 },
+          in: { opacity: 1 },
+        },
+      }
+    : transitionProps;
+
   return (
     <React.Fragment>
       <FloatingProvider
         value={{
+          x: floating.payload.x!,
+          y: floating.payload.y!,
           width,
           zIndex,
           isOpen,
           disabled,
-          onClose: floating.onClose,
-          onChange: floating.onChange,
-          floating: floatingRef,
-          reference: referenceRef,
+          closeOnEscape,
+          closeOnClickOutside,
+          placementDependencies,
+          transitionProps: { mounted: isOpen, ...transition },
+          placement: floating.payload.placement,
           getBoxId: createBoxId,
           getTargetId: createTargetId,
+          reference: referenceRef,
+          floating: floatingRef,
           onPlacementChange,
-          placement: floating.payload.placement,
-          placementDependencies,
-          closeOnClickOutside,
-          closeOnEscape,
-          x: floating.payload.x!,
-          y: floating.payload.y!,
-          transitionProps: {
-            mounted: isOpen,
-            duration: transitionProps?.duration || 150,
-            transition: {
-              in: transitionProps?.transition?.in || { opacity: 1 },
-              out: transitionProps?.transition?.out || { opacity: 0 },
-              common: transitionProps?.transition?.common || {},
-              transitionProperty: transitionProps?.transition?.transitionProperty || 'opacity',
-            },
-          },
+          onChange: floating.onChange,
+          onClose: floating.onClose,
         }}
       >
         {children}
@@ -122,5 +124,5 @@ const Floating: FloatingFactory = (props) => {
 
 Floating.Box = FloatingBox;
 Floating.Target = FloatingTarget;
-Floating.displayName = '@v2/Floating';
+Floating.displayName = '@v2/Floating.Root';
 export { Floating };

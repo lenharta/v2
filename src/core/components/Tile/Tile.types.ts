@@ -1,4 +1,4 @@
-import { Core } from '@/types';
+import { Theme } from '@/types';
 
 type TileVariant = 'static' | 'clickable' | 'selectable' | 'optionable' | 'expandable';
 
@@ -21,12 +21,12 @@ interface TileProps extends TileVariantProps {
 
 interface TileGroupProps extends TileVariantProps {
   disabled?: boolean | undefined;
-  orientation?: Core.Orientation | undefined;
+  orientation?: Theme.Orientation | undefined;
 }
 
 interface TileContext extends TileVariantProps {
   disabled?: boolean | undefined;
-  orientation?: Core.Orientation | undefined;
+  orientation?: Theme.Orientation | undefined;
 }
 
 export type { TileVariant, TileVariantProps, TileProps, TileGroupProps, TileContext };

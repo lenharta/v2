@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { Footer, Header, Main } from '@/common';
 import { Factory } from '@/types';
 import { Box, factory } from '@/core';
 import { PageCSS, PageRootProps } from './types';
+import { Footer, Header, Main, SideMenu } from '@/common';
 
 const css: Partial<PageCSS> = {
   root: 'v2-page-root',
@@ -19,6 +19,7 @@ const Page = factory<PageFactory>((props, ref) => {
   return (
     <Box {...forwardedProps} className={clsx(css.root, className)} role="document" ref={ref}>
       <Header />
+      <SideMenu />
       <Main>
         {children}
         <Footer />

@@ -5,15 +5,21 @@
 }
 
 .v2-hero-title {
-  font-size: var(--fz-16);
+  font-size: var(--fz-14);
   font-weight: var(--fw-1);
   line-height: 1.2;
 }
 
 .v2-hero-content {
+  --x-total-side-items: 5;
+  --x-total-side-gaps: calc(var(--x-total-side-items) - 1);
+  --x-hero-items-height: calc(var(--size-action-root) * var(--x-total-side-items));
+  --x-hero-gaps-offset: calc(var(--s-1) * var(--x-total-side-gaps));
+  --x-hero-height: calc(var(--x-hero-items-height) + var(--x-hero-gaps-offset));
+
   width: 100%;
-  height: calc(var(--size-action-offset) * 5);
-  padding: var(--gutter);
+  height: var(--x-hero-height);
+  padding: var(--s-8);
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;

@@ -8,4 +8,3 @@ export * from './use-merge-refs';
 export * from './use-resize-observer';
 export * from './use-scroll-position';
 export * from './use-storage';
-export * from './use-transition';

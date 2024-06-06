@@ -1,10 +1,11 @@
+import clsx from 'clsx';
 import React from 'react';
+import { factory } from '@/core';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
 import { useMergeRefs } from '@/hooks';
-import { useFloatingContext } from '../Floating.context';
-import { FloatingTargetProps } from '../Floating.types';
 import { createEventCallback } from '@/utils';
+import { FloatingTargetProps } from '../types';
+import { useFloatingContext } from '../Floating.context';
 
 type FloatingTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -13,7 +14,7 @@ type FloatingTargetFactory = Factory.Config<{
 }>;
 
 const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
-  const { children, popupType = 'dialog', refProp = 'ref', ...otherProps } = props;
+  const { children, popupType = 'dialog', refProp = 'ref', ...additionalProps } = props;
 
   if (!React.isValidElement(children)) {
     throw new Error(
@@ -21,21 +22,34 @@ const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
     );
   }
 
-  const forwardedProps: any = otherProps;
+  const forwardedProps: any = additionalProps;
   const ctx = useFloatingContext();
   const refs = useMergeRefs(ctx.reference, (children as any).ref, ref);
+
+  const contextProps = ctx
+    ? {
+        id: forwardedProps.id || ctx.getTargetId(),
+        'aria-haspopup': forwardedProps['aria-haspopup'] || popupType,
+        'aria-expanded': forwardedProps['aria-expanded'] || ctx.isOpen,
+        'aria-controls': forwardedProps['aria-controls'] || ctx.getBoxId(),
+        onClick: createEventCallback(forwardedProps.onClick, (event) => {
+          event.stopPropagation();
+          ctx.onChange(ctx.isOpen);
+        }),
+      }
+    : {
+        id: forwardedProps.id,
+        'aria-haspopup': forwardedProps['aria-haspopup'] || popupType,
+        'aria-expanded': forwardedProps['aria-expanded'],
+        'aria-controls': forwardedProps['aria-controls'],
+        onClick: forwardedProps.onClick,
+      };
 
   return React.cloneElement(children, {
     ...forwardedProps,
     [refProp!]: refs,
-    id: ctx.getTargetId(),
-    'aria-haspopup': forwardedProps['aria-haspopup'] || popupType,
-    'aria-expanded': forwardedProps['aria-expanded'] || ctx.isOpen,
-    'aria-controls': forwardedProps['aria-controls'] || ctx.getBoxId(),
-    onClick: createEventCallback(otherProps.onClick, (event) => {
-      event.stopPropagation();
-      ctx.onChange(ctx.isOpen);
-    }),
+    className: clsx((children as any).className, additionalProps.className),
+    ...contextProps,
   });
 });
 

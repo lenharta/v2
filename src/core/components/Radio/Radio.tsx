@@ -1,9 +1,18 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { RadioProps } from './Radio.types';
-import { RadioIndicator } from './Indicator';
+import { RadioProps } from './types';
 import { RadioGroup } from './Group';
+import { RadioIndicator } from './Indicator';
+import { Box, Text, factory } from '@/core';
+
+const css = {
+  root: 'v2-radio',
+  copy: 'v2-radio-copy',
+  input: 'v2-radio-input',
+  label: 'v2-radio-label',
+  error: 'v2-radio-error',
+  message: 'v2-radio-message',
+};
 
 type RadioFactory = Factory.Config<{
   comp: 'input';
@@ -16,21 +25,19 @@ type RadioFactory = Factory.Config<{
 }>;
 
 const Radio = factory<RadioFactory>((props, ref) => {
-  const { className, label, description, error, ...forwardedProps } = props;
+  const { className, label, message, error, ...forwardedProps } = props;
   return (
-    <div {...forwardedProps} ref={ref} className={clsx('v2-radio', className)}>
-      <div className="v2-radio-inner">
-        <input className="v2-radio-input" />
+    <Box {...forwardedProps} ref={ref} className={clsx(css.root, className)}>
+      <input className={css.input} />
 
-        <Radio.Indicator />
+      <Radio.Indicator />
 
-        <div className="v2-radio-copy">
-          {label && <div className="v2-radio-label">{label}</div>}
-          {description && <div className="v2-radio-desc">{description}</div>}
-          {error && <div className="v2-radio-error">{error}</div>}
-        </div>
-      </div>
-    </div>
+      <Box className={css.copy}>
+        {label && <Text className={css.label}>{label}</Text>}
+        {message && <Text className={css.message}>{message}</Text>}
+        {error && <Text className={css.error}>{error}</Text>}
+      </Box>
+    </Box>
   );
 });
 

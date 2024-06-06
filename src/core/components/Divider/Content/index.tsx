@@ -1,24 +1,22 @@
-import React from 'react';
+import { factory } from '@/core';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { DividerContentProps } from '../Divider.types';
+import { DividerContentProps } from '../types';
 
 type DividerContentFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: DividerContentProps;
+  omits: 'children';
 }>;
 
 const DividerContent = factory<DividerContentFactory>((props, ref) => {
   const { label, position, show, className, ...forwardedProps } = props;
 
-  if (!label || show !== true) {
-    return null;
-  }
+  if (!label || show !== true) return null;
 
   return (
     <div {...forwardedProps} ref={ref} className={className} data-position={position}>
-      <React.Fragment>{label}</React.Fragment>
+      {label}
     </div>
   );
 });

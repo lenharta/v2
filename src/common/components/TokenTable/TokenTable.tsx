@@ -33,6 +33,6 @@ TokenTable.Body = TokenTableBody;
 TokenTable.Foot = TokenTableFoot;
 TokenTable.Head = TokenTableHead;
 
-TokenTable.displayName = '@v2/TokenTable.Root';
+TokenTable.displayName = '@v2/TokenTable';
 
 export { TokenTable };

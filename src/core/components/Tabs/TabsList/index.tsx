@@ -1,16 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
+import { TabsListProps } from '../types';
 import { useTabsContext } from '../context';
-import { Box, Divider, DividerProps } from '@/core/components';
-
-interface TabsListProps {
-  /** Defines additional props for the divider component. */
-  dividerProps?: DividerProps | undefined;
-  /** Defines a divider should be renderd between the tabslist and the tabpanel elements. */
-  withDivider?: boolean | undefined;
-}
+import { factory, Box, Divider } from '@/core';
 
 type TabsListFactory = Factory.Config<{
   ref: HTMLDivElement;

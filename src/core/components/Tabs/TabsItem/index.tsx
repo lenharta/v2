@@ -1,18 +1,9 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
+import { TabsItemProps } from '../types';
 import { useTabsContext } from '../context';
 import { createEventCallback } from '@/utils';
-import { Label, UnstyledButton } from '@/core/components';
-
-interface TabsItemProps {
-  label: string;
-  value: string;
-  disabled?: boolean | undefined;
-  leftContent?: React.ReactNode | undefined;
-  rightContent?: React.ReactNode | undefined;
-}
+import { factory, Label, UnstyledButton } from '@/core';
 
 type TabsItemFactory = Factory.Config<{
   ref: HTMLButtonElement;

@@ -1,14 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { Box } from '@/core/components';
+import { factory, Box } from '@/core';
 import { useTabsContext } from '../context';
-
-interface TabsPanelProps {
-  value: string;
-  style?: React.CSSProperties | undefined;
-  keepMounted?: boolean | undefined;
-}
+import { TabsPanelProps } from '../types';
 
 type TabsPanelFactory = Factory.Config<{
   ref: HTMLDivElement;

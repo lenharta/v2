@@ -1,6 +1,6 @@
-import { factory } from '@/core/factory';
-import { Factory } from '@/types';
 import clsx from 'clsx';
+import { factory } from '@/core';
+import { Factory } from '@/types';
 
 interface IconProps {
   name: keyof typeof Icons;

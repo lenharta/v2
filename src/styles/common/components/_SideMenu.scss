@@ -1,0 +1,13 @@
+.v2-sidemenu {
+  --x-sidemenu-height: calc(100% - calc(var(--size-action-offset) + calc(var(--s-1) * 1)));
+  --x-sidemenu-offset: var(--size-action-offset);
+
+  top: var(--size-action-offset);
+  left: 0;
+  height: var(--x-sidemenu-height);
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}

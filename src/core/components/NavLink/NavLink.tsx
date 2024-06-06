@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import { factory } from '@/core';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { NavLinkProps } from './NavLink.types';
 import { NavLinkGroup } from './Group';
+import { NavLinkProps } from './types';
 
 type NavLinkFactory = Factory.Config<{
   ref: HTMLAnchorElement;
@@ -35,4 +35,4 @@ const NavLink = factory<NavLinkFactory>((props, ref) => {
 });
 
 NavLink.Group = NavLinkGroup;
-NavLink.displayName = '@v2/NavLink';
+NavLink.displayName = '@v2/NavLink.Root';

@@ -1,5 +1,5 @@
-import { Core, Theme } from '@/types';
 import React from 'react';
+import { Theme } from '@/types';
 
 type ActionCSS = Record<'root' | 'spacer' | 'group', string>;
 type ActionScheme = 'default' | 'accent' | Theme.Color;
@@ -14,7 +14,7 @@ interface ActionGroupProps {
   selected?: boolean | undefined;
   withTitle?: boolean | undefined;
   children?: React.ReactNode | undefined;
-  orientation?: Core.Orientation | undefined;
+  orientation?: Theme.Orientation | undefined;
 }
 
 interface ActionContext {
@@ -25,7 +25,7 @@ interface ActionContext {
   selected?: boolean | undefined;
   withTitle?: boolean | undefined;
   getActionId: (v: string) => string;
-  orientation: Core.Orientation;
+  orientation: Theme.Orientation;
   value?: string | undefined;
 }
 

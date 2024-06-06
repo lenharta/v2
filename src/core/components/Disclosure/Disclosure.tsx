@@ -1,37 +1,26 @@
 import React from 'react';
-import { Box } from '@/core/components';
-import { Factory } from '@/types';
-import { factory } from '@/core/factory';
 import { flushSync } from 'react-dom';
-import { DisclosureProps } from './Disclosure.types';
+import { Factory } from '@/types';
+import { factory, Box } from '@/core';
 import { useDidUpdate, useMergeRefs } from '@/hooks';
+
+import { DisclosureProps } from './types';
+import { getElementHeight } from './get-element-height';
+import { getAutoHeightDuration } from './get-auto-height-duration';
 
 type CSS = React.CSSProperties;
 
-function getAutoHeightDuration(height: number | string) {
-  if (!height || typeof height === 'string') {
-    return 0;
-  }
-  const constant = height / 36;
-  return Math.round((4 + 15 * constant ** 0.25 + constant / 5) * 10);
-}
+const EMPTY_STYLE_OBJECT: CSS = {};
 
-function getElementHeight<T extends HTMLDivElement>(
-  element: React.RefObject<T | null> | { current?: { scrollHeight: number } }
-) {
-  return element.current ? element.current.scrollHeight : 'auto';
-}
+const COLLAPSED_STYLE_HEIGHT = 0;
 
-const raf = typeof window !== 'undefined' && window.requestAnimationFrame;
-
-const emptyStyleObject: CSS = {};
-
-const collapsedHeight = 0;
-const collapsedStyles: CSS = {
+const COLLAPSED_STYLE_OBJECT: CSS = {
   overflow: 'hidden',
   display: 'none',
-  height: collapsedHeight,
+  height: COLLAPSED_STYLE_HEIGHT,
 };
+
+const raf = typeof window !== 'undefined' && window.requestAnimationFrame;
 
 type DisclosureFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -52,7 +41,10 @@ const Disclosure = factory<DisclosureFactory>((props: DisclosureProps, ref) => {
 
   const elementRef = React.useRef<HTMLDivElement>(null);
   const mergedRefs = useMergeRefs(ref, elementRef);
-  const [rawStyles, setRawStyles] = React.useState(isOpen ? emptyStyleObject : collapsedStyles);
+
+  const [rawStyles, setRawStyles] = React.useState(
+    isOpen ? EMPTY_STYLE_OBJECT : COLLAPSED_STYLE_OBJECT
+  );
 
   const setStyles = (newStyles: CSS | ((oldStyles: CSS) => CSS)): void => {
     flushSync(() => setRawStyles(newStyles));
@@ -86,7 +78,7 @@ const Disclosure = factory<DisclosureFactory>((props: DisclosureProps, ref) => {
         raf(() => {
           const height = getElementHeight(elementRef);
           mergeStyles({ ...parseTransitionStyles(height), willChange: 'height', height });
-          raf(() => mergeStyles({ height: collapsedHeight, overflow: 'hidden' }));
+          raf(() => mergeStyles({ height: COLLAPSED_STYLE_HEIGHT, overflow: 'hidden' }));
         });
       }
     }
@@ -107,8 +99,8 @@ const Disclosure = factory<DisclosureFactory>((props: DisclosureProps, ref) => {
         }
 
         onTransitionEnd();
-      } else if (rawStyles.height === collapsedHeight) {
-        setStyles(collapsedStyles);
+      } else if (rawStyles.height === COLLAPSED_STYLE_HEIGHT) {
+        setStyles(COLLAPSED_STYLE_OBJECT);
         onTransitionEnd();
       }
     },

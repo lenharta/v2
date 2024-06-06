@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import './styles/index.scss';
-import { SITE_ROUTE_MAP } from './data';
-import { Root } from './root';
 import {
+  Layout,
   Contact,
   Experience,
   Landing,
@@ -19,46 +18,48 @@ import {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
-    errorElement: <Root.Error />,
+    element: <Layout />,
+    errorElement: <Layout.Error />,
     children: [
       {
-        path: SITE_ROUTE_MAP.contact.path,
-        element: <Contact />,
-        errorElement: <Contact.Error />,
-      },
-      {
-        path: SITE_ROUTE_MAP.experience.path,
-        element: <Experience />,
-        errorElement: <Experience.Error />,
-      },
-      {
-        path: SITE_ROUTE_MAP.landing.path,
+        path: '/',
+        index: true,
         element: <Landing />,
         errorElement: <Landing.Error />,
       },
       {
-        path: SITE_ROUTE_MAP.profile.path,
+        path: '/contact',
+        element: <Contact />,
+        errorElement: <Contact.Error />,
+      },
+      {
+        path: '/experience',
+        element: <Experience />,
+        errorElement: <Experience.Error />,
+      },
+      {
+        path: '/profile',
         element: <Profile />,
         errorElement: <Profile.Error />,
       },
       {
-        path: SITE_ROUTE_MAP.projects.path,
+        path: '/projects',
         element: <Projects />,
         errorElement: <Projects.Error />,
       },
       {
-        path: SITE_ROUTE_MAP.sandbox.path,
+        path: '/sandbox',
         element: <Sandbox />,
         errorElement: <Sandbox.Error />,
+        children: [{ index: true, element: <Sandbox.Directory /> }],
       },
       {
-        path: SITE_ROUTE_MAP.settings.path,
+        path: '/settings',
         element: <Settings />,
         errorElement: <Settings.Error />,
       },
       {
-        path: SITE_ROUTE_MAP.toolbox.path,
+        path: '/toolbox',
         element: <Toolbox />,
         errorElement: <Toolbox.Error />,
       },

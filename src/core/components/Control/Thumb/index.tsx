@@ -1,6 +1,6 @@
 import { Factory } from '@/types';
-import { ControlThumbProps } from '../Control.types';
-import { factory } from '@/core/factory';
+import { Box, factory } from '@/core';
+import { ControlThumbProps } from '../types';
 
 type ControlThumbFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -11,6 +11,7 @@ type ControlThumbFactory = Factory.Config<{
 const ControlThumb = factory<ControlThumbFactory>((props, ref) => {
   const {
     style,
+    children,
     className,
     transitionEasing,
     transitionDuration,
@@ -19,8 +20,9 @@ const ControlThumb = factory<ControlThumbFactory>((props, ref) => {
   } = props;
 
   return (
-    <div
+    <Box
       {...forwardedProps}
+      ref={ref}
       className={className}
       style={{
         ...style,
@@ -28,8 +30,9 @@ const ControlThumb = factory<ControlThumbFactory>((props, ref) => {
         transitionDuration: transitionDuration,
         transitionTimingFunction: transitionEasing,
       }}
-      ref={ref}
-    />
+    >
+      {children}
+    </Box>
   );
 });
 

@@ -36,7 +36,7 @@ const Action = factory<ActionRootFactory>((props, ref) => {
 
   const ctx = useActionContext();
 
-  const themeClasses = useThemeClasses({
+  const classes = useThemeClasses({
     prefix: css.root!,
     props: { scheme, variant },
     context: { scheme: ctx?.scheme, variant: ctx?.variant },
@@ -49,10 +49,10 @@ const Action = factory<ActionRootFactory>((props, ref) => {
         id: ctx.getActionId(label),
         title: ctx.withTitle ? label : undefined,
         'aria-label': forwardedProps['aria-label'] || label,
-        'aria-disabled': ctx.disabled || disabled,
-        'data-disabled': ctx.disabled || disabled,
-        'aria-selected': ctx.value === value || selected,
-        'data-selected': ctx.value === value || selected,
+        'aria-disabled': !!ctx.disabled || !!disabled || undefined,
+        'data-disabled': !!ctx.disabled || !!disabled || undefined,
+        'aria-selected': ctx.value === value || selected || undefined,
+        'data-selected': ctx.value === value || selected || undefined,
         'data-orientation': ctx.orientation,
         'data-core-action-item': true,
         onKeyDown: createKeyDownGroup({
@@ -67,10 +67,10 @@ const Action = factory<ActionRootFactory>((props, ref) => {
     : {
         title: withTitle ? label : undefined,
         'aria-label': forwardedProps['aria-label'] || label,
-        'aria-disabled': disabled,
-        'aria-selected': selected,
-        'data-disabled': disabled,
-        'data-selected': selected,
+        'aria-disabled': !!disabled || undefined,
+        'aria-selected': !!selected || undefined,
+        'data-disabled': !!disabled || undefined,
+        'data-selected': !!selected || undefined,
         'data-core-action-item': true,
       };
 
@@ -78,7 +78,7 @@ const Action = factory<ActionRootFactory>((props, ref) => {
     <UnstyledButton
       ref={ref}
       value={value}
-      className={themeClasses}
+      className={classes}
       {...forwardedProps}
       {...contextProps}
     >

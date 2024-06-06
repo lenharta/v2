@@ -1,14 +1,12 @@
 import clsx from 'clsx';
-import { Box } from '../../Box';
-import { factory } from '@/core/factory';
-import { Core, Factory } from '@/types';
+import { Factory } from '@/types';
+import { Box, factory } from '@/core';
+import { ToggleGroupProps } from '../types';
 import { ToggleProvider } from '../context';
 
-interface ToggleGroupProps extends Core.GroupProps {
-  group: string;
-  label?: React.ReactNode;
-  message?: React.ReactNode;
-}
+const css = {
+  group: 'v2-radio-group',
+};
 
 type ToggleGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -17,23 +15,13 @@ type ToggleGroupFactory = Factory.Config<{
 }>;
 
 const ToggleGroup = factory<ToggleGroupFactory>((props, ref) => {
-  const { children, className, message, orientation, ...forwardedProps } = props;
-
+  const { className, children, orientation = 'vertical', ...forwardedProps } = props;
   return (
-    <Box
-      {...forwardedProps}
-      aria-orientation={orientation}
-      data-orientation={orientation}
-      className={clsx('v2-toggle-group', className)}
-      ref={ref}
-    >
-      <ToggleProvider value={{}}>
-        {children}
-        {message}
-      </ToggleProvider>
+    <Box {...forwardedProps} className={clsx(css.group, className)} ref={ref}>
+      <ToggleProvider value={{ orientation }}>{children}</ToggleProvider>
     </Box>
   );
 });
 
-export { ToggleGroup, type ToggleGroupProps };
 ToggleGroup.displayName = '@v2/Toggle.Group';
+export { ToggleGroup };

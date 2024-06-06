@@ -1,24 +1,24 @@
-import { Core, Theme } from '@/types';
+import { Theme } from '@/types';
 
 type ButtonCSS = Record<'root' | 'group' | 'label' | 'content', string>;
 type ButtonScheme = 'default' | 'contrast' | 'accent' | Theme.Color;
 type ButtonVariant = 'default' | 'elevated';
 
 interface ButtonThemeProps {
-  size?: Core.Size | undefined;
+  size?: Theme.Size | undefined;
   scheme?: ButtonScheme | undefined;
   variant?: ButtonVariant | undefined;
 }
 
 interface ButtonContext extends ButtonThemeProps {
   disabled?: boolean | undefined;
-  orientation: Core.Orientation;
+  orientation: Theme.Orientation;
   getItemId: (id?: string | undefined) => string;
 }
 
 interface ButtonGroupProps extends ButtonThemeProps {
   disabled?: boolean | undefined;
-  orientation?: Core.Orientation | undefined;
+  orientation?: Theme.Orientation | undefined;
 }
 
 interface ButtonRootProps extends ButtonThemeProps {
