@@ -12,6 +12,7 @@ export * from './SandboxImage';
 export * from './SandboxLabel';
 export * from './SandboxNavLink';
 export * from './SandboxRadio';
+export * from './SandboxSpacing';
 export * from './SandboxStack';
 export * from './SandboxTabs';
 export * from './SandboxText';
