@@ -4,28 +4,25 @@ type ButtonCSS = Record<'root' | 'group' | 'label' | 'content', string>;
 type ButtonScheme = 'default' | 'contrast' | 'accent' | Theme.Color;
 type ButtonVariant = 'default' | 'elevated';
 
-interface ButtonContext {
+interface ButtonThemeProps {
   size?: Core.Size | undefined;
   scheme?: ButtonScheme | undefined;
   variant?: ButtonVariant | undefined;
+}
+
+interface ButtonContext extends ButtonThemeProps {
   disabled?: boolean | undefined;
   orientation: Core.Orientation;
   getItemId: (id?: string | undefined) => string;
 }
 
-interface ButtonGroupProps {
-  size?: Core.Size | undefined;
-  scheme?: ButtonScheme | undefined;
-  variant?: ButtonVariant | undefined;
+interface ButtonGroupProps extends ButtonThemeProps {
   disabled?: boolean | undefined;
   orientation?: Core.Orientation | undefined;
 }
 
-interface ButtonRootProps {
-  size?: Core.Size | undefined;
-  scheme?: ButtonScheme | undefined;
+interface ButtonRootProps extends ButtonThemeProps {
   label?: string | undefined;
-  variant?: ButtonVariant | undefined;
   disabled?: boolean | undefined;
   children?: React.ReactNode | undefined;
   leftContent?: React.ReactNode | undefined;
@@ -39,4 +36,5 @@ export type {
   ButtonContext,
   ButtonRootProps,
   ButtonGroupProps,
+  ButtonThemeProps,
 };

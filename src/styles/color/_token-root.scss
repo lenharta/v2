@@ -35,18 +35,18 @@
   --c-pink-hue-light: 349, 100%;
   --c-brown-hue-light: 34, 27%;
 
-  --c-red-hue-light-level: 59%;
-  --c-orange-hue-light-level: 50%;
-  --c-yellow-hue-light-level: 50%;
-  --c-green-hue-light-level: 49%;
-  --c-mint-hue-light-level: 39%;
-  --c-teal-hue-light-level: 48%;
-  --c-cyan-hue-light-level: 55%;
-  --c-blue-hue-light-level: 50%;
-  --c-indigo-hue-light-level: 59%;
-  --c-purple-hue-light-level: 60%;
-  --c-pink-hue-light-level: 59%;
-  --c-brown-hue-light-level: 50%;
+  --c-red-hsl-light: var(--c-red-hue-light), 59%;
+  --c-orange-hsl-light: var(--c-orange-hue-light), 50%;
+  --c-yellow-hsl-light: var(--c-yellow-hue-light), 50%;
+  --c-green-hsl-light: var(--c-green-hue-light), 49%;
+  --c-mint-hsl-light: var(--c-mint-hue-light), 39%;
+  --c-teal-hsl-light: var(--c-teal-hue-light), 48%;
+  --c-cyan-hsl-light: var(--c-cyan-hue-light), 55%;
+  --c-blue-hsl-light: var(--c-blue-hue-light), 50%;
+  --c-indigo-hsl-light: var(--c-indigo-hue-light), 59%;
+  --c-purple-hsl-light: var(--c-purple-hue-light), 60%;
+  --c-pink-hsl-light: var(--c-pink-hue-light), 59%;
+  --c-brown-hsl-light: var(--c-brown-hue-light), 50%;
 
   // TOKEN | COLOR | MODE | DARK
 
@@ -76,18 +76,18 @@
   --c-pink-hue-dark: 348, 100%;
   --c-brown-hue-dark: 34, 29%;
 
-  --c-red-hue-dark-level: 61%;
-  --c-orange-hue-dark-level: 52%;
-  --c-yellow-hue-dark-level: 52%;
-  --c-green-hue-dark-level: 50%;
-  --c-mint-hue-dark-level: 62%;
-  --c-teal-hue-dark-level: 57%;
-  --c-cyan-hue-dark-level: 70%;
-  --c-blue-hue-dark-level: 52%;
-  --c-indigo-hue-dark-level: 63%;
-  --c-purple-hue-dark-level: 65%;
-  --c-pink-hue-dark-level: 60%;
-  --c-brown-hue-dark-level: 54%;
+  --c-red-hsl-dark: var(--c-red-hue-dark), 61%;
+  --c-orange-hsl-dark: var(--c-orange-hue-dark), 52%;
+  --c-yellow-hsl-dark: var(--c-yellow-hue-dark), 52%;
+  --c-green-hsl-dark: var(--c-green-hue-dark), 50%;
+  --c-mint-hsl-dark: var(--c-mint-hue-dark), 62%;
+  --c-teal-hsl-dark: var(--c-teal-hue-dark), 57%;
+  --c-cyan-hsl-dark: var(--c-cyan-hue-dark), 70%;
+  --c-blue-hsl-dark: var(--c-blue-hue-dark), 52%;
+  --c-indigo-hsl-dark: var(--c-indigo-hue-dark), 63%;
+  --c-purple-hsl-dark: var(--c-purple-hue-dark), 65%;
+  --c-pink-hsl-dark: var(--c-pink-hue-dark), 60%;
+  --c-brown-hsl-dark: var(--c-brown-hue-dark), 54%;
 
   // TOKEN | COLOR | MODE | DIM
 
@@ -117,16 +117,16 @@
   --c-pink-hue-dim: 348, 100%;
   --c-brown-hue-dim: 34, 29%;
 
-  --c-red-hue-dim-level: 61%;
-  --c-orange-hue-dim-level: 52%;
-  --c-yellow-hue-dim-level: 52%;
-  --c-green-hue-dim-level: 50%;
-  --c-mint-hue-dim-level: 62%;
-  --c-teal-hue-dim-level: 57%;
-  --c-cyan-hue-dim-level: 70%;
-  --c-blue-hue-dim-level: 52%;
-  --c-indigo-hue-dim-level: 63%;
-  --c-purple-hue-dim-level: 65%;
-  --c-pink-hue-dim-level: 60%;
-  --c-brown-hue-dim-level: 54%;
+  --c-red-hsl-dim: var(--c-red-hue-dim), 61%;
+  --c-orange-hsl-dim: var(--c-orange-hue-dim), 52%;
+  --c-yellow-hsl-dim: var(--c-yellow-hue-dim), 52%;
+  --c-green-hsl-dim: var(--c-green-hue-dim), 50%;
+  --c-mint-hsl-dim: var(--c-mint-hue-dim), 62%;
+  --c-teal-hsl-dim: var(--c-teal-hue-dim), 57%;
+  --c-cyan-hsl-dim: var(--c-cyan-hue-dim), 70%;
+  --c-blue-hsl-dim: var(--c-blue-hue-dim), 52%;
+  --c-indigo-hsl-dim: var(--c-indigo-hue-dim), 63%;
+  --c-purple-hsl-dim: var(--c-purple-hue-dim), 65%;
+  --c-pink-hsl-dim: var(--c-pink-hue-dim), 60%;
+  --c-brown-hsl-dim: var(--c-brown-hue-dim), 54%;
 }

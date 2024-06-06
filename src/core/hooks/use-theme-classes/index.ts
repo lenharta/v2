@@ -31,7 +31,7 @@ function useThemeClasses<T extends Record<string, any>, K extends keyof T>(
         }),
         {}
       ),
-    [context, props]
+    [prefix, className, context, props, defaultProps]
   );
 
   return clsx(prefix, cx, className);

@@ -3,6 +3,7 @@ export * from './Action';
 export * from './Box';
 export * from './Button';
 export * from './Control';
+export * from './Checkbox';
 export * from './Disclosure';
 export * from './Divider';
 export * from './Floating';

@@ -1,10 +1,7 @@
 .v2-stack {
   gap: var(--v2-stack-gap);
-  width: 100%;
-  display: flex;
-  align-items: var(--v2-align, flex-start);
-  justify-content: var(--v2-justify, flex-start);
   flex-direction: column;
+  display: flex;
 
   &-gap--xs {
     --v2-stack-gap: calc(var(--unit) * 1);

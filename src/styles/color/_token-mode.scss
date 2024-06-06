@@ -26,6 +26,19 @@
   --c-purple-hue: var(--c-purple-hue-light);
   --c-pink-hue: var(--c-pink-hue-light);
   --c-brown-hue: var(--c-brown-hue-light);
+
+  --c-red-hsl: var(--c-red-hsl-light);
+  --c-orange-hsl: var(--c-orange-hsl-light);
+  --c-yellow-hsl: var(--c-yellow-hsl-light);
+  --c-green-hsl: var(--c-green-hsl-light);
+  --c-mint-hsl: var(--c-mint-hsl-light);
+  --c-teal-hsl: var(--c-teal-hsl-light);
+  --c-cyan-hsl: var(--c-cyan-hsl-light);
+  --c-blue-hsl: var(--c-blue-hsl-light);
+  --c-indigo-hsl: var(--c-indigo-hsl-light);
+  --c-purple-hsl: var(--c-purple-hsl-light);
+  --c-pink-hsl: var(--c-pink-hsl-light);
+  --c-brown-hsl: var(--c-brown-hsl-light);
 }
 
 @include mixins.theme-mode('dark') {
@@ -54,6 +67,19 @@
   --c-purple-hue: var(--c-purple-hue-dark);
   --c-pink-hue: var(--c-pink-hue-dark);
   --c-brown-hue: var(--c-brown-hue-dark);
+
+  --c-red-hsl: var(--c-red-hsl-dark);
+  --c-orange-hsl: var(--c-orange-hsl-dark);
+  --c-yellow-hsl: var(--c-yellow-hsl-dark);
+  --c-green-hsl: var(--c-green-hsl-dark);
+  --c-mint-hsl: var(--c-mint-hsl-dark);
+  --c-teal-hsl: var(--c-teal-hsl-dark);
+  --c-cyan-hsl: var(--c-cyan-hsl-dark);
+  --c-blue-hsl: var(--c-blue-hsl-dark);
+  --c-indigo-hsl: var(--c-indigo-hsl-dark);
+  --c-purple-hsl: var(--c-purple-hsl-dark);
+  --c-pink-hsl: var(--c-pink-hsl-dark);
+  --c-brown-hsl: var(--c-brown-hsl-dark);
 }
 
 @include mixins.theme-mode('dim') {
@@ -82,4 +108,17 @@
   --c-purple-hue: var(--c-purple-hue-dim);
   --c-pink-hue: var(--c-pink-hue-dim);
   --c-brown-hue: var(--c-brown-hue-dim);
+
+  --c-red-hsl: var(--c-red-hsl-dim);
+  --c-orange-hsl: var(--c-orange-hsl-dim);
+  --c-yellow-hsl: var(--c-yellow-hsl-dim);
+  --c-green-hsl: var(--c-green-hsl-dim);
+  --c-mint-hsl: var(--c-mint-hsl-dim);
+  --c-teal-hsl: var(--c-teal-hsl-dim);
+  --c-cyan-hsl: var(--c-cyan-hsl-dim);
+  --c-blue-hsl: var(--c-blue-hsl-dim);
+  --c-indigo-hsl: var(--c-indigo-hsl-dim);
+  --c-purple-hsl: var(--c-purple-hsl-dim);
+  --c-pink-hsl: var(--c-pink-hsl-dim);
+  --c-brown-hsl: var(--c-brown-hsl-dim);
 }

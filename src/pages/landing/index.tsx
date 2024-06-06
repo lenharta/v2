@@ -1,200 +1,130 @@
-import clsx from 'clsx';
 import React from 'react';
-import { LandingError } from './landing-error';
-
+import { Stack, Text } from '@/core';
+import { Hero, Page, Section, TokenTable } from '@/common';
+import { LandingError } from './LandingError';
+import { LandingTitle } from './LandingTitle';
 import { Theme } from '@/types';
-import { Hero, Page, Section } from '@/common';
-import { objectKeys, mergeProps } from '@/utils';
-import { Box, Button, ButtonScheme, ButtonVariant, Icon, Text } from '@/core';
+import clsx from 'clsx';
 
 type LandingRouteFactory = React.FC<{}> & {
   Error: typeof LandingError;
 };
 
-const dataColumnOne = [
-  { background: 'base-1', color: 'text-1', border: 'transparent' },
-  { background: 'base-2', color: 'text-1', border: 'transparent' },
-  { background: 'base-3', color: 'text-1', border: 'transparent' },
-  { background: 'base-4', color: 'text-1', border: 'transparent' },
-  { background: 'base-5', color: 'text-1', border: 'transparent' },
-  { background: 'base-6', color: 'text-1', border: 'transparent' },
-];
-
-const dataColumnTwo = [
-  { background: 'base-1--hover', color: 'text-1', border: 'transparent' },
-  { background: 'base-2--hover', color: 'text-1', border: 'transparent' },
-  { background: 'base-3--hover', color: 'text-1', border: 'transparent' },
-  { background: 'base-4--hover', color: 'text-1', border: 'transparent' },
-  { background: 'base-5--hover', color: 'text-1', border: 'transparent' },
-  { background: 'base-6--hover', color: 'text-1', border: 'transparent' },
-];
-
-const dataColumnThree = [
-  { background: 'base-1--pressed', color: 'text-1', border: 'transparent' },
-  { background: 'base-2--pressed', color: 'text-1', border: 'transparent' },
-  { background: 'base-3--pressed', color: 'text-1', border: 'transparent' },
-  { background: 'base-4--pressed', color: 'text-1', border: 'transparent' },
-  { background: 'base-5--pressed', color: 'text-1', border: 'transparent' },
-  { background: 'base-6--pressed', color: 'text-1', border: 'transparent' },
-];
-
-const dataColumnFour = [
-  { background: 'base-1--selected', color: 'text-1', border: 'transparent' },
-  { background: 'base-2--selected', color: 'text-1', border: 'transparent' },
-  { background: 'base-3--selected', color: 'text-1', border: 'transparent' },
-  { background: 'base-4--selected', color: 'text-1', border: 'transparent' },
-  { background: 'base-5--selected', color: 'text-1', border: 'transparent' },
-  { background: 'base-6--selected', color: 'text-1', border: 'transparent' },
-];
-
-function getToken(id: string | number, value: string | number) {
-  return `var(--${id}-${value})`;
+interface SpacingSwatchProps {
+  level?: Theme.Value16;
 }
 
-const ButtonDemo = () => {
+const css = {
+  swatch: 'v2-token-table-swatch',
+};
+
+const SpacingSwatch = (props: SpacingSwatchProps) => {
+  const { level = 1 } = props;
   return (
-    <Section>
-      <Button.Group>
-        <Button scheme="default" variant="default">
-          Button | default-default
-        </Button>
-        <Button scheme="default" variant="elevated">
-          Button | default-elevated
-        </Button>
-        <Button scheme="accent" variant="default">
-          Button | accent-default
-        </Button>
-      </Button.Group>
-    </Section>
+    <div
+      className={clsx(css.swatch)}
+      style={{
+        height: `var(--s-${level})`,
+        width: `var(--s-${level})`,
+      }}
+    />
   );
 };
 
-const TokenDemo = () => {
+const SpacingTable = () => {
   return (
-    <Section>
-      <Box className="v2-demo-token-grid">
-        <TokenColumn data={dataColumnOne} />
-        <TokenColumn data={dataColumnTwo} />
-        <TokenColumn data={dataColumnThree} />
-        <TokenColumn data={dataColumnFour} />
-      </Box>
-    </Section>
+    <TokenTable>
+      <TokenTable.Head>
+        <TokenTable.Row>
+          <TokenTable.Cell>Name</TokenTable.Cell>
+          <TokenTable.Cell>Token</TokenTable.Cell>
+          <TokenTable.Cell>Swatch</TokenTable.Cell>
+        </TokenTable.Row>
+      </TokenTable.Head>
+      <TokenTable.Body>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 1</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-1)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={1} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 2</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-2)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={2} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 3</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-3)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={3} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 4</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-4)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={4} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 5</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-5)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={5} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 6</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-6)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={6} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 7</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-7)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={7} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 8</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-8)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={8} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 9</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-9)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={9} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 10</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-10)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={10} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 11</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-11)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={11} />} />
+        </TokenTable.Row>
+        <TokenTable.Row>
+          <TokenTable.Cell>Spacing 12</TokenTable.Cell>
+          <TokenTable.Cell>var(--s-12)</TokenTable.Cell>
+          <TokenTable.Cell children={<SpacingSwatch level={12} />} />
+        </TokenTable.Row>
+      </TokenTable.Body>
+      <TokenTable.Foot>
+        <TokenTable.Row>
+          <TokenTable.Cell></TokenTable.Cell>
+          <TokenTable.Cell></TokenTable.Cell>
+          <TokenTable.Cell></TokenTable.Cell>
+        </TokenTable.Row>
+      </TokenTable.Foot>
+    </TokenTable>
   );
 };
 
-const TokenColumn = (props: {
-  tokenKey?: string | undefined;
-  data: Partial<{
-    background: string | undefined;
-    border: string | undefined;
-    color: string | undefined;
-  }>[];
-}) => {
-  const { data, tokenKey = 'c' } = props;
+const Landing: LandingRouteFactory = ({}) => {
   return (
-    <div className="v2-demo-token-column">
-      {data.map((tokens) => {
-        const tokenLabel = ['c-', tokens.background].join('');
-        const tokenData = objectKeys(tokens).map((i) => tokens[i] && tokens[i]);
-        const tokenId = tokenData.reduce((prev, curr) => prev && (prev += prev + curr), '');
-
-        const tokenStyles = {
-          color: getToken(tokenKey, tokens.color || 'text-1'),
-          borderColor: getToken(tokenKey, tokens.border || 'transparent'),
-          backgroundColor: getToken(tokenKey, tokens.background || 'base-1'),
-        };
-
-        return (
-          <div key={tokenId} style={tokenStyles} className="v2-demo-token-item">
-            <Icon name="palette" />
-            <Text>{tokenLabel}</Text>
-          </div>
-        );
-      })}
-    </div>
+    <Page>
+      <Hero title={<LandingTitle />} />
+      <Section>
+        <Text>Content</Text>
+        <SpacingTable />
+      </Section>
+    </Page>
   );
 };
-
-interface SampleContext {
-  size?: Theme.Size | undefined;
-  scheme?: ButtonVariant | undefined;
-  variant?: ButtonScheme | undefined;
-  getItemId: () => string;
-}
-
-interface SampleThemeProps {
-  size?: Theme.Size | undefined;
-  scheme?: ButtonVariant | undefined;
-  variant?: ButtonScheme | undefined;
-}
-
-interface SampleGroupProps extends SampleThemeProps {
-  className?: string | undefined;
-  children?: React.ReactNode | undefined;
-}
-
-interface SampleItemProps extends SampleThemeProps {
-  className?: string | undefined;
-  children?: React.ReactNode | undefined;
-}
-
-const defaultSampleProps: Partial<SampleItemProps> = {
-  size: 'sm',
-  scheme: 'default',
-  variant: 'default',
-};
-
-const SampleContext = React.createContext({} as SampleContext);
-const SampleProvider = SampleContext.Provider;
-const useSampleContext = () => React.useContext(SampleContext);
-
-const SampleGroup = (props: SampleGroupProps) => {
-  const { size, scheme, variant, children, ...otherProps } = props;
-
-  const uid = React.useId();
-  const getItemId = () => `group${uid}item`;
-
-  return (
-    <div {...otherProps}>
-      <SampleProvider value={{ size, scheme, variant, getItemId }}>
-        <React.Fragment>{children}</React.Fragment>
-      </SampleProvider>
-    </div>
-  );
-};
-
-const SampleItem = (props: SampleItemProps) => {
-  const { size, scheme, variant, children, ...otherProps } = props;
-
-  const ctx = useSampleContext();
-
-  return (
-    <div {...otherProps} className="v2-sample-item" id={ctx.getItemId()}>
-      {children}
-    </div>
-  );
-};
-
-const SampleDemo = () => {
-  return (
-    <Section>
-      <SampleGroup size="lg">
-        <SampleItem size="xs">Item 1</SampleItem>
-        <SampleItem>Item 2</SampleItem>
-        <SampleItem>Item 3</SampleItem>
-      </SampleGroup>
-    </Section>
-  );
-};
-
-const Landing: LandingRouteFactory = () => (
-  <Page>
-    <Hero title="Overview" />
-    <SampleDemo />
-    {/* <TokenDemo /> */}
-    {/* <ButtonDemo /> */}
-  </Page>
-);
 
 Landing.Error = LandingError;
 Landing.displayName = '@v2/Landing.Route';
