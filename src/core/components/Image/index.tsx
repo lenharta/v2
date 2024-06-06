@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React from 'react';
+import { factory } from '@/core';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
 import { createEventCallback } from '@/utils';
 
-const DemoImageSrc = 'https://placehold.co/600x400?text=Placeholder';
+const DEFAULT_IMAGE_SRC = 'https://placehold.co/600x400?text=Placeholder';
 
 interface ImageProps {
   alt: string;
@@ -77,4 +77,4 @@ const Image = factory<ImageFactory>((props, ref) => {
 });
 
 Image.displayName = '@v2/Image';
-export { Image, DemoImageSrc, type ImageProps };
+export { Image, DEFAULT_IMAGE_SRC, type ImageProps };

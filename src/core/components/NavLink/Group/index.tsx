@@ -1,9 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Box } from '@/core/components';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { NavLinkGroupProps } from '../NavLink.types';
+import { factory, Box } from '@/core';
+import { NavLinkGroupProps } from '../types';
 
 type NavLinkGroupFactory = Factory.Config<{
   comp: 'div';

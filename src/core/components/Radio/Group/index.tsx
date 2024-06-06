@@ -1,9 +1,12 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { RadioGroupProps } from '../Radio.types';
-import { RadioGroupProvider } from '../Radio.context';
+import { Box, factory } from '@/core';
+import { RadioGroupProps } from '../types';
+import { RadioGroupProvider } from '../context';
+
+const css = {
+  group: 'v2-radio-group',
+};
 
 type RadioGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -14,11 +17,9 @@ type RadioGroupFactory = Factory.Config<{
 const RadioGroup = factory<RadioGroupFactory>((props, ref) => {
   const { className, children, orientation = 'vertical', ...forwardedProps } = props;
   return (
-    <div {...forwardedProps} className={clsx('v2-radio-group', className)} ref={ref}>
-      <RadioGroupProvider value={{ orientation }}>
-        <React.Fragment>{children}</React.Fragment>
-      </RadioGroupProvider>
-    </div>
+    <Box {...forwardedProps} className={clsx(css.group, className)} ref={ref}>
+      <RadioGroupProvider value={{ orientation }}>{children}</RadioGroupProvider>
+    </Box>
   );
 });
 

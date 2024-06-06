@@ -1,100 +1,88 @@
-const SITE_ROUTE_MAP_LANDING = {
-  path: '/',
-  label: 'landing',
-  tunnel: ['/'],
-  children: [],
-} as const;
+import { Site } from '@/types';
 
-const SITE_ROUTE_MAP_CONTACT = {
-  path: '/contact',
-  label: 'contact',
-  tunnel: ['contact'],
-  children: [],
-} as const;
+const SITE_ROUTE_MAP_HOME: Site.RouteMap = {
+  index: true,
+  id: 'home',
+  path: '/home',
+  icon: 'home',
+};
 
-const SITE_ROUTE_MAP_TOOLBOX = {
-  path: '/toolbox',
-  label: 'toolbox',
-  tunnel: ['toolbox'],
-  children: [],
-} as const;
-
-const SITE_ROUTE_MAP_PROFILE = {
-  path: '/profile',
-  label: 'profile',
-  tunnel: ['profile'],
-  children: [],
-} as const;
-
-const SITE_ROUTE_MAP_SANDBOX = {
-  path: '/sandbox',
-  label: 'sandbox',
-  tunnel: ['sandbox'],
-  children: [
-    { path: '/sandbox/accordion', tunnel: ['/sandbox', '/accordion'] },
-    { path: '/sandbox/action', tunnel: ['/sandbox', '/action'] },
-    { path: '/sandbox/box', tunnel: ['/sandbox', '/box'] },
-    { path: '/sandbox/button', tunnel: ['/sandbox', '/button'] },
-    { path: '/sandbox/checkbox', tunnel: ['/sandbox', '/checkbox'] },
-    { path: '/sandbox/control', tunnel: ['/sandbox', '/control'] },
-    { path: '/sandbox/disclosure', tunnel: ['/sandbox', '/disclosure'] },
-    { path: '/sandbox/divider', tunnel: ['/sandbox', '/divider'] },
-    { path: '/sandbox/floating', tunnel: ['/sandbox', '/floating'] },
-    { path: '/sandbox/icon', tunnel: ['/sandbox', '/icon'] },
-    { path: '/sandbox/image', tunnel: ['/sandbox', '/image'] },
-    { path: '/sandbox/label', tunnel: ['/sandbox', '/label'] },
-    { path: '/sandbox/navlink', tunnel: ['/sandbox', '/navlink'] },
-    { path: '/sandbox/radio', tunnel: ['/sandbox', '/radio'] },
-    { path: '/sandbox/stack', tunnel: ['/sandbox', '/stack'] },
-    { path: '/sandbox/tabs', tunnel: ['/sandbox', '/tabs'] },
-    { path: '/sandbox/text', tunnel: ['/sandbox', '/text'] },
-    { path: '/sandbox/textbox', tunnel: ['/sandbox', '/textbox'] },
-    { path: '/sandbox/tile', tunnel: ['/sandbox', '/tile'] },
-    { path: '/sandbox/title', tunnel: ['/sandbox', '/title'] },
-    { path: '/sandbox/toggle', tunnel: ['/sandbox', '/toggle'] },
-    { path: '/sandbox/transition', tunnel: ['/sandbox', '/transition'] },
-    { path: '/sandbox/unstyled', tunnel: ['/sandbox', '/unstyled'] },
-    { path: '/sandbox/visuallyhidden', tunnel: ['/sandbox', '/visuallyhidden'] },
-  ],
-} as const;
-
-const SITE_ROUTE_MAP_PROJECTS = {
-  path: '/projects',
-  label: 'projects',
-  tunnel: ['projects'],
-  children: [],
-} as const;
-
-const SITE_ROUTE_MAP_SETTINGS = {
-  path: '/settings',
-  label: 'settings',
-  tunnel: ['settings'],
-  children: [],
-} as const;
-
-const SITE_ROUTE_MAP_EXPERIENCE = {
+const SITE_ROUTE_MAP_EXPERIENCE: Site.RouteMap = {
+  id: 'experience',
   path: '/experience',
-  label: 'experience',
-  tunnel: ['experience'],
-  children: [],
-} as const;
+  icon: 'work',
+};
+
+const SITE_ROUTE_MAP_PROJECTS: Site.RouteMap = {
+  id: 'projects',
+  path: '/projects',
+  icon: 'project',
+};
+
+const SITE_ROUTE_MAP_SANDBOX: Site.RouteMap = {
+  id: 'sandbox',
+  path: '/sandbox',
+  icon: 'stack',
+  routes: [
+    { id: 'accordion', icon: 'stack', path: '/sandbox/accordion', index: true },
+    { id: 'action', icon: 'stack', path: '/sandbox/action' },
+    { id: 'box', icon: 'stack', path: '/sandbox/box' },
+    { id: 'button', icon: 'stack', path: '/sandbox/button' },
+    { id: 'checkbox', icon: 'stack', path: '/sandbox/checkbox' },
+    { id: 'control', icon: 'stack', path: '/sandbox/control' },
+    { id: 'disclosure', icon: 'stack', path: '/sandbox/disclosure' },
+    { id: 'divider', icon: 'stack', path: '/sandbox/divider' },
+    { id: 'floating', icon: 'stack', path: '/sandbox/floating' },
+    { id: 'icon', icon: 'stack', path: '/sandbox/icon' },
+    { id: 'image', icon: 'stack', path: '/sandbox/image' },
+    { id: 'label', icon: 'stack', path: '/sandbox/label' },
+    { id: 'navlink', icon: 'stack', path: '/sandbox/navlink' },
+    { id: 'radio', icon: 'stack', path: '/sandbox/radio' },
+    { id: 'spacing', icon: 'stack', path: '/sandbox/spacing' },
+    { id: 'stack', icon: 'stack', path: '/sandbox/stack' },
+    { id: 'tabs', icon: 'stack', path: '/sandbox/tabs' },
+    { id: 'text', icon: 'stack', path: '/sandbox/text' },
+    { id: 'textbox', icon: 'stack', path: '/sandbox/textbox' },
+    { id: 'tile', icon: 'stack', path: '/sandbox/tile' },
+    { id: 'title', icon: 'stack', path: '/sandbox/title' },
+    { id: 'toggle', icon: 'stack', path: '/sandbox/toggle' },
+    { id: 'transition', icon: 'stack', path: '/sandbox/transition' },
+    { id: 'unstyled', icon: 'stack', path: '/sandbox/unstyled' },
+  ],
+};
+
+const SITE_ROUTE_MAP_SETTINGS: Site.RouteMap = {
+  id: 'settings',
+  path: '/settings',
+  icon: 'settings',
+};
+
+const SITE_ROUTE_MAP_TOOLBOX: Site.RouteMap = {
+  id: 'toolbox',
+  path: '/toolbox',
+  icon: 'toolbox',
+};
+
+const SITE_ROUTE_MAP_CONTACT: Site.RouteMap = {
+  id: 'contact',
+  path: '/contact',
+  icon: 'ampersand',
+};
 
 const SITE_ROUTE_MAP = {
-  landing: SITE_ROUTE_MAP_LANDING,
-  contact: SITE_ROUTE_MAP_CONTACT,
-  toolbox: SITE_ROUTE_MAP_TOOLBOX,
-  profile: SITE_ROUTE_MAP_PROFILE,
-  sandbox: SITE_ROUTE_MAP_SANDBOX,
-  projects: SITE_ROUTE_MAP_PROJECTS,
-  settings: SITE_ROUTE_MAP_SETTINGS,
+  home: SITE_ROUTE_MAP_HOME,
   experience: SITE_ROUTE_MAP_EXPERIENCE,
-} as const;
+  projects: SITE_ROUTE_MAP_PROJECTS,
+  sandbox: SITE_ROUTE_MAP_SANDBOX,
+  settings: SITE_ROUTE_MAP_TOOLBOX,
+  toolbox: SITE_ROUTE_MAP_SETTINGS,
+  contact: SITE_ROUTE_MAP_CONTACT,
+};
 
 export {
-  SITE_ROUTE_MAP_LANDING,
+  SITE_ROUTE_MAP_HOME,
   SITE_ROUTE_MAP_CONTACT,
   SITE_ROUTE_MAP_TOOLBOX,
-  SITE_ROUTE_MAP_PROFILE,
   SITE_ROUTE_MAP_SANDBOX,
   SITE_ROUTE_MAP_PROJECTS,
   SITE_ROUTE_MAP_SETTINGS,

@@ -1,10 +1,6 @@
 import React from 'react';
 import { cssTransform, valueToPixel } from '@/utils';
-import {
-  ControlPosition,
-  UseControlPositionProps,
-  UseControlPositionReturn,
-} from '../Control.types';
+import { ControlPosition, UseControlPositionProps, UseControlPositionReturn } from '../types';
 
 const useControlPosition = (props: UseControlPositionProps): UseControlPositionReturn => {
   const trackRef = React.useRef<HTMLDivElement>(null);

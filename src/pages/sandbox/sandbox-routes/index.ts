@@ -4,6 +4,7 @@ export * from './SandboxBox';
 export * from './SandboxButton';
 export * from './SandboxCheckbox';
 export * from './SandboxControl';
+export * from './SandboxDirectory';
 export * from './SandboxDisclosure';
 export * from './SandboxDivider';
 export * from './SandboxFloating';

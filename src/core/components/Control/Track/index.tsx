@@ -1,6 +1,6 @@
+import { Box, factory } from '@/core';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { ControlTrackProps } from '../Control.types';
+import { ControlTrackProps } from '../types';
 
 type ControlTrackFactory = Factory.Config<{
   comp: 'div';
@@ -11,7 +11,7 @@ type ControlTrackFactory = Factory.Config<{
 const ControlTrack = factory<ControlTrackFactory>((props, ref) => {
   const { className, orientation, children, ...forwardedProps } = props;
   return (
-    <div
+    <Box
       {...forwardedProps}
       data-orientation={orientation}
       aria-orientation={orientation}
@@ -19,7 +19,7 @@ const ControlTrack = factory<ControlTrackFactory>((props, ref) => {
       ref={ref}
     >
       {children}
-    </div>
+    </Box>
   );
 });
 

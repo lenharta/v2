@@ -59,6 +59,14 @@
   border-color: var(--c-action-border);
   background-color: var(--c-action-background);
 
+  // &:focus:not(:focus-visible) {
+  //   --outline-offset: 0;
+  // }
+
+  &:focus:focus-visible {
+    z-index: 9999;
+  }
+
   svg {
     color: var(--c-action-stroke);
   }

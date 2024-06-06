@@ -1,6 +1,6 @@
 import { Factory } from '@/types';
 import { factory } from '@/core/factory';
-import { DividerSeparatorProps } from '../Divider.types';
+import { DividerSeparatorProps } from '../types';
 
 type DividerSeparatorFactory = Factory.Config<{
   ref: HTMLDivElement;

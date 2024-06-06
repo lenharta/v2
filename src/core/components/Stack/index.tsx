@@ -1,12 +1,10 @@
-import clsx from 'clsx';
-import { Core, Factory } from '@/types';
-import { factoryPolymorphic } from '@/core/factory';
+import { Factory } from '@/types';
+import { StackProps } from './types';
+import { factoryPolymorphic, useThemeClasses } from '@/core';
 
-interface StackProps {
-  gap?: Core.Size | undefined;
-  align?: 'start' | 'end' | 'center' | undefined;
-  justify?: 'start' | 'end' | 'center' | undefined;
-}
+const css = {
+  root: 'v2-stack',
+};
 
 type StackFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -15,29 +13,22 @@ type StackFactory = Factory.Config<{
 }>;
 
 const Stack = factoryPolymorphic<StackFactory>((props, ref) => {
-  const {
-    gap,
-    align = 'start',
-    justify = 'start',
-    children,
+  const { gap, children, className, component: Component = 'div', ...forwardedProps } = props;
+
+  const themeClasses = useThemeClasses({
+    props: { gap },
+    defaultProps: { gap: undefined },
+    prefix: css.root,
     className,
-    component: Component = 'div',
-    ...forwardedProps
-  } = props;
+  });
 
   return (
     <Component
       {...forwardedProps}
       ref={ref}
-      data-orientation="vertical"
+      className={themeClasses}
       aria-orientation="vertical"
-      className={clsx(
-        'v2-stack',
-        gap && `v2-stack-gap--${gap}`,
-        align && `v2-stack-align--${align}`,
-        justify && `v2-stack-justify--${justify}`,
-        className
-      )}
+      data-orientation="vertical"
     >
       {children}
     </Component>

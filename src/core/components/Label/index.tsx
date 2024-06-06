@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factoryPolymorphic } from '@/core/factory';
-
-interface LabelProps {}
+import { LabelProps } from './types';
+import { factoryPolymorphic } from '@/core';
 
 type LabelFactory = Factory.Config<{
   ref: HTMLLabelElement;

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
+import { factory } from '@/core';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-import { InlineInputProps } from './InlineInput.types';
+import { InlineInputProps } from './types';
 
 type InlineInputFactory = Factory.Config<{
   ref: HTMLButtonElement;

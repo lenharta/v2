@@ -1,9 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Box } from '@/core/components';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
 import { ActionProvider } from '../Action.context';
+import { factoryPolymorphic } from '@/core/factory';
 import { ActionCSS, ActionGroupProps } from '../types';
 
 const css: Partial<ActionCSS> = {
@@ -16,7 +15,7 @@ type ActionGroupFactory = Factory.Config<{
   props: ActionGroupProps;
 }>;
 
-const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
+const ActionGroup = factoryPolymorphic<ActionGroupFactory>((props, ref) => {
   const {
     value,
     scheme,
@@ -25,6 +24,7 @@ const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
     disabled,
     className,
     orientation = 'horizontal',
+    component: Component = 'div',
     ...forwardedProps
   } = props;
 
@@ -33,7 +33,7 @@ const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
 
   return (
     <ActionProvider value={{ value, variant, scheme, orientation, disabled, getActionId }}>
-      <Box
+      <Component
         ref={ref}
         className={clsx(css.group, className)}
         aria-orientation={orientation}
@@ -42,7 +42,7 @@ const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
         {...forwardedProps}
       >
         {children}
-      </Box>
+      </Component>
     </ActionProvider>
   );
 });
