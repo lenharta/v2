@@ -1,8 +1,8 @@
 import clsx from 'clsx';
+import React from 'react';
 import { Factory } from '@/types';
 import { Action, Box, Icon, factory } from '@/core';
 import { HeaderCSS, HeaderRootProps } from './types';
-import React from 'react';
 
 const css: Partial<HeaderCSS> = {
   root: 'v2-header',

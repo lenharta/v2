@@ -1,7 +1,7 @@
 import { Factory } from '@/types';
 import { CheckboxGroup } from './Group';
 import { useCheckboxContext } from './Checkbox.context';
-import { CheckboxCSS, CheckboxRootProps, CheckboxStatus, CheckboxStatusProps } from './types';
+import { CheckboxCSS, CheckboxRootProps, CheckboxStatus } from './types';
 import { Box, Icon, IconProps, Text, createKeyDownGroup, factory, useThemeClasses } from '@/core';
 
 const css: Partial<CheckboxCSS> = {
@@ -28,31 +28,6 @@ type CheckboxFactory = Factory.Config<{
     Group: typeof CheckboxGroup;
   };
 }>;
-
-function getCheckboxStatus(props: CheckboxStatusProps) {
-  const { checked, ctx, value, disabled, readOnly, indeterminate } = props;
-
-  const isDisabled = readOnly && disabled;
-  const isChecked = !isDisabled && !!checked;
-  const isSelected = isChecked && !!(ctx.value && ctx.value.includes(value as string));
-  const isIndeterminate = indeterminate !== undefined;
-
-  let checkedStatus: CheckboxStatus = 'false';
-
-  const conditions: { value: CheckboxStatus; condition?: boolean | undefined }[] = [
-    { value: 'true', condition: isSelected && !isIndeterminate },
-    { value: 'mixed', condition: isSelected && isIndeterminate },
-    { value: 'true', condition: isChecked && !isIndeterminate },
-    { value: 'mixed', condition: isChecked && isIndeterminate },
-  ];
-
-  conditions.forEach((item) => {
-    if (item.condition === true) {
-      checkedStatus = item.value;
-    }
-  });
-  return checkedStatus;
-}
 
 const Checkbox = factory<CheckboxFactory>((props, ref) => {
   const {

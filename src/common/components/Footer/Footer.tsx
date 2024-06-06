@@ -1,27 +1,24 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Box, factory } from '@/core';
-import { FooterRootCSS, FooterRootProps } from './types';
+import { FooterRootProps } from './types';
 
-const css: FooterRootCSS = {
-  root: 'v2-footer-root',
-  content: 'v2-footer-content',
+const css = {
+  root: 'v2-footer',
 };
 
 type FooterRootFactory = Factory.Config<{
   ref: HTMLElement;
   comp: 'footer';
-  omits: 'children';
   props: FooterRootProps;
+  omits: 'children';
 }>;
 
 const Footer = factory<FooterRootFactory>((props, ref) => {
   const { className, ...forwardedProps } = props;
   return (
     <Box {...forwardedProps} ref={ref} component="footer" className={clsx(css.root, className)}>
-      <Box className={css.content}>
-        <span>FOOTER CONTENT</span>
-      </Box>
+      <span>FOOTER</span>
     </Box>
   );
 });

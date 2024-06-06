@@ -54,15 +54,6 @@ interface CheckboxContext extends CheckboxThemeProps {
   value: string[];
 }
 
-interface CheckboxStatusProps {
-  ctx: { value?: string[] | undefined };
-  value?: string | number | readonly string[] | undefined;
-  checked?: boolean | undefined;
-  readOnly?: boolean | undefined;
-  disabled?: boolean | undefined;
-  indeterminate?: boolean | undefined;
-}
-
 export type {
   CheckboxCSS,
   CheckboxStatus,
@@ -73,5 +64,4 @@ export type {
   CheckboxRootProps,
   CheckboxGroupProps,
   CheckboxContext,
-  CheckboxStatusProps,
 };
