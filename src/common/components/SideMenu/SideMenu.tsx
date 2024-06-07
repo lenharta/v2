@@ -33,9 +33,18 @@ const SideMenu: SideMenuFactory = (props) => {
 
   return (
     <div className={css.root}>
-      <Action.Group orientation="vertical" scheme="default" variant="elevated" component="nav">
+      <Action.Group
+        scheme="default"
+        variant="elevated"
+        component="nav"
+        orientation="vertical"
+        childSelector="[data-sidemenu-action-item]"
+        parentSelector="[data-sidemenu-action-group]"
+        data-sidemenu-action-group
+      >
         {navItems.map((item) => (
           <Action
+            data-sidemenu-action-item
             icon={<Icon name={item.icon} />}
             onClick={(event) => navigate(event.currentTarget.value)}
             label={item.label}

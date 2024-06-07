@@ -15,6 +15,9 @@ interface ActionGroupProps {
   withTitle?: boolean | undefined;
   children?: React.ReactNode | undefined;
   orientation?: Theme.Orientation | undefined;
+  loopFocus?: boolean | undefined;
+  childSelector?: string | undefined;
+  parentSelector?: string | undefined;
 }
 
 interface ActionContext {
@@ -27,6 +30,9 @@ interface ActionContext {
   getActionId: (v: string) => string;
   orientation: Theme.Orientation;
   value?: string | undefined;
+  parentSelector: string;
+  childSelector: string;
+  loopFocus: boolean;
 }
 
 interface ActionRootProps {

@@ -57,7 +57,7 @@
     flex-direction: row;
     line-height: 1.6;
     font-weight: var(--fw-3);
-    font-family: var(--ff);
+    font-family: var(--ff-base);
     font-size: var(--fz-2);
 
     [data-prefers-dir='rtl'] & {

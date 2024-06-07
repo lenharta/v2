@@ -20,8 +20,16 @@ const Header = factory<HeaderRootFactory>((props, ref) => {
   const [selected, setSelected] = React.useState(false);
   return (
     <Box {...forwardedProps} ref={ref} component="header" className={clsx(css.root, className)}>
-      <Action.Group scheme="default" variant="elevated" orientation="horizontal">
+      <Action.Group
+        scheme="default"
+        variant="elevated"
+        orientation="horizontal"
+        childSelector="[data-header-action-item]"
+        parentSelector="[data-header-action-group]"
+        data-header-action-group
+      >
         <Action
+          data-header-action-item
           icon={<Icon name="home" />}
           selected={selected ? true : undefined}
           onClick={() => setSelected((c) => !c)}
@@ -32,6 +40,7 @@ const Header = factory<HeaderRootFactory>((props, ref) => {
         <Action.Spacer />
 
         <Action
+          data-header-action-item
           icon={<Icon name="search" />}
           onClick={(event) => console.log(event.currentTarget.value)}
           label="search"
@@ -39,6 +48,7 @@ const Header = factory<HeaderRootFactory>((props, ref) => {
         />
 
         <Action
+          data-header-action-item
           icon={<Icon name="menu" />}
           onClick={(event) => console.log(event.currentTarget.value)}
           label="menu"

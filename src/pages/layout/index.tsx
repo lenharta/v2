@@ -1,7 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { LayoutError } from './LayoutError';
-import { StoreProvider } from '@/store';
 
 type LayoutFactory = React.FC<{}> & {
   Error: typeof LayoutError;
@@ -9,9 +8,7 @@ type LayoutFactory = React.FC<{}> & {
 
 const Layout: LayoutFactory = ({}) => (
   <React.Fragment>
-    <StoreProvider>
-      <Outlet />
-    </StoreProvider>
+    <Outlet />
   </React.Fragment>
 );
 
