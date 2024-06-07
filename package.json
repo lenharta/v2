@@ -16,6 +16,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.9",
     "@gsap/react": "^2.1.0",
+    "bootstrap-icons": "^1.11.3",
     "clsx": "^2.1.0",
     "dotenv": "^16.4.4",
     "gsap": "^3.12.5",

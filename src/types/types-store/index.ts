@@ -4,37 +4,21 @@ export declare namespace Store {
   export type ThemeState = {
     dir: Theme.Dir;
     mode: Theme.Mode;
-    color: Theme.Color;
+    accent: Theme.Color;
   };
 
-  export type StoreState = ThemeState & {
+  export type State = Partial<ThemeState> & {
     error?: boolean | undefined;
     loading?: boolean | undefined;
+    sessionKey?: string | undefined;
   };
 
-  export type StoreContext = ThemeState & {
+  export type Context = ThemeState & {
     nonce: () => string;
+    error?: boolean | undefined;
+    loading?: boolean | undefined;
+    sessionKey: string;
   };
-
-  export type Route =
-    | 'home'
-    | 'contact'
-    | 'experience'
-    | 'profile'
-    | 'projects'
-    | 'sandbox'
-    | 'settings'
-    | 'toolbox';
-
-  export type RoutePath =
-    | '/'
-    | '/contact'
-    | '/experience'
-    | '/profile'
-    | '/projects'
-    | '/sandbox'
-    | '/settings'
-    | '/toolbox';
 }
 
 // export enum GlobalThemeKey {
