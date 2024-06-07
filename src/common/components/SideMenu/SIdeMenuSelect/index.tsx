@@ -8,11 +8,13 @@ type SideMenuSelectFactory = React.FC<{
 
 const SideMenuSelect: SideMenuSelectFactory = (props) => {
   const { isOpen, setOpen } = props;
+
   return (
     <React.Fragment>
       <Floating isOpen={isOpen} onChange={setOpen} placement="right">
         <Floating.Target>
           <Action
+            data-sidemenu-action-item
             icon={<Icon name="modeDark" />}
             selected={isOpen}
             variant="elevated"

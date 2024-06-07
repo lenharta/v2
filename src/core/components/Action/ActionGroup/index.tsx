@@ -23,6 +23,9 @@ const ActionGroup = factoryPolymorphic<ActionGroupFactory>((props, ref) => {
     children,
     disabled,
     className,
+    loopFocus = false,
+    childSelector = '[data-core-action-item]',
+    parentSelector = '[data-core-action-group]',
     orientation = 'horizontal',
     component: Component = 'div',
     ...forwardedProps
@@ -32,7 +35,19 @@ const ActionGroup = factoryPolymorphic<ActionGroupFactory>((props, ref) => {
   const getActionId = (v: string) => `action${uid}${v}:item`;
 
   return (
-    <ActionProvider value={{ value, variant, scheme, orientation, disabled, getActionId }}>
+    <ActionProvider
+      value={{
+        value,
+        scheme,
+        variant,
+        disabled,
+        loopFocus,
+        orientation,
+        childSelector,
+        parentSelector,
+        getActionId,
+      }}
+    >
       <Component
         ref={ref}
         className={clsx(css.group, className)}

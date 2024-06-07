@@ -15,7 +15,31 @@
 
 html,
 body,
-#root {
+#root,
+h1,
+b,
+p,
+a,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+ul,
+ol,
+div,
+code,
+label,
+aside,
+input,
+select,
+textarea,
+button,
+header,
+footer,
+article,
+section {
   margin: 0;
   padding: 0;
   display: block;
@@ -23,7 +47,9 @@ body,
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
   font-size: var(--root-font-size);
   font-weight: var(--root-font-weight);
   font-family: var(--root-font-family);
@@ -38,47 +64,24 @@ body {
   }
 }
 
-div,
-aside,
-header,
-footer,
-article,
-section {
-  margin: 0;
-  padding: 0;
-  font-size: inherit;
-  box-sizing: border-box;
+li,
+ul,
+ol {
+  list-style: none;
+  text-decoration: none;
 }
 
+p,
+b,
+li,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  padding: 0;
   font-size: inherit;
-  box-sizing: border-box;
-  vertical-align: baseline;
-}
-
-li,
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-
-p {
-  margin: 0;
-  padding: 0;
-  font-size: inherit;
-  box-sizing: border-box;
-  vertical-align: baseline;
+  font-family: inherit;
 }
 
 svg + p {
@@ -86,22 +89,10 @@ svg + p {
 }
 
 code {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  vertical-align: baseline;
   font-family: var(--root-font-family-mono);
 }
 
 a {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  vertical-align: baseline;
-  display: inline-flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
   font-size: inherit;
   font-family: inherit;
   text-transform: none;
@@ -111,42 +102,23 @@ a {
 }
 
 button {
-  margin: 0;
-  padding: 0;
   font-size: inherit;
   font-family: inherit;
   text-transform: none;
   text-decoration: none;
   background-color: inherit;
-  vertical-align: baseline;
-  box-sizing: border-box;
   color: inherit;
-}
-
-label {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  vertical-align: baseline;
 }
 
 input,
 select,
 button,
 textarea {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  vertical-align: baseline;
   border: none;
   font: inherit;
 }
 
 select {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  vertical-align: baseline;
   text-transform: none;
 }
 

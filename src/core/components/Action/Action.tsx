@@ -44,41 +44,41 @@ const Action = factory<ActionRootFactory>((props, ref) => {
     className,
   });
 
+  const isDisabled = disabled || undefined;
+  const isSelected = selected || undefined;
+  const isGroupDisabled = (ctx.disabled ?? disabled) || undefined;
+  const isGroupSelected = ((value && ctx.value === value) ?? isSelected) || undefined;
+
   const contextProps = ctx
     ? {
         id: ctx.getActionId(label),
         title: ctx.withTitle ? label : undefined,
-        'aria-label': forwardedProps['aria-label'] || label,
-        'aria-disabled': !!ctx.disabled || !!disabled || undefined,
-        'data-disabled': !!ctx.disabled || !!disabled || undefined,
-        'aria-selected': ctx.value === value || selected || undefined,
-        'data-selected': ctx.value === value || selected || undefined,
+        'aria-disabled': isGroupDisabled,
+        'aria-selected': isGroupSelected,
+        'data-disabled': isGroupDisabled,
+        'data-selected': isGroupSelected,
         'data-orientation': ctx.orientation,
-        'data-core-action-item': true,
         onKeyDown: createKeyDownGroup({
           onKeyDown: forwardedProps.onKeyDown,
-          preventDefault: false,
-          parentSelector: '[data-core-action-group]',
-          childSelector: '[data-core-action-item]',
+          parentSelector: ctx.parentSelector,
+          childSelector: ctx.childSelector,
           orientation: ctx.orientation,
-          loop: false,
+          loop: ctx.loopFocus,
         }),
       }
-    : {
-        title: withTitle ? label : undefined,
-        'aria-label': forwardedProps['aria-label'] || label,
-        'aria-disabled': !!disabled || undefined,
-        'aria-selected': !!selected || undefined,
-        'data-disabled': !!disabled || undefined,
-        'data-selected': !!selected || undefined,
-        'data-core-action-item': true,
-      };
+    : {};
 
   return (
     <UnstyledButton
       ref={ref}
       value={value}
       className={classes}
+      title={withTitle ? label : undefined}
+      aria-label={forwardedProps['aria-label'] || label}
+      aria-disabled={isDisabled}
+      aria-selected={isSelected}
+      data-selected={isSelected}
+      data-disabled={isDisabled}
       {...forwardedProps}
       {...contextProps}
     >

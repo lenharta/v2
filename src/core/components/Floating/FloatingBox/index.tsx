@@ -26,7 +26,7 @@ const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
   const contextProps = ctx
     ? {
         id: ctx.getBoxId(),
-        'aria-labellabledby': ctx.getBoxId(),
+        'aria-labelledby': ctx.getBoxId(),
       }
     : {};
 

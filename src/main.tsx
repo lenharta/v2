@@ -4,10 +4,10 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import './styles/index.scss';
 import {
+  Home,
   Layout,
   Contact,
   Experience,
-  Landing,
   Profile,
   Projects,
   Sandbox,
@@ -22,10 +22,9 @@ const router = createBrowserRouter([
     errorElement: <Layout.Error />,
     children: [
       {
-        path: '/',
         index: true,
-        element: <Landing />,
-        errorElement: <Landing.Error />,
+        element: <Home />,
+        errorElement: <Home.Error />,
       },
       {
         path: '/contact',
