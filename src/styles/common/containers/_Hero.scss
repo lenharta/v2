@@ -11,7 +11,7 @@
 }
 
 .v2-hero-content {
-  --x-total-side-items: 5;
+  --x-total-side-items: 6;
   --x-total-side-gaps: calc(var(--x-total-side-items) - 1);
   --x-hero-items-height: calc(var(--size-action-root) * var(--x-total-side-items));
   --x-hero-gaps-offset: calc(var(--s-1) * var(--x-total-side-gaps));

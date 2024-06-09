@@ -13,6 +13,7 @@
 export declare namespace Theme {
   export type Dir = 'ltr' | 'rtl';
   export type Mode = 'light' | 'dim' | 'dark';
+  export type Icons = 'fill' | 'outline';
   export type Priority = 'low' | 'medium' | 'high ';
   export type Orientation = 'vertical' | 'horizontal';
 
@@ -31,6 +32,7 @@ export declare namespace Theme {
   export type Scheme = Color | Status | Surface;
   export type Status = 'info' | 'error' | 'success' | `warning`;
   export type Surface = 'primary' | 'secondary' | 'tertiary' | 'quaternary';
+  export type Attributes = 'dir' | 'mode' | 'accent';
 
   export type ActionState =
     | 'enabled'

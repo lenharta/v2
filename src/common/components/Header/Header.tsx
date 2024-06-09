@@ -3,6 +3,7 @@ import React from 'react';
 import { Factory } from '@/types';
 import { Action, Box, Icon, factory } from '@/core';
 import { HeaderCSS, HeaderRootProps } from './types';
+import { useStateContext } from '@/app';
 
 const css: Partial<HeaderCSS> = {
   root: 'v2-header',
@@ -18,10 +19,11 @@ type HeaderRootFactory = Factory.Config<{
 const Header = factory<HeaderRootFactory>((props, ref) => {
   const { className, ...forwardedProps } = props;
   const [selected, setSelected] = React.useState(false);
+  const store = useStateContext();
   return (
     <Box {...forwardedProps} ref={ref} component="header" className={clsx(css.root, className)}>
       <Action.Group
-        scheme="default"
+        scheme="primary-interactive"
         variant="elevated"
         orientation="horizontal"
         childSelector="[data-header-action-item]"
@@ -30,7 +32,7 @@ const Header = factory<HeaderRootFactory>((props, ref) => {
       >
         <Action
           data-header-action-item
-          icon={<Icon name="home" />}
+          icon={<Icon variant={store.icons} />}
           selected={selected ? true : undefined}
           onClick={() => setSelected((c) => !c)}
           label="home"
@@ -41,7 +43,7 @@ const Header = factory<HeaderRootFactory>((props, ref) => {
 
         <Action
           data-header-action-item
-          icon={<Icon name="search" />}
+          icon={<Icon variant={store.icons} />}
           onClick={(event) => console.log(event.currentTarget.value)}
           label="search"
           value="/"
@@ -49,7 +51,7 @@ const Header = factory<HeaderRootFactory>((props, ref) => {
 
         <Action
           data-header-action-item
-          icon={<Icon name="menu" />}
+          icon={<Icon variant={store.icons} />}
           onClick={(event) => console.log(event.currentTarget.value)}
           label="menu"
           value="/"

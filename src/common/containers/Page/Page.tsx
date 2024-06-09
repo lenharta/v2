@@ -5,7 +5,7 @@ import { PageCSS, PageRootProps } from './types';
 import { Footer, Header, Main, SideMenu } from '@/common';
 
 const css: Partial<PageCSS> = {
-  root: 'v2-page-root',
+  root: 'v2-page',
 };
 
 type PageFactory = Factory.Config<{

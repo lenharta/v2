@@ -4,6 +4,7 @@ import { ActionSpacer } from './ActionSpacer';
 import { useActionContext } from './Action.context';
 import { ActionCSS, ActionRootProps } from './types';
 import { factory, UnstyledButton, useThemeClasses, createKeyDownGroup } from '@/core';
+import clsx from 'clsx';
 
 const css: Partial<ActionCSS> = {
   root: 'v2-action',
@@ -36,14 +37,6 @@ const Action = factory<ActionRootFactory>((props, ref) => {
 
   const ctx = useActionContext();
 
-  const classes = useThemeClasses({
-    prefix: css.root!,
-    props: { scheme, variant },
-    context: { scheme: ctx?.scheme, variant: ctx?.variant },
-    defaultProps: { scheme: 'default', variant: 'default' },
-    className,
-  });
-
   const isDisabled = disabled || undefined;
   const isSelected = selected || undefined;
   const isGroupDisabled = (ctx.disabled ?? disabled) || undefined;
@@ -58,6 +51,8 @@ const Action = factory<ActionRootFactory>((props, ref) => {
         'data-disabled': isGroupDisabled,
         'data-selected': isGroupSelected,
         'data-orientation': ctx.orientation,
+        'data-variant': ctx.variant,
+        'data-scheme': ctx.scheme,
         onKeyDown: createKeyDownGroup({
           onKeyDown: forwardedProps.onKeyDown,
           parentSelector: ctx.parentSelector,
@@ -72,13 +67,15 @@ const Action = factory<ActionRootFactory>((props, ref) => {
     <UnstyledButton
       ref={ref}
       value={value}
-      className={classes}
       title={withTitle ? label : undefined}
+      className={clsx(css.root, className)}
       aria-label={forwardedProps['aria-label'] || label}
       aria-disabled={isDisabled}
       aria-selected={isSelected}
       data-selected={isSelected}
       data-disabled={isDisabled}
+      data-variant={variant}
+      data-scheme={scheme}
       {...forwardedProps}
       {...contextProps}
     >

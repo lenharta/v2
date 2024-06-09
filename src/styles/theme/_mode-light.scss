@@ -1,0 +1,82 @@
+[data-prefers-mode='light'],
+[data-prefers-mode='light'] [data-scheme='primary'],
+[data-prefers-mode='light'] [data-scheme='primary-interactive'] {
+  --c-text-hgh: hsl(220, 2%, 01%, 0.93);
+  --c-text-med: hsl(220, 2%, 01%, 0.87);
+  --c-text-low: hsl(220, 2%, 01%, 0.79);
+
+  --c-icon-hgh: hsl(220, 2%, 01%, 0.93);
+  --c-icon-med: hsl(220, 2%, 01%, 0.87);
+  --c-icon-low: hsl(220, 2%, 01%, 0.79);
+
+  --c-background-0: hsl(220, 2%, 96%);
+  --c-background-0-enabled: hsl(220, 2%, 96%);
+  --c-background-0-hovered: hsl(220, 2%, 94%);
+  --c-background-0-pressed: hsl(220, 2%, 92%);
+  --c-background-0-selected: hsl(220, 2%, 90%);
+
+  --c-background-1: hsl(220, 2%, 92%);
+  --c-background-1-enabled: hsl(220, 2%, 92%);
+  --c-background-1-hovered: hsl(220, 2%, 90%);
+  --c-background-1-pressed: hsl(220, 2%, 88%);
+  --c-background-1-selected: hsl(220, 2%, 86%);
+
+  --c-background-2: hsl(220, 2%, 88%);
+  --c-background-2-enabled: hsl(220, 2%, 88%);
+  --c-background-2-hovered: hsl(220, 2%, 86%);
+  --c-background-2-pressed: hsl(220, 2%, 84%);
+  --c-background-2-selected: hsl(220, 2%, 82%);
+
+  --c-background-3: hsl(220, 2%, 84%);
+  --c-background-3-enabled: hsl(220, 2%, 84%);
+  --c-background-3-hovered: hsl(220, 2%, 82%);
+  --c-background-3-pressed: hsl(220, 2%, 80%);
+  --c-background-3-selected: hsl(220, 2%, 78%);
+
+  --c-background-4: hsl(220, 2%, 80%);
+  --c-background-4-enabled: hsl(220, 2%, 80%);
+  --c-background-4-hovered: hsl(220, 2%, 78%);
+  --c-background-4-pressed: hsl(220, 2%, 76%);
+  --c-background-4-selected: hsl(220, 2%, 74%);
+}
+
+[data-prefers-mode='light'] [data-scheme='secondary'],
+[data-prefers-mode='light'] [data-scheme='secondary-interactive'] {
+  --c-text-hgh: hsl(220, 2%, 99%, 0.93);
+  --c-text-med: hsl(220, 2%, 99%, 0.87);
+  --c-text-low: hsl(220, 2%, 99%, 0.79);
+
+  --c-icon-hgh: hsl(220, 2%, 99%, 0.93);
+  --c-icon-med: hsl(220, 2%, 99%, 0.87);
+  --c-icon-low: hsl(220, 2%, 99%, 0.79);
+
+  --c-background-0: hsl(220, 2%, 04%);
+  --c-background-0-enabled: hsl(220, 2%, 04%);
+  --c-background-0-hovered: hsl(220, 2%, 06%);
+  --c-background-0-pressed: hsl(220, 2%, 08%);
+  --c-background-0-selected: hsl(220, 2%, 10%);
+
+  --c-background-1: hsl(220, 2%, 06%);
+  --c-background-1-enabled: hsl(220, 2%, 06%);
+  --c-background-1-hovered: hsl(220, 2%, 08%);
+  --c-background-1-pressed: hsl(220, 2%, 10%);
+  --c-background-1-selected: hsl(220, 2%, 12%);
+
+  --c-background-2: hsl(220, 2%, 08%);
+  --c-background-2-enabled: hsl(220, 2%, 08%);
+  --c-background-2-hovered: hsl(220, 2%, 10%);
+  --c-background-2-pressed: hsl(220, 2%, 12%);
+  --c-background-2-selected: hsl(220, 2%, 14%);
+
+  --c-background-3: hsl(220, 2%, 10%);
+  --c-background-3-enabled: hsl(220, 2%, 10%);
+  --c-background-3-hovered: hsl(220, 2%, 12%);
+  --c-background-3-pressed: hsl(220, 2%, 14%);
+  --c-background-3-selected: hsl(220, 2%, 16%);
+
+  --c-background-4: hsl(220, 2%, 12%);
+  --c-background-4-enabled: hsl(220, 2%, 12%);
+  --c-background-4-hovered: hsl(220, 2%, 14%);
+  --c-background-4-pressed: hsl(220, 2%, 16%);
+  --c-background-4-selected: hsl(220, 2%, 18%);
+}
