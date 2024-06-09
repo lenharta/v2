@@ -2,8 +2,14 @@ import React from 'react';
 import { Theme } from '@/types';
 
 type ActionCSS = Record<'root' | 'spacer' | 'group', string>;
-type ActionScheme = 'default' | 'accent' | Theme.Color;
+
 type ActionVariant = 'default' | 'elevated';
+
+type ActionScheme =
+  | 'accent-interactive'
+  | 'primary-interactive'
+  | 'secondary-interactive'
+  | `${Theme.Color}-interactive`;
 
 interface ActionGroupProps {
   value?: string | undefined;

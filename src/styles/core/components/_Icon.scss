@@ -1,0 +1,23 @@
+.v2-icon {
+  width: var(--x-core-icon-size, 18px);
+  height: var(--x-core-icon-size, 18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--size-xs {
+    --x-core-icon-size: 18px;
+  }
+  &--size-sm {
+    --x-core-icon-size: 22px;
+  }
+  &--size-md {
+    --x-core-icon-size: 26px;
+  }
+  &--size-lg {
+    --x-core-icon-size: 30px;
+  }
+  &--size-xl {
+    --x-core-icon-size: 34px;
+  }
+}

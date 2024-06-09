@@ -1,26 +1,49 @@
-html,
 body,
-#root,
-.v2-page,
-.v2-footer,
-.v2-header {
-  color: var(--c-text-1);
-  background-color: var(--c-base-1);
+#root {
+  color: var(--c-text-hgh);
+  background-color: var(--c-background-0);
 }
 
-.v2-sidemenu-drawer {
-  color: var(--c-text-1);
-  background-color: var(--c-base-1);
+body svg,
+#root svg {
+  fill: var(--c-icon-hgh);
+}
+
+.v2-page {
+  color: var(--c-text-hgh);
+  background-color: var(--c-background-1);
+  transition-property: background-color, color, border-color, opacity, fill, stroke;
+  transition-timing-function: ease;
+  transition-duration: 400ms;
 }
 
 .v2-hero {
-  background-color: var(--c-base-2);
-  color: var(--c-text-1);
+  color: var(--c-text-hgh);
+  background-color: var(--c-background-2);
+  transition-property: background-color, color, border-color, opacity, fill, stroke;
+  transition-timing-function: ease;
+  transition-duration: 400ms;
 }
 
-.v2-hero svg,
+.v2-header {
+  color: var(--c-text-hgh);
+  background-color: var(--c-background-1);
+  transition-property: background-color, color, border-color, opacity, fill, stroke;
+  transition-timing-function: ease;
+  transition-duration: 400ms;
+}
+
+.v2-sidemenu {
+  color: var(--c-text-hgh);
+  background-color: var(--c-background-1);
+  transition-property: background-color, color, border-color, opacity, fill, stroke;
+  transition-timing-function: ease;
+  transition-duration: 400ms;
+}
+
 .v2-page svg,
-.v2-footer svg,
-.v2-header svg {
-  color: var(--c-text-2);
+.v2-hero svg,
+.v2-header svg,
+.v2-sidemenu svg {
+  fill: var(--c-icon-hgh);
 }

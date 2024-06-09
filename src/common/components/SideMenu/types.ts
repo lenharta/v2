@@ -2,7 +2,7 @@ import { IconProps } from '@/core';
 
 type SideMenuCSS = Record<'root' | 'nav' | 'option' | 'panel' | 'select' | 'target', string>;
 
-type SideMenuNavItem = { label: string; value: string; icon: IconProps['name'] };
+type SideMenuNavItem = { label: string; value: string; icon?: IconProps['name'] | undefined };
 
 interface SideMenuProps {}
 

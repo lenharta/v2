@@ -1,194 +1,108 @@
-// THEME | CORE | SHARED
+.v2-action,
+.v2-action,
+.v2-action-group,
+.v2-button-group {
+  transition-property: background-color, color, border-color, opacity, fill, stroke;
+  transition-timing-function: ease;
+  transition-duration: 250ms;
+}
 
 .v2-action,
 .v2-button {
-  --cursor: default;
-  --user-select: none;
-  --outline-style: solid;
-  --outline-width: var(--unit);
-  --outline-color: transparent;
-  --outline-offset: 0;
-  --transition-property: background-color, color, border-color, opacity, fill, stroke;
-  --transition-duration: 250ms;
-  --transition-easing: ease;
+  cursor: default;
 
-  cursor: var(--cursor);
-  outline-style: var(--outline-style);
-  outline-width: var(--outline-width);
-  outline-color: var(--outline-color);
-  outline-offset: var(--outline-offset);
-  transition-property: var(--transition-property);
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-easing);
-  -webkit-user-select: var(--user-select);
-  -ms-user-select: var(--user-select);
-  user-select: var(--user-select);
+  border-color: transparent;
+  border-width: var(--s-1);
+  border-style: solid;
+
+  outline-color: transparent;
+  outline-width: var(--s-1);
+  outline-style: solid;
+  outline-offset: unset;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   &:not([data-disabled]),
   &:not([data-disabled]):hover,
   &:not([data-disabled]):active,
   &:not([data-disabled])[data-selected] {
-    --cursor: pointer;
+    cursor: pointer;
   }
 
   &[data-disabled],
   &[data-disabled]:hover,
   &[data-disabled]:active,
   &[data-disabled][data-selected] {
-    --cursor: default;
+    cursor: default;
   }
 
   &:focus:not(:focus-visible) {
-    --outline-color: transparent;
+    outline-color: transparent;
   }
-
   &:focus:focus-visible {
-    --outline-color: var(--c-focus);
+    outline-color: var(--c-focus);
   }
 }
 
-// THEME | CORE | ACTION
-
-.v2-action {
-  --c-action-color: var(--c-text-1);
-  --c-action-border: transparent;
-  --c-action-stroke: var(--c-text-2);
-  --c-action-background: var(--c-base-1);
-
-  color: var(--c-action-color);
-  border-color: var(--c-action-border);
-  background-color: var(--c-action-background);
-
-  // &:focus:not(:focus-visible) {
-  //   --outline-offset: 0;
-  // }
-
-  &:focus:focus-visible {
-    z-index: 9999;
+.v2-action-group[data-scheme='primary-interactive'],
+.v2-action-group[data-scheme='secondary-interactive'] {
+  &[data-variant='default'] {
+    background-color: var(--c-background-0-enabled);
   }
-
-  svg {
-    color: var(--c-action-stroke);
+  &[data-variant='elevated'] {
+    background-color: var(--c-background-1-enabled);
   }
 }
 
-.v2-action-spacer {
-  --c-action-spacer-background: var(--c-base-1);
-  background-color: var(--c-action-spacer--background);
-}
-
-.v2-action-spacer--scheme-default.v2-action-spacer--variant-default {
-  --c-action-spacer--background: var(--c-base-1);
-}
-.v2-action-spacer--scheme-default.v2-action-spacer--variant-elevated {
-  --c-action-spacer--background: var(--c-base-2);
-}
-
-.v2-action--scheme-default.v2-action--variant-default:not([data-disabled]) {
-  --c-action-background: var(--c-base-1);
-}
-.v2-action--scheme-default.v2-action--variant-default:not([data-disabled]):hover {
-  --c-action-background: var(--c-base-1--hover);
-}
-.v2-action--scheme-default.v2-action--variant-default:not([data-disabled]):active {
-  --c-action-background: var(--c-base-1--pressed);
-}
-.v2-action--scheme-default.v2-action--variant-default:not([data-disabled])[data-selected] {
-  --c-action-background: var(--c-base-1--selected);
-}
-
-.v2-action--scheme-default.v2-action--variant-elevated:not([data-disabled]) {
-  --c-action-background: var(--c-base-2);
-}
-.v2-action--scheme-default.v2-action--variant-elevated:not([data-disabled]):hover {
-  --c-action-background: var(--c-base-2--hover);
-}
-.v2-action--scheme-default.v2-action--variant-elevated:not([data-disabled]):active {
-  --c-action-background: var(--c-base-2--pressed);
-}
-.v2-action--scheme-default.v2-action--variant-elevated:not([data-disabled])[data-selected] {
-  --c-action-background: var(--c-base-2--selected);
-}
-
-// THEME | CORE | BUTTON
-
-.v2-button {
-  --c-button-color: var(--c-text-1);
-  --c-button-border: transparent;
-  --c-button-stroke: var(--c-text-2);
-  --c-button-background: var(--c-base-1);
-
-  color: var(--c-button-color);
-  border-color: var(--c-button-border);
-  background-color: var(--c-button-background);
-
-  svg {
-    color: var(--c-button-stroke);
+.v2-action-spacer[data-scheme='primary-interactive'],
+.v2-action-spacer[data-scheme='secondary-interactive'] {
+  &[data-variant='default'] {
+    background-color: var(--c-background-1-enabled);
+  }
+  &[data-variant='elevated'] {
+    background-color: var(--c-background-2-enabled);
   }
 }
 
-.v2-button--scheme-default.v2-button--variant-default:not([data-disabled]) {
-  --c-button-background: var(--c-base-1);
-}
+.v2-button[data-scheme='primary-interactive'],
+.v2-action[data-scheme='primary-interactive'],
+.v2-button[data-scheme='secondary-interactive'],
+.v2-action[data-scheme='secondary-interactive'] {
+  &[data-variant='default']:not([data-disabled]),
+  &[data-variant='elevated']:not([data-disabled]) {
+    color: var(--c-text-hgh);
+  }
 
-.v2-button--scheme-default.v2-button--variant-default:not([data-disabled]):hover {
-  --c-button-background: var(--c-base-1--hover);
-}
+  &[data-variant='default']:not([data-disabled]) svg,
+  &[data-variant='elevated']:not([data-disabled]) svg {
+    fill: var(--c-icon-hgh);
+  }
 
-.v2-button--scheme-default.v2-button--variant-default:not([data-disabled]):active {
-  --c-button-background: var(--c-base-1--pressed);
-}
+  &[data-variant='default']:not([data-disabled]) {
+    background-color: var(--c-background-1-enabled);
+  }
+  &[data-variant='default']:not([data-disabled]):hover {
+    background-color: var(--c-background-1-hovered);
+  }
+  &[data-variant='default']:not([data-disabled]):active {
+    background-color: var(--c-background-1-pressed);
+  }
+  &[data-variant='default'][data-selected]:not([data-disabled]) {
+    background-color: var(--c-background-1-selected);
+  }
 
-.v2-button--scheme-default.v2-button--variant-default:not([data-disabled])[data-selected] {
-  --c-button-background: var(--c-base-1--selected);
-}
-
-.v2-button--scheme-default.v2-button--variant-elevated:not([data-disabled]) {
-  --c-button-background: var(--c-base-2);
-}
-
-.v2-button--scheme-default.v2-button--variant-elevated:not([data-disabled]):hover {
-  --c-button-background: var(--c-base-2--hover);
-}
-
-.v2-button--scheme-default.v2-button--variant-elevated:not([data-disabled]):active {
-  --c-button-background: var(--c-base-2--pressed);
-}
-
-.v2-button--scheme-default.v2-button--variant-elevated:not([data-disabled])[data-selected] {
-  --c-button-background: var(--c-base-2--selected);
-}
-
-.v2-button--scheme-accent.v2-button--variant-default:not([data-disabled]) {
-  --c-button-background: hsla(var(--c-accent-hsl), 0);
-  --c-button-color: var(--c-accent);
-}
-
-.v2-button--scheme-accent.v2-button--variant-default:not([data-disabled]):hover {
-  --c-button-background: hsla(var(--c-accent-hsl), 0.05);
-}
-
-.v2-button--scheme-accent.v2-button--variant-default:not([data-disabled]):active {
-  --c-button-background: hsla(var(--c-accent-hsl), 0.1);
-}
-
-.v2-button--scheme-accent.v2-button--variant-default:not([data-disabled])[data-selected] {
-  --c-button-background: hsla(var(--c-accent-hsl), 0.15);
-}
-
-.v2-button--scheme-accent.v2-button--variant-elevated:not([data-disabled]) {
-  --c-button-background: hsla(var(--c-accent-hsl), 0.05);
-  --c-button-color: var(--c-accent);
-}
-
-.v2-button--scheme-accent.v2-button--variant-elevated:not([data-disabled]):hover {
-  --c-button-background: hsla(var(--c-accent-hsl), 0.1);
-}
-
-.v2-button--scheme-accent.v2-button--variant-elevated:not([data-disabled]):active {
-  --c-button-background: hsla(var(--c-accent-hsl), 0.15);
-}
-
-.v2-button--scheme-accent.v2-button--variant-elevated:not([data-disabled])[data-selected] {
-  --c-button-background: hsla(var(--c-accent-hsl), 0.2);
+  &[data-variant='elevated']:not([data-disabled]) {
+    background-color: var(--c-background-2-enabled);
+  }
+  &[data-variant='elevated']:not([data-disabled]):hover {
+    background-color: var(--c-background-2-hovered);
+  }
+  &[data-variant='elevated']:not([data-disabled]):active {
+    background-color: var(--c-background-2-pressed);
+  }
+  &[data-variant='elevated'][data-selected]:not([data-disabled]) {
+    background-color: var(--c-background-2-selected);
+  }
 }

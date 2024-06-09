@@ -1,13 +1,17 @@
 .v2-sidemenu {
-  --x-sidemenu-height: calc(100% - calc(var(--size-action-offset) + calc(var(--s-1) * 1)));
-  --x-sidemenu-offset: var(--size-action-offset);
+  display: none;
 
-  top: var(--size-action-offset);
-  left: 0;
-  height: var(--x-sidemenu-height);
-  display: flex;
-  position: absolute;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  @media screen and (min-width: 60em) {
+    top: var(--size-action-offset);
+    left: 0;
+    width: var(--size-action-offset);
+    height: calc(100% - calc(var(--size-action-offset) + var(--s-1)));
+    z-index: var(--idx-sidemenu);
+    display: flex;
+    position: fixed;
+
+    &:focus-within {
+      z-index: calc(var(--idx-sidemenu) + 1);
+    }
+  }
 }
