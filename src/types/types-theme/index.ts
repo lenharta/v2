@@ -29,10 +29,22 @@ export declare namespace Theme {
   export type Unit20 = Unit16 | 17 | 18 | 19 | 20;
   export type Unit24 = Unit20 | 21 | 22 | 23 | 24;
 
-  export type Scheme = Color | Status | Surface;
   export type Status = 'info' | 'error' | 'success' | `warning`;
   export type Surface = 'primary' | 'secondary' | 'tertiary' | 'quaternary';
   export type Attributes = 'dir' | 'mode' | 'accent';
+
+  export type Scheme =
+    | `${Surface | Status | Color}`
+    | `${Surface | Status | Color}-0`
+    | `${Surface | Status | Color}-1`
+    | `${Surface | Status | Color}-2`
+    | `${Surface | Status | Color}-3`
+    | `${Surface | Status | Color}-4`
+    | `${Surface | Status | Color}-0-interactive`
+    | `${Surface | Status | Color}-1-interactive`
+    | `${Surface | Status | Color}-2-interactive`
+    | `${Surface | Status | Color}-3-interactive`
+    | `${Surface | Status | Color}-4-interactive`;
 
   export type ActionState =
     | 'enabled'

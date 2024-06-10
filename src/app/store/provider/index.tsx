@@ -21,10 +21,14 @@ const THEME_ROOT_ATTRIBUTES: Record<Theme.Attributes, string> = {
 };
 
 const StoreProvider = ({ children }: Store.ProviderProps) => {
+  const local = useStorage<Store.LocalState>({ key: 'local-storage' });
   const session = useStorage<Store.SessionState>({ key: 'session-storage' });
 
   const [store, dispatch] = useStoreReducer<Store.State>(initialStore, (current) => {
-    if (!current.session || !session.fetch()?.session) {
+    const localStore = local.fetch();
+    const sessionStore = session.fetch();
+
+    if (!sessionStore?.session) {
       const uid = createRandomId(16);
       session.write({ session: uid });
       return {
@@ -32,8 +36,37 @@ const StoreProvider = ({ children }: Store.ProviderProps) => {
         session: uid,
       };
     }
-    return current;
+
+    if (!localStore) {
+      local.write({
+        accent: store.accent,
+        mode: store.mode,
+        lang: store.lang,
+        dir: store.dir,
+      });
+
+      const payload = local.fetch()!;
+
+      return {
+        ...current,
+        ...(local.fetch() ? local.fetch() : {}),
+      };
+    }
+
+    return {
+      ...current,
+      ...(local.fetch() ? local.fetch() : {}),
+    };
   });
+
+  React.useEffect(() => {
+    local.write({
+      accent: store.accent,
+      mode: store.mode,
+      lang: store.lang,
+      dir: store.dir,
+    });
+  }, [store.accent, store.mode, store.lang, store.dir]);
 
   React.useEffect(() => {
     const root = document.getElementById('root')!;

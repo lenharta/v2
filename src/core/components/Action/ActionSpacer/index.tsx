@@ -9,38 +9,19 @@ const css: Partial<ActionCSS> = {
 
 type ActionSpacerFactory = React.FC<ActionSpacerProps>;
 
-const defaultProps: Partial<ActionSpacerProps> = {
-  scheme: 'primary-interactive',
-  variant: 'default',
-};
-
 const ActionSpacer: ActionSpacerFactory = (props) => {
-  const {
-    scheme = defaultProps.scheme,
-    variant = defaultProps.variant,
-    children,
-    className,
-    ...forwardedProps
-  } = props;
+  const { scheme, variant, children, className, ...forwardedProps } = props;
 
   const ctx = useActionContext();
-
-  const contextProps = ctx
-    ? {
-        'data-orienation': ctx.orientation,
-        'data-variant': ctx.variant,
-        'data-scheme': ctx.scheme,
-      }
-    : {};
 
   return (
     <Box
       role="separator"
-      data-scheme={scheme}
-      data-variant={variant}
       className={clsx(css.spacer, className)}
+      data-scheme={scheme ? scheme : ctx.scheme}
+      data-variant={variant ? variant : ctx.variant}
+      data-orientation={ctx.orientation}
       {...forwardedProps}
-      {...contextProps}
     >
       {children}
     </Box>

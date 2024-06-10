@@ -15,6 +15,8 @@ const Tabs: TabsComponent = (props) => {
   const {
     value: controlledValue,
     onChange: controlledChange,
+    scheme = 'primary-0-interactive',
+    variant = 'default',
     children,
     disabled,
     orientation = 'horizontal',
@@ -32,7 +34,7 @@ const Tabs: TabsComponent = (props) => {
     );
   }
 
-  const [uncontrolledValue, uncontrolledChange] = React.useState(defaultValue || '');
+  const [uncontrolledValue, uncontrolledChange] = React.useState(defaultValue);
   const onChange = (uncontrolledChange || controlledChange) as (value: string) => void;
   const value = (uncontrolledValue || controlledValue) as string;
 
@@ -40,6 +42,8 @@ const Tabs: TabsComponent = (props) => {
     <TabsProvider
       value={{
         value,
+        scheme,
+        variant,
         disabled,
         orientation,
         keyboardActivated,

@@ -1,23 +1,23 @@
 .v2-icon {
-  width: var(--x-core-icon-size, 18px);
-  height: var(--x-core-icon-size, 18px);
+  width: var(--x-core-icon-size, 16px);
+  height: var(--x-core-icon-size, 16px);
   display: flex;
   align-items: center;
   justify-content: center;
 
   &--size-xs {
-    --x-core-icon-size: 18px;
+    --x-core-icon-size: 16px;
   }
   &--size-sm {
-    --x-core-icon-size: 22px;
+    --x-core-icon-size: 18px;
   }
   &--size-md {
-    --x-core-icon-size: 26px;
+    --x-core-icon-size: 20px;
   }
   &--size-lg {
-    --x-core-icon-size: 30px;
+    --x-core-icon-size: 24px;
   }
   &--size-xl {
-    --x-core-icon-size: 34px;
+    --x-core-icon-size: 28px;
   }
 }

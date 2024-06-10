@@ -16,8 +16,8 @@ type ActionGroupFactory = Factory.Config<{
 }>;
 
 const defaultProps: Partial<ActionGroupProps> = {
-  scheme: 'primary-interactive',
-  variant: 'default',
+  scheme: 'primary-1-interactive',
+  variant: 'elevated',
 };
 
 const ActionGroup = factoryPolymorphic<ActionGroupFactory>((props, ref) => {
@@ -58,8 +58,6 @@ const ActionGroup = factoryPolymorphic<ActionGroupFactory>((props, ref) => {
         className={clsx(css.group, className)}
         aria-orientation={orientation}
         data-orientation={orientation}
-        data-variant={variant}
-        data-scheme={scheme}
         data-core-action-group
         {...forwardedProps}
       >

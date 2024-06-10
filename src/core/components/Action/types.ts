@@ -3,18 +3,10 @@ import { Theme } from '@/types';
 
 type ActionCSS = Record<'root' | 'spacer' | 'group', string>;
 
-type ActionVariant = 'default' | 'elevated';
-
-type ActionScheme =
-  | 'accent-interactive'
-  | 'primary-interactive'
-  | 'secondary-interactive'
-  | `${Theme.Color}-interactive`;
-
 interface ActionGroupProps {
   value?: string | undefined;
-  scheme?: ActionScheme | undefined;
-  variant?: ActionVariant | undefined;
+  scheme?: Theme.Scheme | undefined;
+  variant?: 'default' | 'elevated' | undefined;
   className?: string | undefined;
   disabled?: boolean | undefined;
   selected?: boolean | undefined;
@@ -27,8 +19,8 @@ interface ActionGroupProps {
 }
 
 interface ActionContext {
-  scheme?: ActionScheme | undefined;
-  variant?: ActionVariant | undefined;
+  scheme?: Theme.Scheme | undefined;
+  variant?: 'default' | 'elevated' | undefined;
   className?: string | undefined;
   disabled?: boolean | undefined;
   selected?: boolean | undefined;
@@ -42,8 +34,8 @@ interface ActionContext {
 }
 
 interface ActionRootProps {
-  scheme?: ActionScheme | undefined;
-  variant?: ActionVariant | undefined;
+  scheme?: Theme.Scheme | undefined;
+  variant?: 'default' | 'elevated' | undefined;
   className?: string | undefined;
   disabled?: boolean | undefined;
   selected?: boolean | undefined;
@@ -54,18 +46,10 @@ interface ActionRootProps {
 }
 
 interface ActionSpacerProps {
-  scheme?: ActionScheme | undefined;
-  variant?: ActionVariant | undefined;
+  scheme?: Theme.Scheme | undefined;
+  variant?: 'default' | 'elevated' | undefined;
   children?: React.ReactNode | undefined;
   className?: string | undefined;
 }
 
-export type {
-  ActionCSS,
-  ActionScheme,
-  ActionVariant,
-  ActionContext,
-  ActionRootProps,
-  ActionGroupProps,
-  ActionSpacerProps,
-};
+export type { ActionCSS, ActionContext, ActionRootProps, ActionGroupProps, ActionSpacerProps };

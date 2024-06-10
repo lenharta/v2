@@ -25,7 +25,7 @@ const Icon = factory<IconFactory>((props, ref) => {
     size = 'sm',
     name = 'shape-circle',
     scheme,
-    variant = 'fill',
+    variant = 'outline',
     className,
     ...forwardedProps
   } = props;

@@ -14,4 +14,19 @@
       z-index: calc(var(--idx-sidemenu) + 1);
     }
   }
+
+  &-drawer {
+    --x-drawer-rows: 2;
+    --x-drawer-cols: 6;
+    --x-drawer-width-gaps: calc(calc(var(--x-drawer-cols) + 1) * var(--s-1));
+    --x-drawer-width-items: calc(var(--x-drawer-cols) * var(--size-action-root));
+    --x-drawer-width: calc(var(--x-drawer-width-gaps) + var(--x-drawer-width-items));
+    --x-drawer-height-gaps: calc(calc(var(--x-drawer-rows) + 1) * var(--s-1));
+    --x-drawer-height-items: calc(var(--x-drawer-rows) * var(--size-action-root));
+    --x-drawer-height: calc(var(--x-drawer-height-gaps) + var(--x-drawer-height-items));
+
+    height: 100% !important;
+    max-width: var(--x-drawer-width);
+    flex-wrap: wrap;
+  }
 }
