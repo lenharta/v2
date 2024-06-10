@@ -3,7 +3,7 @@ import React from 'react';
 import { Factory } from '@/types';
 import { TabsListProps } from '../types';
 import { useTabsContext } from '../context';
-import { factory, Box, Divider } from '@/core';
+import { factory, Box, Divider, CORE_TABS_SELECTORS } from '@/core';
 
 type TabsListFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -30,6 +30,7 @@ const TabsList = factory<TabsListFactory>((props, ref) => {
         className={clsx(css.list, className)}
         aria-orientation={ctx.orientation}
         data-orientation={ctx.orientation}
+        {...CORE_TABS_SELECTORS.list.prop}
       >
         {children}
 

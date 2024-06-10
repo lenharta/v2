@@ -1,14 +1,8 @@
 import clsx from 'clsx';
 import { factory } from '@/core';
-import { Factory, Theme } from '@/types';
+import { Factory } from '@/types';
 import { ICON_MAP } from './icon-library';
-
-interface IconProps {
-  size?: Theme.Size | undefined;
-  name?: keyof (typeof ICON_MAP)['fill'] | undefined;
-  scheme?: 'accent' | Theme.Color | undefined;
-  variant?: 'fill' | 'outline' | undefined;
-}
+import { IconProps } from './Icon.types';
 
 type IconFactory = Factory.Config<{
   ref: SVGSVGElement;
@@ -56,4 +50,4 @@ const Icon = factory<IconFactory>((props, ref) => {
   );
 });
 
-export { Icon, type IconProps };
+export { Icon };

@@ -14,13 +14,19 @@ const ActionSpacer: ActionSpacerFactory = (props) => {
 
   const ctx = useActionContext();
 
+  const getStaticScheme = () => {
+    const filter = '-interactive';
+    const input = scheme ?? ctx.scheme ?? 'primary-1';
+    return input.replace(filter, '');
+  };
+
   return (
     <Box
       role="separator"
       className={clsx(css.spacer, className)}
-      data-scheme={scheme ? scheme : ctx.scheme}
-      data-variant={variant ? variant : ctx.variant}
       data-orientation={ctx.orientation}
+      data-variant={variant ? variant : ctx.variant}
+      data-scheme={getStaticScheme()}
       {...forwardedProps}
     >
       {children}
