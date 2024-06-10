@@ -1,25 +1,22 @@
 import React from 'react';
-import { Action, Icon } from '@/core';
+import { Action } from '@/core';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { SideMenuSelect } from './SideMenuSelect';
-import { SideMenuCSS, SideMenuNavItem, SideMenuProps } from './types';
 import { useDispatchContext, useStateContext } from '@/app';
+import { SideMenuPanelState, SideMenuProps } from './SideMenu.types';
+import { SideMenuSelect } from './SideMenuSelect';
+import { SideMenuNav } from './SideMenuNav';
+
+import {
+  SIDE_MENU_CSS,
+  SIDE_MENU_SELECTORS,
+  SIDE_MENU_SELECT_DATA,
+  SIDE_MENU_NAVIGATION_LINKS,
+} from './SideMenu.constants';
 
 type SideMenuFactory = React.FC<SideMenuProps> & {
+  Nav: typeof SideMenuNav;
   Select: typeof SideMenuSelect;
 };
-
-const css: Partial<SideMenuCSS> = {
-  root: 'v2-sidemenu',
-};
-
-const navItems: SideMenuNavItem[] = [
-  { label: 'experience', value: '/experience', icon: 'briefcase' },
-  { label: 'projects', value: '/projects', icon: 'box' },
-  { label: 'toolbox', value: '/toolbox', icon: 'code-slash' },
-  { label: 'sandbox', value: '/sandbox', icon: 'layers' },
-  { label: 'settings', value: '/settings', icon: 'gear' },
-];
 
 const SideMenu: SideMenuFactory = (props) => {
   const {} = props;
@@ -29,38 +26,46 @@ const SideMenu: SideMenuFactory = (props) => {
   const dispatch = useDispatchContext();
   const navigate = useNavigate();
 
-  const [openPanels, setOpenPanels] = React.useState({
+  const [openPanels, setOpenPanels] = React.useState<SideMenuPanelState>({
     accent: false,
     mode: false,
     dir: false,
   });
 
   return (
-    <div className={css.root}>
+    <div className={SIDE_MENU_CSS.root}>
       <Action.Group
         scheme="primary-1-interactive"
         variant="elevated"
         component="nav"
         orientation="vertical"
-        childSelector="[data-sidemenu-action-item]"
-        parentSelector="[data-sidemenu-action-group]"
-        data-sidemenu-action-group
+        childSelector={SIDE_MENU_SELECTORS.item.key}
+        parentSelector={SIDE_MENU_SELECTORS.group.key}
+        {...SIDE_MENU_SELECTORS.group.prop}
       >
-        {navItems.map((item) => (
-          <Action
-            data-sidemenu-action-item
-            icon={<Icon name={item.icon} variant={store.icons} />}
-            onClick={(event) => navigate(event.currentTarget.value)}
-            selected={location.pathname === item.value}
-            label={item.label}
-            value={item.value}
-            key={item.value}
+        <SideMenu.Nav
+          {...SIDE_MENU_SELECTORS.item.prop}
+          items={SIDE_MENU_NAVIGATION_LINKS}
+          value={location.pathname}
+          navigate={navigate}
+          store={store}
+        />
+
+        <Action.Spacer />
+
+        {SIDE_MENU_SELECT_DATA.map((item) => (
+          <SideMenu.Select
+            open={openPanels}
+            store={store}
+            items={item.items}
+            group={item.group}
+            disabled={item.disabled}
+            onOpenChange={setOpenPanels}
+            dispatch={dispatch}
           />
         ))}
 
-        <Action.Spacer scheme="primary-1" variant="elevated" />
-
-        <SideMenu.Select
+        {/* <SideMenu.Select
           name="accent"
           store={store}
           dispatch={dispatch}
@@ -105,12 +110,13 @@ const SideMenu: SideMenuFactory = (props) => {
             { label: 'Left to Right', value: 'ltr' },
             { label: 'Right to Left', value: 'rtl' },
           ]}
-        />
+        /> */}
       </Action.Group>
     </div>
   );
 };
 
+SideMenu.Nav = SideMenuNav;
 SideMenu.Select = SideMenuSelect;
 SideMenu.displayName = '@v2/SideMenu';
 export { SideMenu };

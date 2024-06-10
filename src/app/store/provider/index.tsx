@@ -49,7 +49,7 @@ const StoreProvider = ({ children }: Store.ProviderProps) => {
 
       return {
         ...current,
-        ...(local.fetch() ? local.fetch() : {}),
+        ...payload,
       };
     }
 

@@ -11,6 +11,11 @@ type TabsComponent = React.FC<TabsProps> & {
   Panel: typeof TabsPanel;
 };
 
+const CORE_TABS_SELECTORS = {
+  item: { key: '[data-core-tabs-item]', prop: { 'data-core-tabs-item': true } },
+  list: { key: '[data-core-tabs-list]', prop: { 'data-core-tabs-list': true } },
+};
+
 const Tabs: TabsComponent = (props) => {
   const {
     value: controlledValue,
@@ -22,6 +27,10 @@ const Tabs: TabsComponent = (props) => {
     orientation = 'horizontal',
     defaultValue,
     keyboardActivated,
+    trapFocus = false,
+    preventDefault = false,
+    parentSelector = CORE_TABS_SELECTORS.list.key,
+    childSelector = CORE_TABS_SELECTORS.item.key,
   } = props;
 
   const uid = React.useId();
@@ -47,6 +56,10 @@ const Tabs: TabsComponent = (props) => {
         disabled,
         orientation,
         keyboardActivated,
+        preventDefault,
+        parentSelector,
+        childSelector,
+        trapFocus,
         onChange,
         getItemId,
         getPanelId,
@@ -61,4 +74,4 @@ Tabs.List = TabsList;
 Tabs.Item = TabsItem;
 Tabs.Panel = TabsPanel;
 Tabs.displayName = '@v2/Tabs';
-export { Tabs };
+export { Tabs, CORE_TABS_SELECTORS };

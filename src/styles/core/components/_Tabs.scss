@@ -21,20 +21,11 @@
     margin-block: var(--s-1);
     gap: var(--s-1);
 
-    // overflow-y: visible;
-    // overflow-x: scroll;
-
-    // &::-webkit-scrollbar {
-    //   visibility: hidden;
-    // }
-
     &-spacer {
       flex: 1 0;
       width: 100%;
       min-height: var(--x-tabs-item-height);
       display: flex;
-
-      // border: solid 1px orange;
     }
   }
 

@@ -3,7 +3,7 @@ import { Factory } from '@/types';
 import { TabsItemProps } from '../types';
 import { useTabsContext } from '../context';
 import { createEventCallback } from '@/utils';
-import { factory, Label, UnstyledButton } from '@/core';
+import { CORE_TABS_SELECTORS, createKeyDownGroup, factory, Label, UnstyledButton } from '@/core';
 
 type TabsItemFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -47,6 +47,14 @@ const TabsItem = factory<TabsItemFactory>((props, ref) => {
             ctx.onChange(currentTarget.value);
           }
         }),
+        onKeyDown: createKeyDownGroup({
+          onKeyDown,
+          loop: ctx.trapFocus,
+          orientation: ctx.orientation,
+          preventDefault: ctx.preventDefault,
+          parentSelector: ctx.parentSelector,
+          childSelector: ctx.childSelector,
+        }),
       }
     : {};
 
@@ -62,6 +70,7 @@ const TabsItem = factory<TabsItemFactory>((props, ref) => {
       data-disabled={disabled}
       data-variant={variant}
       data-scheme={scheme}
+      {...CORE_TABS_SELECTORS.item.prop}
       {...forwardedProps}
       {...contextProps}
     >

@@ -17,15 +17,18 @@ interface TabsContext {
   /** Defines the directional layout of the tablist. */
   orientation: 'vertical' | 'horizontal' | undefined;
 
-  scheme?: Theme.Scheme | undefined;
-
-  variant?: 'default' | 'elevated';
-
   /** Specifies if the tabs can be activated with keyboard events. */
   keyboardActivated?: boolean | undefined;
 
   /** Indicates if the entire tabslist should have a disabled state. */
   disabled?: boolean | undefined;
+
+  scheme?: Theme.Scheme | undefined;
+  variant?: 'default' | 'elevated';
+  preventDefault: boolean;
+  parentSelector: string;
+  childSelector: string;
+  trapFocus: boolean;
 }
 
 interface TabsProps {
@@ -38,6 +41,10 @@ interface TabsProps {
   defaultValue?: string | undefined;
   keyboardActivated?: boolean | undefined;
   onChange?: ((value: string) => void) | undefined;
+  preventDefault?: boolean | undefined;
+  parentSelector?: string | undefined;
+  childSelector?: string | undefined;
+  trapFocus?: boolean | undefined;
 }
 
 interface TabsItemProps {
