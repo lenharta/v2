@@ -1,0 +1,21 @@
+import React from 'react';
+
+const ICON_MAP_LOGO_SHARED = {
+  ['logo-v2']: (
+    <React.Fragment>
+      <path d="M0 13.76L7.97395 0L9.12922 1.9806L3.49187 11.7533H14.8295L16 13.76H0Z" />
+      <path d="M11.3876 9.79878H13.6895L10.2541 3.90909L9.12921 5.8897L11.3876 9.79878Z" />
+      <path d="M9.12922 9.79879L7.97395 7.84426L6.85341 9.79879H9.12922Z" />
+    </React.Fragment>
+  ),
+};
+
+const ICON_MAP_LOGO_OUTLINE = {
+  ...ICON_MAP_LOGO_SHARED,
+};
+
+const ICON_MAP_LOGO_FILL = {
+  ...ICON_MAP_LOGO_SHARED,
+};
+
+export { ICON_MAP_LOGO_OUTLINE, ICON_MAP_LOGO_FILL };

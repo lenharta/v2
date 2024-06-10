@@ -11,7 +11,7 @@ body svg,
 
 .v2-page {
   color: var(--c-text-hgh);
-  background-color: var(--c-background-1);
+  background-color: var(--c-background-0);
   transition-property: background-color, color, border-color, opacity, fill, stroke;
   transition-timing-function: ease;
   transition-duration: 400ms;
@@ -19,13 +19,21 @@ body svg,
 
 .v2-hero {
   color: var(--c-text-hgh);
-  background-color: var(--c-background-2);
+  background-color: var(--c-background-1);
   transition-property: background-color, color, border-color, opacity, fill, stroke;
   transition-timing-function: ease;
   transition-duration: 400ms;
 }
 
 .v2-header {
+  color: var(--c-text-hgh);
+  background-color: var(--c-background-0);
+  transition-property: background-color, color, border-color, opacity, fill, stroke;
+  transition-timing-function: ease;
+  transition-duration: 400ms;
+}
+
+.v2-footer {
   color: var(--c-text-hgh);
   background-color: var(--c-background-1);
   transition-property: background-color, color, border-color, opacity, fill, stroke;
@@ -35,7 +43,7 @@ body svg,
 
 .v2-sidemenu {
   color: var(--c-text-hgh);
-  background-color: var(--c-background-1);
+  background-color: var(--c-background-0);
   transition-property: background-color, color, border-color, opacity, fill, stroke;
   transition-timing-function: ease;
   transition-duration: 400ms;

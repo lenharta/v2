@@ -1,10 +1,10 @@
+import clsx from 'clsx';
 import { Factory } from '@/types';
 import { ActionGroup } from './ActionGroup';
 import { ActionSpacer } from './ActionSpacer';
 import { useActionContext } from './Action.context';
 import { ActionCSS, ActionRootProps } from './types';
-import { factory, UnstyledButton, useThemeClasses, createKeyDownGroup } from '@/core';
-import clsx from 'clsx';
+import { factory, UnstyledButton, createKeyDownGroup } from '@/core';
 
 const css: Partial<ActionCSS> = {
   root: 'v2-action',
@@ -51,8 +51,8 @@ const Action = factory<ActionRootFactory>((props, ref) => {
         'data-disabled': isGroupDisabled,
         'data-selected': isGroupSelected,
         'data-orientation': ctx.orientation,
-        'data-variant': ctx.variant,
-        'data-scheme': ctx.scheme,
+        'data-variant': variant ?? ctx.variant,
+        'data-scheme': scheme ?? ctx.scheme,
         onKeyDown: createKeyDownGroup({
           onKeyDown: forwardedProps.onKeyDown,
           parentSelector: ctx.parentSelector,

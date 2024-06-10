@@ -17,6 +17,10 @@ interface TabsContext {
   /** Defines the directional layout of the tablist. */
   orientation: 'vertical' | 'horizontal' | undefined;
 
+  scheme?: Theme.Scheme | undefined;
+
+  variant?: 'default' | 'elevated';
+
   /** Specifies if the tabs can be activated with keyboard events. */
   keyboardActivated?: boolean | undefined;
 
@@ -26,6 +30,8 @@ interface TabsContext {
 
 interface TabsProps {
   value?: string | undefined;
+  scheme?: Theme.Scheme | undefined;
+  variant?: 'default' | 'elevated';
   children?: React.ReactNode | undefined;
   disabled?: boolean | undefined;
   orientation?: Theme.Orientation;
@@ -37,6 +43,8 @@ interface TabsProps {
 interface TabsItemProps {
   label: string;
   value: string;
+  scheme?: Theme.Scheme | undefined;
+  variant?: 'default' | 'elevated';
   disabled?: boolean | undefined;
   leftContent?: React.ReactNode | undefined;
   rightContent?: React.ReactNode | undefined;

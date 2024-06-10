@@ -1,6 +1,6 @@
 import React from 'react';
 import { Action, Icon } from '@/core';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { SideMenuSelect } from './SideMenuSelect';
 import { SideMenuCSS, SideMenuNavItem, SideMenuProps } from './types';
 import { useDispatchContext, useStateContext } from '@/app';
@@ -14,18 +14,18 @@ const css: Partial<SideMenuCSS> = {
 };
 
 const navItems: SideMenuNavItem[] = [
-  { label: 'home', value: '/', icon: 'house' },
   { label: 'experience', value: '/experience', icon: 'briefcase' },
   { label: 'projects', value: '/projects', icon: 'box' },
-  { label: 'toolbox', value: '/toolbox', icon: 'wrench-circle' },
-  { label: 'sandbox', value: '/sandbox', icon: 'boxes' },
-  { label: 'contact', value: '/contact', icon: 'at' },
+  { label: 'toolbox', value: '/toolbox', icon: 'code-slash' },
+  { label: 'sandbox', value: '/sandbox', icon: 'layers' },
+  { label: 'settings', value: '/settings', icon: 'gear' },
 ];
 
 const SideMenu: SideMenuFactory = (props) => {
   const {} = props;
 
   const store = useStateContext();
+  const location = useLocation();
   const dispatch = useDispatchContext();
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ const SideMenu: SideMenuFactory = (props) => {
   return (
     <div className={css.root}>
       <Action.Group
-        scheme="primary-interactive"
+        scheme="primary-1-interactive"
         variant="elevated"
         component="nav"
         orientation="vertical"
@@ -51,47 +51,59 @@ const SideMenu: SideMenuFactory = (props) => {
             data-sidemenu-action-item
             icon={<Icon name={item.icon} variant={store.icons} />}
             onClick={(event) => navigate(event.currentTarget.value)}
+            selected={location.pathname === item.value}
             label={item.label}
             value={item.value}
             key={item.value}
           />
         ))}
 
-        <Action.Spacer />
+        <Action.Spacer scheme="primary-1" variant="elevated" />
 
         <SideMenu.Select
-          store={store}
-          dispatch={dispatch}
-          isOpen={openPanels.accent}
-          setOpen={() => setOpenPanels({ ...openPanels, accent: !openPanels.accent })}
-          data={[
-            { label: 'Light', value: 'light', name: 'mode' },
-            { label: 'Dark', value: 'dark', name: 'mode' },
-            { label: 'Dim', value: 'dim', name: 'mode' },
-          ]}
-        />
-
-        <SideMenu.Select
+          name="accent"
           store={store}
           dispatch={dispatch}
           isOpen={openPanels.mode}
           setOpen={() => setOpenPanels({ ...openPanels, mode: !openPanels.mode })}
           data={[
-            { label: 'Light', value: 'light', name: 'mode' },
-            { label: 'Dark', value: 'dark', name: 'mode' },
-            { label: 'Dim', value: 'dim', name: 'mode' },
+            { label: 'Red', value: 'red' },
+            { label: 'Orange', value: 'orange' },
+            { label: 'Yellow', value: 'yellow' },
+            { label: 'Green', value: 'green' },
+            { label: 'Mint', value: 'mint' },
+            { label: 'Teal', value: 'teal' },
+            { label: 'Cyan', value: 'cyan' },
+            { label: 'Blue', value: 'blue' },
+            { label: 'Indigo', value: 'indigo' },
+            { label: 'Purple', value: 'purple' },
+            { label: 'Pink', value: 'pink' },
+            { label: 'Brown', value: 'brown' },
           ]}
         />
 
         <SideMenu.Select
+          name="mode"
+          store={store}
+          dispatch={dispatch}
+          isOpen={openPanels.accent}
+          setOpen={() => setOpenPanels({ ...openPanels, accent: !openPanels.accent })}
+          data={[
+            { label: 'Light', value: 'light' },
+            { label: 'Dim', value: 'dim' },
+            { label: 'Dark', value: 'dark' },
+          ]}
+        />
+
+        <SideMenu.Select
+          name="dir"
           store={store}
           dispatch={dispatch}
           isOpen={openPanels.dir}
           setOpen={() => setOpenPanels({ ...openPanels, dir: !openPanels.dir })}
           data={[
-            { label: 'Light', value: 'light', name: 'mode' },
-            { label: 'Dark', value: 'dark', name: 'mode' },
-            { label: 'Dim', value: 'dim', name: 'mode' },
+            { label: 'Left to Right', value: 'ltr' },
+            { label: 'Right to Left', value: 'rtl' },
           ]}
         />
       </Action.Group>

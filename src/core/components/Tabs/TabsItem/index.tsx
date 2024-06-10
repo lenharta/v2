@@ -12,10 +12,16 @@ type TabsItemFactory = Factory.Config<{
   omits: 'children';
 }>;
 
+const css = {
+  item: 'v2-tabs-item',
+};
+
 const TabsItem = factory<TabsItemFactory>((props, ref) => {
   const {
     label,
     value,
+    scheme,
+    variant,
     disabled,
     className,
     leftContent,
@@ -26,45 +32,42 @@ const TabsItem = factory<TabsItemFactory>((props, ref) => {
   } = props;
 
   const ctx = useTabsContext();
-  const itemLabel = forwardedProps['aria-label'] || label;
-  const isSelectedItem = ctx.value === value;
-  const isDisabledItem = ctx.disabled || disabled;
 
-  const handleKeyDown = createEventCallback(onKeyDown, (event) => {
-    const { key, currentTarget } = event ?? {};
-    if (!isDisabledItem && key === 'Enter' && currentTarget.value) {
-      ctx.onChange(currentTarget.value);
-    }
-  });
-
-  const handleClick = createEventCallback(onClick, (event) => {
-    const { currentTarget } = event ?? {};
-    if (!isDisabledItem && currentTarget.value) {
-      ctx.onChange(currentTarget.value);
-    }
-  });
+  const contextProps = ctx
+    ? {
+        'aria-selected': ctx.value === value || undefined,
+        'aria-disabled': ctx.disabled || disabled,
+        'data-selected': ctx.value === value || undefined,
+        'data-disabled': ctx.disabled || disabled,
+        'data-variant': ctx.variant || variant,
+        'data-scheme': ctx.scheme || scheme,
+        onClick: createEventCallback(onClick, (event) => {
+          const { currentTarget } = event ?? {};
+          if (!(ctx.disabled || disabled) && currentTarget.value) {
+            ctx.onChange(currentTarget.value);
+          }
+        }),
+      }
+    : {};
 
   return (
     <UnstyledButton
-      {...forwardedProps}
       id={ctx.getItemId()}
       ref={ref}
       role="tab"
       value={value}
-      aria-label={itemLabel}
-      aria-selected={isSelectedItem}
-      aria-disabled={isDisabledItem}
-      data-selected={isSelectedItem}
-      data-disabled={isDisabledItem}
-      className={clsx('v2-tabs-item', className)}
-      onKeyDown={handleKeyDown}
-      onClick={handleClick}
+      className={clsx(css.item, className)}
+      aria-label={forwardedProps['aria-label'] || label}
+      aria-disabled={disabled}
+      data-disabled={disabled}
+      data-variant={variant}
+      data-scheme={scheme}
+      {...forwardedProps}
+      {...contextProps}
     >
-      <span className="v2-tabs-item-inner">
-        {leftContent && <div data-position="start">{leftContent}</div>}
-        {<Label component="div">{label}</Label>}
-        {rightContent && <div data-position="end">{rightContent}</div>}
-      </span>
+      {leftContent && <div data-position="start">{leftContent}</div>}
+      {<Label component="div">{label}</Label>}
+      {rightContent && <div data-position="end">{rightContent}</div>}
     </UnstyledButton>
   );
 });
