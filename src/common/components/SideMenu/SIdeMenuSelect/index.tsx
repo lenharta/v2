@@ -1,4 +1,3 @@
-import { Theme } from '@/types';
 import { Floating } from '@/core';
 import { SideMenuPanel } from '../SIdeMenuPanel';
 import { SideMenuTarget } from '../SideMenuTarget';
@@ -10,10 +9,7 @@ type SideMenuSelectFactory = React.FC<SideMenuSelectProps> & {
 };
 
 const SideMenuSelect: SideMenuSelectFactory = (props) => {
-  const { items, open, store, group, disabled, dispatch, onOpenChange } = props;
-  const scheme: Theme.Scheme = 'primary-1-interactive';
-  const variant: 'default' | 'elevated' = 'elevated';
-
+  const { items, open, store, group, scheme, variant, disabled, dispatch, onOpenChange } = props;
   return (
     <Floating
       isOpen={open[group]}

@@ -47,6 +47,8 @@ interface SideMenuSelectProps<T extends SideMenuPanelState = SideMenuPanelState>
   group: keyof T;
   store: Store.State;
   items: SideMenuSelectItem[];
+  scheme: Theme.Scheme;
+  variant: 'default' | 'elevated';
   disabled: boolean | undefined;
   dispatch: (store: Partial<Store.State>) => void;
   onOpenChange: (state: T) => void;
