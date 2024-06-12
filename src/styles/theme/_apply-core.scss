@@ -207,3 +207,59 @@
     background-color: var(--c-elevation-0-enabled);
   }
 }
+
+// CORE | TILE
+
+.v2-tile {
+  &--variant-default[data-behavior='clickable']:not([data-disabled]),
+  &--variant-default[data-behavior='expandable']:not([data-disabled]) {
+    background-color: var(--c-background-0-enabled);
+  }
+  &--variant-default[data-behavior='clickable']:not([data-disabled]):hover,
+  &--variant-default[data-behavior='expandable']:not([data-disabled]):hover {
+    background-color: var(--c-background-0-hovered);
+  }
+  &--variant-default[data-behavior='clickable']:not([data-disabled]):active,
+  &--variant-default[data-behavior='expandable']:not([data-disabled]):active {
+    background-color: var(--c-background-0-pressed);
+  }
+
+  &--variant-elevated[data-behavior='clickable']:not([data-disabled]),
+  &--variant-elevated[data-behavior='expandable']:not([data-disabled]) {
+    background-color: var(--c-elevation-0-enabled);
+  }
+  &--variant-elevated[data-behavior='clickable']:not([data-disabled]):hover,
+  &--variant-elevated[data-behavior='expandable']:not([data-disabled]):hover {
+    background-color: var(--c-elevation-0-hovered);
+  }
+  &--variant-elevated[data-behavior='clickable']:not([data-disabled]):active,
+  &--variant-elevated[data-behavior='expandable']:not([data-disabled]):active {
+    background-color: var(--c-elevation-0-pressed);
+  }
+
+  &--variant-default[data-behavior='selectable']:not([data-disabled]) {
+    background-color: var(--c-background-0-enabled);
+  }
+  &--variant-default[data-behavior='selectable']:not([data-disabled]):hover {
+    background-color: var(--c-background-0-hovered);
+  }
+  &--variant-default[data-behavior='selectable']:not([data-disabled]):active {
+    background-color: var(--c-background-0-pressed);
+  }
+  &--variant-default[data-behavior='selectable']:not([data-disabled])[data-selected] {
+    background-color: var(--c-background-0-selected);
+  }
+
+  &--variant-elevated[data-behavior='selectable']:not([data-disabled]) {
+    background-color: var(--c-elevation-0-enabled);
+  }
+  &--variant-elevated[data-behavior='selectable']:not([data-disabled]):hover {
+    background-color: var(--c-elevation-0-hovered);
+  }
+  &--variant-elevated[data-behavior='selectable']:not([data-disabled]):active {
+    background-color: var(--c-elevation-0-pressed);
+  }
+  &--variant-elevated[data-behavior='selectable']:not([data-disabled])[data-selected] {
+    background-color: var(--c-elevation-0-selected);
+  }
+}

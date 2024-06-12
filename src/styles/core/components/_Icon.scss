@@ -1,23 +1,23 @@
 .v2-icon {
-  width: var(--x-core-icon-size, 16px);
-  height: var(--x-core-icon-size, 16px);
+  width: var(--x-icon-size, 16px);
+  height: var(--x-icon-size, 16px);
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .v2-core-size-xs {
-    --x-core-icon-size: 16px;
+  &--size-xs {
+    --x-icon-size: 16px;
   }
-  .v2-core-size-sm {
-    --x-core-icon-size: 18px;
+  &--size-sm {
+    --x-icon-size: 18px;
   }
-  .v2-core-size-md {
-    --x-core-icon-size: 20px;
+  &--size-md {
+    --x-icon-size: 20px;
   }
-  .v2-core-size-lg {
-    --x-core-icon-size: 24px;
+  &--size-lg {
+    --x-icon-size: 24px;
   }
-  .v2-core-size-xl {
-    --x-core-icon-size: 28px;
+  &--size-xl {
+    --x-icon-size: 28px;
   }
 }

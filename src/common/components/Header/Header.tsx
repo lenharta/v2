@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Factory } from '@/types';
 import { Action, Box, Icon, factory } from '@/core';
 import { HeaderCSS, HeaderRootProps } from './types';
@@ -35,7 +34,14 @@ const Header = factory<HeaderRootFactory>((props, ref) => {
       >
         <Action
           data-header-action-item
-          icon={<Icon name="logo-v2" size="md" variant={store.icons} />}
+          icon={
+            <Icon
+              size="lg"
+              name="logo-v2"
+              variant={store.icons}
+              style={{ fill: 'var(--c-accent-A600)' }}
+            />
+          }
           onClick={() => navigate('/')}
           label="home"
           value="/"
