@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { factory, Box } from '@/core';
-import { useTabsContext } from '../context';
-import { TabsPanelProps } from '../types';
+import { useTabsContext } from '../tabs-context';
+import { TabsPanelProps } from '../tabs-types';
+import { css } from '../tabs-constants';
 
 type TabsPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -24,7 +25,7 @@ const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
   return (
     <Box
       {...forwardedProps}
-      className={clsx('v2-tabs-panel', className)}
+      className={clsx(css.panel, className)}
       style={{ ...style, ...keepMountedStyles }}
       role="tabpanel"
       ref={ref}
@@ -34,4 +35,4 @@ const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
 });
 
 TabsPanel.displayName = '@v2/Tabs.List';
-export { TabsPanel, type TabsPanelProps };
+export { TabsPanel };

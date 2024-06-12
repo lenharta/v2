@@ -14,9 +14,25 @@ type TextFactory = Factory.Config<{
 }>;
 
 const Text = factoryPolymorphic<TextFactory>((props, ref) => {
-  const { className, component: Component = 'p', ...forwardedProps } = props;
-  return <Component {...forwardedProps} ref={ref} className={clsx(css.root, className)} />;
+  const {
+    fz = 5,
+    fw = 2,
+    fh = 3,
+    className,
+    component: Component = 'p',
+    ...forwardedProps
+  } = props;
+
+  const classNames = clsx(
+    css.root,
+    `${css.root}--fz-${fz}`,
+    `${css.root}--fw-${fw}`,
+    `${css.root}--fh-${fh}`,
+    className
+  );
+
+  return <Component {...forwardedProps} ref={ref} className={classNames} />;
 });
 
 Text.displayName = '@v2/Text';
-export { Text, type TextProps };
+export { Text };

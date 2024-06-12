@@ -1,5 +1,3 @@
-// CORE | ACTION
-
 .v2-action {
   min-width: var(--size-action-root);
   min-height: var(--size-action-root);
@@ -7,14 +5,6 @@
   position: relative;
   align-items: center;
   justify-content: center;
-
-  &:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: calc(var(--unit) * -1);
-    top: 0;
-  }
 
   &-group {
     gap: var(--unit);
@@ -61,50 +51,3 @@
     }
   }
 }
-
-// .v2-action-group {
-//   gap: var(--unit);
-//   display: flex;
-//   padding-inline: calc(var(--size-action-unit) / 2);
-// }
-
-// .v2-action-spacer {
-//   flex: 1 0;
-//   width: 100%;
-//   height: 100%;
-//   display: flex;
-// }
-
-// .v2-action-group[data-orientation='vertical'] {
-//   width: var(--size-action-offset);
-//   height: 100%;
-//   justify-content: flex-start;
-//   flex-direction: column;
-//   align-items: flex-start;
-// }
-
-// .v2-action-group[data-orientation='vertical'] .v2-action-spacer {
-//   width: var(--size-action-root);
-//   height: 100%;
-//   justify-content: flex-start;
-//   flex-direction: column;
-//   align-items: flex-start;
-// }
-
-// .v2-action-group[data-orientation='horizontal'] {
-//   width: 100%;
-//   height: var(--size-action-offset);
-//   justify-content: flex-start;
-//   flex-direction: row;
-//   align-items: center;
-// }
-
-// .v2-action-group[data-orientation='horizontal'] .v2-action-spacer {
-//   width: 100%;
-//   height: var(--size-action-root);
-//   justify-content: flex-start;
-//   flex-direction: row;
-//   align-items: center;
-// }
-
-// CORE | ACTION | THEME

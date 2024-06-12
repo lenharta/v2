@@ -1,6 +1,7 @@
+import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factoryPolymorphic } from '@/core/factory';
 import { BoxRootProps } from './types';
+import { factoryPolymorphic } from '@/core';
 
 type BoxRootFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -11,7 +12,7 @@ type BoxRootFactory = Factory.Config<{
 const Box = factoryPolymorphic<BoxRootFactory>((props, ref) => {
   const { className, children, component: Component = 'div', ...forwardedProps } = props;
   return (
-    <Component {...forwardedProps} ref={ref} className={className}>
+    <Component {...forwardedProps} ref={ref} className={clsx('v2-box', className)}>
       {children}
     </Component>
   );

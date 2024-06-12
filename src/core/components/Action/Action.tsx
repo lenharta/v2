@@ -1,20 +1,18 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { ActionGroup } from './ActionGroup';
-import { ActionSpacer } from './ActionSpacer';
-import { useActionContext } from './Action.context';
-import { ActionCSS, ActionRootProps } from './types';
 import { factory, UnstyledButton, createKeyDownGroup } from '@/core';
 
-const css: Partial<ActionCSS> = {
-  root: 'v2-action',
-};
+import { ActionProps } from './action-types';
+import { ActionGroup } from './ActionGroup';
+import { ActionSpacer } from './ActionSpacer';
+import { useActionContext } from './action-context';
+import { css } from './action-constants';
 
 type ActionRootFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
   omits: 'children';
-  props: ActionRootProps;
+  props: ActionProps;
   comps: {
     Group: typeof ActionGroup;
     Spacer: typeof ActionSpacer;
@@ -39,20 +37,24 @@ const Action = factory<ActionRootFactory>((props, ref) => {
 
   const isDisabled = disabled || undefined;
   const isSelected = selected || undefined;
-  const isGroupDisabled = (ctx.disabled ?? disabled) || undefined;
-  const isGroupSelected = ((value && ctx.value === value) ?? isSelected) || undefined;
+  const isGroupDisabled = ctx.disabled || disabled || undefined;
+  const isGroupSelected = (value && ctx.value === value) || isSelected || undefined;
 
   const contextProps = ctx
     ? {
         id: ctx.getActionId(label),
         title: ctx.withTitle ? label : undefined,
+        className: clsx(
+          css.root,
+          `${css.root}--scheme-${scheme || ctx.scheme}`,
+          `${css.root}--variant-${variant || ctx.variant}`,
+          className
+        ),
         'aria-disabled': isGroupDisabled,
         'aria-selected': isGroupSelected,
         'data-disabled': isGroupDisabled,
         'data-selected': isGroupSelected,
         'data-orientation': ctx.orientation,
-        'data-variant': variant ?? ctx.variant,
-        'data-scheme': scheme ?? ctx.scheme,
         onKeyDown: createKeyDownGroup({
           onKeyDown: forwardedProps.onKeyDown,
           parentSelector: ctx.parentSelector,
@@ -68,14 +70,17 @@ const Action = factory<ActionRootFactory>((props, ref) => {
       ref={ref}
       value={value}
       title={withTitle ? label : undefined}
-      className={clsx(css.root, className)}
+      className={clsx(
+        css.root,
+        `${css.root}--scheme-${scheme}`,
+        `${css.root}--variant-${variant}`,
+        className
+      )}
       aria-label={forwardedProps['aria-label'] || label}
       aria-disabled={isDisabled}
       aria-selected={isSelected}
       data-selected={isSelected}
       data-disabled={isDisabled}
-      data-variant={variant}
-      data-scheme={scheme}
       {...forwardedProps}
       {...contextProps}
     >

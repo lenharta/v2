@@ -1,18 +1,25 @@
-import { Factory } from '@/types';
-import { factory } from '@/core/factory';
+import clsx from 'clsx';
 import { DividerSeparatorProps } from '../types';
 
-type DividerSeparatorFactory = Factory.Config<{
-  ref: HTMLDivElement;
-  comp: 'div';
-  props: DividerSeparatorProps;
-  omits: 'children';
-}>;
+type DividerSeperatorFactory = React.FC<DividerSeparatorProps>;
 
-const DividerSeparator = factory<DividerSeparatorFactory>((props, ref) => {
-  const { className, ...forwardedProps } = props;
-  return <div {...forwardedProps} role="separator" className={className} ref={ref} />;
-});
+const css = {
+  seperator: 'v2-divider-seperator',
+};
 
-DividerSeparator.displayName = '@v2/Divider.Separator';
-export { DividerSeparator, type DividerSeparatorFactory };
+const DividerSeperator: DividerSeperatorFactory = (props) => {
+  const { variant, size, show } = props;
+  if (!show) return null;
+  return (
+    <div
+      className={clsx(
+        css.seperator,
+        `${css.seperator}--size-${size}`,
+        `${css.seperator}--variant-${variant}`
+      )}
+    />
+  );
+};
+
+DividerSeperator.displayName = '@v2/Divider.Seperator';
+export { DividerSeperator };

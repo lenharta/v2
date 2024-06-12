@@ -133,7 +133,45 @@ const ICON_MAP_COMPONENT_THEME_MODE_FILL = {
   ),
 };
 
+const ICON_MAP_COMPONENT_CLOSE_OUTLINED = {
+  ['close-x-circle']: (
+    <React.Fragment>
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+    </React.Fragment>
+  ),
+  ['close-x-square']: (
+    <React.Fragment>
+      <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+    </React.Fragment>
+  ),
+};
+
+const ICON_MAP_COMPONENT_CLOSE_FILL = {
+  ['close-x-circle']: (
+    <React.Fragment>
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z" />
+    </React.Fragment>
+  ),
+  ['close-x-square']: (
+    <React.Fragment>
+      <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708" />
+    </React.Fragment>
+  ),
+};
+
 const ICON_MAP_COMPONENT_SHARED = {
+  ['close-x']: (
+    <React.Fragment>
+      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+    </React.Fragment>
+  ),
+  ['close-x-large']: (
+    <React.Fragment>
+      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+    </React.Fragment>
+  ),
   ['dots-horizontal']: (
     <React.Fragment>
       <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
@@ -151,6 +189,7 @@ const ICON_MAP_COMPONENT_OUTLINE = {
   ...ICON_MAP_COMPONENT_CHECKBOX_OUTLINE,
   ...ICON_MAP_COMPONENT_RADIO_OUTLINE,
   ...ICON_MAP_COMPONENT_THEME_MODE_OUTLINE,
+  ...ICON_MAP_COMPONENT_CLOSE_OUTLINED,
 };
 
 const ICON_MAP_COMPONENT_FILL = {
@@ -158,6 +197,7 @@ const ICON_MAP_COMPONENT_FILL = {
   ...ICON_MAP_COMPONENT_CHECKBOX_FILL,
   ...ICON_MAP_COMPONENT_RADIO_FILL,
   ...ICON_MAP_COMPONENT_THEME_MODE_FILL,
+  ...ICON_MAP_COMPONENT_CLOSE_FILL,
 };
 
 export { ICON_MAP_COMPONENT_OUTLINE, ICON_MAP_COMPONENT_FILL };

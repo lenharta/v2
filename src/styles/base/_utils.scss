@@ -31,6 +31,14 @@
   background-color: palegoldenrod;
 }
 
+.v2-sample-tile-content {
+  width: 80%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .v2-swatch-group {
   display: flex;
   align-items: center;

@@ -15,10 +15,16 @@ export * from './Label';
 export * from './NavLink';
 export * from './Radio';
 export * from './Stack';
-export * from './Tabs';
+
+export * from './Tabs/Tabs';
+export * from './Tabs/tabs-types';
+
 export * from './Text';
 export * from './Textbox';
-export * from './Tile';
+
+export * from './Tile/Tile';
+export * from './Tile/tile-types';
+
 export * from './Title';
 export * from './Toggle';
 export * from './Transition';

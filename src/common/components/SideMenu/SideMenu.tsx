@@ -3,15 +3,11 @@ import { Theme } from '@/types';
 import { Action } from '@/core';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatchContext, useStateContext } from '@/app';
-import { SideMenuPanelState, SideMenuProps } from './SideMenu.types';
-import { SideMenuSelect } from './SideMenuSelect';
+
 import { SideMenuNav } from './SideMenuNav';
-import {
-  SIDE_MENU_CSS,
-  SIDE_MENU_SELECTORS,
-  SIDE_MENU_SELECT_DATA,
-  SIDE_MENU_NAVIGATION_LINKS,
-} from './SideMenu.constants';
+import { SideMenuSelect } from './SideMenuSelect';
+import { SideMenuPanelState, SideMenuProps } from './sidemenu-types';
+import { css, selectors, SIDEMENU_SELECT_DATA, SIDEMENU_NAV_DATA } from './sidemenu-constants';
 
 type SideMenuFactory = React.FC<SideMenuProps> & {
   Nav: typeof SideMenuNav;
@@ -36,28 +32,29 @@ const SideMenu: SideMenuFactory = (props) => {
   const variant: 'default' | 'elevated' = 'elevated';
 
   return (
-    <div className={SIDE_MENU_CSS.root}>
+    <div className={css.root}>
       <Action.Group
         scheme={scheme}
         variant={variant}
         component="nav"
         orientation="vertical"
-        childSelector={SIDE_MENU_SELECTORS.item.key}
-        parentSelector={SIDE_MENU_SELECTORS.group.key}
-        {...SIDE_MENU_SELECTORS.group.prop}
+        childSelector={selectors.item.key}
+        parentSelector={selectors.group.key}
+        {...selectors.group.prop}
       >
         <SideMenu.Nav
-          {...SIDE_MENU_SELECTORS.item.prop}
-          items={SIDE_MENU_NAVIGATION_LINKS}
-          value={location.pathname}
+          {...selectors.item.prop}
+          items={SIDEMENU_NAV_DATA}
+          group={{ value: location.pathname }}
           navigate={navigate}
           store={store}
         />
 
         <Action.Spacer />
 
-        {SIDE_MENU_SELECT_DATA.map((item) => (
+        {SIDEMENU_SELECT_DATA.map((item) => (
           <SideMenu.Select
+            key={item.group}
             open={openPanels}
             store={store}
             scheme={scheme}

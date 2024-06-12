@@ -1,6 +1,19 @@
 .v2-sidemenu {
   display: none;
 
+  &-link {
+    position: relative;
+
+    &[data-selected]::after {
+      content: '';
+      position: absolute;
+      width: var(--s-1);
+      bottom: 0;
+      left: calc(var(--s-1) * -1);
+      top: 0;
+    }
+  }
+
   @media screen and (min-width: 60em) {
     top: var(--size-action-offset);
     left: 0;

@@ -1,20 +1,17 @@
 import clsx from 'clsx';
 import React from 'react';
 import { Factory } from '@/types';
-import { TabsListProps } from '../types';
-import { useTabsContext } from '../context';
-import { factory, Box, Divider, CORE_TABS_SELECTORS } from '@/core';
+import { factory, Box, Divider } from '@/core';
+
+import { css, selectors } from '../tabs-constants';
+import { useTabsContext } from '../tabs-context';
+import { TabsListProps } from '../tabs-types';
 
 type TabsListFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: TabsListProps;
 }>;
-
-const css = {
-  list: 'v2-tabs-list',
-  spacer: 'v2-tabs-list-spacer',
-};
 
 const TabsList = factory<TabsListFactory>((props, ref) => {
   const { className, withDivider, children, dividerProps, ...forwardedProps } = props;
@@ -24,20 +21,28 @@ const TabsList = factory<TabsListFactory>((props, ref) => {
   return (
     <React.Fragment>
       <Box
-        {...forwardedProps}
         ref={ref}
         role="tablist"
-        className={clsx(css.list, className)}
+        className={clsx(
+          css.list,
+          `${css.list}--scheme-${ctx.scheme}`,
+          `${css.list}--variant-${ctx.variant}`,
+          className
+        )}
         aria-orientation={ctx.orientation}
         data-orientation={ctx.orientation}
-        {...CORE_TABS_SELECTORS.list.prop}
+        {...selectors.list.prop}
+        {...forwardedProps}
       >
         {children}
 
         <div
-          className={css.spacer}
-          data-scheme={ctx.scheme?.replace('-interactive', '')}
-          data-variant={ctx.variant}
+          className={clsx(
+            css.spacer,
+            `${css.spacer}--scheme-${ctx.scheme}`,
+            `${css.spacer}--variant-${ctx.variant}`,
+            className
+          )}
         />
       </Box>
       {withDivider && <Divider {...dividerProps} orientation={ctx.orientation} />}

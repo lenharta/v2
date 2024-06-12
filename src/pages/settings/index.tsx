@@ -1,4 +1,4 @@
-import { Icon, Tabs } from '@/core';
+import { Icon, Tabs, Text } from '@/core';
 import { Hero, Page, Section } from '@/common';
 import { SettingsPanel } from './SettingsPanel';
 import { SettingsError } from './settings-error';
@@ -12,14 +12,25 @@ const Settings: SettingsRouteFactory = () => (
   <Page>
     <Hero title="Settings" />
     <Section>
-      <Tabs defaultValue="user" scheme="primary-1-interactive" variant="default">
+      <Tabs defaultValue="user" variant="elevated">
         <Tabs.List>
           <Tabs.Item value="user" label="User" leftContent={<Icon />} />
           <Tabs.Item value="theme" label="Theme" leftContent={<Icon />} />
           <Tabs.Item value="locale" label="Locale" leftContent={<Icon />} />
         </Tabs.List>
         <Tabs.Panel value="theme">
-          <span>Settings | Theme Panel</span>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'var(--c-accent-A200)',
+              color: 'var(--c-accent-A900)',
+              height: 200,
+              width: 600,
+            }}
+            children={<Text>A300</Text>}
+          />
         </Tabs.Panel>
         <Tabs.Panel value="locale">
           <span>Settings | Locale Panel</span>

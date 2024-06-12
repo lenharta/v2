@@ -49,9 +49,13 @@ section {
   box-sizing: border-box;
 }
 
+div,
+section {
+  display: block;
+}
+
 html,
-body,
-#root {
+body {
   color: var(--root-text-color);
   background-color: var(--root-background-color);
   font-size: var(--root-font-size);

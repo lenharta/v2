@@ -1,6 +1,5 @@
-import { SideMenuTargetProps } from '../SideMenu.types';
-import { SIDE_MENU_CSS, SIDE_MENU_SELECTORS } from '../SideMenu.constants';
-
+import { css, selectors } from '../sidemenu-constants';
+import { SideMenuTargetProps } from '../sidemenu-types';
 import {
   Icon,
   Action,
@@ -10,10 +9,8 @@ import {
   getStoreAccentIconProps,
 } from '@/core';
 
-type SideMenuTargetFactory = React.FC<SideMenuTargetProps>;
-
-const SideMenuTarget: SideMenuTargetFactory = (props) => {
-  const { open, group, store, scheme, variant } = props;
+const SideMenuTarget: React.FC<SideMenuTargetProps> = (props) => {
+  const { open, group, store, scheme, variant, getIconVariant } = props;
 
   const iconProps = {
     accent: getStoreAccentIconProps(store['accent']),
@@ -24,9 +21,9 @@ const SideMenuTarget: SideMenuTargetFactory = (props) => {
   return (
     <Floating.Target>
       <Action
-        {...SIDE_MENU_SELECTORS.item.prop}
-        icon={<Icon {...iconProps} variant={store.icons} />}
-        className={SIDE_MENU_CSS.target}
+        {...selectors.item.prop}
+        icon={<Icon {...iconProps} variant={getIconVariant(store.mode, group, store.icons)} />}
+        className={css.target}
         selected={open[group]}
         variant={variant}
         scheme={scheme}

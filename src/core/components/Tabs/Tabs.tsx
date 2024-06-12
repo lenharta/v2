@@ -1,9 +1,10 @@
 import React from 'react';
-import { TabsProps } from './types';
 import { TabsItem } from './TabsItem';
 import { TabsList } from './TabsList';
 import { TabsPanel } from './TabsPanel';
-import { TabsProvider } from './context';
+import { TabsProps } from './tabs-types';
+import { selectors } from './tabs-constants';
+import { TabsProvider } from './tabs-context';
 
 type TabsComponent = React.FC<TabsProps> & {
   Item: typeof TabsItem;
@@ -11,17 +12,12 @@ type TabsComponent = React.FC<TabsProps> & {
   Panel: typeof TabsPanel;
 };
 
-const CORE_TABS_SELECTORS = {
-  item: { key: '[data-core-tabs-item]', prop: { 'data-core-tabs-item': true } },
-  list: { key: '[data-core-tabs-list]', prop: { 'data-core-tabs-list': true } },
-};
-
 const Tabs: TabsComponent = (props) => {
   const {
     value: controlledValue,
     onChange: controlledChange,
     scheme = 'primary-0-interactive',
-    variant = 'default',
+    variant = 'elevated',
     children,
     disabled,
     orientation = 'horizontal',
@@ -29,8 +25,8 @@ const Tabs: TabsComponent = (props) => {
     keyboardActivated,
     trapFocus = false,
     preventDefault = false,
-    parentSelector = CORE_TABS_SELECTORS.list.key,
-    childSelector = CORE_TABS_SELECTORS.item.key,
+    parentSelector = selectors.list.key,
+    childSelector = selectors.item.key,
   } = props;
 
   const uid = React.useId();
@@ -74,4 +70,4 @@ Tabs.List = TabsList;
 Tabs.Item = TabsItem;
 Tabs.Panel = TabsPanel;
 Tabs.displayName = '@v2/Tabs';
-export { Tabs, CORE_TABS_SELECTORS };
+export { Tabs };

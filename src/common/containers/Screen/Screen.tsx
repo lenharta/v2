@@ -1,26 +1,24 @@
 import clsx from 'clsx';
+import { factory } from '@/core';
 import { Factory } from '@/types';
-import { Box, factory } from '@/core';
-import { ScreenCSS, ScreenRootProps } from './types';
 
-const css: Partial<ScreenCSS> = {
-  root: 'v2-screen',
-};
+import { css } from './screen-constants';
+import { ScreenProps } from './screen-types';
 
 type ScreenRootFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
-  props: ScreenRootProps;
+  props: ScreenProps;
 }>;
 
 const Screen = factory<ScreenRootFactory>((props, ref) => {
   const { children, className, ...forwardedProps } = props;
   return (
-    <Box {...forwardedProps} ref={ref} className={clsx(css.root, className)}>
+    <div {...forwardedProps} ref={ref} className={clsx(css.root, className)}>
       {children}
-    </Box>
+    </div>
   );
 });
 
-Screen.displayName = '@v2/Screen.Root';
+Screen.displayName = '@v2/Screen';
 export { Screen };

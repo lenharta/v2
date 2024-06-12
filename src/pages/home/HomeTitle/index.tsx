@@ -9,7 +9,7 @@ type HomeTitleFactory = React.FC<{}> & {};
 const HomeTitle: HomeTitleFactory = ({}) => {
   return (
     <Title h1 className={css.title}>
-      <span>Frontend Engineer</span>
+      Frontend Engineer
       <span>Human-Centered Problem Solver</span>
     </Title>
   );

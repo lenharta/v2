@@ -1,31 +1,46 @@
-@use '../../mixins' as mixins;
-
 .v2-footer {
-  width: 100%;
-  display: flex;
-  min-height: calc(var(--s-16) * 3);
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: row;
+  // width: calc(100% - var(--size-action-offset));
+  display: block;
+  padding: var(--s-8);
 
-  &-box-menu,
-  &-box-logo {
+  &-content {
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-inline: var(--s-8);
-    padding-block: var(--s-8);
     gap: var(--s-8);
-
-    // border: solid 1px orange;
   }
 
-  &-box-logo {
-    flex-direction: row;
+  &-branding {
+    width: 30%;
+    display: block;
   }
 
-  &-box-menu {
-    flex: 1 0;
+  &-nav {
+    width: 70%;
+    display: flex;
+    gap: var(--s-8);
+  }
+
+  &-nav-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+
+  &-nav-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: var(--size-action-root);
+
+    a {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-inline: var(--s-4);
+      font-size: var(--fz-4);
+    }
   }
 }

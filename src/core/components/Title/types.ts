@@ -1,3 +1,5 @@
+import { Theme } from '@/types';
+
 interface TitleElementProps {
   h1?: boolean | undefined;
   h2?: boolean | undefined;
@@ -9,6 +11,10 @@ interface TitleElementProps {
 
 interface TitleProps extends TitleElementProps {
   component?: React.ElementType;
+  fz?: Theme.TokenFontSizeLevel | undefined;
+  fw?: Theme.TokenFontWeightLevel | undefined;
+  fh?: Theme.TokenFontHeightLevel | undefined;
+  clamp?: boolean | undefined;
 }
 
 export type { TitleElementProps, TitleProps };

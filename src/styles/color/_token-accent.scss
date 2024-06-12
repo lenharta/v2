@@ -60,3 +60,56 @@
   --c-accent-hue: var(--c-brown-hue);
   --c-accent-hsl: var(--c-brown-hsl);
 }
+
+[data-prefers-accent='red'],
+[data-prefers-accent='orange'],
+[data-prefers-accent='yellow'],
+[data-prefers-accent='green'],
+[data-prefers-accent='mint'],
+[data-prefers-accent='teal'],
+[data-prefers-accent='cyan'],
+[data-prefers-accent='blue'],
+[data-prefers-accent='indigo'],
+[data-prefers-accent='purple'],
+[data-prefers-accent='pink'],
+[data-prefers-accent='brown'] {
+  --c-accent-S50: hsl(var(--c-accent-hue), 05%);
+  --c-accent-S100: hsl(var(--c-accent-hue), 10%);
+  --c-accent-S150: hsl(var(--c-accent-hue), 15%);
+  --c-accent-S200: hsl(var(--c-accent-hue), 20%);
+  --c-accent-S250: hsl(var(--c-accent-hue), 25%);
+  --c-accent-S300: hsl(var(--c-accent-hue), 30%);
+  --c-accent-S350: hsl(var(--c-accent-hue), 35%);
+  --c-accent-S400: hsl(var(--c-accent-hue), 40%);
+  --c-accent-S450: hsl(var(--c-accent-hue), 45%);
+  --c-accent-S500: hsl(var(--c-accent-hue), 50%);
+  --c-accent-S550: hsl(var(--c-accent-hue), 55%);
+  --c-accent-S600: hsl(var(--c-accent-hue), 60%);
+  --c-accent-S650: hsl(var(--c-accent-hue), 65%);
+  --c-accent-S700: hsl(var(--c-accent-hue), 70%);
+  --c-accent-S750: hsl(var(--c-accent-hue), 75%);
+  --c-accent-S800: hsl(var(--c-accent-hue), 80%);
+  --c-accent-S850: hsl(var(--c-accent-hue), 85%);
+  --c-accent-S900: hsl(var(--c-accent-hue), 90%);
+  --c-accent-S950: hsl(var(--c-accent-hue), 95%);
+
+  --c-accent-A50: hsl(var(--c-accent-hsl), 0.05);
+  --c-accent-A100: hsl(var(--c-accent-hsl), 0.1);
+  --c-accent-A150: hsl(var(--c-accent-hsl), 0.15);
+  --c-accent-A200: hsl(var(--c-accent-hsl), 0.2);
+  --c-accent-A250: hsl(var(--c-accent-hsl), 0.25);
+  --c-accent-A300: hsl(var(--c-accent-hsl), 0.3);
+  --c-accent-A350: hsl(var(--c-accent-hsl), 0.35);
+  --c-accent-A400: hsl(var(--c-accent-hsl), 0.4);
+  --c-accent-A450: hsl(var(--c-accent-hsl), 0.45);
+  --c-accent-A500: hsl(var(--c-accent-hsl), 0.5);
+  --c-accent-A550: hsl(var(--c-accent-hsl), 0.55);
+  --c-accent-A600: hsl(var(--c-accent-hsl), 0.6);
+  --c-accent-A650: hsl(var(--c-accent-hsl), 0.65);
+  --c-accent-A700: hsl(var(--c-accent-hsl), 0.7);
+  --c-accent-A750: hsl(var(--c-accent-hsl), 0.75);
+  --c-accent-A800: hsl(var(--c-accent-hsl), 0.8);
+  --c-accent-A850: hsl(var(--c-accent-hsl), 0.85);
+  --c-accent-A900: hsl(var(--c-accent-hsl), 0.9);
+  --c-accent-A950: hsl(var(--c-accent-hsl), 0.95);
+}

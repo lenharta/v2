@@ -3,19 +3,19 @@
   flex-direction: column;
   display: flex;
 
-  &-gap--xs {
+  &--gap-xs {
     --v2-stack-gap: calc(var(--unit) * 1);
   }
-  &-gap--sm {
+  &--gap-sm {
     --v2-stack-gap: calc(var(--unit) * 4);
   }
-  &-gap--md {
+  &--gap-md {
     --v2-stack-gap: calc(var(--unit) * 8);
   }
-  &-gap--lg {
+  &--gap-lg {
     --v2-stack-gap: calc(var(--unit) * 16);
   }
-  &-gap--xl {
+  &--gap-xl {
     --v2-stack-gap: calc(var(--unit) * 24);
   }
 }

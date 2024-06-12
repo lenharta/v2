@@ -1,34 +1,47 @@
 import { Action, Floating } from '@/core';
 import { SideMenuOption } from '../SIdeMenuOption';
-import { SideMenuPanelProps } from '../SideMenu.types';
-import { SIDE_MENU_CSS, SIDE_MENU_SELECTORS } from '../SideMenu.constants';
+import { css, selectors } from '../sidemenu-constants';
+import { SideMenuPanelProps } from '../sidemenu-types';
 
 type SideMenuPanelFactory = React.FC<SideMenuPanelProps> & {
   Option: typeof SideMenuOption;
 };
 
 const SideMenuPanel: SideMenuPanelFactory = (props) => {
-  const { items, store, scheme, variant, disabled, group, dispatch, onOpenChange, open } = props;
+  const {
+    open,
+    items,
+    store,
+    scheme,
+    variant,
+    disabled,
+    group,
+    dispatch,
+    onOpenChange,
+    getIconVariant,
+  } = props;
+
   return (
     <Floating.Box>
       <Action.Group
-        {...SIDE_MENU_SELECTORS.panel.prop}
-        parentSelector={SIDE_MENU_SELECTORS.panel.key}
-        childSelector={SIDE_MENU_SELECTORS.option.key}
-        className={SIDE_MENU_CSS.panel}
+        {...selectors.panel.prop}
+        parentSelector={selectors.panel.key}
+        childSelector={selectors.option.key}
+        className={css.panel}
         variant={variant}
         scheme={scheme}
       >
-        {items.map((item) => (
+        {(items ?? []).map((item) => (
           <SideMenuPanel.Option
-            {...item}
             key={item.value}
             open={open}
             group={group}
             store={store}
             disabled={disabled || item.disabled}
-            onOpenChange={onOpenChange}
             dispatch={dispatch}
+            onOpenChange={onOpenChange}
+            getIconVariant={getIconVariant}
+            {...item}
           />
         ))}
       </Action.Group>

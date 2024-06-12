@@ -1,13 +1,11 @@
 import clsx from 'clsx';
 import React from 'react';
 import { Factory } from '@/types';
-import { ActionProvider } from '../Action.context';
-import { factoryPolymorphic } from '@/core/factory';
-import { ActionCSS, ActionGroupProps } from '../types';
+import { factoryPolymorphic } from '@/core';
 
-const css: Partial<ActionCSS> = {
-  group: 'v2-action-group',
-};
+import { css } from '../action-constants';
+import { ActionProvider } from '../action-context';
+import { ActionGroupProps } from '../action-types';
 
 type ActionGroupFactory = Factory.Config<{
   ref: HTMLDivElement;

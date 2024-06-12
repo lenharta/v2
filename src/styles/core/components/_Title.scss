@@ -1,0 +1,30 @@
+.v2-title {
+  --title-fz-xxs: var(--fz-5);
+  --title-fz-xs: var(--fz-6);
+  --title-fz-sm: var(--fz-8);
+  --title-fz-md: var(--fz-10);
+  --title-fz-lg: var(--fz-12);
+  --title-fz-xl: var(--fz-14);
+  --title-fz-xxl: var(--fz-16);
+
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  font-size: var(--title-fz, var(--fz-7));
+  font-weight: var(--title-fw, var(--fw-1));
+  line-height: var(--title-fh, var(--fh-1));
+
+  font-family: var(--mantine-font-family-headings);
+  text-wrap: var(--title-text-wrap, var(--mantine-heading-text-wrap));
+
+  &:where([data-line-clamp]) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--title-line-clamp);
+    -webkit-box-orient: vertical;
+  }
+}

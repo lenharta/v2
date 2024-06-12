@@ -27,6 +27,7 @@ const Floating: FloatingFactory = (props) => {
     transitionProps,
     closeOnEscape = true,
     closeOnClickOutside = true,
+    clickOutsideIgnoreRefs,
     placementDependencies,
     onPlacementChange,
     onChange,
@@ -54,6 +55,7 @@ const Floating: FloatingFactory = (props) => {
 
   useClickOutside(
     [
+      ...(clickOutsideIgnoreRefs ? clickOutsideIgnoreRefs : []),
       floating.payload.refs.floating as React.RefObject<HTMLElement>,
       floating.payload.refs.reference as React.RefObject<HTMLElement>,
     ],

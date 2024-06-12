@@ -22,12 +22,21 @@ export declare namespace Theme {
   export type SizeExpanded = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
   export type Unit3 = 1 | 2 | 3;
+  export type Unit5 = Unit3 | 4 | 5;
   export type Unit6 = Unit3 | 4 | 5 | 6;
   export type Unit9 = Unit6 | 7 | 8 | 9;
   export type Unit12 = Unit9 | 10 | 11 | 12;
   export type Unit16 = Unit12 | 13 | 14 | 15 | 16;
   export type Unit20 = Unit16 | 17 | 18 | 19 | 20;
   export type Unit24 = Unit20 | 21 | 22 | 23 | 24;
+
+  export type TokenFontSizeLevel = Unit16;
+  export type TokenFontWeightLevel = Unit5;
+  export type TokenFontHeightLevel = Unit6;
+
+  export type TokenFontSizeValue = `fz-${TokenFontSizeLevel}`;
+  export type TokenFontWeightValue = `fw-${TokenFontWeightLevel}`;
+  export type TokenFontHeightValue = `fh-${TokenFontHeightLevel}`;
 
   export type Status = 'info' | 'error' | 'success' | `warning`;
   export type Surface = 'primary' | 'secondary' | 'tertiary' | 'quaternary';

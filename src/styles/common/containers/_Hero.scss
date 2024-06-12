@@ -5,6 +5,8 @@
 }
 
 .v2-hero-title {
+  width: 100%;
+  display: block;
   font-size: var(--fz-14);
   font-weight: var(--fw-1);
   line-height: 1.2;
@@ -19,9 +21,18 @@
 
   width: 100%;
   height: var(--x-hero-height);
-  padding: var(--s-8);
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
   flex-direction: column;
+
+  padding-inline: var(--s-5);
+  padding-block: var(--s-8);
+
+  @media screen and (min-width: 40em) {
+    padding-inline: var(--s-6);
+  }
+  @media screen and (min-width: 60em) {
+    padding-inline: var(--s-8);
+  }
 }
