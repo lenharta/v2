@@ -1,25 +1,34 @@
-import { factory } from '@/core';
-import { Factory } from '@/types';
+import React from 'react';
+import { DividerLabel } from '../Label';
 import { DividerContentProps } from '../types';
+import clsx from 'clsx';
 
-type DividerContentFactory = Factory.Config<{
-  ref: HTMLDivElement;
-  comp: 'div';
-  props: DividerContentProps;
-  omits: 'children';
-}>;
+const css = {
+  content: 'v2-divider-content',
+};
 
-const DividerContent = factory<DividerContentFactory>((props, ref) => {
-  const { label, position, show, className, ...forwardedProps } = props;
+type DividerContentFactory = React.FC<DividerContentProps>;
 
-  if (!label || show !== true) return null;
+const DividerContent: DividerContentFactory = (props) => {
+  const { size, variant, icon, label } = props;
 
   return (
-    <div {...forwardedProps} ref={ref} className={className} data-position={position}>
-      {label}
-    </div>
+    <React.Fragment>
+      {(icon || label) && (
+        <div
+          className={clsx(
+            css.content,
+            `${css.content}--variant-${variant}`,
+            `${css.content}--size-${size}`
+          )}
+        >
+          {icon && icon}
+          <DividerLabel variant={variant} size={size} label={label} />
+        </div>
+      )}
+    </React.Fragment>
   );
-});
+};
 
 DividerContent.displayName = '@v2/Divider.Content';
-export { DividerContent, type DividerContentFactory };
+export { DividerContent };

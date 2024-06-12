@@ -1,17 +1,15 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Box, factory } from '@/core';
-import { PageCSS, PageRootProps } from './types';
 import { Footer, Header, Main, SideMenu } from '@/common';
 
-const css: Partial<PageCSS> = {
-  root: 'v2-page',
-};
+import { css } from './page-constants';
+import { PageProps } from './page-types';
 
 type PageFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
-  props: PageRootProps;
+  props: PageProps;
 }>;
 
 const Page = factory<PageFactory>((props, ref) => {

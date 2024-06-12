@@ -1,42 +1,48 @@
 import clsx from 'clsx';
+import { factory } from '@/core';
 import { Factory } from '@/types';
-import { factoryPolymorphic } from '@/core/factory';
-import { TileProps, TileVariantProps } from './Tile.types';
+import { TileGroup } from './TileGroup';
+import { TileProps } from './tile-types';
+import { useTileContext } from './tile-context';
 
 type TileFactory = Factory.Config<{
-  ref: HTMLDivElement;
-  comp: 'div';
+  comp: 'button';
+  ref: HTMLButtonElement;
   props: TileProps;
+  comps: {
+    Group: typeof TileGroup;
+  };
 }>;
 
-function findTileVariant<T extends TileVariantProps = TileVariantProps>(props: T): keyof T {
-  const keys = Object.keys(props) as (keyof T)[];
-  const result = keys.find((variant) => props[variant] !== undefined);
-  return result ?? 'basic';
-}
+const css = {
+  root: 'v2-tile',
+};
 
-const Tile = factoryPolymorphic<TileFactory>((props, ref) => {
-  const {
-    basic,
-    clickable,
-    selectable,
-    optionable,
-    expandable,
-    component: Component = 'div',
-    ...forwardedProps
-  } = props;
+const Tile = factory<TileFactory>((props, ref) => {
+  const { className, children, scheme, variant, behavior, ...forwardedProps } = props;
 
-  const variant = findTileVariant({ basic, clickable, selectable, optionable, expandable });
-  console.log('variant', variant);
+  const ctx = useTileContext();
+
+  const contextProps = ctx
+    ? {
+        className: clsx(css.root, `v2-core-variant-${variant || ctx.variant}`, className),
+        'data-behavior': behavior || ctx.behavior,
+      }
+    : {};
 
   return (
-    <Component
-      {...forwardedProps}
+    <button
       ref={ref}
-      className={clsx('v2-tile', `v2-tile--${variant}`)}
-    ></Component>
+      className={clsx(css.root, `v2-core-variant-${variant}`, className)}
+      data-behavior={behavior}
+      {...forwardedProps}
+      {...contextProps}
+    >
+      {children}
+    </button>
   );
 });
 
+Tile.Group = TileGroup;
 Tile.displayName = '@v2/Tile';
 export { Tile };

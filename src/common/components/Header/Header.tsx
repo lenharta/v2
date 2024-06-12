@@ -5,6 +5,7 @@ import { Action, Box, Icon, factory } from '@/core';
 import { HeaderCSS, HeaderRootProps } from './types';
 import { useStateContext } from '@/app';
 import { useNavigate } from 'react-router-dom';
+import { Search } from '../Search/Search';
 
 const css: Partial<HeaderCSS> = {
   root: 'v2-header',
@@ -40,15 +41,9 @@ const Header = factory<HeaderRootFactory>((props, ref) => {
           value="/"
         />
 
-        <Action.Spacer scheme="primary-1" variant="elevated" />
+        <Action.Spacer />
 
-        <Action
-          data-header-action-item
-          icon={<Icon variant={store.icons} name="search" />}
-          onClick={(event) => console.log(event.currentTarget.value)}
-          label="search"
-          value="/"
-        />
+        <Search />
 
         <Action
           data-header-action-item

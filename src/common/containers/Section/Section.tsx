@@ -1,30 +1,27 @@
 import clsx from 'clsx';
+import { factory } from '@/core';
 import { Factory } from '@/types';
-import { Box, factory } from '@/core';
-import { SectionCSS, SectionRootProps } from './types';
 
-const css: SectionCSS = {
-  root: 'v2-section',
-};
+import { css } from './section-constants';
+import { SectionProps } from './section-types';
 
 type SectionFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'section';
-  props: SectionRootProps;
+  props: SectionProps;
 }>;
 
 const Section = factory<SectionFactory>((props, ref) => {
   const { children, className, scheme, ...forwardedProps } = props;
   return (
-    <Box
-      {...forwardedProps}
+    <section
       ref={ref}
-      component="section"
       className={clsx(css.root, className)}
       data-scheme={scheme}
+      {...forwardedProps}
     >
       {children}
-    </Box>
+    </section>
   );
 });
 

@@ -1,16 +1,14 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Box, factory } from '@/core';
-import { MainCSS, MainRootProps } from './types';
 
-const css: Partial<MainCSS> = {
-  root: 'v2-main',
-};
+import { css } from './main-constants';
+import { MainProps } from './main-types';
 
 type MainFactory = Factory.Config<{
   ref: HTMLElement;
   comp: 'main';
-  props: MainRootProps;
+  props: MainProps;
 }>;
 
 const Main = factory<MainFactory>((props, ref) => {

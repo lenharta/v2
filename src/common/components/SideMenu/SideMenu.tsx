@@ -1,17 +1,13 @@
 import React from 'react';
+import { Theme } from '@/types';
 import { Action } from '@/core';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatchContext, useStateContext } from '@/app';
-import { SideMenuPanelState, SideMenuProps } from './SideMenu.types';
-import { SideMenuSelect } from './SideMenuSelect';
-import { SideMenuNav } from './SideMenuNav';
 
-import {
-  SIDE_MENU_CSS,
-  SIDE_MENU_SELECTORS,
-  SIDE_MENU_SELECT_DATA,
-  SIDE_MENU_NAVIGATION_LINKS,
-} from './SideMenu.constants';
+import { SideMenuNav } from './SideMenuNav';
+import { SideMenuSelect } from './SideMenuSelect';
+import { SideMenuPanelState, SideMenuProps } from './sidemenu-types';
+import { css, selectors, SIDEMENU_SELECT_DATA, SIDEMENU_NAV_DATA } from './sidemenu-constants';
 
 type SideMenuFactory = React.FC<SideMenuProps> & {
   Nav: typeof SideMenuNav;
@@ -23,8 +19,8 @@ const SideMenu: SideMenuFactory = (props) => {
 
   const store = useStateContext();
   const location = useLocation();
-  const dispatch = useDispatchContext();
   const navigate = useNavigate();
+  const dispatch = useDispatchContext();
 
   const [openPanels, setOpenPanels] = React.useState<SideMenuPanelState>({
     accent: false,
@@ -32,31 +28,37 @@ const SideMenu: SideMenuFactory = (props) => {
     dir: false,
   });
 
+  const scheme: Theme.Scheme = 'primary-1-interactive';
+  const variant: 'default' | 'elevated' = 'elevated';
+
   return (
-    <div className={SIDE_MENU_CSS.root}>
+    <div className={css.root}>
       <Action.Group
-        scheme="primary-1-interactive"
-        variant="elevated"
+        scheme={scheme}
+        variant={variant}
         component="nav"
         orientation="vertical"
-        childSelector={SIDE_MENU_SELECTORS.item.key}
-        parentSelector={SIDE_MENU_SELECTORS.group.key}
-        {...SIDE_MENU_SELECTORS.group.prop}
+        childSelector={selectors.item.key}
+        parentSelector={selectors.group.key}
+        {...selectors.group.prop}
       >
         <SideMenu.Nav
-          {...SIDE_MENU_SELECTORS.item.prop}
-          items={SIDE_MENU_NAVIGATION_LINKS}
-          value={location.pathname}
+          {...selectors.item.prop}
+          items={SIDEMENU_NAV_DATA}
+          group={{ value: location.pathname }}
           navigate={navigate}
           store={store}
         />
 
         <Action.Spacer />
 
-        {SIDE_MENU_SELECT_DATA.map((item) => (
+        {SIDEMENU_SELECT_DATA.map((item) => (
           <SideMenu.Select
+            key={item.group}
             open={openPanels}
             store={store}
+            scheme={scheme}
+            variant={variant}
             items={item.items}
             group={item.group}
             disabled={item.disabled}
@@ -64,53 +66,6 @@ const SideMenu: SideMenuFactory = (props) => {
             dispatch={dispatch}
           />
         ))}
-
-        {/* <SideMenu.Select
-          name="accent"
-          store={store}
-          dispatch={dispatch}
-          isOpen={openPanels.mode}
-          setOpen={() => setOpenPanels({ ...openPanels, mode: !openPanels.mode })}
-          data={[
-            { label: 'Red', value: 'red' },
-            { label: 'Orange', value: 'orange' },
-            { label: 'Yellow', value: 'yellow' },
-            { label: 'Green', value: 'green' },
-            { label: 'Mint', value: 'mint' },
-            { label: 'Teal', value: 'teal' },
-            { label: 'Cyan', value: 'cyan' },
-            { label: 'Blue', value: 'blue' },
-            { label: 'Indigo', value: 'indigo' },
-            { label: 'Purple', value: 'purple' },
-            { label: 'Pink', value: 'pink' },
-            { label: 'Brown', value: 'brown' },
-          ]}
-        />
-
-        <SideMenu.Select
-          name="mode"
-          store={store}
-          dispatch={dispatch}
-          isOpen={openPanels.accent}
-          setOpen={() => setOpenPanels({ ...openPanels, accent: !openPanels.accent })}
-          data={[
-            { label: 'Light', value: 'light' },
-            { label: 'Dim', value: 'dim' },
-            { label: 'Dark', value: 'dark' },
-          ]}
-        />
-
-        <SideMenu.Select
-          name="dir"
-          store={store}
-          dispatch={dispatch}
-          isOpen={openPanels.dir}
-          setOpen={() => setOpenPanels({ ...openPanels, dir: !openPanels.dir })}
-          data={[
-            { label: 'Left to Right', value: 'ltr' },
-            { label: 'Right to Left', value: 'rtl' },
-          ]}
-        /> */}
       </Action.Group>
     </div>
   );

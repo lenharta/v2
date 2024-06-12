@@ -1,54 +1,63 @@
 import clsx from 'clsx';
+import { factory } from '@/core';
 import { Factory } from '@/types';
 import { DividerProps } from './types';
-import { factory, Box, Text } from '@/core';
-import { DividerSeparator } from './Seperator';
 import { DividerContent } from './Content';
+import { DividerSeperator } from './Seperator';
+
+const css = {
+  root: 'v2-divider',
+  label: 'v2-divider-label',
+  content: 'v2-divider-content',
+  seperator: 'v2-divider-seperator',
+};
 
 type DividerFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
-  omits: 'children';
   props: DividerProps;
+  omits: 'children';
   comps: {
+    Seperator: typeof DividerSeperator;
     Content: typeof DividerContent;
-    Separator: typeof DividerSeparator;
   };
 }>;
 
 const Divider = factory<DividerFactory>((props, ref) => {
   const {
+    size = 'sm',
     icon,
     label,
+    variant = 'elevated',
     position = 'start',
     className,
     orientation = 'horizontal',
-    iconPosition = 'start',
     ...forwardedProps
   } = props;
 
   return (
-    <Box
-      {...forwardedProps}
-      data-position={position}
-      data-orientation={orientation}
-      aria-orientation={orientation}
-      className={clsx('v2-divider', className)}
-      role="separator"
+    <div
       ref={ref}
-    >
-      {(icon || label) && (
-        <span className="v2-divider-inner">
-          {icon && iconPosition === 'start' && icon}
-          {label && <Text>{label}</Text>}
-          {icon && iconPosition === 'end' && icon}
-        </span>
+      role="separator"
+      aria-orientation={orientation}
+      data-orientation={orientation}
+      data-position={position}
+      className={clsx(
+        css.root,
+        `${css.root}--variant-${variant}`,
+        `${css.root}--size-${size}`,
+        className
       )}
-    </Box>
+      {...forwardedProps}
+    >
+      <Divider.Seperator variant={variant} size={size} show={position === 'center' || undefined} />
+      <Divider.Content variant={variant} size={size} label={label} icon={icon} />
+      <Divider.Seperator variant={variant} size={size} show={true} />
+    </div>
   );
 });
 
 Divider.Content = DividerContent;
-Divider.Separator = DividerSeparator;
-Divider.displayName = '@v2/Divider.Root';
+Divider.Seperator = DividerSeperator;
+Divider.displayName = '@v2/Divider';
 export { Divider };

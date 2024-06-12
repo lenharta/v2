@@ -28,64 +28,103 @@
   }
 }
 
-// .v2-text,
-// .v2-title {
-//   font-family: var(--ff-base);
-//   font-weight: var(--fw-3);
-//   line-height: 1.2;
-// }
+.v2-text,
+.v2-label,
+.v2-title {
+  font-size: var(--fz);
+  font-weight: var(--fw);
+  font-family: var(--ff-base);
+  line-height: var(--fh);
 
-// .v2-action-group,
-// .v2-checkbox-group {
-//   gap: var(--unit);
-//   width: 100%;
-//   display: flex;
+  text-align: left;
+  direction: ltr;
 
-//   &[data-orientation='horizontal'] {
-//     align-items: center;
-//     flex-direction: row;
-//     justify-content: flex-start;
-//   }
-//   &[data-orientation='vertical'] {
-//     align-items: flex-start;
-//     flex-direction: column;
-//     justify-content: center;
-//   }
-// }
+  [data-prefers-dir='rtl'] & {
+    direction: rtl;
+    text-align: right;
+  }
 
-// .v2-stack {
-//   &-justify--center {
-//     --v2-justify: center;
-//   }
-//   &-justify--start {
-//     --v2-justify: flex-start;
-//   }
-//   &-justify--end {
-//     --v2-justify: flex-end;
-//   }
+  &--fw-1 {
+    --fw: var(--fw-1);
+  }
+  &--fw-2 {
+    --fw: var(--fw-2);
+  }
+  &--fw-3 {
+    --fw: var(--fw-3);
+  }
+  &--fw-4 {
+    --fw: var(--fw-4);
+  }
+  &--fw-5 {
+    --fw: var(--fw-5);
+  }
 
-//   &-align--center {
-//     --v2-align: center;
-//   }
-//   &-align--start {
-//     --v2-align: flex-start;
-//   }
-//   &-align--end {
-//     --v2-align: flex-end;
-//   }
+  &--fh-1 {
+    --fh: var(--fh-1);
+  }
+  &--fh-2 {
+    --fh: var(--fh-2);
+  }
+  &--fh-3 {
+    --fh: var(--fh-3);
+  }
+  &--fh-4 {
+    --fh: var(--fh-4);
+  }
+  &--fh-5 {
+    --fh: var(--fh-5);
+  }
+  &--fh-6 {
+    --fh: var(--fh-6);
+  }
 
-//   [data-prefers-dir='rtl'] & {
-//     &-justify--start {
-//       --v2-justify: flex-end;
-//     }
-//     &-justify--end {
-//       --v2-justify: flex-start;
-//     }
-//     &-align--start {
-//       --v2-align: flex-end;
-//     }
-//     &-align--end {
-//       --v2-align: flex-start;
-//     }
-//   }
-// }
+  &--fz-1 {
+    --fz: var(--fz-1);
+  }
+  &--fz-2 {
+    --fz: var(--fz-2);
+  }
+  &--fz-3 {
+    --fz: var(--fz-3);
+  }
+  &--fz-4 {
+    --fz: var(--fz-4);
+  }
+  &--fz-5 {
+    --fz: var(--fz-5);
+  }
+  &--fz-6 {
+    --fz: var(--fz-6);
+  }
+  &--fz-7 {
+    --fz: var(--fz-7);
+  }
+  &--fz-8 {
+    --fz: var(--fz-8);
+  }
+  &--fz-9 {
+    --fz: var(--fz-9);
+  }
+  &--fz-10 {
+    --fz: var(--fz-10);
+  }
+  &--fz-11 {
+    --fz: var(--fz-11);
+  }
+  &--fz-12 {
+    --fz: var(--fz-12);
+  }
+  &--fz-13 {
+    --fz: var(--fz-13);
+  }
+  &--fz-14 {
+    --fz: var(--fz-14);
+  }
+  &--fz-15 {
+    --fz: var(--fz-15);
+  }
+  &--fz-16 {
+    --fz: var(--fz-16);
+  }
+}

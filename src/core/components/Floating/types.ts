@@ -30,6 +30,7 @@ interface FloatingProps {
   placementDependencies?: React.DependencyList | any[] | undefined;
   onPlacementChange?: ((placement: FloatingPlacement) => void) | undefined;
   closeOnClickOutside?: boolean | undefined;
+  clickOutsideIgnoreRefs?: React.RefObject<HTMLElement>[] | undefined;
   closeOnEscape?: boolean | undefined;
   transitionProps?: Partial<TransitionProps> | undefined;
   width?: FloatingWidth | undefined;

@@ -1,8 +1,7 @@
-import { Theme } from '@/types';
 import { Floating } from '@/core';
 import { SideMenuPanel } from '../SIdeMenuPanel';
 import { SideMenuTarget } from '../SideMenuTarget';
-import { SideMenuSelectProps } from '../SideMenu.types';
+import { SideMenuSelectProps } from '../sidemenu-types';
 
 type SideMenuSelectFactory = React.FC<SideMenuSelectProps> & {
   Panel: typeof SideMenuPanel;
@@ -10,9 +9,16 @@ type SideMenuSelectFactory = React.FC<SideMenuSelectProps> & {
 };
 
 const SideMenuSelect: SideMenuSelectFactory = (props) => {
-  const { items, open, store, group, disabled, dispatch, onOpenChange } = props;
-  const scheme: Theme.Scheme = 'primary-1-interactive';
-  const variant: 'default' | 'elevated' = 'elevated';
+  const { items, open, store, group, scheme, variant, disabled, dispatch, onOpenChange } = props;
+
+  const getIconVariant = (
+    mode: typeof store.mode,
+    value: typeof group,
+    fallback: typeof store.icons
+  ) => {
+    if (value !== 'accent') return fallback;
+    return mode === 'light' ? 'fill' : 'outline';
+  };
 
   return (
     <Floating
@@ -29,6 +35,7 @@ const SideMenuSelect: SideMenuSelectFactory = (props) => {
         scheme={scheme}
         variant={variant}
         disabled={disabled}
+        getIconVariant={getIconVariant}
       />
 
       <SideMenuSelect.Panel
@@ -41,6 +48,7 @@ const SideMenuSelect: SideMenuSelectFactory = (props) => {
         disabled={disabled}
         dispatch={dispatch}
         onOpenChange={onOpenChange}
+        getIconVariant={getIconVariant}
       />
     </Floating>
   );

@@ -12,9 +12,10 @@ export declare namespace Store {
     icons: Theme.Icons;
     accent: Theme.Color;
     nonce: () => string;
+    error?: boolean | undefined;
     session?: string | undefined;
     loading?: boolean | undefined;
-    error?: boolean | undefined;
+    resultOpen?: boolean | undefined;
   };
 
   export type StateContext = State;

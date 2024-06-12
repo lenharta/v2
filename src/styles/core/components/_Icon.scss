@@ -5,19 +5,19 @@
   align-items: center;
   justify-content: center;
 
-  &--size-xs {
+  .v2-core-size-xs {
     --x-core-icon-size: 16px;
   }
-  &--size-sm {
+  .v2-core-size-sm {
     --x-core-icon-size: 18px;
   }
-  &--size-md {
+  .v2-core-size-md {
     --x-core-icon-size: 20px;
   }
-  &--size-lg {
+  .v2-core-size-lg {
     --x-core-icon-size: 24px;
   }
-  &--size-xl {
+  .v2-core-size-xl {
     --x-core-icon-size: 28px;
   }
 }

@@ -4,6 +4,10 @@ import { objectKeys } from '@/utils';
 import { factoryPolymorphic } from '@/core';
 import { TitleElementProps, TitleProps } from './types';
 
+const css = {
+  root: 'v2-title',
+};
+
 type TitleFactory = Factory.Config<{
   ref: HTMLParagraphElement;
   comp: 'h2';
@@ -18,9 +22,33 @@ function findComponent(props: TitleElementProps & { component?: React.ElementTyp
 }
 
 const Title = factoryPolymorphic<TitleFactory>((props, ref) => {
-  const { h1, h2, h3, h4, h5, h6, className, component, ...forwardedProps } = props;
+  const {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    fz = 7,
+    fw = 2,
+    fh = 1,
+    clamp,
+    className,
+    component,
+    ...forwardedProps
+  } = props;
+
+  const classNames = clsx(
+    css.root,
+    `${css.root}--fz-${fz}`,
+    `${css.root}--fw-${fw}`,
+    `${css.root}--fh-${fh}`,
+    className
+  );
+
   const Component = findComponent({ h1, h2, h3, h4, h5, h6, component });
-  return <Component {...forwardedProps} ref={ref} className={clsx('v2-title', className)} />;
+
+  return <Component ref={ref} className={classNames} data-clamp={clamp} {...forwardedProps} />;
 });
 
 Title.displayName = '@v2/Title';

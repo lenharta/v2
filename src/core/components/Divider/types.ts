@@ -1,7 +1,12 @@
 import { Core, Theme } from '@/types';
 import React from 'react';
 
-interface DividerProps {
+interface DividerThemeProps {
+  variant: 'default' | 'elevated';
+  size: Theme.SizeCompact;
+}
+
+interface DividerProps extends Partial<DividerThemeProps> {
   icon?: React.ReactNode | undefined;
   label?: React.ReactNode | undefined;
   position?: Core.Align | 'center' | undefined;
@@ -9,15 +14,19 @@ interface DividerProps {
   iconPosition?: Core.Align | undefined;
 }
 
-interface DividerContentProps {
-  show: boolean;
+interface DividerContentProps extends DividerThemeProps {
+  icon?: React.ReactNode | undefined;
   label?: React.ReactNode | undefined;
-  position?: Core.Align | undefined;
+}
+
+interface DividerLabelProps extends DividerThemeProps {
+  label?: React.ReactNode | undefined;
   className?: string | undefined;
 }
 
-interface DividerSeparatorProps {
+interface DividerSeparatorProps extends DividerThemeProps {
+  show?: boolean | undefined;
   className?: string | undefined;
 }
 
-export type { DividerProps, DividerContentProps, DividerSeparatorProps };
+export type { DividerProps, DividerLabelProps, DividerContentProps, DividerSeparatorProps };

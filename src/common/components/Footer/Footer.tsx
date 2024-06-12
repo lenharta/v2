@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { Box, Text, Title, factory } from '@/core';
+import { Box, Divider, Icon, Stack, Text, Title, factory } from '@/core';
 import { FooterRootProps } from './types';
 import { V2Logo } from '../Logo';
+import { Link } from 'react-router-dom';
 
 const css = {
   root: 'v2-footer',
@@ -20,17 +21,55 @@ type FooterRootFactory = Factory.Config<{
 const Footer = factory<FooterRootFactory>((props, ref) => {
   const { className, ...forwardedProps } = props;
   return (
-    <Box {...forwardedProps} ref={ref} component="footer" className={clsx(css.root, className)}>
-      <Box className={css.logobox}>
-        <V2Logo size="lg" />
-        <Box>
-          <Title h3>Andrew Lenhart</Title>
-          <Title h4>Frontend Software Engineer</Title>
-          <Text>North Carolina, United States</Text>
-        </Box>
-      </Box>
-      <Box className={css.menubox}></Box>
-    </Box>
+    <footer {...forwardedProps} ref={ref} className={clsx(css.root, className)}>
+      <div className="v2-footer-content">
+        <div className="v2-footer-branding">
+          <V2Logo size="lg" />
+        </div>
+        <nav className="v2-footer-nav">
+          <ul className="v2-footer-nav-list">
+            <Divider label="Navigation" position="start" icon={<Icon name="link-deg45" />} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+          </ul>
+          <ul className="v2-footer-nav-list">
+            <Divider label="Sandbox" position="start" icon={<Icon name="link-deg45" />} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+          </ul>
+          <ul className="v2-footer-nav-list">
+            <Divider label="Design System" position="start" icon={<Icon name="link-deg45" />} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+            <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+          </ul>
+        </nav>
+      </div>
+      {/* <div className="v2-footer-branding">
+        <V2Logo size="lg" className="v2-footer-branding-logo" />
+      </div>
+      <nav className="v2-footer-nav">
+        <ul className="v2-footer-nav-list">
+          <Divider label="Navigation" position="start" icon={<Icon name="link-deg45" />} />
+          <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+          <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+          <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+          <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+        </ul>
+        <ul className="v2-footer-nav-list">
+          <Divider label="Navigation" position="start" icon={<Icon name="link-deg45" />} />
+          <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+          <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+          <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+          <li className="v2-footer-nav-item" children={<Link to="/">Link</Link>} />
+        </ul>
+      </nav> */}
+    </footer>
   );
 });
 

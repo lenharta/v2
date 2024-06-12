@@ -1,11 +1,8 @@
 import clsx from 'clsx';
 import { Box } from '@/core';
-import { useActionContext } from '../Action.context';
-import { ActionCSS, ActionSpacerProps } from '../types';
-
-const css: Partial<ActionCSS> = {
-  spacer: 'v2-action-spacer',
-};
+import { css } from '../action-constants';
+import { useActionContext } from '../action-context';
+import { ActionSpacerProps } from '../action-types';
 
 type ActionSpacerFactory = React.FC<ActionSpacerProps>;
 
@@ -14,20 +11,29 @@ const ActionSpacer: ActionSpacerFactory = (props) => {
 
   const ctx = useActionContext();
 
-  const getStaticScheme = () => {
-    const filter = '-interactive';
-    const input = scheme ?? ctx.scheme ?? 'primary-1';
-    return input.replace(filter, '');
-  };
+  const contextProps = ctx
+    ? {
+        className: clsx(
+          css.spacer,
+          `${css.spacer}--scheme-${scheme || ctx.scheme}`,
+          `${css.spacer}--variant-${variant || ctx.variant}`,
+          className
+        ),
+      }
+    : {};
 
   return (
     <Box
       role="separator"
-      className={clsx(css.spacer, className)}
+      className={clsx(
+        css.spacer,
+        `${css.spacer}--scheme-${scheme}`,
+        `${css.spacer}--variant-${variant}`,
+        className
+      )}
       data-orientation={ctx.orientation}
-      data-variant={variant ? variant : ctx.variant}
-      data-scheme={getStaticScheme()}
       {...forwardedProps}
+      {...contextProps}
     >
       {children}
     </Box>

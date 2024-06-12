@@ -5,7 +5,7 @@ import { createToken } from '@/core/utils';
 function getStoreAccentIconProps(accent: Store.State['accent']): IconProps {
   return {
     name: 'shape-circle',
-    style: { fill: createToken(`c-${accent}`) },
+    style: { fill: createToken(`c-${accent}-A800`) },
   };
 }
 

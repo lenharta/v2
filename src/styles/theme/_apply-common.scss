@@ -1,11 +1,10 @@
-body,
-#root {
+html,
+body {
   color: var(--c-text-hgh);
   background-color: var(--c-background-0);
 }
 
-body svg,
-#root svg {
+svg {
   fill: var(--c-icon-hgh);
 }
 
@@ -19,7 +18,7 @@ body svg,
 
 .v2-hero {
   color: var(--c-text-hgh);
-  background-color: var(--c-background-1);
+  background-color: var(--c-elevation-0);
   transition-property: background-color, color, border-color, opacity, fill, stroke;
   transition-timing-function: ease;
   transition-duration: 400ms;
@@ -54,4 +53,58 @@ body svg,
 .v2-header svg,
 .v2-sidemenu svg {
   fill: var(--c-icon-hgh);
+}
+
+.v2-search-box-input,
+.v2-search-result-item {
+  cursor: default;
+
+  border-color: transparent;
+  border-width: var(--s-1);
+  border-style: solid;
+
+  outline-color: transparent;
+  outline-width: var(--s-1);
+  outline-style: solid;
+  outline-offset: unset;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &:not([data-disabled]),
+  &:not([data-disabled]):hover,
+  &:not([data-disabled]):active,
+  &:not([data-disabled])[data-selected] {
+    cursor: pointer;
+  }
+
+  &[data-disabled],
+  &[data-disabled]:hover,
+  &[data-disabled]:active,
+  &[data-disabled][data-selected] {
+    cursor: default;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    z-index: var(--idx-activeitem);
+    outline-color: var(--c-focus);
+  }
+}
+
+.v2-sidemenu-link:not([data-disabled])[data-selected] {
+  &::after {
+    background-color: var(--c-accent-A600);
+  }
+}
+
+.v2-footer .v2-logo {
+  fill: var(--c-accent-A500);
+}
+
+.v2-footer a {
+  color: var(--c-text-low);
 }

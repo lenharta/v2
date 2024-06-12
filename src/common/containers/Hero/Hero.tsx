@@ -2,19 +2,15 @@ import clsx from 'clsx';
 import { Factory } from '@/types';
 import { Box, factory } from '@/core';
 
+import { css } from './hero-constants';
+import { HeroProps } from './hero-types';
 import { HeroTitle } from './HeroTitle';
-import { HeroCSS, HeroRootProps } from './types';
-
-const css: Partial<HeroCSS> = {
-  root: 'v2-hero',
-  content: 'v2-hero-content',
-};
 
 type HeroRootFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   omits: 'title';
-  props: HeroRootProps;
+  props: HeroProps;
   comps: {
     Title: typeof HeroTitle;
   };
