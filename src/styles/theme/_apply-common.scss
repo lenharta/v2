@@ -48,6 +48,17 @@ svg {
   transition-duration: 400ms;
 }
 
+.v2-tile-link-item {
+  transition:
+    transform 300ms ease-in-out,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    opacity 250ms ease,
+    stroke 250ms ease,
+    color 250ms ease,
+    fill 250ms ease;
+}
+
 .v2-page svg,
 .v2-hero svg,
 .v2-header svg,
@@ -55,6 +66,7 @@ svg {
   fill: var(--c-icon-hgh);
 }
 
+.v2-tile-link-item,
 .v2-search-box-input,
 .v2-search-result-item {
   cursor: default;
@@ -90,7 +102,7 @@ svg {
     outline-color: transparent;
   }
   &:focus:focus-visible {
-    z-index: var(--idx-activeitem);
+    z-index: var(--idx-active-item);
     outline-color: var(--c-focus);
   }
 }
@@ -107,4 +119,71 @@ svg {
 
 .v2-footer a {
   color: var(--c-text-low);
+}
+
+.v2-tile-link-item--variant-default {
+  &.v2-tile-link-item--scheme-default {
+    &:not([data-disabled]) {
+      background-color: var(--c-background-0-enabled);
+    }
+    &:not([data-disabled]):hover {
+      background-color: var(--c-background-0-hovered);
+    }
+    &:not([data-disabled]):active {
+      background-color: var(--c-background-0-pressed);
+    }
+  }
+
+  &.v2-tile-link-item--scheme-accent {
+    &:not([data-disabled]) {
+      color: var(--c-accent-A800);
+      background-color: transparent;
+    }
+    &:not([data-disabled]) svg {
+      fill: var(--c-accent-A800);
+    }
+    &:not([data-disabled]):hover {
+      color: var(--c-accent-A800);
+      background-color: var(--c-accent-A100);
+    }
+    &:not([data-disabled]):active {
+      color: var(--c-accent-A800);
+      background-color: var(--c-accent-A150);
+    }
+  }
+}
+
+.v2-tile-link-item--variant-elevated {
+  &.v2-tile-link-item--scheme-default {
+    &:not([data-disabled]) {
+      background-color: var(--c-elevation-0-enabled);
+    }
+    &:not([data-disabled]):hover {
+      background-color: var(--c-elevation-0-hovered);
+    }
+    &:not([data-disabled]):active {
+      background-color: var(--c-elevation-0-pressed);
+    }
+  }
+
+  &.v2-tile-link-item--scheme-accent {
+    &:not([data-disabled]) {
+      color: var(--c-accent-A800);
+      background-color: var(--c-accent-A100);
+    }
+    &:not([data-disabled]) svg {
+      fill: var(--c-accent-A800);
+    }
+    &:not([data-disabled]):hover {
+      color: var(--c-accent-A800);
+      background-color: var(--c-accent-A150);
+    }
+    &:not([data-disabled]):active {
+      color: var(--c-accent-A800);
+      background-color: var(--c-accent-A200);
+    }
+  }
+}
+
+.v2-tile-link-item--variant-elevated.v2-tile-link-item--scheme-default {
 }

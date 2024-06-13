@@ -87,10 +87,16 @@
 
   [data-position='end'] & {
     padding-left: var(--s-3);
+    [data-prefers-dir='rtl'] & {
+      padding-right: var(--s-3);
+    }
   }
 
   [data-position='start'] & {
     padding-right: var(--s-3);
+    [data-prefers-dir='rtl'] & {
+      padding-left: var(--s-3);
+    }
   }
 
   [data-position='center'] & {

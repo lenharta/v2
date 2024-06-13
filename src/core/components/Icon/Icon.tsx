@@ -24,7 +24,7 @@ const Icon = factory<IconFactory>((props, ref) => {
     ...forwardedProps
   } = props;
 
-  const classNames = clsx(css.root, `v2-core-size-${size}`, className);
+  const classNames = clsx(css.root, `${css.root}--size-${size}`, className);
 
   return (
     <svg

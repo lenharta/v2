@@ -16,6 +16,9 @@ export * from './NavLink';
 export * from './Radio';
 export * from './Stack';
 
+export * from './Select/Select';
+export * from './Select/select-types';
+
 export * from './Tabs/Tabs';
 export * from './Tabs/tabs-types';
 

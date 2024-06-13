@@ -1,12 +1,3 @@
-.v2-tabs-spacer,
-.v2-tabs-list,
-.v2-tabs-item {
-  --x-tabs-item-height: 56px;
-  --x-tabs-list-height: calc(var(--x-tabs-items-height) + calc(var(--s-1) * 2));
-  --x-tabs-item-spacing: var(--s-4);
-  --x-tabs-item-min-width: calc(var(--x-tabs-item-height) * 4);
-}
-
 .v2-tabs {
   width: 100%;
   display: block;
@@ -14,17 +5,17 @@
   &-spacer {
     flex: 1 0;
     width: 100%;
-    height: var(--x-tabs-item-height);
+    height: calc(var(--s-10) - calc(var(--s-1) * 2));
     display: flex;
   }
 
   &-list {
-    height: var(--x-tabs-list-height);
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-bottom: var(--s-1);
     gap: var(--s-1);
 
     [data-prefers-dir='rtl'] & {
@@ -33,10 +24,11 @@
   }
 
   &-item {
-    gap: var(--x-tabs-item-spacing);
-    height: var(--x-tabs-item-height);
-    min-width: var(--x-tabs-item-min-width);
-    padding-inline: var(--x-tabs-item-spacing);
+    gap: var(--s-4);
+    height: calc(var(--s-10) - calc(var(--s-1) * 2));
+    min-width: calc(var(--s-10) * 3);
+    padding-inline: var(--s-4);
+    padding-block: var(--s-3);
 
     display: flex;
     position: relative;

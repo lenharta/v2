@@ -32,7 +32,6 @@ const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
 
   const contextStyles = ctx
     ? {
-        ...style,
         top: ctx.y ?? 0,
         left: ctx.x ?? 0,
         width: ctx.width === 'target' ? undefined : (ctx.width as Core.CSS['width']),
@@ -46,7 +45,7 @@ const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
         <Box
           {...forwardedProps}
           {...contextProps}
-          style={{ ...contextStyles, ...transitionStyles }}
+          style={{ ...style, ...contextStyles, ...transitionStyles }}
           className={clsx(css.box, className)}
           tabIndex={-1}
           role="dialog"

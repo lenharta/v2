@@ -1,14 +1,14 @@
 .v2-footer {
-  // width: calc(100% - var(--size-action-offset));
   display: block;
-  padding: var(--s-8);
+  padding-block: var(--s-12);
+  padding-inline: var(--s-8);
 
   &-content {
     display: flex;
     gap: var(--s-8);
   }
 
-  &-branding {
+  &-brand {
     width: 30%;
     display: block;
   }
@@ -17,30 +17,30 @@
     width: 70%;
     display: flex;
     gap: var(--s-8);
-  }
 
-  &-nav-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: var(--s-1);
-  }
-
-  &-nav-item {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: var(--size-action-root);
-
-    a {
+    &-list {
       width: 100%;
-      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-1);
+    }
+
+    &-item {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding-inline: var(--s-4);
-      font-size: var(--fz-4);
+      height: calc(var(--size-action-root) / 1.25);
+
+      a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        // padding-inline: var(--s-4);
+        font-size: var(--fz-4);
+      }
     }
   }
 }
