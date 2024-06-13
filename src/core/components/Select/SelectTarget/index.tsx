@@ -8,7 +8,7 @@ import { Floating, useFloatingContext } from '@/core';
 type SelectTargetFactory = React.FC<SelectTargetProps> & {};
 
 const SelectTarget: SelectTargetFactory = (props) => {
-  const { placeholder } = props;
+  const { placeholder, findOptionLabel } = props;
 
   const ctx = useSelectContext();
   const floating = useFloatingContext();
@@ -20,12 +20,14 @@ const SelectTarget: SelectTargetFactory = (props) => {
     if (ctx.value.length > 0 && ctx.behavior === 'multiple') {
       return ctx.value
         .map((val, index) => {
-          return index === 0 ? val : [',', val].join(' ');
+          const label = findOptionLabel(val);
+          return index === 0 ? label : [',', label].join(' ');
         })
         .join('');
     }
 
-    return ctx.value[0] as string;
+    const label = findOptionLabel(ctx.value[0]);
+    return label;
   };
 
   return (

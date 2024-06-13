@@ -17,7 +17,9 @@ const SelectLabel: SelectLabelFactory = (props) => {
   if (type === 'option' || type === 'target') {
     content = (
       <React.Fragment>
-        <Label component="span">{value}</Label>
+        <Label data-truncate component="span">
+          {value}
+        </Label>
       </React.Fragment>
     );
   }
@@ -33,7 +35,9 @@ const SelectLabel: SelectLabelFactory = (props) => {
   if (type === 'group' && !ctx.withDivider) {
     content = (
       <React.Fragment>
-        <Label component="span">{value}</Label>
+        <Label data-truncate component="span">
+          {value}
+        </Label>
       </React.Fragment>
     );
   }

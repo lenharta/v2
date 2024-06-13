@@ -45,11 +45,15 @@
   min-height: var(--s-8);
   align-items: center;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding-inline: var(--s-4);
   padding-block: var(--s-3);
   font-size: var(--fz-6);
   position: relative;
+
+  [data-prefers-dir='rtl'] & {
+    flex-direction: row-reverse;
+  }
 }
 
 .v2-select-label {

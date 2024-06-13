@@ -327,28 +327,6 @@
   &--variant-default {
     background-color: var(--c-background-1);
   }
-  &--variant-elevated {
-    background-color: var(--c-elevation-1);
-  }
-}
-
-.v2-select-box .v2-select-label {
-  &--variant-default {
-    background-color: var(--c-background-1);
-  }
-  &--variant-elevated {
-    background-color: var(--c-elevation-1);
-  }
-}
-
-.v2-select-option {
-  &--variant-default {
-    color: var(--c-text-med);
-  }
-  &--variant-elevated {
-    color: var(--c-text-med);
-  }
-
   &--variant-default:not([data-disabled]) {
     background-color: var(--c-background-1-enabled);
   }
@@ -373,6 +351,39 @@
   }
   &--variant-elevated:not([data-disabled])[data-selected] {
     background-color: var(--c-elevation-1-selected);
+  }
+}
+
+.v2-select-box .v2-select-label {
+  &--variant-default {
+    background-color: var(--c-background-1);
+  }
+  &--variant-elevated {
+    background-color: var(--c-elevation-1);
+  }
+}
+
+.v2-select-option {
+  &--variant-default {
+    color: var(--c-text-med);
+  }
+  &--variant-elevated {
+    color: var(--c-text-med);
+  }
+  &--variant-default svg {
+    fill: var(--c-text-med);
+  }
+  &--variant-elevated svg {
+    fill: var(--c-text-med);
+  }
+
+  [data-selected] & {
+    &--variant-default svg {
+      fill: var(--c-accent-A600);
+    }
+    &--variant-elevated svg {
+      fill: var(--c-accent-A600);
+    }
   }
 }
 

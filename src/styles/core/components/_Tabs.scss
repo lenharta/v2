@@ -18,6 +18,12 @@
     margin-bottom: var(--s-1);
     gap: var(--s-1);
 
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      display: none;
+      visibility: hidden;
+    }
+
     [data-prefers-dir='rtl'] & {
       flex-direction: row-reverse;
     }

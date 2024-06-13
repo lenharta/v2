@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { css } from '../select-constants';
-import { SelectOptionProps } from '../select-types';
-import { UnstyledButton } from '@/core';
+import { Icon, UnstyledButton } from '@/core';
 import { useSelectContext } from '../select-context';
+import { SelectOptionProps } from '../select-types';
 
 type SelectOptionFactory = React.FC<SelectOptionProps> & {};
 
@@ -18,9 +18,18 @@ const SelectOption: SelectOptionFactory = (props) => {
         `${css.item}--scheme-${ctx.scheme}`,
         `${css.item}--variant-${ctx.variant}`
       )}
+      data-selected={ctx.value.includes(value) || undefined}
+      data-disabled={disabled}
+      data-readonly={readOnly}
     >
       <UnstyledButton
+        role="listitem"
         value={value}
+        className={clsx(
+          css.option,
+          `${css.option}--scheme-${ctx.scheme}`,
+          `${css.option}--variant-${ctx.variant}`
+        )}
         onClick={(event) => {
           if (!ctx.disabled || !ctx.readOnly) {
             if (ctx.behavior === 'multiple') {
@@ -28,35 +37,15 @@ const SelectOption: SelectOptionFactory = (props) => {
                 ? ctx.onChange(ctx.value.filter((item) => item !== event.currentTarget.value))
                 : ctx.onChange([...ctx.value, event.currentTarget.value]);
             }
-
-            // if (typeof ctx.value === 'string' && ctx.behavior === 'single') {
-            //   return ctx.onChange(event.currentTarget.value);
-            // }
-            // if (!!Array.isArray(ctx.value) && ctx.behavior === 'single') {
-            //   const handler = ctx.onChange as unknown as (value: string[]) => void;
-            //   return ctx.value.includes(event.currentTarget.value)
-            //     ? handler(ctx.value.pop().push(ctx.value))
-            //     : handler(ctx.value);
-            // }
-            // if (!!Array.isArray(ctx.value) && ctx.behavior === 'multiple') {
-            //   const handler = ctx.onChange as unknown as (value: string[]) => void;
-            //   return (ctx.value as string[]).includes(event.currentTarget.value)
-            //     ? handler(ctx.value.filter((item: string) => item !== event.currentTarget.value))
-            //     : handler([...ctx.value, event.currentTarget.value]);
-            // }
+            return ctx.onChange([event.currentTarget.value]);
           }
         }}
-        className={clsx(
-          css.option,
-          `${css.option}--scheme-${ctx.scheme}`,
-          `${css.option}--variant-${ctx.variant}`
-        )}
-        data-disabled={disabled}
+        aria-selected={ctx.value.includes(value) || undefined}
         aria-disabled={disabled}
-        data-readonly={readOnly}
         aria-readonly={readOnly}
       >
         {label}
+        {ctx.value.includes(value) && <Icon name="check-circle" />}
       </UnstyledButton>
     </li>
   );
