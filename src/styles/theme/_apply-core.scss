@@ -15,6 +15,8 @@
   transition-duration: 250ms;
 }
 
+.v2-select-target,
+.v2-select-option,
 .v2-tile[data-behavior='clickable'],
 .v2-tile[data-behavior='selectable'],
 .v2-tile[data-behavior='expandable'],
@@ -54,7 +56,7 @@
     outline-color: transparent;
   }
   &:focus:focus-visible {
-    z-index: var(--idx-activeitem);
+    z-index: var(--idx-active-item);
     outline-color: var(--c-focus);
   }
 }
@@ -261,5 +263,131 @@
   }
   &--variant-elevated[data-behavior='selectable']:not([data-disabled])[data-selected] {
     background-color: var(--c-elevation-0-selected);
+  }
+}
+
+// CORE | SELECT
+
+.v2-select-box {
+  &--variant-defualt {
+    background-color: var(--c-background-0);
+  }
+  &--variant-elevated {
+    background-color: var(--c-elevation-0);
+  }
+}
+
+.v2-select-target {
+  &--variant-default {
+    color: var(--c-text-med);
+  }
+  &--variant-elevated {
+    color: var(--c-text-med);
+  }
+
+  &--variant-default:not([data-disabled]) {
+    background-color: var(--c-elevation-0-enabled);
+  }
+  &--variant-default:not([data-disabled]):hover {
+    background-color: var(--c-elevation-0-hovered);
+  }
+  &--variant-default:not([data-disabled]):active {
+    background-color: var(--c-elevation-0-pressed);
+  }
+  &--variant-default:not([data-disabled])[data-selected] {
+    background-color: var(--c-elevation-0-selected);
+  }
+
+  &--variant-elevated:not([data-disabled]) {
+    background-color: var(--c-background-1-enabled);
+  }
+  &--variant-elevated:not([data-disabled]):hover {
+    background-color: var(--c-background-1-hovered);
+  }
+  &--variant-elevated:not([data-disabled]):active {
+    background-color: var(--c-background-1-pressed);
+  }
+  &--variant-elevated:not([data-disabled])[data-selected] {
+    background-color: var(--c-background-1-selected);
+  }
+
+  &--variant-default[data-opened] {
+    background-color: var(--c-elevation-0-hovered);
+  }
+  &--variant-elevated[data-opened] {
+    background-color: var(--c-background-1-hovered);
+  }
+
+  &:not([data-disabled])[data-selected]::after {
+    background-color: var(--c-accent-A600);
+  }
+}
+
+.v2-select-item {
+  &--variant-default {
+    background-color: var(--c-background-1);
+  }
+  &--variant-elevated {
+    background-color: var(--c-elevation-1);
+  }
+}
+
+.v2-select-box .v2-select-label {
+  &--variant-default {
+    background-color: var(--c-background-1);
+  }
+  &--variant-elevated {
+    background-color: var(--c-elevation-1);
+  }
+}
+
+.v2-select-option {
+  &--variant-default {
+    color: var(--c-text-med);
+  }
+  &--variant-elevated {
+    color: var(--c-text-med);
+  }
+
+  &--variant-default:not([data-disabled]) {
+    background-color: var(--c-background-1-enabled);
+  }
+  &--variant-default:not([data-disabled]):hover {
+    background-color: var(--c-background-1-hovered);
+  }
+  &--variant-default:not([data-disabled]):active {
+    background-color: var(--c-background-1-pressed);
+  }
+  &--variant-default:not([data-disabled])[data-selected] {
+    background-color: var(--c-background-1-selected);
+  }
+
+  &--variant-elevated:not([data-disabled]) {
+    background-color: var(--c-elevation-1-enabled);
+  }
+  &--variant-elevated:not([data-disabled]):hover {
+    background-color: var(--c-elevation-1-hovered);
+  }
+  &--variant-elevated:not([data-disabled]):active {
+    background-color: var(--c-elevation-1-pressed);
+  }
+  &--variant-elevated:not([data-disabled])[data-selected] {
+    background-color: var(--c-elevation-1-selected);
+  }
+}
+
+.v2-select-group-label {
+  &--variant-default {
+    color: var(--c-text-low);
+  }
+  &--variant-elevated {
+    color: var(--c-text-low);
+  }
+
+  &--variant-default {
+    background-color: var(--c-background-1-enabled);
+  }
+  &--variant-elevated {
+    background-color: var(--c-elevation-1-enabled);
   }
 }

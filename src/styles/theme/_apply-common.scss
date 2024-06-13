@@ -102,7 +102,7 @@ svg {
     outline-color: transparent;
   }
   &:focus:focus-visible {
-    z-index: var(--idx-activeitem);
+    z-index: var(--idx-active-item);
     outline-color: var(--c-focus);
   }
 }

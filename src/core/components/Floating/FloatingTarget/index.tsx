@@ -14,7 +14,7 @@ type FloatingTargetFactory = Factory.Config<{
 }>;
 
 const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
-  const { children, popupType = 'dialog', refProp = 'ref', ...additionalProps } = props;
+  const { children, popupType = 'dialog', refProp = 'ref', ...otherProps } = props;
 
   if (!React.isValidElement(children)) {
     throw new Error(
@@ -22,9 +22,16 @@ const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
     );
   }
 
-  const forwardedProps: any = additionalProps;
+  const forwardedProps: any = otherProps;
+
   const ctx = useFloatingContext();
   const refs = useMergeRefs(ctx.reference, (children as any).ref, ref);
+
+  const className = clsx(
+    otherProps.className,
+    forwardedProps.className,
+    (children as any).props.className
+  );
 
   const contextProps = ctx
     ? {
@@ -46,10 +53,11 @@ const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
       };
 
   return React.cloneElement(children, {
-    ...forwardedProps,
+    className,
     [refProp!]: refs,
-    className: clsx((children as any).className, additionalProps.className),
+    ...otherProps,
     ...contextProps,
+    ...forwardedProps,
   });
 });
 
