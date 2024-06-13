@@ -40,6 +40,14 @@
         justify-content: flex-start;
         // padding-inline: var(--s-4);
         font-size: var(--fz-4);
+
+        direction: ltr;
+        text-align: left;
+
+        [data-prefers-dir='rtl'] & {
+          direction: rtl;
+          text-align: right;
+        }
       }
     }
   }

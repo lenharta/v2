@@ -51,6 +51,25 @@ const Select: SelectFactory = (props: SelectProps) => {
   const getGroupId = () => `select:group:${uid}`;
   const getOptionId = () => `select:option:${uid}`;
 
+  const findOptionLabel = (v: string) => {
+    let label: string | undefined;
+
+    parsedData.forEach((item) => {
+      if ('group' in item) {
+        item.items.forEach((obj) => {
+          if (obj.value === v) {
+            label = obj.label;
+          }
+        });
+      } else {
+        if (item.value === v) {
+          label = item.label;
+        }
+      }
+    });
+    return label ? label : v;
+  };
+
   return (
     <Floating
       dir={dir}
@@ -94,7 +113,7 @@ const Select: SelectFactory = (props: SelectProps) => {
           onChange,
         }}
       >
-        <Select.Target placeholder={placeholder} />
+        <Select.Target placeholder={placeholder} findOptionLabel={findOptionLabel} />
 
         <Select.Box>
           {(parsedData ?? []).map((item) => {

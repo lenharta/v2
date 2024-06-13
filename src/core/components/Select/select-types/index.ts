@@ -83,6 +83,7 @@ interface SelectBoxProps {
 
 interface SelectTargetProps {
   placeholder: string;
+  findOptionLabel: (value: string) => string;
 }
 
 interface SelectGroupProps {

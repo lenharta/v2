@@ -7,6 +7,14 @@
   padding: 0;
   margin: 0;
 
+  direction: ltr;
+  text-align: left;
+
+  [data-prefers-dir='rtl'] & {
+    direction: rtl;
+    text-align: right;
+  }
+
   &:where([data-truncate]) {
     overflow: hidden;
     text-overflow: ellipsis;

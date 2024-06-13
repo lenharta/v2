@@ -1,5 +1,22 @@
 import React from 'react';
 
+const ICON_MAP_CHECK_CIRCLE_OUTLINE = {
+  ['check-circle']: (
+    <React.Fragment>
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+      <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+    </React.Fragment>
+  ),
+};
+
+const ICON_MAP_CHECK_CIRCLE_FILL = {
+  ['check-circle']: (
+    <React.Fragment>
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+    </React.Fragment>
+  ),
+};
+
 const ICON_MAP_COMPONENT_CHECKBOX_OUTLINE = {
   ['checkbox-mixed-circle']: (
     <React.Fragment>
@@ -190,6 +207,7 @@ const ICON_MAP_COMPONENT_OUTLINE = {
   ...ICON_MAP_COMPONENT_RADIO_OUTLINE,
   ...ICON_MAP_COMPONENT_THEME_MODE_OUTLINE,
   ...ICON_MAP_COMPONENT_CLOSE_OUTLINED,
+  ...ICON_MAP_CHECK_CIRCLE_OUTLINE,
 };
 
 const ICON_MAP_COMPONENT_FILL = {
@@ -198,6 +216,7 @@ const ICON_MAP_COMPONENT_FILL = {
   ...ICON_MAP_COMPONENT_RADIO_FILL,
   ...ICON_MAP_COMPONENT_THEME_MODE_FILL,
   ...ICON_MAP_COMPONENT_CLOSE_FILL,
+  ...ICON_MAP_CHECK_CIRCLE_FILL,
 };
 
 export { ICON_MAP_COMPONENT_OUTLINE, ICON_MAP_COMPONENT_FILL };
