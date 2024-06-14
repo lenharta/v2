@@ -67,6 +67,7 @@ svg {
 }
 
 .v2-tile-link-item,
+.v2-footer-nav-link,
 .v2-search-box-input,
 .v2-search-result-item {
   cursor: default;
@@ -117,8 +118,12 @@ svg {
   fill: var(--c-accent-A500);
 }
 
-.v2-footer a {
+.v2-footer-nav-link {
   color: var(--c-text-low);
+}
+
+.v2-footer-nav-link:hover {
+  color: var(--c-text-med);
 }
 
 .v2-tile-link-item--variant-default {

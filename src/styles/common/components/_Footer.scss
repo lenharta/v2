@@ -30,24 +30,23 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      height: calc(var(--size-action-root) / 1.25);
+      height: calc(var(--size-action-root) / 1.5);
+    }
 
-      a {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        // padding-inline: var(--s-4);
-        font-size: var(--fz-4);
+    &-link {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: var(--fz-4);
 
-        direction: ltr;
-        text-align: left;
+      direction: ltr;
+      text-align: left;
 
-        [data-prefers-dir='rtl'] & {
-          direction: rtl;
-          text-align: right;
-        }
+      [data-prefers-dir='rtl'] & {
+        direction: rtl;
+        text-align: right;
       }
     }
   }

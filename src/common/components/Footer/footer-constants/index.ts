@@ -9,6 +9,7 @@ const css = {
     root: 'v2-footer-nav',
     list: 'v2-footer-nav-list',
     item: 'v2-footer-nav-item',
+    link: 'v2-footer-nav-link',
   },
 };
 
