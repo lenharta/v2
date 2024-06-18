@@ -402,3 +402,20 @@
     background-color: var(--c-elevation-1-enabled);
   }
 }
+
+.v2-table-cell {
+}
+.v2-table-row:not([data-zebra]) {
+  background-color: var(--c-background-0-enabled);
+}
+.v2-table-row[data-zebra]:nth-of-type(even) {
+  background-color: var(--c-background-1-enabled);
+}
+.v2-table-head > .v2-table-row {
+  background-color: var(--c-background-1-enabled);
+  border-bottom-color: var(--c-border-med);
+}
+.v2-table-foot {
+}
+.v2-table-body {
+}
