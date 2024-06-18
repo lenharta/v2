@@ -13,7 +13,7 @@ type TableBodyFactory = Factory.Config<{
 const TableBody = factory<TableBodyFactory>((props, ref) => {
   const { children, ...forwardedProps } = props;
   return (
-    <tbody ref={ref} className={css.body.root} {...forwardedProps}>
+    <tbody ref={ref} className={css.body} {...forwardedProps}>
       {children}
     </tbody>
   );

@@ -1,35 +1,50 @@
-interface TableContextValue {}
+interface TableContextValue {
+  getTableId: {
+    bodyRow: (id: string) => string;
+    bodyCell: (id: string) => string;
+    headCell: (id: string) => string;
+    footCell: (id: string) => string;
+  };
+}
 
-interface TableProps {}
+type TableCellItem = {
+  id: string;
+  label: string;
+  value: string | number | readonly string[];
+};
+
+type TableRowItem = {
+  id: string;
+  label: string;
+  value: string | number | readonly string[];
+  items: TableCellItem[];
+};
+
+interface TableProps {
+  columns?: TableCellItem[] | undefined;
+  rows?: TableRowItem[] | undefined;
+  zebra?: boolean | undefined;
+}
 
 interface TableHeadProps {}
 
-interface TableHeadRowProps {}
-
-interface TableHeadCellProps {}
-
 interface TableBodyProps {}
-
-interface TableBodyRowProps {}
-
-interface TableBodyCellProps {}
 
 interface TableFootProps {}
 
-interface TableFootRowProps {}
+interface TableRowProps {}
 
-interface TableFootCellProps {}
+interface TableColProps {}
+
+interface TableCellProps {}
 
 export type {
+  TableHeadProps,
+  TableBodyProps,
+  TableFootProps,
+  TableRowProps,
+  TableColProps,
+  TableCellProps,
   TableContextValue,
   TableProps,
-  TableHeadProps,
-  TableHeadRowProps,
-  TableHeadCellProps,
-  TableBodyProps,
-  TableBodyRowProps,
-  TableBodyCellProps,
-  TableFootProps,
-  TableFootRowProps,
-  TableFootCellProps,
 };

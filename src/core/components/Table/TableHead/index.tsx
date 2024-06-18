@@ -6,14 +6,14 @@ import { TableHeadProps } from '../table-types';
 
 type TableHeadFactory = Factory.Config<{
   ref: HTMLTableSectionElement;
-  comp: 'tfoot';
+  comp: 'thead';
   props: TableHeadProps;
 }>;
 
 const TableHead = factory<TableHeadFactory>((props, ref) => {
   const { children, ...forwardedProps } = props;
   return (
-    <thead ref={ref} className={css.foot.root} {...forwardedProps}>
+    <thead ref={ref} className={css.head} {...forwardedProps}>
       {children}
     </thead>
   );

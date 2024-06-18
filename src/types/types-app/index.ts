@@ -1,5 +1,6 @@
 export enum ROUTES {
   home = '/',
+  canvas = '/canvas',
   toolbox = '/toolbox',
   sandbox = '/sandbox',
   contact = '/contact',

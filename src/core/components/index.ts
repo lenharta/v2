@@ -19,6 +19,9 @@ export * from './Stack';
 export * from './Select/Select';
 export * from './Select/select-types';
 
+export * from './Table/Table';
+export * from './Table/table-types';
+
 export * from './Tabs/Tabs';
 export * from './Tabs/tabs-types';
 

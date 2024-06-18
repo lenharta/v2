@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './styles/index.scss';
 import { ROUTES, ROUTES_SANDBOX } from './types';
 import {
+  CanvasRoute,
   ContactRoute,
   ErrorRoute,
   ExperienceRoute,
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
       {
         path: ROUTES.contact,
         element: <ContactRoute />,
+        errorElement: <ErrorRoute />,
+      },
+      {
+        path: ROUTES.canvas,
+        element: <CanvasRoute />,
         errorElement: <ErrorRoute />,
       },
       {

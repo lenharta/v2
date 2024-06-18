@@ -4,6 +4,7 @@ import { Divider, Stack, UnstyledButton } from '@/core';
 
 import { css } from './footer-constants';
 import { FooterProps } from './footer-types';
+import { ROUTES, ROUTES_SANDBOX } from '@/types';
 
 const FooterNavList = (props: { group: string; items: { value: string; label: string }[] }) => {
   const { group, items = [] } = props;
@@ -34,41 +35,43 @@ const Footer: React.FC<FooterProps> = () => {
           <FooterNavList
             group="Navigation"
             items={[
-              { value: '/', label: 'Home' },
-              { value: '/experience', label: 'Experience' },
-              { value: '/projects', label: 'Projects' },
-              { value: '/toolbox', label: 'Toolbox' },
-              { value: '/contact', label: 'Contact' },
-              { value: '/settings', label: 'Settings' },
-              { value: '/components', label: 'Components' },
+              { value: ROUTES.home, label: 'Home' },
+              { value: ROUTES.projects, label: 'Projects' },
+              { value: ROUTES.experience, label: 'Experience' },
+              { value: ROUTES.toolbox, label: 'Toolbox' },
+              { value: ROUTES.contact, label: 'Contact' },
+              { value: ROUTES.settings, label: 'Settings' },
+              { value: ROUTES.canvas, label: 'Canvas' },
             ]}
           />
 
           <FooterNavList
-            group="Components"
+            group="Sandbox | Core"
             items={[
-              { value: '/components/inputs', label: 'Inputs' },
-              { value: '/components/buttons', label: 'Buttons' },
-              { value: '/components/layouts', label: 'Layouts' },
-              { value: '/components/overlays', label: 'Overlays' },
-              { value: '/components/feedback', label: 'Feedback' },
-              { value: '/components/navigation', label: 'Navigation' },
-              { value: '/components/collections', label: 'Collections' },
-              { value: '/components/miscellaneous', label: 'Miscellaneous' },
+              { value: ROUTES_SANDBOX.icon, label: 'Icon' },
+              { value: ROUTES_SANDBOX.text, label: 'Text' },
+              { value: ROUTES_SANDBOX.tile, label: 'Tile' },
+              { value: ROUTES_SANDBOX.title, label: 'Title' },
+              { value: ROUTES_SANDBOX.label, label: 'Label' },
+              { value: ROUTES_SANDBOX.action, label: 'Action' },
+              { value: ROUTES_SANDBOX.button, label: 'Button' },
+              { value: ROUTES_SANDBOX.divider, label: 'Divider' },
+              { value: ROUTES_SANDBOX.floating, label: 'Floating' },
             ]}
           />
 
           <FooterNavList
-            group="Components"
+            group="Sandbox | Hooks"
             items={[
-              { value: '/components/inputs', label: 'Inputs' },
-              { value: '/components/buttons', label: 'Buttons' },
-              { value: '/components/layouts', label: 'Layouts' },
-              { value: '/components/overlays', label: 'Overlays' },
-              { value: '/components/feedback', label: 'Feedback' },
-              { value: '/components/navigation', label: 'Navigation' },
-              { value: '/components/collections', label: 'Collections' },
-              { value: '/components/miscellaneous', label: 'Miscellaneous' },
+              { value: ROUTES_SANDBOX.icon, label: 'Icon' },
+              { value: ROUTES_SANDBOX.text, label: 'Text' },
+              { value: ROUTES_SANDBOX.tile, label: 'Tile' },
+              { value: ROUTES_SANDBOX.title, label: 'Title' },
+              { value: ROUTES_SANDBOX.label, label: 'Label' },
+              { value: ROUTES_SANDBOX.action, label: 'Action' },
+              { value: ROUTES_SANDBOX.button, label: 'Button' },
+              { value: ROUTES_SANDBOX.divider, label: 'Divider' },
+              { value: ROUTES_SANDBOX.floating, label: 'Floating' },
             ]}
           />
         </nav>

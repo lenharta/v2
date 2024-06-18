@@ -13,7 +13,7 @@ type TableFootFactory = Factory.Config<{
 const TableFoot = factory<TableFootFactory>((props, ref) => {
   const { children, ...forwardedProps } = props;
   return (
-    <tfoot ref={ref} className={css.foot.root} {...forwardedProps}>
+    <tfoot ref={ref} className={css.foot} {...forwardedProps}>
       {children}
     </tfoot>
   );
