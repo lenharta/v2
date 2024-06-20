@@ -1,0 +1,23 @@
+.v2-action,
+.v2-button,
+.v2-radio,
+.v2-toggle,
+.v2-checkbox,
+.v2-select-option,
+.v2-select-target,
+.v2-control-segment {
+  transition:
+    fill 250ms ease-in-out,
+    color 250ms ease-in-out,
+    stroke 250ms ease-in-out,
+    opacity 250ms ease-in-out,
+    border-color 250ms ease-in-out,
+    background-color 250ms ease-in-out;
+}
+
+.v2-button-spacer,
+.v2-action-spacer {
+  transition:
+    opacity 250ms ease-in-out,
+    background-color 250ms ease-in-out;
+}

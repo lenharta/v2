@@ -1,0 +1,53 @@
+.v2-chip {
+  --x-chip-font-size-sm: var(--fz-2);
+  --x-chip-font-size-md: var(--fz-3);
+  --x-chip-font-size-lg: var(--fz-4);
+
+  --x-chip-padding-x-sm: var(--s-3);
+  --x-chip-padding-x-md: var(--s-4);
+  --x-chip-padding-x-lg: var(--s-5);
+
+  --x-chip-padding-y-sm: var(--s-1);
+  --x-chip-padding-y-md: var(--s-2);
+  --x-chip-padding-y-lg: var(--s-3);
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  padding-block: var(--x-chip-padding-y);
+  padding-inline: var(--x-chip-padding-x);
+
+  overflow: hidden;
+  flex-wrap: nowrap;
+  direction: ltr;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: var(--fw-1);
+  font-family: var(--ff);
+  font-size: var(--x-chip-font-size, var(--x-chip-font-size-sm));
+
+  [data-prefers-dir='rtl'] & {
+    text-align: right;
+    direction: rtl;
+  }
+
+  &--size-sm {
+    --x-chip-font-size: var(--x-chip-font-size-sm);
+    --x-chip-padding-x: var(--x-chip-padding-x-sm);
+    --x-chip-padding-y: var(--x-chip-padding-y-sm);
+  }
+
+  &--size-md {
+    --x-chip-font-size: var(--x-chip-font-size-md);
+    --x-chip-padding-x: var(--x-chip-padding-x-md);
+    --x-chip-padding-y: var(--x-chip-padding-y-md);
+  }
+
+  &--size-lg {
+    --x-chip-font-size: var(--x-chip-font-size-lg);
+    --x-chip-padding-x: var(--x-chip-padding-x-lg);
+    --x-chip-padding-y: var(--x-chip-padding-y-lg);
+  }
+}

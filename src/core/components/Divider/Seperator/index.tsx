@@ -1,22 +1,19 @@
 import clsx from 'clsx';
 import { DividerSeparatorProps } from '../types';
 
-type DividerSeperatorFactory = React.FC<DividerSeparatorProps>;
+const DividerSeperator: React.FC<DividerSeparatorProps> = (props) => {
+  const { variant, size, show, ...forwardedProps } = props;
 
-const css = {
-  seperator: 'v2-divider-seperator',
-};
-
-const DividerSeperator: DividerSeperatorFactory = (props) => {
-  const { variant, size, show } = props;
   if (!show) return null;
+
   return (
     <div
       className={clsx(
-        css.seperator,
-        `${css.seperator}--size-${size}`,
-        `${css.seperator}--variant-${variant}`
+        'v2-divider-seperator',
+        `v2-divider-seperator--size-${size}`,
+        `v2-divider-seperator--variant-${variant}`
       )}
+      {...forwardedProps}
     />
   );
 };

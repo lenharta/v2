@@ -43,9 +43,9 @@ const Divider = factory<DividerFactory>((props, ref) => {
       data-orientation={orientation}
       data-position={position}
       className={clsx(
-        css.root,
-        `${css.root}--variant-${variant}`,
-        `${css.root}--size-${size}`,
+        'v2-divider',
+        `v2-divider--size-${size}`,
+        `v2-divider--variant-${variant}`,
         className
       )}
       {...forwardedProps}

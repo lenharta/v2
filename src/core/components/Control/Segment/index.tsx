@@ -1,8 +1,7 @@
 import { Factory } from '@/types';
-import { UnstyledButton } from '../../UnstyledButton';
 import { createEventCallback } from '@/utils';
+import { createKeyDownGroup, UnstyledButton, factory } from '@/core';
 import { ControlSegmentProps } from '../types';
-import { createKeyDownGroup, factory } from '@/core';
 
 type ControlSegmentFactory = Factory.Config<{
   ref: HTMLButtonElement;
