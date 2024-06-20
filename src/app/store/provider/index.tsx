@@ -1,26 +1,30 @@
 import React from 'react';
 import { useStorage } from '../storage';
 import { Store, Theme } from '@/types';
-import { createRandomId } from '@/utils';
+import { createRandomString } from '@/utils';
 import { useStoreReducer } from '../reducer';
 import { StoreDispatchContext, StoreStateContext } from '../context';
 
 const initialStore: Store.State = {
-  nonce: () => '',
-  accent: 'blue',
-  icons: 'outline',
-  mode: 'dark',
-  lang: 'en',
   dir: 'ltr',
+  mode: 'dark',
+  icons: 'outline',
+  accent: 'blue',
+  language: 'en',
+  nonce: () => '',
 };
 
-const THEME_ROOT_ATTRIBUTES: Record<Theme.Attributes, string> = {
+const THEME_ATTRIBUTE_MAP = {
   accent: 'data-prefers-accent',
   mode: 'data-prefers-mode',
   dir: 'data-prefers-dir',
-};
+} as const;
 
-const StoreProvider = ({ children }: Store.ProviderProps) => {
+// const THEME_ROOT_ATTRIBUTES: Record<Theme.Attributes, string> = {
+
+// };
+
+const StoreProvider = ({ children }: { children?: React.ReactNode | undefined }) => {
   const local = useStorage<Store.LocalState>({ key: 'local-storage' });
   const session = useStorage<Store.SessionState>({ key: 'session-storage' });
 
@@ -29,7 +33,7 @@ const StoreProvider = ({ children }: Store.ProviderProps) => {
     const sessionStore = session.fetch();
 
     if (!sessionStore?.session) {
-      const uid = createRandomId(16);
+      const uid = createRandomString(16);
       session.write({ session: uid });
       return {
         ...current,
@@ -39,10 +43,11 @@ const StoreProvider = ({ children }: Store.ProviderProps) => {
 
     if (!localStore) {
       local.write({
-        accent: store.accent,
-        mode: store.mode,
-        lang: store.lang,
         dir: store.dir,
+        mode: store.mode,
+        icons: store.icons,
+        accent: store.accent,
+        language: store.language,
       });
 
       const payload = local.fetch()!;
@@ -61,18 +66,19 @@ const StoreProvider = ({ children }: Store.ProviderProps) => {
 
   React.useEffect(() => {
     local.write({
-      accent: store.accent,
-      mode: store.mode,
-      lang: store.lang,
       dir: store.dir,
+      mode: store.mode,
+      icons: store.icons,
+      accent: store.accent,
+      language: store.language,
     });
-  }, [store.accent, store.mode, store.lang, store.dir]);
+  }, [store.dir, store.mode, store.icons, store.accent, store.language]);
 
   React.useEffect(() => {
     const root = document.getElementById('root')!;
 
-    (Object.keys(THEME_ROOT_ATTRIBUTES) as Theme.Attributes[]).forEach((attribute) => {
-      root.setAttribute(THEME_ROOT_ATTRIBUTES[attribute], store[attribute]);
+    (Object.keys(THEME_ATTRIBUTE_MAP) as Theme.Attributes[]).forEach((attribute) => {
+      root.setAttribute(THEME_ATTRIBUTE_MAP[attribute], store[attribute]);
     });
   }, [store.dir, store.mode, store.accent]);
 

@@ -1,7 +1,6 @@
 import clsx from 'clsx';
-import { factory } from '@/core';
 import { Factory } from '@/types';
-import { ICON_MAP } from './icon-library';
+import { factory } from '../../factory';
 import { IconProps } from './Icon.types';
 
 type IconFactory = Factory.Config<{
@@ -10,37 +9,16 @@ type IconFactory = Factory.Config<{
   props: IconProps;
 }>;
 
-const css = {
-  root: 'v2-icon',
-};
+// Replace children with path lookup
 
 const Icon = factory<IconFactory>((props, ref) => {
-  const {
-    size = 'sm',
-    name = 'shape-circle',
-    scheme,
-    variant = 'outline',
-    className,
-    ...forwardedProps
-  } = props;
-
-  const classNames = clsx(css.root, `${css.root}--size-${size}`, className);
-
+  const { children, className, ...forwardedProps } = props;
   return (
-    <svg
-      {...forwardedProps}
-      data-icon-name={name}
-      xmlns="http://www.w3.org/2000/svg"
-      className={classNames}
-      viewBox="0 0 16 16"
-      height="16"
-      width="16"
-      fill="none"
-      ref={ref}
-    >
-      {ICON_MAP[variant][name]}
+    <svg ref={ref} className={clsx('v2-icon', className)} {...forwardedProps}>
+      {children}
     </svg>
   );
 });
 
+Icon.displayName = '@v2/Icon';
 export { Icon };

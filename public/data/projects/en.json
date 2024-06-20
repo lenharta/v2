@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": "project-a",
+      "name": "Project Name",
+      "repo": "https://example.com",
+      "link": "https://example.com",
+      "image": "https://placehold.co/600x400",
+      "tags": ["react", "typescript"]
+    },
+    {
+      "id": "project-b",
+      "name": "Project Name",
+      "repo": "https://example.com",
+      "link": "https://example.com",
+      "image": "https://placehold.co/600x400",
+      "tags": ["react", "typescript"]
+    },
+    {
+      "id": "project-c",
+      "name": "Project Name",
+      "repo": "https://example.com",
+      "link": "https://example.com",
+      "image": "https://placehold.co/600x400",
+      "tags": ["react", "typescript"]
+    },
+    {
+      "id": "project-d",
+      "name": "Project Name",
+      "repo": "https://example.com",
+      "link": "https://example.com",
+      "image": "https://placehold.co/600x400",
+      "tags": ["react", "typescript"]
+    },
+    {
+      "id": "project-e",
+      "name": "Project Name",
+      "repo": "https://example.com",
+      "link": "https://example.com",
+      "image": "https://placehold.co/600x400",
+      "tags": ["react", "typescript"]
+    }
+  ]
+}

@@ -1,26 +1,33 @@
 import React from 'react';
-import { HomeTitle } from './home-title';
-import { Button, Text, Title } from '@/core';
-import { Page, Hero, Section } from '@/common';
+import { Text, Title } from '@/core';
+import { Page, Hero, Section } from '@/app';
 
-function ButtonCanvas() {
-  return (
-    <React.Fragment>
-      <Title>Canvas | Button</Title>
-      <Button>Default</Button>
-    </React.Fragment>
-  );
-}
+const HomeHero = () => (
+  <Hero>
+    <Title className="v2-home-title" h1>
+      Frontend Engineer
+      <span>Human-Centered Problem Solver</span>
+    </Title>
+  </Hero>
+);
 
-const HomeRoute: React.FC<{}> & { Title: typeof HomeTitle } = () => (
+const HomeOverview = () => (
+  <Section>
+    <Title>Overview</Title>
+    <Text>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et aliquid cupiditate aut maxime
+      nulla ipsa impedit iure quibusdam totam tempore nam voluptates id harum voluptate sed
+      reiciendis fugiat, ut tenetur.
+    </Text>
+  </Section>
+);
+
+const HomeRoute: React.FC<{}> = ({}) => (
   <Page>
-    <Hero title={<HomeRoute.Title />} />
-    <Section>
-      <ButtonCanvas />
-    </Section>
+    <HomeHero />
+    <HomeOverview />
   </Page>
 );
 
-HomeRoute.Title = HomeTitle;
 HomeRoute.displayName = '@v2/Route.Home';
 export { HomeRoute };

@@ -2,11 +2,11 @@ import React from 'react';
 import { SectionProps } from './Section.types';
 
 const Section: React.FC<SectionProps> = (props) => {
-  const { ...forwardedProps } = props;
+  const { children, ...forwardedProps } = props;
   return (
-    <div {...forwardedProps}>
-      <span>Section</span>
-    </div>
+    <section className="v2-section" {...forwardedProps}>
+      {children}
+    </section>
   );
 };
 

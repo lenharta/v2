@@ -1,3 +1,6 @@
+export * from './Hero/Hero';
+export * from './Hero/Hero.types';
+
 export * from './Main/Main';
 export * from './Main/Main.types';
 

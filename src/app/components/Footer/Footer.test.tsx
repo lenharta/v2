@@ -2,7 +2,7 @@ import { Footer } from './Footer';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 
-describe('Footer', () => {
+describe('@v2/app/components/Footer', () => {
   test('renders the component', () => {
     render(<Footer data-testid="Footer-test-id" />);
     const component = screen.getByTestId('Footer-test-id');

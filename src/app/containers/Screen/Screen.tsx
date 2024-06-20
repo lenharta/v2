@@ -2,10 +2,10 @@ import React from 'react';
 import { ScreenProps } from './Screen.types';
 
 const Screen: React.FC<ScreenProps> = (props) => {
-  const { ...forwardedProps } = props;
+  const { children, ...forwardedProps } = props;
   return (
-    <div {...forwardedProps}>
-      <span>Screen</span>
+    <div className="v2-screen" {...forwardedProps}>
+      {children}
     </div>
   );
 };

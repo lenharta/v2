@@ -1,4 +1,5 @@
 interface ScreenProps {
+  children?: React.ReactNode | undefined;
   'data-testid'?: string | undefined;
 }
 

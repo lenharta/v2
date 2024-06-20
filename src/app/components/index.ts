@@ -4,9 +4,6 @@ export * from './Footer/Footer.types';
 export * from './Header/Header';
 export * from './Header/Header.types';
 
-export * from './Hero/Hero';
-export * from './Hero/Hero.types';
-
 export * from './Menu/Menu';
 export * from './Menu/Menu.types';
 

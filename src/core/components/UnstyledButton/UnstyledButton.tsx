@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factoryPolymorphic } from '@/core';
+import { factory } from '../../factory';
 import { UnstyledButtonProps } from './UnstyledButton.types';
 
 type UnstyledButtonFactory = Factory.Config<{
@@ -9,28 +9,23 @@ type UnstyledButtonFactory = Factory.Config<{
   props: UnstyledButtonProps;
 }>;
 
-const UnstyledButton = factoryPolymorphic<UnstyledButtonFactory>((props, ref) => {
-  const {
-    loading,
-    readOnly,
-    disabled,
-    className,
-    component: Component = 'button',
-    ...forwardedProps
-  } = props;
+const UnstyledButton = factory<UnstyledButtonFactory>((props, ref) => {
+  const { children, className, disabled, readOnly, loading, ...forwardedProps } = props;
 
   return (
-    <Component
+    <button
       ref={ref}
       className={clsx('v2-button-u', className)}
       aria-busy={loading}
-      data-loading={loading}
-      data-disabled={disabled}
       aria-disabled={disabled}
       aria-readonly={readOnly}
       data-readonly={readOnly}
+      data-disabled={disabled}
+      data-loading={loading}
       {...forwardedProps}
-    />
+    >
+      {children}
+    </button>
   );
 });
 

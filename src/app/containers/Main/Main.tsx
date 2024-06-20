@@ -2,11 +2,11 @@ import React from 'react';
 import { MainProps } from './Main.types';
 
 const Main: React.FC<MainProps> = (props) => {
-  const { ...forwardedProps } = props;
+  const { children, ...forwardedProps } = props;
   return (
-    <div {...forwardedProps}>
-      <span>Main</span>
-    </div>
+    <main className="v2-main" {...forwardedProps}>
+      {children}
+    </main>
   );
 };
 

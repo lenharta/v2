@@ -1,10 +1,16 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { StoreProvider } from '../store';
+import { Main } from '@/app/containers';
+import { StoreProvider } from '@/app/store';
+import { Header, SideMenu } from '@/app/components';
 
 const RootLayout: React.FC<{}> = ({}) => (
   <StoreProvider>
-    <Outlet />
+    <Header />
+    <SideMenu />
+    <Main>
+      <Outlet />
+    </Main>
   </StoreProvider>
 );
 

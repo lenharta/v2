@@ -2,10 +2,10 @@ import React from 'react';
 import { PageProps } from './Page.types';
 
 const Page: React.FC<PageProps> = (props) => {
-  const { ...forwardedProps } = props;
+  const { children, ...forwardedProps } = props;
   return (
-    <div {...forwardedProps}>
-      <span>Page</span>
+    <div className="v2-page" {...forwardedProps}>
+      {children}
     </div>
   );
 };

@@ -1,11 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { TextProps } from './types';
-import { factoryPolymorphic } from '@/core';
-
-const css = {
-  root: 'v2-text',
-};
+import { TextProps } from './Text.types';
+import { factoryPolymorphic } from '../../factory';
 
 type TextFactory = Factory.Config<{
   ref: HTMLParagraphElement;
@@ -14,24 +10,12 @@ type TextFactory = Factory.Config<{
 }>;
 
 const Text = factoryPolymorphic<TextFactory>((props, ref) => {
-  const {
-    fz = 5,
-    fw = 2,
-    fh = 3,
-    className,
-    component: Component = 'p',
-    ...forwardedProps
-  } = props;
-
-  const classNames = clsx(
-    css.root,
-    `${css.root}--fz-${fz}`,
-    `${css.root}--fw-${fw}`,
-    `${css.root}--fh-${fh}`,
-    className
+  const { children, className, component: Component = 'p', ...forwardedProps } = props;
+  return (
+    <Component ref={ref} className={clsx('v2-text', className)} {...forwardedProps}>
+      {children}
+    </Component>
   );
-
-  return <Component {...forwardedProps} ref={ref} className={classNames} />;
 });
 
 Text.displayName = '@v2/Text';
