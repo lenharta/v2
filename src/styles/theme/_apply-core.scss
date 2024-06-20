@@ -1,421 +1,513 @@
-.v2-tile,
-.v2-divider,
-.v2-divider-content,
-.v2-divider-content::after,
-.v2-divider-label,
-.v2-tabs-item,
-.v2-tabs-item::before,
-.v2-button,
-.v2-button-group,
-.v2-action,
-.v2-action-group,
-.v2-action-spacer {
-  transition-property: background-color, color, border-color, opacity, fill, stroke;
-  transition-timing-function: ease;
-  transition-duration: 250ms;
-}
+// CORE | ICON
 
-.v2-select-target,
-.v2-select-option,
-.v2-tile[data-behavior='clickable'],
-.v2-tile[data-behavior='selectable'],
-.v2-tile[data-behavior='expandable'],
-.v2-tabs-item,
-.v2-action,
-.v2-button {
-  cursor: default;
-
-  border-color: transparent;
-  border-width: var(--s-1);
-  border-style: solid;
-
-  outline-color: transparent;
-  outline-width: var(--s-1);
-  outline-style: solid;
-  outline-offset: unset;
-
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
-  &:not([data-disabled]),
-  &:not([data-disabled]):hover,
-  &:not([data-disabled]):active,
-  &:not([data-disabled])[data-selected] {
-    cursor: pointer;
-  }
-
-  &[data-disabled],
-  &[data-disabled]:hover,
-  &[data-disabled]:active,
-  &[data-disabled][data-selected] {
-    cursor: default;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline-color: transparent;
-  }
-  &:focus:focus-visible {
-    z-index: var(--idx-active-item);
-    outline-color: var(--c-focus);
-  }
-}
-
-// CORE | DIVIDER
-
-.v2-divider {
-  &--variant-default {
-    color: var(--c-text-low);
-  }
-  &--variant-elevated {
-    color: var(--c-text-low);
-  }
-}
-
-.v2-divider-content {
-  &--variant-default svg.v2-icon {
-    fill: var(--c-border-low);
-  }
-  &--variant-elevated svg.v2-icon {
-    fill: var(--c-border-low);
-  }
-}
-
-.v2-divider-seperator {
-  &--variant-default {
-    background-color: var(--c-border-low);
-  }
-  &--variant-elevated {
-    background-color: var(--c-border-low);
-  }
+.v2-icon {
+  fill: var(--c-text-2);
 }
 
 // CORE | ACTION
 
 .v2-action {
-  &--variant-default:not([data-disabled]) {
-    background-color: var(--c-background-0-enabled);
+  &:not([data-disabled]) {
+    background-color: var(--c-action-enabled);
   }
-  &--variant-elevated:not([data-disabled]) {
-    background-color: var(--c-elevation-0-enabled);
+  &:not([data-disabled]):hover {
+    background-color: var(--c-action-hovered);
   }
-  &--variant-default:not([data-disabled]):hover {
-    background-color: var(--c-background-0-hovered);
+  &:not([data-disabled]):active {
+    background-color: var(--c-action-pressed);
   }
-  &--variant-elevated:not([data-disabled]):hover {
-    background-color: var(--c-elevation-0-hovered);
-  }
-  &--variant-default:not([data-disabled]):active {
-    background-color: var(--c-background-0-pressed);
-  }
-  &--variant-elevated:not([data-disabled]):active {
-    background-color: var(--c-elevation-0-pressed);
-  }
-  &--variant-default:not([data-disabled])[data-selected] {
-    background-color: var(--c-background-0-selected);
-  }
-  &--variant-elevated:not([data-disabled])[data-selected] {
-    background-color: var(--c-elevation-0-selected);
+  &:not([data-disabled])[data-selected] {
+    background-color: var(--c-action-selected);
   }
 }
 
+.v2-action,
+.v2-button {
+  &:not([data-disabled]) .v2-icon {
+    fill: var(--c-text-2);
+  }
+  &:not([data-disabled])[data-selected] .v2-icon {
+    fill: var(--c-text-1);
+  }
+}
+
+.v2-button-spacer,
 .v2-action-spacer {
-  &--variant-default:not([data-disabled]) {
-    background-color: var(--c-background-0-enabled);
-  }
-  &--variant-elevated:not([data-disabled]) {
-    background-color: var(--c-elevation-0-enabled);
-  }
+  background-color: var(--c-action-enabled);
 }
 
-// CORE | BUTTON
+// CORE | ACTION
 
 .v2-button {
-  &--variant-default:not([data-disabled]) {
-    background-color: var(--c-background-0-enabled);
+  &:not([data-disabled]) {
+    background-color: var(--c-button-enabled);
   }
-  &--variant-default:not([data-disabled]):hover {
-    background-color: var(--c-background-0-hovered);
+  &:not([data-disabled]):hover {
+    background-color: var(--c-button-hovered);
   }
-  &--variant-default:not([data-disabled]):active {
-    background-color: var(--c-background-0-pressed);
+  &:not([data-disabled]):active {
+    background-color: var(--c-button-pressed);
   }
-  &--variant-default:not([data-disabled])[data-selected] {
-    background-color: var(--c-background-0-selected);
+  &:not([data-disabled])[data-selected] {
+    background-color: var(--c-button-selected);
   }
-
-  &--variant-elevated:not([data-disabled]) {
-    background-color: var(--c-elevation-0-enabled);
+  &:not([data-disabled])[data-selected] svg {
+    fill: var(--c-text-1);
   }
-  &--variant-elevated:not([data-disabled]):hover {
-    background-color: var(--c-elevation-0-hovered);
-  }
-  &--variant-elevated:not([data-disabled]):active {
-    background-color: var(--c-elevation-0-pressed);
-  }
-  &--variant-elevated:not([data-disabled])[data-selected] {
-    background-color: var(--c-elevation-0-selected);
+  &:not([data-disabled]) svg {
+    fill: var(--c-text-2);
   }
 }
 
 .v2-button-spacer {
-  &--variant-default:not([data-disabled]) {
-    background-color: var(--c-background-0-enabled);
-  }
-  &--variant-elevated:not([data-disabled]) {
-    background-color: var(--c-elevation-0-enabled);
-  }
+  background-color: var(--c-button-enabled);
+  transition:
+    opacity 250ms ease-in-out,
+    background-color 250ms ease-in-out;
 }
 
-// CORE | TABS
+// CORE | DIVIDER
 
-.v2-tabs-item {
-  &--variant-default:not([data-disabled]) {
-    background-color: var(--c-background-0-enabled);
-  }
-  &--variant-default:not([data-disabled]):hover {
-    background-color: var(--c-background-0-hovered);
-  }
-  &--variant-default:not([data-disabled]):active {
-    background-color: var(--c-background-0-pressed);
-  }
-  &--variant-default:not([data-disabled])[data-selected] {
-    background-color: var(--c-background-0-selected);
-  }
-
-  &--variant-elevated:not([data-disabled]) {
-    background-color: var(--c-elevation-0-enabled);
-  }
-  &--variant-elevated:not([data-disabled]):hover {
-    background-color: var(--c-elevation-0-hovered);
-  }
-  &--variant-elevated:not([data-disabled]):active {
-    background-color: var(--c-elevation-0-pressed);
-  }
-  &--variant-elevated:not([data-disabled])[data-selected] {
-    background-color: var(--c-elevation-0-selected);
-  }
-
-  &:not([data-disabled])[data-selected]::before {
-    background-color: var(--c-accent-A600);
-  }
-}
-
-.v2-tabs-spacer {
-  &--variant-default:not([data-disabled]) {
-    background-color: var(--c-background-0-enabled);
-  }
-  &--variant-elevated:not([data-disabled]) {
-    background-color: var(--c-elevation-0-enabled);
-  }
-}
-
-// CORE | TILE
-
-.v2-tile {
-  &--variant-default[data-behavior='clickable']:not([data-disabled]),
-  &--variant-default[data-behavior='expandable']:not([data-disabled]) {
-    background-color: var(--c-background-0-enabled);
-  }
-  &--variant-default[data-behavior='clickable']:not([data-disabled]):hover,
-  &--variant-default[data-behavior='expandable']:not([data-disabled]):hover {
-    background-color: var(--c-background-0-hovered);
-  }
-  &--variant-default[data-behavior='clickable']:not([data-disabled]):active,
-  &--variant-default[data-behavior='expandable']:not([data-disabled]):active {
-    background-color: var(--c-background-0-pressed);
-  }
-
-  &--variant-elevated[data-behavior='clickable']:not([data-disabled]),
-  &--variant-elevated[data-behavior='expandable']:not([data-disabled]) {
-    background-color: var(--c-elevation-0-enabled);
-  }
-  &--variant-elevated[data-behavior='clickable']:not([data-disabled]):hover,
-  &--variant-elevated[data-behavior='expandable']:not([data-disabled]):hover {
-    background-color: var(--c-elevation-0-hovered);
-  }
-  &--variant-elevated[data-behavior='clickable']:not([data-disabled]):active,
-  &--variant-elevated[data-behavior='expandable']:not([data-disabled]):active {
-    background-color: var(--c-elevation-0-pressed);
-  }
-
-  &--variant-default[data-behavior='selectable']:not([data-disabled]) {
-    background-color: var(--c-background-0-enabled);
-  }
-  &--variant-default[data-behavior='selectable']:not([data-disabled]):hover {
-    background-color: var(--c-background-0-hovered);
-  }
-  &--variant-default[data-behavior='selectable']:not([data-disabled]):active {
-    background-color: var(--c-background-0-pressed);
-  }
-  &--variant-default[data-behavior='selectable']:not([data-disabled])[data-selected] {
-    background-color: var(--c-background-0-selected);
-  }
-
-  &--variant-elevated[data-behavior='selectable']:not([data-disabled]) {
-    background-color: var(--c-elevation-0-enabled);
-  }
-  &--variant-elevated[data-behavior='selectable']:not([data-disabled]):hover {
-    background-color: var(--c-elevation-0-hovered);
-  }
-  &--variant-elevated[data-behavior='selectable']:not([data-disabled]):active {
-    background-color: var(--c-elevation-0-pressed);
-  }
-  &--variant-elevated[data-behavior='selectable']:not([data-disabled])[data-selected] {
-    background-color: var(--c-elevation-0-selected);
-  }
+.v2-divider {
+  background-color: transparent;
+  transition:
+    opacity 250ms ease-in-out,
+    background-color 250ms ease-in-out;
 }
 
 // CORE | SELECT
 
-.v2-select-box {
-  &--variant-defualt {
-    background-color: var(--c-background-0);
-  }
-  &--variant-elevated {
-    background-color: var(--c-elevation-0);
-  }
-}
+// .v2-select-target {}
 
-.v2-select-target {
-  &--variant-default {
-    color: var(--c-text-med);
-  }
-  &--variant-elevated {
-    color: var(--c-text-med);
-  }
+// .v2-select-option {}
 
-  &--variant-default:not([data-disabled]) {
-    background-color: var(--c-elevation-0-enabled);
-  }
-  &--variant-default:not([data-disabled]):hover {
-    background-color: var(--c-elevation-0-hovered);
-  }
-  &--variant-default:not([data-disabled]):active {
-    background-color: var(--c-elevation-0-pressed);
-  }
-  &--variant-default:not([data-disabled])[data-selected] {
-    background-color: var(--c-elevation-0-selected);
-  }
+// CORE | TABS
 
-  &--variant-elevated:not([data-disabled]) {
-    background-color: var(--c-background-1-enabled);
-  }
-  &--variant-elevated:not([data-disabled]):hover {
-    background-color: var(--c-background-1-hovered);
-  }
-  &--variant-elevated:not([data-disabled]):active {
-    background-color: var(--c-background-1-pressed);
-  }
-  &--variant-elevated:not([data-disabled])[data-selected] {
-    background-color: var(--c-background-1-selected);
-  }
+// .v2-tabs-panel {}
 
-  &--variant-default[data-opened] {
-    background-color: var(--c-elevation-0-hovered);
-  }
-  &--variant-elevated[data-opened] {
-    background-color: var(--c-background-1-hovered);
-  }
+// .v2-tabs-list {}
 
-  &:not([data-disabled])[data-selected]::after {
-    background-color: var(--c-accent-A600);
-  }
-}
+// .v2-tabs-item {}
 
-.v2-select-item {
-  &--variant-default {
-    background-color: var(--c-background-1);
-  }
-  &--variant-default:not([data-disabled]) {
-    background-color: var(--c-background-1-enabled);
-  }
-  &--variant-default:not([data-disabled]):hover {
-    background-color: var(--c-background-1-hovered);
-  }
-  &--variant-default:not([data-disabled]):active {
-    background-color: var(--c-background-1-pressed);
-  }
-  &--variant-default:not([data-disabled])[data-selected] {
-    background-color: var(--c-background-1-selected);
-  }
+// CORE | TILE
 
-  &--variant-elevated:not([data-disabled]) {
-    background-color: var(--c-elevation-1-enabled);
-  }
-  &--variant-elevated:not([data-disabled]):hover {
-    background-color: var(--c-elevation-1-hovered);
-  }
-  &--variant-elevated:not([data-disabled]):active {
-    background-color: var(--c-elevation-1-pressed);
-  }
-  &--variant-elevated:not([data-disabled])[data-selected] {
-    background-color: var(--c-elevation-1-selected);
-  }
-}
+// .v2-tile[data-behavior='static'] {}
 
-.v2-select-box .v2-select-label {
-  &--variant-default {
-    background-color: var(--c-background-1);
-  }
-  &--variant-elevated {
-    background-color: var(--c-elevation-1);
-  }
-}
+// .v2-tile[data-behavior='clickable'] {}
 
-.v2-select-option {
-  &--variant-default {
-    color: var(--c-text-med);
-  }
-  &--variant-elevated {
-    color: var(--c-text-med);
-  }
-  &--variant-default svg {
-    fill: var(--c-text-med);
-  }
-  &--variant-elevated svg {
-    fill: var(--c-text-med);
-  }
+// .v2-tile[data-behavior='selectable'] {}
 
-  [data-selected] & {
-    &--variant-default svg {
-      fill: var(--c-accent-A600);
-    }
-    &--variant-elevated svg {
-      fill: var(--c-accent-A600);
-    }
-  }
-}
+// .v2-tile[data-behavior='expandable'] {}
 
-.v2-select-group-label {
-  &--variant-default {
-    color: var(--c-text-low);
-  }
-  &--variant-elevated {
-    color: var(--c-text-low);
-  }
+// // CORE | DIVIDER
 
-  &--variant-default {
-    background-color: var(--c-background-1-enabled);
-  }
-  &--variant-elevated {
-    background-color: var(--c-elevation-1-enabled);
-  }
-}
+// .v2-divider {
+//   &--variant-default {
+//     color: var(--c-text-low);
+//   }
+//   &--variant-elevated {
+//     color: var(--c-text-low);
+//   }
+// }
 
-.v2-table-cell {
-}
-.v2-table-row:not([data-zebra]) {
-  background-color: var(--c-background-0-enabled);
-}
-.v2-table-row[data-zebra]:nth-of-type(even) {
-  background-color: var(--c-background-1-enabled);
-}
-.v2-table-head > .v2-table-row {
-  background-color: var(--c-background-1-enabled);
-  border-bottom-color: var(--c-border-med);
-}
-.v2-table-foot {
-}
-.v2-table-body {
-}
+// .v2-divider-content {
+//   &--variant-default svg.v2-icon {
+//     fill: var(--c-border-low);
+//   }
+//   &--variant-elevated svg.v2-icon {
+//     fill: var(--c-border-low);
+//   }
+// }
+
+// .v2-divider-seperator {
+//   &--variant-default {
+//     background-color: var(--c-border-low);
+//   }
+//   &--variant-elevated {
+//     background-color: var(--c-border-low);
+//   }
+// }
+
+// // CORE | ACTION
+
+// .v2-action {
+//   &--variant-default:not([data-disabled]) {
+//     background-color: var(--c-background-0-enabled);
+//   }
+//   &--variant-elevated:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+//   &--variant-default:not([data-disabled]):hover {
+//     background-color: var(--c-background-0-hovered);
+//   }
+//   &--variant-elevated:not([data-disabled]):hover {
+//     background-color: var(--c-elevation-0-hovered);
+//   }
+//   &--variant-default:not([data-disabled]):active {
+//     background-color: var(--c-background-0-pressed);
+//   }
+//   &--variant-elevated:not([data-disabled]):active {
+//     background-color: var(--c-elevation-0-pressed);
+//   }
+//   &--variant-default:not([data-disabled])[data-selected] {
+//     background-color: var(--c-background-0-selected);
+//   }
+//   &--variant-elevated:not([data-disabled])[data-selected] {
+//     background-color: var(--c-elevation-0-selected);
+//   }
+// }
+
+// .v2-action-spacer {
+//   &--variant-default:not([data-disabled]) {
+//     background-color: var(--c-background-0-enabled);
+//   }
+//   &--variant-elevated:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+// }
+
+// // CORE | BUTTON
+
+// .v2-button {
+//   &--variant-default:not([data-disabled]) {
+//     background-color: var(--c-background-0-enabled);
+//   }
+//   &--variant-default:not([data-disabled]):hover {
+//     background-color: var(--c-background-0-hovered);
+//   }
+//   &--variant-default:not([data-disabled]):active {
+//     background-color: var(--c-background-0-pressed);
+//   }
+//   &--variant-default:not([data-disabled])[data-selected] {
+//     background-color: var(--c-background-0-selected);
+//   }
+
+//   &--variant-elevated:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+//   &--variant-elevated:not([data-disabled]):hover {
+//     background-color: var(--c-elevation-0-hovered);
+//   }
+//   &--variant-elevated:not([data-disabled]):active {
+//     background-color: var(--c-elevation-0-pressed);
+//   }
+//   &--variant-elevated:not([data-disabled])[data-selected] {
+//     background-color: var(--c-elevation-0-selected);
+//   }
+// }
+
+// .v2-button-spacer {
+//   &--variant-default:not([data-disabled]) {
+//     background-color: var(--c-background-0-enabled);
+//   }
+//   &--variant-elevated:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+// }
+
+// // CORE | TABS
+
+// .v2-tabs-item {
+//   &--variant-default:not([data-disabled]) {
+//     background-color: var(--c-background-0-enabled);
+//   }
+//   &--variant-default:not([data-disabled]):hover {
+//     background-color: var(--c-background-0-hovered);
+//   }
+//   &--variant-default:not([data-disabled]):active {
+//     background-color: var(--c-background-0-pressed);
+//   }
+//   &--variant-default:not([data-disabled])[data-selected] {
+//     background-color: var(--c-background-0-selected);
+//   }
+
+//   &--variant-elevated:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+//   &--variant-elevated:not([data-disabled]):hover {
+//     background-color: var(--c-elevation-0-hovered);
+//   }
+//   &--variant-elevated:not([data-disabled]):active {
+//     background-color: var(--c-elevation-0-pressed);
+//   }
+//   &--variant-elevated:not([data-disabled])[data-selected] {
+//     background-color: var(--c-elevation-0-selected);
+//   }
+
+//   &:not([data-disabled])[data-selected]::before {
+//     background-color: var(--c-accent-A600);
+//   }
+// }
+
+// .v2-tabs-spacer {
+//   &--variant-default:not([data-disabled]) {
+//     background-color: var(--c-background-0-enabled);
+//   }
+//   &--variant-elevated:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+// }
+
+// // CORE | TILE
+
+// .v2-tile {
+//   &--variant-default[data-behavior='clickable']:not([data-disabled]),
+//   &--variant-default[data-behavior='expandable']:not([data-disabled]) {
+//     background-color: var(--c-background-0-enabled);
+//   }
+//   &--variant-default[data-behavior='clickable']:not([data-disabled]):hover,
+//   &--variant-default[data-behavior='expandable']:not([data-disabled]):hover {
+//     background-color: var(--c-background-0-hovered);
+//   }
+//   &--variant-default[data-behavior='clickable']:not([data-disabled]):active,
+//   &--variant-default[data-behavior='expandable']:not([data-disabled]):active {
+//     background-color: var(--c-background-0-pressed);
+//   }
+
+//   &--variant-elevated[data-behavior='clickable']:not([data-disabled]),
+//   &--variant-elevated[data-behavior='expandable']:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+//   &--variant-elevated[data-behavior='clickable']:not([data-disabled]):hover,
+//   &--variant-elevated[data-behavior='expandable']:not([data-disabled]):hover {
+//     background-color: var(--c-elevation-0-hovered);
+//   }
+//   &--variant-elevated[data-behavior='clickable']:not([data-disabled]):active,
+//   &--variant-elevated[data-behavior='expandable']:not([data-disabled]):active {
+//     background-color: var(--c-elevation-0-pressed);
+//   }
+
+//   &--variant-default[data-behavior='selectable']:not([data-disabled]) {
+//     background-color: var(--c-background-0-enabled);
+//   }
+//   &--variant-default[data-behavior='selectable']:not([data-disabled]):hover {
+//     background-color: var(--c-background-0-hovered);
+//   }
+//   &--variant-default[data-behavior='selectable']:not([data-disabled]):active {
+//     background-color: var(--c-background-0-pressed);
+//   }
+//   &--variant-default[data-behavior='selectable']:not([data-disabled])[data-selected] {
+//     background-color: var(--c-background-0-selected);
+//   }
+
+//   &--variant-elevated[data-behavior='selectable']:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+//   &--variant-elevated[data-behavior='selectable']:not([data-disabled]):hover {
+//     background-color: var(--c-elevation-0-hovered);
+//   }
+//   &--variant-elevated[data-behavior='selectable']:not([data-disabled]):active {
+//     background-color: var(--c-elevation-0-pressed);
+//   }
+//   &--variant-elevated[data-behavior='selectable']:not([data-disabled])[data-selected] {
+//     background-color: var(--c-elevation-0-selected);
+//   }
+// }
+
+// // CORE | SELECT
+
+// .v2-select-box {
+//   &--variant-defualt {
+//     background-color: var(--c-background-0);
+//   }
+//   &--variant-elevated {
+//     background-color: var(--c-elevation-0);
+//   }
+// }
+
+// .v2-select-target {
+//   &--variant-default {
+//     color: var(--c-text-med);
+//   }
+//   &--variant-elevated {
+//     color: var(--c-text-med);
+//   }
+
+//   &--variant-default:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+//   &--variant-default:not([data-disabled]):hover {
+//     background-color: var(--c-elevation-0-hovered);
+//   }
+//   &--variant-default:not([data-disabled]):active {
+//     background-color: var(--c-elevation-0-pressed);
+//   }
+//   &--variant-default:not([data-disabled])[data-selected] {
+//     background-color: var(--c-elevation-0-selected);
+//   }
+
+//   &--variant-elevated:not([data-disabled]) {
+//     background-color: var(--c-background-1-enabled);
+//   }
+//   &--variant-elevated:not([data-disabled]):hover {
+//     background-color: var(--c-background-1-hovered);
+//   }
+//   &--variant-elevated:not([data-disabled]):active {
+//     background-color: var(--c-background-1-pressed);
+//   }
+//   &--variant-elevated:not([data-disabled])[data-selected] {
+//     background-color: var(--c-background-1-selected);
+//   }
+
+//   &--variant-default[data-opened] {
+//     background-color: var(--c-elevation-0-hovered);
+//   }
+//   &--variant-elevated[data-opened] {
+//     background-color: var(--c-background-1-hovered);
+//   }
+
+//   &:not([data-disabled])[data-selected]::after {
+//     background-color: var(--c-accent-A600);
+//   }
+// }
+
+// .v2-select-item {
+//   &--variant-default {
+//     background-color: var(--c-background-1);
+//   }
+//   &--variant-default:not([data-disabled]) {
+//     background-color: var(--c-background-1-enabled);
+//   }
+//   &--variant-default:not([data-disabled]):hover {
+//     background-color: var(--c-background-1-hovered);
+//   }
+//   &--variant-default:not([data-disabled]):active {
+//     background-color: var(--c-background-1-pressed);
+//   }
+//   &--variant-default:not([data-disabled])[data-selected] {
+//     background-color: var(--c-background-1-selected);
+//   }
+
+//   &--variant-elevated:not([data-disabled]) {
+//     background-color: var(--c-elevation-1-enabled);
+//   }
+//   &--variant-elevated:not([data-disabled]):hover {
+//     background-color: var(--c-elevation-1-hovered);
+//   }
+//   &--variant-elevated:not([data-disabled]):active {
+//     background-color: var(--c-elevation-1-pressed);
+//   }
+//   &--variant-elevated:not([data-disabled])[data-selected] {
+//     background-color: var(--c-elevation-1-selected);
+//   }
+// }
+
+// .v2-select-box .v2-select-label {
+//   &--variant-default {
+//     background-color: var(--c-background-1);
+//   }
+//   &--variant-elevated {
+//     background-color: var(--c-elevation-1);
+//   }
+// }
+
+// .v2-select-option {
+//   &--variant-default {
+//     color: var(--c-text-med);
+//   }
+//   &--variant-elevated {
+//     color: var(--c-text-med);
+//   }
+//   &--variant-default svg {
+//     fill: var(--c-text-med);
+//   }
+//   &--variant-elevated svg {
+//     fill: var(--c-text-med);
+//   }
+
+//   [data-selected] & {
+//     &--variant-default svg {
+//       fill: var(--c-accent-A600);
+//     }
+//     &--variant-elevated svg {
+//       fill: var(--c-accent-A600);
+//     }
+//   }
+// }
+
+// .v2-select-group-label {
+//   &--variant-default {
+//     color: var(--c-text-low);
+//   }
+//   &--variant-elevated {
+//     color: var(--c-text-low);
+//   }
+
+//   &--variant-default {
+//     background-color: var(--c-background-1-enabled);
+//   }
+//   &--variant-elevated {
+//     background-color: var(--c-elevation-1-enabled);
+//   }
+// }
+
+// // CORE | CHIP
+
+// .v2-chip {
+//   &--variant-default {
+//     background-color: var(--c-elevation-0);
+//   }
+
+//   &--variant-elevated {
+//     background-color: var(--c-elevation-1);
+//   }
+
+//   &--variant-accent {
+//     color: var(--c-accent-A600);
+//     background-color: var(--c-accent-A100);
+//   }
+
+//   &[data-bordered] {
+//     border: solid var(--s-1);
+//   }
+
+//   &--variant-default[data-bordered] {
+//     border-color: var(--c-border-low);
+//   }
+
+//   &--variant-accent[data-bordered] {
+//     border-color: var(--c-accent-A600);
+//   }
+
+//   &--variant-elevated[data-bordered] {
+//     border-color: var(--c-border-hgh);
+//   }
+// }
+
+// // CORE | TOOLBUTTON
+
+// .v2-toolbutton {
+//   &--variant-default:not([data-disabled]) {
+//     background-color: var(--c-background-0-enabled);
+//   }
+//   &--variant-default:not([data-disabled]):hover {
+//     background-color: var(--c-background-0-hovered);
+//   }
+//   &--variant-default:not([data-disabled]):active {
+//     background-color: var(--c-background-0-pressed);
+//   }
+
+//   &--variant-elevated:not([data-disabled]) {
+//     background-color: var(--c-elevation-0-enabled);
+//   }
+//   &--variant-elevated:not([data-disabled]):hover {
+//     background-color: var(--c-elevation-0-hovered);
+//   }
+//   &--variant-elevated:not([data-disabled]):active {
+//     background-color: var(--c-elevation-0-pressed);
+//   }
+
+//   &--variant-default:not([data-disabled]) svg {
+//     fill: var(--c-text-low);
+//   }
+//   &--variant-elevated:not([data-disabled]) svg {
+//     fill: var(--c-text-med);
+//   }
+
+//   &--variant-accent:not([data-disabled]) {
+//   }
+//   &--variant-accent:not([data-disabled]):hover {
+//   }
+//   &--variant-accent:not([data-disabled]):active {
+//   }
+// }

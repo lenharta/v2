@@ -1,0 +1,12 @@
+@media print, (prefers-reduced-motion: reduce) {
+  .v2-text,
+  .v2-title,
+  .v2-label,
+  .v2-button-u {
+    --x-motion-delay: 1ms !important;
+    --x-motion-repeat: 1 !important;
+    --x-motion-opacity: 0 !important;
+    --x-motion-duration: 1ms !important;
+    --x-easing-duration: 1ms !important;
+  }
+}

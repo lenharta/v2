@@ -1,89 +1,89 @@
-.v2-accordion {
-  gap: var(--unit);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+// .v2-accordion {
+//   gap: var(--unit);
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+//   justify-content: center;
 
-  &-item-box {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
+//   &-item-box {
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     flex-direction: column;
+//     justify-content: center;
+//   }
 
-  &-target-box {
-    width: 100%;
-    height: var(--v2-height-action-box);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: var(--fh-1);
-    font-family: var(--ff-base);
-    font-size: var(--fz-2);
-  }
+//   &-target-box {
+//     width: 100%;
+//     height: var(--v2-height-action-box);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     line-height: var(--fh-1);
+//     font-family: var(--ff-base);
+//     font-size: var(--fz-2);
+//   }
 
-  &-target-inner {
-    gap: calc(var(--gutter) / 2);
-    width: 100%;
-    height: var(--v2-height-action-inner);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-inline: calc(var(--gutter) / 2);
-  }
+//   &-target-inner {
+//     gap: calc(var(--gutter) / 2);
+//     width: 100%;
+//     height: var(--v2-height-action-inner);
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+//     padding-inline: calc(var(--gutter) / 2);
+//   }
 
-  &-content-box {
-    flex: 1 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
+//   &-content-box {
+//     flex: 1 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+//   }
 
-  &-icon-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+//   &-icon-box {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
 
-    &[data-position='right'] {
-      place-self: flex-end;
-    }
+//     &[data-position='right'] {
+//       place-self: flex-end;
+//     }
 
-    svg.v2-icon {
-      transition-duration: 250ms;
-      transition-property: transform;
-      transition-timing-function: ease;
-      width: calc(var(--v2-height-action-inner) * 0.4);
-      height: calc(var(--v2-height-action-inner) * 0.4);
-    }
+//     svg.v2-icon {
+//       transition-duration: 250ms;
+//       transition-property: transform;
+//       transition-timing-function: ease;
+//       width: calc(var(--v2-height-action-inner) * 0.4);
+//       height: calc(var(--v2-height-action-inner) * 0.4);
+//     }
 
-    svg.v2-icon[data-icon-name='caretDown'] {
-      width: calc(var(--v2-height-action-inner) * 0.6);
-      height: calc(var(--v2-height-action-inner) * 0.6);
+//     svg.v2-icon[data-icon-name='caretDown'] {
+//       width: calc(var(--v2-height-action-inner) * 0.6);
+//       height: calc(var(--v2-height-action-inner) * 0.6);
 
-      [data-active='false'] & {
-        transform: rotate(0);
-      }
-      [data-active='true'] & {
-        transform: rotate(180deg);
-      }
-    }
-  }
+//       [data-active='false'] & {
+//         transform: rotate(0);
+//       }
+//       [data-active='true'] & {
+//         transform: rotate(180deg);
+//       }
+//     }
+//   }
 
-  &-panel-box {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
+//   &-panel-box {
+//     display: flex;
+//     align-items: center;
+//     flex-direction: column;
+//     justify-content: center;
+//   }
 
-  &-panel-inner {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    word-break: break-word;
-  }
-}
+//   &-panel-inner {
+//     display: flex;
+//     align-items: center;
+//     flex-direction: column;
+//     justify-content: center;
+//     word-break: break-word;
+//   }
+// }

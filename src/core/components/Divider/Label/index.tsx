@@ -1,31 +1,23 @@
 import clsx from 'clsx';
-import { Label } from '../../Label';
 import { DividerLabelProps } from '../types';
 
-type DividerLabelFactory = React.FC<DividerLabelProps>;
-
-const css = {
-  label: 'v2-divider-label',
-};
-
-const DividerLabel: DividerLabelFactory = (props) => {
+const DividerLabel: React.FC<DividerLabelProps> = (props) => {
   const { label, variant, size, className, ...forwardedProps } = props;
 
   if (!label) return null;
 
   return (
-    <Label
-      component="p"
+    <span
       className={clsx(
-        css.label,
-        `${css.label}--size-${size}`,
-        `${css.label}--variant-${variant}`,
+        'v2-divider-label',
+        `v2-divider-label--size-${size}`,
+        `v2-divider-label--variant-${variant}`,
         className
       )}
       {...forwardedProps}
     >
       {label}
-    </Label>
+    </span>
   );
 };
 

@@ -1,15 +1,9 @@
+import clsx from 'clsx';
 import React from 'react';
 import { DividerLabel } from '../Label';
 import { DividerContentProps } from '../types';
-import clsx from 'clsx';
 
-const css = {
-  content: 'v2-divider-content',
-};
-
-type DividerContentFactory = React.FC<DividerContentProps>;
-
-const DividerContent: DividerContentFactory = (props) => {
+const DividerContent: React.FC<DividerContentProps> = (props) => {
   const { size, variant, icon, label } = props;
 
   return (
@@ -17,9 +11,9 @@ const DividerContent: DividerContentFactory = (props) => {
       {(icon || label) && (
         <div
           className={clsx(
-            css.content,
-            `${css.content}--variant-${variant}`,
-            `${css.content}--size-${size}`
+            'v2-divider-content',
+            `v2-divider-content--size-${size}`,
+            `v2-divider-content--variant-${variant}`
           )}
         >
           {icon && icon}
