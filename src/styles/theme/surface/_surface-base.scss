@@ -1,0 +1,15 @@
+[data-prefers-mode='dim'],
+[data-prefers-mode='dark'],
+[data-prefers-mode='light'] {
+  --c-text-max: hsla(var(--c-hue-cont), 0.97);
+  --c-text-med: hsla(var(--c-hue-cont), 0.87);
+  --c-text-low: hsla(var(--c-hue-cont), 0.67);
+  --c-text-min: hsla(var(--c-hue-cont), 0.37);
+
+  --c-base: hsla(var(--c-hue-base), 1);
+  --c-button-enabled: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
+  --c-button-hovered: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
+  --c-button-pressed: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
+  --c-button-selected: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
+  --c-button-disabled: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
+}

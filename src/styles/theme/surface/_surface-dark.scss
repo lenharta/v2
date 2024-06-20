@@ -1,0 +1,19 @@
+[data-prefers-mode='dark'] {
+  --c-step: 0.04;
+
+  --c-hue-base: 220, 2%, 04%;
+  --c-hue-neut: 220, 2%, 64%;
+  --c-hue-cont: 220, 2%, 96%;
+
+  [data-scheme='primary'] {
+    --c-hue-base: 220, 2%, 04%;
+    --c-hue-neut: 220, 2%, 64%;
+    --c-hue-cont: 220, 2%, 96%;
+  }
+
+  [data-scheme='secondary'] {
+    --c-hue-base: 220, 2%, 96%;
+    --c-hue-neut: 220, 2%, 64%;
+    --c-hue-cont: 220, 2%, 04%;
+  }
+}

@@ -1,8 +1,4 @@
-@forward 'mode-dim';
-@forward 'mode-dark';
-@forward 'mode-light';
-@forward 'mode-tokens';
-
-@forward 'apply-core';
-@forward 'apply-common';
-@forward 'apply-routes';
+@forward 'color';
+@forward 'surface';
+@forward 'material';
+@forward 'config';
