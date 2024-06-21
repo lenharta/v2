@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '../../factory';
+import { createFactory } from '@/factory';
+import { isNotLabelled } from '@/utils';
 import { UnstyledButton } from '@/core';
-import { ButtonProps } from './Button.types';
 import { ButtonGroup } from './ButtonGroup';
+import { ButtonProps } from './Button.types';
 import { useButtonContext } from './Button.context';
 
 type ButtonFactory = Factory.Config<{
@@ -15,26 +16,43 @@ type ButtonFactory = Factory.Config<{
   };
 }>;
 
-const Button = factory<ButtonFactory>((props, ref) => {
+const Button = createFactory<ButtonFactory>((props, ref) => {
   const {
-    size = 'sm',
-    variant = 'default',
+    size,
+    value,
+    label,
+    radius,
+    variant,
     loading,
     disabled,
     readOnly,
+    selected,
     children,
     className,
+    leftContent,
+    rightContent,
     ...forwardedProps
   } = props;
+
+  if (isNotLabelled(label, children, forwardedProps['aria-label'])) {
+    console.error(`[@v2/core/Button]: label must be provided to the element for accessibility.`);
+  }
 
   const ctx = useButtonContext();
 
   const contextProps = ctx
     ? {
+        loading: loading || ctx.loading,
+        selected: (!!ctx.value && value === ctx.value) || undefined,
+        disabled: disabled || ctx.disabled,
+        readOnly: readOnly || ctx.readOnly,
+        'data-orientation': ctx.orientation,
+        'aria-orientation': ctx.orientation,
         className: clsx(
           'v2-button',
-          `v2-button--size-${size || ctx.size}`,
-          `v2-button--${variant || ctx.variant}`,
+          `v2-button--${variant || ctx.variant || 'elevated'}`,
+          `v2-button--size-${size || ctx.size || 'md'}`,
+          `v2-button--radius-${radius || ctx.radius || 'default'}`,
           className
         ),
       }
@@ -44,18 +62,22 @@ const Button = factory<ButtonFactory>((props, ref) => {
     <UnstyledButton
       ref={ref}
       loading={loading}
-      disabled={disabled}
       readOnly={readOnly}
+      disabled={disabled}
+      selected={selected}
       className={clsx(
         'v2-button',
-        `v2-button--size-${size || ctx.size}`,
-        `v2-button--${variant || ctx.variant}`,
+        `v2-button--${variant || 'elevated'}`,
+        `v2-button--size-${size || 'sm'}`,
+        `v2-button--radius-${radius || 'default'}`,
         className
       )}
       {...forwardedProps}
       {...contextProps}
     >
-      {children}
+      <div>{leftContent}</div>
+      <div>{children}</div>
+      <div>{rightContent}</div>
     </UnstyledButton>
   );
 });

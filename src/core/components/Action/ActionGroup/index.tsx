@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { Group } from '@/core';
 import { Factory } from '@/types';
-import { factory } from '../../../factory';
-import { ActionGroupProps } from '../Action.types';
+import { createFactory } from '@/factory';
 import { ActionProvider } from '../Action.context';
+import { ActionGroupProps } from '../Action.types';
 
 type ActionGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -11,11 +11,34 @@ type ActionGroupFactory = Factory.Config<{
   props: ActionGroupProps;
 }>;
 
-const ActionGroup = factory<ActionGroupFactory>((props, ref) => {
-  const { children, className, variant, navigate, ...forwardedProps } = props;
+const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
+  const {
+    icon,
+    size = 'sm',
+    value,
+    radius = 'default',
+    variant = 'elevated',
+    loading,
+    disabled,
+    readOnly,
+    children,
+    className,
+    orientation = 'horizontal',
+    ...forwardedProps
+  } = props;
+
   return (
-    <Group ref={ref} className={clsx('v2-action-group', className)} {...forwardedProps}>
-      <ActionProvider value={{ variant, navigate }}>{children}</ActionProvider>
+    <Group
+      ref={ref}
+      className={clsx('v2-action-group', className)}
+      orientation={orientation}
+      {...forwardedProps}
+    >
+      <ActionProvider
+        value={{ icon, size, radius, variant, value, disabled, loading, readOnly, orientation }}
+      >
+        {children}
+      </ActionProvider>
     </Group>
   );
 });

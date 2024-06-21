@@ -1,0 +1,73 @@
+import clsx from 'clsx';
+import * as React from 'react';
+import { Core } from '@/types';
+import { parseItemData } from '@/utils';
+import { ControlProps } from './Control.types';
+import { ControlThumb } from './ControlThumb';
+import { ControlTrack } from './ControlTrack';
+import { ControlSegment } from './ControlSegment';
+import { useControlPosition } from './use-control-position';
+
+const ATTRIBUTES = {
+  parent: { key: '[data-core-control-track]', prop: { 'data-core-control-track': true } },
+  child: { key: '[data-core-control-segment]', prop: { 'data-core-control-segment': true } },
+};
+
+type ControlFactory = React.FC<ControlProps> & {
+  Thumb: typeof ControlThumb;
+  Track: typeof ControlTrack;
+  Segment: typeof ControlSegment;
+};
+
+const Control: ControlFactory = (props) => {
+  const {
+    items,
+    value,
+    className,
+    trapFocus = false,
+    orientation = 'horizontal',
+    onItemChange,
+  } = props;
+
+  const data = React.useMemo(() => parseItemData(items) as Core.ItemParsed[], [items]);
+
+  const { refs, thumbRef, trackRef, setElementRefs, update } = useControlPosition({
+    initialPosition: { height: 0, width: 0, left: 0, top: 0 },
+    currentValue: value,
+  });
+
+  return (
+    <div className={clsx('v2-control', className)}>
+      <Control.Track ref={trackRef} orientation={orientation} {...ATTRIBUTES.parent.prop}>
+        {data.map((item) => (
+          <Control.Segment
+            key={item.value}
+            ref={(node) => setElementRefs(node, item.value)}
+            refs={refs}
+            item={item}
+            value={value}
+            update={update}
+            trackRef={trackRef}
+            trapFocus={trapFocus}
+            orientation={orientation}
+            onItemChange={onItemChange}
+            setElementRefs={setElementRefs}
+          />
+        ))}
+
+        <Control.Thumb
+          ref={thumbRef}
+          transitionEasing="ease"
+          transitionDuration="250ms"
+          transitionProperty="transform"
+        />
+      </Control.Track>
+    </div>
+  );
+};
+
+Control.Thumb = ControlThumb;
+Control.Track = ControlTrack;
+Control.Segment = ControlSegment;
+Control.displayName = '@v2/Control';
+export { Control, ATTRIBUTES };

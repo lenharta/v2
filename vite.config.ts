@@ -32,13 +32,14 @@ export default defineConfig(({ mode, command }) => {
       resolve: {
         alias: {
           '@/*': path.resolve(__dirname, './src/'),
-          '@/app': path.resolve(__dirname, './src/app/'),
-          '@/core': path.resolve(__dirname, './src/core/'),
-          '@/hooks': path.resolve(__dirname, './src/hooks/'),
-          '@/styles': path.resolve(__dirname, './src/styles/'),
+          '@/utils': path.resolve(__dirname, './src/utils/'),
           '@/tests': path.resolve(__dirname, './src/tests/'),
           '@/types': path.resolve(__dirname, './src/types/'),
-          '@/utils': path.resolve(__dirname, './src/utils/'),
+          '@/factory': path.resolve(__dirname, './src/factory/'),
+          '@/styles': path.resolve(__dirname, './src/styles/'),
+          '@/hooks': path.resolve(__dirname, './src/hooks/'),
+          '@/core': path.resolve(__dirname, './src/core/'),
+          '@/app': path.resolve(__dirname, './src/app/'),
         },
       },
       define: {

@@ -1,9 +1,12 @@
-import { Core } from '@/types';
+import { Core, Theme } from '@/types';
 
-interface GroupProps {
-  children?: React.ReactNode | undefined;
-  orientation?: Core.Orientation | undefined;
-  'data-testid'?: string | undefined;
+interface GroupThemeProps {
+  gap?: 'default' | Theme.SizeRegular | undefined;
 }
 
-export type { GroupProps };
+interface GroupProps extends GroupThemeProps {
+  children?: React.ReactNode | undefined;
+  orientation?: Core.Orientation | undefined;
+}
+
+export type { GroupProps, GroupThemeProps };

@@ -11,6 +11,7 @@ type GroupFactory = Factory.Config<{
 
 const Group = factoryPolymorphic<GroupFactory>((props, ref) => {
   const {
+    gap = 'default',
     children,
     className,
     orientation = 'horizontal',
@@ -21,7 +22,7 @@ const Group = factoryPolymorphic<GroupFactory>((props, ref) => {
   return (
     <Component
       ref={ref}
-      className={clsx('v2-group', className)}
+      className={clsx('v2-group', `v2-group--gap-${gap}`, className)}
       data-orientation={orientation}
       aria-orientation={orientation}
       {...forwardedProps}

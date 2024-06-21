@@ -13,7 +13,6 @@ const SideMenu: React.FC<SideMenuProps> = (props) => {
           <Action label="action" icon="easel" />
           <Action label="action" icon="layers" />
           <Action label="action" icon="box" />
-          <Action label="action" icon="at" />
           <Action.Spacer grow />
           <Action label="action" icon="shape-circle" />
           <Action label="action" icon="shape-circle" />

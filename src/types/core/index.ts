@@ -48,4 +48,15 @@ export declare namespace Core {
     leftContent?: React.ReactNode | undefined;
     rightContent?: React.ReactNode | undefined;
   };
+
+  export type InlineMediaQuery = {
+    styles: React.CSSProperties;
+    query: string;
+  };
+
+  export type InlineStyle = {
+    selector: string;
+    styles?: React.CSSProperties | undefined;
+    media?: InlineMediaQuery[] | undefined;
+  };
 }

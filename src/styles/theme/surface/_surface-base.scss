@@ -1,24 +1,39 @@
 [data-prefers-mode='dim'],
 [data-prefers-mode='dark'],
 [data-prefers-mode='light'] {
-  --c-text-max: hsla(var(--c-hue-cont), 0.97);
-  --c-text-med: hsla(var(--c-hue-cont), 0.87);
-  --c-text-low: hsla(var(--c-hue-cont), 0.67);
-  --c-text-min: hsla(var(--c-hue-cont), 0.37);
+  // --c-base: hsla(var(--c-hue-base), 1);
+  // --c-text: hsla(var(--c-hue-cont), 0.87);
 
-  --c-base: hsla(var(--c-hue-base), 1);
-  --c-hero: hsla(var(--c-hue-cont), 0.02);
-  --c-footer: hsla(var(--c-hue-cont), 0.03);
+  // --c-text-01: hsla(var(--c-hue-cont), 0.97);
+  // --c-text-02: hsla(var(--c-hue-cont), 0.87);
+  // --c-text-03: hsla(var(--c-hue-cont), 0.67);
+  // --c-text-04: hsla(var(--c-hue-cont), 0.37);
 
-  --c-button-enabled: hsla(var(--c-hue-cont), 0.02);
-  --c-button-hovered: hsla(var(--c-hue-cont), 0.03);
-  --c-button-pressed: hsla(var(--c-hue-cont), 0.04);
-  --c-button-selected: hsla(var(--c-hue-cont), 0.05);
-  --c-button-disabled: hsla(var(--c-hue-cont), 0.06);
+  // --c-surface-01: hsla(var(--c-hue-cont), 0.02);
+  // --c-surface-02: hsla(var(--c-hue-cont), 0.04);
+  // --c-surface-03: hsla(var(--c-hue-cont), 0.06);
+  // --c-surface-04: hsla(var(--c-hue-cont), 0.08);
 
-  --c-action-enabled: hsla(var(--c-hue-cont), 0.02);
-  --c-action-hovered: hsla(var(--c-hue-cont), 0.03);
-  --c-action-pressed: hsla(var(--c-hue-cont), 0.04);
-  --c-action-selected: hsla(var(--c-hue-cont), 0.05);
-  --c-action-disabled: hsla(var(--c-hue-cont), 0.06);
+  // --c-surface-01: hsla(var(--c-hue-cont), 0.02);
+  // --c-surface-01-button-enabled: hsla(var(--c-hue-cont), 0.02);
+  // --c-surface-01-button-hovered: hsla(var(--c-hue-cont), 0.02);
+  // --c-surface-01-button-pressed: hsla(var(--c-hue-cont), 0.02);
+  // --c-surface-01-button-selected: hsla(var(--c-hue-cont), 0.02);
+  // --c-surface-01-button-disabled: hsla(var(--c-hue-cont), 0.02);
+
+  // --c-surface-02: hsla(var(--c-hue-cont), calc(var(--c-step) * 2));
+  // --c-surface-03: hsla(var(--c-hue-cont), calc(var(--c-step) * 3));
+  // --c-surface-04: hsla(var(--c-hue-cont), calc(var(--c-step) * 4));
+
+  // --c-button-enabled: hsla(var(--c-hue-cont), 0.04);
+  // --c-button-hovered: hsla(var(--c-hue-cont), 0.06);
+  // --c-button-pressed: hsla(var(--c-hue-cont), 0.08);
+  // --c-button-selected: hsla(var(--c-hue-cont), 0.1);
+  // --c-button-disabled: hsla(var(--c-hue-cont), 0.2);
+
+  // --c-action-enabled: hsla(var(--c-hue-cont), 0.02);
+  // --c-action-hovered: hsla(var(--c-hue-cont), 0.04);
+  // --c-action-pressed: hsla(var(--c-hue-cont), 0.06);
+  // --c-action-selected: hsla(var(--c-hue-cont), 0.08);
+  // --c-action-disabled: hsla(var(--c-hue-cont), 0.18);
 }

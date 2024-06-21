@@ -1,3 +1,6 @@
+export * from './Accordion/Accordion';
+export * from './Accordion/Accordion.types';
+
 export * from './Action/Action';
 export * from './Action/Action.types';
 
@@ -7,8 +10,14 @@ export * from './Button/Button.types';
 export * from './Chip/Chip';
 export * from './Chip/Chip.types';
 
+export * from './Control/Control';
+export * from './Control/Control.types';
+
 export * from './Disclosure/Disclosure';
 export * from './Disclosure/Disclosure.types';
+
+export * from './Floating/Floating';
+export * from './Floating/Floating.types';
 
 export * from './Group/Group';
 export * from './Group/Group.types';

@@ -1,27 +1,52 @@
-import { GroupProps, IconProps, UnstyledButtonProps } from '@/core';
+import { Theme } from '@/types';
+import { GroupProps, IconProps } from '@/core';
 
-interface ActionContextValue {
-  variant?: 'default' | 'accent' | undefined;
-  navigate?: ((to: string) => void) | void;
+type ActionSize = 'default' | Theme.SizeRegular;
+type ActionRadius = 'default' | Theme.SizeRegular;
+type ActionVariant = 'default' | 'elevated' | 'accent' | 'accent-elevated';
+
+interface ActionThemeProps {
+  size?: ActionSize | undefined;
+  radius?: ActionRadius | undefined;
+  variant?: ActionVariant | undefined;
 }
 
-interface ActionProps extends UnstyledButtonProps {
-  label: string;
+interface ActionProps extends ActionThemeProps {
   icon?: IconProps['name'] | undefined;
-  variant?: 'default' | 'accent';
-  navigate?: ((to: string) => void) | void;
-  'data-testid'?: string | undefined;
+  value?: string | number | readonly string[] | undefined;
+  label?: string | undefined;
+  loading?: boolean | undefined;
+  disabled?: boolean | undefined;
+  readOnly?: boolean | undefined;
+  selected?: boolean | undefined;
 }
 
-interface ActionGroupProps extends GroupProps {
-  icon?: IconProps['name'] | undefined;
-  variant?: 'default' | 'accent';
-  navigate?: ((to: string) => void) | void;
-  'data-testid'?: string | undefined;
-}
-
-interface ActionSpacerProps {
+interface ActionSpacerProps extends ActionThemeProps {
   grow?: boolean | undefined;
 }
 
-export type { ActionProps, ActionGroupProps, ActionSpacerProps, ActionContextValue };
+interface ActionGroupProps extends ActionThemeProps, GroupProps {
+  icon?: IconProps['name'] | undefined;
+  value?: string | number | readonly string[] | undefined;
+  loading?: boolean | undefined;
+  disabled?: boolean | undefined;
+  readOnly?: boolean | undefined;
+}
+
+interface ActionContextValue extends ActionThemeProps, GroupProps {
+  icon?: IconProps['name'] | undefined;
+  value?: string | number | readonly string[] | undefined;
+  loading?: boolean | undefined;
+  disabled?: boolean | undefined;
+  readOnly?: boolean | undefined;
+}
+
+export type {
+  ActionSize,
+  ActionRadius,
+  ActionVariant,
+  ActionProps,
+  ActionSpacerProps,
+  ActionGroupProps,
+  ActionContextValue,
+};

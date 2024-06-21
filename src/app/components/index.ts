@@ -1,3 +1,6 @@
+export * from './CheckGrid/CheckGrid';
+export * from './CheckGrid/CheckGrid.types';
+
 export * from './Footer/Footer';
 export * from './Footer/Footer.types';
 

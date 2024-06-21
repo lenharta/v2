@@ -1,25 +1,28 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '../../../factory';
+import { createFactory } from '@/factory';
 import { ActionSpacerProps } from '../Action.types';
+import { useActionContext } from '../Action.context';
 
 type ActionSpacerFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
-  props: ActionSpacerProps;
   omits: 'children';
+  props: ActionSpacerProps;
 }>;
 
-const ActionSpacer = factory<ActionSpacerFactory>((props, ref) => {
+const ActionSpacer = createFactory<ActionSpacerFactory>((props, ref) => {
   const { className, grow, ...forwardedProps } = props;
-  return (
-    <div
-      ref={ref}
-      className={clsx('v2-action-spacer', className)}
-      data-grow={grow}
-      {...forwardedProps}
-    />
-  );
+
+  const ctx = useActionContext();
+
+  const contextProps = ctx
+    ? {
+        className: clsx('v2-action-spacer', `v2-action-spacer--${ctx.variant}`, className),
+      }
+    : {};
+
+  return <div ref={ref} data-grow={grow} {...contextProps} {...forwardedProps} />;
 });
 
 ActionSpacer.displayName = '@v2/Action.Spacer';

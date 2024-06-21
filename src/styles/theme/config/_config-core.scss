@@ -1,55 +1,181 @@
-.v2-text {
-  color: var(--c-text-max);
+.v2-text,
+.v2-label,
+.v2-title {
+  color: inherit;
 }
 
-.v2-action--default + .v2-action-spacer {
-  background-color: var(--c-action-enabled);
+///////////////////////////////////////////////////////////////
+
+.v2-button--default[data-disabled],
+.v2-action--default[data-disabled],
+.v2-button--elevated[data-disabled],
+.v2-action--elevated[data-disabled] {
+  color: hsla(var(--c-hue-cont), 0.47);
 }
-.v2-action--default[data-disabled] {
-  color: var(--c-text-disabled);
-  background-color: var(--c-action-disabled);
+
+.v2-button--default[data-disabled] svg,
+.v2-action--default[data-disabled] svg,
+.v2-button--elevated[data-disabled] svg,
+.v2-action--elevated[data-disabled] svg {
+  fill: hsla(var(--c-hue-cont), 0.47);
 }
+
+.v2-button--default:not([data-disabled]),
+.v2-action--default:not([data-disabled]),
+.v2-button--elevated:not([data-disabled]),
+.v2-action--elevated:not([data-disabled]) {
+  color: hsla(var(--c-hue-cont), 0.67);
+}
+
+.v2-button--default:not([data-disabled]) svg,
+.v2-action--default:not([data-disabled]) svg,
+.v2-button--elevated:not([data-disabled]) svg,
+.v2-action--elevated:not([data-disabled]) svg {
+  fill: hsla(var(--c-hue-cont), 0.67);
+}
+
+///////////////////////////////////////////////////////////////
+
+.v2-button--default:not([data-disabled]),
 .v2-action--default:not([data-disabled]) {
-  background-color: var(--c-action-enabled);
-}
-.v2-action--default:not([data-disabled]) svg {
-  fill: var(--c-text-med);
-}
-.v2-action--default:not([data-disabled]):hover {
-  background-color: var(--c-action-hovered);
-}
-.v2-action--default:not([data-disabled]):active {
-  background-color: var(--c-action-pressed);
-}
-.v2-action--default:not([data-disabled])[data-selected] {
-  background-color: var(--c-action-selected);
-}
-.v2-action--default:not([data-disabled])[data-selected] svg {
-  fill: var(--c-text-max);
+  background-color: hsla(var(--c-hue-cont), 0);
 }
 
-.v2-button--default + .v2-button-spacer {
-  background-color: var(--c-button-enabled);
+.v2-button--default:not([data-disabled]):hover,
+.v2-action--default:not([data-disabled]):hover {
+  background-color: hsla(var(--c-hue-cont), 0.03);
 }
-.v2-button--default[data-disabled] {
-  color: var(--c-text-disabled);
-  background-color: var(--c-button-disabled);
+
+.v2-button--default:not([data-disabled]):active,
+.v2-action--default:not([data-disabled]):active {
+  background-color: hsla(var(--c-hue-cont), 0.05);
 }
-.v2-button--default:not([data-disabled]) {
-  background-color: var(--c-button-enabled);
+
+.v2-button--default:not([data-disabled])[data-selected],
+.v2-action--default:not([data-disabled])[data-selected] {
+  background-color: hsla(var(--c-hue-cont), 0.05);
 }
-.v2-button--default:not([data-disabled]) svg {
-  fill: var(--c-text-med);
+
+.v2-button--default[data-disabled],
+.v2-action--default[data-disabled] {
+  background-color: hsla(var(--c-hue-cont), 0.27);
 }
-.v2-button--default:not([data-disabled]):hover {
-  background-color: var(--c-button-hovered);
+
+.v2-action-spacer--default {
+  background-color: hsla(var(--c-hue-cont), 0);
 }
-.v2-button--default:not([data-disabled]):active {
-  background-color: var(--c-button-pressed);
+
+///////////////////////////////////////////////////////////////
+
+.v2-button--elevated:not([data-disabled]),
+.v2-action--elevated:not([data-disabled]) {
+  background-color: hsla(var(--c-hue-cont), 0.03);
 }
-.v2-button--default:not([data-disabled])[data-selected] {
-  background-color: var(--c-button-selected);
+
+.v2-button--elevated:not([data-disabled]):hover,
+.v2-action--elevated:not([data-disabled]):hover {
+  background-color: hsla(var(--c-hue-cont), 0.05);
 }
-.v2-button--default:not([data-disabled])[data-selected] svg {
-  fill: var(--c-text-max);
+
+.v2-button--elevated:not([data-disabled]):active,
+.v2-action--elevated:not([data-disabled]):active {
+  background-color: hsla(var(--c-hue-cont), 0.07);
+}
+
+.v2-button--elevated:not([data-disabled])[data-selected],
+.v2-action--elevated:not([data-disabled])[data-selected] {
+  background-color: hsla(var(--c-hue-cont), 0.07);
+}
+
+.v2-button--elevated[data-disabled],
+.v2-action--elevated[data-disabled] {
+  background-color: hsla(var(--c-hue-cont), 0.29);
+}
+
+.v2-action-spacer--elevated {
+  background-color: hsla(var(--c-hue-cont), 0.03);
+}
+
+///////////////////////////////////////////////////////////////
+
+.v2-button--accent[data-disabled],
+.v2-action--accent[data-disabled],
+.v2-button--accent-elevated[data-disabled],
+.v2-action--accent-elevated[data-disabled] {
+  color: hsla(var(--c-hue-cont), 0.47);
+}
+
+.v2-button--accent[data-disabled] svg,
+.v2-action--accent[data-disabled] svg,
+.v2-button--accent-elevated[data-disabled] svg,
+.v2-action--accent-elevated[data-disabled] svg {
+  fill: hsla(var(--c-hue-cont), 0.47);
+}
+
+.v2-button--accent:not([data-disabled]),
+.v2-action--accent:not([data-disabled]),
+.v2-button--accent-elevated:not([data-disabled]),
+.v2-action--accent-elevated:not([data-disabled]) {
+  color: hsla(var(--c-hue-accent), 0.87);
+}
+
+.v2-button--accent:not([data-disabled]) svg,
+.v2-action--accent:not([data-disabled]) svg,
+.v2-button--accent-elevated:not([data-disabled]) svg,
+.v2-action--accent-elevated:not([data-disabled]) svg {
+  fill: hsla(var(--c-hue-accent), 0.87);
+}
+
+///////////////////////////////////////////////////////////////
+
+.v2-button--accent:not([data-disabled]),
+.v2-action--accent:not([data-disabled]) {
+  background-color: hsla(var(--c-hue-accent), 0);
+}
+
+.v2-button--accent:not([data-disabled]):hover,
+.v2-action--accent:not([data-disabled]):hover {
+  background-color: hsla(var(--c-hue-accent), 0.1);
+}
+
+.v2-button--accent:not([data-disabled]):active,
+.v2-action--accent:not([data-disabled]):active {
+  background-color: hsla(var(--c-hue-accent), 0.15);
+}
+
+.v2-button--accent:not([data-disabled])[data-selected],
+.v2-action--accent:not([data-disabled])[data-selected] {
+  background-color: hsla(var(--c-hue-accent), 0.15);
+}
+
+.v2-button--accent[data-disabled],
+.v2-action--accent[data-disabled] {
+  background-color: hsla(var(--c-hue-cont), 0.27);
+}
+
+///////////////////////////////////////////////////////////////
+
+.v2-button--accent-elevated:not([data-disabled]),
+.v2-action--accent-elevated:not([data-disabled]) {
+  background-color: hsla(var(--c-hue-accent), 0.1);
+}
+
+.v2-button--accent-elevated:not([data-disabled]):hover,
+.v2-action--accent-elevated:not([data-disabled]):hover {
+  background-color: hsla(var(--c-hue-accent), 0.15);
+}
+
+.v2-button--accent-elevated:not([data-disabled]):active,
+.v2-action--accent-elevated:not([data-disabled]):active {
+  background-color: hsla(var(--c-hue-accent), 0.2);
+}
+
+.v2-button--accent-elevated:not([data-disabled])[data-selected],
+.v2-action--accent-elevated:not([data-disabled])[data-selected] {
+  background-color: hsla(var(--c-hue-accent), 0.2);
+}
+
+.v2-button--accent-elevated[data-disabled],
+.v2-action--accent-elevated[data-disabled] {
+  background-color: hsla(var(--c-hue-cont), 0.27);
 }
