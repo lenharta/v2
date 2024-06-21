@@ -1,0 +1,17 @@
+.v2-sidemenu {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: calc(var(--size-action) + var(--s-01));
+
+  &-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: var(--s-01);
+    padding-inline: var(--s-01);
+  }
+}

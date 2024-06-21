@@ -1,0 +1,43 @@
+.v2-action,
+.v2-button {
+  transition:
+    background-color var(--duration-moderate-02) var(--c-easing-productive),
+    border-color var(--duration-moderate-02) var(--c-easing-productive),
+    opacity var(--duration-moderate-02) var(--c-easing-productive),
+    stroke var(--duration-moderate-02) var(--c-easing-productive),
+    color var(--duration-moderate-02) var(--c-easing-productive),
+    fill var(--duration-moderate-02) var(--c-easing-productive);
+
+  border-color: transparent;
+  border-width: var(--s-01);
+  border-style: solid;
+
+  outline-color: transparent;
+  outline-width: var(--s-01);
+  outline-style: solid;
+  outline-offset: unset;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &:not([data-disabled]),
+  &:not([data-disabled]):hover,
+  &:not([data-disabled]):active,
+  &:not([data-disabled])[data-selected] {
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+    outline-offset: 0;
+  }
+  &:focus:focus-visible {
+    outline-color: var(--c-focus);
+    outline-offset: -2px;
+  }
+}

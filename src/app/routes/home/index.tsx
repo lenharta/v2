@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, Title } from '@/core';
+import { Button, Text, Title } from '@/core';
 import { Page, Hero, Section } from '@/app';
 
 const HomeHero = () => (
   <Hero>
     <Title className="v2-home-title" h1>
-      Frontend Engineer
+      <span>Frontend Engineer</span>
       <span>Human-Centered Problem Solver</span>
     </Title>
   </Hero>
@@ -22,10 +22,21 @@ const HomeOverview = () => (
   </Section>
 );
 
+const DemoCanvas = () => (
+  <Section>
+    <Button.Group>
+      <Button>Button</Button>
+      <Button>Button</Button>
+      <Button>Button</Button>
+    </Button.Group>
+  </Section>
+);
+
 const HomeRoute: React.FC<{}> = ({}) => (
   <Page>
     <HomeHero />
     <HomeOverview />
+    <DemoCanvas />
   </Page>
 );
 

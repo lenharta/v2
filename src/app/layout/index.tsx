@@ -1,8 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Main } from '@/app/containers';
-import { StoreProvider } from '@/app/store';
-import { Header, SideMenu } from '@/app/components';
+import { Main } from '../containers';
+import { StoreProvider } from '../store';
+import { Header, SideMenu } from '../components';
 
 const RootLayout: React.FC<{}> = ({}) => (
   <StoreProvider>

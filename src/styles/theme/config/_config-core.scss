@@ -1,0 +1,55 @@
+.v2-text {
+  color: var(--c-text-max);
+}
+
+.v2-action--default + .v2-action-spacer {
+  background-color: var(--c-action-enabled);
+}
+.v2-action--default[data-disabled] {
+  color: var(--c-text-disabled);
+  background-color: var(--c-action-disabled);
+}
+.v2-action--default:not([data-disabled]) {
+  background-color: var(--c-action-enabled);
+}
+.v2-action--default:not([data-disabled]) svg {
+  fill: var(--c-text-med);
+}
+.v2-action--default:not([data-disabled]):hover {
+  background-color: var(--c-action-hovered);
+}
+.v2-action--default:not([data-disabled]):active {
+  background-color: var(--c-action-pressed);
+}
+.v2-action--default:not([data-disabled])[data-selected] {
+  background-color: var(--c-action-selected);
+}
+.v2-action--default:not([data-disabled])[data-selected] svg {
+  fill: var(--c-text-max);
+}
+
+.v2-button--default + .v2-button-spacer {
+  background-color: var(--c-button-enabled);
+}
+.v2-button--default[data-disabled] {
+  color: var(--c-text-disabled);
+  background-color: var(--c-button-disabled);
+}
+.v2-button--default:not([data-disabled]) {
+  background-color: var(--c-button-enabled);
+}
+.v2-button--default:not([data-disabled]) svg {
+  fill: var(--c-text-med);
+}
+.v2-button--default:not([data-disabled]):hover {
+  background-color: var(--c-button-hovered);
+}
+.v2-button--default:not([data-disabled]):active {
+  background-color: var(--c-button-pressed);
+}
+.v2-button--default:not([data-disabled])[data-selected] {
+  background-color: var(--c-button-selected);
+}
+.v2-button--default:not([data-disabled])[data-selected] svg {
+  fill: var(--c-text-max);
+}

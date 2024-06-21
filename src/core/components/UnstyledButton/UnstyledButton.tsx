@@ -10,17 +10,19 @@ type UnstyledButtonFactory = Factory.Config<{
 }>;
 
 const UnstyledButton = factory<UnstyledButtonFactory>((props, ref) => {
-  const { children, className, disabled, readOnly, loading, ...forwardedProps } = props;
+  const { children, className, disabled, selected, readOnly, loading, ...forwardedProps } = props;
 
   return (
     <button
       ref={ref}
       className={clsx('v2-button-u', className)}
       aria-busy={loading}
+      aria-selected={selected}
       aria-disabled={disabled}
       aria-readonly={readOnly}
       data-readonly={readOnly}
       data-disabled={disabled}
+      data-selected={selected}
       data-loading={loading}
       {...forwardedProps}
     >

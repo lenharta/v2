@@ -7,9 +7,18 @@
   --c-text-min: hsla(var(--c-hue-cont), 0.37);
 
   --c-base: hsla(var(--c-hue-base), 1);
-  --c-button-enabled: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
-  --c-button-hovered: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
-  --c-button-pressed: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
-  --c-button-selected: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
-  --c-button-disabled: hsla(var(--c-hue-cont), calc(var(--c-step) * 1));
+  --c-hero: hsla(var(--c-hue-cont), 0.02);
+  --c-footer: hsla(var(--c-hue-cont), 0.03);
+
+  --c-button-enabled: hsla(var(--c-hue-cont), 0.02);
+  --c-button-hovered: hsla(var(--c-hue-cont), 0.03);
+  --c-button-pressed: hsla(var(--c-hue-cont), 0.04);
+  --c-button-selected: hsla(var(--c-hue-cont), 0.05);
+  --c-button-disabled: hsla(var(--c-hue-cont), 0.06);
+
+  --c-action-enabled: hsla(var(--c-hue-cont), 0.02);
+  --c-action-hovered: hsla(var(--c-hue-cont), 0.03);
+  --c-action-pressed: hsla(var(--c-hue-cont), 0.04);
+  --c-action-selected: hsla(var(--c-hue-cont), 0.05);
+  --c-action-disabled: hsla(var(--c-hue-cont), 0.06);
 }

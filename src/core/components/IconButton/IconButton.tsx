@@ -11,11 +11,12 @@ type IconButtonFactory = Factory.Config<{
 }>;
 
 const IconButton = factory<IconButtonFactory>((props, ref) => {
-  const { children, className, disabled, readOnly, loading, ...forwardedProps } = props;
+  const { children, className, disabled, selected, readOnly, loading, ...forwardedProps } = props;
   return (
     <UnstyledButton
       ref={ref}
       loading={loading}
+      selected={selected}
       disabled={disabled}
       readOnly={readOnly}
       className={clsx('v2-icon-button', className)}

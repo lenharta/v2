@@ -1,4 +1,5 @@
 import React from 'react';
+import { Footer } from '../../components';
 import { MainProps } from './Main.types';
 
 const Main: React.FC<MainProps> = (props) => {
@@ -6,6 +7,7 @@ const Main: React.FC<MainProps> = (props) => {
   return (
     <main className="v2-main" {...forwardedProps}>
       {children}
+      <Footer />
     </main>
   );
 };

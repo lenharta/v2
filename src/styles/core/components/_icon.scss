@@ -1,0 +1,34 @@
+.v2-icon {
+  --x-icon-size-xxs: 12px;
+  --x-icon-size-xs: 14px;
+  --x-icon-size-sm: 16px;
+  --x-icon-size-md: 20px;
+  --x-icon-size-lg: 24px;
+  --x-icon-size-xl: 32px;
+  --x-icon-size-xxl: 40px;
+
+  width: var(--x-icon-size);
+  height: var(--x-icon-size);
+
+  &--size-xxs {
+    --x-icon-size: var(--x-icon-size-xxs);
+  }
+  &--size-xs {
+    --x-icon-size: var(--x-icon-size-xs);
+  }
+  &--size-sm {
+    --x-icon-size: var(--x-icon-size-sm);
+  }
+  &--size-md {
+    --x-icon-size: var(--x-icon-size-md);
+  }
+  &--size-lg {
+    --x-icon-size: var(--x-icon-size-lg);
+  }
+  &--size-xl {
+    --x-icon-size: var(--x-icon-size-xl);
+  }
+  &--size-xxl {
+    --x-icon-size: var(--x-icon-size-xxl);
+  }
+}

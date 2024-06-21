@@ -1,9 +1,9 @@
+import './styles/index.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import './styles/index.scss';
-import { ROUTES, ROUTES_SANDBOX } from './types';
 import {
   CanvasRoute,
   ContactRoute,

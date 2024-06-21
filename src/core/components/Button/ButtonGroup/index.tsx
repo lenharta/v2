@@ -1,7 +1,9 @@
 import clsx from 'clsx';
-import { factory } from '@/core';
 import { Factory } from '@/types';
+import { factory } from '../../../factory';
 import { ButtonGroupProps } from '../Button.types';
+import { Group } from '../../Group/Group';
+import { ButtonProvider } from '../Button.context';
 
 type ButtonGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -10,12 +12,12 @@ type ButtonGroupFactory = Factory.Config<{
 }>;
 
 const ButtonGroup = factory<ButtonGroupFactory>((props, ref) => {
-  const { children, className, ...forwardedProps } = props;
+  const { children, className, variant, size, ...forwardedProps } = props;
 
   return (
-    <div ref={ref} className={clsx('v2-button-group', className)} {...forwardedProps}>
-      {children}
-    </div>
+    <Group ref={ref} className={clsx('v2-button-group', className)} {...forwardedProps}>
+      <ButtonProvider value={{ variant, size }}>{children}</ButtonProvider>
+    </Group>
   );
 });
 

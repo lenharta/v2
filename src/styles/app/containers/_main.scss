@@ -1,0 +1,6 @@
+.v2-main {
+  display: block;
+  // padding: var(--s-01);
+  padding-top: calc(var(--size-action) + calc(var(--s-01) * 2));
+  padding-left: calc(var(--size-action) + calc(var(--s-01) * 2));
+}

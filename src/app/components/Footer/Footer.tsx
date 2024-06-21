@@ -5,7 +5,9 @@ const Footer: React.FC<FooterProps> = (props) => {
   const { ...forwardedProps } = props;
   return (
     <footer className="v2-footer" {...forwardedProps}>
-      <span>Footer</span>
+      <div className="v2-footer-inner">
+        <span>Footer</span>
+      </div>
     </footer>
   );
 };

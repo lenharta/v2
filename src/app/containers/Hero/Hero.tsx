@@ -5,7 +5,7 @@ const Hero: React.FC<HeroProps> = (props) => {
   const { children, ...forwardedProps } = props;
   return (
     <div className="v2-hero" role="presentation" {...forwardedProps}>
-      {children}
+      <div className="v2-hero-inner">{children}</div>
     </div>
   );
 };

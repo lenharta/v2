@@ -1,0 +1,25 @@
+.v2-hero {
+  --x-hero-gaps: 4;
+  --x-hero-items: calc(var(--x-hero-gaps) + 1);
+  --x-hero-gaps-size: calc(var(--x-hero-gaps) * var(--s-01));
+  --x-hero-items-size: calc(var(--size-action) * var(--x-hero-items));
+  --x-hero-height-size: calc(var(--x-hero-items-size) + var(--x-hero-gaps-size));
+
+  height: var(--x-hero-height-size);
+
+  .v2-title {
+    font-size: var(--fz-14);
+    font-weight: var(--fw-01);
+    font-family: var(--ff-base);
+  }
+
+  &-inner {
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-inline: var(--s-06);
+    padding-block: var(--s-06);
+  }
+}
