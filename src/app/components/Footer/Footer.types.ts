@@ -1,5 +1,3 @@
-interface FooterProps {
-  'data-testid'?: string | undefined;
-}
+interface FooterProps {}
 
 export type { FooterProps };

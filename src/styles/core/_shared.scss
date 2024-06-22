@@ -1,12 +1,12 @@
 .v2-action,
 .v2-button {
   transition:
-    background-color var(--duration-moderate-02) var(--c-easing-productive),
-    border-color var(--duration-moderate-02) var(--c-easing-productive),
-    opacity var(--duration-moderate-02) var(--c-easing-productive),
-    stroke var(--duration-moderate-02) var(--c-easing-productive),
-    color var(--duration-moderate-02) var(--c-easing-productive),
-    fill var(--duration-moderate-02) var(--c-easing-productive);
+    background-color var(--duration-moderate-01) var(--easing-productive),
+    border-color var(--duration-moderate-01) var(--easing-productive),
+    opacity var(--duration-moderate-01) var(--easing-productive),
+    stroke var(--duration-moderate-01) var(--easing-productive),
+    color var(--duration-moderate-01) var(--easing-productive),
+    fill var(--duration-moderate-01) var(--easing-productive);
 
   border-color: transparent;
   border-width: var(--s-01);
@@ -21,15 +21,21 @@
   -ms-user-select: none;
   user-select: none;
 
-  &:not([data-disabled]),
-  &:not([data-disabled]):hover,
-  &:not([data-disabled]):active,
-  &:not([data-disabled])[data-selected] {
+  &:not([data-disabled], [data-loading], [data-readOnly]),
+  &:not([data-disabled], [data-loading], [data-readOnly]):hover,
+  &:not([data-disabled], [data-loading], [data-readOnly]):active,
+  &:not([data-disabled], [data-loading], [data-readOnly])[data-selected] {
     cursor: pointer;
   }
 
   &[data-disabled] {
-    cursor: not-allowed;
+    cursor: default;
+  }
+  &[data-readonly] {
+    cursor: default;
+  }
+  &[data-loading] {
+    cursor: wait;
   }
 
   &:focus:not(:focus-visible) {

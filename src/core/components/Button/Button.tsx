@@ -43,7 +43,7 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
   const contextProps = ctx
     ? {
         loading: loading || ctx.loading,
-        selected: (!!ctx.value && value === ctx.value) || undefined,
+        selected: selected || (!!ctx.value && value === ctx.value) || undefined,
         disabled: disabled || ctx.disabled,
         readOnly: readOnly || ctx.readOnly,
         'data-orientation': ctx.orientation,

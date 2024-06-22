@@ -2,6 +2,7 @@
   width: 100%;
   display: block;
   position: fixed;
+  z-index: var(--index-header);
   right: 0;
   // left: calc(var(--size-action) + calc(var(--s-01) * 2));
   left: 0;

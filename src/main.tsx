@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import { Root } from '@/app/layouts';
 import {
   CanvasRoute,
   ContactRoute,
@@ -11,16 +12,15 @@ import {
   ExperienceRoute,
   HomeRoute,
   ProjectsRoute,
-  RootLayout,
   SandboxRoute,
   SettingsRoute,
   ToolboxRoute,
-} from '@/app';
+} from '@/app/routes';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <RootLayout />,
+    element: <Root />,
     errorElement: <ErrorRoute />,
     children: [
       {

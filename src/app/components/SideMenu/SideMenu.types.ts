@@ -1,5 +1,19 @@
-interface SideMenuProps {
-  'data-testid'?: string | undefined;
-}
+import { Store } from '@/types';
 
-export type { SideMenuProps };
+interface SideMenuProps {}
+
+interface SideSelectMenuProps extends Store.Props {}
+
+interface SideSelectTargetProps {}
+
+interface SideSelectOptionProps {}
+
+interface SideSelectDrawerProps {}
+
+export type {
+  SideMenuProps,
+  SideSelectMenuProps,
+  SideSelectTargetProps,
+  SideSelectOptionProps,
+  SideSelectDrawerProps,
+};

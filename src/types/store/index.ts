@@ -18,8 +18,15 @@ export declare namespace Store {
     resultOpen?: boolean | undefined;
   };
 
+  export type Dispatch = (update: Partial<State>) => void;
+
+  export type Props = {
+    dispatch: Dispatch;
+    state: State;
+  };
+
   export type StateContextValue = State;
-  export type DispatchContextValue = (update: Partial<State>) => void;
+  export type DispatchContextValue = Dispatch;
 
   export type LocalState = ThemeState;
   export type SessionState = { session?: string | undefined };

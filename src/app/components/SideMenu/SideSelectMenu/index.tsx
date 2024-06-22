@@ -1,0 +1,3 @@
+const SideSelectMenu = () => {};
+
+export { SideSelectMenu };

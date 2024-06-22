@@ -1,14 +1,20 @@
 #root,
-.v2-page,
-.v2-menu,
-.v2-header,
-.v2-sidemenu {
+.v2-layout-app,
+.v2-layout-page,
+.v2-layout-screen,
+.v2-layout-section {
   color: hsla(var(--c-hue-cont), 0.87);
   background-color: hsla(var(--c-hue-base), 1);
+
+  svg {
+    fill: currentColor;
+  }
 }
 
-.v2-hero {
-  background-color: hsla(var(--c-hue-cont), 0);
+.v2-hero,
+.v2-header,
+.v2-sidemenu {
+  background-color: hsla(var(--c-hue-base), 1);
 }
 
 .v2-footer {

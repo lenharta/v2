@@ -1,5 +1,3 @@
-interface HeaderProps {
-  'data-testid'?: string | undefined;
-}
+interface HeaderProps {}
 
 export type { HeaderProps };

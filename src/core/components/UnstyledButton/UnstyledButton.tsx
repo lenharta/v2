@@ -10,7 +10,8 @@ type UnstyledButtonFactory = Factory.Config<{
 }>;
 
 const UnstyledButton = factory<UnstyledButtonFactory>((props, ref) => {
-  const { children, className, disabled, selected, readOnly, loading, ...forwardedProps } = props;
+  const { children, className, disabled, selected, readOnly, loading, onClick, ...forwardedProps } =
+    props;
 
   return (
     <button
@@ -24,6 +25,11 @@ const UnstyledButton = factory<UnstyledButtonFactory>((props, ref) => {
       data-disabled={disabled}
       data-selected={selected}
       data-loading={loading}
+      onClick={(event) => {
+        if (!disabled && !readOnly && !loading) {
+          onClick?.(event);
+        }
+      }}
       {...forwardedProps}
     >
       {children}

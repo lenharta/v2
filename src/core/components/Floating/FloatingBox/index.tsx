@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { factory } from '../../../factory';
 import { Transition } from '@/core';
 import { useMergeRefs } from '@/hooks';
 import { Core, Factory } from '@/types';
+import { createFactory } from '@/factory';
 import { FloatingBoxProps } from '../Floating.types';
 import { useFloatingContext } from '../Floating.context';
 
@@ -12,7 +12,7 @@ type FloatingBoxFactory = Factory.Config<{
   props: FloatingBoxProps;
 }>;
 
-const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
+const FloatingBox = createFactory<FloatingBoxFactory>((props, ref) => {
   const { className, style, children, ...forwardedProps } = props;
 
   const ctx = useFloatingContext();

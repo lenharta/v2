@@ -1,0 +1,26 @@
+.v2-layout-app {
+  width: 100%;
+  display: block;
+}
+
+.v2-layout-main {
+  width: 100%;
+  display: block;
+}
+
+.v2-layout-page {
+  z-index: var(--index-page);
+  display: block;
+  padding-top: calc(var(--size-action) + calc(var(--s-01) * 2));
+  padding-left: calc(var(--size-action) + calc(var(--s-01) * 2));
+}
+
+.v2-layout-screen {
+  width: 100%;
+  display: block;
+}
+
+.v2-layout-section {
+  width: 100%;
+  display: block;
+}
