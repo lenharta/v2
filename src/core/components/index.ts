@@ -16,6 +16,9 @@ export * from './Control/Control.types';
 export * from './Disclosure/Disclosure';
 export * from './Disclosure/Disclosure.types';
 
+export * from './Divider/Divider';
+export * from './Divider/Divider.types';
+
 export * from './Floating/Floating';
 export * from './Floating/Floating.types';
 

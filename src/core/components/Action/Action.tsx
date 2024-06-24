@@ -2,11 +2,11 @@ import clsx from 'clsx';
 import { Factory } from '@/types';
 import { isNotLabelled } from '@/utils';
 import { createFactory } from '@/factory';
-import { Icon, UnstyledButton } from '@/core';
-import { useActionContext } from './Action.context';
-import { ActionSpacer } from './ActionSpacer';
-import { ActionProps } from './Action.types';
+import { UnstyledButton } from '@/core';
 import { ActionGroup } from './ActionGroup';
+import { ActionProps } from './Action.types';
+import { ActionSpacer } from './ActionSpacer';
+import { useActionContext } from './Action.context';
 
 type ActionFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -78,7 +78,7 @@ const Action = createFactory<ActionFactory>((props, ref) => {
       {...forwardedProps}
       {...contextProps}
     >
-      <Icon name={icon ?? ctx.icon ?? 'shape-circle'} size="md" />
+      {icon}
     </UnstyledButton>
   );
 });

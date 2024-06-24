@@ -15,7 +15,9 @@ export declare namespace Store {
     error?: boolean | undefined;
     session?: string | undefined;
     loading?: boolean | undefined;
-    resultOpen?: boolean | undefined;
+    sideOpen?: boolean | undefined;
+    menuOpen?: boolean | undefined;
+    searchOpen?: boolean | undefined;
   };
 
   export type Dispatch = (update: Partial<State>) => void;

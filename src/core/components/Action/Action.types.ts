@@ -1,5 +1,5 @@
 import { Theme } from '@/types';
-import { GroupProps, IconProps } from '@/core';
+import { GroupProps } from '@/core';
 
 type ActionSize = 'default' | Theme.SizeRegular;
 type ActionRadius = 'default' | Theme.SizeRegular;
@@ -12,7 +12,7 @@ interface ActionThemeProps {
 }
 
 interface ActionProps extends ActionThemeProps {
-  icon?: IconProps['name'] | undefined;
+  icon?: React.ReactNode | undefined;
   value?: string | number | readonly string[] | undefined;
   label?: string | undefined;
   loading?: boolean | undefined;
@@ -26,7 +26,7 @@ interface ActionSpacerProps extends ActionThemeProps {
 }
 
 interface ActionGroupProps extends ActionThemeProps, GroupProps {
-  icon?: IconProps['name'] | undefined;
+  icon?: React.ReactNode | undefined;
   value?: string | number | readonly string[] | undefined;
   loading?: boolean | undefined;
   disabled?: boolean | undefined;
@@ -34,7 +34,7 @@ interface ActionGroupProps extends ActionThemeProps, GroupProps {
 }
 
 interface ActionContextValue extends ActionThemeProps, GroupProps {
-  icon?: IconProps['name'] | undefined;
+  icon?: React.ReactNode | undefined;
   value?: string | number | readonly string[] | undefined;
   loading?: boolean | undefined;
   disabled?: boolean | undefined;

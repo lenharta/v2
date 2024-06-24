@@ -108,9 +108,16 @@
   // // COMMON TOKENS
 
   --size-action: var(--s-10);
+  --size-gutter: var(--s-06);
+  --size-gutter-gap: calc(var(--size-gutter) / 2);
 
-  // --size-action-unit: calc(var(--space) * 2);
-  // --size-action-root: calc(var(--space) * 26);
-  // --size-action-inset: calc(var(--size-action-root) - var(--size-action-unit));
-  // --size-action-offset: calc(var(--size-action-root) + var(--size-action-unit));
+  @media screen and (min-width: 40em) {
+    --size-gutter: var(--s-07);
+  }
+  @media screen and (min-width: 60em) {
+    --size-gutter: var(--s-08);
+  }
+  @media screen and (min-width: 80em) {
+    --size-gutter: var(--s-08);
+  }
 }

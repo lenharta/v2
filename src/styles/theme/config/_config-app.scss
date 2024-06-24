@@ -1,22 +1,90 @@
 #root,
+.v2-hero,
+.v2-header,
+.v2-footer,
+.v2-sidemenu,
+.v2-layout-app,
+.v2-layout-page,
+.v2-layout-screen,
+.v2-layout-section {
+  transition:
+    background-color var(--duration-slow-01) var(--easing-expressive),
+    border-color var(--duration-slow-01) var(--easing-expressive),
+    opacity var(--duration-slow-01) var(--easing-expressive),
+    stroke var(--duration-slow-01) var(--easing-expressive),
+    color var(--duration-slow-01) var(--easing-expressive),
+    fill var(--duration-slow-01) var(--easing-expressive);
+}
+
+#root,
 .v2-layout-app,
 .v2-layout-page,
 .v2-layout-screen,
 .v2-layout-section {
   color: hsla(var(--c-hue-cont), 0.87);
   background-color: hsla(var(--c-hue-base), 1);
-
-  svg {
-    fill: currentColor;
-  }
 }
 
-.v2-hero,
-.v2-header,
+// COMPONENTS
+
+.v2-hero {
+  background-color: transparent;
+}
+
+.v2-header {
+  background-color: hsla(var(--c-hue-base), 1);
+}
+
+.v2-header-logo[data-active] .v2-icon {
+  fill: hsla(var(--c-hue-accent), 0.8);
+}
+
 .v2-sidemenu {
   background-color: hsla(var(--c-hue-base), 1);
 }
 
 .v2-footer {
-  background-color: hsla(var(--c-hue-cont), 0.02);
+  background-color: hsla(var(--c-hue-cont), 0.03);
+}
+
+.v2-sidemenu-select-drawer {
+  background-color: hsla(var(--c-hue-base), 1);
+}
+
+// ROUTES
+
+.v2-home-overview-banner {
+  background-color: hsla(var(--c-hue-accent), 0.08);
+}
+
+.v2-home-overview-banner-text {
+  color: hsla(var(--c-hue-accent), 0.8);
+}
+
+.v2-home-stats-card {
+  background-color: hsla(var(--c-hue-cont), 0.03);
+}
+
+.v2-home-stats-card-value {
+  color: hsla(var(--c-hue-accent), 0.8);
+}
+
+.v2-home-stats-card-title {
+  color: hsla(var(--c-hue-cont), 0.87);
+}
+
+.v2-home-stats-card-text {
+  color: hsla(var(--c-hue-cont), 0.67);
+}
+
+.v2-home-experience-card .v2-icon {
+  fill: hsla(var(--c-hue-accent), 0.8);
+}
+
+.v2-home-experience-card-title {
+  color: hsla(var(--c-hue-cont), 0.87);
+}
+
+.v2-home-experience-card-text {
+  color: hsla(var(--c-hue-cont), 0.67);
 }

@@ -1,11 +1,13 @@
-import React from 'react';
-import { useFloatingElement } from './use-floating-element';
+import * as React from 'react';
+import { TransitionProps } from '@/core';
+import { useClickOutside, useEventListener } from '@/hooks';
+
 import { FloatingBox } from './FloatingBox';
 import { FloatingProps } from './Floating.types';
 import { FloatingTarget } from './FloatingTarget';
 import { FloatingProvider } from './Floating.context';
+import { useFloatingElement } from './use-floating-element';
 import { getFloatingPlacement } from './get-floating-placement';
-import { useClickOutside, useEventListener } from '@/hooks';
 
 type FloatingFactory = React.FC<FloatingProps> & {
   Target: typeof FloatingTarget;
@@ -83,7 +85,7 @@ const Floating: FloatingFactory = (props) => {
     [floating.payload.refs.setFloating]
   );
 
-  const transition = !transitionProps
+  const transition: Partial<TransitionProps> = !transitionProps
     ? {
         duration: 159,
         transition: {

@@ -3,3 +3,122 @@
     display: block;
   }
 }
+
+.v2-home-overview {
+  &-inner {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+
+    @media screen and (min-width: 60em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &-banner {
+    padding-block: calc(var(--size-gutter) * 2);
+    padding-inline: var(--size-gutter);
+  }
+
+  &-banner-text {
+    font-size: var(--fz-10);
+    font-weight: var(--fw-03);
+    line-height: var(--fh-03);
+  }
+}
+
+.v2-home-stats {
+  &-inner {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--s-01);
+
+    @media screen and (min-width: 70em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &-card {
+    display: flex;
+    flex-direction: column;
+    padding-block: calc(var(--size-gutter) * 2);
+    padding-inline: var(--size-gutter);
+    gap: calc(var(--size-gutter-gap) / 2);
+
+    @media screen and (min-width: 60em) {
+      padding-block: var(--s-10);
+    }
+  }
+
+  &-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-gutter-gap);
+  }
+
+  &-card-value {
+    font-size: var(--fz-14);
+    font-weight: var(--fw-04);
+    line-height: var(--fh-01);
+
+    @media screen and (min-width: 60em) {
+      font-size: var(--fz-14);
+    }
+  }
+
+  &-card-title {
+    font-size: var(--fz-10);
+    font-weight: var(--fw-03);
+    line-height: var(--fh-01);
+  }
+
+  &-card-text {
+    font-size: var(--fz-07);
+    font-weight: var(--fw-02);
+    line-height: var(--fh-03);
+  }
+}
+
+.v2-home-experience {
+  &-inner {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+    margin-inline: var(--size-gutter);
+    padding-block: calc(var(--size-gutter) * 2);
+    column-gap: var(--size-gutter);
+    row-gap: calc(var(--size-gutter) * 2);
+
+    @media screen and (min-width: 60em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (min-width: 80em) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &-card {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-gutter-gap);
+  }
+
+  &-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-gutter-gap);
+  }
+
+  &-card-title {
+    font-size: var(--fz-10);
+    font-weight: var(--fw-03);
+    line-height: var(--fh-01);
+  }
+
+  &-card-text {
+    font-size: var(--fz-07);
+    font-weight: var(--fw-02);
+    line-height: var(--fh-03);
+  }
+}

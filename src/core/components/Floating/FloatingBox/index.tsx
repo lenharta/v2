@@ -43,8 +43,15 @@ const FloatingBox = createFactory<FloatingBoxFactory>((props, ref) => {
           ref={refs}
           role="dialog"
           tabIndex={-1}
-          className={clsx('v2-floating-box', className)}
-          style={{ ...style, ...contextStyles, ...transitionStyles }}
+          style={{
+            ...style,
+            ...contextStyles,
+            ...transitionStyles,
+            position: 'absolute',
+            boxSizing: 'border-box',
+            padding: 0,
+            margin: 0,
+          }}
           {...forwardedProps}
           {...contextProps}
         >

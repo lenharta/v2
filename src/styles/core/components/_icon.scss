@@ -7,8 +7,18 @@
   --x-icon-size-xl: 32px;
   --x-icon-size-xxl: 40px;
 
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+
   width: var(--x-icon-size);
   height: var(--x-icon-size);
+  min-width: var(--x-icon-size);
+  min-height: var(--x-icon-size);
 
   &--size-xxs {
     --x-icon-size: var(--x-icon-size-xxs);

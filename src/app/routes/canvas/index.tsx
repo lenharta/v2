@@ -1,6 +1,6 @@
 import React from 'react';
-import { Core } from '@/types';
-import { Page, Hero, Section } from '@/app';
+import { Core, Theme } from '@/types';
+import { Page, Hero, Section, useDispatchContext, useStateContext } from '@/app';
 import {
   Action,
   ActionProps,
@@ -8,6 +8,7 @@ import {
   Button,
   ButtonProps,
   ButtonVariant,
+  Icon,
   Title,
 } from '@/core';
 
@@ -155,6 +156,7 @@ const ActionCanvas = (props: ActionProps) => {
 
       <Action
         label="action"
+        icon={<Icon name="search" />}
         variant={variant}
         loading={state.loading}
         disabled={state.disabled}
@@ -167,9 +169,78 @@ const ActionCanvas = (props: ActionProps) => {
   );
 };
 
+const modes: { value: Theme.Mode; label: string }[] = [
+  { value: 'light', label: 'Light Mode' },
+  { value: 'dark', label: 'Dark Mode' },
+  { value: 'dim', label: 'Dim Mode' },
+];
+
+const accents: { value: Theme.Color; label: string }[] = [
+  { value: 'red', label: 'Red' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'yellow', label: 'Yellow' },
+  { value: 'green', label: 'Green' },
+  { value: 'mint', label: 'Mint' },
+  { value: 'teal', label: 'Teal' },
+  { value: 'cyan', label: 'Cyan' },
+  { value: 'blue', label: 'Blue' },
+  { value: 'indigo', label: 'Indigo' },
+  { value: 'purple', label: 'Purple' },
+  { value: 'pink', label: 'Pink' },
+  { value: 'brown', label: 'Brown' },
+];
+
+const CanvasAccentOptions = () => {
+  const store = useStateContext();
+  const dispatch = useDispatchContext();
+
+  return (
+    <SandboxCanvas title="Accent Mode">
+      <Button.Group value={store.accent}>
+        {accents.map((item) => (
+          <Button
+            key={item.value}
+            value={item.value}
+            label="accent mode control"
+            onClick={() => dispatch({ accent: item.value })}
+          >
+            {item.label}
+          </Button>
+        ))}
+      </Button.Group>
+    </SandboxCanvas>
+  );
+};
+
+const CanvasModeOptions = () => {
+  const store = useStateContext();
+  const dispatch = useDispatchContext();
+
+  return (
+    <SandboxCanvas title="Theme Mode">
+      <Button.Group value={store.mode}>
+        {modes.map((item) => (
+          <Button
+            key={item.value}
+            value={item.value}
+            label="theme mode control"
+            onClick={() => dispatch({ mode: item.value })}
+          >
+            {item.label}
+          </Button>
+        ))}
+      </Button.Group>
+    </SandboxCanvas>
+  );
+};
+
+// const Canvas;
+
 const CanvasRoute: React.FC<{}> = ({}) => (
   <Page>
     <CanvasHero />
+    <CanvasModeOptions />
+    <CanvasAccentOptions />
     <ButtonCanvas />
     <ActionCanvas />
   </Page>
