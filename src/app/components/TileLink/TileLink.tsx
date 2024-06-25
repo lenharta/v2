@@ -64,7 +64,7 @@ const TileLink = createFactory<TileLinkFactory>((props, ref) => {
       )}
       data-loading={loading}
       data-disabled={disabled}
-      data-readOnly={readOnly}
+      data-readonly={readOnly}
       {...forwardedProps}
       {...contextProps}
     >
