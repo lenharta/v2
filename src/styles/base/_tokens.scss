@@ -1,21 +1,14 @@
 :root {
-  // BASE | TOKENS | CONSTANTS
-
-  --scale: 1;
-  --space: calc(var(--scale) * 0.125rem);
-  --frame: 60ms;
-
-  // BASE | TOKENS | SPACING
-
-  --s-1: 0.125rem; // 2px
-  --s-2: 0.25rem; // 4px
-  --s-3: 0.5rem; // 8px
-  --s-4: 0.75rem; // 12px
-  --s-5: 1rem; // 16px
-  --s-6: 1.5rem; // 24px
-  --s-7: 2rem; // 32px
-  --s-8: 2.5rem; // 40px
-  --s-9: 3rem; // 48px
+  // SPACING
+  --s-01: 0.125rem; // 2px
+  --s-02: 0.25rem; // 4px
+  --s-03: 0.5rem; // 8px
+  --s-04: 0.75rem; // 12px
+  --s-05: 1rem; // 16px
+  --s-06: 1.5rem; // 24px
+  --s-07: 2rem; // 32px
+  --s-08: 2.5rem; // 40px
+  --s-09: 3rem; // 48px
   --s-10: 3.5rem; // 56px
   --s-11: 4rem; // 64px
   --s-12: 4.5rem; // 72px
@@ -24,44 +17,59 @@
   --s-15: 8rem; // 128px
   --s-16: 10rem; // 160px
 
-  // BASE | TOKENS | FONT-FAMILY
+  // INDEX
+  --index-page: 0;
+  --index-header: 1000;
+  --index-sidemenu: 1000;
 
-  --ff-base: 'Satoshi';
+  // MOTION
+  --delay-01: 0ms;
+  --delay-02: 100ms;
+  --delay-03: 200ms;
 
-  --ff-root: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif,
-    Apple Color Emoji, Segoe UI Emoji;
+  --duration-fast-01: 70ms;
+  --duration-fast-02: 110ms;
+  --duration-moderate-01: 150ms;
+  --duration-moderate-02: 240ms;
+  --duration-slow-01: 400ms;
+  --duration-slow-02: 700ms;
 
-  --ff-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
-    monospace;
+  --easing-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --easing-productive-exit: cubic-bezier(0.2, 0, 1, 0.9);
+  --easing-productive-enter: cubic-bezier(0, 0, 0.38, 0.9);
 
-  // BASE | TOKENS | LINE-HEIGHT
+  --easing-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --easing-expressive-exit: cubic-bezier(0.4, 0.14, 1, 1);
+  --easing-expressive-enter: cubic-bezier(0, 0, 0.3, 1);
 
-  --fh-1: 1;
-  --fh-2: 1.15;
-  --fh-3: 1.35;
-  --fh-4: 1.5;
-  --fh-5: 1.62;
-  --fh-6: 1.75;
+  // FONT-FAMILY
+  --ff: 'Satoshi';
 
-  // BASE | TOKENS | FONT-WEIGHT
+  // LINE-HEIGHT
+  --fh-01: 1;
+  --fh-02: 1.15;
+  --fh-03: 1.35;
+  --fh-04: 1.5;
+  --fh-05: 1.62;
+  --fh-06: 1.75;
 
-  --fw-1: 300;
-  --fw-2: 400;
-  --fw-3: 500;
-  --fw-4: 600;
-  --fw-5: 700;
+  // FONT-WEIGHT
+  --fw-01: 300;
+  --fw-02: 400;
+  --fw-03: 500;
+  --fw-04: 600;
+  --fw-05: 700;
 
-  // BASE | TOKENS | FONT-SIZE
-
-  --fz-1: 10px;
-  --fz-2: 12px;
-  --fz-3: 13px;
-  --fz-4: 14px;
-  --fz-5: 15px;
-  --fz-6: 16px;
-  --fz-7: 17px;
-  --fz-8: 18px;
-  --fz-9: 20px;
+  // FONT-SIZE
+  --fz-01: 10px;
+  --fz-02: 12px;
+  --fz-03: 13px;
+  --fz-04: 14px;
+  --fz-05: 15px;
+  --fz-06: 16px;
+  --fz-07: 17px;
+  --fz-08: 18px;
+  --fz-09: 20px;
   --fz-10: 22px;
   --fz-11: 24px;
   --fz-12: 28px;
@@ -74,7 +82,7 @@
   --fz-19: 80px;
   --fz-20: 120px;
 
-  // BASE | TOKENS | WIDTH
+  // WIDTH
 
   --width-card-sm: 160px;
   --width-card-md: 200px;
@@ -83,7 +91,7 @@
   --width-page-min: 320px;
   --width-page-max: 1920px;
 
-  // BASE | TOKENS | BREAKPOINTS
+  // BREAKPOINTS
 
   --breakpoint-mobile-sm: 320px;
   --breakpoint-mobile-md: 400px;
@@ -97,22 +105,19 @@
   --breakpoint-desktop-md: 1200px;
   --breakpoint-desktop-lg: 1400px;
 
-  --idx-root: 0;
-  --idx-base: 1;
-  --idx-page: 2;
-  --idx-panel: 800;
-  --idx-header: 900;
-  --idx-sidemenu: 900;
-  --idx-active-item: 999;
+  // // COMMON TOKENS
 
-  --idx-screen: 1000;
-  --idx-overlay: 1100;
-  --idx-offscreen: 9999;
+  --size-action: var(--s-10);
+  --size-gutter: var(--s-06);
+  --size-gutter-gap: calc(var(--size-gutter) / 2);
 
-  // COMMON TOKENS
-
-  --size-action-unit: calc(var(--space) * 2);
-  --size-action-root: calc(var(--space) * 26);
-  --size-action-inset: calc(var(--size-action-root) - var(--size-action-unit));
-  --size-action-offset: calc(var(--size-action-root) + var(--size-action-unit));
+  @media screen and (min-width: 40em) {
+    --size-gutter: var(--s-07);
+  }
+  @media screen and (min-width: 60em) {
+    --size-gutter: var(--s-08);
+  }
+  @media screen and (min-width: 80em) {
+    --size-gutter: var(--s-08);
+  }
 }

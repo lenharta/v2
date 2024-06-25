@@ -1,50 +1,34 @@
 import clsx from 'clsx';
-import { css } from '../select-constants';
-import { Select } from '../Select';
-import { useSelectContext } from '../select-context';
-import { SelectTargetProps } from '../select-types';
-import { Floating, useFloatingContext } from '@/core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { SelectTargetProps } from '../Select.types';
+import { Floating, UnstyledButton } from '@/core';
 
-type SelectTargetFactory = React.FC<SelectTargetProps> & {};
+type SelectTargetFactory = Factory.Config<{
+  ref: HTMLButtonElement;
+  comp: 'button';
+  props: SelectTargetProps;
+}>;
 
-const SelectTarget: SelectTargetFactory = (props) => {
-  const { placeholder, findOptionLabel } = props;
-
-  const ctx = useSelectContext();
-  const floating = useFloatingContext();
-
-  const getTargetElements = () => {
-    if (ctx.value.length <= 0) {
-      return placeholder;
-    }
-    if (ctx.value.length > 0 && ctx.behavior === 'multiple') {
-      return ctx.value
-        .map((val, index) => {
-          const label = findOptionLabel(val);
-          return index === 0 ? label : [',', label].join(' ');
-        })
-        .join('');
-    }
-
-    const label = findOptionLabel(ctx.value[0]);
-    return label;
-  };
+const SelectTarget = createFactory<SelectTargetFactory>((props, ref) => {
+  const { size, value, variant, placeholder, ...forwardedProps } = props;
 
   return (
     <Floating.Target>
-      <button
-        data-opened={floating.isOpen || undefined}
+      <UnstyledButton
+        ref={ref}
         className={clsx(
-          css.target,
-          `${css.target}--scheme-default`,
-          `${css.target}--variant-elevated`
+          'v2-select-option',
+          `v2-select-option--${variant}`,
+          `v2-select-option--size-${size}`
         )}
+        {...forwardedProps}
       >
-        <Select.Label value={getTargetElements()} type="target" />
-      </button>
+        {value || placeholder}
+      </UnstyledButton>
     </Floating.Target>
   );
-};
+});
 
 SelectTarget.displayName = '@v2/Select.Target';
 export { SelectTarget };

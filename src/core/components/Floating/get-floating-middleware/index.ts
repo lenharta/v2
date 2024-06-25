@@ -1,4 +1,3 @@
-import { UseFloatingOptions } from '../types';
 import {
   size,
   flip,
@@ -10,12 +9,13 @@ import {
   UseFloatingReturn,
 } from '@floating-ui/react';
 
-type GetFloatingMiddleware<E extends Element = HTMLElement> = (
-  options: UseFloatingOptions,
-  getFloating: () => UseFloatingReturn<E>
-) => Middleware[];
+import { UseFloatingOptions } from '../Floating.types';
 
-const getFloatingMiddleware: GetFloatingMiddleware = (options, getFloating) => {
+function getFloatingMiddleware<E extends Element = HTMLElement>(
+  options: UseFloatingOptions,
+
+  getFloating: () => UseFloatingReturn<E>
+): Middleware[] {
   const middlewares = [offset(options.offset)];
 
   if (options.middleware?.shift) {
@@ -55,6 +55,6 @@ const getFloatingMiddleware: GetFloatingMiddleware = (options, getFloating) => {
   }
 
   return middlewares;
-};
+}
 
 export { getFloatingMiddleware };

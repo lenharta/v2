@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React from 'react';
-import { factory } from '@/core';
 import { Factory } from '@/types';
 import { useMergeRefs } from '@/hooks';
+import { createFactory } from '@/factory';
 import { createEventCallback } from '@/utils';
-import { FloatingTargetProps } from '../types';
+import { FloatingTargetProps } from '../Floating.types';
 import { useFloatingContext } from '../Floating.context';
 
 type FloatingTargetFactory = Factory.Config<{
@@ -13,7 +13,7 @@ type FloatingTargetFactory = Factory.Config<{
   props: FloatingTargetProps;
 }>;
 
-const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
+const FloatingTarget = createFactory<FloatingTargetFactory>((props, ref) => {
   const { children, popupType = 'dialog', refProp = 'ref', ...otherProps } = props;
 
   if (!React.isValidElement(children)) {
@@ -62,4 +62,4 @@ const FloatingTarget = factory<FloatingTargetFactory>((props, ref) => {
 });
 
 FloatingTarget.displayName = '@v2/Floating.Target';
-export { FloatingTarget, type FloatingTargetProps };
+export { FloatingTarget };

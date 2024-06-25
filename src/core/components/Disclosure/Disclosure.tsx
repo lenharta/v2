@@ -1,12 +1,11 @@
 import React from 'react';
 import { flushSync } from 'react-dom';
 import { Factory } from '@/types';
-import { factory, Box } from '@/core';
-import { useDidUpdate, useMergeRefs } from '@/hooks';
-
-import { DisclosureProps } from './types';
+import { factory } from '../../factory';
+import { DisclosureProps } from './Disclosure.types';
 import { getElementHeight } from './get-element-height';
 import { getAutoHeightDuration } from './get-auto-height-duration';
+import { useDidUpdate, useMergeRefs } from '@/hooks';
 
 type CSS = React.CSSProperties;
 
@@ -108,11 +107,11 @@ const Disclosure = factory<DisclosureFactory>((props: DisclosureProps, ref) => {
   );
 
   if (transitionDuration === 0) {
-    return isOpen ? <Box {...forwardedProps}>{children}</Box> : null;
+    return isOpen ? <div {...forwardedProps}>{children}</div> : null;
   }
 
   return (
-    <Box
+    <div
       ref={mergedRefs}
       aria-hidden={!isOpen}
       onTransitionEnd={handleTransitionEnd}
@@ -120,7 +119,7 @@ const Disclosure = factory<DisclosureFactory>((props: DisclosureProps, ref) => {
       {...forwardedProps}
     >
       <React.Fragment>{children}</React.Fragment>
-    </Box>
+    </div>
   );
 });
 

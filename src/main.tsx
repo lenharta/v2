@@ -1,9 +1,10 @@
+import './styles/index.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import './styles/index.scss';
-import { ROUTES, ROUTES_SANDBOX } from './types';
+import { Root } from '@/app/layouts';
 import {
   CanvasRoute,
   ContactRoute,
@@ -11,16 +12,15 @@ import {
   ExperienceRoute,
   HomeRoute,
   ProjectsRoute,
-  RootLayout,
   SandboxRoute,
   SettingsRoute,
   ToolboxRoute,
-} from '@/app';
+} from '@/app/routes';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <RootLayout />,
+    element: <Root />,
     errorElement: <ErrorRoute />,
     children: [
       {
@@ -29,50 +29,43 @@ const router = createBrowserRouter([
         errorElement: <ErrorRoute />,
       },
       {
-        path: ROUTES.experience,
+        path: '/experience',
         element: <ExperienceRoute />,
         errorElement: <ErrorRoute />,
       },
       {
-        path: ROUTES.projects,
+        path: '/projects',
         element: <ProjectsRoute />,
         errorElement: <ErrorRoute />,
       },
       {
-        path: ROUTES.settings,
+        path: '/settings',
         element: <SettingsRoute />,
         errorElement: <ErrorRoute />,
       },
       {
-        path: ROUTES.toolbox,
+        path: '/toolbox',
         element: <ToolboxRoute />,
         errorElement: <ErrorRoute />,
       },
       {
-        path: ROUTES.contact,
+        path: '/contact',
         element: <ContactRoute />,
         errorElement: <ErrorRoute />,
       },
       {
-        path: ROUTES.canvas,
+        path: '/canvas',
         element: <CanvasRoute />,
         errorElement: <ErrorRoute />,
       },
       {
-        path: ROUTES.sandbox,
+        path: '/sandbox',
         element: <SandboxRoute />,
         errorElement: <ErrorRoute />,
         children: [
-          { path: ROUTES_SANDBOX.root, element: <SandboxRoute.Root />, index: true },
-          { path: ROUTES_SANDBOX.icon, element: <SandboxRoute.Icon /> },
-          { path: ROUTES_SANDBOX.tile, element: <SandboxRoute.Tile /> },
-          { path: ROUTES_SANDBOX.text, element: <SandboxRoute.Text /> },
-          { path: ROUTES_SANDBOX.title, element: <SandboxRoute.Title /> },
-          { path: ROUTES_SANDBOX.label, element: <SandboxRoute.Label /> },
-          { path: ROUTES_SANDBOX.button, element: <SandboxRoute.Button /> },
-          { path: ROUTES_SANDBOX.action, element: <SandboxRoute.Action /> },
-          { path: ROUTES_SANDBOX.divider, element: <SandboxRoute.Divider /> },
-          { path: ROUTES_SANDBOX.floating, element: <SandboxRoute.Floating /> },
+          { index: true, element: <SandboxRoute.Root /> },
+          { path: '/sandbox/button', element: <SandboxRoute.Button /> },
+          { path: '/sandbox/action', element: <SandboxRoute.Action /> },
         ],
       },
     ],

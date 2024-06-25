@@ -1,37 +1,24 @@
 import clsx from 'clsx';
-import { factory } from '@/core';
 import { Factory } from '@/types';
-import { DividerProps } from './types';
-import { DividerContent } from './Content';
-import { DividerSeperator } from './Seperator';
-
-const css = {
-  root: 'v2-divider',
-  label: 'v2-divider-label',
-  content: 'v2-divider-content',
-  seperator: 'v2-divider-seperator',
-};
+import { createFactory } from '@/factory';
+import { DividerProps } from './Divider.types';
 
 type DividerFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: DividerProps;
-  omits: 'children';
-  comps: {
-    Seperator: typeof DividerSeperator;
-    Content: typeof DividerContent;
-  };
 }>;
 
-const Divider = factory<DividerFactory>((props, ref) => {
+const Divider = createFactory<DividerFactory>((props, ref) => {
   const {
     size = 'sm',
     icon,
     label,
-    variant = 'elevated',
-    position = 'start',
+    variant = 'default',
+    decoration = 'solid',
+    iconPosition = 'start',
+    labelPosition = 'start',
     className,
-    orientation = 'horizontal',
     ...forwardedProps
   } = props;
 
@@ -39,25 +26,34 @@ const Divider = factory<DividerFactory>((props, ref) => {
     <div
       ref={ref}
       role="separator"
-      aria-orientation={orientation}
-      data-orientation={orientation}
-      data-position={position}
+      data-position={labelPosition}
       className={clsx(
         'v2-divider',
+        `v2-divider--${variant}`,
         `v2-divider--size-${size}`,
-        `v2-divider--variant-${variant}`,
+        `v2-divider--decoration-${decoration}`,
         className
       )}
       {...forwardedProps}
     >
-      <Divider.Seperator variant={variant} size={size} show={position === 'center' || undefined} />
-      <Divider.Content variant={variant} size={size} label={label} icon={icon} />
-      <Divider.Seperator variant={variant} size={size} show={true} />
+      <div className="v2-divider-content">
+        {icon && iconPosition === 'start' && icon}
+
+        {label && (
+          <span
+            className="v2-divider-label"
+            data-position={labelPosition}
+            data-with-icon={!!icon || undefined}
+          >
+            {label}
+          </span>
+        )}
+
+        {icon && iconPosition === 'end' && icon}
+      </div>
     </div>
   );
 });
 
-Divider.Content = DividerContent;
-Divider.Seperator = DividerSeperator;
 Divider.displayName = '@v2/Divider';
 export { Divider };

@@ -1,5 +1,5 @@
 import { useTransition } from './use-transition';
-import { TransitionProps } from './types';
+import { TransitionProps } from './Transition.types';
 import { getTransitionStyles } from './get-transition-styles';
 
 const Transition = (props: TransitionProps) => {

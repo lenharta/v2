@@ -1,14 +1,12 @@
 import { Theme } from '@/types';
-import { ICON_MAP } from './icon-library';
-
-type Icons = keyof typeof ICON_MAP;
+import { ICON_MAP } from './library';
 
 interface IconProps {
-  size?: Theme.Size | undefined;
-  name?: keyof (typeof ICON_MAP)['fill'] | undefined;
-  scheme?: 'accent' | Theme.Color | undefined;
-  variant?: 'fill' | 'outline' | undefined;
-  style?: React.CSSProperties | undefined;
+  size?: Theme.SizeExpanded | undefined;
+  type?: 'fill' | 'outline' | undefined;
+  name?: keyof (typeof ICON_MAP)['fill'];
+  accent?: Theme.Color | undefined;
+  'data-testid'?: string | undefined;
 }
 
-export type { IconProps, Icons };
+export type { IconProps };

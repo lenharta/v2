@@ -1,28 +1,29 @@
 import clsx from 'clsx';
-import { css } from '../select-constants';
+import { Factory } from '@/types';
 import { Floating } from '@/core';
-import { SelectBoxProps } from '../select-types';
-import { useSelectContext } from '../select-context';
+import { createFactory } from '@/factory';
+import { SelectBoxProps } from '../Select.types';
 
-type SelectBoxFactory = React.FC<SelectBoxProps> & {};
+type SelectBoxFactory = Factory.Config<{
+  comp: 'div';
+  ref: HTMLDivElement;
+  props: SelectBoxProps;
+}>;
 
-const SelectBox: SelectBoxFactory = ({ children }) => {
-  const ctx = useSelectContext();
-
-  const classNames = clsx(
-    css.box,
-    `${css.box}--scheme-${ctx.scheme}`,
-    `${css.box}--variant-${ctx.variant}`
-  );
-
+const SelectBox = createFactory<SelectBoxFactory>((props, ref) => {
+  const { children, variant, ...forwardedProps } = props;
   return (
     <Floating.Box>
-      <div className={classNames} role="listbox" tabIndex={-1} style={{ maxHeight: ctx.maxHeight }}>
+      <div
+        ref={ref}
+        className={clsx('v2-select-box', `v2-select-box--${variant}`)}
+        {...forwardedProps}
+      >
         {children}
       </div>
     </Floating.Box>
   );
-};
+});
 
 SelectBox.displayName = '@v2/Select.Box';
 export { SelectBox };

@@ -1,153 +1,128 @@
-import React from 'react';
-import { Floating } from '@/core';
-import { SelectBox } from './SelectBox';
-import { SelectGroup } from './SelectGroup';
-import { SelectLabel } from './SelectLabel';
+import * as React from 'react';
+import { DURATION, EASING, Floating, TransitionProps } from '@/core';
+
+import { SelectProps } from './Select.types';
 import { SelectOption } from './SelectOption';
 import { SelectTarget } from './SelectTarget';
-import { SelectProps } from './select-types';
-import { SelectProvider } from './select-context';
-import { parseSelectData } from './select-utils';
+import { SelectBox } from './SelectBox';
+
+const defaultTransition: Partial<TransitionProps> = {
+  duration: DURATION['moderate-01'],
+  transition: {
+    transitionProperty: 'opacity, transform',
+    in: {
+      opacity: 1,
+      transform: 'scaleY(1)',
+      transformOrigin: 'top',
+      transitionTimingFunction: EASING['expressive-enter'],
+    },
+    out: {
+      opacity: 0,
+      transform: 'scaleY(0)',
+      transformOrigin: 'top',
+      transitionTimingFunction: EASING['expressive-exit'],
+    },
+  },
+};
 
 type SelectFactory = React.FC<SelectProps> & {
   Box: typeof SelectBox;
-  Label: typeof SelectLabel;
-  Group: typeof SelectGroup;
-  Option: typeof SelectOption;
   Target: typeof SelectTarget;
+  Option: typeof SelectOption;
 };
 
-const Select: SelectFactory = (props: SelectProps) => {
+function getLockupData(data: SelectProps['data']): Record<string, string> {
+  return data.reduce<Record<string, string>>((acc, item) => {
+    acc[(item as any).value] = item as any;
+    return acc;
+  }, {});
+}
+
+const Select: SelectFactory = (props) => {
   const {
     dir = 'ltr',
+    size = 'md',
     data,
     value,
     width = 'target',
-    zIndex = 600,
-    offset = 2,
-    scheme = 'default',
-    variant = 'elevated',
-    behavior = 'single',
-    readOnly,
+    isOpen,
+    offset = 0,
+    zIndex = 300,
+    variant = 'default-elevated',
     disabled,
-    maxHeight,
-    withDivider,
-    dividerProps,
-    placeholder = 'Select...',
-    defaultOpen = false,
-    middleware = { flip: true, inline: true, shift: true, size: true },
+    strategy = 'absolute',
     placement = 'bottom-start',
+    middleware = { flip: true, shift: true, inline: false },
+    placeholder = 'Select...',
+    transitionProps,
+    closeOnEscape = true,
+    closeOnClickOutside = true,
+    clickOutsideIgnoreRefs,
     placementDependencies,
     onPlacementChange,
+    onOpenChange,
     onChange,
     onClose,
     onOpen,
   } = props;
 
-  const [isOpen, onOpenChange] = React.useState(defaultOpen);
-  const parsedData = React.useMemo(() => parseSelectData(data), [data]);
+  const transition: Partial<TransitionProps> = transitionProps
+    ? transitionProps
+    : defaultTransition;
 
-  const uid = React.useId();
-  const getGroupId = () => `select:group:${uid}`;
-  const getOptionId = () => `select:option:${uid}`;
-
-  const findOptionLabel = (v: string) => {
-    let label: string | undefined;
-
-    parsedData.forEach((item) => {
-      if ('group' in item) {
-        item.items.forEach((obj) => {
-          if (obj.value === v) {
-            label = obj.label;
-          }
-        });
-      } else {
-        if (item.value === v) {
-          label = item.label;
-        }
-      }
-    });
-    return label ? label : v;
-  };
+  const labels = React.useMemo(() => getLockupData(data), [data]);
 
   return (
     <Floating
       dir={dir}
       width={width}
       zIndex={zIndex}
-      isOpen={isOpen}
       offset={offset}
+      isOpen={isOpen}
       disabled={disabled}
+      strategy={strategy}
       placement={placement}
       middleware={middleware}
+      closeOnEscape={closeOnEscape}
+      transitionProps={transition}
+      closeOnClickOutside={closeOnClickOutside}
+      clickOutsideIgnoreRefs={clickOutsideIgnoreRefs}
       placementDependencies={placementDependencies}
       onPlacementChange={onPlacementChange}
       onChange={onOpenChange}
       onClose={onClose}
       onOpen={onOpen}
-      transitionProps={{
-        mounted: isOpen,
-        duration: 400,
-        timingFunction: 'ease',
-        transition: {
-          transitionProperty: 'transform, opacity',
-          common: { transformOrigin: 'top' },
-          out: { opacity: 0, transform: 'scaleY(0)' },
-          in: { opacity: 1, transform: 'scaleY(1)' },
-        },
-      }}
     >
-      <SelectProvider
-        value={{
-          value,
-          scheme,
-          variant,
-          behavior,
-          readOnly,
-          disabled,
-          maxHeight,
-          withDivider,
-          dividerProps,
-          getOptionId,
-          getGroupId,
-          onChange,
-        }}
-      >
-        <Select.Target placeholder={placeholder} findOptionLabel={findOptionLabel} />
+      <Select.Target
+        size={size}
+        variant={variant}
+        placeholder={placeholder}
+        value={(labels[value as any] as any)?.label || undefined}
+      />
 
-        <Select.Box>
-          {(parsedData ?? []).map((item) => {
-            if ('group' in item) {
-              return (
-                <Select.Group
-                  key={item.group}
-                  group={item.group}
-                  items={item.items}
-                  readOnly={item.readOnly}
-                  disabled={item.disabled}
-                />
-              );
-            } else {
-              return (
-                <Select.Option
-                  key={item.value}
-                  label={item.label}
-                  value={item.value}
-                  disabled={item.disabled}
-                  readOnly={item.readOnly}
-                />
-              );
-            }
-          })}
-        </Select.Box>
-      </SelectProvider>
+      <Select.Box variant={variant}>
+        {data.map((item) => (
+          <Select.Option
+            size={size}
+            variant={variant}
+            key={item.value}
+            label={item.label}
+            value={item.value}
+            disabled={item.disabled}
+            readOnly={item.readOnly}
+            selected={item.value === value || undefined}
+            onClick={() => {
+              if (disabled || item.disabled || item.readOnly) return;
+              onChange?.(item.value);
+            }}
+          />
+        ))}
+      </Select.Box>
     </Floating>
   );
 };
 
 Select.Box = SelectBox;
-Select.Label = SelectLabel;
-Select.Group = SelectGroup;
 Select.Option = SelectOption;
 Select.Target = SelectTarget;
 Select.displayName = '@v2/Select';

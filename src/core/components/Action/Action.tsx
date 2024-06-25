@@ -1,86 +1,80 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory, UnstyledButton, createKeyDownGroup } from '@/core';
-
-import { ActionProps } from './action-types';
+import { isNotLabelled } from '@/utils';
+import { createFactory } from '@/factory';
+import { UnstyledButton } from '@/core';
 import { ActionGroup } from './ActionGroup';
+import { ActionProps } from './Action.types';
 import { ActionSpacer } from './ActionSpacer';
-import { useActionContext } from './action-context';
-import { css } from './action-constants';
+import { useActionContext } from './Action.context';
 
-type ActionRootFactory = Factory.Config<{
+type ActionFactory = Factory.Config<{
   ref: HTMLButtonElement;
   comp: 'button';
-  omits: 'children';
   props: ActionProps;
+  omits: 'children';
   comps: {
     Group: typeof ActionGroup;
     Spacer: typeof ActionSpacer;
   };
 }>;
 
-const Action = factory<ActionRootFactory>((props, ref) => {
+const Action = createFactory<ActionFactory>((props, ref) => {
   const {
+    size,
     icon,
     label,
     value,
-    scheme,
+    radius,
     variant,
+    loading,
     disabled,
+    readOnly,
     selected,
-    withTitle,
     className,
     ...forwardedProps
   } = props;
 
-  const ctx = useActionContext();
+  if (isNotLabelled(label, forwardedProps['aria-label'])) {
+    console.error(`[@v2/core/Action]: label must be provided to the element for accessibility.`);
+  }
 
-  const isDisabled = disabled || undefined;
-  const isSelected = selected || undefined;
-  const isGroupDisabled = ctx.disabled || disabled || undefined;
-  const isGroupSelected = (value && ctx.value === value) || isSelected || undefined;
+  const ctx = useActionContext();
 
   const contextProps = ctx
     ? {
-        id: ctx.getActionId(label),
-        title: ctx.withTitle ? label : undefined,
+        loading: loading || ctx.loading,
+        selected: selected || (!!ctx.value && value === ctx.value) || undefined,
+        disabled: disabled || ctx.disabled,
+        readOnly: readOnly || ctx.readOnly,
+        'data-orientation': ctx.orientation,
+        'aria-orientation': ctx.orientation,
         className: clsx(
-          css.root,
-          `${css.root}--scheme-${scheme || ctx.scheme}`,
-          `${css.root}--variant-${variant || ctx.variant}`,
+          'v2-action',
+          `v2-action--${variant ?? ctx.variant ?? 'default-elevated'}`,
+          `v2-action--size-${size ?? ctx.size ?? 'md'}`,
+          `v2-action--radius-${radius ?? ctx.radius ?? 'default'}`,
           className
         ),
-        'aria-disabled': isGroupDisabled,
-        'aria-selected': isGroupSelected,
-        'data-disabled': isGroupDisabled,
-        'data-selected': isGroupSelected,
-        'data-orientation': ctx.orientation,
-        onKeyDown: createKeyDownGroup({
-          onKeyDown: forwardedProps.onKeyDown,
-          parentSelector: ctx.parentSelector,
-          childSelector: ctx.childSelector,
-          orientation: ctx.orientation,
-          loop: ctx.loopFocus,
-        }),
       }
     : {};
 
   return (
     <UnstyledButton
       ref={ref}
+      label={label}
       value={value}
-      title={withTitle ? label : undefined}
+      loading={loading}
+      readOnly={readOnly}
+      disabled={disabled}
+      selected={selected}
       className={clsx(
-        css.root,
-        `${css.root}--scheme-${scheme}`,
-        `${css.root}--variant-${variant}`,
+        'v2-action',
+        `v2-action--${variant ?? 'default-elevated'}`,
+        `v2-action--size-${size ?? 'sm'}`,
+        `v2-action--radius-${radius ?? 'default'}`,
         className
       )}
-      aria-label={forwardedProps['aria-label'] || label}
-      aria-disabled={isDisabled}
-      aria-selected={isSelected}
-      data-selected={isSelected}
-      data-disabled={isDisabled}
       {...forwardedProps}
       {...contextProps}
     >

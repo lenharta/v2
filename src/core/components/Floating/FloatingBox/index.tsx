@@ -1,13 +1,9 @@
-import clsx from 'clsx';
+import { Transition } from '@/core';
 import { useMergeRefs } from '@/hooks';
 import { Core, Factory } from '@/types';
-import { FloatingBoxProps } from '../types';
+import { createFactory } from '@/factory';
+import { FloatingBoxProps } from '../Floating.types';
 import { useFloatingContext } from '../Floating.context';
-import { factory, Box, Transition } from '@/core';
-
-const css = {
-  box: 'v2-floating-box',
-};
 
 type FloatingBoxFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -15,7 +11,7 @@ type FloatingBoxFactory = Factory.Config<{
   props: FloatingBoxProps;
 }>;
 
-const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
+const FloatingBox = createFactory<FloatingBoxFactory>((props, ref) => {
   const { className, style, children, ...forwardedProps } = props;
 
   const ctx = useFloatingContext();
@@ -42,17 +38,24 @@ const FloatingBox = factory<FloatingBoxFactory>((props, ref) => {
   return (
     <Transition {...ctx.transitionProps} mounted={ctx.isOpen}>
       {(transitionStyles) => (
-        <Box
+        <div
+          ref={refs}
+          role="dialog"
+          tabIndex={-1}
+          style={{
+            ...style,
+            ...contextStyles,
+            ...transitionStyles,
+            position: 'absolute',
+            boxSizing: 'border-box',
+            padding: 0,
+            margin: 0,
+          }}
           {...forwardedProps}
           {...contextProps}
-          style={{ ...style, ...contextStyles, ...transitionStyles }}
-          className={clsx(css.box, className)}
-          tabIndex={-1}
-          role="dialog"
-          ref={refs}
         >
           {children}
-        </Box>
+        </div>
       )}
     </Transition>
   );

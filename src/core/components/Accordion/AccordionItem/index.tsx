@@ -1,10 +1,8 @@
 import clsx from 'clsx';
-import { Box } from '@/core/components';
 import { Factory } from '@/types';
-import { factory } from '@/core/factory';
-
-import { AccordionItemProps, AccordionCSS } from '../types';
-import { useAccordionContext, AccordionItemProvider } from '../Accordion.context';
+import { createFactory } from '@/factory';
+import { AccordionItemProps } from '../Accordion.types';
+import { AccordionItemProvider, useAccordionContext } from '../Accordion.context';
 
 type AccordionItemFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -12,24 +10,24 @@ type AccordionItemFactory = Factory.Config<{
   props: AccordionItemProps;
 }>;
 
-const css: Partial<AccordionCSS> = {
-  item: 'v2-accordion-item',
-};
-
-const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
-  const { value, className, ...forwardedProps } = props;
+const AccordionItem = createFactory<AccordionItemFactory>((props, ref) => {
+  const { value, children, className, ...forwardedProps } = props;
 
   const ctx = useAccordionContext();
 
+  const optionalProps = {
+    ...(ctx.chevronRotation ? { 'data-active': ctx.isValueActive(value) } : {}),
+  };
+
   return (
-    <AccordionItemProvider value={{ value }}>
-      <Box
-        {...forwardedProps}
-        ref={ref}
-        className={clsx(css.item, className)}
-        {...(ctx.chevronRotation ? { 'data-active': ctx.isValueActive(value) } : {})}
-      />
-    </AccordionItemProvider>
+    <div
+      ref={ref}
+      className={clsx('v2-accordion-item', className)}
+      {...optionalProps}
+      {...forwardedProps}
+    >
+      <AccordionItemProvider value={{ value }}>{children}</AccordionItemProvider>
+    </div>
   );
 });
 

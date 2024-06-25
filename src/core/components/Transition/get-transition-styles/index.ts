@@ -1,6 +1,6 @@
-import { TransitionPhase, TransitionStatus, TransitionStyleInput } from '../types';
+import { TransitionPhase, TransitionStatus, TransitionStyleInput } from '../Transition.types';
 
-const TRANSITION_STATE_MAP: Record<TransitionStatus, TransitionPhase> = {
+const STATES: Record<TransitionStatus, TransitionPhase> = {
   entering: 'in',
   entered: 'in',
   exiting: 'out',
@@ -18,7 +18,7 @@ function getTransitionStyles(props: TransitionStyleInput): React.CSSProperties {
     transitionProperty: transition.transitionProperty,
     ...{ transitionDuration, transitionTimingFunction },
     ...transition.common,
-    ...transition[TRANSITION_STATE_MAP[state]],
+    ...transition[STATES[state]],
   };
 }
 

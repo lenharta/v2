@@ -1,55 +1,37 @@
 import clsx from 'clsx';
-import { css } from '../select-constants';
-import { Icon, UnstyledButton } from '@/core';
-import { useSelectContext } from '../select-context';
-import { SelectOptionProps } from '../select-types';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { UnstyledButton } from '@/core';
+import { SelectOptionProps } from '../Select.types';
 
-type SelectOptionFactory = React.FC<SelectOptionProps> & {};
+type SelectOptionFactory = Factory.Config<{
+  ref: HTMLButtonElement;
+  comp: 'button';
+  props: SelectOptionProps;
+}>;
 
-const SelectOption: SelectOptionFactory = (props) => {
-  const { label, value, disabled, readOnly } = props;
-
-  const ctx = useSelectContext();
+const SelectOption = createFactory<SelectOptionFactory>((props, ref) => {
+  const { label, value, variant, disabled, readOnly, selected, size, ...forwardedProps } = props;
 
   return (
-    <li
+    <UnstyledButton
+      ref={ref}
+      value={value}
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      selected={selected}
       className={clsx(
-        css.item,
-        `${css.item}--scheme-${ctx.scheme}`,
-        `${css.item}--variant-${ctx.variant}`
+        'v2-select-option',
+        `v2-select-option--${variant}`,
+        `v2-select-option--size-${size}`
       )}
-      data-selected={ctx.value.includes(value) || undefined}
-      data-disabled={disabled}
-      data-readonly={readOnly}
+      {...forwardedProps}
     >
-      <UnstyledButton
-        role="listitem"
-        value={value}
-        className={clsx(
-          css.option,
-          `${css.option}--scheme-${ctx.scheme}`,
-          `${css.option}--variant-${ctx.variant}`
-        )}
-        onClick={(event) => {
-          if (!ctx.disabled || !ctx.readOnly) {
-            if (ctx.behavior === 'multiple') {
-              return ctx.value.includes(event.currentTarget.value)
-                ? ctx.onChange(ctx.value.filter((item) => item !== event.currentTarget.value))
-                : ctx.onChange([...ctx.value, event.currentTarget.value]);
-            }
-            return ctx.onChange([event.currentTarget.value]);
-          }
-        }}
-        aria-selected={ctx.value.includes(value) || undefined}
-        aria-disabled={disabled}
-        aria-readonly={readOnly}
-      >
-        {label}
-        {ctx.value.includes(value) && <Icon name="check-circle" />}
-      </UnstyledButton>
-    </li>
+      {label}
+    </UnstyledButton>
   );
-};
+});
 
 SelectOption.displayName = '@v2/Select.Option';
 export { SelectOption };

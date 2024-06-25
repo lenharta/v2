@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory, Disclosure, DisclosureProps } from '@/core';
-import { AccordionCSS, AccordionPanelProps } from '../types';
+import { createFactory } from '@/factory';
+import { Disclosure, DisclosureProps } from '@/core';
 import { useAccordionContext, useAccordionItemContext } from '../Accordion.context';
+import { AccordionPanelProps } from '../Accordion.types';
 
 type AccordionPanelFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -10,11 +11,7 @@ type AccordionPanelFactory = Factory.Config<{
   props: AccordionPanelProps & Partial<DisclosureProps>;
 }>;
 
-const css: Partial<AccordionCSS> = {
-  panel: 'v2-accordion-panel',
-};
-
-const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
+const AccordionPanel = createFactory<AccordionPanelFactory>((props, ref) => {
   const { className, children, ...forwardedProps } = props;
 
   const ctx = useAccordionContext();
@@ -26,7 +23,7 @@ const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
       ref={ref}
       role="region"
       isOpen={ctx.isValueActive(value)}
-      className={clsx(css.panel, className)}
+      className={clsx('v2-accordion-panel', className)}
       aria-labelledby={ctx.getTargetId(value)}
       {...forwardedProps}
     >

@@ -1,19 +1,14 @@
 import clsx from 'clsx';
-import React from 'react';
-import { Box } from '@/core/components';
-
+import * as React from 'react';
 import { AccordionItem } from './AccordionItem';
 import { AccordionPanel } from './AccordionPanel';
 import { AccordionTarget } from './AccordionTarget';
 import { AccordionProvider } from './Accordion.context';
-import { AccordionCSS, AccordionRootProps, AccordionValue } from './types';
+import { AccordionProps, AccordionValue } from './Accordion.types';
 
-const css: Partial<AccordionCSS> = {
-  root: 'v2-accordion',
-};
-
-const Accordion = <Multiple extends boolean = false>(props: AccordionRootProps<Multiple>) => {
+const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multiple>) => {
   const {
+    size,
     value,
     variant = 'default',
     children,
@@ -24,14 +19,6 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionRootProps<M
     chevronPosition = 'end',
     onValueChange,
   } = props;
-
-  const classNames = clsx(
-    css.root,
-    {
-      [`${css.root}--${variant}`]: variant,
-    },
-    className
-  );
 
   const uid = React.useId();
 
@@ -56,23 +43,31 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionRootProps<M
   };
 
   return (
-    <AccordionProvider
-      value={{
-        variant,
-        trapFocus,
-        chevronRotation,
-        chevronPosition,
-        onValueChange: handleChange,
-        isValueActive,
-        getTargetId,
-        getPanelId,
-        getRootId,
-      }}
+    <div
+      id={getRootId()}
+      className={clsx(
+        'v2-accordion',
+        `v2-accordion--size-${size}`,
+        `v2-accordion--variant-${variant}`,
+        className
+      )}
     >
-      <Box id={getRootId()} className={classNames}>
+      <AccordionProvider
+        value={{
+          variant,
+          trapFocus,
+          chevronRotation,
+          chevronPosition,
+          onValueChange: handleChange,
+          isValueActive,
+          getTargetId,
+          getPanelId,
+          getRootId,
+        }}
+      >
         {children}
-      </Box>
-    </AccordionProvider>
+      </AccordionProvider>
+    </div>
   );
 };
 

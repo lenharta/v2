@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { factory } from '@/core';
 import { Factory } from '@/types';
-import { ICON_MAP } from './icon-library';
+import { ICON_MAP } from './library';
 import { IconProps } from './Icon.types';
+import { createFactory } from '@/factory';
 
 type IconFactory = Factory.Config<{
   ref: SVGSVGElement;
@@ -10,37 +10,37 @@ type IconFactory = Factory.Config<{
   props: IconProps;
 }>;
 
-const css = {
-  root: 'v2-icon',
-};
-
-const Icon = factory<IconFactory>((props, ref) => {
+const Icon = createFactory<IconFactory>((props, ref) => {
   const {
     size = 'sm',
+    type = 'outline',
     name = 'shape-circle',
-    scheme,
-    variant = 'outline',
+    accent,
+    children,
     className,
     ...forwardedProps
   } = props;
 
-  const classNames = clsx(css.root, `${css.root}--size-${size}`, className);
-
   return (
     <svg
-      {...forwardedProps}
-      data-icon-name={name}
-      xmlns="http://www.w3.org/2000/svg"
-      className={classNames}
-      viewBox="0 0 16 16"
-      height="16"
-      width="16"
-      fill="none"
       ref={ref}
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      className={clsx(
+        'v2-icon',
+        { [`v2-icon--size-${size}`]: size },
+        { [`v2-icon--accent-${accent}`]: accent },
+        className
+      )}
+      data-icon-name={name}
+      {...forwardedProps}
     >
-      {ICON_MAP[variant][name]}
+      {ICON_MAP[type][name]}
     </svg>
   );
 });
 
+Icon.displayName = '@v2/Icon';
 export { Icon };
