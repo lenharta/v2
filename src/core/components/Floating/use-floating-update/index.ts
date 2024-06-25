@@ -1,7 +1,7 @@
 import React from 'react';
 import { autoUpdate } from '@floating-ui/react';
 import { useDidUpdate } from '@/hooks';
-import { UseFloatingConfig } from '../types';
+import { UseFloatingConfig } from '../Floating.types';
 
 const useFloatingUpdate = (config: UseFloatingConfig) => {
   const { floating, open, placement, placementDependencies } = config;

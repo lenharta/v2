@@ -1,26 +1,26 @@
-import React from 'react';
-import { HomeTitle } from './home-title';
-import { Button, Text, Title } from '@/core';
-import { Page, Hero, Section } from '@/common';
+import * as React from 'react';
+import { Page } from '@/app';
+import { HomeExperience, HomeHero, HomeOverview, HomeStats } from './sections';
 
-function ButtonCanvas() {
-  return (
-    <React.Fragment>
-      <Title>Canvas | Button</Title>
-      <Button>Default</Button>
-    </React.Fragment>
-  );
-}
+type HomeRouteFactory = React.FC<{}> & {
+  Hero: typeof HomeHero;
+  Overview: typeof HomeOverview;
+  Stats: typeof HomeStats;
+  Experience: typeof HomeExperience;
+};
 
-const HomeRoute: React.FC<{}> & { Title: typeof HomeTitle } = () => (
+const HomeRoute: HomeRouteFactory = ({}) => (
   <Page>
-    <Hero title={<HomeRoute.Title />} />
-    <Section>
-      <ButtonCanvas />
-    </Section>
+    <HomeRoute.Hero />
+    <HomeRoute.Overview />
+    <HomeRoute.Stats />
+    <HomeRoute.Experience />
   </Page>
 );
 
-HomeRoute.Title = HomeTitle;
+HomeRoute.Hero = HomeHero;
+HomeRoute.Stats = HomeStats;
+HomeRoute.Overview = HomeOverview;
+HomeRoute.Experience = HomeExperience;
 HomeRoute.displayName = '@v2/Route.Home';
 export { HomeRoute };

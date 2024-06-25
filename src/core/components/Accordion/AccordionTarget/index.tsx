@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
+import { createFactory } from '@/factory';
 import { createEventCallback } from '@/utils';
-import { factory, Box, Icon, UnstyledButton } from '@/core';
-import { AccordionCSS, AccordionTargetProps } from '../types';
+import { Icon, UnstyledButton } from '@/core';
+import { AccordionTargetProps } from '../Accordion.types';
 import { useAccordionContext, useAccordionItemContext } from '../Accordion.context';
 
 type AccordionTargetFactory = Factory.Config<{
@@ -11,20 +12,15 @@ type AccordionTargetFactory = Factory.Config<{
   props: AccordionTargetProps;
 }>;
 
-const css: Partial<AccordionCSS> = {
-  target: 'v2-accordion-target',
-  iconbox: 'v2-accordion-iconbox',
-  labelbox: 'v2-accordion-labelbox',
-};
-
-const AccordionTarget = factory<AccordionTargetFactory>((props, ref) => {
+const AccordionTarget = createFactory<AccordionTargetFactory>((props, ref) => {
   const {
     icon,
-    chevron = <Icon name="caretDown" />,
+    size,
     variant,
+    chevron = <Icon name="arrow-southeast" />,
     disabled,
-    className,
     children,
+    className,
     onClick,
     ...forwardedProps
   } = props;
@@ -35,37 +31,37 @@ const AccordionTarget = factory<AccordionTargetFactory>((props, ref) => {
   const handleChange = () => ctx.onValueChange(value);
   const handleClick = createEventCallback(onClick, handleChange);
 
-  const classNames = clsx(
-    css.target,
-    {
-      [`${css.target}--${variant}`]: variant && !ctx.variant,
-      [`${css.target}--${ctx.variant}`]: ctx.variant,
-    },
-    className
-  );
+  const contentProps = {
+    className: 'v2-accordion-target-content',
+    'data-active': ctx.isValueActive(value),
+  };
 
   return (
     <UnstyledButton
-      {...forwardedProps}
       ref={ref}
       id={ctx.getTargetId(value)}
       onClick={handleClick}
-      className={classNames}
+      disabled={disabled || ctx.disabled}
       aria-controls={ctx.getPanelId(value)}
       aria-expanded={ctx.isValueActive(value)}
-      aria-disabled={ctx.disabled || disabled}
       data-expanded={ctx.isValueActive(value)}
-      data-disabled={ctx.disabled || disabled}
+      className={clsx(
+        'v2-accordion-target',
+        `v2-accordion-target--size-${size || ctx.size}`,
+        `v2-accordion-target--variant-${variant || ctx.variant}`,
+        className
+      )}
+      {...forwardedProps}
     >
-      <Box className={css.iconbox} data-active={ctx.isValueActive(value)} data-position="start">
+      <div {...contentProps} data-position="start">
         {(ctx.chevronPosition === 'start' ? chevron : icon) ?? null}
-      </Box>
+      </div>
 
-      <Box className={css.labelbox}>{children}</Box>
+      <div className="v2-accordion-target-label">{children}</div>
 
-      <Box className={css.iconbox} data-active={ctx.isValueActive(value)} data-position="end">
+      <div {...contentProps} data-position="end">
         {(ctx.chevronPosition === 'end' ? chevron : icon) ?? null}
-      </Box>
+      </div>
     </UnstyledButton>
   );
 });

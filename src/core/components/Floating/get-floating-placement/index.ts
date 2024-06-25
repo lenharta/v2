@@ -1,10 +1,8 @@
-import { FloatingDir, FloatingSide, FloatingAlign, FloatingPlacement } from '../types';
+import { FloatingDir, FloatingSide, FloatingAlign, FloatingPlacement } from '../Floating.types';
 
 type FloatingPlacementData = [FloatingSide, FloatingAlign];
 
-type GetFloatingPlacement = (dir: FloatingDir, placement: FloatingPlacement) => FloatingPlacement;
-
-const getFloatingPlacement: GetFloatingPlacement = (dir, placement) => {
+function getFloatingPlacement(dir: FloatingDir, placement: FloatingPlacement): FloatingPlacement {
   const isInlinePlacement = placement.includes('left') || placement.includes('right');
   const isRightToLeft = dir === 'rtl';
 
@@ -18,6 +16,6 @@ const getFloatingPlacement: GetFloatingPlacement = (dir, placement) => {
     return `${oppositePlacement}-${alignment}`;
   }
   return placement;
-};
+}
 
 export { getFloatingPlacement };

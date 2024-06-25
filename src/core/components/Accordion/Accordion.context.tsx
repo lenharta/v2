@@ -1,5 +1,5 @@
-import { createSafeContext } from '@/core/utils';
-import { AccordionContext, AccordionItemContext } from './types';
+import { createSafeContext } from '@/utils';
+import { AccordionContext, AccordionItemContext } from './Accordion.types';
 
 const [AccordionProvider, useAccordionContext] = createSafeContext<AccordionContext>(
   '[@v2/core/Accordion.context]: could not locate component in context tree'

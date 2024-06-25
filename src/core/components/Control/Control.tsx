@@ -1,20 +1,16 @@
 import clsx from 'clsx';
-import React from 'react';
+import * as React from 'react';
 import { Core } from '@/types';
-import { parseItemData } from '@/core';
-import { ControlProps } from './types';
-import { ControlThumb } from './Thumb';
-import { ControlTrack } from './Track';
-import { ControlSegment } from './Segment';
+import { parseItemData } from '@/utils';
+import { ControlProps } from './Control.types';
+import { ControlThumb } from './ControlThumb';
+import { ControlTrack } from './ControlTrack';
+import { ControlSegment } from './ControlSegment';
 import { useControlPosition } from './use-control-position';
 
-const css = {
-  root: 'v2-control',
-  track: 'v2-control-track',
-  thumb: 'v2-control-thumb',
-  segment: 'v2-control-segment',
-  segmentInner: 'v2-control-segment-inner',
-  segmentLabel: 'v2-control-segment-label',
+const ATTRIBUTES = {
+  parent: { key: '[data-core-control-track]', prop: { 'data-core-control-track': true } },
+  child: { key: '[data-core-control-segment]', prop: { 'data-core-control-segment': true } },
 };
 
 type ControlFactory = React.FC<ControlProps> & {
@@ -41,20 +37,14 @@ const Control: ControlFactory = (props) => {
   });
 
   return (
-    <div className={clsx(css.root, className)}>
-      <Control.Track
-        ref={trackRef}
-        className={css.track}
-        orientation={orientation}
-        data-control-track
-      >
+    <div className={clsx('v2-control', className)}>
+      <Control.Track ref={trackRef} orientation={orientation} {...ATTRIBUTES.parent.prop}>
         {data.map((item) => (
           <Control.Segment
             key={item.value}
-            css={css}
-            item={item}
             ref={(node) => setElementRefs(node, item.value)}
             refs={refs}
+            item={item}
             value={value}
             update={update}
             trackRef={trackRef}
@@ -62,13 +52,11 @@ const Control: ControlFactory = (props) => {
             orientation={orientation}
             onItemChange={onItemChange}
             setElementRefs={setElementRefs}
-            data-control-segment
           />
         ))}
 
         <Control.Thumb
           ref={thumbRef}
-          className={css.thumb}
           transitionEasing="ease"
           transitionDuration="250ms"
           transitionProperty="transform"
@@ -78,8 +66,8 @@ const Control: ControlFactory = (props) => {
   );
 };
 
-Control.Track = ControlTrack;
 Control.Thumb = ControlThumb;
+Control.Track = ControlTrack;
 Control.Segment = ControlSegment;
 Control.displayName = '@v2/Control';
-export { Control, type ControlProps };
+export { Control, ATTRIBUTES };

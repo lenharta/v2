@@ -1,10 +1,7 @@
-import { IconProps } from '@/core';
+import { UnstyledButtonProps } from '@/core';
 
-interface ToolButtonProps {
-  icon?: IconProps['name'] | undefined;
-  size?: IconProps['size'] | undefined;
-  variant?: 'default' | 'elevated' | 'accent' | undefined;
-  iconVariant?: IconProps['variant'] | undefined;
+interface ToolButtonProps extends UnstyledButtonProps {
+  'data-testid'?: string | undefined;
 }
 
 export type { ToolButtonProps };

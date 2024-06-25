@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
+import { factory } from '../../factory';
+import { UnstyledButton } from '@/core';
 import { ToolButtonProps } from './ToolButton.types';
-import { factory, Icon, UnstyledButton } from '@/core';
 
 type ToolButtonFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -10,27 +11,19 @@ type ToolButtonFactory = Factory.Config<{
 }>;
 
 const ToolButton = factory<ToolButtonFactory>((props, ref) => {
-  const {
-    size = 'sm',
-    icon = 'close-x-circle',
-    variant = 'default',
-    iconVariant = 'outline',
-    className,
-    ...forwardedProps
-  } = props;
+  const { children, className, disabled, selected, readOnly, loading, ...forwardedProps } = props;
 
   return (
     <UnstyledButton
       ref={ref}
-      className={clsx(
-        'v2-tool-button',
-        `v2-icon-button--size-${size}`,
-        `v2-icon-button--variant-${variant}`,
-        className
-      )}
+      loading={loading}
+      selected={selected}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={clsx('v2-tool-button', className)}
       {...forwardedProps}
     >
-      <Icon name={icon} size={size} variant={iconVariant} />
+      {children}
     </UnstyledButton>
   );
 });

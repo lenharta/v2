@@ -1,8 +1,8 @@
 import React from 'react';
-import { ButtonContext } from './types';
+import { ButtonContextValue } from './Button.types';
 
-const ButtonGroupContext = React.createContext<ButtonContext | null>(null);
-const ButtonProvider = ButtonGroupContext.Provider;
-const useButtonContext = () => React.useContext(ButtonGroupContext);
+const ButtonContext = React.createContext({} as ButtonContextValue);
+const ButtonProvider = ButtonContext.Provider;
+const useButtonContext = () => React.useContext(ButtonContext);
 
-export { ButtonProvider, useButtonContext };
+export { ButtonContext, ButtonProvider, useButtonContext };

@@ -9,3 +9,6 @@ LICENSE
 .eslintignore
 .gitignore
 .git
+
+
+**/*reset.scss

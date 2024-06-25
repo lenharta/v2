@@ -1,7 +1,6 @@
-const capitalizeString = (string: string) => {
+function capitalizeString(string: string): string {
   const clean = string.toLowerCase();
-  const char = clean.charAt(0).toUpperCase();
-  return char + clean.slice(1, clean.length);
-};
+  return clean.charAt(0).toUpperCase() + clean.slice(1, clean.length);
+}
 
 export { capitalizeString };

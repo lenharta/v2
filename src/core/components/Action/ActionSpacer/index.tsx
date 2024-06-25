@@ -1,44 +1,33 @@
 import clsx from 'clsx';
-import { Box } from '@/core';
-import { css } from '../action-constants';
-import { useActionContext } from '../action-context';
-import { ActionSpacerProps } from '../action-types';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { ActionSpacerProps } from '../Action.types';
+import { useActionContext } from '../Action.context';
 
-type ActionSpacerFactory = React.FC<ActionSpacerProps>;
+type ActionSpacerFactory = Factory.Config<{
+  ref: HTMLDivElement;
+  comp: 'div';
+  omits: 'children';
+  props: ActionSpacerProps;
+}>;
 
-const ActionSpacer: ActionSpacerFactory = (props) => {
-  const { scheme, variant, children, className, ...forwardedProps } = props;
+const ActionSpacer = createFactory<ActionSpacerFactory>((props, ref) => {
+  const { className, grow, ...forwardedProps } = props;
 
   const ctx = useActionContext();
 
   const contextProps = ctx
     ? {
         className: clsx(
-          css.spacer,
-          `${css.spacer}--scheme-${scheme || ctx.scheme}`,
-          `${css.spacer}--variant-${variant || ctx.variant}`,
+          'v2-action-spacer',
+          `v2-action-spacer--${ctx.variant || 'default-elevated'}`,
           className
         ),
       }
     : {};
 
-  return (
-    <Box
-      role="separator"
-      className={clsx(
-        css.spacer,
-        `${css.spacer}--scheme-${scheme}`,
-        `${css.spacer}--variant-${variant}`,
-        className
-      )}
-      data-orientation={ctx.orientation}
-      {...forwardedProps}
-      {...contextProps}
-    >
-      {children}
-    </Box>
-  );
-};
+  return <div ref={ref} data-grow={grow} {...contextProps} {...forwardedProps} />;
+});
 
 ActionSpacer.displayName = '@v2/Action.Spacer';
 export { ActionSpacer };

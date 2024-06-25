@@ -1,0 +1,29 @@
+.v2-select {
+  &-box {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  &-target,
+  &-option {
+    font-family: var(--ff);
+    font-size: var(--fz-06);
+    font-weight: var(--fw-03);
+    padding-block: var(--s-03);
+    padding-inline: var(--s-04);
+  }
+
+  &-target {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}

@@ -32,16 +32,14 @@ export default defineConfig(({ mode, command }) => {
       resolve: {
         alias: {
           '@/*': path.resolve(__dirname, './src/'),
-          '@/app': path.resolve(__dirname, './src/app/'),
-          '@/common': path.resolve(__dirname, './src/common/'),
-          '@/core': path.resolve(__dirname, './src/core/'),
-          '@/data': path.resolve(__dirname, './src/data/'),
-          '@/demo': path.resolve(__dirname, './src/demo/'),
-          '@/hooks': path.resolve(__dirname, './src/hooks/'),
-          '@/pages': path.resolve(__dirname, './src/pages/'),
-          '@/styles': path.resolve(__dirname, './src/styles/'),
-          '@/types': path.resolve(__dirname, './src/types/'),
           '@/utils': path.resolve(__dirname, './src/utils/'),
+          '@/tests': path.resolve(__dirname, './src/tests/'),
+          '@/types': path.resolve(__dirname, './src/types/'),
+          '@/factory': path.resolve(__dirname, './src/factory/'),
+          '@/styles': path.resolve(__dirname, './src/styles/'),
+          '@/hooks': path.resolve(__dirname, './src/hooks/'),
+          '@/core': path.resolve(__dirname, './src/core/'),
+          '@/app': path.resolve(__dirname, './src/app/'),
         },
       },
       define: {

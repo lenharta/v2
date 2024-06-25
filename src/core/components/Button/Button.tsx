@@ -1,35 +1,32 @@
+import clsx from 'clsx';
 import { Factory } from '@/types';
-import { ButtonGroup } from './Group';
+import { createFactory } from '@/factory';
+import { isNotLabelled } from '@/utils';
+import { UnstyledButton } from '@/core';
+import { ButtonGroup } from './ButtonGroup';
+import { ButtonProps } from './Button.types';
 import { useButtonContext } from './Button.context';
-import { ButtonCSS, ButtonRootProps } from './types';
-import { Box, factory, UnstyledButton, useThemeClasses } from '@/core';
-
-const css: Partial<ButtonCSS> = {
-  root: 'v2-button',
-  label: 'v2-button-label',
-  content: 'v2-button-content',
-};
-
-const messages = {
-  label: 'children provided may not be accessible, consider providing the `aria-label` attribute.',
-};
 
 type ButtonFactory = Factory.Config<{
   ref: HTMLButtonElement;
-  comp: 'button';
-  props: ButtonRootProps;
+  comp: typeof UnstyledButton;
+  props: ButtonProps;
   comps: {
     Group: typeof ButtonGroup;
   };
 }>;
 
-const Button = factory<ButtonFactory>((props, ref) => {
+const Button = createFactory<ButtonFactory>((props, ref) => {
   const {
     size,
+    value,
     label,
-    scheme,
+    radius,
     variant,
+    loading,
     disabled,
+    readOnly,
+    selected,
     children,
     className,
     leftContent,
@@ -37,53 +34,50 @@ const Button = factory<ButtonFactory>((props, ref) => {
     ...forwardedProps
   } = props;
 
-  if (typeof children !== 'string') {
-    console.warn(['[@v2/core/Button]:', messages.label].join(' '));
+  if (isNotLabelled(label, children, forwardedProps['aria-label'])) {
+    console.error(`[@v2/core/Button]: label must be provided to the element for accessibility.`);
   }
 
   const ctx = useButtonContext();
 
-  const themeClasses = useThemeClasses({
-    prefix: css.root!,
-    props: { size, scheme, variant },
-    context: { size: ctx?.size, scheme: ctx?.scheme, variant: ctx?.variant },
-    defaultProps: { size: 'sm', scheme: 'default', variant: 'default' },
-    className,
-  });
-
   const contextProps = ctx
     ? {
-        id: ctx.getItemId(),
-        'aria-disabled': ctx.disabled ?? disabled,
-        'data-disabled': ctx.disabled ?? disabled,
+        loading: loading || ctx.loading,
+        selected: selected || (!!ctx.value && value === ctx.value) || undefined,
+        disabled: disabled || ctx.disabled,
+        readOnly: readOnly || ctx.readOnly,
+        'data-orientation': ctx.orientation,
+        'aria-orientation': ctx.orientation,
+        className: clsx(
+          'v2-button',
+          `v2-button--${variant || ctx.variant || 'default-elevated'}`,
+          `v2-button--size-${size || ctx.size || 'md'}`,
+          `v2-button--radius-${radius || ctx.radius || 'default'}`,
+          className
+        ),
       }
-    : {
-        id: forwardedProps.id,
-        'aria-disabled': disabled,
-        'data-disabled': disabled,
-      };
+    : {};
 
   return (
     <UnstyledButton
       ref={ref}
-      aria-label={label}
-      className={themeClasses}
+      loading={loading}
+      readOnly={readOnly}
+      disabled={disabled}
+      selected={selected}
+      className={clsx(
+        'v2-button',
+        `v2-button--${variant || 'elevated'}`,
+        `v2-button--size-${size || 'sm'}`,
+        `v2-button--radius-${radius || 'default'}`,
+        className
+      )}
       {...forwardedProps}
       {...contextProps}
     >
-      {leftContent && (
-        <Box className={css.content} data-position="left">
-          {leftContent}
-        </Box>
-      )}
-
-      <Box className={css.label}>{label || children}</Box>
-
-      {rightContent && (
-        <Box className={css.content} data-position="right">
-          {rightContent}
-        </Box>
-      )}
+      <div>{leftContent}</div>
+      <div>{children}</div>
+      <div>{rightContent}</div>
     </UnstyledButton>
   );
 });

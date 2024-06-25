@@ -1,11 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import { cssTransform, valueToPixel } from '@/utils';
-import { ControlPosition, UseControlPositionProps, UseControlPositionReturn } from '../types';
+import {
+  ControlPosition,
+  UseControlPositionProps,
+  UseControlPositionReturn,
+} from '../Control.types';
 
-const useControlPosition = (props: UseControlPositionProps): UseControlPositionReturn => {
+function useControlPosition(props: UseControlPositionProps): UseControlPositionReturn {
   const trackRef = React.useRef<HTMLDivElement>(null);
   const thumbRef = React.useRef<HTMLDivElement>(null);
-  const observerRef = React.useRef<ResizeObserver>();
+  const observer = React.useRef<ResizeObserver>();
 
   const [refs, setRefs] = React.useState<Record<string, HTMLElement | null>>({});
   const [position, setPosition] = React.useState<ControlPosition>(props.initialPosition);
@@ -31,6 +35,7 @@ const useControlPosition = (props: UseControlPositionProps): UseControlPositionR
     trackRect: DOMRect | DOMRectReadOnly
   ) => {
     if (!segmentRect || !trackRect) return;
+
     setPosition({
       top: segmentRect.top - trackRect.top,
       left: segmentRect.left - trackRect.left,
@@ -59,7 +64,7 @@ const useControlPosition = (props: UseControlPositionProps): UseControlPositionR
   }, []);
 
   React.useEffect(() => {
-    observerRef.current = new ResizeObserver(() => {
+    observer.current = new ResizeObserver(() => {
       if (trackRef.current && refs[props.currentValue]) {
         const trackRect = trackRef.current.getBoundingClientRect();
         const segmentRect = refs[props.currentValue]!.getBoundingClientRect();
@@ -68,9 +73,9 @@ const useControlPosition = (props: UseControlPositionProps): UseControlPositionR
     });
 
     if (trackRef.current) {
-      observerRef.current?.observe(trackRef.current);
+      observer.current?.observe(trackRef.current);
       return () => {
-        observerRef.current?.disconnect();
+        observer.current?.disconnect();
       };
     }
     return undefined;
@@ -87,6 +92,6 @@ const useControlPosition = (props: UseControlPositionProps): UseControlPositionR
     setElementRefs,
     update,
   };
-};
+}
 
 export { useControlPosition };

@@ -1,5 +1,5 @@
 import { objectKeys } from '../object-keys';
-import { camelToKebabCase } from '../camel-to-kebab';
+import { camelToKebabCase } from '../camel-to-kebab-case';
 
 function cssObjectToString(css: React.CSSProperties) {
   return objectKeys(css)
