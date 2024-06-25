@@ -1,5 +1,5 @@
-import { Store } from '@/types';
-import { ActionProps } from '@/core';
+import { Static, Store } from '@/types';
+import { ActionProps, IconProps } from '@/core';
 
 interface SideMenuProps {}
 
@@ -13,6 +13,13 @@ type SideMenuSelectItem = {
   readOnly?: boolean | undefined;
   selected?: boolean | undefined;
 };
+
+interface SideMenuLinkProps {
+  icon: Partial<IconProps>;
+  item: Static.RouteItem['link'];
+  onClick: (to: string) => void;
+  location?: Location | undefined;
+}
 
 interface SideMenuSelectProps {
   label: string;
@@ -31,16 +38,13 @@ interface SideMenuSelectProps {
 
 interface SideMenuSelectDrawerProps {}
 
-interface SideMenuSelectOptionProps extends ActionProps {
-  // getOptionId: (value: string) => string;
-}
+interface SideMenuSelectOptionProps extends ActionProps {}
 
-interface SideMenuSelectTargetProps extends ActionProps {
-  // getTargetId: (group: string) => string;
-}
+interface SideMenuSelectTargetProps extends ActionProps {}
 
 export type {
   SideMenuProps,
+  SideMenuLinkProps,
   SideMenuSelectProps,
   SideMenuSelectDrawerProps,
   SideMenuSelectOptionProps,

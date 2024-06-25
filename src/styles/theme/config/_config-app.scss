@@ -24,12 +24,16 @@ body,
   fill: hsla(var(--c-hue-accent), 0.8);
 }
 
+.v2-footer {
+  background-color: hsla(var(--c-hue-cont), 0.03);
+}
+
 .v2-sidemenu {
   background-color: hsla(var(--c-hue-base), 1);
 }
 
-.v2-footer {
-  background-color: hsla(var(--c-hue-cont), 0.03);
+.v2-sidemenu-link[data-selected]::before {
+  background-color: hsla(var(--c-hue-accent), 0.87);
 }
 
 .v2-sidemenu-select-drawer {
