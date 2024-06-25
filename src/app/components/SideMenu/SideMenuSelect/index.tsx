@@ -16,8 +16,8 @@ const SideMenuSelect: SideMenuSelectFactory = (props) => {
     label,
     onOpen,
     onClose,
+    onChange,
     onOpenChange,
-    onOptionChange,
   } = props;
 
   const targetRef = React.useRef<HTMLButtonElement>(null);
@@ -50,7 +50,7 @@ const SideMenuSelect: SideMenuSelectFactory = (props) => {
       isOpen={isOpen}
       onOpen={handleOpen}
       onClose={handleClose}
-      onChange={onOpenChange}
+      onChange={(isOpen) => onOpenChange?.(isOpen)}
       placement="right-start"
       disabled={disabled}
       offset={{ crossAxis: -2 }}
@@ -78,12 +78,13 @@ const SideMenuSelect: SideMenuSelectFactory = (props) => {
         >
           {items.map((item) => (
             <Action
+              key={item.value as string}
               icon={item.icon}
               value={item.value}
               label={item.label}
+              onClick={() => onChange(item.value)}
               disabled={item.disabled}
               readOnly={item.readOnly}
-              onClick={(event) => onOptionChange(event.currentTarget.value)}
               className="v2-sidemenu-select-option"
             />
           ))}

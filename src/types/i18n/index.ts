@@ -1,15 +1,15 @@
 export declare namespace I18n {
-  export type UnitedStatesRegionItem = {
-    label: UnitedStatesRegion;
+  export type UnitedStatesRegion = {
+    label: UnitedStatesRegionName;
     value: UnitedStatesRegionCode;
   };
 
-  export type LanguageItem = {
+  export type Language = {
     value: LanguageCode;
-    label: LanguageRegion;
+    label: LanguageName;
   };
 
-  export type LanguageRegion =
+  export type LanguageName =
     | 'Arabic'
     | 'Azerbaijani'
     | 'Belarusian'
@@ -150,7 +150,7 @@ export declare namespace I18n {
     | 'vi'
     | 'zh';
 
-  export type UnitedStatesRegion =
+  export type UnitedStatesRegionName =
     | 'Alabama'
     | 'Alaska'
     | 'Arizona'

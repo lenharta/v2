@@ -1,10 +1,13 @@
+import { Store } from '@/types';
 import { ActionProps } from '@/core';
 
 interface SideMenuProps {}
 
+type SideMenuSelectValue = Store.State['accent'] | Store.State['mode'] | Store.State['dir'];
+
 type SideMenuSelectItem = {
   label: string;
-  value: string | number | readonly string[];
+  value: SideMenuSelectValue;
   icon?: React.ReactNode | undefined;
   disabled?: boolean | undefined;
   readOnly?: boolean | undefined;
@@ -15,13 +18,13 @@ interface SideMenuSelectProps {
   label: string;
   items: SideMenuSelectItem[];
   icon?: React.ReactNode | undefined;
-  value: string | number | readonly string[];
+  value: SideMenuSelectValue;
   isOpen: boolean;
   disabled?: boolean | undefined;
   readOnly?: boolean | undefined;
   selected?: boolean | undefined;
-  onOptionChange: (value: string | number | readonly string[]) => void;
-  onOpenChange: () => void;
+  onOpenChange?: (isOpen: boolean) => void;
+  onChange: (value: SideMenuSelectValue) => void;
   onClose?: (() => void) | undefined;
   onOpen?: (() => void) | undefined;
 }

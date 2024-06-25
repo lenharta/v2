@@ -15,3 +15,6 @@ export * from './Search/Search.types';
 
 export * from './SideMenu/SideMenu';
 export * from './SideMenu/SideMenu.types';
+
+export * from './TileLink/TileLink';
+export * from './TileLink/TileLink.types';

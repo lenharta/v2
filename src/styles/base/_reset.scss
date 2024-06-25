@@ -28,11 +28,27 @@
   border-color: var(--root-border-color);
 }
 
+html {
+  display: block;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
 #root, #__next {
   isolation: isolate;
+  display: block;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 body {
+  display: block;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+
   font-size: var(--root-font-size);
   font-weight: var(--root-font-weight);
   font-family: var(--root-font-family);
@@ -48,24 +64,19 @@ body {
   }
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, 
-blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, 
-img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, 
-i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
-caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, 
-embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, 
-section, summary, time, mark, audio, video, input, button, select, textarea, 
-option, optgroup, datalist, keygen, meter, progress, dialog, menuitem, picture, 
-source, track, wbr, data, template, slot, main, figure, figcaption, picture, time, 
-mark, bdi, bdo, rp, rt, rtc, ruby, noframes, noscript, embed, object, param, video, 
-audio, source, track,canvas, map, area, math, svg, animate, animateMotion, animateTransform, 
-circle, clipPath, defs, desc, discard, ellipse, feBlend, feColorMatrix, feComponentTransfer, 
-feComposite, feConvolveMatrix, feDiffuseLighting, feDisplacementMap, feDistantLight, 
-feDropShadow, feFlood, feFuncA, feFuncB, feFuncG, feFuncR, feGaussianBlur, feImage, feMerge, 
-feMergeNode, feMorphology, feOffset, fePointLight, feSpecularLighting, feSpotLight, feTile, 
-feTurbulence, filter, foreignObject, g, image, line, linearGradient, marker, mask, metadata, 
-mpath, path, pattern, polygon, polyline, radialGradient, rect, script, set, stop, style, svg, 
-switch, symbol, text, textPath, tspan, use, view  {
+div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, 
+kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, 
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, 
+figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, 
+time, mark, audio, video, input, button, select, textarea, option, optgroup, 
+datalist, keygen, meter, progress, dialog, menuitem, picture, source, track, 
+wbr, data, template, slot, main, figure, figcaption, picture, time, mark, bdi,
+bdo, rp, rt, rtc, ruby, noframes, noscript, embed, object, param, video, audio, 
+source, track,canvas, map, area, math, svg, animate, animateMotion, animateTransform, 
+circle, clipPath, defs, desc, discard, ellipse, g, image, line, marker, mask, metadata, 
+path, rect, script, set, svg, switch, symbol, text, textPath, tspan, use, view  {
   padding: 0;
   margin: 0;
 }

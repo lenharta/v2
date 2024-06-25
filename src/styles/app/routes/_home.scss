@@ -6,6 +6,7 @@
 
 .v2-home-overview {
   &-inner {
+    gap: var(--s-01);
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: repeat(1, 1fr);
@@ -24,6 +25,16 @@
     font-size: var(--fz-10);
     font-weight: var(--fw-03);
     line-height: var(--fh-03);
+  }
+
+  &-link-group {
+    display: flex;
+    gap: var(--s-01);
+  }
+
+  &-link-item {
+    padding-block: var(--size-gutter);
+    padding-inline: var(--size-gutter);
   }
 }
 

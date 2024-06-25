@@ -1,8 +1,8 @@
 import React from 'react';
-import { Action, Icon } from '@/core';
 import { HeaderProps } from './Header.types';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Action, Icon } from '@/core';
 import { useStateContext } from '@/app/store';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header: React.FC<HeaderProps> = (props) => {
   const { ...forwardedProps } = props;

@@ -20,10 +20,6 @@ const THEME_ATTRIBUTE_MAP = {
   dir: 'data-prefers-dir',
 } as const;
 
-// const THEME_ROOT_ATTRIBUTES: Record<Theme.Attributes, string> = {
-
-// };
-
 const StoreProvider = ({ children }: { children?: React.ReactNode | undefined }) => {
   const local = useStorage<Store.LocalState>({ key: 'local-storage' });
   const session = useStorage<Store.SessionState>({ key: 'session-storage' });
@@ -72,13 +68,13 @@ const StoreProvider = ({ children }: { children?: React.ReactNode | undefined })
       accent: store.accent,
       language: store.language,
     });
-  }, [store.dir, store.mode, store.icons, store.accent, store.language]);
+  }, [store.dir, store.mode, store.accent, store.icons, store.language]);
 
   React.useEffect(() => {
-    const root = document.getElementById('root')!;
+    const html = document.getElementsByTagName('html')[0]!;
 
     (Object.keys(THEME_ATTRIBUTE_MAP) as Theme.Attributes[]).forEach((attribute) => {
-      root.setAttribute(THEME_ATTRIBUTE_MAP[attribute], store[attribute]);
+      html.setAttribute(THEME_ATTRIBUTE_MAP[attribute], store[attribute]);
     });
   }, [store.dir, store.mode, store.accent]);
 

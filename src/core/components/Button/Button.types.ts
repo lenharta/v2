@@ -1,14 +1,10 @@
 import { Theme } from '@/types';
 import { GroupProps } from '@/core';
 
-type ButtonSize = 'default' | Theme.SizeRegular;
-type ButtonRadius = 'default' | Theme.SizeRegular;
-type ButtonVariant = 'default' | 'elevated' | 'accent' | 'accent-elevated';
-
 interface ButtonThemeProps {
-  size?: ButtonSize | undefined;
-  radius?: ButtonRadius | undefined;
-  variant?: ButtonVariant | undefined;
+  size?: Theme.SizeRegular | undefined;
+  radius?: Theme.SizeRegular | undefined;
+  variant?: 'default' | 'default-elevated' | 'accent' | 'accent-elevated' | undefined;
 }
 
 interface ButtonProps extends ButtonThemeProps {
@@ -35,11 +31,4 @@ interface ButtonContextValue extends ButtonThemeProps, GroupProps {
   disabled?: boolean | undefined;
 }
 
-export type {
-  ButtonSize,
-  ButtonRadius,
-  ButtonVariant,
-  ButtonProps,
-  ButtonGroupProps,
-  ButtonContextValue,
-};
+export type { ButtonProps, ButtonGroupProps, ButtonContextValue };

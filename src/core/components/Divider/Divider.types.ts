@@ -1,13 +1,16 @@
-import { Theme } from '@/types';
+import { Core, Theme } from '@/types';
 
-interface DividerProps {
+interface DividerThemeProps {
   size?: Theme.SizeCompact | undefined;
-  icon?: React.ReactNode | undefined;
-  label?: React.ReactNode | undefined;
   variant?: 'default' | 'accent' | undefined;
   decoration?: 'solid' | 'dashed' | 'dotted' | undefined;
-  iconPosition?: 'start' | 'end' | undefined;
-  labelPosition?: 'start' | 'center' | 'end' | undefined;
+  labelPosition?: Core.Align | 'center' | undefined;
+  iconPosition?: Core.Align | undefined;
+}
+
+interface DividerProps extends DividerThemeProps {
+  icon?: React.ReactNode | undefined;
+  label?: React.ReactNode | undefined;
 }
 
 export type { DividerProps };

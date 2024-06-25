@@ -50,7 +50,7 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
         'aria-orientation': ctx.orientation,
         className: clsx(
           'v2-button',
-          `v2-button--${variant || ctx.variant || 'elevated'}`,
+          `v2-button--${variant || ctx.variant || 'default-elevated'}`,
           `v2-button--size-${size || ctx.size || 'md'}`,
           `v2-button--radius-${radius || ctx.radius || 'default'}`,
           className

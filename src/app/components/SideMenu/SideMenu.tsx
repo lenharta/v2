@@ -1,67 +1,31 @@
-import React from 'react';
-import { Core, Store, Theme } from '@/types';
-import { Action, Icon, IconProps } from '@/core';
-import { SideMenuProps } from './SideMenu.types';
-import { SideMenuSelect } from './SideMenuSelect';
+import * as React from 'react';
+import { Theme } from '@/types';
+import { Action, Icon } from '@/core';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatchContext, useStateContext } from '@/app/store';
-import { objectKeys } from '@/utils';
+
+import { SideMenuLink } from './SideMenuLink';
+import { SideMenuProps } from './SideMenu.types';
+import { SideMenuSelect } from './SideMenuSelect';
+
+import {
+  ROUTE_MAP_EXPERIENCE_LINK,
+  ROUTE_MAP_PROJECTS_LINK,
+  ROUTE_MAP_SANDBOX_LINK,
+  ROUTE_MAP_SETTINGS_LINK,
+  ROUTE_MAP_TOOLBOX_LINK,
+} from '@/app/static';
 
 type SideMenuFactory = React.FC<SideMenuProps> & {
+  Link: typeof SideMenuLink;
   Select: typeof SideMenuSelect;
 };
 
-const data: Core.LinkItem[] = [
-  { value: '/experience', label: 'navigate to experience', icon: 'briefcase' },
-  { value: '/projects', label: 'navigate to projects', icon: 'easel' },
-  { value: '/toolbox', label: 'navigate to toolbox', icon: 'layers' },
-  { value: '/sandbox', label: 'navigate to sandbox', icon: 'box' },
-  { value: '/settings', label: 'navigate to settings', icon: 'gear' },
-];
-
-const MODE_ICON_PROPS_MAP: Record<Theme.Mode, IconProps> = {
-  light: { name: 'mode-light' },
-  dark: { name: 'mode-dark' },
-  dim: { name: 'mode-dim' },
-};
-// style: { fill: 'hsla(var(--c-hue-orange), 0.9)' } },
-
-const getTokenColorHSLA = (accent: Theme.Color, alpha: number = 0.9) => {
-  return `hsla(var(--c-hue-${accent}), ${alpha})`;
-};
-
-const getTokenStyleHSLA = (accent: Theme.Color, alpha: number = 0.9): React.CSSProperties => {
-  return { fill: getTokenColorHSLA(accent, alpha) };
-};
-
-const TOKEN_DATA: {
-  dir: Theme.Dir[];
-  mode: Theme.Mode[];
-  accent: Theme.Color[];
-} = {
-  dir: ['ltr', 'rtl'],
-  mode: ['light', 'dark', 'dim'],
-  accent: [
-    'red',
-    'orange',
-    'yellow',
-    'green',
-    'mint',
-    'teal',
-    'cyan',
-    'blue',
-    'indigo',
-    'purple',
-    'pink',
-    'brown',
-  ],
-};
-
-interface SideMenuPanelState {
+type PanelState = {
   dir: boolean;
   mode: boolean;
   accent: boolean;
-}
+};
 
 const SideMenu: SideMenuFactory = (props) => {
   const { ...forwardedProps } = props;
@@ -71,97 +35,181 @@ const SideMenu: SideMenuFactory = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatchContext();
 
-  const [panels, setPanels] = React.useState<SideMenuPanelState>({
+  const initialState: PanelState = {
     accent: false,
     mode: false,
     dir: false,
-  });
-
-  const clearPanels = () => {
-    setPanels({ accent: false, mode: false, dir: false });
   };
 
-  const handleOpen = () => {
-    dispatch({ sideOpen: true });
-    dispatch({ menuOpen: undefined, searchOpen: undefined });
-  };
-
-  const handleClose = () => {
-    dispatch({ sideOpen: undefined });
-    clearPanels();
-  };
+  const [panels, setPanels] = React.useState(initialState);
 
   return (
     <div className="v2-sidemenu" {...forwardedProps}>
       <div className="v2-sidemenu-inner">
         <Action.Group orientation="vertical" value={location.pathname}>
-          {data.map((item) => (
-            <Action
-              onClick={(event) => navigate(event.currentTarget.value)}
-              label={item.label}
-              value={item.value}
-              icon={<Icon name={item.icon} type={state.icons} />}
-              key={item.value}
-            />
-          ))}
+          <SideMenu.Link
+            item={ROUTE_MAP_EXPERIENCE_LINK}
+            icon={{ type: state.icons }}
+            onClick={navigate}
+          />
+
+          <SideMenu.Link
+            item={ROUTE_MAP_PROJECTS_LINK}
+            icon={{ type: state.icons }}
+            onClick={navigate}
+          />
+
+          <SideMenu.Link
+            item={ROUTE_MAP_TOOLBOX_LINK}
+            icon={{ type: state.icons }}
+            onClick={navigate}
+          />
+
+          <SideMenu.Link
+            item={ROUTE_MAP_SANDBOX_LINK}
+            icon={{ type: state.icons }}
+            onClick={navigate}
+          />
+
+          <SideMenu.Link
+            item={ROUTE_MAP_SETTINGS_LINK}
+            icon={{ type: state.icons }}
+            onClick={navigate}
+          />
 
           <Action.Spacer grow />
 
           <SideMenu.Select
+            icon={<Icon name={state.dir} type={state.icons} />}
+            label="select writing direction"
+            value={state.dir}
+            isOpen={panels.dir}
+            onOpenChange={(isOpen) => {
+              dispatch({ menuOpen: undefined, searchOpen: undefined, sideOpen: isOpen });
+              setPanels((current) => ({ ...current, ...initialState, dir: isOpen }));
+            }}
+            onChange={(value) => {
+              dispatch({ dir: value as Theme.Dir });
+            }}
+            items={[
+              {
+                value: 'ltr',
+                label: 'set writing direction left-to-right',
+                icon: <Icon name="ltr" type={state.icons} />,
+              },
+              {
+                value: 'rtl',
+                label: 'set writing direction right-to-left',
+                icon: <Icon name="rtl" type={state.icons} />,
+              },
+            ]}
+          />
+
+          <SideMenu.Select
+            icon={<Icon accent={state.accent} type="fill" />}
             label="select accent"
             value={state.accent}
             isOpen={panels.accent}
-            onOpen={handleOpen}
-            onClose={handleClose}
-            onOpenChange={() => setPanels((c) => ({ ...c, accent: true }))}
-            onOptionChange={(value) => {
-              dispatch({ accent: value as any });
-              clearPanels();
+            onOpenChange={(isOpen) => {
+              dispatch({ menuOpen: undefined, searchOpen: undefined, sideOpen: isOpen });
+              setPanels((current) => ({ ...current, ...initialState, accent: isOpen }));
             }}
-            icon={<Icon type="fill" accent={state.accent} />}
-            items={TOKEN_DATA.accent.map((k) => ({
-              icon: <Icon name="shape-circle" type="fill" accent={k} />,
-              label: `set accent color ${k}`,
-              value: k,
-            }))}
+            onChange={(value) => {
+              dispatch({ accent: value as Theme.Color });
+            }}
+            items={[
+              {
+                value: 'red',
+                label: 'set red accent mode',
+                icon: <Icon name="shape-circle" accent="red" type="fill" />,
+              },
+              {
+                value: 'orange',
+                label: 'set orange accent mode',
+                icon: <Icon name="shape-circle" accent="orange" type="fill" />,
+              },
+              {
+                value: 'yellow',
+                label: 'set yellow accent mode',
+                icon: <Icon name="shape-circle" accent="yellow" type="fill" />,
+              },
+              {
+                value: 'green',
+                label: 'set green accent mode',
+                icon: <Icon name="shape-circle" accent="green" type="fill" />,
+              },
+              {
+                value: 'mint',
+                label: 'set mint accent mode',
+                icon: <Icon name="shape-circle" accent="mint" type="fill" />,
+              },
+              {
+                value: 'teal',
+                label: 'set teal accent mode',
+                icon: <Icon name="shape-circle" accent="teal" type="fill" />,
+              },
+              {
+                value: 'cyan',
+                label: 'set cyan accent mode',
+                icon: <Icon name="shape-circle" accent="cyan" type="fill" />,
+              },
+              {
+                value: 'blue',
+                label: 'set blue accent mode',
+                icon: <Icon name="shape-circle" accent="blue" type="fill" />,
+              },
+              {
+                value: 'indigo',
+                label: 'set indigo accent mode',
+                icon: <Icon name="shape-circle" accent="indigo" type="fill" />,
+              },
+              {
+                value: 'purple',
+                label: 'set purple accent mode',
+                icon: <Icon name="shape-circle" accent="purple" type="fill" />,
+              },
+              {
+                value: 'pink',
+                label: 'set pink accent mode',
+                icon: <Icon name="shape-circle" accent="pink" type="fill" />,
+              },
+              {
+                value: 'brown',
+                label: 'set brown accent mode',
+                icon: <Icon name="shape-circle" accent="brown" type="fill" />,
+              },
+            ]}
           />
 
           <SideMenu.Select
             icon={<Icon name={`mode-${state.mode}`} type={state.icons} />}
-            label="select mode"
+            label="select theme mode"
             value={state.mode}
             isOpen={panels.mode}
-            onOpen={handleOpen}
-            onClose={handleClose}
-            onOpenChange={() => setPanels((c) => ({ ...c, mode: true }))}
-            onOptionChange={(value) => {
-              dispatch({ mode: value as any });
-              clearPanels();
+            onOpenChange={(isOpen) => {
+              dispatch({ menuOpen: undefined, searchOpen: undefined, sideOpen: isOpen });
+              setPanels((current) => ({ ...current, ...initialState, mode: isOpen }));
             }}
-            items={TOKEN_DATA.mode.map((v) => ({
-              icon: <Icon name={`mode-${v}`} type={state.icons} />,
-              label: `set ${v} mode`,
-              value: v,
-            }))}
-          />
-
-          <SideMenu.Select
-            icon={<Icon name={state.dir} type={state.icons} />}
-            label="select text direction"
-            value={state.dir}
-            isOpen={panels.dir}
-            onOpen={handleOpen}
-            onClose={handleClose}
-            onOpenChange={() => setPanels((c) => ({ ...c, dir: true }))}
-            onOptionChange={(value) => {
-              dispatch({ dir: value as any });
-              clearPanels();
+            onChange={(value) => {
+              dispatch({ mode: value as Theme.Mode });
             }}
-            items={TOKEN_DATA.dir.map((v) => ({
-              icon: <Icon name={v} type={state.icons} />,
-              label: `set text direction ${v === 'rtl' ? 'right to left' : 'left to right'}`,
-              value: v,
-            }))}
+            items={[
+              {
+                value: 'light',
+                label: 'set theme mode light',
+                icon: <Icon name="mode-light" type={state.icons} />,
+              },
+              {
+                value: 'dark',
+                label: 'set theme mode dark',
+                icon: <Icon name="mode-dark" type={state.icons} />,
+              },
+              {
+                value: 'dim',
+                label: 'set theme mode dim',
+                icon: <Icon name="mode-dim" type={state.icons} />,
+              },
+            ]}
           />
 
           <Action.Spacer />
@@ -171,6 +219,7 @@ const SideMenu: SideMenuFactory = (props) => {
   );
 };
 
+SideMenu.Link = SideMenuLink;
 SideMenu.Select = SideMenuSelect;
 SideMenu.displayName = '@v2/SideMenu';
 export { SideMenu };

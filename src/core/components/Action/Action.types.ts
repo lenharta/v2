@@ -1,14 +1,10 @@
 import { Theme } from '@/types';
 import { GroupProps } from '@/core';
 
-type ActionSize = 'default' | Theme.SizeRegular;
-type ActionRadius = 'default' | Theme.SizeRegular;
-type ActionVariant = 'default' | 'elevated' | 'accent' | 'accent-elevated';
-
 interface ActionThemeProps {
-  size?: ActionSize | undefined;
-  radius?: ActionRadius | undefined;
-  variant?: ActionVariant | undefined;
+  size?: Theme.SizeRegular | undefined;
+  radius?: Theme.SizeRegular | undefined;
+  variant?: 'default' | 'default-elevated' | 'accent' | 'accent-elevated' | undefined;
 }
 
 interface ActionProps extends ActionThemeProps {
@@ -41,12 +37,4 @@ interface ActionContextValue extends ActionThemeProps, GroupProps {
   readOnly?: boolean | undefined;
 }
 
-export type {
-  ActionSize,
-  ActionRadius,
-  ActionVariant,
-  ActionProps,
-  ActionSpacerProps,
-  ActionGroupProps,
-  ActionContextValue,
-};
+export type { ActionProps, ActionSpacerProps, ActionGroupProps, ActionContextValue };
