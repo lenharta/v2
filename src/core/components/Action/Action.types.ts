@@ -3,7 +3,7 @@ import { GroupProps } from '@/core';
 
 interface ActionThemeProps {
   size?: Theme.SizeRegular | undefined;
-  radius?: Theme.SizeRegular | undefined;
+  radius?: 'default' | Theme.SizeRegular | undefined;
   variant?: 'default' | 'default-elevated' | 'accent' | 'accent-elevated' | undefined;
 }
 

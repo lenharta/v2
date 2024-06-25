@@ -18,7 +18,11 @@ const ActionSpacer = createFactory<ActionSpacerFactory>((props, ref) => {
 
   const contextProps = ctx
     ? {
-        className: clsx('v2-action-spacer', `v2-action-spacer--${ctx.variant}`, className),
+        className: clsx(
+          'v2-action-spacer',
+          `v2-action-spacer--${ctx.variant || 'default-elevated'}`,
+          className
+        ),
       }
     : {};
 

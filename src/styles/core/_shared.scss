@@ -5,7 +5,9 @@
 }
 
 .v2-action,
-.v2-button {
+.v2-button,
+.v2-select-target,
+.v2-select-option {
   transition:
     background-color var(--duration-moderate-01) var(--easing-productive),
     border-color var(--duration-moderate-01) var(--easing-productive),

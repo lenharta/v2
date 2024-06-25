@@ -2,7 +2,16 @@ import React from 'react';
 import { capitalizeString } from '@/utils';
 import { Core, Store, Theme } from '@/types';
 import { Page, Hero, Section } from '@/app';
-import { Action, ActionProps, ButtonProps, DividerProps, Icon, IconProps, Title } from '@/core';
+import {
+  Action,
+  ActionProps,
+  ButtonProps,
+  DividerProps,
+  Icon,
+  IconProps,
+  Select,
+  Title,
+} from '@/core';
 
 const CanvasHero = () => (
   <Hero>
@@ -165,6 +174,39 @@ function useCoreState<T extends CoreState>(initialState: T) {
 
   return [state, dispatch] as [T, React.Dispatch<Partial<T>>];
 }
+
+const CanvasSelect = () => {
+  const [isOpen, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState<string>();
+  return (
+    <SandboxCanvas title="Select">
+      <Select
+        value={value}
+        isOpen={isOpen}
+        onChange={setValue}
+        onOpenChange={setOpen}
+        data={[
+          {
+            label: 'Option 1',
+            value: 'option-1',
+          },
+          {
+            label: 'Option 2',
+            value: 'option-2',
+          },
+          {
+            label: 'Option 3',
+            value: 'option-3',
+          },
+          {
+            label: 'Option 4',
+            value: 'option-4',
+          },
+        ]}
+      />
+    </SandboxCanvas>
+  );
+};
 
 // function useInteractionState(initialState: InteractionState = {}) {
 //   const [state, dispatch] = React.useState(initialState);
@@ -460,6 +502,7 @@ const SandboxAccentControls = ({ data, state, dispatch }: AccentControlProps) =>
 const CanvasRoute: React.FC<{}> = ({}) => (
   <Page>
     <CanvasHero />
+    <CanvasSelect />
   </Page>
 );
 

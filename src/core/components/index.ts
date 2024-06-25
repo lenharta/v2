@@ -40,6 +40,9 @@ export * from './Label/Label.types';
 export * from './Stack/Stack';
 export * from './Stack/Stack.types';
 
+export * from './Select/Select';
+export * from './Select/Select.types';
+
 export * from './Text/Text';
 export * from './Text/Text.types';
 

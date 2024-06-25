@@ -51,7 +51,7 @@ const Action = createFactory<ActionFactory>((props, ref) => {
         'aria-orientation': ctx.orientation,
         className: clsx(
           'v2-action',
-          `v2-action--${variant ?? ctx.variant ?? 'elevated'}`,
+          `v2-action--${variant ?? ctx.variant ?? 'default-elevated'}`,
           `v2-action--size-${size ?? ctx.size ?? 'md'}`,
           `v2-action--radius-${radius ?? ctx.radius ?? 'default'}`,
           className
@@ -70,7 +70,7 @@ const Action = createFactory<ActionFactory>((props, ref) => {
       selected={selected}
       className={clsx(
         'v2-action',
-        `v2-action--${variant ?? 'elevated'}`,
+        `v2-action--${variant ?? 'default-elevated'}`,
         `v2-action--size-${size ?? 'sm'}`,
         `v2-action--radius-${radius ?? 'default'}`,
         className

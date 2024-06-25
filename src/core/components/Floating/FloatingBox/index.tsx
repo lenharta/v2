@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { Transition } from '@/core';
 import { useMergeRefs } from '@/hooks';
 import { Core, Factory } from '@/types';

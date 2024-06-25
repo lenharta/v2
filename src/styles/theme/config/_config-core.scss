@@ -9,29 +9,29 @@
 
 .v2-button--default:not([data-disabled]),
 .v2-action--default:not([data-disabled]),
-.v2-button--elevated:not([data-disabled]),
-.v2-action--elevated:not([data-disabled]) {
+.v2-button--default-elevated:not([data-disabled]),
+.v2-action--default-elevated:not([data-disabled]) {
   color: hsla(var(--c-hue-cont), 0.67);
 }
 
 .v2-button--default:not([data-disabled]) .v2-icon,
 .v2-action--default:not([data-disabled]) .v2-icon,
-.v2-button--elevated:not([data-disabled]) .v2-icon,
-.v2-action--elevated:not([data-disabled]) .v2-icon {
+.v2-button--default-elevated:not([data-disabled]) .v2-icon,
+.v2-action--default-elevated:not([data-disabled]) .v2-icon {
   fill: hsla(var(--c-hue-cont), 0.67);
 }
 
 .v2-button--default[data-disabled],
 .v2-action--default[data-disabled],
-.v2-button--elevated[data-disabled],
-.v2-action--elevated[data-disabled] {
+.v2-button--default-elevated[data-disabled],
+.v2-action--default-elevated[data-disabled] {
   color: hsla(var(--c-hue-cont), 0.47);
 }
 
 .v2-button--default[data-disabled] .v2-icon,
 .v2-action--default[data-disabled] .v2-icon,
-.v2-button--elevated[data-disabled] .v2-icon,
-.v2-action--elevated[data-disabled] .v2-icon {
+.v2-button--default-elevated[data-disabled] .v2-icon,
+.v2-action--default-elevated[data-disabled] .v2-icon {
   fill: hsla(var(--c-hue-cont), 0.47);
 }
 
@@ -64,32 +64,32 @@
   background-color: hsla(var(--c-hue-cont), 0);
 }
 
-.v2-button--elevated:not([data-disabled]),
-.v2-action--elevated:not([data-disabled]) {
+.v2-button--default-elevated:not([data-disabled]),
+.v2-action--default-elevated:not([data-disabled]) {
   background-color: hsla(var(--c-hue-cont), 0.03);
 }
 
-.v2-button--elevated:not([data-disabled]):hover,
-.v2-action--elevated:not([data-disabled]):hover {
+.v2-button--default-elevated:not([data-disabled]):hover,
+.v2-action--default-elevated:not([data-disabled]):hover {
   background-color: hsla(var(--c-hue-cont), 0.05);
 }
 
-.v2-button--elevated:not([data-disabled]):active,
-.v2-action--elevated:not([data-disabled]):active {
+.v2-button--default-elevated:not([data-disabled]):active,
+.v2-action--default-elevated:not([data-disabled]):active {
   background-color: hsla(var(--c-hue-cont), 0.07);
 }
 
-.v2-button--elevated:not([data-disabled])[data-selected],
-.v2-action--elevated:not([data-disabled])[data-selected] {
+.v2-button--default-elevated:not([data-disabled])[data-selected],
+.v2-action--default-elevated:not([data-disabled])[data-selected] {
   background-color: hsla(var(--c-hue-cont), 0.07);
 }
 
-.v2-button--elevated[data-disabled],
-.v2-action--elevated[data-disabled] {
+.v2-button--default-elevated[data-disabled],
+.v2-action--default-elevated[data-disabled] {
   background-color: hsla(var(--c-hue-cont), 0.29);
 }
 
-.v2-action-spacer--elevated {
+.v2-action-spacer--default-elevated {
   background-color: hsla(var(--c-hue-cont), 0.03);
 }
 
@@ -201,6 +201,63 @@
 .v2-divider--accent::before,
 .v2-divider--accent::after {
   border-top-color: hsla(var(--c-hue-accent), 0.6);
+}
+
+/// SELECT
+///////////////////////////////////////////////////////////////
+
+.v2-select-target--default,
+.v2-select-target--default-elevated {
+  color: hsla(var(--c-hue-cont), 0.47);
+}
+.v2-select-option--default,
+.v2-select-option--default-elevated {
+  color: hsla(var(--c-hue-cont), 0.67);
+}
+
+.v2-select-box--default,
+.v2-select-box--default-elevated {
+  background-color: hsla(var(--c-hue-base), 1);
+}
+
+.v2-select-target--default,
+.v2-select-option--default {
+  background-color: transparent;
+}
+
+.v2-select-target--default:not([data-disabled]):hover,
+.v2-select-option--default:not([data-disabled]):hover {
+  background-color: hsla(var(--c-hue-cont), 0.03);
+}
+
+.v2-select-target--default:not([data-disabled]):active,
+.v2-select-option--default:not([data-disabled]):active {
+  background-color: hsla(var(--c-hue-cont), 0.05);
+}
+
+.v2-select-target--default:not([data-disabled])[data-selected],
+.v2-select-option--default:not([data-disabled])[data-selected] {
+  background-color: hsla(var(--c-hue-cont), 0.07);
+}
+
+.v2-select-target--default-elevated,
+.v2-select-option--default-elevated {
+  background-color: hsla(var(--c-hue-cont), 0.03);
+}
+
+.v2-select-target--default-elevated:not([data-disabled]):hover,
+.v2-select-option--default-elevated:not([data-disabled]):hover {
+  background-color: hsla(var(--c-hue-cont), 0.05);
+}
+
+.v2-select-target--default-elevated:not([data-disabled]):active,
+.v2-select-option--default-elevated:not([data-disabled]):active {
+  background-color: hsla(var(--c-hue-cont), 0.05);
+}
+
+.v2-select-target--default-elevated:not([data-disabled])[data-selected],
+.v2-select-option--default-elevated:not([data-disabled])[data-selected] {
+  background-color: hsla(var(--c-hue-cont), 0.07);
 }
 
 /// GLOBAL UTILITIES

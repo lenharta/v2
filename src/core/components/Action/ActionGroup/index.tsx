@@ -17,7 +17,7 @@ const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
     size = 'sm',
     value,
     radius = 'default',
-    variant = 'elevated',
+    variant,
     loading,
     disabled,
     readOnly,
