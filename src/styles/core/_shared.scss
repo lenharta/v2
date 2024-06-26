@@ -6,8 +6,11 @@
 
 .v2-action,
 .v2-button,
+.v2-icon-button,
+.v2-tool-button,
 .v2-select-target,
-.v2-select-option {
+.v2-select-option,
+.v2-inline-input {
   transition:
     background-color var(--duration-moderate-01) var(--easing-productive),
     border-color var(--duration-moderate-01) var(--easing-productive),

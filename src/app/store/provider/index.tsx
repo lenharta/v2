@@ -11,10 +11,12 @@ const initialStore: Store.State = {
   icons: 'outline',
   accent: 'blue',
   language: 'en',
+  contrast: 'no',
   nonce: () => '',
 };
 
 const THEME_ATTRIBUTE_MAP = {
+  contrast: 'data-prefers-accessible-contrast',
   accent: 'data-prefers-accent',
   mode: 'data-prefers-mode',
   dir: 'data-prefers-dir',
@@ -44,6 +46,7 @@ const StoreProvider = ({ children }: { children?: React.ReactNode | undefined })
         icons: store.icons,
         accent: store.accent,
         language: store.language,
+        contrast: store.contrast,
       });
 
       const payload = local.fetch()!;
@@ -67,8 +70,9 @@ const StoreProvider = ({ children }: { children?: React.ReactNode | undefined })
       icons: store.icons,
       accent: store.accent,
       language: store.language,
+      contrast: store.contrast,
     });
-  }, [store.dir, store.mode, store.accent, store.icons, store.language]);
+  }, [store.dir, store.mode, store.accent, store.icons, store.language, store.contrast]);
 
   React.useEffect(() => {
     const html = document.getElementsByTagName('html')[0]!;
@@ -76,7 +80,7 @@ const StoreProvider = ({ children }: { children?: React.ReactNode | undefined })
     (Object.keys(THEME_ATTRIBUTE_MAP) as Theme.Attributes[]).forEach((attribute) => {
       html.setAttribute(THEME_ATTRIBUTE_MAP[attribute], store[attribute]);
     });
-  }, [store.dir, store.mode, store.accent]);
+  }, [store.dir, store.mode, store.accent, store.contrast]);
 
   return (
     <StoreStateContext.Provider value={store}>

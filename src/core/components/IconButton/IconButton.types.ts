@@ -1,7 +1,16 @@
-import { UnstyledButtonProps } from '@/core';
+import { IconProps, UnstyledButtonProps } from '@/core';
+import { Theme } from '@/types';
 
-interface IconButtonProps extends UnstyledButtonProps {
-  'data-testid'?: string | undefined;
+interface IconButtonThemeProps {
+  size?: IconProps['size'] | undefined;
+  type?: IconProps['type'] | undefined;
+  radius?: Theme.SizeRegular | 'rd' | undefined;
+  accent?: IconProps['accent'] | undefined;
+  variant?: 'default' | 'default-elevated' | 'accent' | 'accent-elevated' | undefined;
 }
 
-export type { IconButtonProps };
+interface IconButtonProps extends UnstyledButtonProps, IconButtonThemeProps {
+  icon?: IconProps['name'] | undefined;
+}
+
+export type { IconButtonProps, IconButtonThemeProps };

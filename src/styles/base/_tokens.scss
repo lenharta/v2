@@ -22,6 +22,14 @@
   --index-header: 1000;
   --index-sidemenu: 1000;
 
+  // RADIUS
+  --radius-xs: calc(var(--s-01) * 2);
+  --radius-sm: calc(var(--s-01) * 4);
+  --radius-md: calc(var(--s-01) * 6);
+  --radius-lg: calc(var(--s-01) * 8);
+  --radius-xl: calc(var(--s-01) * 10);
+  --radius-rd: 1000px;
+
   // MOTION
   --delay-01: 0ms;
   --delay-02: 100ms;
@@ -106,6 +114,14 @@
   --breakpoint-desktop-lg: 1400px;
 
   // // COMMON TOKENS
+
+  --size-icon-xxs: 12px;
+  --size-icon-xs: 14px;
+  --size-icon-sm: 16px;
+  --size-icon-md: 18px;
+  --size-icon-lg: 20px;
+  --size-icon-xl: 22px;
+  --size-icon-xxl: 24px;
 
   --size-action: var(--s-10);
   --size-gutter: var(--s-06);

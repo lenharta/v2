@@ -7,6 +7,7 @@ interface PageProps {
 
 const Page: React.FC<PageProps> = (props) => {
   const { children, ...forwardedProps } = props;
+
   return (
     <App>
       <div className="v2-layout-page" {...forwardedProps}>

@@ -34,6 +34,9 @@ export * from './IconButton/IconButton.types';
 export * from './Image/Image';
 export * from './Image/Image.types';
 
+export * from './InlineInput/InlineInput';
+export * from './InlineInput/InlineInput.types';
+
 export * from './Label/Label';
 export * from './Label/Label.types';
 
@@ -48,6 +51,9 @@ export * from './Text/Text.types';
 
 export * from './Title/Title';
 export * from './Title/Title.types';
+
+export * from './Toast/Toast';
+export * from './Toast/Toast.types';
 
 export * from './ToolButton/ToolButton';
 export * from './ToolButton/ToolButton.types';

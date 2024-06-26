@@ -5,87 +5,99 @@
   --c-inherit: inherit;
   --c-transparent: transparent;
 
-  // COLORS | MODE | LIGHT
+  --c-rgb-red-default-light: 255, 59, 48;
+  --c-rgb-red-default-dark: 255, 69, 58;
+  --c-rgb-red-accessible-light: 215, 0, 21;
+  --c-rgb-red-accessible-dark: 255, 105, 97;
 
-  --c-hex-light-red: #ff3b30;
-  --c-hex-light-orange: #ff9500;
-  --c-hex-light-yellow: #ffcc00;
-  --c-hex-light-green: #34c759;
-  --c-hex-light-mint: #00c7be;
-  --c-hex-light-teal: #30b0c7;
-  --c-hex-light-cyan: #32ade6;
-  --c-hex-light-blue: #007aff;
-  --c-hex-light-indigo: #5856d6;
-  --c-hex-light-purple: #af52de;
-  --c-hex-light-pink: #ff2d55;
-  --c-hex-light-brown: #a2845e;
+  --c-rgb-orange-default-light: 255, 149, 0;
+  --c-rgb-orange-default-dark: 255, 159, 10;
+  --c-rgb-orange-accessible-light: 201, 52, 0;
+  --c-rgb-orange-accessible-dark: 255, 179, 64;
 
-  --c-hue-light-red: 3, 100%, 59%;
-  --c-hue-light-orange: 35, 100%, 50%;
-  --c-hue-light-yellow: 48, 100%, 50%;
-  --c-hue-light-green: 135, 59%, 49%;
-  --c-hue-light-mint: 177, 100%, 39%;
-  --c-hue-light-teal: 189, 61%, 48%;
-  --c-hue-light-cyan: 199, 78%, 55%;
-  --c-hue-light-blue: 211, 100%, 50%;
-  --c-hue-light-indigo: 241, 61%, 59%;
-  --c-hue-light-purple: 280, 68%, 60%;
-  --c-hue-light-pink: 349, 100%, 59%;
-  --c-hue-light-brown: 34, 27%, 50%;
+  --c-rgb-yellow-default-light: 255, 204, 0;
+  --c-rgb-yellow-default-dark: 255, 214, 10;
+  --c-rgb-yellow-accessible-light: 178, 80, 0;
+  --c-rgb-yellow-accessible-dark: 255, 212, 38;
 
-  // COLORS | MODE | DARK
+  --c-rgb-green-default-light: 52, 199, 89;
+  --c-rgb-green-default-dark: 48, 209, 88;
+  --c-rgb-green-accessible-light: 36, 138, 61;
+  --c-rgb-green-accessible-dark: 48, 219, 91;
 
-  --c-hex-dark-red: #ff453a;
-  --c-hex-dark-orange: #ff9f0a;
-  --c-hex-dark-yellow: #ffd60a;
-  --c-hex-dark-green: #30d158;
-  --c-hex-dark-mint: #66d4cf;
-  --c-hex-dark-teal: #40c8e0;
-  --c-hex-dark-cyan: #64d2ff;
-  --c-hex-dark-blue: #0a84ff;
-  --c-hex-dark-indigo: #5e5ce6;
-  --c-hex-dark-purple: #bf5af2;
-  --c-hex-dark-pink: #ff375f;
-  --c-hex-dark-brown: #ac8e68;
+  --c-rgb-mint-default-light: 0, 199, 190;
+  --c-rgb-mint-default-dark: 102, 212, 207;
+  --c-rgb-mint-accessible-light: 12, 129, 123;
+  --c-rgb-mint-accessible-dark: 102, 212, 207;
 
-  --c-hue-dark-red: 3, 100%, 61%;
-  --c-hue-dark-orange: 36, 100%, 52%;
-  --c-hue-dark-yellow: 50, 100%, 52%;
-  --c-hue-dark-green: 135, 64%, 50%;
-  --c-hue-dark-mint: 177, 56%, 62%;
-  --c-hue-dark-teal: 189, 72%, 57%;
-  --c-hue-dark-cyan: 197, 100%, 70%;
-  --c-hue-dark-blue: 210, 100%, 52%;
-  --c-hue-dark-indigo: 241, 73%, 63%;
-  --c-hue-dark-purple: 280, 85%, 65%;
-  --c-hue-dark-pink: 348, 100%, 60%;
-  --c-hue-dark-brown: 34, 29%, 54%;
+  --c-rgb-teal-default-light: 48, 176, 199;
+  --c-rgb-teal-default-dark: 64, 200, 224;
+  --c-rgb-teal-accessible-light: 0, 130, 153;
+  --c-rgb-teal-accessible-dark: 93, 230, 255;
 
-  // COLORS | MODE | DIM
+  --c-rgb-cyan-default-light: 50, 173, 230;
+  --c-rgb-cyan-default-dark: 100, 210, 255;
+  --c-rgb-cyan-accessible-light: 0, 113, 164;
+  --c-rgb-cyan-accessible-dark: 112, 215, 255;
 
-  --c-hex-dim-red: #ff453a;
-  --c-hex-dim-orange: #ff9f0a;
-  --c-hex-dim-yellow: #ffd60a;
-  --c-hex-dim-green: #30d158;
-  --c-hex-dim-mint: #66d4cf;
-  --c-hex-dim-teal: #40c8e0;
-  --c-hex-dim-cyan: #64d2ff;
-  --c-hex-dim-blue: #0a84ff;
-  --c-hex-dim-indigo: #5e5ce6;
-  --c-hex-dim-purple: #bf5af2;
-  --c-hex-dim-pink: #ff375f;
-  --c-hex-dim-brown: #ac8e68;
+  --c-rgb-blue-default-light: 0, 122, 255;
+  --c-rgb-blue-default-dark: 10, 132, 255;
+  --c-rgb-blue-accessible-light: 0, 64, 221;
+  --c-rgb-blue-accessible-dark: 64, 156, 255;
 
-  --c-hue-dim-red: 3, 100%, 61%;
-  --c-hue-dim-orange: 36, 100%, 52%;
-  --c-hue-dim-yellow: 50, 100%, 52%;
-  --c-hue-dim-green: 135, 64%, 50%;
-  --c-hue-dim-mint: 177, 56%, 62%;
-  --c-hue-dim-teal: 189, 72%, 57%;
-  --c-hue-dim-cyan: 197, 100%, 70%;
-  --c-hue-dim-blue: 210, 100%, 52%;
-  --c-hue-dim-indigo: 241, 73%, 63%;
-  --c-hue-dim-purple: 280, 85%, 65%;
-  --c-hue-dim-pink: 348, 100%, 60%;
-  --c-hue-dim-brown: 34, 29%, 54%;
+  --c-rgb-indigo-default-light: 88, 86, 214;
+  --c-rgb-indigo-default-dark: 94, 92, 230;
+  --c-rgb-indigo-accessible-light: 54, 52, 163;
+  --c-rgb-indigo-accessible-dark: 125, 122, 255;
+
+  --c-rgb-purple-default-light: 175, 82, 222;
+  --c-rgb-purple-default-dark: 191, 90, 242;
+  --c-rgb-purple-accessible-light: 137, 68, 171;
+  --c-rgb-purple-accessible-dark: 218, 143, 255;
+
+  --c-rgb-pink-default-light: 255, 45, 85;
+  --c-rgb-pink-default-dark: 255, 55, 95;
+  --c-rgb-pink-accessible-light: 211, 15, 69;
+  --c-rgb-pink-accessible-dark: 255, 100, 130;
+
+  --c-rgb-brown-default-light: 165, 132, 94;
+  --c-rgb-brown-default-dark: 172, 142, 104;
+  --c-rgb-brown-accessible-light: 127, 101, 69;
+  --c-rgb-brown-accessible-dark: 181, 148, 105;
+
+  // gray-01
+  --c-rgb-gray-01-default-light: 142, 142, 147;
+  --c-rgb-gray-01-default-dark: 142, 142, 147;
+  --c-rgb-gray-01-accessible-light: 108, 108, 112;
+  --c-rgb-gray-01-accessible-dark: 174, 174, 178;
+
+  // gray-02
+  --c-rgb-gray-02-default-light: 174, 174, 178;
+  --c-rgb-gray-02-default-dark: 99, 99, 102;
+  --c-rgb-gray-02-accessible-light: 142, 142, 147;
+  --c-rgb-gray-02-accessible-dark: 124, 124, 128;
+
+  // gray-03
+  --c-rgb-gray-03-default-light: 199, 199, 204;
+  --c-rgb-gray-03-default-dark: 72, 72, 74;
+  --c-rgb-gray-03-accessible-light: 174, 174, 178;
+  --c-rgb-gray-03-accessible-dark: 84, 84, 86;
+
+  // gray-04
+  --c-rgb-gray-04-default-light: 209, 209, 214;
+  --c-rgb-gray-04-default-dark: 58, 58, 60;
+  --c-rgb-gray-04-accessible-light: 188, 188, 192;
+  --c-rgb-gray-04-accessible-dark: 68, 68, 70;
+
+  // gray-05
+  --c-rgb-gray-05-default-light: 229, 229, 234;
+  --c-rgb-gray-05-default-dark: 44, 44, 46;
+  --c-rgb-gray-05-accessible-light: 216, 216, 220;
+  --c-rgb-gray-05-accessible-dark: 54, 54, 56;
+
+  // gray-06
+  --c-rgb-gray-06-default-light: 242, 242, 247;
+  --c-rgb-gray-06-default-dark: 28, 28, 30;
+  --c-rgb-gray-06-accessible-light: 235, 235, 240;
+  --c-rgb-gray-06-accessible-dark: 36, 36, 38;
 }

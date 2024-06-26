@@ -1,17 +1,22 @@
 import React from 'react';
 import { capitalizeString } from '@/utils';
 import { Core, Store, Theme } from '@/types';
-import { Page, Hero, Section } from '@/app';
+import { Page, Hero, Section, useStateContext, useDispatchContext } from '@/app';
 import {
   Action,
   ActionProps,
+  Button,
   ButtonProps,
   DividerProps,
   Icon,
+  IconButton,
+  IconButtonProps,
   IconProps,
+  InlineInputProps,
   Select,
   Title,
 } from '@/core';
+import { InlineInput } from '@/core/components/InlineInput/InlineInput';
 
 const CanvasHero = () => (
   <Hero>
@@ -130,6 +135,32 @@ const coreControlDividerOptions = {
   ],
 };
 
+const coreControlIconButtonOptions = {
+  variant: [
+    { label: 'Default', value: 'default' },
+    { label: 'Accent', value: 'accent' },
+    { label: 'Default Elevated', value: 'default-elevated' },
+    { label: 'Accent Elevated', value: 'accent-elevated' },
+  ],
+  size: [
+    { label: 'XX-Small', value: 'xxs' },
+    { label: 'X-Small', value: 'xs' },
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+    { label: 'X-Large', value: 'xl' },
+    { label: 'XX-Large', value: 'xxl' },
+  ],
+  radius: [
+    { label: 'X-Small', value: 'xs' },
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+    { label: 'X-Large', value: 'xl' },
+    { label: 'Round', value: 'rd' },
+  ],
+};
+
 const coreControlOptions = {
   button: coreControlButtonOptions,
   action: coreControlActionOptions,
@@ -204,6 +235,331 @@ const CanvasSelect = () => {
           },
         ]}
       />
+    </SandboxCanvas>
+  );
+};
+
+interface IconButtonCanvasState {
+  size?: IconButtonProps['size'] | undefined;
+  radius?: IconButtonProps['radius'] | undefined;
+  variant?: IconButtonProps['variant'] | undefined;
+  disabled?: boolean | undefined;
+  readOnly?: boolean | undefined;
+  selected?: boolean | undefined;
+}
+
+type CanvasReducer<T> = React.Reducer<T, Partial<T>>;
+
+type IconButtonCanvasReducer = CanvasReducer<IconButtonCanvasState>;
+
+interface CanvasControlGroupProps<T extends Record<string, any>> {
+  state: T[keyof T] | undefined;
+  dispatch: React.Dispatch<Partial<T>>;
+  variant?: ButtonProps['variant'] | undefined;
+  name: keyof T;
+  data: {
+    value: T[keyof T];
+    label: string;
+    disabled?: boolean | undefined;
+    readOnly?: boolean | undefined;
+  }[];
+}
+
+function CanvasControlGroup<T extends Record<string, any>>(props: CanvasControlGroupProps<T>) {
+  const { state, dispatch, variant = 'default-elevated', name, data } = props;
+  return (
+    <Button.Group value={state} gap="xs">
+      {data.map((item) => (
+        <Button
+          key={item.value}
+          value={item.value}
+          label={item.label}
+          variant={variant}
+          disabled={item.disabled}
+          readOnly={item.readOnly}
+          selected={item.value === state}
+          onClick={() => dispatch({ [name]: item.value } as Partial<T>)}
+          onDoubleClick={() => dispatch({ [name]: undefined } as Partial<T>)}
+        >
+          {item.label}
+        </Button>
+      ))}
+    </Button.Group>
+  );
+}
+
+type CanvasStore<T> = React.Reducer<T, Partial<T>>;
+
+function useCanvasStore<T extends Record<string, any>>(
+  initialStore: T
+): [T, React.Dispatch<Partial<T>>] {
+  return React.useReducer<CanvasStore<T>>(
+    (state, update) => ({
+      ...state,
+      ...update,
+    }),
+    initialStore
+  );
+}
+
+const CanvasControlColorContrast = () => {
+  const dispatch = useDispatchContext();
+  const state = useStateContext();
+
+  return (
+    <SandboxCanvas title="Global Theme | Color Contrast">
+      <Button.Group gap="xs" variant="default-elevated">
+        <Button
+          label="global colors default"
+          onClick={() => dispatch({ contrast: 'no' })}
+          selected={state.contrast === 'no' ? true : undefined}
+        >
+          Default
+        </Button>
+
+        <Button
+          label="global colors accessible"
+          onClick={() => dispatch({ contrast: 'yes' })}
+          selected={state.contrast === 'yes' ? true : undefined}
+        >
+          Accessible
+        </Button>
+      </Button.Group>
+    </SandboxCanvas>
+  );
+};
+
+interface CanvasButtonStore {
+  size?: ButtonProps['size'] | undefined;
+  variant?: ButtonProps['variant'] | undefined;
+}
+
+const CanvasButton = () => {
+  const [state, dispatch] = useCanvasStore<CanvasButtonStore>({
+    variant: 'accent-elevated',
+    size: 'md',
+  });
+
+  return (
+    <SandboxCanvas title="Button">
+      <CanvasControlGroup
+        name="size"
+        state={state.size}
+        dispatch={dispatch}
+        data={[
+          { label: 'X-Small', value: 'xs' },
+          { label: 'Small', value: 'sm' },
+          { label: 'Medium', value: 'md' },
+          { label: 'Large', value: 'lg' },
+          { label: 'X-Large', value: 'xl' },
+        ]}
+      />
+
+      <CanvasControlGroup
+        name="variant"
+        state={state.variant}
+        dispatch={dispatch}
+        data={[
+          { label: 'Default', value: 'default' },
+          { label: 'Accent', value: 'accent' },
+          { label: 'Default Elevated', value: 'default-elevated' },
+          { label: 'Accent Elevated', value: 'accent-elevated' },
+        ]}
+      />
+
+      <Button label="canvas button" {...state}>
+        Button
+      </Button>
+    </SandboxCanvas>
+  );
+};
+
+interface CanvasActionStore {
+  size?: ActionProps['size'] | undefined;
+  variant?: ActionProps['variant'] | undefined;
+}
+
+const CanvasAction = () => {
+  const [state, dispatch] = useCanvasStore<CanvasActionStore>({
+    variant: 'accent-elevated',
+    size: 'md',
+  });
+
+  return (
+    <SandboxCanvas title="Action">
+      <CanvasControlGroup
+        name="size"
+        state={state.size}
+        dispatch={dispatch}
+        data={[
+          { label: 'X-Small', value: 'xs' },
+          { label: 'Small', value: 'sm' },
+          { label: 'Medium', value: 'md' },
+          { label: 'Large', value: 'lg' },
+          { label: 'X-Large', value: 'xl' },
+        ]}
+      />
+
+      <CanvasControlGroup
+        name="variant"
+        state={state.variant}
+        dispatch={dispatch}
+        data={[
+          { label: 'Default', value: 'default' },
+          { label: 'Accent', value: 'accent' },
+          { label: 'Default Elevated', value: 'default-elevated' },
+          { label: 'Accent Elevated', value: 'accent-elevated' },
+        ]}
+      />
+
+      <Action icon={<Icon name="search" />} label="canvas action" {...state} />
+    </SandboxCanvas>
+  );
+};
+
+interface InlineInputStore {
+  size?: InlineInputProps['size'] | undefined;
+  variant?: InlineInputProps['variant'] | undefined;
+  selected?: boolean | undefined;
+  disabled?: boolean | undefined;
+  readOnly?: boolean | undefined;
+}
+
+const CanvasInlineInput = () => {
+  const [state, dispatch] = useCanvasStore<InlineInputStore>({});
+
+  return (
+    <SandboxCanvas title="InlineInput">
+      <Button.Group>
+        <Button
+          selected={state.selected}
+          variant="default-elevated"
+          onClick={() => dispatch({ selected: !state.selected ? true : undefined })}
+          children="Selected"
+        />
+        <Button
+          selected={state.readOnly}
+          variant="default-elevated"
+          onClick={() => dispatch({ readOnly: !state.readOnly ? true : undefined })}
+          children="ReadOnly"
+        />
+        <Button
+          selected={state.disabled}
+          variant="default-elevated"
+          onClick={() => dispatch({ disabled: !state.disabled ? true : undefined })}
+          children="Disabled"
+        />
+      </Button.Group>
+
+      <CanvasControlGroup
+        name="size"
+        state={state.size}
+        dispatch={dispatch}
+        data={[
+          { label: 'X-Small', value: 'xs' },
+          { label: 'Small', value: 'sm' },
+          { label: 'Medium', value: 'md' },
+          { label: 'Large', value: 'lg' },
+          { label: 'X-Large', value: 'xl' },
+        ]}
+      />
+
+      <CanvasControlGroup
+        name="variant"
+        state={state.variant}
+        dispatch={dispatch}
+        data={[
+          { label: 'Default', value: 'default' },
+          { label: 'Accent', value: 'accent' },
+          { label: 'Default Elevated', value: 'default-elevated' },
+          { label: 'Accent Elevated', value: 'accent-elevated' },
+        ]}
+      />
+
+      <InlineInput
+        label="Input Label"
+        error="This is an input error message."
+        message="Some input message here."
+        size={state.size}
+        variant={state.variant}
+        checked={state.selected}
+        readOnly={state.readOnly}
+        disabled={state.disabled}
+      >
+        <Icon name="checkbox-mixed-square" />
+      </InlineInput>
+    </SandboxCanvas>
+  );
+};
+
+const systemGrayColorsDark: SystemGrayOptions[] = [
+  { level: '01', type: 'default', mode: 'dark', alpha: 1 },
+  { level: '02', type: 'default', mode: 'dark', alpha: 1 },
+  { level: '03', type: 'default', mode: 'dark', alpha: 1 },
+  { level: '04', type: 'default', mode: 'dark', alpha: 1 },
+  { level: '05', type: 'default', mode: 'dark', alpha: 1 },
+  { level: '06', type: 'default', mode: 'dark', alpha: 1 },
+  { level: '01', type: 'accessible', mode: 'dark', alpha: 1 },
+  { level: '02', type: 'accessible', mode: 'dark', alpha: 1 },
+  { level: '03', type: 'accessible', mode: 'dark', alpha: 1 },
+  { level: '04', type: 'accessible', mode: 'dark', alpha: 1 },
+  { level: '05', type: 'accessible', mode: 'dark', alpha: 1 },
+  { level: '06', type: 'accessible', mode: 'dark', alpha: 1 },
+];
+
+const systemGrayColorsLight: SystemGrayOptions[] = [
+  { level: '01', type: 'default', mode: 'light', alpha: 1 },
+  { level: '02', type: 'default', mode: 'light', alpha: 1 },
+  { level: '03', type: 'default', mode: 'light', alpha: 1 },
+  { level: '04', type: 'default', mode: 'light', alpha: 1 },
+  { level: '05', type: 'default', mode: 'light', alpha: 1 },
+  { level: '06', type: 'default', mode: 'light', alpha: 1 },
+  { level: '01', type: 'accessible', mode: 'light', alpha: 1 },
+  { level: '02', type: 'accessible', mode: 'light', alpha: 1 },
+  { level: '03', type: 'accessible', mode: 'light', alpha: 1 },
+  { level: '04', type: 'accessible', mode: 'light', alpha: 1 },
+  { level: '05', type: 'accessible', mode: 'light', alpha: 1 },
+  { level: '06', type: 'accessible', mode: 'light', alpha: 1 },
+];
+
+interface SystemGrayOptions {
+  mode?: 'light' | 'dark' | undefined;
+  type?: 'default' | 'accessible' | undefined;
+  level?: '01' | '02' | '03' | '04' | '05' | '06' | undefined;
+  alpha?: number | undefined;
+}
+
+function createSystemGrayToken(opts: SystemGrayOptions) {
+  const { level = '01', type = 'default', mode = 'dark', alpha = 1 } = opts;
+  return `rgba(var(--c-rgb-gray-${level}-${type}-${mode}), ${alpha})`;
+}
+
+interface SystemGraySwatchProps extends SystemGrayOptions {
+  label: string;
+}
+
+function SystemGraySwatch(props: SystemGraySwatchProps) {
+  const { label, alpha, level, mode, type } = props;
+
+  const style = {
+    color: `hsla(0, 0%, ${mode === 'dark' ? '99%' : '0%'}, 0.87)`,
+    backgroundColor: createSystemGrayToken({ level, type, mode, alpha }),
+  };
+
+  return (
+    <div className="v2-sandbox-canvas-swatch" style={style}>
+      <div className="v2-sandbox-canvas-swatch-label">{label}</div>
+    </div>
+  );
+}
+
+const CanvasGraySwatchesDark = () => {
+  return (
+    <SandboxCanvas title="System Gray Colors">
+      {systemGrayColorsDark.map((item) => {
+        const token = ['gray', item.level, item.type, item.mode].join('-');
+        return <SystemGraySwatch key={token} label={token} {...item} />;
+      })}
     </SandboxCanvas>
   );
 };
@@ -502,7 +858,13 @@ const SandboxAccentControls = ({ data, state, dispatch }: AccentControlProps) =>
 const CanvasRoute: React.FC<{}> = ({}) => (
   <Page>
     <CanvasHero />
-    <CanvasSelect />
+    <CanvasControlColorContrast />
+    <CanvasAction />
+    <CanvasButton />
+    {/* <CanvasSelect /> */}
+    {/* <CanvasIconButton /> */}
+    {/* <CanvasInlineInput /> */}
+    {/* <CanvasGraySwatchesDark /> */}
   </Page>
 );
 
