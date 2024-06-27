@@ -7,6 +7,7 @@ export declare namespace Store {
     mode: Theme.Mode;
     icons: 'fill' | 'outline';
     accent: Theme.Color;
+    contrast: 'yes' | 'no';
     language: I18n.LanguageCode;
   };
 

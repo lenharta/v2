@@ -30,7 +30,8 @@
   transition: transform var(--duration-slow-01) var(--easing-expressive);
 }
 
-.v2-tile-link {
+.v2-tile-link,
+.v2-sidemenu-link[data-selected]::before {
   transition:
     background-color var(--duration-moderate-01) var(--easing-productive),
     border-color var(--duration-moderate-01) var(--easing-productive),
@@ -38,7 +39,9 @@
     stroke var(--duration-moderate-01) var(--easing-productive),
     color var(--duration-moderate-01) var(--easing-productive),
     fill var(--duration-moderate-01) var(--easing-productive);
+}
 
+.v2-tile-link {
   border-color: transparent;
   border-width: var(--s-01);
   border-style: solid;

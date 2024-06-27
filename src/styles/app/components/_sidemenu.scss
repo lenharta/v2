@@ -19,6 +19,15 @@
       padding-inline: var(--s-01);
     }
 
+    &-link[data-selected]::before {
+      width: var(--s-01);
+      content: '';
+      position: absolute;
+      bottom: calc(var(--s-01) * -1);
+      left: calc(var(--s-01) * -1);
+      top: calc(var(--s-01) * -1);
+    }
+
     &-select-drawer {
       --x-item-count: 6;
       --x-gap-count: calc(var(--x-item-count) + 1);
