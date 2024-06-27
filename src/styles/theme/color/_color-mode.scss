@@ -1,16 +1,46 @@
 [data-prefers-mode='dark'][data-prefers-accessible-contrast='no'] {
   --c-rgb-base: var(--c-rgb-gray-06-default-dark);
   --c-rgb-cont: var(--c-rgb-gray-06-default-light);
+
+  [data-scheme='primary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-default-dark);
+    --c-rgb-cont: var(--c-rgb-gray-06-default-light);
+  }
+
+  [data-scheme='secondary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-default-light);
+    --c-rgb-cont: var(--c-rgb-gray-06-default-dark);
+  }
 }
 
 [data-prefers-mode='dim'][data-prefers-accessible-contrast='no'] {
   --c-rgb-base: var(--c-rgb-gray-05-default-dark);
   --c-rgb-cont: var(--c-rgb-gray-06-default-light);
+
+  [data-scheme='primary'] {
+    --c-rgb-base: var(--c-rgb-gray-05-default-dark);
+    --c-rgb-cont: var(--c-rgb-gray-06-default-light);
+  }
+
+  [data-scheme='secondary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-default-light);
+    --c-rgb-cont: var(--c-rgb-gray-06-default-dark);
+  }
 }
 
 [data-prefers-mode='light'][data-prefers-accessible-contrast='no'] {
   --c-rgb-base: var(--c-rgb-gray-06-default-light);
   --c-rgb-cont: var(--c-rgb-gray-06-default-dark);
+
+  [data-scheme='primary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-default-light);
+    --c-rgb-cont: var(--c-rgb-gray-06-default-dark);
+  }
+
+  [data-scheme='secondary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-default-dark);
+    --c-rgb-cont: var(--c-rgb-gray-06-default-light);
+  }
 }
 
 [data-prefers-mode='dim'][data-prefers-accessible-contrast='no'],
@@ -47,16 +77,46 @@
 [data-prefers-mode='dark'][data-prefers-accessible-contrast='yes'] {
   --c-rgb-base: var(--c-rgb-gray-06-accessible-dark);
   --c-rgb-cont: var(--c-rgb-gray-06-accessible-light);
+
+  .v2-section[data-scheme='primary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-accessible-dark);
+    --c-rgb-cont: var(--c-rgb-gray-06-accessible-light);
+  }
+
+  .v2-section[data-scheme='secondary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-accessible-light);
+    --c-rgb-cont: var(--c-rgb-gray-06-accessible-dark);
+  }
 }
 
 [data-prefers-mode='dim'][data-prefers-accessible-contrast='yes'] {
   --c-rgb-base: var(--c-rgb-gray-05-accessible-dark);
   --c-rgb-cont: var(--c-rgb-gray-06-accessible-light);
+
+  .v2-section[data-scheme='primary'] {
+    --c-rgb-base: var(--c-rgb-gray-05-accessible-dark);
+    --c-rgb-cont: var(--c-rgb-gray-06-accessible-light);
+  }
+
+  .v2-section[data-scheme='secondary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-accessible-light);
+    --c-rgb-cont: var(--c-rgb-gray-06-accessible-dark);
+  }
 }
 
 [data-prefers-mode='light'][data-prefers-accessible-contrast='yes'] {
   --c-rgb-base: var(--c-rgb-gray-06-accessible-light);
   --c-rgb-cont: var(--c-rgb-gray-06-accessible-dark);
+
+  .v2-section[data-scheme='primary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-accessible-light);
+    --c-rgb-cont: var(--c-rgb-gray-06-accessible-dark);
+  }
+
+  .v2-section[data-scheme='secondary'] {
+    --c-rgb-base: var(--c-rgb-gray-06-accessible-dark);
+    --c-rgb-cont: var(--c-rgb-gray-06-accessible-light);
+  }
 }
 
 [data-prefers-mode='dim'][data-prefers-accessible-contrast='yes'],

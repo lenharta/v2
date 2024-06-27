@@ -37,13 +37,13 @@ const HomeStats: React.FC<{}> = () => {
         />
         <HomeStatsCard
           id="home-stats-components"
-          text="Delivered over 120 reusable production components, ensuring maintainable and scalable codebases. Most Recently a custom, fully-featured library for a Fortune 500 Company in the Financial Sector."
+          text="Developed and delivered over 120 reusable production components, enhancing codebase maintainability and scalability. Recently created a custom, fully-featured library for a Fortune 500 company in the financial sector."
           title="Components"
           value="120+"
         />
         <HomeStatsCard
           id="home-stats-coffees"
-          text="Staying updated with the latest industry trends and technologies to ensure that I bring the most relevant and effective solutions to my projects; often equates to long hours, but a rigor to excute the best result and a good cup of coffee will get you through!"
+          text="Staying updated with the latest industry trends and technologies to provide the most relevant and effective solutions for my projects, requires long hours, but a commitment to excellence and a good cup of coffee keep me going!"
           title="Cups of Coffee"
           value="1852"
         />

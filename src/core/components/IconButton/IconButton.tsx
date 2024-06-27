@@ -36,7 +36,7 @@ const IconButton = factory<IconButtonFactory>((props, ref) => {
       readOnly={readOnly}
       className={clsx(
         'v2-icon-button',
-        { [`v2-icon-button--${variant}`]: variant },
+        { [`v2-button--${variant}`]: variant },
         { [`v2-icon-button--size-${size}`]: size },
         { [`v2-icon-button--radius-${radius}`]: radius },
         className

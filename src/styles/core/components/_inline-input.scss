@@ -11,14 +11,7 @@
   --x-inline-input-spacing-y-lg: calc(var(--s-01) * 4);
   --x-inline-input-spacing-y-xl: calc(var(--s-01) * 5);
 
-  // --x-inline-input-height-xs: calc(var(--s-01) * 20);
-  // --x-inline-input-height-sm: calc(var(--s-01) * 20);
-  // --x-inline-input-height-md: calc(var(--s-01) * 20);
-  // --x-inline-input-height-lg: calc(var(--s-01) * 20);
-  // --x-inline-input-height-xl: calc(var(--s-01) * 20);
-
   gap: var(--x-inline-input-spacing-x);
-  // min-height: var(--x-inline-input-height);
   padding-inline: var(--x-inline-input-spacing-x);
 
   width: 100%;
