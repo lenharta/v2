@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { Root } from '@/app/layouts';
 import {
+  ArticlesRoute,
   CanvasRoute,
   ContactRoute,
   ErrorRoute,
@@ -67,6 +68,11 @@ const router = createBrowserRouter([
           { path: '/sandbox/button', element: <SandboxRoute.Button /> },
           { path: '/sandbox/action', element: <SandboxRoute.Action /> },
         ],
+      },
+      {
+        path: '/articles',
+        element: <ArticlesRoute />,
+        errorElement: <ErrorRoute />,
       },
     ],
   },
