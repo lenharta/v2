@@ -1,11 +1,12 @@
 import React from 'react';
-import { flushSync } from 'react-dom';
 import { Factory } from '@/types';
-import { factory } from '../../factory';
-import { DisclosureProps } from './Disclosure.types';
+import { flushSync } from 'react-dom';
+import { createFactory } from '@/factory';
+import { useDidUpdate, useMergeRefs } from '@/hooks';
+
+import { DisclosureProps } from './types';
 import { getElementHeight } from './get-element-height';
 import { getAutoHeightDuration } from './get-auto-height-duration';
-import { useDidUpdate, useMergeRefs } from '@/hooks';
 
 type CSS = React.CSSProperties;
 
@@ -27,7 +28,7 @@ type DisclosureFactory = Factory.Config<{
   props: DisclosureProps;
 }>;
 
-const Disclosure = factory<DisclosureFactory>((props: DisclosureProps, ref) => {
+const Disclosure = createFactory<DisclosureFactory>((props: DisclosureProps, ref) => {
   const {
     style,
     isOpen,

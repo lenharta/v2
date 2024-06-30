@@ -75,6 +75,7 @@ const SideMenuSelect: SideMenuSelectFactory = (props) => {
           value={value}
           orientation="horizontal"
           className="v2-sidemenu-select-drawer"
+          variant="base-elevated"
         >
           {items.map((item) => (
             <Action

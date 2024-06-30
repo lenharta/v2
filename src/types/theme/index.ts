@@ -16,6 +16,26 @@ export declare namespace Theme {
 
   export type Attributes = 'dir' | 'mode' | 'accent';
 
+  export type AttributeKey = 'dir' | 'mode' | 'accent' | 'contrast';
+
+  export type Attribute =
+    | 'data-prefers-dir'
+    | 'data-prefers-color-mode'
+    | 'data-prefers-color-accent'
+    | 'data-prefers-color-contrast';
+
+  type SchemeColor = 'base' | 'accent';
+  type SchemeVariant = 'default' | 'elevated';
+  type SchemeSurface = `${SchemeColor}-${SchemeVariant}`;
+
+  type Variant =
+    | 'base'
+    | 'base-default'
+    | 'base-elevated'
+    | 'accent'
+    | 'accent-default'
+    | 'accent-elevated';
+
   export type Interaction =
     | 'enabled'
     | 'hovered'
@@ -41,4 +61,22 @@ export declare namespace Theme {
     | 'zoomable'
     | 'swipable'
     | 'editable';
+
+  interface GroupProps {
+    gap?: 'unset' | SizeRegular | undefined;
+    orientation?: 'vertical' | 'horizontal' | undefined;
+  }
+
+  interface TypographyProps {
+    size?: SizeExpanded | undefined;
+    scheme?: 'base' | 'accent' | Color | undefined;
+    emphasis?: 'min' | 'low' | 'med' | 'max' | undefined;
+  }
+
+  interface IconProps {
+    size?: SizeRegular | undefined;
+    type?: 'fill' | 'outline' | undefined;
+    scheme?: 'base' | 'accent' | Color | undefined;
+    emphasis?: 'min' | 'low' | 'med' | 'max' | undefined;
+  }
 }

@@ -1,0 +1,13 @@
+.v2-base-default,
+.v2-base-elevated,
+.v2-accent-default,
+.v2-accent-elevated {
+  transition:
+    background-color var(--duration-slow-01) var(--easing-expressive),
+    outline-color var(--duration-slow-01) var(--easing-expressive),
+    border-color var(--duration-slow-01) var(--easing-expressive),
+    opacity var(--duration-slow-01) var(--easing-expressive),
+    stroke var(--duration-slow-01) var(--easing-expressive),
+    color var(--duration-slow-01) var(--easing-expressive),
+    fill var(--duration-slow-01) var(--easing-expressive);
+}

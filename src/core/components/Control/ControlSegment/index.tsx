@@ -1,8 +1,9 @@
+import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
 import { UnstyledButton } from '@/core';
 import { createEventCallback, createKeyDownGroup } from '@/utils';
-import { ControlSegmentProps } from '../Control.types';
+import { ControlSegmentProps } from '../types';
 import { ATTRIBUTES } from '../Control';
 
 type ControlSegmentFactory = Factory.Config<{
@@ -18,6 +19,7 @@ const ControlSegment = createFactory<ControlSegmentFactory>((props, ref) => {
     item,
     value,
     trackRef,
+    className,
     trapFocus,
     orientation,
     update,
@@ -48,11 +50,10 @@ const ControlSegment = createFactory<ControlSegmentFactory>((props, ref) => {
     <UnstyledButton
       ref={ref}
       value={item.value}
-      label={item.label}
       readOnly={item.readOnly}
       disabled={item.disabled}
       selected={item.value === value}
-      className="v2-control-segment"
+      className={clsx('v2-control-segment', className)}
       onKeyDown={onKeyDown}
       onClick={onClick}
       {...ATTRIBUTES.child.prop}

@@ -12,9 +12,9 @@ const Header: React.FC<HeaderProps> = (props) => {
   const navigate = useNavigate();
 
   return (
-    <header className="v2-header" {...forwardedProps}>
+    <header className="v2-header v2-base-default" {...forwardedProps}>
       <div className="v2-header-inner">
-        <Action.Group orientation="horizontal">
+        <Action.Group orientation="horizontal" variant="base-elevated">
           <Action
             icon={<Icon name="logo-v2" type={state.icons} size="md" />}
             onClick={(event) => navigate(event.currentTarget.value)}

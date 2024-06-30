@@ -1,13 +1,12 @@
-import { render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
-
-import { Button } from './Button';
+import { render, screen } from '@testing-library/react';
 import { ButtonGroup } from './ButtonGroup';
+import { Button } from './Button';
 
 describe('@v2/core/Button', () => {
   test('renders the component', async () => {
-    render(<Button data-testid="Button-testid" />);
-    expect(screen.getByTestId('Button-testid')).toBeInTheDocument();
+    render(<Button data-testid="button-test-id" />);
+    expect(screen.getByTestId('button-test-id')).toBeInTheDocument();
   });
 
   test('exposes Button.Group component', () => {

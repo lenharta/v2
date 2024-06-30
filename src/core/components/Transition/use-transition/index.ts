@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useDidUpdate } from '@/hooks';
-import { TransitionOptions, TransitionStatus, UseTransitionReturn } from '../Transition.types';
+import { TransitionOptions, TransitionStatus, UseTransitionReturn } from '../types';
 
 function useTransition(props: TransitionOptions): UseTransitionReturn {
   const {

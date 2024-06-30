@@ -1,15 +1,16 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { TitleProps } from './Title.types';
-import { factoryPolymorphic } from '../../factory';
+import { createPolymorphicFactory } from '@/factory';
+import { TitleProps } from './types';
 
 type TitleFactory = Factory.Config<{
   ref: HTMLHeadingElement;
   comp: 'h3';
   props: TitleProps;
+  omits: 'color';
 }>;
 
-const Title = factoryPolymorphic<TitleFactory>((props, ref) => {
+const Title = createPolymorphicFactory<TitleFactory>((props, ref) => {
   const {
     h1,
     h2,
@@ -22,6 +23,7 @@ const Title = factoryPolymorphic<TitleFactory>((props, ref) => {
     component: Component = 'h3',
     ...forwardedProps
   } = props;
+
   return (
     <Component ref={ref} className={clsx('v2-title', className)} {...forwardedProps}>
       {children}

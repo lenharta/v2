@@ -1,3 +1,4 @@
+import { UseFloatingOptions } from '../types';
 import {
   size,
   flip,
@@ -8,8 +9,6 @@ import {
   limitShift,
   UseFloatingReturn,
 } from '@floating-ui/react';
-
-import { UseFloatingOptions } from '../Floating.types';
 
 function getFloatingMiddleware<E extends Element = HTMLElement>(
   options: UseFloatingOptions,

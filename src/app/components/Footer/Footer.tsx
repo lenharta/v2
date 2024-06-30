@@ -4,7 +4,7 @@ import { FooterProps } from './Footer.types';
 const Footer: React.FC<FooterProps> = (props) => {
   const { ...forwardedProps } = props;
   return (
-    <footer className="v2-footer" {...forwardedProps}>
+    <footer className="v2-footer v2-base-elevated" {...forwardedProps}>
       <div className="v2-footer-inner">
         <span>Footer</span>
       </div>

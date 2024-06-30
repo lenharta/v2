@@ -1,12 +1,11 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { isNotLabelled } from '@/utils';
 import { createFactory } from '@/factory';
 import { UnstyledButton } from '@/core';
+import { ActionProps } from './types';
 import { ActionGroup } from './ActionGroup';
-import { ActionProps } from './Action.types';
 import { ActionSpacer } from './ActionSpacer';
-import { useActionContext } from './Action.context';
+import { useActionContext } from './context';
 
 type ActionFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -20,24 +19,8 @@ type ActionFactory = Factory.Config<{
 }>;
 
 const Action = createFactory<ActionFactory>((props, ref) => {
-  const {
-    size,
-    icon,
-    label,
-    value,
-    radius,
-    variant,
-    loading,
-    disabled,
-    readOnly,
-    selected,
-    className,
-    ...forwardedProps
-  } = props;
-
-  if (isNotLabelled(label, forwardedProps['aria-label'])) {
-    console.error(`[@v2/core/Action]: label must be provided to the element for accessibility.`);
-  }
+  const { icon, value, loading, disabled, readOnly, selected, className, ...forwardedProps } =
+    props;
 
   const ctx = useActionContext();
 
@@ -49,32 +32,19 @@ const Action = createFactory<ActionFactory>((props, ref) => {
         readOnly: readOnly || ctx.readOnly,
         'data-orientation': ctx.orientation,
         'aria-orientation': ctx.orientation,
-        className: clsx(
-          'v2-action',
-          `v2-action--${variant ?? ctx.variant ?? 'default-elevated'}`,
-          `v2-action--size-${size ?? ctx.size ?? 'md'}`,
-          `v2-action--radius-${radius ?? ctx.radius ?? 'default'}`,
-          className
-        ),
+        className: clsx('v2-action', className),
       }
     : {};
 
   return (
     <UnstyledButton
       ref={ref}
-      label={label}
       value={value}
       loading={loading}
       readOnly={readOnly}
       disabled={disabled}
       selected={selected}
-      className={clsx(
-        'v2-action',
-        `v2-action--${variant ?? 'default-elevated'}`,
-        `v2-action--size-${size ?? 'sm'}`,
-        `v2-action--radius-${radius ?? 'default'}`,
-        className
-      )}
+      className={clsx('v2-action', className)}
       {...forwardedProps}
       {...contextProps}
     >

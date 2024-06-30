@@ -1,22 +1,5 @@
-import React from 'react';
-import { capitalizeString } from '@/utils';
-import { Core, Store, Theme } from '@/types';
-import { Page, Hero, Section, useStateContext, useDispatchContext } from '@/app';
-import {
-  Action,
-  ActionProps,
-  Button,
-  ButtonProps,
-  DividerProps,
-  Icon,
-  IconButton,
-  IconButtonProps,
-  IconProps,
-  InlineInputProps,
-  Select,
-  Title,
-} from '@/core';
-import { InlineInput } from '@/core/components/InlineInput/InlineInput';
+import { Title } from '@/core';
+import { Page, Hero } from '@/app';
 
 const CanvasHero = () => (
   <Hero>
@@ -24,545 +7,554 @@ const CanvasHero = () => (
   </Hero>
 );
 
-interface CoreOrientationMap {
-  action: Core.Orientation[];
-  button: Core.Orientation[];
-}
+const CanvasRoute: React.FC<{}> = ({}) => (
+  <Page>
+    <CanvasHero />
+  </Page>
+);
 
-const CORE_ORIENTATION_MAP: CoreOrientationMap = {
-  action: ['horizontal', 'vertical'],
-  button: ['horizontal', 'vertical'],
-};
+CanvasRoute.displayName = '@v2/Route.Canvas';
+export { CanvasRoute };
 
-interface CoreVariantMap {
-  action: ActionProps['variant'][];
-  button: ButtonProps['variant'][];
-}
+// interface CoreOrientationMap {
+//   action: Core.Orientation[];
+//   button: Core.Orientation[];
+// }
 
-const CORE_VARIANT_MAP: CoreVariantMap = {
-  action: ['default', 'default-elevated', 'accent', 'accent-elevated'],
-  button: ['default', 'default-elevated', 'accent', 'accent-elevated'],
-};
+// const CORE_ORIENTATION_MAP: CoreOrientationMap = {
+//   action: ['horizontal', 'vertical'],
+//   button: ['horizontal', 'vertical'],
+// };
 
-interface InteractionState {}
+// interface CoreVariantMap {
+//   action: ActionProps['variant'][];
+//   // button: ButtonProps['variant'][];
+// }
 
-interface SandboxCanvasProps {
-  title?: string | undefined;
-  children?: React.ReactNode;
-}
+// const CORE_VARIANT_MAP: CoreVariantMap = {
+//   action: ['base-default', 'base-elevated', 'accent-default', 'accent-elevated'],
+//   // button: ['base-default', 'base-elevated', 'accent-default', 'accent-elevated'],
+// };
 
-const SandboxCanvas = (props: SandboxCanvasProps) => {
-  const { children, title = 'Sandbox Canvas' } = props;
-  return (
-    <Section>
-      <div className="v2-sandbox-canvas">
-        <div className="v2-sandbox-canvas-header">
-          <Title h2>{title}</Title>
-        </div>
-        <div className="v2-sandbox-canvas-panel">{children}</div>
-      </div>
-    </Section>
-  );
-};
+// interface InteractionState {}
 
-type CoreControlOption<T extends Record<string, any>, K extends keyof T> = {
-  label: string;
-  value: T[K];
-};
+// interface SandboxCanvasProps {
+//   title?: string | undefined;
+//   children?: React.ReactNode;
+// }
 
-type CoreControlButtonOptions = {
-  size: CoreControlOption<ButtonProps, 'size'>[];
-  variant: CoreControlOption<ButtonProps, 'variant'>[];
-};
+// const SandboxCanvas = (props: SandboxCanvasProps) => {
+//   const { children, title = 'Sandbox Canvas' } = props;
+//   return (
+//     <Section>
+//       <div className="v2-sandbox-canvas">
+//         <div className="v2-sandbox-canvas-header">
+//           <Title h2>{title}</Title>
+//         </div>
+//         <div className="v2-sandbox-canvas-panel">{children}</div>
+//       </div>
+//     </Section>
+//   );
+// };
 
-type CoreControlActionOptions = {
-  size: CoreControlOption<ActionProps, 'size'>[];
-  variant: CoreControlOption<ActionProps, 'variant'>[];
-};
+// type CoreControlOption<T extends Record<string, any>, K extends keyof T> = {
+//   label: string;
+//   value: T[K];
+// };
 
-type CoreControlDividerOptions = {
-  size: CoreControlOption<DividerProps, 'size'>[];
-  variant: CoreControlOption<DividerProps, 'variant'>[];
-  decoration: CoreControlOption<DividerProps, 'decoration'>[];
-};
+// type CoreControlButtonOptions = {
+//   size: CoreControlOption<ButtonProps, 'size'>[];
+//   variant: CoreControlOption<ButtonProps, 'variant'>[];
+// };
 
-const coreControlButtonOptions = {
-  variant: [
-    { label: 'Default', value: 'default' },
-    { label: 'Accent', value: 'accent' },
-    { label: 'Default Elevated', value: 'default-elevated' },
-    { label: 'Accent Elevated', value: 'accent-elevated' },
-  ],
-  size: [
-    { label: 'X-Small', value: 'xs' },
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-    { label: 'X-Large', value: 'xl' },
-  ],
-};
+// type CoreControlActionOptions = {
+//   size: CoreControlOption<ActionProps, 'size'>[];
+//   variant: CoreControlOption<ActionProps, 'variant'>[];
+// };
 
-const coreControlActionOptions = {
-  variant: [
-    { label: 'Default', value: 'default' },
-    { label: 'Accent', value: 'accent' },
-    { label: 'Default Elevated', value: 'default-elevated' },
-    { label: 'Accent Elevated', value: 'accent-elevated' },
-  ],
-  size: [
-    { label: 'X-Small', value: 'xs' },
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-    { label: 'X-Large', value: 'xl' },
-  ],
-};
+// type CoreControlDividerOptions = {
+//   size: CoreControlOption<DividerProps, 'size'>[];
+//   variant: CoreControlOption<DividerProps, 'variant'>[];
+//   decoration: CoreControlOption<DividerProps, 'decoration'>[];
+// };
 
-const coreControlDividerOptions = {
-  variant: [
-    { label: 'Default', value: 'default' },
-    { label: 'Accent', value: 'accent' },
-  ],
-  size: [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ],
-  decoration: [
-    { label: 'Solid', value: 'solid' },
-    { label: 'Dotted', value: 'dotted' },
-    { label: 'Dashed', value: 'dashed' },
-  ],
-};
+// const coreControlButtonOptions = {
+//   variant: [
+//     { label: 'Default', value: 'default' },
+//     { label: 'Accent', value: 'accent' },
+//     { label: 'Default Elevated', value: 'default-elevated' },
+//     { label: 'Accent Elevated', value: 'accent-elevated' },
+//   ],
+//   size: [
+//     { label: 'X-Small', value: 'xs' },
+//     { label: 'Small', value: 'sm' },
+//     { label: 'Medium', value: 'md' },
+//     { label: 'Large', value: 'lg' },
+//     { label: 'X-Large', value: 'xl' },
+//   ],
+// };
 
-const coreControlIconButtonOptions = {
-  variant: [
-    { label: 'Default', value: 'default' },
-    { label: 'Accent', value: 'accent' },
-    { label: 'Default Elevated', value: 'default-elevated' },
-    { label: 'Accent Elevated', value: 'accent-elevated' },
-  ],
-  size: [
-    { label: 'XX-Small', value: 'xxs' },
-    { label: 'X-Small', value: 'xs' },
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-    { label: 'X-Large', value: 'xl' },
-    { label: 'XX-Large', value: 'xxl' },
-  ],
-  radius: [
-    { label: 'X-Small', value: 'xs' },
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-    { label: 'X-Large', value: 'xl' },
-    { label: 'Round', value: 'rd' },
-  ],
-};
+// const coreControlActionOptions = {
+//   variant: [
+//     { label: 'Base Default', value: 'base-default' },
+//     { label: 'Base Elevated', value: 'base-elevated' },
+//     { label: 'Accent Default', value: 'accent-default' },
+//     { label: 'Accent Elevated', value: 'accent-elevated' },
+//   ],
+//   size: [
+//     { label: 'X-Small', value: 'xs' },
+//     { label: 'Small', value: 'sm' },
+//     { label: 'Medium', value: 'md' },
+//     { label: 'Large', value: 'lg' },
+//     { label: 'X-Large', value: 'xl' },
+//   ],
+// };
 
-const coreControlOptions = {
-  button: coreControlButtonOptions,
-  action: coreControlActionOptions,
-  divider: coreControlDividerOptions,
-};
+// const coreControlDividerOptions = {
+//   variant: [
+//     { label: 'Default', value: 'default' },
+//     { label: 'Accent', value: 'accent' },
+//   ],
+//   size: [
+//     { label: 'Small', value: 'sm' },
+//     { label: 'Medium', value: 'md' },
+//     { label: 'Large', value: 'lg' },
+//   ],
+//   decoration: [
+//     { label: 'Solid', value: 'solid' },
+//     { label: 'Dotted', value: 'dotted' },
+//     { label: 'Dashed', value: 'dashed' },
+//   ],
+// };
 
-type CoreInteractionState = {
-  loading?: boolean | undefined;
-  disabled?: boolean | undefined;
-  readOnly?: boolean | undefined;
-  selected?: boolean | undefined;
-};
+// const coreControlIconButtonOptions = {
+//   variant: [
+//     { label: 'Default', value: 'default' },
+//     { label: 'Accent', value: 'accent' },
+//     { label: 'Default Elevated', value: 'default-elevated' },
+//     { label: 'Accent Elevated', value: 'accent-elevated' },
+//   ],
+//   size: [
+//     { label: 'XX-Small', value: 'xxs' },
+//     { label: 'X-Small', value: 'xs' },
+//     { label: 'Small', value: 'sm' },
+//     { label: 'Medium', value: 'md' },
+//     { label: 'Large', value: 'lg' },
+//     { label: 'X-Large', value: 'xl' },
+//     { label: 'XX-Large', value: 'xxl' },
+//   ],
+//   radius: [
+//     { label: 'X-Small', value: 'xs' },
+//     { label: 'Small', value: 'sm' },
+//     { label: 'Medium', value: 'md' },
+//     { label: 'Large', value: 'lg' },
+//     { label: 'X-Large', value: 'xl' },
+//     { label: 'Round', value: 'rd' },
+//   ],
+// };
 
-interface CoreDividerState {
-  size: DividerProps['size'];
-  variant: DividerProps['variant'];
-  decoration: DividerProps['decoration'];
-}
+// const coreControlOptions = {
+//   button: coreControlButtonOptions,
+//   action: coreControlActionOptions,
+//   divider: coreControlDividerOptions,
+// };
 
-interface CoreButtonState {
-  size: ButtonProps['size'];
-  variant: ButtonProps['variant'];
-  interaction: 'enabled' | 'disabled' | 'readOnly' | 'loading' | 'selected' | undefined;
-}
+// type CoreInteractionState = {
+//   loading?: boolean | undefined;
+//   disabled?: boolean | undefined;
+//   readOnly?: boolean | undefined;
+//   selected?: boolean | undefined;
+// };
 
-interface CoreActionState {
-  size: ActionProps['size'];
-  variant: ActionProps['variant'];
-  interaction: 'enabled' | 'disabled' | 'readOnly' | 'loading' | 'selected' | undefined;
-}
+// interface CoreDividerState {
+//   size: DividerProps['size'];
+//   variant: DividerProps['variant'];
+//   decoration: DividerProps['decoration'];
+// }
 
-type CoreState = CoreActionState | CoreButtonState | CoreDividerState;
+// interface CoreButtonState {
+//   size: ButtonProps['size'];
+//   variant: ButtonProps['variant'];
+//   interaction: 'enabled' | 'disabled' | 'readOnly' | 'loading' | 'selected' | undefined;
+// }
 
-function useCoreState<T extends CoreState>(initialState: T) {
-  const [state, dispatch] = React.useReducer(
-    (current: T, update: Partial<T>) => ({
-      ...current,
-      ...update,
-    }),
-    initialState
-  );
+// interface CoreActionState {
+//   size: ActionProps['size'];
+//   variant: ActionProps['variant'];
+//   interaction: 'enabled' | 'disabled' | 'readOnly' | 'loading' | 'selected' | undefined;
+// }
 
-  return [state, dispatch] as [T, React.Dispatch<Partial<T>>];
-}
+// type CoreState = CoreActionState | CoreButtonState | CoreDividerState;
 
-const CanvasSelect = () => {
-  const [isOpen, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState<string>();
-  return (
-    <SandboxCanvas title="Select">
-      <Select
-        value={value}
-        isOpen={isOpen}
-        onChange={setValue}
-        onOpenChange={setOpen}
-        data={[
-          {
-            label: 'Option 1',
-            value: 'option-1',
-          },
-          {
-            label: 'Option 2',
-            value: 'option-2',
-          },
-          {
-            label: 'Option 3',
-            value: 'option-3',
-          },
-          {
-            label: 'Option 4',
-            value: 'option-4',
-          },
-        ]}
-      />
-    </SandboxCanvas>
-  );
-};
+// function useCoreState<T extends CoreState>(initialState: T) {
+//   const [state, dispatch] = React.useReducer(
+//     (current: T, update: Partial<T>) => ({
+//       ...current,
+//       ...update,
+//     }),
+//     initialState
+//   );
 
-interface IconButtonCanvasState {
-  size?: IconButtonProps['size'] | undefined;
-  radius?: IconButtonProps['radius'] | undefined;
-  variant?: IconButtonProps['variant'] | undefined;
-  disabled?: boolean | undefined;
-  readOnly?: boolean | undefined;
-  selected?: boolean | undefined;
-}
+//   return [state, dispatch] as [T, React.Dispatch<Partial<T>>];
+// }
 
-type CanvasReducer<T> = React.Reducer<T, Partial<T>>;
+// const CanvasSelect = () => {
+//   const [isOpen, setOpen] = React.useState(false);
+//   const [value, setValue] = React.useState<string>();
+//   return (
+//     <SandboxCanvas title="Select">
+//       <Select
+//         value={value}
+//         isOpen={isOpen}
+//         onChange={setValue}
+//         onOpenChange={setOpen}
+//         data={[
+//           {
+//             label: 'Option 1',
+//             value: 'option-1',
+//           },
+//           {
+//             label: 'Option 2',
+//             value: 'option-2',
+//           },
+//           {
+//             label: 'Option 3',
+//             value: 'option-3',
+//           },
+//           {
+//             label: 'Option 4',
+//             value: 'option-4',
+//           },
+//         ]}
+//       />
+//     </SandboxCanvas>
+//   );
+// };
 
-type IconButtonCanvasReducer = CanvasReducer<IconButtonCanvasState>;
+// interface IconButtonCanvasState {
+//   size?: IconButtonProps['size'] | undefined;
+//   radius?: IconButtonProps['radius'] | undefined;
+//   variant?: IconButtonProps['variant'] | undefined;
+//   disabled?: boolean | undefined;
+//   readOnly?: boolean | undefined;
+//   selected?: boolean | undefined;
+// }
 
-interface CanvasControlGroupProps<T extends Record<string, any>> {
-  state: T[keyof T] | undefined;
-  dispatch: React.Dispatch<Partial<T>>;
-  variant?: ButtonProps['variant'] | undefined;
-  name: keyof T;
-  data: {
-    value: T[keyof T];
-    label: string;
-    disabled?: boolean | undefined;
-    readOnly?: boolean | undefined;
-  }[];
-}
+// type CanvasReducer<T> = React.Reducer<T, Partial<T>>;
 
-function CanvasControlGroup<T extends Record<string, any>>(props: CanvasControlGroupProps<T>) {
-  const { state, dispatch, variant = 'default-elevated', name, data } = props;
-  return (
-    <Button.Group value={state} gap="xs">
-      {data.map((item) => (
-        <Button
-          key={item.value}
-          value={item.value}
-          label={item.label}
-          variant={variant}
-          disabled={item.disabled}
-          readOnly={item.readOnly}
-          selected={item.value === state}
-          onClick={() => dispatch({ [name]: item.value } as Partial<T>)}
-          onDoubleClick={() => dispatch({ [name]: undefined } as Partial<T>)}
-        >
-          {item.label}
-        </Button>
-      ))}
-    </Button.Group>
-  );
-}
+// type IconButtonCanvasReducer = CanvasReducer<IconButtonCanvasState>;
 
-type CanvasStore<T> = React.Reducer<T, Partial<T>>;
+// interface CanvasControlGroupProps<T extends Record<string, any>> {
+//   state: T[keyof T] | undefined;
+//   dispatch: React.Dispatch<Partial<T>>;
+//   variant?: ButtonProps['variant'] | undefined;
+//   name: keyof T;
+//   data: {
+//     value: T[keyof T];
+//     label: string;
+//     disabled?: boolean | undefined;
+//     readOnly?: boolean | undefined;
+//   }[];
+// }
 
-function useCanvasStore<T extends Record<string, any>>(
-  initialStore: T
-): [T, React.Dispatch<Partial<T>>] {
-  return React.useReducer<CanvasStore<T>>(
-    (state, update) => ({
-      ...state,
-      ...update,
-    }),
-    initialStore
-  );
-}
+// function CanvasControlGroup<T extends Record<string, any>>(props: CanvasControlGroupProps<T>) {
+//   const { state, dispatch, variant = 'default-elevated', name, data } = props;
+//   return (
+//     <Button.Group value={state} gap="xs">
+//       {data.map((item) => (
+//         <Button
+//           key={item.value}
+//           value={item.value}
+//           label={item.label}
+//           variant={variant}
+//           disabled={item.disabled}
+//           readOnly={item.readOnly}
+//           selected={item.value === state}
+//           onClick={() => dispatch({ [name]: item.value } as Partial<T>)}
+//           onDoubleClick={() => dispatch({ [name]: undefined } as Partial<T>)}
+//         >
+//           {item.label}
+//         </Button>
+//       ))}
+//     </Button.Group>
+//   );
+// }
 
-const CanvasControlColorContrast = () => {
-  const dispatch = useDispatchContext();
-  const state = useStateContext();
+// type CanvasStore<T> = React.Reducer<T, Partial<T>>;
 
-  return (
-    <SandboxCanvas title="Global Theme | Color Contrast">
-      <Button.Group gap="xs" variant="default-elevated">
-        <Button
-          label="global colors default"
-          onClick={() => dispatch({ contrast: 'no' })}
-          selected={state.contrast === 'no' ? true : undefined}
-        >
-          Default
-        </Button>
+// function useCanvasStore<T extends Record<string, any>>(
+//   initialStore: T
+// ): [T, React.Dispatch<Partial<T>>] {
+//   return React.useReducer<CanvasStore<T>>(
+//     (state, update) => ({
+//       ...state,
+//       ...update,
+//     }),
+//     initialStore
+//   );
+// }
 
-        <Button
-          label="global colors accessible"
-          onClick={() => dispatch({ contrast: 'yes' })}
-          selected={state.contrast === 'yes' ? true : undefined}
-        >
-          Accessible
-        </Button>
-      </Button.Group>
-    </SandboxCanvas>
-  );
-};
+// const CanvasControlColorContrast = () => {
+//   const dispatch = useDispatchContext();
+//   const state = useStateContext();
 
-interface CanvasButtonStore {
-  size?: ButtonProps['size'] | undefined;
-  variant?: ButtonProps['variant'] | undefined;
-}
+//   return (
+//     <SandboxCanvas title="Global Theme | Color Contrast">
+//       <Button.Group gap="xs" variant="default-elevated">
+//         <Button
+//           label="global colors default"
+//           onClick={() => dispatch({ contrast: 'no' })}
+//           selected={state.contrast === 'no' ? true : undefined}
+//         >
+//           Default
+//         </Button>
 
-const CanvasButton = () => {
-  const [state, dispatch] = useCanvasStore<CanvasButtonStore>({
-    variant: 'accent-elevated',
-    size: 'md',
-  });
+//         <Button
+//           label="global colors accessible"
+//           onClick={() => dispatch({ contrast: 'yes' })}
+//           selected={state.contrast === 'yes' ? true : undefined}
+//         >
+//           Accessible
+//         </Button>
+//       </Button.Group>
+//     </SandboxCanvas>
+//   );
+// };
 
-  return (
-    <SandboxCanvas title="Button">
-      <CanvasControlGroup
-        name="size"
-        state={state.size}
-        dispatch={dispatch}
-        data={[
-          { label: 'X-Small', value: 'xs' },
-          { label: 'Small', value: 'sm' },
-          { label: 'Medium', value: 'md' },
-          { label: 'Large', value: 'lg' },
-          { label: 'X-Large', value: 'xl' },
-        ]}
-      />
+// interface CanvasButtonStore {
+//   size?: ButtonProps['size'] | undefined;
+//   variant?: ButtonProps['variant'] | undefined;
+// }
 
-      <CanvasControlGroup
-        name="variant"
-        state={state.variant}
-        dispatch={dispatch}
-        data={[
-          { label: 'Default', value: 'default' },
-          { label: 'Accent', value: 'accent' },
-          { label: 'Default Elevated', value: 'default-elevated' },
-          { label: 'Accent Elevated', value: 'accent-elevated' },
-        ]}
-      />
+// const CanvasButton = () => {
+//   const [state, dispatch] = useCanvasStore<CanvasButtonStore>({
+//     variant: 'accent-elevated',
+//     size: 'md',
+//   });
 
-      <Button label="canvas button" {...state}>
-        Button
-      </Button>
-    </SandboxCanvas>
-  );
-};
+//   return (
+//     <SandboxCanvas title="Button">
+//       <CanvasControlGroup
+//         name="size"
+//         state={state.size}
+//         dispatch={dispatch}
+//         data={[
+//           { label: 'X-Small', value: 'xs' },
+//           { label: 'Small', value: 'sm' },
+//           { label: 'Medium', value: 'md' },
+//           { label: 'Large', value: 'lg' },
+//           { label: 'X-Large', value: 'xl' },
+//         ]}
+//       />
 
-interface CanvasActionStore {
-  size?: ActionProps['size'] | undefined;
-  variant?: ActionProps['variant'] | undefined;
-}
+//       <CanvasControlGroup
+//         name="variant"
+//         state={state.variant}
+//         dispatch={dispatch}
+//         data={[
+//           { label: 'Default', value: 'default' },
+//           { label: 'Accent', value: 'accent' },
+//           { label: 'Default Elevated', value: 'default-elevated' },
+//           { label: 'Accent Elevated', value: 'accent-elevated' },
+//         ]}
+//       />
 
-const CanvasAction = () => {
-  const [state, dispatch] = useCanvasStore<CanvasActionStore>({
-    variant: 'accent-elevated',
-    size: 'md',
-  });
+//       <Button label="canvas button" {...state}>
+//         Button
+//       </Button>
+//     </SandboxCanvas>
+//   );
+// };
 
-  return (
-    <SandboxCanvas title="Action">
-      <CanvasControlGroup
-        name="size"
-        state={state.size}
-        dispatch={dispatch}
-        data={[
-          { label: 'X-Small', value: 'xs' },
-          { label: 'Small', value: 'sm' },
-          { label: 'Medium', value: 'md' },
-          { label: 'Large', value: 'lg' },
-          { label: 'X-Large', value: 'xl' },
-        ]}
-      />
+// interface CanvasActionStore {
+//   size?: ActionProps['size'] | undefined;
+//   variant?: ActionProps['variant'] | undefined;
+// }
 
-      <CanvasControlGroup
-        name="variant"
-        state={state.variant}
-        dispatch={dispatch}
-        data={[
-          { label: 'Default', value: 'default' },
-          { label: 'Accent', value: 'accent' },
-          { label: 'Default Elevated', value: 'default-elevated' },
-          { label: 'Accent Elevated', value: 'accent-elevated' },
-        ]}
-      />
+// const CanvasAction = () => {
+//   const [state, dispatch] = useCanvasStore<CanvasActionStore>({
+//     variant: 'accent-elevated',
+//     size: 'md',
+//   });
 
-      <Action icon={<Icon name="search" />} label="canvas action" {...state} />
-    </SandboxCanvas>
-  );
-};
+//   return (
+//     <SandboxCanvas title="Action">
+//       <CanvasControlGroup
+//         name="size"
+//         state={state.size}
+//         dispatch={dispatch}
+//         data={[
+//           { label: 'X-Small', value: 'xs' },
+//           { label: 'Small', value: 'sm' },
+//           { label: 'Medium', value: 'md' },
+//           { label: 'Large', value: 'lg' },
+//           { label: 'X-Large', value: 'xl' },
+//         ]}
+//       />
 
-interface InlineInputStore {
-  size?: InlineInputProps['size'] | undefined;
-  variant?: InlineInputProps['variant'] | undefined;
-  selected?: boolean | undefined;
-  disabled?: boolean | undefined;
-  readOnly?: boolean | undefined;
-}
+//       <CanvasControlGroup
+//         name="variant"
+//         state={state.variant}
+//         dispatch={dispatch}
+//         data={[
+//           { label: 'Base Default', value: 'base-default' },
+//           { label: 'Base Elevated', value: 'base-elevated' },
+//           { label: 'Accent Default', value: 'accent-default' },
+//           { label: 'Accent Elevated', value: 'accent-elevated' },
+//         ]}
+//       />
 
-const CanvasInlineInput = () => {
-  const [state, dispatch] = useCanvasStore<InlineInputStore>({});
+//       <Action icon={<Icon name="search" />} label="canvas action" {...state} />
+//     </SandboxCanvas>
+//   );
+// };
 
-  return (
-    <SandboxCanvas title="InlineInput">
-      <Button.Group>
-        <Button
-          selected={state.selected}
-          variant="default-elevated"
-          onClick={() => dispatch({ selected: !state.selected ? true : undefined })}
-          children="Selected"
-        />
-        <Button
-          selected={state.readOnly}
-          variant="default-elevated"
-          onClick={() => dispatch({ readOnly: !state.readOnly ? true : undefined })}
-          children="ReadOnly"
-        />
-        <Button
-          selected={state.disabled}
-          variant="default-elevated"
-          onClick={() => dispatch({ disabled: !state.disabled ? true : undefined })}
-          children="Disabled"
-        />
-      </Button.Group>
+// interface InlineInputStore {
+//   size?: InlineInputProps['size'] | undefined;
+//   variant?: InlineInputProps['variant'] | undefined;
+//   selected?: boolean | undefined;
+//   disabled?: boolean | undefined;
+//   readOnly?: boolean | undefined;
+// }
 
-      <CanvasControlGroup
-        name="size"
-        state={state.size}
-        dispatch={dispatch}
-        data={[
-          { label: 'X-Small', value: 'xs' },
-          { label: 'Small', value: 'sm' },
-          { label: 'Medium', value: 'md' },
-          { label: 'Large', value: 'lg' },
-          { label: 'X-Large', value: 'xl' },
-        ]}
-      />
+// const CanvasInlineInput = () => {
+//   const [state, dispatch] = useCanvasStore<InlineInputStore>({});
 
-      <CanvasControlGroup
-        name="variant"
-        state={state.variant}
-        dispatch={dispatch}
-        data={[
-          { label: 'Default', value: 'default' },
-          { label: 'Accent', value: 'accent' },
-          { label: 'Default Elevated', value: 'default-elevated' },
-          { label: 'Accent Elevated', value: 'accent-elevated' },
-        ]}
-      />
+//   return (
+//     <SandboxCanvas title="InlineInput">
+//       <Button.Group>
+//         <Button
+//           selected={state.selected}
+//           variant="default-elevated"
+//           onClick={() => dispatch({ selected: !state.selected ? true : undefined })}
+//           children="Selected"
+//         />
+//         <Button
+//           selected={state.readOnly}
+//           variant="default-elevated"
+//           onClick={() => dispatch({ readOnly: !state.readOnly ? true : undefined })}
+//           children="ReadOnly"
+//         />
+//         <Button
+//           selected={state.disabled}
+//           variant="default-elevated"
+//           onClick={() => dispatch({ disabled: !state.disabled ? true : undefined })}
+//           children="Disabled"
+//         />
+//       </Button.Group>
 
-      <InlineInput
-        label="Input Label"
-        error="This is an input error message."
-        message="Some input message here."
-        size={state.size}
-        variant={state.variant}
-        checked={state.selected}
-        readOnly={state.readOnly}
-        disabled={state.disabled}
-      >
-        <Icon name="checkbox-mixed-square" />
-      </InlineInput>
-    </SandboxCanvas>
-  );
-};
+//       <CanvasControlGroup
+//         name="size"
+//         state={state.size}
+//         dispatch={dispatch}
+//         data={[
+//           { label: 'X-Small', value: 'xs' },
+//           { label: 'Small', value: 'sm' },
+//           { label: 'Medium', value: 'md' },
+//           { label: 'Large', value: 'lg' },
+//           { label: 'X-Large', value: 'xl' },
+//         ]}
+//       />
 
-const systemGrayColorsDark: SystemGrayOptions[] = [
-  { level: '01', type: 'default', mode: 'dark', alpha: 1 },
-  { level: '02', type: 'default', mode: 'dark', alpha: 1 },
-  { level: '03', type: 'default', mode: 'dark', alpha: 1 },
-  { level: '04', type: 'default', mode: 'dark', alpha: 1 },
-  { level: '05', type: 'default', mode: 'dark', alpha: 1 },
-  { level: '06', type: 'default', mode: 'dark', alpha: 1 },
-  { level: '01', type: 'accessible', mode: 'dark', alpha: 1 },
-  { level: '02', type: 'accessible', mode: 'dark', alpha: 1 },
-  { level: '03', type: 'accessible', mode: 'dark', alpha: 1 },
-  { level: '04', type: 'accessible', mode: 'dark', alpha: 1 },
-  { level: '05', type: 'accessible', mode: 'dark', alpha: 1 },
-  { level: '06', type: 'accessible', mode: 'dark', alpha: 1 },
-];
+//       <CanvasControlGroup
+//         name="variant"
+//         state={state.variant}
+//         dispatch={dispatch}
+//         data={[
+//           { label: 'Default', value: 'default' },
+//           { label: 'Accent', value: 'accent' },
+//           { label: 'Default Elevated', value: 'default-elevated' },
+//           { label: 'Accent Elevated', value: 'accent-elevated' },
+//         ]}
+//       />
 
-const systemGrayColorsLight: SystemGrayOptions[] = [
-  { level: '01', type: 'default', mode: 'light', alpha: 1 },
-  { level: '02', type: 'default', mode: 'light', alpha: 1 },
-  { level: '03', type: 'default', mode: 'light', alpha: 1 },
-  { level: '04', type: 'default', mode: 'light', alpha: 1 },
-  { level: '05', type: 'default', mode: 'light', alpha: 1 },
-  { level: '06', type: 'default', mode: 'light', alpha: 1 },
-  { level: '01', type: 'accessible', mode: 'light', alpha: 1 },
-  { level: '02', type: 'accessible', mode: 'light', alpha: 1 },
-  { level: '03', type: 'accessible', mode: 'light', alpha: 1 },
-  { level: '04', type: 'accessible', mode: 'light', alpha: 1 },
-  { level: '05', type: 'accessible', mode: 'light', alpha: 1 },
-  { level: '06', type: 'accessible', mode: 'light', alpha: 1 },
-];
+//       <InlineInput
+//         label="Input Label"
+//         error="This is an input error message."
+//         message="Some input message here."
+//         size={state.size}
+//         variant={state.variant}
+//         checked={state.selected}
+//         readOnly={state.readOnly}
+//         disabled={state.disabled}
+//       >
+//         <Icon name="checkbox-mixed-square" />
+//       </InlineInput>
+//     </SandboxCanvas>
+//   );
+// };
 
-interface SystemGrayOptions {
-  mode?: 'light' | 'dark' | undefined;
-  type?: 'default' | 'accessible' | undefined;
-  level?: '01' | '02' | '03' | '04' | '05' | '06' | undefined;
-  alpha?: number | undefined;
-}
+// const systemGrayColorsDark: SystemGrayOptions[] = [
+//   { level: '01', type: 'default', mode: 'dark', alpha: 1 },
+//   { level: '02', type: 'default', mode: 'dark', alpha: 1 },
+//   { level: '03', type: 'default', mode: 'dark', alpha: 1 },
+//   { level: '04', type: 'default', mode: 'dark', alpha: 1 },
+//   { level: '05', type: 'default', mode: 'dark', alpha: 1 },
+//   { level: '06', type: 'default', mode: 'dark', alpha: 1 },
+//   { level: '01', type: 'accessible', mode: 'dark', alpha: 1 },
+//   { level: '02', type: 'accessible', mode: 'dark', alpha: 1 },
+//   { level: '03', type: 'accessible', mode: 'dark', alpha: 1 },
+//   { level: '04', type: 'accessible', mode: 'dark', alpha: 1 },
+//   { level: '05', type: 'accessible', mode: 'dark', alpha: 1 },
+//   { level: '06', type: 'accessible', mode: 'dark', alpha: 1 },
+// ];
 
-function createSystemGrayToken(opts: SystemGrayOptions) {
-  const { level = '01', type = 'default', mode = 'dark', alpha = 1 } = opts;
-  return `rgba(var(--c-rgb-gray-${level}-${type}-${mode}), ${alpha})`;
-}
+// const systemGrayColorsLight: SystemGrayOptions[] = [
+//   { level: '01', type: 'default', mode: 'light', alpha: 1 },
+//   { level: '02', type: 'default', mode: 'light', alpha: 1 },
+//   { level: '03', type: 'default', mode: 'light', alpha: 1 },
+//   { level: '04', type: 'default', mode: 'light', alpha: 1 },
+//   { level: '05', type: 'default', mode: 'light', alpha: 1 },
+//   { level: '06', type: 'default', mode: 'light', alpha: 1 },
+//   { level: '01', type: 'accessible', mode: 'light', alpha: 1 },
+//   { level: '02', type: 'accessible', mode: 'light', alpha: 1 },
+//   { level: '03', type: 'accessible', mode: 'light', alpha: 1 },
+//   { level: '04', type: 'accessible', mode: 'light', alpha: 1 },
+//   { level: '05', type: 'accessible', mode: 'light', alpha: 1 },
+//   { level: '06', type: 'accessible', mode: 'light', alpha: 1 },
+// ];
 
-interface SystemGraySwatchProps extends SystemGrayOptions {
-  label: string;
-}
+// interface SystemGrayOptions {
+//   mode?: 'light' | 'dark' | undefined;
+//   type?: 'default' | 'accessible' | undefined;
+//   level?: '01' | '02' | '03' | '04' | '05' | '06' | undefined;
+//   alpha?: number | undefined;
+// }
 
-function SystemGraySwatch(props: SystemGraySwatchProps) {
-  const { label, alpha, level, mode, type } = props;
+// function createSystemGrayToken(opts: SystemGrayOptions) {
+//   const { level = '01', type = 'default', mode = 'dark', alpha = 1 } = opts;
+//   return `rgba(var(--c-rgb-gray-${level}-${type}-${mode}), ${alpha})`;
+// }
 
-  const style = {
-    color: `hsla(0, 0%, ${mode === 'dark' ? '99%' : '0%'}, 0.87)`,
-    backgroundColor: createSystemGrayToken({ level, type, mode, alpha }),
-  };
+// interface SystemGraySwatchProps extends SystemGrayOptions {
+//   label: string;
+// }
 
-  return (
-    <div className="v2-sandbox-canvas-swatch" style={style}>
-      <div className="v2-sandbox-canvas-swatch-label">{label}</div>
-    </div>
-  );
-}
+// function SystemGraySwatch(props: SystemGraySwatchProps) {
+//   const { label, alpha, level, mode, type } = props;
 
-const CanvasGraySwatchesDark = () => {
-  return (
-    <SandboxCanvas title="System Gray Colors">
-      {systemGrayColorsDark.map((item) => {
-        const token = ['gray', item.level, item.type, item.mode].join('-');
-        return <SystemGraySwatch key={token} label={token} {...item} />;
-      })}
-    </SandboxCanvas>
-  );
-};
+//   const style = {
+//     color: `hsla(0, 0%, ${mode === 'dark' ? '99%' : '0%'}, 0.87)`,
+//     backgroundColor: createSystemGrayToken({ level, type, mode, alpha }),
+//   };
+
+//   return (
+//     <div className="v2-sandbox-canvas-swatch" style={style}>
+//       <div className="v2-sandbox-canvas-swatch-label">{label}</div>
+//     </div>
+//   );
+// }
+
+// const CanvasGraySwatchesDark = () => {
+//   return (
+//     <SandboxCanvas title="System Gray Colors">
+//       {systemGrayColorsDark.map((item) => {
+//         const token = ['gray', item.level, item.type, item.mode].join('-');
+//         return <SystemGraySwatch key={token} label={token} {...item} />;
+//       })}
+//     </SandboxCanvas>
+//   );
+// };
 
 // function useInteractionState(initialState: InteractionState = {}) {
 //   const [state, dispatch] = React.useState(initialState);
@@ -707,108 +699,108 @@ const CanvasGraySwatchesDark = () => {
 //   );
 // };
 
-const coreModeData: { value: Theme.Mode; label: string }[] = [
-  { value: 'light', label: 'Light Mode' },
-  { value: 'dark', label: 'Dark Mode' },
-  { value: 'dim', label: 'Dim Mode' },
-];
+// const coreModeData: { value: Theme.Mode; label: string }[] = [
+//   { value: 'light', label: 'Light Mode' },
+//   { value: 'dark', label: 'Dark Mode' },
+//   { value: 'dim', label: 'Dim Mode' },
+// ];
 
-interface ModeActionItem {
-  icon: IconProps;
-  value: Theme.Mode;
-  label: string;
-}
+// interface ModeActionItem {
+//   icon: IconProps;
+//   value: Theme.Mode;
+//   label: string;
+// }
 
-function getModeActionIcon(value: ModeActionItem['value']): IconProps['name'] {
-  const lookup: Record<ModeActionItem['value'], IconProps['name']> = {
-    light: 'mode-light',
-    dark: 'mode-dark',
-    dim: 'mode-dim',
-  };
-  return lookup[value];
-}
+// function getModeActionIcon(value: ModeActionItem['value']): IconProps['name'] {
+//   const lookup: Record<ModeActionItem['value'], IconProps['name']> = {
+//     light: 'mode-light',
+//     dark: 'mode-dark',
+//     dim: 'mode-dim',
+//   };
+//   return lookup[value];
+// }
 
-function parseModeActionItem(value: ModeActionItem['value']): ModeActionItem {
-  return {
-    value,
-    label: capitalizeString(value),
-    icon: {
-      name: getModeActionIcon(value),
-    },
-  };
-}
+// function parseModeActionItem(value: ModeActionItem['value']): ModeActionItem {
+//   return {
+//     value,
+//     label: capitalizeString(value),
+//     icon: {
+//       name: getModeActionIcon(value),
+//     },
+//   };
+// }
 
-const coreModeActionData: ModeActionItem[] = [
-  parseModeActionItem('light'),
-  parseModeActionItem('dark'),
-  parseModeActionItem('dim'),
-];
+// const coreModeActionData: ModeActionItem[] = [
+//   parseModeActionItem('light'),
+//   parseModeActionItem('dark'),
+//   parseModeActionItem('dim'),
+// ];
 
-interface AccentActionItem {
-  icon: IconProps;
-  value: Theme.Color;
-  label: string;
-}
+// interface AccentActionItem {
+//   icon: IconProps;
+//   value: Theme.Color;
+//   label: string;
+// }
 
-function parseAccentActionItem(value: AccentActionItem['value']): AccentActionItem {
-  return {
-    value: value,
-    label: capitalizeString(value),
-    icon: {
-      name: 'shape-circle',
-      accent: value,
-    },
-  };
-}
+// function parseAccentActionItem(value: AccentActionItem['value']): AccentActionItem {
+//   return {
+//     value: value,
+//     label: capitalizeString(value),
+//     icon: {
+//       name: 'shape-circle',
+//       accent: value,
+//     },
+//   };
+// }
 
-const coreAccentItemData: AccentActionItem[] = [
-  parseAccentActionItem('red'),
-  parseAccentActionItem('orange'),
-  parseAccentActionItem('yellow'),
-  parseAccentActionItem('green'),
-  parseAccentActionItem('mint'),
-  parseAccentActionItem('teal'),
-  parseAccentActionItem('cyan'),
-  parseAccentActionItem('blue'),
-  parseAccentActionItem('indigo'),
-  parseAccentActionItem('purple'),
-  parseAccentActionItem('pink'),
-  parseAccentActionItem('brown'),
-];
+// const coreAccentItemData: AccentActionItem[] = [
+//   parseAccentActionItem('red'),
+//   parseAccentActionItem('orange'),
+//   parseAccentActionItem('yellow'),
+//   parseAccentActionItem('green'),
+//   parseAccentActionItem('mint'),
+//   parseAccentActionItem('teal'),
+//   parseAccentActionItem('cyan'),
+//   parseAccentActionItem('blue'),
+//   parseAccentActionItem('indigo'),
+//   parseAccentActionItem('purple'),
+//   parseAccentActionItem('pink'),
+//   parseAccentActionItem('brown'),
+// ];
 
-type ModeControlData = { data: ModeActionItem[] };
-type ModeControlProps = Store.Props & ModeControlData;
+// type ModeControlData = { data: ModeActionItem[] };
+// type ModeControlProps = Store.Props & ModeControlData;
 
-const SandboxModeControls = ({ data, state, dispatch }: ModeControlProps) => (
-  <Action.Group variant="default-elevated" value={state.accent}>
-    {data.map((item) => (
-      <Action
-        key={item.value}
-        value={item.value}
-        label={item.label}
-        icon={<Icon {...item.icon} type={state.icons} />}
-        onClick={() => dispatch({ mode: item.value })}
-      />
-    ))}
-  </Action.Group>
-);
+// const SandboxModeControls = ({ data, state, dispatch }: ModeControlProps) => (
+//   <Action.Group variant="base-default" value={state.accent}>
+//     {data.map((item) => (
+//       <Action
+//         key={item.value}
+//         value={item.value}
+//         label={item.label}
+//         icon={<Icon {...item.icon} type={state.icons} />}
+//         onClick={() => dispatch({ mode: item.value })}
+//       />
+//     ))}
+//   </Action.Group>
+// );
 
-type AccentControlData = { data: AccentActionItem[] };
-type AccentControlProps = Store.Props & AccentControlData;
+// type AccentControlData = { data: AccentActionItem[] };
+// type AccentControlProps = Store.Props & AccentControlData;
 
-const SandboxAccentControls = ({ data, state, dispatch }: AccentControlProps) => (
-  <Action.Group variant="default-elevated" value={state.accent}>
-    {data.map((item) => (
-      <Action
-        key={item.value}
-        value={item.value}
-        label={item.label}
-        icon={<Icon {...item.icon} type={state.icons} />}
-        onClick={() => dispatch({ accent: item.value })}
-      />
-    ))}
-  </Action.Group>
-);
+// const SandboxAccentControls = ({ data, state, dispatch }: AccentControlProps) => (
+//   <Action.Group variant="base-default" value={state.accent}>
+//     {data.map((item) => (
+//       <Action
+//         key={item.value}
+//         value={item.value}
+//         label={item.label}
+//         icon={<Icon {...item.icon} type={state.icons} />}
+//         onClick={() => dispatch({ accent: item.value })}
+//       />
+//     ))}
+//   </Action.Group>
+// );
 
 // const CanvasAccentOptions = () => {
 //   const store = useStateContext();
@@ -854,19 +846,3 @@ const SandboxAccentControls = ({ data, state, dispatch }: AccentControlProps) =>
 // };
 
 // const Canvas;
-
-const CanvasRoute: React.FC<{}> = ({}) => (
-  <Page>
-    <CanvasHero />
-    <CanvasControlColorContrast />
-    <CanvasAction />
-    <CanvasButton />
-    {/* <CanvasSelect /> */}
-    {/* <CanvasIconButton /> */}
-    {/* <CanvasInlineInput /> */}
-    {/* <CanvasGraySwatchesDark /> */}
-  </Page>
-);
-
-CanvasRoute.displayName = '@v2/Route.Canvas';
-export { CanvasRoute };

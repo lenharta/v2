@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
 import { Disclosure, DisclosureProps } from '@/core';
-import { useAccordionContext, useAccordionItemContext } from '../Accordion.context';
-import { AccordionPanelProps } from '../Accordion.types';
+import { AccordionPanelProps } from '../types';
+import { useAccordionContext, useAccordionItemContext } from '../context';
 
 type AccordionPanelFactory = Factory.Config<{
   ref: HTMLDivElement;

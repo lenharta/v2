@@ -46,7 +46,7 @@ const SideMenu: SideMenuFactory = (props) => {
   return (
     <div className="v2-sidemenu" {...forwardedProps}>
       <div className="v2-sidemenu-inner">
-        <Action.Group orientation="vertical" value={location.pathname}>
+        <Action.Group orientation="vertical" value={location.pathname} variant="base-elevated">
           <SideMenu.Link
             item={ROUTE_MAP_EXPERIENCE_LINK}
             icon={{ type: state.icons }}

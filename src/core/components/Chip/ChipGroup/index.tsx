@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { Group } from '@/core';
 import { Factory } from '@/types';
-import { factory } from '../../../factory';
-import { ChipGroupProps } from '../Chip.types';
+import { createFactory } from '@/factory';
+import { ChipProvider } from '../context';
+import { ChipGroupProps } from '../types';
 
 type ChipGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -10,11 +11,11 @@ type ChipGroupFactory = Factory.Config<{
   props: ChipGroupProps;
 }>;
 
-const ChipGroup = factory<ChipGroupFactory>((props, ref) => {
+const ChipGroup = createFactory<ChipGroupFactory>((props, ref) => {
   const { children, className, ...forwardedProps } = props;
   return (
     <Group ref={ref} className={clsx('v2-chip-group', className)} {...forwardedProps}>
-      {children}
+      <ChipProvider value={{}}>{children}</ChipProvider>
     </Group>
   );
 });

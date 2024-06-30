@@ -1,4 +1,4 @@
-import { FloatingDir, FloatingSide, FloatingAlign, FloatingPlacement } from '../Floating.types';
+import { FloatingDir, FloatingSide, FloatingAlign, FloatingPlacement } from '../types';
 
 type FloatingPlacementData = [FloatingSide, FloatingAlign];
 

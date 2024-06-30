@@ -1,16 +1,22 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { TextProps } from './Text.types';
-import { factoryPolymorphic } from '../../factory';
+import { createPolymorphicFactory } from '@/factory';
+import { TextProps } from './types';
 
 type TextFactory = Factory.Config<{
   ref: HTMLParagraphElement;
   comp: 'p';
+  omits: 'color';
   props: TextProps;
 }>;
 
-const Text = factoryPolymorphic<TextFactory>((props, ref) => {
-  const { children, className, component: Component = 'p', ...forwardedProps } = props;
+const Text = createPolymorphicFactory<TextFactory>((props, ref) => {
+  const { span, children, className, component = 'p', ...forwardedProps } = props;
+
+  let Component: 'p' | 'span' = component;
+
+  if (span) Component = 'span';
+
   return (
     <Component ref={ref} className={clsx('v2-text', className)} {...forwardedProps}>
       {children}

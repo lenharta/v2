@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '../../factory';
-import { Icon, UnstyledButton } from '@/core';
-import { IconButtonProps } from './IconButton.types';
+import { createFactory } from '@/factory';
+import { Icon, UnstyledButton, IconButtonProps } from '@/core';
 
 type IconButtonFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -11,21 +10,8 @@ type IconButtonFactory = Factory.Config<{
   props: IconButtonProps;
 }>;
 
-const IconButton = factory<IconButtonFactory>((props, ref) => {
-  const {
-    icon,
-    type,
-    size = 'xs',
-    radius,
-    accent,
-    variant = 'default',
-    loading,
-    disabled,
-    readOnly,
-    selected,
-    className,
-    ...forwardedProps
-  } = props;
+const IconButton = createFactory<IconButtonFactory>((props, ref) => {
+  const { icon, type, loading, disabled, readOnly, selected, className, ...forwardedProps } = props;
 
   return (
     <UnstyledButton
@@ -34,16 +20,10 @@ const IconButton = factory<IconButtonFactory>((props, ref) => {
       selected={selected}
       disabled={disabled}
       readOnly={readOnly}
-      className={clsx(
-        'v2-icon-button',
-        { [`v2-button--${variant}`]: variant },
-        { [`v2-icon-button--size-${size}`]: size },
-        { [`v2-icon-button--radius-${radius}`]: radius },
-        className
-      )}
+      className={clsx('v2-icon-button', className)}
       {...forwardedProps}
     >
-      <Icon name={icon} type={type} accent={accent} size={size} />
+      <Icon name={icon} type={type} />
     </UnstyledButton>
   );
 });

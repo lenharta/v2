@@ -15,6 +15,13 @@ const initialStore: Store.State = {
   nonce: () => '',
 };
 
+const THEME_ATTRIBUTES: Record<Theme.AttributeKey, Theme.Attribute> = {
+  dir: 'data-prefers-dir',
+  mode: 'data-prefers-color-mode',
+  accent: 'data-prefers-color-accent',
+  contrast: 'data-prefers-color-contrast',
+};
+
 const THEME_ATTRIBUTE_MAP = {
   contrast: 'data-prefers-accessible-contrast',
   accent: 'data-prefers-accent',
@@ -77,8 +84,8 @@ const StoreProvider = ({ children }: { children?: React.ReactNode | undefined })
   React.useEffect(() => {
     const html = document.getElementsByTagName('html')[0]!;
 
-    (Object.keys(THEME_ATTRIBUTE_MAP) as Theme.Attributes[]).forEach((attribute) => {
-      html.setAttribute(THEME_ATTRIBUTE_MAP[attribute], store[attribute]);
+    (Object.keys(THEME_ATTRIBUTES) as Theme.AttributeKey[]).forEach((attribute) => {
+      html.setAttribute(THEME_ATTRIBUTES[attribute], store[attribute]);
     });
   }, [store.dir, store.mode, store.accent, store.contrast]);
 

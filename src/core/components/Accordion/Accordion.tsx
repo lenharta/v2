@@ -1,16 +1,14 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { AccordionItem } from './AccordionItem';
-import { AccordionPanel } from './AccordionPanel';
+import { AccordionProps, AccordionValue } from './types';
+import { AccordionProvider } from './context';
 import { AccordionTarget } from './AccordionTarget';
-import { AccordionProvider } from './Accordion.context';
-import { AccordionProps, AccordionValue } from './Accordion.types';
+import { AccordionPanel } from './AccordionPanel';
+import { AccordionItem } from './AccordionItem';
 
 const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multiple>) => {
   const {
-    size,
     value,
-    variant = 'default',
     children,
     multiple = false,
     trapFocus = false,
@@ -43,18 +41,9 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multi
   };
 
   return (
-    <div
-      id={getRootId()}
-      className={clsx(
-        'v2-accordion',
-        `v2-accordion--size-${size}`,
-        `v2-accordion--variant-${variant}`,
-        className
-      )}
-    >
+    <div id={getRootId()} className={clsx('v2-accordion', className)}>
       <AccordionProvider
         value={{
-          variant,
           trapFocus,
           chevronRotation,
           chevronPosition,

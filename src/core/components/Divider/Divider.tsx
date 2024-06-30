@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { DividerProps } from './Divider.types';
+import { DividerProps } from './types';
 
 type DividerFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -11,10 +11,8 @@ type DividerFactory = Factory.Config<{
 
 const Divider = createFactory<DividerFactory>((props, ref) => {
   const {
-    size = 'sm',
     icon,
     label,
-    variant = 'default',
     decoration = 'solid',
     iconPosition = 'start',
     labelPosition = 'start',
@@ -27,13 +25,7 @@ const Divider = createFactory<DividerFactory>((props, ref) => {
       ref={ref}
       role="separator"
       data-position={labelPosition}
-      className={clsx(
-        'v2-divider',
-        `v2-divider--${variant}`,
-        `v2-divider--size-${size}`,
-        `v2-divider--decoration-${decoration}`,
-        className
-      )}
+      className={clsx('v2-divider', `v2-divider--decoration-${decoration}`, className)}
       {...forwardedProps}
     >
       <div className="v2-divider-content">

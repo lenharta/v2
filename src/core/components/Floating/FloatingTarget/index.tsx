@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import React from 'react';
+import * as React from 'react';
 import { Factory } from '@/types';
 import { useMergeRefs } from '@/hooks';
 import { createFactory } from '@/factory';
 import { createEventCallback } from '@/utils';
-import { FloatingTargetProps } from '../Floating.types';
-import { useFloatingContext } from '../Floating.context';
+import { useFloatingContext } from '../context';
+import { FloatingTargetProps } from '../types';
 
 type FloatingTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;

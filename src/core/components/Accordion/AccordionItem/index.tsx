@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { AccordionItemProps } from '../Accordion.types';
-import { AccordionItemProvider, useAccordionContext } from '../Accordion.context';
+import { AccordionItemProps } from '../types';
+import { AccordionItemProvider, useAccordionContext } from '../context';
 
 type AccordionItemFactory = Factory.Config<{
   ref: HTMLDivElement;

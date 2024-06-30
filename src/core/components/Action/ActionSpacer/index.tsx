@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { ActionSpacerProps } from '../Action.types';
-import { useActionContext } from '../Action.context';
+import { useActionContext } from '../context';
+import { ActionSpacerProps } from '../types';
 
 type ActionSpacerFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -18,11 +18,7 @@ const ActionSpacer = createFactory<ActionSpacerFactory>((props, ref) => {
 
   const contextProps = ctx
     ? {
-        className: clsx(
-          'v2-action-spacer',
-          `v2-action-spacer--${ctx.variant || 'default-elevated'}`,
-          className
-        ),
+        className: clsx('v2-action-spacer', className),
       }
     : {};
 

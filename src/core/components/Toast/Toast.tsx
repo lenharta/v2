@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { ToastProps } from './Toast.types';
 import { createFactory } from '@/factory';
-import { DURATION, EASING, IconButton, Text, Title, Transition } from '@/core';
+import { Text, Title, IconButton, Transition, DURATION, EASING } from '@/core';
+import { ToastProps } from './types';
 
 type ToastFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -19,8 +19,8 @@ const Toast = createFactory<ToastFactory>((props, ref) => {
     style,
     zIndex,
     offset,
-    variant,
     duration,
+    className,
     transition,
     timingFunction,
     exitDuration,
@@ -61,7 +61,7 @@ const Toast = createFactory<ToastFactory>((props, ref) => {
       {(transitionStyles) => (
         <div
           ref={ref}
-          className={clsx('v2-toast', `v2-toast--${variant || 'default'}`)}
+          className={clsx('v2-toast', className)}
           style={{ ...toastStyles, ...transitionStyles }}
           {...forwardedProps}
         >
@@ -72,13 +72,7 @@ const Toast = createFactory<ToastFactory>((props, ref) => {
               {title}
             </Title>
 
-            <IconButton
-              size="xxs"
-              variant="accent"
-              onClick={onClose}
-              icon="close-x-large"
-              className="v2-toast-close"
-            />
+            <IconButton onClick={onClose} icon="close-x-large" className="v2-toast-close" />
           </div>
           <Text className="v2-toast-text">{text}</Text>
         </div>

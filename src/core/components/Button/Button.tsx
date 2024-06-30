@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { isNotLabelled } from '@/utils';
 import { UnstyledButton } from '@/core';
+import { ButtonProps } from './types';
 import { ButtonGroup } from './ButtonGroup';
-import { ButtonProps } from './Button.types';
-import { useButtonContext } from './Button.context';
+import { useButtonContext } from './context';
 
 type ButtonFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -18,11 +17,7 @@ type ButtonFactory = Factory.Config<{
 
 const Button = createFactory<ButtonFactory>((props, ref) => {
   const {
-    size,
     value,
-    label,
-    radius,
-    variant,
     loading,
     disabled,
     readOnly,
@@ -34,10 +29,6 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
     ...forwardedProps
   } = props;
 
-  if (isNotLabelled(label, children, forwardedProps['aria-label'])) {
-    console.error(`[@v2/core/Button]: label must be provided to the element for accessibility.`);
-  }
-
   const ctx = useButtonContext();
 
   const contextProps = ctx
@@ -48,13 +39,7 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
         readOnly: readOnly || ctx.readOnly,
         'data-orientation': ctx.orientation,
         'aria-orientation': ctx.orientation,
-        className: clsx(
-          'v2-button',
-          `v2-button--${variant || ctx.variant || 'default-elevated'}`,
-          `v2-button--size-${size || ctx.size || 'md'}`,
-          `v2-button--radius-${radius || ctx.radius || 'default'}`,
-          className
-        ),
+        className: clsx('v2-button', className),
       }
     : {};
 
@@ -65,13 +50,7 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
       readOnly={readOnly}
       disabled={disabled}
       selected={selected}
-      className={clsx(
-        'v2-button',
-        `v2-button--${variant || 'elevated'}`,
-        `v2-button--size-${size || 'sm'}`,
-        `v2-button--radius-${radius || 'default'}`,
-        className
-      )}
+      className={clsx('v2-button', className)}
       {...forwardedProps}
       {...contextProps}
     >
