@@ -42,8 +42,8 @@ const SideSelect: SideSelectFactory = (props) => {
       </Floating.Target>
 
       <Floating.Box>
-        <div className="v2-app-side-select-drawer">
-          <div className="v2-app-side-select-drawer-layout">
+        <div className="v2-side-select-drawer">
+          <div className="v2-side-select-drawer-layout">
             {(items ?? []).map((item) => (
               <Action
                 key={item.value}

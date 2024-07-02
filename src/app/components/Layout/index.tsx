@@ -19,7 +19,7 @@ type LayoutFactory = React.FC<LayoutProps> & {
 const Layout: LayoutFactory = ({}) => {
   return (
     <StoreProvider>
-      <div className="v2-app-layout">
+      <div className="v2-layout">
         <Layout.Header />
         <Layout.Side />
         <Layout.Main>

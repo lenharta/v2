@@ -1,5 +1,6 @@
 export * from './About';
 export * from './Articles';
+export * from './Canvas';
 export * from './Contact';
 export * from './Elements';
 export * from './Error';

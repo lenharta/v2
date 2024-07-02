@@ -39,17 +39,87 @@ const FloatingTarget = createFactory<FloatingTargetFactory>((props, ref) => {
         'aria-haspopup': forwardedProps['aria-haspopup'] || popupType,
         'aria-expanded': forwardedProps['aria-expanded'] || ctx.isOpen,
         'aria-controls': forwardedProps['aria-controls'] || ctx.getBoxId(),
-        onClick: createEventCallback(forwardedProps.onClick, (event) => {
-          event.stopPropagation();
-          ctx.onChange(ctx.isOpen);
-        }),
+
+        ...(ctx.behavior === 'click'
+          ? {
+              onClick: createEventCallback(forwardedProps.onClick, (event) => {
+                if (!ctx.disabled && !forwardedProps['aria-readonly']) {
+                  event.stopPropagation();
+                  ctx.onChange?.(ctx.isOpen);
+                }
+              }),
+            }
+          : {}),
+        ...(ctx.behavior === 'hover'
+          ? {
+              onMouseDown: createEventCallback(forwardedProps.onMouseDown, (event) => {
+                if (!ctx.disabled && !forwardedProps['aria-readonly']) {
+                  event.stopPropagation();
+                  forwardedProps.onClick?.();
+                }
+              }),
+              onMouseEnter: createEventCallback(forwardedProps.onMouseEnter, (event) => {
+                if (!ctx.disabled && !forwardedProps['aria-readonly']) {
+                  event.stopPropagation();
+                  ctx.onChange?.(ctx.isOpen);
+                }
+              }),
+              onMouseLeave: createEventCallback(forwardedProps.onMouseLeave, (event) => {
+                if (!ctx.disabled && !forwardedProps['aria-readonly']) {
+                  event.stopPropagation();
+                  ctx.onChange?.(ctx.isOpen);
+                }
+              }),
+            }
+          : {}),
+
+        // ...(ctx.behavior === 'click'
+        //   ? {
+        //       onClick: createEventCallback(forwardedProps.onClick, (event) => {
+        //         if (!ctx.disabled) {
+        //           event.stopPropagation();
+        //           ctx.onChange(ctx.isOpen);
+        //         }
+        //       }),
+        //     }
+        //   : {}),
+        // ...(ctx.behavior === 'hover'
+        //   ? {
+        //       onMouseDown: createEventCallback(
+        //         !ctx.disabled && forwardedProps.onMouseDown,
+        //         (event) => {
+        //           if (!ctx.disabled) {
+        //             event.stopPropagation();
+        //             forwardedProps.onClick?.();
+        //           }
+        //         }
+        //       ),
+        //       onClick: createEventCallback(!ctx.disabled && forwardedProps.onClick, (event) => {
+        //         if (!ctx.disabled) {
+        //           event.stopPropagation();
+        //           forwardedProps.onMouseDown?.();
+        //         }
+        //       }),
+        //       onMouseEnter: createEventCallback(forwardedProps.onMouseEnter, (event) => {
+        //         if (!ctx.disabled) {
+        //           event.stopPropagation();
+        //           ctx.onChange(ctx.isOpen);
+        //         }
+        //       }),
+        //       onMouseLeave: createEventCallback(forwardedProps.onMouseLeave, (event) => {
+        //         if (!ctx.disabled) {
+        //           event.stopPropagation();
+        //           ctx.onChange(ctx.isOpen);
+        //         }
+        //       }),
+        //     }
+        //   : {}),
       }
     : {
         id: forwardedProps.id,
         'aria-haspopup': forwardedProps['aria-haspopup'] || popupType,
         'aria-expanded': forwardedProps['aria-expanded'],
         'aria-controls': forwardedProps['aria-controls'],
-        onClick: forwardedProps.onClick,
       };
 
   return React.cloneElement(children, {

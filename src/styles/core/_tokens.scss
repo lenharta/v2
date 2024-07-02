@@ -127,29 +127,29 @@
   --v2-icon-width-xl: var(--v2-icon-height-xl);
   --v2-icon-width-xxl: var(--v2-icon-height-xxl);
 
-  --v2-button-height-xxs: calc(var(--v2-unit) * 18);
-  --v2-button-height-xs: calc(var(--v2-unit) * 21);
-  --v2-button-height-sm: calc(var(--v2-unit) * 24);
-  --v2-button-height-md: calc(var(--v2-unit) * 27);
-  --v2-button-height-lg: calc(var(--v2-unit) * 30);
-  --v2-button-height-xl: calc(var(--v2-unit) * 33);
-  --v2-button-height-xxl: calc(var(--v2-unit) * 36);
+  --v2-button-height-xxs: calc(var(--v2-unit) * 22);
+  --v2-button-height-xs: calc(var(--v2-unit) * 26);
+  --v2-button-height-sm: calc(var(--v2-unit) * 30);
+  --v2-button-height-md: calc(var(--v2-unit) * 34);
+  --v2-button-height-lg: calc(var(--v2-unit) * 38);
+  --v2-button-height-xl: calc(var(--v2-unit) * 42);
+  --v2-button-height-xxl: calc(var(--v2-unit) * 46);
 
   --v2-button-font-size-xxs: calc(var(--v2-unit) * 6);
-  --v2-button-font-size-xs: calc(var(--v2-unit) * 6);
+  --v2-button-font-size-xs: calc(var(--v2-unit) * 7);
   --v2-button-font-size-sm: calc(var(--v2-unit) * 7);
-  --v2-button-font-size-md: calc(var(--v2-unit) * 7);
+  --v2-button-font-size-md: calc(var(--v2-unit) * 8);
   --v2-button-font-size-lg: calc(var(--v2-unit) * 8);
-  --v2-button-font-size-xl: calc(var(--v2-unit) * 8);
+  --v2-button-font-size-xl: calc(var(--v2-unit) * 9);
   --v2-button-font-size-xxl: calc(var(--v2-unit) * 9);
 
-  --v2-button-spacing-x-xxs: calc(var(--v2-unit) * 4);
-  --v2-button-spacing-x-xs: calc(var(--v2-unit) * 6);
-  --v2-button-spacing-x-sm: calc(var(--v2-unit) * 8);
+  --v2-button-spacing-x-xxs: calc(var(--v2-unit) * 8);
+  --v2-button-spacing-x-xs: calc(var(--v2-unit) * 8);
+  --v2-button-spacing-x-sm: calc(var(--v2-unit) * 10);
   --v2-button-spacing-x-md: calc(var(--v2-unit) * 10);
   --v2-button-spacing-x-lg: calc(var(--v2-unit) * 12);
-  --v2-button-spacing-x-xl: calc(var(--v2-unit) * 14);
-  --v2-button-spacing-x-xxl: calc(var(--v2-unit) * 16);
+  --v2-button-spacing-x-xl: calc(var(--v2-unit) * 12);
+  --v2-button-spacing-x-xxl: calc(var(--v2-unit) * 12);
 
   --v2-title-font-size-xxs: var(--v2-font-size-13);
   --v2-title-font-size-xs: var(--v2-font-size-14);

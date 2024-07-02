@@ -45,6 +45,10 @@ const browserRouter = ReactRouter.createBrowserRouter([
         path: '/articles',
         element: <Routes.Articles />,
       },
+      {
+        path: '/canvas',
+        element: <Routes.Canvas />,
+      },
     ],
   },
 ]);

@@ -1,0 +1,25 @@
+.v2-side-nav-target[data-selected] .v2-icon {
+  fill: rgba(var(--c-rgb-accent), 0.87) !important;
+}
+
+.v2-side-nav-target[data-selected]::after {
+  background-color: rgba(var(--c-rgb-accent), 0.87);
+  color: rgba(var(--c-rgb-accent), 0.87);
+}
+
+.v2-side-nav-tooltip {
+  background-color: rgba(var(--c-rgb-base), 1);
+
+  &::after {
+    background-color: rgba(var(--c-rgb-accent), 1);
+  }
+}
+
+.v2-side-nav-tooltip-layout {
+  background-color: rgba(var(--c-rgb-accent), 0.1);
+  color: rgba(var(--c-rgb-accent), 0.87);
+}
+
+.v2-side-nav-tooltip .v2-text {
+  color: rgba(var(--c-rgb-accent), 0.97);
+}

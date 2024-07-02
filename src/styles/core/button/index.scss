@@ -5,6 +5,7 @@
 
   height: var(--v2-button-height, var(--v2-button-height-sm));
 
+  min-width: max-content;
   display: inline-flex;
   align-items: var(--v2-button-align, center);
   justify-content: var(--v2-button-justify, center);
@@ -19,15 +20,16 @@
   }
 
   &-layout {
+    width: 100%;
     display: inline-flex;
     gap: var(--v2-button-spacing-x);
-    align-items: var(--v2-button-align, center);
-    justify-content: var(--v2-button-justify, center);
+    justify-content: space-between;
+    align-items: center;
   }
 
   .v2-icon {
-    // width: var(--v2-icon-size-xxs);
-    // height: var(--v2-icon-size-xxs);
+    width: var(--v2-button-font-size, var(--v2-font-size-xxs));
+    height: var(--v2-button-font-size, var(--v2-font-size-xxs));
   }
 
   &--align-end {
@@ -49,35 +51,53 @@
   &--size-xxs {
     --v2-button-height: var(--v2-button-height-xxs);
     --v2-button-spacing-x: var(--v2-button-spacing-x-xxs);
+    --v2-button-icon-size: var(--v2-button-icon-size-xxs);
+    --v2-button-font-size: var(--v2-button-font-size-xxs);
   }
 
   &--size-xs {
     --v2-button-height: var(--v2-button-height-xs);
     --v2-button-spacing-x: var(--v2-button-spacing-x-xs);
+    --v2-button-icon-size: var(--v2-button-icon-size-xs);
+    --v2-button-font-size: var(--v2-button-font-size-xs);
   }
 
   &--size-sm {
     --v2-button-height: var(--v2-button-height-sm);
     --v2-button-spacing-x: var(--v2-button-spacing-x-sm);
+    --v2-button-icon-size: var(--v2-button-icon-size-sm);
+    --v2-button-font-size: var(--v2-button-font-size-sm);
   }
 
   &--size-md {
     --v2-button-height: var(--v2-button-height-md);
     --v2-button-spacing-x: var(--v2-button-spacing-x-md);
+    --v2-button-icon-size: var(--v2-button-icon-size-md);
+    --v2-button-font-size: var(--v2-button-font-size-md);
   }
 
   &--size-lg {
     --v2-button-height: var(--v2-button-height-lg);
     --v2-button-spacing-x: var(--v2-button-spacing-x-lg);
+    --v2-button-icon-size: var(--v2-button-icon-size-lg);
+    --v2-button-font-size: var(--v2-button-font-size-lg);
   }
 
   &--size-xl {
     --v2-button-height: var(--v2-button-height-xl);
     --v2-button-spacing-x: var(--v2-button-spacing-x-xl);
+    --v2-button-icon-size: var(--v2-button-icon-size-xl);
+    --v2-button-font-size: var(--v2-button-font-size-xl);
   }
 
   &--size-xxl {
     --v2-button-height: var(--v2-button-height-xxl);
     --v2-button-spacing-x: var(--v2-button-spacing-x-xxl);
+    --v2-button-icon-size: var(--v2-button-icon-size-xxl);
+    --v2-button-font-size: var(--v2-button-font-size-xxl);
   }
+}
+
+.v2-button-group {
+  flex-wrap: wrap;
 }

@@ -1,26 +1,39 @@
 .v2-icon {
-  min-width: var(--v2-icon-size, var(--v2-icon-size-sm));
-  min-height: var(--v2-icon-size, var(--v2-icon-size-sm));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: var(--v2-icon-width, var(--v2-icon-width-sm));
+  min-height: var(--v2-icon-height, var(--v2-icon-height-sm));
+  width: var(--v2-icon-width, var(--v2-icon-width-sm));
+  height: var(--v2-icon-height, var(--v2-icon-height-sm));
 
   &--size-xxs {
-    --v2-icon-size: var(--v2-icon-size-xxs);
+    --v2-icon-width: var(--v2-icon-width-xxs);
+    --v2-icon-height: var(--v2-icon-height-xxs);
   }
   &--size-xs {
-    --v2-icon-size: var(--v2-icon-size-xs);
+    --v2-icon-width: var(--v2-icon-width-xs);
+    --v2-icon-height: var(--v2-icon-height-xs);
   }
   &--size-sm {
-    --v2-icon-size: var(--v2-icon-size-sm);
+    --v2-icon-width: var(--v2-icon-width-sm);
+    --v2-icon-height: var(--v2-icon-height-sm);
   }
   &--size-md {
-    --v2-icon-size: var(--v2-icon-size-md);
+    --v2-icon-width: var(--v2-icon-width-md);
+    --v2-icon-height: var(--v2-icon-height-md);
   }
   &--size-lg {
-    --v2-icon-size: var(--v2-icon-size-lg);
+    --v2-icon-width: var(--v2-icon-width-lg);
+    --v2-icon-height: var(--v2-icon-height-lg);
   }
   &--size-xl {
-    --v2-icon-size: var(--v2-icon-size-xl);
+    --v2-icon-width: var(--v2-icon-width-xl);
+    --v2-icon-height: var(--v2-icon-height-xl);
   }
   &--size-xxl {
-    --v2-icon-size: var(--v2-icon-size-xxl);
+    --v2-icon-width: var(--v2-icon-width-xxl);
+    --v2-icon-height: var(--v2-icon-height-xxl);
   }
 }

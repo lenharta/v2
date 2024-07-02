@@ -25,13 +25,9 @@
 }
 
 @each $surface-key, $surface-token in data.$token-on-surface-map-full {
-  .v2-icon--#{$surface-key} {
-    fill: rgba(#{$surface-token}, 0.87);
-  }
-
   @each $emphasis-key, $emphasis-token in data.$token-emphasis-map {
     .v2-icon--#{$surface-key}.v2-icon--emphasis-#{$emphasis-key} {
-      fill: rgba(#{$surface-token}, #{$emphasis-token});
+      fill: rgba(#{$surface-token}, #{$emphasis-token}) !important;
     }
   }
 }

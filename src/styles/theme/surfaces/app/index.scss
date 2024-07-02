@@ -8,22 +8,24 @@ svg {
   fill: rgba(var(--c-rgb-contrast), 0.87);
 }
 
-.v2-app-header {
+.v2-header {
   background-color: rgba(var(--c-rgb-base), 1);
   color: rgba(var(--c-rgb-contrast), 0.87);
 }
 
-.v2-app-side,
-.v2-app-side-select-drawer,
-.v2-app-side-select-drawer-layout {
+.v2-side,
+.v2-side-select-drawer,
+.v2-side-select-drawer-layout {
   background-color: rgba(var(--c-rgb-base), 1);
   color: rgba(var(--c-rgb-contrast), 0.87);
 }
 
-.v2-app-footer {
+.v2-footer {
   background-color: rgba(var(--c-rgb-contrast), 0.02);
+  color: rgba(var(--c-rgb-contrast), 0.87);
 }
 
 .v2-page-hero {
   background-color: rgba(var(--c-rgb-contrast), 0.02);
+  color: rgba(var(--c-rgb-contrast), 0.87);
 }

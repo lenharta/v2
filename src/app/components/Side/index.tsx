@@ -3,8 +3,8 @@ import * as Router from 'react-router-dom';
 import { Theme } from '@/types';
 import { Action, IconProps } from '@/core';
 import { useDispatch, useStore } from '@/app';
-import { SideNav } from './SideNav';
 import { SideSelect } from './SideSelect';
+import { SideNav } from './SideNav';
 
 interface SideProps {}
 
@@ -28,8 +28,8 @@ const Side: SideFactory = ({}) => {
   const location = Router.useLocation();
 
   return (
-    <aside className="v2-app-side">
-      <div className="v2-app-side-layout">
+    <aside className="v2-side">
+      <div className="v2-side-layout">
         <Action.Group orientation="vertical" gap="xxs">
           <Side.Nav
             onClick={navigate}
@@ -37,56 +37,33 @@ const Side: SideFactory = ({}) => {
             links={[
               {
                 value: '/about',
-                label: 'go to about page',
-                icon: { name: 'shape-circle', type: store.icons },
+                label: 'about',
+                icon: { type: store.icons, name: 'person', size: 'md' },
               },
               {
                 value: '/projects',
-                label: 'go to projects page',
-                icon: { name: 'shape-circle', type: store.icons },
-              },
-              {
-                value: '/articles',
-                label: 'go to articles page',
-                icon: { name: 'shape-circle', type: store.icons },
+                label: 'projects',
+                icon: { type: store.icons, name: 'folder', size: 'md' },
               },
               {
                 value: '/stack',
-                label: 'go to stack page',
-                icon: { name: 'shape-circle', type: store.icons },
+                label: 'stack',
+                icon: { type: store.icons, name: 'layers', size: 'md' },
               },
               {
                 value: '/elements',
-                label: 'go to elements page',
-                icon: { name: 'shape-circle', type: store.icons },
+                label: 'elements',
+                icon: { type: store.icons, name: 'grid', size: 'md' },
+              },
+              {
+                value: '/articles',
+                label: 'articles',
+                icon: { type: store.icons, name: 'chat-left', size: 'md' },
               },
             ]}
           />
 
           <Action.Spacer grow />
-
-          <Side.Select
-            name="dir"
-            store={store}
-            dispatch={dispatch}
-            group={{
-              value: store.dir,
-              label: 'select writing direction',
-              icon: { type: store.icons, name: getDirIconName(store.dir) },
-            }}
-            items={[
-              {
-                value: 'ltr',
-                label: 'left to right',
-                icon: { type: store.icons, name: getDirIconName('ltr') },
-              },
-              {
-                value: 'rtl',
-                label: 'right to left',
-                icon: { type: store.icons, name: getDirIconName('rtl') },
-              },
-            ]}
-          />
 
           <Side.Select
             name="accent"
@@ -95,68 +72,68 @@ const Side: SideFactory = ({}) => {
             group={{
               value: store.accent,
               label: 'select accent color',
-              icon: { type: 'fill', name: 'shape-circle', surface: store.accent },
+              icon: { type: store.icons, surface: store.accent },
             }}
             items={[
               {
                 value: 'red',
                 label: 'red',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'red' },
+                icon: { type: 'fill', surface: 'red' },
               },
               {
                 value: 'orange',
                 label: 'orange',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'orange' },
+                icon: { type: 'fill', surface: 'orange' },
               },
               {
                 value: 'yellow',
                 label: 'yellow',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'yellow' },
+                icon: { type: 'fill', surface: 'yellow' },
               },
               {
                 value: 'green',
                 label: 'green',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'green' },
+                icon: { type: 'fill', surface: 'green' },
               },
               {
                 value: 'mint',
                 label: 'mint',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'mint' },
+                icon: { type: 'fill', surface: 'mint' },
               },
               {
                 value: 'teal',
                 label: 'teal',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'teal' },
+                icon: { type: 'fill', surface: 'teal' },
               },
               {
                 value: 'cyan',
                 label: 'cyan',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'cyan' },
+                icon: { type: 'fill', surface: 'cyan' },
               },
               {
                 value: 'blue',
                 label: 'blue',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'blue' },
+                icon: { type: 'fill', surface: 'blue' },
               },
               {
                 value: 'indigo',
                 label: 'indigo',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'indigo' },
+                icon: { type: 'fill', surface: 'indigo' },
               },
               {
                 value: 'purple',
                 label: 'purple',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'purple' },
+                icon: { type: 'fill', surface: 'purple' },
               },
               {
                 value: 'pink',
                 label: 'pink',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'pink' },
+                icon: { type: 'fill', surface: 'pink' },
               },
               {
                 value: 'brown',
                 label: 'brown',
-                icon: { type: store.icons, name: 'shape-circle', surface: 'brown' },
+                icon: { type: 'fill', surface: 'brown' },
               },
             ]}
           />
@@ -185,6 +162,29 @@ const Side: SideFactory = ({}) => {
                 value: 'dim',
                 label: 'dim mode',
                 icon: { type: store.icons, name: getModeIconName('dim') },
+              },
+            ]}
+          />
+
+          <Side.Select
+            name="dir"
+            store={store}
+            dispatch={dispatch}
+            group={{
+              value: store.dir,
+              label: 'select writing direction',
+              icon: { type: store.icons, name: getDirIconName(store.dir) },
+            }}
+            items={[
+              {
+                value: 'ltr',
+                label: 'left to right',
+                icon: { type: store.icons, name: getDirIconName('ltr') },
+              },
+              {
+                value: 'rtl',
+                label: 'right to left',
+                icon: { type: store.icons, name: getDirIconName('rtl') },
               },
             ]}
           />
