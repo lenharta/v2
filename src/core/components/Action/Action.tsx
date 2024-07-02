@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { isNotLabelled } from '@/utils';
 import { createFactory } from '@/factory';
-import { UnstyledButton } from '@/core';
+import { Icon, UnstyledButton } from '@/core';
+
+import { ActionProps } from './types';
 import { ActionGroup } from './ActionGroup';
-import { ActionProps } from './Action.types';
 import { ActionSpacer } from './ActionSpacer';
-import { useActionContext } from './Action.context';
+import { useActionContext } from './context';
 
 type ActionFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -21,64 +21,49 @@ type ActionFactory = Factory.Config<{
 
 const Action = createFactory<ActionFactory>((props, ref) => {
   const {
-    size,
     icon,
-    label,
     value,
-    radius,
-    variant,
     loading,
     disabled,
     readOnly,
     selected,
     className,
+    surface,
+    variant,
     ...forwardedProps
   } = props;
-
-  if (isNotLabelled(label, forwardedProps['aria-label'])) {
-    console.error(`[@v2/core/Action]: label must be provided to the element for accessibility.`);
-  }
 
   const ctx = useActionContext();
 
   const contextProps = ctx
     ? {
-        loading: loading || ctx.loading,
-        selected: selected || (!!ctx.value && value === ctx.value) || undefined,
-        disabled: disabled || ctx.disabled,
-        readOnly: readOnly || ctx.readOnly,
+        loading: !!ctx.loading || !!loading || undefined,
+        disabled: !!ctx.disabled || !!disabled || undefined,
+        readOnly: !!ctx.readOnly || !!readOnly || undefined,
+        selected: (!!ctx.value && value === ctx.value) || !!selected || undefined,
         'data-orientation': ctx.orientation,
         'aria-orientation': ctx.orientation,
-        className: clsx(
-          'v2-action',
-          `v2-action--${variant ?? ctx.variant ?? 'default-elevated'}`,
-          `v2-action--size-${size ?? ctx.size ?? 'md'}`,
-          `v2-action--radius-${radius ?? ctx.radius ?? 'default'}`,
-          className
-        ),
       }
     : {};
 
   return (
     <UnstyledButton
       ref={ref}
-      label={label}
       value={value}
-      loading={loading}
-      readOnly={readOnly}
-      disabled={disabled}
-      selected={selected}
+      loading={!!loading || undefined}
+      readOnly={!!readOnly || undefined}
+      disabled={!!disabled || undefined}
+      selected={!!selected || undefined}
       className={clsx(
         'v2-action',
-        `v2-action--${variant ?? 'default-elevated'}`,
-        `v2-action--size-${size ?? 'sm'}`,
-        `v2-action--radius-${radius ?? 'default'}`,
+        `v2-surface--${ctx.surface || surface || 'base'}`,
+        `v2-surface--${ctx.variant || variant || 'elevated'}`,
         className
       )}
       {...forwardedProps}
       {...contextProps}
     >
-      {icon}
+      <Icon {...icon} />
     </UnstyledButton>
   );
 });

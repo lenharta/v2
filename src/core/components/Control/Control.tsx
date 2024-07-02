@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { Core } from '@/types';
 import { parseItemData } from '@/utils';
-import { ControlProps } from './Control.types';
-import { ControlThumb } from './ControlThumb';
+import { ControlProps } from './types';
 import { ControlTrack } from './ControlTrack';
+import { ControlThumb } from './ControlThumb';
 import { ControlSegment } from './ControlSegment';
 import { useControlPosition } from './use-control-position';
 

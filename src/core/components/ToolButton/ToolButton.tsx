@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '../../factory';
+import { createFactory } from '@/factory';
 import { UnstyledButton } from '@/core';
-import { ToolButtonProps } from './ToolButton.types';
+import { ToolButtonProps } from './types';
 
 type ToolButtonFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -10,7 +10,7 @@ type ToolButtonFactory = Factory.Config<{
   props: ToolButtonProps;
 }>;
 
-const ToolButton = factory<ToolButtonFactory>((props, ref) => {
+const ToolButton = createFactory<ToolButtonFactory>((props, ref) => {
   const { children, className, disabled, selected, readOnly, loading, ...forwardedProps } = props;
 
   return (

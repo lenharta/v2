@@ -3,8 +3,8 @@ import { Factory } from '@/types';
 import { createFactory } from '@/factory';
 import { createEventCallback } from '@/utils';
 import { Icon, UnstyledButton } from '@/core';
-import { AccordionTargetProps } from '../Accordion.types';
-import { useAccordionContext, useAccordionItemContext } from '../Accordion.context';
+import { AccordionTargetProps } from '../types';
+import { useAccordionContext, useAccordionItemContext } from '../context';
 
 type AccordionTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -15,8 +15,6 @@ type AccordionTargetFactory = Factory.Config<{
 const AccordionTarget = createFactory<AccordionTargetFactory>((props, ref) => {
   const {
     icon,
-    size,
-    variant,
     chevron = <Icon name="arrow-southeast" />,
     disabled,
     children,
@@ -45,12 +43,7 @@ const AccordionTarget = createFactory<AccordionTargetFactory>((props, ref) => {
       aria-controls={ctx.getPanelId(value)}
       aria-expanded={ctx.isValueActive(value)}
       data-expanded={ctx.isValueActive(value)}
-      className={clsx(
-        'v2-accordion-target',
-        `v2-accordion-target--size-${size || ctx.size}`,
-        `v2-accordion-target--variant-${variant || ctx.variant}`,
-        className
-      )}
+      className={clsx('v2-accordion-target', className)}
       {...forwardedProps}
     >
       <div {...contentProps} data-position="start">

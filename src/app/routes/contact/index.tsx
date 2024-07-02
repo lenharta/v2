@@ -1,30 +1,17 @@
-import React from 'react';
-import { Text, Title } from '@/core';
-import { Page, Hero, Section } from '@/app';
+import * as React from 'react';
+import { Page } from '@/app';
+import { ContactHero } from './ContactHero';
 
-const ContactHero = () => (
-  <Hero>
-    <Title h1>Contact</Title>
-  </Hero>
-);
+type ContactFactory = React.FC<{}> & {
+  Hero: typeof ContactHero;
+};
 
-const ContactOverview = () => (
-  <Section>
-    <Title h2>Overview</Title>
-    <Text>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et aliquid cupiditate aut maxime
-      nulla ipsa impedit iure quibusdam totam tempore nam voluptates id harum voluptate sed
-      reiciendis fugiat, ut tenetur.
-    </Text>
-  </Section>
-);
-
-const ContactRoute: React.FC<{}> = ({}) => (
+const Contact: ContactFactory = ({}) => (
   <Page>
-    <ContactHero />
-    <ContactOverview />
+    <Contact.Hero />
   </Page>
 );
 
-ContactRoute.displayName = '@v2/Route.Contact';
-export { ContactRoute };
+Contact.Hero = ContactHero;
+Contact.displayName = '@v2/Contact.Route';
+export { Contact };

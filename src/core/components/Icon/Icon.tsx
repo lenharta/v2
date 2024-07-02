@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { ICON_MAP } from './library';
-import { IconProps } from './Icon.types';
 import { createFactory } from '@/factory';
+import { ICON_MAP } from './library';
+import { IconProps } from './types';
 
 type IconFactory = Factory.Config<{
   ref: SVGSVGElement;
@@ -15,7 +15,8 @@ const Icon = createFactory<IconFactory>((props, ref) => {
     size = 'sm',
     type = 'outline',
     name = 'shape-circle',
-    accent,
+    surface = 'base',
+    emphasis = 'med',
     children,
     className,
     ...forwardedProps
@@ -30,8 +31,9 @@ const Icon = createFactory<IconFactory>((props, ref) => {
       viewBox="0 0 16 16"
       className={clsx(
         'v2-icon',
-        { [`v2-icon--size-${size}`]: size },
-        { [`v2-icon--accent-${accent}`]: accent },
+        `v2-icon--${surface}`,
+        `v2-icon--size-${size}`,
+        `v2-icon--emphasis-${emphasis}`,
         className
       )}
       data-icon-name={name}

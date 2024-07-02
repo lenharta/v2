@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { Group } from '@/core';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { ActionProvider } from '../Action.context';
-import { ActionGroupProps } from '../Action.types';
+import { ActionProvider } from '../context';
+import { ActionGroupProps } from '../types';
 
 type ActionGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -13,10 +13,10 @@ type ActionGroupFactory = Factory.Config<{
 
 const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
   const {
+    gap,
     icon,
-    size = 'sm',
     value,
-    radius = 'default',
+    surface,
     variant,
     loading,
     disabled,
@@ -30,12 +30,13 @@ const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
   return (
     <Group
       ref={ref}
+      gap={gap}
       className={clsx('v2-action-group', className)}
       orientation={orientation}
       {...forwardedProps}
     >
       <ActionProvider
-        value={{ icon, size, radius, variant, value, disabled, loading, readOnly, orientation }}
+        value={{ icon, value, disabled, loading, surface, variant, readOnly, orientation }}
       >
         {children}
       </ActionProvider>

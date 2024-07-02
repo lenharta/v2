@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { Store } from '@/types';
 
-const StoreStateContext = React.createContext({} as Store.StateContextValue);
-const StoreDispatchContext = React.createContext({} as Store.DispatchContextValue);
+const StoreContext = React.createContext({} as Store.Context['state']);
+const DispatchContext = React.createContext({} as Store.Context['dispatch']);
 
-const useStateContext = () => React.useContext(StoreStateContext);
-const useDispatchContext = () => React.useContext(StoreDispatchContext);
+const useStore = () => React.useContext(StoreContext);
+const useDispatch = () => React.useContext(DispatchContext);
 
-export { useStateContext, useDispatchContext, StoreStateContext, StoreDispatchContext };
+export { StoreContext, useStore, DispatchContext, useDispatch };

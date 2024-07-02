@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { InlineInputProps } from './InlineInput.types';
-import { Label, Text, UnstyledButton } from '@/core';
+import { Text, Label, UnstyledButton, InlineInputProps } from '@/core';
 
 type InlineInputFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -12,11 +11,9 @@ type InlineInputFactory = Factory.Config<{
 
 const InlineInput = createFactory<InlineInputFactory>((props, ref) => {
   const {
-    size = 'sm',
     error,
     label,
     message,
-    variant = 'default-elevated',
     checked,
     disabled,
     readOnly,
@@ -31,12 +28,7 @@ const InlineInput = createFactory<InlineInputFactory>((props, ref) => {
       data-selected={!!checked ? true : undefined}
       data-disabled={!!disabled ? true : undefined}
       data-readonly={!!readOnly ? true : undefined}
-      className={clsx(
-        'v2-inline-input',
-        `v2-inline-input--${variant}`,
-        `v2-inline-input--size-${size}`,
-        className
-      )}
+      className={clsx('v2-inline-input', className)}
       {...forwardedProps}
     >
       <div className="v2-inline-input-indicator">{children}</div>

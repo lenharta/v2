@@ -1,6 +1,6 @@
-import { Title } from './Title';
-import { render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { Title } from './Title';
 
 describe('@v2/core/Title', () => {
   test('renders the component', async () => {

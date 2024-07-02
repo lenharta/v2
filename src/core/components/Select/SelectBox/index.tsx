@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { Floating } from '@/core';
 import { createFactory } from '@/factory';
-import { SelectBoxProps } from '../Select.types';
+import { Floating, SelectBoxProps } from '@/core';
 
 type SelectBoxFactory = Factory.Config<{
   comp: 'div';
@@ -11,14 +10,11 @@ type SelectBoxFactory = Factory.Config<{
 }>;
 
 const SelectBox = createFactory<SelectBoxFactory>((props, ref) => {
-  const { children, variant, ...forwardedProps } = props;
+  const { children, className, ...forwardedProps } = props;
+
   return (
     <Floating.Box>
-      <div
-        ref={ref}
-        className={clsx('v2-select-box', `v2-select-box--${variant}`)}
-        {...forwardedProps}
-      >
+      <div ref={ref} className={clsx('v2-select-box', className)} {...forwardedProps}>
         {children}
       </div>
     </Floating.Box>

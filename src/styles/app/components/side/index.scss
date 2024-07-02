@@ -1,0 +1,41 @@
+.v2-app-side {
+  display: none;
+
+  @media (min-width: 60em) {
+    top: calc(var(--v2-action) + var(--s-02));
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    display: block;
+    width: calc(var(--v2-action) + var(--s-02));
+
+    &-layout {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-select-drawer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-select-drawer-layout {
+      --v2-side-drawer-items: 6;
+      --v2-side-drawer-gaps: calc(var(--v2-side-drawer-items) - 1);
+      --v2-side-drawer-w-items: calc(var(--v2-side-drawer-items) * var(--v2-action));
+      --v2-side-drawer-w-gaps: calc(var(--v2-side-drawer-gaps) * var(--s-01));
+      --v2-side-drawer-w-max: calc(var(--v2-side-drawer-w-items) + var(--v2-side-drawer-w-gaps));
+
+      margin: var(--s-01);
+      gap: var(--s-01);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      max-width: var(--v2-side-drawer-w-max);
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.v2-icon {
+  min-width: var(--v2-icon-size, var(--v2-icon-size-sm));
+  min-height: var(--v2-icon-size, var(--v2-icon-size-sm));
+
+  &--size-xxs {
+    --v2-icon-size: var(--v2-icon-size-xxs);
+  }
+  &--size-xs {
+    --v2-icon-size: var(--v2-icon-size-xs);
+  }
+  &--size-sm {
+    --v2-icon-size: var(--v2-icon-size-sm);
+  }
+  &--size-md {
+    --v2-icon-size: var(--v2-icon-size-md);
+  }
+  &--size-lg {
+    --v2-icon-size: var(--v2-icon-size-lg);
+  }
+  &--size-xl {
+    --v2-icon-size: var(--v2-icon-size-xl);
+  }
+  &--size-xxl {
+    --v2-icon-size: var(--v2-icon-size-xxl);
+  }
+}

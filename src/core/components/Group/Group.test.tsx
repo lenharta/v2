@@ -1,6 +1,6 @@
-import { Group } from './Group';
-import { render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { Group } from './Group';
 
 describe('@v2/core/Group', () => {
   test('renders the component', async () => {

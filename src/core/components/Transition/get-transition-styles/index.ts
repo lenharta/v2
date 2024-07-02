@@ -1,4 +1,4 @@
-import { TransitionPhase, TransitionStatus, TransitionStyleInput } from '../Transition.types';
+import { TransitionPhase, TransitionStatus, TransitionStyleInput } from '../types';
 
 const STATES: Record<TransitionStatus, TransitionPhase> = {
   entering: 'in',

@@ -2,8 +2,8 @@ import { Transition } from '@/core';
 import { useMergeRefs } from '@/hooks';
 import { Core, Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { FloatingBoxProps } from '../Floating.types';
-import { useFloatingContext } from '../Floating.context';
+import { FloatingBoxProps } from '../types';
+import { useFloatingContext } from '../context';
 
 type FloatingBoxFactory = Factory.Config<{
   ref: HTMLDivElement;

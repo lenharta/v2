@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factoryPolymorphic } from '../../factory';
-import { VisuallyHiddenProps } from './VisuallyHidden.types';
+import { VisuallyHiddenProps } from './types';
+import { createPolymorphicFactory } from '@/factory';
 
 type VisuallyHiddenFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -14,7 +14,7 @@ const HIDDEN_STYLE: React.CSSProperties = {
   position: 'fixed',
 };
 
-const VisuallyHidden = factoryPolymorphic<VisuallyHiddenFactory>((props, ref) => {
+const VisuallyHidden = createPolymorphicFactory<VisuallyHiddenFactory>((props, ref) => {
   const { style, className, ...forwardedProps } = props;
   return (
     <div

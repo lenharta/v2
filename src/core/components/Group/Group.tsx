@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { GroupProps } from './Group.types';
-import { factoryPolymorphic } from '../../factory';
+import { createPolymorphicFactory } from '@/factory';
+import { GroupProps } from './types';
 
 type GroupFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -9,9 +9,9 @@ type GroupFactory = Factory.Config<{
   props: GroupProps;
 }>;
 
-const Group = factoryPolymorphic<GroupFactory>((props, ref) => {
+const Group = createPolymorphicFactory<GroupFactory>((props, ref) => {
   const {
-    gap = 'default',
+    gap,
     children,
     className,
     orientation = 'horizontal',
@@ -22,7 +22,7 @@ const Group = factoryPolymorphic<GroupFactory>((props, ref) => {
   return (
     <Component
       ref={ref}
-      className={clsx('v2-group', `v2-group--gap-${gap}`, className)}
+      className={clsx('v2-group', { [`v2-group--gap-${gap}`]: gap }, className)}
       data-orientation={orientation}
       aria-orientation={orientation}
       {...forwardedProps}

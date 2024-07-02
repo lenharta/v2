@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '../../factory';
-import { LabelProps } from './Label.types';
+import { createPolymorphicFactory } from '@/factory';
+import { LabelProps } from './types';
 
 type LabelFactory = Factory.Config<{
   ref: HTMLLabelElement;
@@ -9,12 +9,35 @@ type LabelFactory = Factory.Config<{
   props: LabelProps;
 }>;
 
-const Label = factory<LabelFactory>((props, ref) => {
-  const { children, className, ...forwardedProps } = props;
+const Label = createPolymorphicFactory<LabelFactory>((props, ref) => {
+  const {
+    size = 'md',
+    lead = 'md',
+    weight = 'med',
+    surface = 'base',
+    emphasis = 'med',
+    children,
+    className,
+    component: Component = 'label',
+    ...forwardedProps
+  } = props;
+
   return (
-    <label ref={ref} className={clsx('v2-label', className)} {...forwardedProps}>
+    <Component
+      ref={ref}
+      className={clsx(
+        'v2-label',
+        `v2-label--${surface}`,
+        `v2-label--size-${size}`,
+        `v2-label--lead-${lead}`,
+        `v2-label--weight-${weight}`,
+        `v2-label--emphasis-${emphasis}`,
+        className
+      )}
+      {...forwardedProps}
+    >
       {children}
-    </label>
+    </Component>
   );
 });
 

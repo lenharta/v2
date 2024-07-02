@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { DURATION, EASING, Floating, TransitionProps } from '@/core';
-
-import { SelectProps } from './Select.types';
+import { DURATION, EASING, TransitionProps, Floating } from '@/core';
+import { SelectBox } from './SelectBox';
+import { SelectProps } from './types';
 import { SelectOption } from './SelectOption';
 import { SelectTarget } from './SelectTarget';
-import { SelectBox } from './SelectBox';
 
 const defaultTransition: Partial<TransitionProps> = {
   duration: DURATION['moderate-01'],
@@ -41,14 +40,12 @@ function getLockupData(data: SelectProps['data']): Record<string, string> {
 const Select: SelectFactory = (props) => {
   const {
     dir = 'ltr',
-    size = 'md',
     data,
     value,
     width = 'target',
     isOpen,
     offset = 0,
     zIndex = 300,
-    variant = 'default-elevated',
     disabled,
     strategy = 'absolute',
     placement = 'bottom-start',
@@ -94,17 +91,13 @@ const Select: SelectFactory = (props) => {
       onOpen={onOpen}
     >
       <Select.Target
-        size={size}
-        variant={variant}
         placeholder={placeholder}
         value={(labels[value as any] as any)?.label || undefined}
       />
 
-      <Select.Box variant={variant}>
+      <Select.Box>
         {data.map((item) => (
           <Select.Option
-            size={size}
-            variant={variant}
             key={item.value}
             label={item.label}
             value={item.value}

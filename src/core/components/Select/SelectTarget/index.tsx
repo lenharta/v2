@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { SelectTargetProps } from '../Select.types';
-import { Floating, UnstyledButton } from '@/core';
+import { Floating, UnstyledButton, SelectTargetProps } from '@/core';
 
 type SelectTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -11,19 +10,11 @@ type SelectTargetFactory = Factory.Config<{
 }>;
 
 const SelectTarget = createFactory<SelectTargetFactory>((props, ref) => {
-  const { size, value, variant, placeholder, ...forwardedProps } = props;
+  const { value, placeholder, className, ...forwardedProps } = props;
 
   return (
     <Floating.Target>
-      <UnstyledButton
-        ref={ref}
-        className={clsx(
-          'v2-select-option',
-          `v2-select-option--${variant}`,
-          `v2-select-option--size-${size}`
-        )}
-        {...forwardedProps}
-      >
+      <UnstyledButton ref={ref} className={clsx('v2-select-option', className)} {...forwardedProps}>
         {value || placeholder}
       </UnstyledButton>
     </Floating.Target>

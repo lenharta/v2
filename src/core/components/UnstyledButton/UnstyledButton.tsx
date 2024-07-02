@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
-import { factory } from '../../factory';
-import { UnstyledButtonProps } from './UnstyledButton.types';
+import { createFactory } from '@/factory';
+import { UnstyledButtonProps } from './types';
 
 type UnstyledButtonFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -9,7 +9,7 @@ type UnstyledButtonFactory = Factory.Config<{
   props: UnstyledButtonProps;
 }>;
 
-const UnstyledButton = factory<UnstyledButtonFactory>((props, ref) => {
+const UnstyledButton = createFactory<UnstyledButtonFactory>((props, ref) => {
   const { children, className, disabled, selected, readOnly, loading, onClick, ...forwardedProps } =
     props;
 

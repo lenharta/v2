@@ -1,0 +1,16 @@
+.v2-app-header {
+  display: block;
+  position: fixed;
+  height: calc(var(--v2-action) + var(--s-02));
+  padding-inline: var(--s-01);
+  right: 0;
+  left: 0;
+  top: 0;
+
+  &-layout {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

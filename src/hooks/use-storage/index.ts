@@ -1,52 +1,58 @@
+import * as React from 'react';
 import { JSONDeserialize, JSONSerialize } from '@/utils';
 
-const STORAGE_LOCATION_LOOKUP = {
-  local: 'localStorage',
-  session: 'sessionStorage',
-} as const;
-
-interface StorageProps {
-  type?: keyof typeof STORAGE_LOCATION_LOOKUP;
+interface UseStorageOptions {
+  type?: 'localStorage' | 'sessionStorage';
 }
 
-function useStorage<T extends Record<string, any> = {}>(props?: StorageProps) {
-  const { type = 'local' } = props ?? {};
-  const location = STORAGE_LOCATION_LOOKUP[type];
-  const storage = window[location];
+function useStorage<T extends Record<string, any>>(opts: UseStorageOptions) {
+  const { type = 'localStorage' } = opts;
 
-  const read = (): boolean => {
+  const storage = window[type];
+
+  const read = React.useCallback((): boolean => {
     try {
-      return !!storage.getItem('local');
+      return !!storage.getItem(type);
     } catch (error: any) {
-      console.error(`[@v2/store/${location}]: check 'READ' method @ ${type}`);
+      console.error(`[@/hooks/use-storage] ERROR: CHECK 'READ' METHOD @${type}`);
       return false;
     }
-  };
+  }, [type]);
 
-  const fetch = (): T | null => {
+  const fetch = React.useCallback((): T | null => {
     try {
-      return JSONDeserialize<T>(storage.getItem('local')!) as T;
+      const payload = storage.getItem(type);
+      return !payload ? null : JSONDeserialize<T>(payload);
     } catch (error: any) {
-      console.error(`[@v2/store/${location}]: check 'FETCH' method @ ${type}`);
+      console.error(`[@/hooks/use-storage] ERROR: CHECK 'FETCH' METHOD @${type}`);
       return null;
     }
-  };
+  }, [type]);
 
-  const write = (data: T): boolean => {
+  const write = React.useCallback(
+    (data: T): boolean => {
+      try {
+        storage.setItem(type, JSONSerialize(data));
+        return true;
+      } catch (error: any) {
+        console.error(`[@/hooks/use-storage] ERROR: CHECK 'WRITE' METHOD @${type}`);
+        return false;
+      }
+    },
+    [type]
+  );
+
+  const clear = React.useCallback((): boolean => {
     try {
-      storage.setItem(type, JSONSerialize(data));
+      window[type].clear();
       return true;
     } catch (error: any) {
-      console.error(`[@v2/store/${location}]: check 'WRITE' method @ ${type}`);
+      console.error(`[@/hooks/use-storage] ERROR: CHECK 'CLEAR' METHOD @${type}`);
       return false;
     }
-  };
+  }, [type]);
 
-  return {
-    read,
-    fetch,
-    write,
-  };
+  return { read, fetch, write, clear };
 }
 
 export { useStorage };

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { TransitionProps } from '@/core';
 import { useClickOutside, useEventListener } from '@/hooks';
-
+import { TransitionProps } from '@/core';
 import { FloatingBox } from './FloatingBox';
-import { FloatingProps } from './Floating.types';
+import { FloatingProps } from './types';
 import { FloatingTarget } from './FloatingTarget';
-import { FloatingProvider } from './Floating.context';
+import { FloatingProvider } from './context';
 import { useFloatingElement } from './use-floating-element';
 import { getFloatingPlacement } from './get-floating-placement';
 

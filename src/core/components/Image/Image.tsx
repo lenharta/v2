@@ -1,9 +1,10 @@
 import clsx from 'clsx';
-import React from 'react';
+import * as React from 'react';
 import { Factory } from '@/types';
-import { factory } from '../../factory';
-import { ImageProps } from './Image.types';
+import { createFactory } from '@/factory';
 import { createEventCallback } from '@/utils';
+
+import { ImageProps } from './types';
 
 const FALLBACK_SRC = 'https://placehold.co/600x400?text=Placeholder';
 
@@ -13,7 +14,7 @@ type ImageFactory = Factory.Config<{
   props: ImageProps;
 }>;
 
-const Image = factory<ImageFactory>((props, ref) => {
+const Image = createFactory<ImageFactory>((props, ref) => {
   const {
     src,
     alt,

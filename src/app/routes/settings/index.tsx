@@ -1,30 +1,17 @@
-import React from 'react';
-import { Text, Title } from '@/core';
-import { Hero, Page, Section } from '@/app';
+import * as React from 'react';
+import { Page } from '@/app';
+import { SettingsHero } from './SettingsHero';
 
-const SettingsHero = () => (
-  <Hero>
-    <Title h1>Settings</Title>
-  </Hero>
-);
+type SettingsFactory = React.FC<{}> & {
+  Hero: typeof SettingsHero;
+};
 
-const SettingsOverview = () => (
-  <Section>
-    <Title h2>Overview</Title>
-    <Text>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et aliquid cupiditate aut maxime
-      nulla ipsa impedit iure quibusdam totam tempore nam voluptates id harum voluptate sed
-      reiciendis fugiat, ut tenetur.
-    </Text>
-  </Section>
-);
-
-const SettingsRoute: React.FC<{}> = ({}) => (
+const Settings: SettingsFactory = ({}) => (
   <Page>
-    <SettingsHero />
-    <SettingsOverview />
+    <Settings.Hero />
   </Page>
 );
 
-SettingsRoute.displayName = '@v2/Route.Settings';
-export { SettingsRoute };
+Settings.Hero = SettingsHero;
+Settings.displayName = '@v2/Settings.Route';
+export { Settings };

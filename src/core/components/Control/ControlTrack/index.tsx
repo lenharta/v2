@@ -1,7 +1,8 @@
+import clsx from 'clsx';
 import { Group } from '@/core';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { ControlTrackProps } from '../Control.types';
+import { ControlTrackProps } from '../types';
 
 type ControlTrackFactory = Factory.Config<{
   comp: 'div';
@@ -10,9 +11,14 @@ type ControlTrackFactory = Factory.Config<{
 }>;
 
 const ControlTrack = createFactory<ControlTrackFactory>((props, ref) => {
-  const { orientation, children, ...forwardedProps } = props;
+  const { orientation, children, className, ...forwardedProps } = props;
   return (
-    <Group ref={ref} className="v2-control-track" orientation={orientation} {...forwardedProps}>
+    <Group
+      ref={ref}
+      className={clsx('v2-control-track', className)}
+      orientation={orientation}
+      {...forwardedProps}
+    >
       {children}
     </Group>
   );

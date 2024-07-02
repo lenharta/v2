@@ -1,0 +1,37 @@
+@use '../../data' as data;
+
+@each $surface-key, $surface-token in data.$token-on-surface-map-full {
+  @each $emphasis-key, $emphasis-token in data.$token-emphasis-map {
+    .v2-title--#{$surface-key}.v2-title--emphasis-#{$emphasis-key} {
+      color: rgba(#{$surface-token}, #{$emphasis-token});
+    }
+  }
+}
+
+@each $surface-key, $surface-token in data.$token-on-surface-map-full {
+  @each $emphasis-key, $emphasis-token in data.$token-emphasis-map {
+    .v2-label--#{$surface-key}.v2-label--emphasis-#{$emphasis-key} {
+      color: rgba(#{$surface-token}, #{$emphasis-token});
+    }
+  }
+}
+
+@each $surface-key, $surface-token in data.$token-on-surface-map-full {
+  @each $emphasis-key, $emphasis-token in data.$token-emphasis-map {
+    .v2-text--#{$surface-key}.v2-text--emphasis-#{$emphasis-key} {
+      color: rgba(#{$surface-token}, #{$emphasis-token});
+    }
+  }
+}
+
+@each $surface-key, $surface-token in data.$token-on-surface-map-full {
+  .v2-icon--#{$surface-key} {
+    fill: rgba(#{$surface-token}, 0.87);
+  }
+
+  @each $emphasis-key, $emphasis-token in data.$token-emphasis-map {
+    .v2-icon--#{$surface-key}.v2-icon--emphasis-#{$emphasis-key} {
+      fill: rgba(#{$surface-token}, #{$emphasis-token});
+    }
+  }
+}
