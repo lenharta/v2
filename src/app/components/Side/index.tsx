@@ -37,27 +37,27 @@ const Side: SideFactory = ({}) => {
             links={[
               {
                 value: '/about',
-                label: 'about',
+                label: 'About',
                 icon: { type: store.icons, name: 'person', size: 'md' },
               },
               {
                 value: '/projects',
-                label: 'projects',
+                label: 'Projects',
                 icon: { type: store.icons, name: 'folder', size: 'md' },
               },
               {
                 value: '/stack',
-                label: 'stack',
+                label: 'Stack',
                 icon: { type: store.icons, name: 'layers', size: 'md' },
               },
               {
                 value: '/elements',
-                label: 'elements',
+                label: 'Elements',
                 icon: { type: store.icons, name: 'grid', size: 'md' },
               },
               {
                 value: '/articles',
-                label: 'articles',
+                label: 'Articles',
                 icon: { type: store.icons, name: 'chat-left', size: 'md' },
               },
             ]}
