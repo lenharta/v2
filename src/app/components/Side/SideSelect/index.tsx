@@ -1,5 +1,6 @@
 import { Action, Floating, IconProps } from '@/core';
 import { Store } from '@/types';
+import { createKeyDownGroup, getNextIndex, getPrevIndex } from '@/utils';
 import React from 'react';
 
 interface SideSelectProps {
@@ -16,7 +17,10 @@ type SideSelectFactory = React.FC<SideSelectProps>;
 
 const SideSelect: SideSelectFactory = (props) => {
   const { group, items, name, store, onOpen, onClose, dispatch } = props;
+
   const [isOpen, setOpen] = React.useState(false);
+  const drawerRef = React.useRef<HTMLDivElement>(null);
+  const targetRef = React.useRef<HTMLButtonElement>(null);
 
   const handleOpen = () => {
     dispatch({ sideOpen: true });
@@ -25,7 +29,14 @@ const SideSelect: SideSelectFactory = (props) => {
 
   const handleClose = () => {
     dispatch({ sideOpen: undefined });
+    targetRef.current?.focus();
     onClose?.();
+  };
+
+  const handleOptionClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch({ [name]: event.currentTarget.value });
+    handleClose();
+    setOpen(false);
   };
 
   return (
@@ -38,20 +49,86 @@ const SideSelect: SideSelectFactory = (props) => {
       offset={{ crossAxis: -2 }}
     >
       <Floating.Target>
-        <Action icon={group.icon} aria-label={group.label} selected={isOpen || undefined} />
+        <Action
+          ref={targetRef}
+          icon={group.icon}
+          aria-label={group.label}
+          selected={isOpen || undefined}
+        />
       </Floating.Target>
 
       <Floating.Box>
         <div className="v2-side-select-drawer">
-          <div className="v2-side-select-drawer-layout">
+          <div ref={drawerRef} className="v2-side-select-drawer-layout" data-v2-side-select-drawer>
             {(items ?? []).map((item) => (
               <Action
                 key={item.value}
                 icon={item.icon}
                 value={item.value}
-                onClick={(event) => dispatch({ [name]: event.currentTarget.value })}
+                onClick={handleOptionClick}
                 selected={group.value === item.value || undefined}
                 aria-label={item.label}
+                data-v2-side-select-option
+                onKeyDown={(event) => {
+                  event.stopPropagation();
+
+                  const parentScope = drawerRef.current!;
+                  const childNodes = parentScope.childNodes;
+                  const elements = Array.from(childNodes) as HTMLButtonElement[];
+
+                  const currentIndex = elements.findIndex((node) => node === event.target);
+                  const nextIndex = getNextIndex(currentIndex, elements, true);
+                  const prevIndex = getPrevIndex(currentIndex, elements, true);
+
+                  const moveFocusToNextIndex = () => elements[nextIndex]?.focus();
+                  const moveFocusToPrevIndex = () => elements[prevIndex]?.focus();
+                  const moveFocusToLastIndex = () => elements[elements.length - 1]?.focus();
+                  const moveFocusToFirstIndex = () => elements[0]?.focus();
+
+                  const fireEvents = {
+                    Tab: () => {
+                      if (nextIndex === 0) {
+                        event.preventDefault();
+                        handleClose();
+                        setOpen(false);
+                      }
+                    },
+                    ArrowUp: () => {
+                      event.preventDefault();
+                      moveFocusToFirstIndex?.();
+                    },
+                    ArrowLeft: () => {
+                      event.preventDefault();
+                      moveFocusToPrevIndex?.();
+                    },
+                    ArrowRight: () => {
+                      event.preventDefault();
+                      moveFocusToNextIndex?.();
+                    },
+                    ArrowDown: () => {
+                      event.preventDefault();
+                      moveFocusToLastIndex?.();
+                    },
+                    PageUp: () => {
+                      event.preventDefault();
+                      moveFocusToFirstIndex?.();
+                    },
+                    PageDown: () => {
+                      event.preventDefault();
+                      moveFocusToLastIndex?.();
+                    },
+                    Home: () => {
+                      event.preventDefault();
+                      moveFocusToFirstIndex?.();
+                    },
+                    End: () => {
+                      event.preventDefault();
+                      moveFocusToLastIndex?.();
+                    },
+                  }[event.code];
+
+                  fireEvents?.();
+                }}
               />
             ))}
           </div>

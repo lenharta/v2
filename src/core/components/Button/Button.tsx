@@ -66,7 +66,7 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
       {...forwardedProps}
       {...contextProps}
     >
-      <div className="v2-button-layout">
+      <span className="v2-button-layout">
         {iconLeft && (
           <Icon
             name={iconLeft.name}
@@ -84,7 +84,7 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
             data-position="right"
           />
         )}
-      </div>
+      </span>
     </UnstyledButton>
   );
 });

@@ -3,10 +3,10 @@
   align-items: center;
   justify-content: center;
 
-  min-width: var(--v2-icon-width, var(--v2-icon-width-sm));
-  min-height: var(--v2-icon-height, var(--v2-icon-height-sm));
   width: var(--v2-icon-width, var(--v2-icon-width-sm));
   height: var(--v2-icon-height, var(--v2-icon-height-sm));
+  min-width: var(--v2-icon-width, var(--v2-icon-width-sm));
+  min-height: var(--v2-icon-height, var(--v2-icon-height-sm));
 
   &--size-xxs {
     --v2-icon-width: var(--v2-icon-width-xxs);

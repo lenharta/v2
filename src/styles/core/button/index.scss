@@ -30,6 +30,8 @@
   .v2-icon {
     width: var(--v2-button-font-size, var(--v2-font-size-xxs));
     height: var(--v2-button-font-size, var(--v2-font-size-xxs));
+    min-width: var(--v2-button-font-size, var(--v2-font-size-xxs));
+    min-height: var(--v2-button-font-size, var(--v2-font-size-xxs));
   }
 
   &--align-end {
