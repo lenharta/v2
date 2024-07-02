@@ -25,6 +25,7 @@ interface FloatingProps {
   isOpen: boolean;
   zIndex?: number | undefined;
   children: React.ReactNode;
+  behavior?: 'click' | 'hover' | undefined;
   disabled?: boolean | undefined;
   placement?: FloatingPlacement | undefined;
   placementDependencies?: React.DependencyList | any[] | undefined;
@@ -48,6 +49,7 @@ interface FloatingContext {
   width: FloatingWidth;
   zIndex: number;
   isOpen: boolean;
+  behavior: 'click' | 'hover';
   disabled?: boolean | undefined;
   placement: FloatingPlacement;
   placementDependencies?: React.DependencyList | any[] | undefined;

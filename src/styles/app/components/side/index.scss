@@ -1,4 +1,4 @@
-.v2-app-side {
+.v2-side {
   display: none;
 
   @media (min-width: 60em) {
@@ -14,6 +14,31 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    &-nav-tooltip {
+      position: relative;
+      border-left: solid 2px transparent;
+      height: calc(var(--v2-action) / 1.5);
+
+      &::after {
+        top: 0;
+        right: calc(var(--s-01) * -1);
+        position: absolute;
+        bottom: 0;
+        content: '';
+        height: 100%;
+        width: var(--s-01);
+      }
+    }
+
+    &-nav-tooltip-layout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-block: var(--s-03);
+      padding-inline: var(--s-05);
+      min-height: 100%;
     }
 
     &-select-drawer {

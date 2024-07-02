@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { Icon, IconProps, UnstyledButton } from '@/core';
+import { Icon, UnstyledButton } from '@/core';
 import { ButtonProps } from './types';
 import { ButtonGroup } from './ButtonGroup';
 import { useButtonContext } from './context';
@@ -68,13 +68,21 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
     >
       <div className="v2-button-layout">
         {iconLeft && (
-          <Icon name={iconLeft.name} size={iconLeft.size || 'sm'} data-position="left" />
+          <Icon
+            name={iconLeft.name}
+            surface={surface || ctx.surface || 'base'}
+            data-position="left"
+          />
         )}
 
         {children}
 
         {iconRight && (
-          <Icon name={iconRight.name} size={iconRight.size || 'sm'} data-position="right" />
+          <Icon
+            name={iconRight.name}
+            surface={surface || ctx.surface || 'base'}
+            data-position="right"
+          />
         )}
       </div>
     </UnstyledButton>

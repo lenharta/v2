@@ -6,8 +6,8 @@ type FooterFactory = React.FC<FooterProps> & {};
 
 const Footer: FooterFactory = ({}) => {
   return (
-    <footer className="v2-app-footer">
-      <div className="v2-app-footer-layout">
+    <footer className="v2-footer">
+      <div className="v2-footer-layout">
         <span>Footer</span>
       </div>
     </footer>

@@ -63,27 +63,31 @@ const DemoLabel = (props: Partial<LabelProps>) => {
 const Overview: OverviewFactory = ({}) => (
   <Page>
     <Overview.Hero />
-    <Button.Group surface="accent" variant="default">
-      <Button size="xxs" iconRight={{ name: 'arrow-east' }}>
-        Button Label
+    <Button.Group surface="base" variant="elevated">
+      <Button size="xxs" iconRight={{ name: 'arrow-northeast' }}>
+        Button XXS
       </Button>
-      <Button size="xs" iconRight={{ name: 'arrow-east' }}>
-        Button Label
+      <Button size="xs" iconRight={{ name: 'arrow-northeast' }}>
+        Button XS
       </Button>
-      <Button size="sm" iconRight={{ name: 'arrow-east' }}>
-        Button Label
+      <Button size="sm" iconRight={{ name: 'arrow-northeast' }}>
+        Button SM
       </Button>
-      <Button size="md" iconRight={{ name: 'arrow-east' }}>
-        Button Label
+      <Button size="md" iconRight={{ name: 'arrow-northeast' }}>
+        Button MD
       </Button>
-      <Button size="lg" iconRight={{ name: 'arrow-east' }}>
-        Button Label
+      <Button size="lg" iconRight={{ name: 'arrow-northeast' }}>
+        Button LG
       </Button>
-      <Button size="xl" iconRight={{ name: 'arrow-east' }}>
-        Button Label
+      <Button size="xl" iconRight={{ name: 'arrow-northeast' }}>
+        Button XL
       </Button>
-      <Button size="xxl" iconRight={{ name: 'arrow-east' }}>
-        Button Label
+      <Button
+        size="xxl"
+        iconLeft={{ name: 'arrow-northeast' }}
+        iconRight={{ name: 'arrow-northeast' }}
+      >
+        Button XXL
       </Button>
     </Button.Group>
     <DemoTitle surface="accent" />

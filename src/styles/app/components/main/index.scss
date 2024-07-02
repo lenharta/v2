@@ -1,8 +1,8 @@
-.v2-app-main {
+.v2-main {
   display: block;
-  margin-top: calc(var(--v2-action) + var(--s-02));
+  margin-top: calc(var(--v2-action) + var(--v2-02));
 
   @media (min-width: 60em) {
-    margin-left: calc(var(--v2-action) + var(--s-02));
+    margin-left: calc(var(--v2-action) + var(--v2-02));
   }
 }
