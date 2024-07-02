@@ -1,0 +1,191 @@
+// BASE | DEFAULT
+
+.v2-surface--base.v2-surface--default {
+  background-color: rgba(var(--c-rgb-contrast), 0);
+  color: rgba(var(--c-rgb-contrast), 0.87);
+
+  .v2-icon {
+    fill: rgba(var(--c-rgb-contrast), 0.87);
+  }
+}
+
+.v2-action.v2-surface--base.v2-surface--default,
+.v2-button.v2-surface--base.v2-surface--default {
+  background-color: rgba(var(--c-rgb-contrast), 0);
+  color: rgba(var(--c-rgb-contrast), 0.87);
+
+  .v2-icon {
+    fill: rgba(var(--c-rgb-contrast), 0.87);
+  }
+
+  &:not([data-disabled], [data-readonly]):hover {
+    background-color: rgba(var(--c-rgb-contrast), 0.02);
+    color: rgba(var(--c-rgb-contrast), 0.91);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-contrast), 0.91);
+    }
+  }
+
+  &:not([data-disabled], [data-readonly]):active {
+    background-color: rgba(var(--c-rgb-contrast), 0.04);
+    color: rgba(var(--c-rgb-contrast), 0.94);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-contrast), 0.94);
+    }
+  }
+
+  &:not([data-disabled], [data-readonly])[data-selected] {
+    background-color: rgba(var(--c-rgb-contrast), 0.04);
+    color: rgba(var(--c-rgb-contrast), 0.97);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-contrast), 0.97);
+    }
+  }
+}
+
+// BASE | ELEVATED
+
+.v2-surface--base.v2-surface--elevated {
+  background-color: rgba(var(--c-rgb-contrast), 0.02);
+  color: rgba(var(--c-rgb-contrast), 0.87);
+
+  .v2-icon {
+    fill: rgba(var(--c-rgb-contrast), 0.87);
+  }
+}
+
+.v2-action.v2-surface--base.v2-surface--elevated,
+.v2-button.v2-surface--base.v2-surface--elevated {
+  background-color: rgba(var(--c-rgb-contrast), 0.02);
+  color: rgba(var(--c-rgb-contrast), 0.87);
+
+  .v2-icon {
+    fill: rgba(var(--c-rgb-contrast), 0.87);
+  }
+
+  &:not([data-disabled], [data-readonly]):hover {
+    background-color: rgba(var(--c-rgb-contrast), 0.04);
+    color: rgba(var(--c-rgb-contrast), 0.91);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-contrast), 0.91);
+    }
+  }
+
+  &:not([data-disabled], [data-readonly]):active {
+    background-color: rgba(var(--c-rgb-contrast), 0.06);
+    color: rgba(var(--c-rgb-contrast), 0.94);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-contrast), 0.94);
+    }
+  }
+
+  &:not([data-disabled], [data-readonly])[data-selected] {
+    background-color: rgba(var(--c-rgb-contrast), 0.06);
+    color: rgba(var(--c-rgb-contrast), 0.97);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-contrast), 0.97);
+    }
+  }
+}
+
+// ACCENT | DEFAULT
+
+.v2-surface--accent.v2-surface--default {
+  background-color: rgba(var(--c-rgb-accent), 0);
+  color: rgba(var(--c-rgb-accent), 0.87);
+
+  .v2-icon {
+    fill: rgba(var(--c-rgb-accent), 0.87);
+  }
+}
+
+.v2-action.v2-surface--accent.v2-surface--default,
+.v2-button.v2-surface--accent.v2-surface--default {
+  background-color: rgba(var(--c-rgb-accent), 0);
+  color: rgba(var(--c-rgb-accent), 0.87);
+
+  .v2-icon {
+    fill: rgba(var(--c-rgb-accent), 0.87);
+  }
+
+  &:not([data-disabled], [data-readonly]):hover {
+    background-color: rgba(var(--c-rgb-accent), 0.03);
+    color: rgba(var(--c-rgb-accent), 0.91);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-accent), 0.91);
+    }
+  }
+
+  &:not([data-disabled], [data-readonly]):active {
+    background-color: rgba(var(--c-rgb-accent), 0.06);
+    color: rgba(var(--c-rgb-accent), 0.94);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-accent), 0.94);
+    }
+  }
+
+  &:not([data-disabled], [data-readonly])[data-selected] {
+    background-color: rgba(var(--c-rgb-accent), 0.06);
+    color: rgba(var(--c-rgb-accent), 0.97);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-accent), 0.97);
+    }
+  }
+}
+
+// ACCENT | ELEVATED
+
+.v2-surface--accent.v2-surface--elevated {
+  background-color: rgba(var(--c-rgb-accent), 0.04);
+  color: rgba(var(--c-rgb-accent), 0.87);
+
+  .v2-icon {
+    fill: rgba(var(--c-rgb-accent), 0.87);
+  }
+}
+
+.v2-action.v2-surface--accent.v2-surface--elevated,
+.v2-button.v2-surface--accent.v2-surface--elevated {
+  background-color: rgba(var(--c-rgb-accent), 0.04);
+  color: rgba(var(--c-rgb-accent), 0.87);
+
+  .v2-icon {
+    fill: rgba(var(--c-rgb-accent), 0.87);
+  }
+
+  &:not([data-disabled], [data-readonly]):hover {
+    background-color: rgba(var(--c-rgb-accent), 0.08);
+    color: rgba(var(--c-rgb-accent), 0.91);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-accent), 0.91);
+    }
+  }
+
+  &:not([data-disabled], [data-readonly]):active {
+    background-color: rgba(var(--c-rgb-accent), 0.12);
+    color: rgba(var(--c-rgb-accent), 0.94);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-accent), 0.94);
+    }
+  }
+
+  &:not([data-disabled], [data-readonly])[data-selected] {
+    background-color: rgba(var(--c-rgb-accent), 0.12);
+    color: rgba(var(--c-rgb-accent), 0.97);
+
+    .v2-icon {
+      fill: rgba(var(--c-rgb-accent), 0.97);
+    }
+  }
+}

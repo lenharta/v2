@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { UnstyledButton } from '@/core';
+import { Icon, UnstyledButton } from '@/core';
+
 import { ActionProps } from './types';
 import { ActionGroup } from './ActionGroup';
 import { ActionSpacer } from './ActionSpacer';
@@ -19,20 +20,29 @@ type ActionFactory = Factory.Config<{
 }>;
 
 const Action = createFactory<ActionFactory>((props, ref) => {
-  const { icon, value, loading, disabled, readOnly, selected, className, ...forwardedProps } =
-    props;
+  const {
+    icon,
+    value,
+    loading,
+    disabled,
+    readOnly,
+    selected,
+    className,
+    surface,
+    variant,
+    ...forwardedProps
+  } = props;
 
   const ctx = useActionContext();
 
   const contextProps = ctx
     ? {
-        loading: loading || ctx.loading,
-        selected: selected || (!!ctx.value && value === ctx.value) || undefined,
-        disabled: disabled || ctx.disabled,
-        readOnly: readOnly || ctx.readOnly,
+        loading: !!ctx.loading || !!loading || undefined,
+        disabled: !!ctx.disabled || !!disabled || undefined,
+        readOnly: !!ctx.readOnly || !!readOnly || undefined,
+        selected: (!!ctx.value && value === ctx.value) || !!selected || undefined,
         'data-orientation': ctx.orientation,
         'aria-orientation': ctx.orientation,
-        className: clsx('v2-action', className),
       }
     : {};
 
@@ -40,15 +50,20 @@ const Action = createFactory<ActionFactory>((props, ref) => {
     <UnstyledButton
       ref={ref}
       value={value}
-      loading={loading}
-      readOnly={readOnly}
-      disabled={disabled}
-      selected={selected}
-      className={clsx('v2-action', className)}
+      loading={!!loading || undefined}
+      readOnly={!!readOnly || undefined}
+      disabled={!!disabled || undefined}
+      selected={!!selected || undefined}
+      className={clsx(
+        'v2-action',
+        `v2-surface--${ctx.surface || surface || 'base'}`,
+        `v2-surface--${ctx.variant || variant || 'elevated'}`,
+        className
+      )}
       {...forwardedProps}
       {...contextProps}
     >
-      {icon}
+      <Icon {...icon} />
     </UnstyledButton>
   );
 });

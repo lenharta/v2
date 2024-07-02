@@ -13,8 +13,11 @@ type ActionGroupFactory = Factory.Config<{
 
 const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
   const {
+    gap,
     icon,
     value,
+    surface,
+    variant,
     loading,
     disabled,
     readOnly,
@@ -27,11 +30,14 @@ const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
   return (
     <Group
       ref={ref}
+      gap={gap}
       className={clsx('v2-action-group', className)}
       orientation={orientation}
       {...forwardedProps}
     >
-      <ActionProvider value={{ icon, value, disabled, loading, readOnly, orientation }}>
+      <ActionProvider
+        value={{ icon, value, disabled, loading, surface, variant, readOnly, orientation }}
+      >
         {children}
       </ActionProvider>
     </Group>

@@ -1,30 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Text, Title } from '@/core';
-import { Page, Hero, Section } from '@/app';
+import * as React from 'react';
+import { Page } from '@/app';
+import { ErrorHero } from './ErrorHero';
+import { ErrorBanner } from './ErrorBanner';
 
-const ErrorHero = () => (
-  <Hero>
-    <Title h1>Page Not Found | 404</Title>
-  </Hero>
-);
+type ErrorFactory = React.FC<{}> & {
+  Hero: typeof ErrorHero;
+  Banner: typeof ErrorBanner;
+};
 
-const ErrorRoute: React.FC<{}> = () => {
-  const homePageLink = <Link to="/">home page.</Link>;
-
+const Error: ErrorFactory = ({}) => {
   return (
     <Page>
-      <ErrorHero />
-      <Section>
-        <Title h2>Sorry, we couldn't find that page.</Title>
-        <Text>
-          The page you are looking for might have been removed, had its name changed, or is
-          temporarily unavailable. Try searching for it or go back to the {homePageLink}
-        </Text>
-      </Section>
+      <Error.Hero />
+      <Error.Banner />
     </Page>
   );
 };
 
-ErrorRoute.displayName = '@v2/Route.Error';
-export { ErrorRoute };
+Error.Hero = ErrorHero;
+Error.Banner = ErrorBanner;
+Error.displayName = '@v2/Error.Route';
+export { Error };

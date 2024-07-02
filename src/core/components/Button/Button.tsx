@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { UnstyledButton } from '@/core';
+import { Icon, IconProps, UnstyledButton } from '@/core';
 import { ButtonProps } from './types';
 import { ButtonGroup } from './ButtonGroup';
 import { useButtonContext } from './context';
@@ -17,15 +17,20 @@ type ButtonFactory = Factory.Config<{
 
 const Button = createFactory<ButtonFactory>((props, ref) => {
   const {
+    size,
     value,
+    align,
+    justify,
+    surface,
+    variant,
     loading,
     disabled,
     readOnly,
     selected,
     children,
+    iconLeft,
+    iconRight,
     className,
-    leftContent,
-    rightContent,
     ...forwardedProps
   } = props;
 
@@ -33,13 +38,12 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
 
   const contextProps = ctx
     ? {
-        loading: loading || ctx.loading,
-        selected: selected || (!!ctx.value && value === ctx.value) || undefined,
-        disabled: disabled || ctx.disabled,
-        readOnly: readOnly || ctx.readOnly,
+        loading: !!ctx.loading || !!loading || undefined,
+        disabled: !!ctx.disabled || !!disabled || undefined,
+        readOnly: !!ctx.readOnly || !!readOnly || undefined,
+        selected: (!!ctx.value && value === ctx.value) || !!selected || undefined,
         'data-orientation': ctx.orientation,
         'aria-orientation': ctx.orientation,
-        className: clsx('v2-button', className),
       }
     : {};
 
@@ -50,13 +54,29 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
       readOnly={readOnly}
       disabled={disabled}
       selected={selected}
-      className={clsx('v2-button', className)}
+      className={clsx(
+        'v2-button',
+        `v2-button--size-${size || ctx.size || 'sm'}`,
+        `v2-button--align-${align || ctx.align || 'center'}`,
+        `v2-button--justify-${justify || ctx.justify || 'center'}`,
+        `v2-surface--${surface || ctx.surface || 'base'}`,
+        `v2-surface--${variant || ctx.variant || 'elevated'}`,
+        className
+      )}
       {...forwardedProps}
       {...contextProps}
     >
-      <div>{leftContent}</div>
-      <div>{children}</div>
-      <div>{rightContent}</div>
+      <div className="v2-button-layout">
+        {iconLeft && (
+          <Icon name={iconLeft.name} size={iconLeft.size || 'sm'} data-position="left" />
+        )}
+
+        {children}
+
+        {iconRight && (
+          <Icon name={iconRight.name} size={iconRight.size || 'sm'} data-position="right" />
+        )}
+      </div>
     </UnstyledButton>
   );
 });

@@ -16,13 +16,19 @@ const ActionSpacer = createFactory<ActionSpacerFactory>((props, ref) => {
 
   const ctx = useActionContext();
 
-  const contextProps = ctx
-    ? {
-        className: clsx('v2-action-spacer', className),
-      }
-    : {};
-
-  return <div ref={ref} data-grow={grow} {...contextProps} {...forwardedProps} />;
+  return (
+    <div
+      ref={ref}
+      data-grow={grow}
+      className={clsx(
+        'v2-action-spacer',
+        `v2-surface--${ctx.surface || 'base'}`,
+        `v2-surface--${ctx.variant || 'elevated'}`,
+        className
+      )}
+      {...forwardedProps}
+    />
+  );
 });
 
 ActionSpacer.displayName = '@v2/Action.Spacer';

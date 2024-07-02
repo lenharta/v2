@@ -1,30 +1,17 @@
-import React from 'react';
-import { Text, Title } from '@/core';
-import { Page, Hero, Section } from '@/app';
+import * as React from 'react';
+import { Page } from '@/app';
+import { ProjectsHero } from './ProjectsHero';
 
-const ProjectsHero = () => (
-  <Hero>
-    <Title h1>Projects</Title>
-  </Hero>
-);
+type ProjectsFactory = React.FC<{}> & {
+  Hero: typeof ProjectsHero;
+};
 
-const ProjectsOverview = () => (
-  <Section>
-    <Title h2>Overview</Title>
-    <Text>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et aliquid cupiditate aut maxime
-      nulla ipsa impedit iure quibusdam totam tempore nam voluptates id harum voluptate sed
-      reiciendis fugiat, ut tenetur.
-    </Text>
-  </Section>
-);
-
-const ProjectsRoute: React.FC<{}> = ({}) => (
+const Projects: ProjectsFactory = ({}) => (
   <Page>
-    <ProjectsHero />
-    <ProjectsOverview />
+    <Projects.Hero />
   </Page>
 );
 
-ProjectsRoute.displayName = '@v2/Route.Projects';
-export { ProjectsRoute };
+Projects.Hero = ProjectsHero;
+Projects.displayName = '@v2/Projects.Route';
+export { Projects };

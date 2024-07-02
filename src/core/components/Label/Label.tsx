@@ -10,10 +10,32 @@ type LabelFactory = Factory.Config<{
 }>;
 
 const Label = createPolymorphicFactory<LabelFactory>((props, ref) => {
-  const { className, children, component: Component = 'label', ...forwardedProps } = props;
+  const {
+    size = 'md',
+    lead = 'md',
+    weight = 'med',
+    surface = 'base',
+    emphasis = 'med',
+    children,
+    className,
+    component: Component = 'label',
+    ...forwardedProps
+  } = props;
 
   return (
-    <Component ref={ref} className={clsx('v2-label', className)} {...forwardedProps}>
+    <Component
+      ref={ref}
+      className={clsx(
+        'v2-label',
+        `v2-label--${surface}`,
+        `v2-label--size-${size}`,
+        `v2-label--lead-${lead}`,
+        `v2-label--weight-${weight}`,
+        `v2-label--emphasis-${emphasis}`,
+        className
+      )}
+      {...forwardedProps}
+    >
       {children}
     </Component>
   );

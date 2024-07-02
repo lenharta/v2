@@ -1,4 +1,11 @@
-// @forward 'config-core';
-// @forward 'config-app';
+@forward 'tokens-root';
+@forward 'tokens-mode';
+@forward 'tokens-accent';
 
-@forward 'config-interaction';
+// @use '../data' as data;
+
+// @each $token-key, $token-value in data.$color-token-map {
+//   [data-prefers-color-accent='#{$token-key}'] {
+//     --c-rgb-accent: #{$token-value};
+//   }
+// }

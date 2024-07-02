@@ -1,10 +1,14 @@
-import { UnstyledButtonProps, GroupProps } from '@/core';
+import { UnstyledButtonProps, GroupProps, IconProps } from '@/core';
+import { Theme } from '@/types';
 
-interface ActionThemeProps {}
+interface ActionThemeProps {
+  surface?: 'base' | 'accent' | Theme.Color | undefined;
+  variant?: 'default' | 'elevated' | undefined;
+}
 
 interface ActionProps extends UnstyledButtonProps, ActionThemeProps {
+  icon?: Partial<IconProps> | undefined;
   value?: string | number | readonly string[] | undefined;
-  icon?: React.ReactNode | undefined;
 }
 
 interface ActionSpacerProps extends ActionThemeProps {
@@ -12,13 +16,13 @@ interface ActionSpacerProps extends ActionThemeProps {
 }
 
 interface ActionGroupProps extends UnstyledButtonProps, ActionThemeProps, GroupProps {
+  icon?: Partial<IconProps> | undefined;
   value?: string | number | readonly string[] | undefined;
-  icon?: React.ReactNode | undefined;
 }
 
 interface ActionContextValue extends UnstyledButtonProps, ActionThemeProps, GroupProps {
+  icon?: Partial<IconProps> | undefined;
   value?: string | number | readonly string[] | undefined;
-  icon?: React.ReactNode | undefined;
 }
 
 export type { ActionProps, ActionSpacerProps, ActionGroupProps, ActionContextValue };

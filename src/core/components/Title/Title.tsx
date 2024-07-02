@@ -18,6 +18,11 @@ const Title = createPolymorphicFactory<TitleFactory>((props, ref) => {
     h4,
     h5,
     h6,
+    lead = 'xs',
+    size = 'sm',
+    weight = 'lgt',
+    surface = 'base',
+    emphasis = 'med',
     children,
     className,
     component: Component = 'h3',
@@ -25,7 +30,19 @@ const Title = createPolymorphicFactory<TitleFactory>((props, ref) => {
   } = props;
 
   return (
-    <Component ref={ref} className={clsx('v2-title', className)} {...forwardedProps}>
+    <Component
+      ref={ref}
+      className={clsx(
+        'v2-title',
+        `v2-title--${surface}`,
+        `v2-title--size-${size}`,
+        `v2-title--lead-${lead}`,
+        `v2-title--weight-${weight}`,
+        `v2-title--emphasis-${emphasis}`,
+        className
+      )}
+      {...forwardedProps}
+    >
       {children}
     </Component>
   );

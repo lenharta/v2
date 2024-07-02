@@ -1,11 +1,18 @@
-import { UnstyledButtonProps, GroupProps } from '@/core';
+import { Theme } from '@/types';
+import { UnstyledButtonProps, GroupProps, IconProps } from '@/core';
 
-interface ButtonThemeProps {}
+interface ButtonThemeProps {
+  size?: Theme.SizeExpanded | undefined;
+  align?: 'start' | 'end' | 'center' | undefined;
+  justify?: 'start' | 'end' | 'center' | undefined;
+  surface?: 'base' | 'accent' | Theme.Color | undefined;
+  variant?: 'default' | 'elevated' | undefined;
+}
 
 interface ButtonProps extends UnstyledButtonProps, ButtonThemeProps {
   value?: string | number | readonly string[] | undefined;
-  leftContent?: React.ReactNode | undefined;
-  rightContent?: React.ReactNode | undefined;
+  iconLeft?: Partial<IconProps> | undefined;
+  iconRight?: Partial<IconProps> | undefined;
 }
 
 interface ButtonGroupProps extends UnstyledButtonProps, ButtonThemeProps, GroupProps {

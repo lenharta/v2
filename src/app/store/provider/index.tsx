@@ -1,100 +1,83 @@
-import React from 'react';
-import { useStorage } from '../storage';
+import * as React from 'react';
+import { useStorage } from '@/hooks';
 import { Store, Theme } from '@/types';
-import { createRandomString } from '@/utils';
-import { useStoreReducer } from '../reducer';
-import { StoreDispatchContext, StoreStateContext } from '../context';
+import { createRandomString, objectKeys } from '@/utils';
+import { DEFAULT_STORE, THEME_ATTRIBUTE_MAP } from '../constants';
+import { DispatchContext, StoreContext } from '../context';
 
-const initialStore: Store.State = {
-  dir: 'ltr',
-  mode: 'dark',
-  icons: 'outline',
-  accent: 'blue',
-  language: 'en',
-  contrast: 'no',
-  nonce: () => '',
-};
+interface ProviderProps {
+  children: React.ReactNode;
+}
 
-const THEME_ATTRIBUTES: Record<Theme.AttributeKey, Theme.Attribute> = {
-  dir: 'data-prefers-dir',
-  mode: 'data-prefers-color-mode',
-  accent: 'data-prefers-color-accent',
-  contrast: 'data-prefers-color-contrast',
-};
+function useThemeUpdate(props: { theme: Theme.State; middleware: Store.Middleware<Theme.State> }) {
+  const { theme, middleware } = props;
 
-const THEME_ATTRIBUTE_MAP = {
-  contrast: 'data-prefers-accessible-contrast',
-  accent: 'data-prefers-accent',
-  mode: 'data-prefers-mode',
-  dir: 'data-prefers-dir',
-} as const;
+  React.useEffect(() => {
+    const root = document.getElementsByTagName('html')[0]!;
 
-const StoreProvider = ({ children }: { children?: React.ReactNode | undefined }) => {
-  const local = useStorage<Store.LocalState>({ key: 'local-storage' });
-  const session = useStorage<Store.SessionState>({ key: 'session-storage' });
+    middleware.write(theme);
 
-  const [store, dispatch] = useStoreReducer<Store.State>(initialStore, (current) => {
-    const localStore = local.fetch();
-    const sessionStore = session.fetch();
+    objectKeys(THEME_ATTRIBUTE_MAP).forEach((attr) => {
+      root.setAttribute(THEME_ATTRIBUTE_MAP[attr], theme[attr]);
+    });
+  }, [theme, middleware]);
+}
 
-    if (!sessionStore?.session) {
+const StoreProvider = ({ children }: ProviderProps) => {
+  const local = useStorage<Theme.State>({ type: 'localStorage' });
+  const session = useStorage<{ session: string }>({ type: 'sessionStorage' });
+
+  const reducer = (current: Store.State, update: Partial<Store.State>) => ({
+    ...current,
+    ...update,
+  });
+
+  const initializer = (current: Store.State): Store.State => {
+    if (!local.read()) {
+      local.write({
+        dir: current.dir,
+        mode: current.mode,
+        icons: current.icons,
+        accent: current.accent,
+        contrast: current.contrast,
+      });
+    }
+
+    if (!session.read()) {
       const uid = createRandomString(16);
       session.write({ session: uid });
       return {
         ...current,
+        ...(!local.fetch() ? {} : local.fetch()),
         session: uid,
-      };
-    }
-
-    if (!localStore) {
-      local.write({
-        dir: store.dir,
-        mode: store.mode,
-        icons: store.icons,
-        accent: store.accent,
-        language: store.language,
-        contrast: store.contrast,
-      });
-
-      const payload = local.fetch()!;
-
-      return {
-        ...current,
-        ...payload,
       };
     }
 
     return {
       ...current,
-      ...(local.fetch() ? local.fetch() : {}),
+      ...(!local.fetch() ? {} : local.fetch()),
     };
-  });
+  };
 
-  React.useEffect(() => {
-    local.write({
+  const [store, dispatch] = React.useReducer(reducer, DEFAULT_STORE, initializer);
+
+  useThemeUpdate({
+    middleware: local,
+    theme: {
       dir: store.dir,
       mode: store.mode,
       icons: store.icons,
       accent: store.accent,
-      language: store.language,
       contrast: store.contrast,
-    });
-  }, [store.dir, store.mode, store.accent, store.icons, store.language, store.contrast]);
-
-  React.useEffect(() => {
-    const html = document.getElementsByTagName('html')[0]!;
-
-    (Object.keys(THEME_ATTRIBUTES) as Theme.AttributeKey[]).forEach((attribute) => {
-      html.setAttribute(THEME_ATTRIBUTES[attribute], store[attribute]);
-    });
-  }, [store.dir, store.mode, store.accent, store.contrast]);
+    },
+  });
 
   return (
-    <StoreStateContext.Provider value={store}>
-      <StoreDispatchContext.Provider value={dispatch}>
+    <StoreContext.Provider value={store}>
+      <DispatchContext.Provider value={dispatch}>
         <React.Fragment>{children}</React.Fragment>
-      </StoreDispatchContext.Provider>
-    </StoreStateContext.Provider>
+      </DispatchContext.Provider>
+    </StoreContext.Provider>
   );
 };
 

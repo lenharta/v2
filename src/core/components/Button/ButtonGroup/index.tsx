@@ -13,7 +13,12 @@ type ButtonGroupFactory = Factory.Config<{
 
 const ButtonGroup = createFactory<ButtonGroupFactory>((props, ref) => {
   const {
+    size,
     value,
+    align,
+    justify,
+    surface,
+    variant,
     loading,
     disabled,
     readOnly,
@@ -30,7 +35,20 @@ const ButtonGroup = createFactory<ButtonGroupFactory>((props, ref) => {
       className={clsx('v2-button-group', className)}
       {...forwardedProps}
     >
-      <ButtonProvider value={{ value, loading, disabled, readOnly, orientation }}>
+      <ButtonProvider
+        value={{
+          size,
+          value,
+          align,
+          justify,
+          surface,
+          variant,
+          loading,
+          disabled,
+          readOnly,
+          orientation,
+        }}
+      >
         {children}
       </ButtonProvider>
     </Group>

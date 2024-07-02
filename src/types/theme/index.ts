@@ -14,15 +14,17 @@ export declare namespace Theme {
   export type ColorAlpha = '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
   export type ColorShade = '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
 
-  export type Attributes = 'dir' | 'mode' | 'accent';
+  export type State = {
+    dir: Theme.Dir;
+    mode: Theme.Mode;
+    icons: 'fill' | 'outline';
+    accent: Theme.Color;
+    contrast: 'yes' | 'no';
+  };
 
-  export type AttributeKey = 'dir' | 'mode' | 'accent' | 'contrast';
-
-  export type Attribute =
-    | 'data-prefers-dir'
-    | 'data-prefers-color-mode'
-    | 'data-prefers-color-accent'
-    | 'data-prefers-color-contrast';
+  export type AttributeKey = Extract<keyof State, 'dir' | 'mode' | 'accent' | 'contrast'>;
+  export type AttributeSuffix = 'dir' | 'color-mode' | 'color-accent' | 'color-contrast';
+  export type Attribute = `data-prefers-${AttributeSuffix}`;
 
   type SchemeColor = 'base' | 'accent';
   type SchemeVariant = 'default' | 'elevated';
@@ -63,20 +65,54 @@ export declare namespace Theme {
     | 'editable';
 
   interface GroupProps {
-    gap?: 'unset' | SizeRegular | undefined;
+    gap?: SizeExpanded | undefined;
     orientation?: 'vertical' | 'horizontal' | undefined;
   }
 
   interface TypographyProps {
-    size?: SizeExpanded | undefined;
-    scheme?: 'base' | 'accent' | Color | undefined;
-    emphasis?: 'min' | 'low' | 'med' | 'max' | undefined;
+    lead?: Theme.SizeExpanded | undefined;
+    size?: Theme.SizeExpanded | undefined;
+    weight?: 'lgt' | 'reg' | 'med' | 'bld' | 'blk' | undefined;
+    surface?: 'base' | 'accent' | 'neutral' | 'contrast' | Theme.Color | undefined;
+    emphasis?: 'max' | 'med' | 'low' | 'min' | undefined;
+    // TODO: configure below
+    // inline?: boolean | undefined;
+    // inherit?: boolean | undefined;
+    // gradient?: boolean | undefined;
+    // truncate?: 'start' | 'end' | undefined;
+    // lineClamp?: boolean | undefined;
   }
 
   interface IconProps {
     size?: SizeRegular | undefined;
     type?: 'fill' | 'outline' | undefined;
-    scheme?: 'base' | 'accent' | Color | undefined;
+    surface?: 'base' | 'accent' | 'neutral' | 'contrast' | Theme.Color | undefined;
     emphasis?: 'min' | 'low' | 'med' | 'max' | undefined;
+  }
+
+  interface IconMap {
+    dir: {
+      ltr: Partial<IconProps> & { name: 'text-left'; surface: 'base' };
+      rtl: Partial<IconProps> & { name: 'text-right'; surface: 'base' };
+    };
+    mode: {
+      light: Partial<IconProps> & { name: 'mode-light'; surface: 'base' };
+      dark: Partial<IconProps> & { name: 'mode-dark'; surface: 'base' };
+      dim: Partial<IconProps> & { name: 'mode-dim'; surface: 'base' };
+    };
+    accent: {
+      red: Partial<IconProps> & { name: 'shape-circle'; surface: 'red' };
+      orange: Partial<IconProps> & { name: 'shape-circle'; surface: 'orange' };
+      yellow: Partial<IconProps> & { name: 'shape-circle'; surface: 'yellow' };
+      green: Partial<IconProps> & { name: 'shape-circle'; surface: 'green' };
+      mint: Partial<IconProps> & { name: 'shape-circle'; surface: 'mint' };
+      teal: Partial<IconProps> & { name: 'shape-circle'; surface: 'teal' };
+      cyan: Partial<IconProps> & { name: 'shape-circle'; surface: 'cyan' };
+      blue: Partial<IconProps> & { name: 'shape-circle'; surface: 'blue' };
+      indigo: Partial<IconProps> & { name: 'shape-circle'; surface: 'indigo' };
+      purple: Partial<IconProps> & { name: 'shape-circle'; surface: 'purple' };
+      pink: Partial<IconProps> & { name: 'shape-circle'; surface: 'pink' };
+      brown: Partial<IconProps> & { name: 'shape-circle'; surface: 'brown' };
+    };
   }
 }

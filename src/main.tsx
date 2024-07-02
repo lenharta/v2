@@ -1,78 +1,49 @@
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
+import * as ReactRouter from 'react-router-dom';
+
 import './styles/index.scss';
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Layout } from '@/app/components';
+import * as Routes from '@/app/routes';
 
-import { Root } from '@/app/layouts';
-import {
-  ArticlesRoute,
-  CanvasRoute,
-  ContactRoute,
-  ErrorRoute,
-  ExperienceRoute,
-  HomeRoute,
-  ProjectsRoute,
-  SandboxRoute,
-  SettingsRoute,
-  ToolboxRoute,
-} from '@/app/routes';
-
-const router = createBrowserRouter([
+const browserRouter = ReactRouter.createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
-    errorElement: <ErrorRoute />,
+    element: <Layout />,
+    errorElement: <Routes.Error />,
     children: [
       {
         index: true,
-        element: <HomeRoute />,
-        errorElement: <ErrorRoute />,
+        element: <Routes.Overview />,
       },
       {
-        path: '/experience',
-        element: <ExperienceRoute />,
-        errorElement: <ErrorRoute />,
+        path: '/about',
+        element: <Routes.About />,
+      },
+      {
+        path: '/stack',
+        element: <Routes.Stack />,
       },
       {
         path: '/projects',
-        element: <ProjectsRoute />,
-        errorElement: <ErrorRoute />,
+        element: <Routes.Projects />,
       },
       {
         path: '/settings',
-        element: <SettingsRoute />,
-        errorElement: <ErrorRoute />,
-      },
-      {
-        path: '/toolbox',
-        element: <ToolboxRoute />,
-        errorElement: <ErrorRoute />,
+        element: <Routes.Settings />,
       },
       {
         path: '/contact',
-        element: <ContactRoute />,
-        errorElement: <ErrorRoute />,
+        element: <Routes.Contact />,
       },
       {
-        path: '/canvas',
-        element: <CanvasRoute />,
-        errorElement: <ErrorRoute />,
-      },
-      {
-        path: '/sandbox',
-        element: <SandboxRoute />,
-        errorElement: <ErrorRoute />,
-        children: [
-          { index: true, element: <SandboxRoute.Root /> },
-          { path: '/sandbox/button', element: <SandboxRoute.Button /> },
-          { path: '/sandbox/action', element: <SandboxRoute.Action /> },
-        ],
+        path: '/elements',
+        element: <Routes.Elements />,
       },
       {
         path: '/articles',
-        element: <ArticlesRoute />,
-        errorElement: <ErrorRoute />,
+        element: <Routes.Articles />,
       },
     ],
   },
@@ -80,6 +51,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ReactRouter.RouterProvider router={browserRouter} />
   </React.StrictMode>
 );

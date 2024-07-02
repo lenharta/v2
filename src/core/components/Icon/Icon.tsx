@@ -15,7 +15,7 @@ const Icon = createFactory<IconFactory>((props, ref) => {
     size = 'sm',
     type = 'outline',
     name = 'shape-circle',
-    scheme = 'base',
+    surface = 'base',
     emphasis = 'med',
     children,
     className,
@@ -31,8 +31,9 @@ const Icon = createFactory<IconFactory>((props, ref) => {
       viewBox="0 0 16 16"
       className={clsx(
         'v2-icon',
-        { [`v2-icon--size-${size}`]: size },
-        { [`v2-icon--${scheme}-${emphasis}`]: scheme && emphasis },
+        `v2-icon--${surface}`,
+        `v2-icon--size-${size}`,
+        `v2-icon--emphasis-${emphasis}`,
         className
       )}
       data-icon-name={name}
