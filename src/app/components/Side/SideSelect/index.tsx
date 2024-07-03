@@ -1,7 +1,7 @@
-import { Action, Floating, IconProps } from '@/core';
+import * as React from 'react';
 import { Store } from '@/types';
-import { createKeyDownGroup, getNextIndex, getPrevIndex } from '@/utils';
-import React from 'react';
+import { getNextIndex, getPrevIndex } from '@/utils';
+import { Action, Floating, IconProps } from '@/core';
 
 interface SideSelectProps {
   group: { value: string; label: string; icon: Partial<IconProps> };
@@ -16,7 +16,7 @@ interface SideSelectProps {
 type SideSelectFactory = React.FC<SideSelectProps>;
 
 const SideSelect: SideSelectFactory = (props) => {
-  const { group, items, name, store, onOpen, onClose, dispatch } = props;
+  const { group, items, name, onOpen, onClose, dispatch } = props;
 
   const [isOpen, setOpen] = React.useState(false);
   const drawerRef = React.useRef<HTMLDivElement>(null);

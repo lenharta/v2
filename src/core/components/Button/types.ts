@@ -5,8 +5,14 @@ interface ButtonThemeProps {
   size?: Theme.SizeExpanded | undefined;
   align?: 'start' | 'end' | 'center' | undefined;
   justify?: 'start' | 'end' | 'center' | undefined;
-  surface?: 'base' | 'accent' | Theme.Color | undefined;
-  variant?: 'default' | 'elevated' | undefined;
+  variant?:
+    | 'base-default'
+    | 'base-elevated'
+    | 'accent-default'
+    | 'accent-elevated'
+    | `${Theme.Color}-default`
+    | `${Theme.Color}-elevated`
+    | undefined;
 }
 
 interface ButtonProps extends UnstyledButtonProps, ButtonThemeProps {

@@ -2,8 +2,14 @@ import { UnstyledButtonProps, GroupProps, IconProps } from '@/core';
 import { Theme } from '@/types';
 
 interface ActionThemeProps {
-  surface?: 'base' | 'accent' | Theme.Color | undefined;
-  variant?: 'default' | 'elevated' | undefined;
+  variant?:
+    | 'base-default'
+    | 'base-elevated'
+    | 'accent-default'
+    | 'accent-elevated'
+    | `${Theme.Color}-default`
+    | `${Theme.Color}-elevated`
+    | undefined;
 }
 
 interface ActionProps extends UnstyledButtonProps, ActionThemeProps {

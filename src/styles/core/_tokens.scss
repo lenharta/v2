@@ -20,7 +20,7 @@
   --v2-16: calc(var(--v2-unit) * 80); // 160px
 
   --v2-action: calc(var(--v2-unit) * 28); // 56px
-  --v2-gutter: calc(var(--v2-unit) * 28); // 56px
+  --v2-gutter: calc(var(--v2-unit) * 16); // 56px
   --v2-gutter-gap: calc(var(--v2-gutter) / 2); // 28px
 
   --v2-card-width-sm: calc(var(--v2-unit) * 80); // 160px
@@ -94,22 +94,22 @@
   --v2-easing-expressive-enter: cubic-bezier(0, 0, 0.3, 1);
 
   @media screen and (min-width: 40em) {
-    --v2-gutter: var(--s-07);
+    --v2-gutter: calc(var(--v2-unit) * 20);
   }
   @media screen and (min-width: 60em) {
-    --v2-gutter: var(--s-08);
+    --v2-gutter: calc(var(--v2-unit) * 24);
   }
   @media screen and (min-width: 80em) {
-    --v2-gutter: var(--s-08);
+    --v2-gutter: calc(var(--v2-unit) * 28);
   }
 
-  --v2-gap-xxs: var(--s-01);
-  --v2-gap-xs: var(--s-02);
-  --v2-gap-sm: var(--s-04);
-  --v2-gap-md: var(--s-06);
-  --v2-gap-lg: var(--s-08);
-  --v2-gap-xl: var(--s-10);
-  --v2-gap-xxl: var(--s-12);
+  --v2-gap-xxs: var(--v2-01);
+  --v2-gap-xs: var(--v2-02);
+  --v2-gap-sm: var(--v2-04);
+  --v2-gap-md: var(--v2-06);
+  --v2-gap-lg: var(--v2-08);
+  --v2-gap-xl: var(--v2-10);
+  --v2-gap-xxl: var(--v2-12);
 
   --v2-icon-height-xxs: 12px;
   --v2-icon-height-xs: 14px;

@@ -126,3 +126,142 @@
   --c-rgb-pink: var(--c-rgb-pink-accessible-light);
   --c-rgb-brown: var(--c-rgb-brown-accessible-light);
 }
+
+[data-prefers-color-mode='light'] {
+  --c-base-default-bkgd-enabled: rgba(var(--c-rgb-contrast), 0);
+  --c-base-default-text-enabled: rgba(var(--c-rgb-contrast), 0.87);
+  --c-base-default-icon-enabled: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-base-default-bkgd-hovered: rgba(var(--c-rgb-contrast), 0.04);
+  --c-base-default-text-hovered: rgba(var(--c-rgb-contrast), 0.91);
+  --c-base-default-icon-hovered: rgba(var(--c-rgb-contrast), 0.91);
+
+  --c-base-default-bkgd-pressed: rgba(var(--c-rgb-contrast), 0.08);
+  --c-base-default-text-pressed: rgba(var(--c-rgb-contrast), 0.93);
+  --c-base-default-icon-pressed: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-base-default-bkgd-selected: rgba(var(--c-rgb-contrast), 0.08);
+  --c-base-default-text-selected: rgba(var(--c-rgb-contrast), 0.99);
+  --c-base-default-icon-selected: rgba(var(--c-rgb-contrast), 0.99);
+
+  --c-base-elevated-bkgd-enabled: rgba(var(--c-rgb-contrast), 0.04);
+  --c-base-elevated-text-enabled: rgba(var(--c-rgb-contrast), 0.87);
+  --c-base-elevated-icon-enabled: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-base-elevated-bkgd-hovered: rgba(var(--c-rgb-contrast), 0.08);
+  --c-base-elevated-text-hovered: rgba(var(--c-rgb-contrast), 0.91);
+  --c-base-elevated-icon-hovered: rgba(var(--c-rgb-contrast), 0.91);
+
+  --c-base-elevated-bkgd-pressed: rgba(var(--c-rgb-contrast), 0.12);
+  --c-base-elevated-text-pressed: rgba(var(--c-rgb-contrast), 0.93);
+  --c-base-elevated-icon-pressed: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-base-elevated-bkgd-selected: rgba(var(--c-rgb-contrast), 0.12);
+  --c-base-elevated-text-selected: rgba(var(--c-rgb-contrast), 0.99);
+  --c-base-elevated-icon-selected: rgba(var(--c-rgb-contrast), 0.99);
+
+  --c-accent-default-bkgd-enabled: rgba(var(--c-rgb-accent), 0);
+  --c-accent-default-text-enabled: rgba(var(--c-rgb-accent), 0.87);
+  --c-accent-default-icon-enabled: rgba(var(--c-rgb-accent), 0.87);
+
+  --c-accent-default-bkgd-hovered: rgba(var(--c-rgb-accent), 0.06);
+  --c-accent-default-text-hovered: rgba(var(--c-rgb-accent), 0.91);
+  --c-accent-default-icon-hovered: rgba(var(--c-rgb-accent), 0.91);
+
+  --c-accent-default-bkgd-pressed: rgba(var(--c-rgb-accent), 0.09);
+  --c-accent-default-text-pressed: rgba(var(--c-rgb-accent), 0.93);
+  --c-accent-default-icon-pressed: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-accent-default-bkgd-selected: rgba(var(--c-rgb-accent), 0.09);
+  --c-accent-default-text-selected: rgba(var(--c-rgb-accent), 0.99);
+  --c-accent-default-icon-selected: rgba(var(--c-rgb-accent), 0.99);
+
+  --c-accent-elevated-bkgd-enabled: rgba(var(--c-rgb-accent), 0.09);
+  --c-accent-elevated-text-enabled: rgba(var(--c-rgb-accent), 0.87);
+  --c-accent-elevated-icon-enabled: rgba(var(--c-rgb-accent), 0.87);
+
+  --c-accent-elevated-bkgd-hovered: rgba(var(--c-rgb-accent), 0.12);
+  --c-accent-elevated-text-hovered: rgba(var(--c-rgb-accent), 0.91);
+  --c-accent-elevated-icon-hovered: rgba(var(--c-rgb-accent), 0.91);
+
+  --c-accent-elevated-bkgd-pressed: rgba(var(--c-rgb-accent), 0.15);
+  --c-accent-elevated-text-pressed: rgba(var(--c-rgb-accent), 0.93);
+  --c-accent-elevated-icon-pressed: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-accent-elevated-bkgd-selected: rgba(var(--c-rgb-accent), 0.15);
+  --c-accent-elevated-text-selected: rgba(var(--c-rgb-accent), 0.99);
+  --c-accent-elevated-icon-selected: rgba(var(--c-rgb-accent), 0.99);
+}
+
+[data-prefers-color-mode='dim'],
+[data-prefers-color-mode='dark'] {
+  --c-base-default-bkgd-enabled: rgba(var(--c-rgb-contrast), 0);
+  --c-base-default-text-enabled: rgba(var(--c-rgb-contrast), 0.87);
+  --c-base-default-icon-enabled: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-base-default-bkgd-hovered: rgba(var(--c-rgb-contrast), 0.02);
+  --c-base-default-text-hovered: rgba(var(--c-rgb-contrast), 0.91);
+  --c-base-default-icon-hovered: rgba(var(--c-rgb-contrast), 0.91);
+
+  --c-base-default-bkgd-pressed: rgba(var(--c-rgb-contrast), 0.04);
+  --c-base-default-text-pressed: rgba(var(--c-rgb-contrast), 0.93);
+  --c-base-default-icon-pressed: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-base-default-bkgd-selected: rgba(var(--c-rgb-contrast), 0.04);
+  --c-base-default-text-selected: rgba(var(--c-rgb-contrast), 0.99);
+  --c-base-default-icon-selected: rgba(var(--c-rgb-contrast), 0.99);
+
+  --c-base-elevated-bkgd-enabled: rgba(var(--c-rgb-contrast), 0.02);
+  --c-base-elevated-text-enabled: rgba(var(--c-rgb-contrast), 0.87);
+  --c-base-elevated-icon-enabled: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-base-elevated-bkgd-hovered: rgba(var(--c-rgb-contrast), 0.04);
+  --c-base-elevated-text-hovered: rgba(var(--c-rgb-contrast), 0.91);
+  --c-base-elevated-icon-hovered: rgba(var(--c-rgb-contrast), 0.91);
+
+  --c-base-elevated-bkgd-pressed: rgba(var(--c-rgb-contrast), 0.06);
+  --c-base-elevated-text-pressed: rgba(var(--c-rgb-contrast), 0.93);
+  --c-base-elevated-icon-pressed: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-base-elevated-bkgd-selected: rgba(var(--c-rgb-contrast), 0.06);
+  --c-base-elevated-text-selected: rgba(var(--c-rgb-contrast), 0.99);
+  --c-base-elevated-icon-selected: rgba(var(--c-rgb-contrast), 0.99);
+
+  --c-accent-default-bkgd-enabled: rgba(var(--c-rgb-accent), 0);
+  --c-accent-default-text-enabled: rgba(var(--c-rgb-accent), 0.87);
+  --c-accent-default-icon-enabled: rgba(var(--c-rgb-accent), 0.87);
+
+  --c-accent-default-bkgd-hovered: rgba(var(--c-rgb-accent), 0.06);
+  --c-accent-default-text-hovered: rgba(var(--c-rgb-accent), 0.91);
+  --c-accent-default-icon-hovered: rgba(var(--c-rgb-accent), 0.91);
+
+  --c-accent-default-bkgd-pressed: rgba(var(--c-rgb-accent), 0.09);
+  --c-accent-default-text-pressed: rgba(var(--c-rgb-accent), 0.93);
+  --c-accent-default-icon-pressed: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-accent-default-bkgd-selected: rgba(var(--c-rgb-accent), 0.09);
+  --c-accent-default-text-selected: rgba(var(--c-rgb-accent), 0.99);
+  --c-accent-default-icon-selected: rgba(var(--c-rgb-accent), 0.99);
+
+  --c-accent-elevated-bkgd-enabled: rgba(var(--c-rgb-accent), 0.06);
+  --c-accent-elevated-text-enabled: rgba(var(--c-rgb-accent), 0.87);
+  --c-accent-elevated-icon-enabled: rgba(var(--c-rgb-accent), 0.87);
+
+  --c-accent-elevated-bkgd-hovered: rgba(var(--c-rgb-accent), 0.09);
+  --c-accent-elevated-text-hovered: rgba(var(--c-rgb-accent), 0.91);
+  --c-accent-elevated-icon-hovered: rgba(var(--c-rgb-accent), 0.91);
+
+  --c-accent-elevated-bkgd-pressed: rgba(var(--c-rgb-accent), 0.12);
+  --c-accent-elevated-text-pressed: rgba(var(--c-rgb-accent), 0.93);
+  --c-accent-elevated-icon-pressed: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-accent-elevated-bkgd-selected: rgba(var(--c-rgb-accent), 0.12);
+  --c-accent-elevated-text-selected: rgba(var(--c-rgb-accent), 0.99);
+  --c-accent-elevated-icon-selected: rgba(var(--c-rgb-accent), 0.99);
+}
+
+[data-prefers-color-mode='dim'],
+[data-prefers-color-mode='dark'],
+[data-prefers-color-mode='light'] {
+  --c-base-bkgd: rgba(var(--c-rgb-base), 1);
+}

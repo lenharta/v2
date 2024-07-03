@@ -9,7 +9,6 @@ type HeaderFactory = React.FC<HeaderProps> & {};
 
 const Header: HeaderFactory = ({}) => {
   const store = useStore();
-  const location = Router.useLocation();
   const navigate = Router.useNavigate();
 
   return (
@@ -19,12 +18,12 @@ const Header: HeaderFactory = ({}) => {
           <Action
             value="/"
             onClick={(event) => navigate(event.currentTarget.value)}
+            className="v2-header-logo"
             aria-label="go home"
             icon={{
               name: 'logo-v2',
               type: store.icons,
-              surface: location.pathname === '/' ? 'accent' : 'base',
-              emphasis: 'max',
+              fill: 'accent',
             }}
           />
 

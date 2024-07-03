@@ -21,7 +21,6 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
     value,
     align,
     justify,
-    surface,
     variant,
     loading,
     disabled,
@@ -59,31 +58,18 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
         `v2-button--size-${size || ctx.size || 'sm'}`,
         `v2-button--align-${align || ctx.align || 'center'}`,
         `v2-button--justify-${justify || ctx.justify || 'center'}`,
-        `v2-surface--${surface || ctx.surface || 'base'}`,
-        `v2-surface--${variant || ctx.variant || 'elevated'}`,
+        `v2-button--${ctx.variant || variant || 'base-elevated'}`,
         className
       )}
       {...forwardedProps}
       {...contextProps}
     >
       <span className="v2-button-layout">
-        {iconLeft && (
-          <Icon
-            name={iconLeft.name}
-            surface={surface || ctx.surface || 'base'}
-            data-position="left"
-          />
-        )}
+        {iconLeft && <Icon name={iconLeft.name} data-position="left" />}
 
         {children}
 
-        {iconRight && (
-          <Icon
-            name={iconRight.name}
-            surface={surface || ctx.surface || 'base'}
-            data-position="right"
-          />
-        )}
+        {iconRight && <Icon name={iconRight.name} data-position="right" />}
       </span>
     </UnstyledButton>
   );

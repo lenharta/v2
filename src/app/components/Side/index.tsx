@@ -72,68 +72,68 @@ const Side: SideFactory = ({}) => {
             group={{
               value: store.accent,
               label: 'select accent color',
-              icon: { type: store.icons, surface: store.accent },
+              icon: { type: store.icons, fill: store.accent },
             }}
             items={[
               {
                 value: 'red',
                 label: 'red',
-                icon: { type: 'fill', surface: 'red' },
+                icon: { type: 'fill', fill: 'red' },
               },
               {
                 value: 'orange',
                 label: 'orange',
-                icon: { type: 'fill', surface: 'orange' },
+                icon: { type: 'fill', fill: 'orange' },
               },
               {
                 value: 'yellow',
                 label: 'yellow',
-                icon: { type: 'fill', surface: 'yellow' },
+                icon: { type: 'fill', fill: 'yellow' },
               },
               {
                 value: 'green',
                 label: 'green',
-                icon: { type: 'fill', surface: 'green' },
+                icon: { type: 'fill', fill: 'green' },
               },
               {
                 value: 'mint',
                 label: 'mint',
-                icon: { type: 'fill', surface: 'mint' },
+                icon: { type: 'fill', fill: 'mint' },
               },
               {
                 value: 'teal',
                 label: 'teal',
-                icon: { type: 'fill', surface: 'teal' },
+                icon: { type: 'fill', fill: 'teal' },
               },
               {
                 value: 'cyan',
                 label: 'cyan',
-                icon: { type: 'fill', surface: 'cyan' },
+                icon: { type: 'fill', fill: 'cyan' },
               },
               {
                 value: 'blue',
                 label: 'blue',
-                icon: { type: 'fill', surface: 'blue' },
+                icon: { type: 'fill', fill: 'blue' },
               },
               {
                 value: 'indigo',
                 label: 'indigo',
-                icon: { type: 'fill', surface: 'indigo' },
+                icon: { type: 'fill', fill: 'indigo' },
               },
               {
                 value: 'purple',
                 label: 'purple',
-                icon: { type: 'fill', surface: 'purple' },
+                icon: { type: 'fill', fill: 'purple' },
               },
               {
                 value: 'pink',
                 label: 'pink',
-                icon: { type: 'fill', surface: 'pink' },
+                icon: { type: 'fill', fill: 'pink' },
               },
               {
                 value: 'brown',
                 label: 'brown',
-                icon: { type: 'fill', surface: 'brown' },
+                icon: { type: 'fill', fill: 'brown' },
               },
             ]}
           />

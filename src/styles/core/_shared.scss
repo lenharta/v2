@@ -12,19 +12,19 @@
 .v2-select-option,
 .v2-inline-input {
   transition:
-    background-color var(--duration-moderate-01) var(--easing-productive),
-    border-color var(--duration-moderate-01) var(--easing-productive),
-    opacity var(--duration-moderate-01) var(--easing-productive),
-    stroke var(--duration-moderate-01) var(--easing-productive),
-    color var(--duration-moderate-01) var(--easing-productive),
-    fill var(--duration-moderate-01) var(--easing-productive);
+    background-color var(--v2-duration-moderate-01) var(--v2-easing-productive),
+    border-color var(--v2-duration-moderate-01) var(--v2-easing-productive),
+    opacity var(--v2-duration-moderate-01) var(--v2-easing-productive),
+    stroke var(--v2-duration-moderate-01) var(--v2-easing-productive),
+    color var(--v2-duration-moderate-01) var(--v2-easing-productive),
+    fill var(--v2-duration-moderate-01) var(--v2-easing-productive);
 
   border-color: transparent;
-  border-width: var(--s-01);
+  border-width: var(--v2-01);
   border-style: solid;
 
   outline-color: transparent;
-  outline-width: var(--s-01);
+  outline-width: var(--v2-01);
   outline-style: solid;
   outline-offset: unset;
 

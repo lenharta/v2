@@ -1,1 +1,200 @@
+@use '../data' as data;
 
+.v2-button--base-default,
+.v2-action--base-default,
+.v2-action-spacer--base-default {
+  background-color: var(--c-base-default-bkgd-enabled);
+  color: var(--c-base-default-text-enabled);
+  .v2-icon {
+    fill: var(--c-base-default-icon-enabled);
+  }
+}
+
+.v2-button--base-default,
+.v2-action--base-default {
+  &:not([data-disabled]):hover,
+  &:not([data-readonly]):hover {
+    background-color: var(--c-base-default-bkgd-hovered);
+    color: var(--c-base-default-text-hovered);
+    .v2-icon {
+      fill: var(--c-base-default-icon-hovered);
+    }
+  }
+
+  &:not([data-disabled]):active,
+  &:not([data-readonly]):active {
+    background-color: var(--c-base-default-bkgd-pressed);
+    color: var(--c-base-default-text-pressed);
+    .v2-icon {
+      fill: var(--c-base-default-icon-pressed);
+    }
+  }
+
+  &:not([data-disabled])[data-selected],
+  &:not([data-readonly])[data-selected] {
+    background-color: var(--c-base-default-bkgd-selected);
+    color: var(--c-base-default-text-selected);
+    .v2-icon {
+      fill: var(--c-base-default-icon-selected);
+    }
+  }
+}
+
+.v2-button--base-elevated,
+.v2-action--base-elevated,
+.v2-action-spacer--base-elevated {
+  background-color: var(--c-base-elevated-bkgd-enabled);
+  color: var(--c-base-elevated-text-enabled);
+  .v2-icon {
+    fill: var(--c-base-elevated-icon-enabled);
+  }
+}
+
+.v2-button--base-elevated,
+.v2-action--base-elevated {
+  &:not([data-disabled]):hover,
+  &:not([data-readonly]):hover {
+    background-color: var(--c-base-elevated-bkgd-hovered);
+    color: var(--c-base-elevated-text-hovered);
+    .v2-icon {
+      fill: var(--c-base-elevated-icon-hovered);
+    }
+  }
+
+  &:not([data-disabled]):active,
+  &:not([data-readonly]):active {
+    background-color: var(--c-base-elevated-bkgd-pressed);
+    color: var(--c-base-elevated-text-pressed);
+    .v2-icon {
+      fill: var(--c-base-elevated-icon-pressed);
+    }
+  }
+
+  &:not([data-disabled])[data-selected],
+  &:not([data-readonly])[data-selected] {
+    background-color: var(--c-base-elevated-bkgd-selected);
+    color: var(--c-base-elevated-text-selected);
+    .v2-icon {
+      fill: var(--c-base-elevated-icon-selected);
+    }
+  }
+}
+
+.v2-button--accent-default,
+.v2-action--accent-default,
+.v2-action-spacer--accent-default {
+  background-color: var(--c-accent-default-bkgd-enabled);
+  color: var(--c-accent-default-text-enabled);
+  .v2-icon {
+    fill: var(--c-accent-default-icon-enabled);
+  }
+}
+
+.v2-button--accent-default,
+.v2-action--accent-default {
+  &:not([data-disabled]):hover,
+  &:not([data-readonly]):hover {
+    background-color: var(--c-accent-default-bkgd-hovered);
+    color: var(--c-accent-default-text-hovered);
+    .v2-icon {
+      fill: var(--c-accent-default-icon-hovered);
+    }
+  }
+
+  &:not([data-disabled]):active,
+  &:not([data-readonly]):active {
+    background-color: var(--c-accent-default-bkgd-pressed);
+    color: var(--c-accent-default-text-pressed);
+    .v2-icon {
+      fill: var(--c-accent-default-icon-pressed);
+    }
+  }
+
+  &:not([data-disabled])[data-selected],
+  &:not([data-readonly])[data-selected] {
+    background-color: var(--c-accent-default-bkgd-selected);
+    color: var(--c-accent-default-text-selected);
+    .v2-icon {
+      fill: var(--c-accent-default-icon-selected);
+    }
+  }
+}
+
+.v2-button--accent-elevated,
+.v2-action--accent-elevated,
+.v2-action-spacer--accent-elevated {
+  background-color: var(--c-accent-elevated-bkgd-enabled);
+  color: var(--c-accent-elevated-text-enabled);
+  .v2-icon {
+    fill: var(--c-accent-elevated-icon-enabled);
+  }
+}
+
+.v2-button--accent-elevated,
+.v2-action--accent-elevated {
+  &:not([data-disabled]):hover,
+  &:not([data-readonly]):hover {
+    background-color: var(--c-accent-elevated-bkgd-hovered);
+    color: var(--c-accent-elevated-text-hovered);
+    .v2-icon {
+      fill: var(--c-accent-elevated-icon-hovered);
+    }
+  }
+
+  &:not([data-disabled]):active,
+  &:not([data-readonly]):active {
+    background-color: var(--c-accent-elevated-bkgd-pressed);
+    color: var(--c-accent-elevated-text-pressed);
+    .v2-icon {
+      fill: var(--c-accent-elevated-icon-pressed);
+    }
+  }
+
+  &:not([data-disabled])[data-selected],
+  &:not([data-readonly])[data-selected] {
+    background-color: var(--c-accent-elevated-bkgd-selected);
+    color: var(--c-accent-elevated-text-selected);
+    .v2-icon {
+      fill: var(--c-accent-elevated-icon-selected);
+    }
+  }
+}
+
+$typography-variant-map: (
+  'base': (
+    'min': 'rgba(var(--c-rgb-contrast), 0.47)',
+    'low': 'rgba(var(--c-rgb-contrast), 0.67)',
+    'med': 'rgba(var(--c-rgb-contrast), 0.87)',
+    'max': 'rgba(var(--c-rgb-contrast), 1)',
+  ),
+  'accent': (
+    'min': 'rgba(var(--c-rgb-accent), 0.47)',
+    'low': 'rgba(var(--c-rgb-accent), 0.67)',
+    'med': 'rgba(var(--c-rgb-accent), 0.87)',
+    'max': 'rgba(var(--c-rgb-accent), 1)',
+  ),
+);
+
+@each $variant, $emphasis-map in $typography-variant-map {
+  @each $emphasis, $value in $emphasis-map {
+    .v2-title--#{$variant}-#{$emphasis} {
+      color: #{$value};
+    }
+  }
+}
+
+@each $variant, $emphasis-map in $typography-variant-map {
+  @each $emphasis, $value in $emphasis-map {
+    .v2-label--#{$variant}-#{$emphasis} {
+      color: #{$value};
+    }
+  }
+}
+
+@each $variant, $emphasis-map in $typography-variant-map {
+  @each $emphasis, $value in $emphasis-map {
+    .v2-text--#{$variant}-#{$emphasis} {
+      color: #{$value};
+    }
+  }
+}
