@@ -2,6 +2,7 @@ export * from './About';
 export * from './Articles';
 export * from './Canvas';
 export * from './Contact';
+export * from './common';
 export * from './Elements';
 export * from './Error';
 export * from './Overview';

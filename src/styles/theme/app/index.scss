@@ -1,33 +1,35 @@
 html,
-body {
-  background-color: rgba(var(--c-rgb-base), 1);
-  color: rgba(var(--c-rgb-contrast), 0.87);
+body,
+.v2-layout,
+.v2-page {
+  background-color: var(--c-base-bkgd);
+  color: var(--c-base-text);
 }
 
 svg {
-  fill: rgba(var(--c-rgb-contrast), 0.87);
+  fill: var(--c-base-text);
 }
 
 .v2-header {
-  background-color: rgba(var(--c-rgb-base), 1);
-  color: rgba(var(--c-rgb-contrast), 0.87);
+  background-color: var(--c-base-bkgd);
+  color: var(--c-base-text);
 }
 
 .v2-side,
 .v2-side-select-drawer,
 .v2-side-select-drawer-layout {
-  background-color: rgba(var(--c-rgb-base), 1);
-  color: rgba(var(--c-rgb-contrast), 0.87);
+  background-color: var(--c-base-bkgd);
+  color: var(--c-base-text);
 }
 
 .v2-footer {
   background-color: rgba(var(--c-rgb-contrast), 0.02);
-  color: rgba(var(--c-rgb-contrast), 0.87);
+  color: var(--c-base-text);
 }
 
 .v2-page-hero {
   background-color: rgba(var(--c-rgb-contrast), 0.02);
-  color: rgba(var(--c-rgb-contrast), 0.87);
+  color: var(--c-base-text);
 }
 
 .v2-side-nav-target[data-selected] .v2-icon {
@@ -56,9 +58,21 @@ svg {
   color: var(--c-accent-elevated-text-selected);
 }
 
-.v2-overview-intro-banner {
+.v2-overview-hero-title-line-2 {
+  color: var(--c-accent-elevated-text-enabled);
+}
+
+.v2-route-intro-banner {
   background-color: var(--c-accent-elevated-bkgd-enabled);
   color: var(--c-accent-elevated-text-enabled);
+}
+
+.v2-overview-resume-list-item {
+  background-color: var(--c-base-elevated-bkgd-enabled);
+
+  &::before {
+    background-color: var(--c-accent-elevated-text-enabled);
+  }
 }
 
 // VARIANT | BASE-DEFAULT

@@ -5,7 +5,6 @@
 
   height: var(--v2-button-height, var(--v2-button-height-sm));
 
-  min-width: max-content;
   display: inline-flex;
   align-items: var(--v2-button-align, center);
   justify-content: var(--v2-button-justify, center);
@@ -15,16 +14,20 @@
   line-height: var(--v2-button-height, var(--v2-button-height-sm));
 
   &:where([data-block]) {
-    display: block;
     width: 100%;
+    display: block;
   }
 
   &-layout {
     width: 100%;
-    display: inline-flex;
+    display: flex;
     gap: var(--v2-button-spacing-x);
     justify-content: space-between;
     align-items: center;
+
+    [data-prefers-dir='rtl'] & {
+      flex-direction: row-reverse;
+    }
   }
 
   .v2-icon {

@@ -7,6 +7,9 @@
   left: 0;
   top: 0;
 
+  isolation: isolate;
+  z-index: 1000;
+
   &-layout {
     height: 100%;
     display: flex;

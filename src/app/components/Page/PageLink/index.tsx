@@ -34,12 +34,8 @@ const PageLink: PageLinkFactory = (props) => {
       {...forwardedProps}
     >
       <div className="v2-page-link-layout">
-        {label && (
-          <Label component="div" size="xl" weight="reg">
-            {label}
-          </Label>
-        )}
-        {icon && <Icon {...icon} size="lg" />}
+        {label && <Label component="div">{label}</Label>}
+        {icon && <Icon {...icon} />}
       </div>
     </Link>
   );
