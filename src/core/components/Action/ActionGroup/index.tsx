@@ -16,7 +16,6 @@ const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
     gap,
     icon,
     value,
-    surface,
     variant,
     loading,
     disabled,
@@ -35,9 +34,7 @@ const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
       orientation={orientation}
       {...forwardedProps}
     >
-      <ActionProvider
-        value={{ icon, value, disabled, loading, surface, variant, readOnly, orientation }}
-      >
+      <ActionProvider value={{ icon, value, disabled, loading, variant, readOnly, orientation }}>
         {children}
       </ActionProvider>
     </Group>

@@ -86,8 +86,7 @@ export declare namespace Theme {
   interface IconProps {
     size?: SizeRegular | undefined;
     type?: 'fill' | 'outline' | undefined;
-    surface?: 'base' | 'accent' | 'neutral' | 'contrast' | Theme.Color | undefined;
-    emphasis?: 'min' | 'low' | 'med' | 'max' | undefined;
+    // emphasis?: 'min' | 'low' | 'med' | 'max' | undefined;
   }
 
   interface IconMap {

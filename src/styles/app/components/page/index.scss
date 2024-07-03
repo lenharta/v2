@@ -39,4 +39,24 @@
     width: 100%;
     display: block;
   }
+
+  &-link {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-block: var(--v2-gutter-gap);
+    padding-inline: var(--v2-gutter);
+
+    &-layout {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+
+      [data-prefers-dir='rtl'] & {
+        flex-direction: row-reverse;
+      }
+    }
+  }
 }

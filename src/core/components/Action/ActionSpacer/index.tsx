@@ -22,8 +22,7 @@ const ActionSpacer = createFactory<ActionSpacerFactory>((props, ref) => {
       data-grow={grow}
       className={clsx(
         'v2-action-spacer',
-        `v2-surface--${ctx.surface || 'base'}`,
-        `v2-surface--${ctx.variant || 'elevated'}`,
+        `v2-action-spacer--${ctx.variant || 'base-elevated'}`,
         className
       )}
       {...forwardedProps}

@@ -11,11 +11,10 @@ type LabelFactory = Factory.Config<{
 
 const Label = createPolymorphicFactory<LabelFactory>((props, ref) => {
   const {
-    size = 'md',
-    lead = 'md',
-    weight = 'med',
-    surface = 'base',
-    emphasis = 'med',
+    size,
+    lead,
+    weight,
+    variant,
     children,
     className,
     component: Component = 'label',
@@ -27,11 +26,10 @@ const Label = createPolymorphicFactory<LabelFactory>((props, ref) => {
       ref={ref}
       className={clsx(
         'v2-label',
-        `v2-label--${surface}`,
-        `v2-label--size-${size}`,
-        `v2-label--lead-${lead}`,
-        `v2-label--weight-${weight}`,
-        `v2-label--emphasis-${emphasis}`,
+        { [`v2-label--${variant}`]: variant },
+        { [`v2-label--size-${size}`]: size },
+        { [`v2-label--lead-${lead}`]: lead },
+        { [`v2-label--weight-${weight}`]: weight },
         className
       )}
       {...forwardedProps}

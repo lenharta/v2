@@ -23,13 +23,12 @@ const Action = createFactory<ActionFactory>((props, ref) => {
   const {
     icon,
     value,
+    variant,
     loading,
     disabled,
     readOnly,
     selected,
     className,
-    surface,
-    variant,
     ...forwardedProps
   } = props;
 
@@ -56,8 +55,7 @@ const Action = createFactory<ActionFactory>((props, ref) => {
       selected={!!selected || undefined}
       className={clsx(
         'v2-action',
-        `v2-surface--${ctx.surface || surface || 'base'}`,
-        `v2-surface--${ctx.variant || variant || 'elevated'}`,
+        `v2-action--${variant || ctx.variant || 'base-elevated'}`,
         className
       )}
       {...forwardedProps}

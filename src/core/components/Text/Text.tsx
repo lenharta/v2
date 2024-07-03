@@ -12,12 +12,11 @@ type TextFactory = Factory.Config<{
 
 const Text = createPolymorphicFactory<TextFactory>((props, ref) => {
   const {
-    size = 'sm',
-    lead = 'sm',
+    size,
+    lead,
     span,
-    weight = 'reg',
-    surface = 'base',
-    emphasis = 'med',
+    weight,
+    variant,
     children,
     className,
     component = 'p',
@@ -33,11 +32,10 @@ const Text = createPolymorphicFactory<TextFactory>((props, ref) => {
       ref={ref}
       className={clsx(
         'v2-text',
-        `v2-text--${surface}`,
-        `v2-text--size-${size}`,
-        `v2-text--lead-${lead}`,
-        `v2-text--weight-${weight}`,
-        `v2-text--emphasis-${emphasis}`,
+        { [`v2-text--${variant}`]: variant !== undefined },
+        { [`v2-text--size-${size}`]: size !== undefined },
+        { [`v2-text--lead-${lead}`]: lead !== undefined },
+        { [`v2-text--weight-${weight}`]: weight !== undefined },
         className
       )}
       {...forwardedProps}
