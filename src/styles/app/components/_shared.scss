@@ -3,6 +3,24 @@
   font-family: var(--ff);
 }
 
+html,
+body,
+.v2-layout,
+.v2-page,
+.v2-side,
+.v2-main,
+.v2-page-hero,
+.v2-header,
+.v2-footer {
+  transition:
+    background-color var(--v2-duration-slow-02) var(--v2-easing-expressive),
+    border-color var(--v2-duration-slow-02) var(--v2-easing-expressive),
+    opacity var(--v2-duration-slow-02) var(--v2-easing-expressive),
+    stroke var(--v2-duration-slow-02) var(--v2-easing-expressive),
+    color var(--v2-duration-slow-02) var(--v2-easing-expressive),
+    fill var(--v2-duration-slow-02) var(--v2-easing-expressive);
+}
+
 .v2-page-link {
   transition:
     background-color var(--v2-duration-moderate-01) var(--v2-easing-productive),

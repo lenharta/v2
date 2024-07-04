@@ -264,4 +264,6 @@
 [data-prefers-color-mode='dark'],
 [data-prefers-color-mode='light'] {
   --c-base-bkgd: rgba(var(--c-rgb-base), 1);
+  --c-base-text: rgba(var(--c-rgb-contrast), 0.87);
+  --c-base-icon: rgba(var(--c-rgb-contrast), 0.87);
 }

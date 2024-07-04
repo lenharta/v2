@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Link, LinkProps } from 'react-router-dom';
-import { Icon, IconProps, Label } from '@/core';
+import * as Router from 'react-router-dom';
+import { Icon, IconProps, Label, UnstyledLink } from '@/core';
+import { Theme } from '@/types';
 
-interface PageLinkProps extends Partial<Omit<LinkProps, 'children'>> {
+interface PageLinkProps extends Partial<Omit<Router.LinkProps, 'children'>> {
   to?: string | undefined;
   icon?: Partial<IconProps> | undefined;
   label?: string | undefined;
@@ -12,38 +13,37 @@ interface PageLinkProps extends Partial<Omit<LinkProps, 'children'>> {
     | 'base-default'
     | 'base-elevated'
     | 'accent-default'
-    | 'accent-text'
     | 'accent-elevated'
+    | 'accent-tonal'
+    | 'accent-ghost'
+    | `${Theme.Color}-tonal`
+    | `${Theme.Color}-ghost`
+    | `${Theme.Color}-default`
+    | `${Theme.Color}-elevated`
     | undefined;
 }
 
-type PageLinkFactory = React.FC<PageLinkProps> & {};
-
-const PageLink: PageLinkFactory = (props) => {
-  const { to = '/', icon, label, className, variant, ...forwardedProps } = props;
+const PageLink: React.FC<PageLinkProps> & {} = (props) => {
+  const { to = '/', icon, label, variant = 'base-elevated', className, ...forwardedProps } = props;
 
   if (!label && !forwardedProps['aria-label']) {
     console.warn('[@v2/Page.Link]: programmer must provvide aria-label for accessibility purposes');
   }
 
   return (
-    <Link
+    <UnstyledLink
       to={to}
       className={clsx('v2-page-link', `v2-page-link--${variant}`, className)}
       aria-label={label}
       {...forwardedProps}
     >
       <div className="v2-page-link-layout">
-        {label && (
-          <Label component="div" size="xl" weight="reg">
-            {label}
-          </Label>
-        )}
-        {icon && <Icon {...icon} size="lg" />}
+        {label}
+        {icon && <Icon {...icon} />}
       </div>
-    </Link>
+    </UnstyledLink>
   );
 };
 
 PageLink.displayName = '@v2/Page.Link';
-export { PageLink, type PageLinkProps, type PageLinkFactory };
+export { PageLink, type PageLinkProps };
