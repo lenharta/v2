@@ -1,12 +1,16 @@
 .v2-icon {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
   width: var(--v2-icon-width, var(--v2-icon-width-sm));
   height: var(--v2-icon-height, var(--v2-icon-height-sm));
-  min-width: var(--v2-icon-width, var(--v2-icon-width-sm));
-  min-height: var(--v2-icon-height, var(--v2-icon-height-sm));
+
+  svg {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
 
   &--size-xxs {
     --v2-icon-width: var(--v2-icon-width-xxs);

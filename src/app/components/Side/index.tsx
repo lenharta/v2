@@ -43,23 +43,28 @@ const Side: SideFactory = ({}) => {
               {
                 value: '/projects',
                 label: 'Projects',
-                icon: { type: store.icons, name: 'folder', size: 'md' },
+                icon: { type: store.icons, name: 'box', size: 'md' },
               },
               {
                 value: '/stack',
                 label: 'Stack',
-                icon: { type: store.icons, name: 'layers', size: 'md' },
+                icon: { type: store.icons, name: 'code-slash', size: 'md' },
               },
               {
                 value: '/elements',
                 label: 'Elements',
-                icon: { type: store.icons, name: 'grid', size: 'md' },
+                icon: { type: store.icons, name: 'layers', size: 'md' },
               },
               {
                 value: '/articles',
                 label: 'Articles',
-                icon: { type: store.icons, name: 'chat-left', size: 'md' },
+                icon: { type: store.icons, name: 'collection', size: 'md' },
               },
+              // {
+              //   value: '/settings',
+              //   label: 'Settings',
+              //   icon: { type: store.icons, name: 'gear', size: 'md' },
+              // },
             ]}
           />
 

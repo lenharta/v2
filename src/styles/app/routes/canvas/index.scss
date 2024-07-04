@@ -1,0 +1,21 @@
+.v2-canvas-action-variants,
+.v2-canvas-button-variants {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.v2-canvas-accordion-default {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  min-height: 700px;
+}
+
+.v2-canvas-accordion-default-content {
+  padding: var(--v2-06);
+}

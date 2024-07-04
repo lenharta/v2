@@ -1,4 +1,5 @@
 import { Page } from '@/app';
+import { Theme } from '@/types';
 import { IconProps, Text } from '@/core';
 
 interface RouteIntroProps {
@@ -7,7 +8,18 @@ interface RouteIntroProps {
     value: string;
     label: string;
     icon?: Partial<IconProps> | undefined;
-    variant?: 'accent-default' | 'accent-elevated' | 'accent-text' | undefined;
+    variant?:
+      | 'base-default'
+      | 'base-elevated'
+      | 'accent-default'
+      | 'accent-elevated'
+      | 'accent-tonal'
+      | 'accent-ghost'
+      | `${Theme.Color}-tonal`
+      | `${Theme.Color}-ghost`
+      | `${Theme.Color}-default`
+      | `${Theme.Color}-elevated`
+      | undefined;
   }>[];
 }
 
@@ -28,7 +40,7 @@ const RouteIntro: RouteIntroFactory = (props) => {
               key={item.value}
               label={item.label}
               icon={{ ...item.icon, name: item.icon?.name || 'arrow-northeast' }}
-              variant={item.variant || 'accent-text'}
+              variant={item.variant || 'base-elevated'}
               className="v2-route-intro-link-item"
             />
           ))}

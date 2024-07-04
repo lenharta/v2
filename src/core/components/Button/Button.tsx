@@ -58,7 +58,7 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
         `v2-button--size-${size || ctx.size || 'sm'}`,
         `v2-button--align-${align || ctx.align || 'center'}`,
         `v2-button--justify-${justify || ctx.justify || 'center'}`,
-        `v2-button--${ctx.variant || variant || 'base-elevated'}`,
+        `v2-button--${variant || ctx.variant || 'base-elevated'}`,
         className
       )}
       {...forwardedProps}

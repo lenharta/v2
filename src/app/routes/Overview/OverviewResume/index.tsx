@@ -40,7 +40,7 @@ const OverviewResume: React.FC<{}> = ({}) => {
             <span className="v2-overview-resume-banner-title-line-1">From Startups to</span>
             <span className="v2-overview-resume-banner-title-line-2">Titans Of Industries.</span>
           </Title>
-          <Button size="sm" variant="accent-elevated" iconRight={{ name: 'arrow-east' }}>
+          <Button size="xs" variant="accent-elevated" iconRight={{ name: 'arrow-east' }}>
             See Resume
           </Button>
         </div>

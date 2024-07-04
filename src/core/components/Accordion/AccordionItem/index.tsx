@@ -15,9 +15,11 @@ const AccordionItem = createFactory<AccordionItemFactory>((props, ref) => {
 
   const ctx = useAccordionContext();
 
-  const optionalProps = {
-    ...(ctx.chevronRotation ? { 'data-active': ctx.isValueActive(value) } : {}),
-  };
+  const optionalProps = ctx
+    ? {
+        ...(ctx.chevronRotation ? { 'data-active': ctx.isValueActive(value) } : {}),
+      }
+    : {};
 
   return (
     <div

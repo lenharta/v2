@@ -1,78 +1,41 @@
 import * as React from 'react';
-import { Page } from '@/app';
-import { Button, ButtonProps } from '@/core';
+import { Button } from '@/core';
 
-const CanvasButtonDefault = (props: ButtonProps) => {
-  return <Button {...props} />;
+const CanvasButtonVariants: React.FC<{}> = ({}) => {
+  return (
+    <div className="v2-canvas-button-variants">
+      <Button variant="base-default" iconRight={{ name: 'arrow-east' }}>
+        Button
+      </Button>
+      <Button variant="base-elevated" iconRight={{ name: 'arrow-east' }}>
+        Button
+      </Button>
+      <Button variant="accent-default" iconRight={{ name: 'arrow-east' }}>
+        Button
+      </Button>
+      <Button variant="accent-elevated" iconRight={{ name: 'arrow-east' }}>
+        Button
+      </Button>
+      <Button variant="accent-tonal" iconRight={{ name: 'arrow-east' }}>
+        Button
+      </Button>
+      <Button variant="accent-ghost" iconRight={{ name: 'arrow-east' }}>
+        Button
+      </Button>
+    </div>
+  );
 };
 
-// const CanvasButtonGroup =
+const CanvasButton: React.FC<{}> & {
+  Variants: typeof CanvasButtonVariants;
+} = ({}) => {
+  return (
+    <React.Fragment>
+      <CanvasButton.Variants />
+    </React.Fragment>
+  );
+};
 
-// // const CanvasModeController = () => {}
-
-// // function useCanvasState<T extends Record<string, any>>(props: T) {
-// //   const [state, setState] = React.useState(props);
-
-// //   const update = React.useCallback(
-// //     <K extends keyof T>(key: K, value: T[K]) => {
-// //       setState((current) => ({ ...current, [key]: value }));
-// //     },
-// //     [props]
-// //   );
-
-// //   return {state,  update };
-// // }
-
-// type CanvasSelectGroup<T> = {
-//   label: string;
-//   value: T;
-// };
-
-// type CanvasSelectOption<T> = {
-//   group: CanvasSelectGroup<T>;
-//   label: string;
-//   value: T;
-// };
-
-// function CanvasSelect<T extends string>(props: CanvasSelectOption<T>) {
-//   const { group, value, label } = props;
-//   return (
-//     <select>
-//       <option></option>
-//       <option></option>
-//       <option></option>
-//       <option></option>
-//     </select>
-//   );
-// }
-
-// type CanvasItem<T, V> = {
-//   type: T;
-//   value: V;
-//   label: string;
-// };
-
-// type CanvasOption<T, V> = {
-//   options: V[];
-// };
-
-// interface CanvasConfigGroup<T> {
-//   type?: 'control' | 'toggle' | 'text' | 'number' | undefined;
-//   item: { value: T; label: string };
-//   options: T[];
-// }
-
-// function useCanvas<T>(config: CanvasConfigItem<T>) {
-//   return {};
-// }
-
-// const CanvasButton: React.FC<{}> = ({}) => {
-//   const {} = useCanvasState<Partial<ButtonProps>>({
-//     variant: 'default',
-//   });
-//   return (
-//     <Page.Section>
-//       <Button />
-//     </Page.Section>
-//   );
-// };
+CanvasButton.Variants = CanvasButtonVariants;
+CanvasButton.displayName = '@v2/Canvas.Button';
+export { CanvasButton };

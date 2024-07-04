@@ -1,271 +1,272 @@
 html,
 body,
 .v2-layout,
-.v2-page {
-  background-color: var(--c-base-bkgd);
-  color: var(--c-base-text);
-}
-
-svg {
-  fill: var(--c-base-text);
-}
-
-.v2-header {
-  background-color: var(--c-base-bkgd);
-  color: var(--c-base-text);
-}
-
+.v2-header,
+.v2-page,
+.v2-page-hero,
 .v2-side,
+.v2-side-nav-tooltip,
 .v2-side-select-drawer,
 .v2-side-select-drawer-layout {
-  background-color: var(--c-base-bkgd);
-  color: var(--c-base-text);
+  background-color: var(--c-base);
+  color: var(--c-base-text-med);
+}
+
+.v2-icon {
+  fill: var(--c-base-text-med);
 }
 
 .v2-footer {
-  background-color: rgba(var(--c-rgb-contrast), 0.02);
-  color: var(--c-base-text);
+  background-color: var(--c-base-surface-1-enabled);
 }
 
-.v2-page-hero {
-  background-color: rgba(var(--c-rgb-contrast), 0.02);
-  color: var(--c-base-text);
-}
+.v2-side-nav {
+  &-target[data-selected] .v2-icon {
+    fill: var(--c-accent-icon-max);
+  }
 
-.v2-side-nav-target[data-selected] .v2-icon {
-  fill: var(--c-accent-elevated-icon-selected) !important;
-}
+  &-tooltip-layout {
+    background-color: var(--c-base-surface-1-enabled);
+  }
+  &-tooltip .v2-text {
+    color: var(--c-accent-text-max);
+  }
 
-.v2-side-nav-target[data-selected]::after {
-  background-color: var(--c-accent-elevated-text-selected);
-  color: var(--c-accent-elevated-text-selected);
-}
-
-.v2-side-nav-tooltip {
-  background-color: var(--c-base-bkgd);
-
-  &::after {
-    background-color: var(--c-accent-elevated-text-selected);
+  &-tooltip::after {
+    background-color: var(--c-accent);
   }
 }
 
-.v2-side-nav-tooltip-layout {
-  background-color: var(--c-accent-elevated-bkgd-enabled);
-  color: var(--c-accent-elevated-text-selected);
-}
+.v2-overview {
+  &-hero-title-line-2 {
+    color: var(--c-accent-text-max);
+  }
 
-.v2-side-nav-tooltip .v2-text {
-  color: var(--c-accent-elevated-text-selected);
-}
+  &-stats-card-value {
+    color: var(--c-accent-text-max);
+  }
 
-.v2-overview-hero-title-line-2 {
-  color: var(--c-accent-elevated-text-enabled);
-}
+  &-stats-card-title {
+    color: var(--c-base-text-med);
+  }
 
-.v2-route-intro-banner {
-  background-color: var(--c-accent-elevated-bkgd-enabled);
-  color: var(--c-accent-elevated-text-enabled);
-}
+  &-stats-card-text {
+    color: var(--c-base-text-low);
+  }
 
-.v2-overview-resume-list-item {
-  background-color: var(--c-base-elevated-bkgd-enabled);
+  &-resume-banner-subtitle {
+    color: var(--c-accent-text-med);
+  }
+  &-resume-banner-title-line-1 {
+    color: var(--c-base-text-low);
+  }
 
-  &::before {
-    background-color: var(--c-accent-elevated-text-enabled);
+  &-resume-banner-title-line-2 {
+    color: var(--c-base-text-med);
+  }
+
+  &-resume-list-item {
+    background-color: var(--c-base-surface-1-enabled);
+  }
+
+  &-resume-list-item::before {
+    background-color: var(--c-accent-text-med);
+  }
+
+  &-resume-list-item-location {
+    color: var(--c-accent-text-max);
+  }
+
+  &-resume-list-item-title {
+    color: var(--c-base-text-med);
+  }
+
+  &-resume-list-item-text {
+    color: var(--c-base-text-low);
   }
 }
 
-// VARIANT | BASE-DEFAULT
-
-.v2-page-link--base-default {
-  background-color: var(--c-base-default-bkgd-enabled);
-  color: var(--c-base-default-text-enabled);
-  .v2-icon {
-    fill: var(--c-base-default-icon-enabled);
-  }
+.v2-page-intro-banner {
+  background-color: var(--c-base-surface-1-enabled);
+  color: var(--c-base-text-low);
 }
 
-.v2-page-link--base-default {
+.v2-page-link--base-defualt {
+  &:not([data-disabled]),
+  &:not([data-readonly]) {
+    background-color: var(--c-base-surface-enabled);
+    color: var(--c-base-text-med);
+  }
   &:not([data-disabled]):hover,
   &:not([data-readonly]):hover {
-    background-color: var(--c-base-default-bkgd-hovered);
-    color: var(--c-base-default-text-hovered);
-    .v2-icon {
-      fill: var(--c-base-default-icon-hovered);
-    }
+    background-color: var(--c-base-surface-hovered);
+    color: var(--c-base-text-med);
   }
-
   &:not([data-disabled]):active,
   &:not([data-readonly]):active {
-    background-color: var(--c-base-default-bkgd-pressed);
-    color: var(--c-base-default-text-pressed);
-    .v2-icon {
-      fill: var(--c-base-default-icon-pressed);
-    }
+    background-color: var(--c-base-surface-pressed);
+    color: var(--c-base-text-max);
   }
-
   &:not([data-disabled])[data-selected],
   &:not([data-readonly])[data-selected] {
-    background-color: var(--c-base-default-bkgd-selected);
-    color: var(--c-base-default-text-selected);
-    .v2-icon {
-      fill: var(--c-base-default-icon-selected);
-    }
-  }
-}
-
-// VARIANT | BASE-ELEVATED
-
-.v2-page-link--base-elevated {
-  background-color: var(--c-base-elevated-bkgd-enabled);
-  color: var(--c-base-elevated-text-enabled);
-  .v2-icon {
-    fill: var(--c-base-elevated-icon-enabled);
+    background-color: var(--c-base-surface-selected);
+    color: var(--c-base-text-max);
   }
 }
 
 .v2-page-link--base-elevated {
+  &:not([data-disabled]),
+  &:not([data-readonly]) {
+    background-color: var(--c-base-surface-1-enabled);
+    color: var(--c-base-text-med);
+  }
   &:not([data-disabled]):hover,
   &:not([data-readonly]):hover {
-    background-color: var(--c-base-elevated-bkgd-hovered);
-    color: var(--c-base-elevated-text-hovered);
-    .v2-icon {
-      fill: var(--c-base-elevated-icon-hovered);
-    }
+    background-color: var(--c-base-surface-1-hovered);
+    color: var(--c-base-text-med);
   }
-
   &:not([data-disabled]):active,
   &:not([data-readonly]):active {
-    background-color: var(--c-base-elevated-bkgd-pressed);
-    color: var(--c-base-elevated-text-pressed);
-    .v2-icon {
-      fill: var(--c-base-elevated-icon-pressed);
-    }
+    background-color: var(--c-base-surface-1-pressed);
+    color: var(--c-base-text-max);
   }
-
   &:not([data-disabled])[data-selected],
   &:not([data-readonly])[data-selected] {
-    background-color: var(--c-base-elevated-bkgd-selected);
-    color: var(--c-base-elevated-text-selected);
-    .v2-icon {
-      fill: var(--c-base-elevated-icon-selected);
-    }
+    background-color: var(--c-base-surface-1-selected);
+    color: var(--c-base-text-max);
   }
 }
 
-// VARIANT | ACCENT-DEFAULT
-
-.v2-page-link--accent-default {
-  background-color: var(--c-accent-default-bkgd-enabled);
-  color: var(--c-accent-default-text-enabled);
-  .v2-icon {
-    fill: var(--c-accent-default-icon-enabled);
+.v2-page-link--base-defualt,
+.v2-page-link--base-elevated {
+  &:not([data-disabled]) .v2-icon,
+  &:not([data-readonly]) .v2-icon {
+    fill: var(--c-base-icon-med);
+  }
+  &:not([data-disabled]):hover .v2-icon,
+  &:not([data-readonly]):hover .v2-icon {
+    fill: var(--c-base-icon-med);
+  }
+  &:not([data-disabled]):active .v2-icon,
+  &:not([data-readonly]):active .v2-icon {
+    fill: var(--c-base-icon-max);
+  }
+  &:not([data-disabled])[data-selected] .v2-icon,
+  &:not([data-readonly])[data-selected] .v2-icon {
+    fill: var(--c-base-icon-max);
   }
 }
 
-.v2-page-link--accent-default {
+.v2-page-link--accent-defualt {
+  &:not([data-disabled]),
+  &:not([data-readonly]) {
+    background-color: var(--c-base-surface-enabled);
+    color: var(--c-accent-text-med);
+  }
   &:not([data-disabled]):hover,
   &:not([data-readonly]):hover {
-    background-color: var(--c-accent-default-bkgd-hovered);
-    color: var(--c-accent-default-text-hovered);
-    .v2-icon {
-      fill: var(--c-accent-default-icon-hovered);
-    }
+    background-color: var(--c-base-surface-hovered);
+    color: var(--c-accent-text-med);
   }
-
   &:not([data-disabled]):active,
   &:not([data-readonly]):active {
-    background-color: var(--c-accent-default-bkgd-pressed);
-    color: var(--c-accent-default-text-pressed);
-    .v2-icon {
-      fill: var(--c-accent-default-icon-pressed);
-    }
+    background-color: var(--c-base-surface-pressed);
+    color: var(--c-accent-text-max);
   }
-
   &:not([data-disabled])[data-selected],
   &:not([data-readonly])[data-selected] {
-    background-color: var(--c-accent-default-bkgd-selected);
-    color: var(--c-accent-default-text-selected);
-    .v2-icon {
-      fill: var(--c-accent-default-icon-selected);
-    }
+    background-color: var(--c-base-surface-selected);
+    color: var(--c-accent-text-max);
   }
 }
 
 .v2-page-link--accent-elevated {
-  background-color: var(--c-accent-elevated-bkgd-enabled);
-  color: var(--c-accent-elevated-text-enabled);
-  .v2-icon {
-    fill: var(--c-accent-elevated-icon-enabled);
+  &:not([data-disabled]),
+  &:not([data-readonly]) {
+    background-color: var(--c-base-surface-1-enabled);
+    color: var(--c-accent-text-med);
   }
-}
-
-// VARIANT | ACCENT-TEXT
-
-.v2-page-link--accent-text {
-  background-color: var(--c-base-default-bkgd-enabled);
-  color: var(--c-accent-default-text-enabled);
-  .v2-icon {
-    fill: var(--c-accent-default-icon-enabled);
-  }
-}
-
-.v2-page-link--accent-text {
   &:not([data-disabled]):hover,
   &:not([data-readonly]):hover {
-    background-color: var(--c-base-default-bkgd-hovered);
-    color: var(--c-accent-default-text-hovered);
-    .v2-icon {
-      fill: var(--c-accent-default-icon-hovered);
-    }
+    background-color: var(--c-base-surface-1-hovered);
+    color: var(--c-accent-text-med);
   }
-
   &:not([data-disabled]):active,
   &:not([data-readonly]):active {
-    background-color: var(--c-base-default-bkgd-pressed);
-    color: var(--c-accent-default-text-pressed);
-    .v2-icon {
-      fill: var(--c-accent-default-icon-pressed);
-    }
+    background-color: var(--c-base-surface-1-pressed);
+    color: var(--c-accent-text-max);
   }
-
   &:not([data-disabled])[data-selected],
   &:not([data-readonly])[data-selected] {
-    background-color: var(--c-base-default-bkgd-selected);
-    color: var(--c-accent-default-text-selected);
-    .v2-icon {
-      fill: var(--c-accent-default-icon-selected);
-    }
+    background-color: var(--c-base-surface-1-selected);
+    color: var(--c-accent-text-max);
   }
 }
 
-// VARIANT | ACCENT-ELEVATED
+.v2-page-link--accent-tonal {
+  &:not([data-disabled]),
+  &:not([data-readonly]) {
+    background-color: var(--c-accent-surface-1-enabled);
+    color: var(--c-accent-text-med);
+  }
+  &:not([data-disabled]):hover,
+  &:not([data-readonly]):hover {
+    background-color: var(--c-accent-surface-1-hovered);
+    color: var(--c-accent-text-med);
+  }
+  &:not([data-disabled]):active,
+  &:not([data-readonly]):active {
+    background-color: var(--c-accent-surface-1-pressed);
+    color: var(--c-accent-text-max);
+  }
+  &:not([data-disabled])[data-selected],
+  &:not([data-readonly])[data-selected] {
+    background-color: var(--c-accent-surface-1-selected);
+    color: var(--c-accent-text-max);
+  }
+}
 
+.v2-page-link--accent-ghost {
+  &:not([data-disabled]),
+  &:not([data-readonly]) {
+    background-color: var(--c-base-surface-enabled);
+    color: var(--c-accent-text-med);
+  }
+  &:not([data-disabled]):hover,
+  &:not([data-readonly]):hover {
+    background-color: var(--c-accent-surface-hovered);
+    color: var(--c-accent-text-med);
+  }
+  &:not([data-disabled]):active,
+  &:not([data-readonly]):active {
+    background-color: var(--c-accent-surface-pressed);
+    color: var(--c-accent-text-max);
+  }
+  &:not([data-disabled])[data-selected],
+  &:not([data-readonly])[data-selected] {
+    background-color: var(--c-accent-surface-selected);
+    color: var(--c-accent-text-max);
+  }
+}
+
+.v2-page-link--accent-ghost,
+.v2-page-link--accent-tonal,
+.v2-page-link--accent-default,
 .v2-page-link--accent-elevated {
-  &:not([data-disabled]):hover,
-  &:not([data-readonly]):hover {
-    background-color: var(--c-accent-elevated-bkgd-hovered);
-    color: var(--c-accent-elevated-text-hovered);
-    .v2-icon {
-      fill: var(--c-accent-elevated-icon-hovered);
-    }
+  &:not([data-disabled]) .v2-icon,
+  &:not([data-readonly]) .v2-icon {
+    fill: var(--c-accent-icon-med);
   }
-
-  &:not([data-disabled]):active,
-  &:not([data-readonly]):active {
-    background-color: var(--c-accent-elevated-bkgd-pressed);
-    color: var(--c-accent-elevated-text-pressed);
-    .v2-icon {
-      fill: var(--c-accent-elevated-icon-pressed);
-    }
+  &:not([data-disabled]):hover .v2-icon,
+  &:not([data-readonly]):hover .v2-icon {
+    fill: var(--c-accent-icon-med);
   }
-
-  &:not([data-disabled])[data-selected],
-  &:not([data-readonly])[data-selected] {
-    background-color: var(--c-accent-elevated-bkgd-selected);
-    color: var(--c-accent-elevated-text-selected);
-    .v2-icon {
-      fill: var(--c-accent-elevated-icon-selected);
-    }
+  &:not([data-disabled]):active .v2-icon,
+  &:not([data-readonly]):active .v2-icon {
+    fill: var(--c-accent-icon-max);
+  }
+  &:not([data-disabled])[data-selected] .v2-icon,
+  &:not([data-readonly])[data-selected] .v2-icon {
+    fill: var(--c-accent-icon-max);
   }
 }

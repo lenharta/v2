@@ -20,4 +20,5 @@ export * from './Toast';
 export * from './ToolButton';
 export * from './Transition';
 export * from './UnstyledButton';
+export * from './UnstyledLink';
 export * from './VisuallyHidden';

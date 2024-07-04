@@ -15,7 +15,8 @@ type AccordionTargetFactory = Factory.Config<{
 const AccordionTarget = createFactory<AccordionTargetFactory>((props, ref) => {
   const {
     icon,
-    chevron = <Icon name="arrow-southeast" />,
+    chevron = <Icon name="caret-west" />,
+    variant,
     disabled,
     children,
     className,
@@ -43,17 +44,23 @@ const AccordionTarget = createFactory<AccordionTargetFactory>((props, ref) => {
       aria-controls={ctx.getPanelId(value)}
       aria-expanded={ctx.isValueActive(value)}
       data-expanded={ctx.isValueActive(value)}
-      className={clsx('v2-accordion-target', className)}
+      className={clsx('v2-accordion-target', `v2-accordion-target--${variant}`, className)}
       {...forwardedProps}
     >
-      <div {...contentProps} data-position="start">
-        {(ctx.chevronPosition === 'start' ? chevron : icon) ?? null}
-      </div>
+      <div className="v2-accordion-target-layout">
+        {ctx.chevronPosition === 'start' && (
+          <div {...contentProps} data-position="start">
+            {(ctx.chevronPosition === 'start' ? chevron : icon) ?? null}
+          </div>
+        )}
 
-      <div className="v2-accordion-target-label">{children}</div>
+        {children}
 
-      <div {...contentProps} data-position="end">
-        {(ctx.chevronPosition === 'end' ? chevron : icon) ?? null}
+        {ctx.chevronPosition === 'end' && (
+          <div {...contentProps} data-position="end">
+            {(ctx.chevronPosition === 'end' ? chevron : icon) ?? null}
+          </div>
+        )}
       </div>
     </UnstyledButton>
   );

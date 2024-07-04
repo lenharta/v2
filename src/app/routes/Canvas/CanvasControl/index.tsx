@@ -1,31 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 
-interface CanvasControlProps {}
-
-type CanvasControlType = 'text' | 'number' | 'toggle' | 'select' | 'checkbox' | 'radio';
-
-type CanvasControlOptionToggle = {
-  type: 'toggle';
-  item: { value: boolean | undefined; label: string };
-  value?: boolean | undefined;
+const CanvasControlDefault: React.FC<{}> = ({}) => {
+  return <span>CanvasControlDefault</span>;
 };
 
-type CanvasControlOptionText = {
-  type: 'text';
-  value?: string | number | readonly string[] | undefined;
+const CanvasControl: React.FC<{}> & {
+  Default: typeof CanvasControlDefault;
+} = ({}) => {
+  return (
+    <React.Fragment>
+      <CanvasControl.Default />
+    </React.Fragment>
+  );
 };
-type CanvasControlOptionNumber = {
-  type: 'text';
-  value?: string | number | readonly string[] | undefined;
-};
 
-function CanvasSelect() {}
-
-function CanvasToggle(props: { value: string; label: string; checked: boolean }) {
-  // const { value, label, checked } = props;
-}
-
-function CanvasButton() {}
-function CanvasControl() {}
-
+CanvasControl.Default = CanvasControlDefault;
+CanvasControl.displayName = '@v2/Canvas.Control';
 export { CanvasControl };

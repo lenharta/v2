@@ -8,9 +8,10 @@
 .v2-button,
 .v2-icon-button,
 .v2-tool-button,
+.v2-inline-input,
 .v2-select-target,
 .v2-select-option,
-.v2-inline-input {
+.v2-accordion-target {
   transition:
     background-color var(--v2-duration-moderate-01) var(--v2-easing-productive),
     border-color var(--v2-duration-moderate-01) var(--v2-easing-productive),
@@ -57,4 +58,10 @@
     outline-color: var(--c-focus);
     outline-offset: -2px;
   }
+}
+
+.v2-accordion-target .v2-icon {
+  transition:
+    transform var(--v2-duration-slow-01) var(--v2-easing-expressive),
+    rotate var(--v2-duration-slow-01) var(--v2-easing-expressive);
 }
