@@ -11,7 +11,11 @@
 .v2-inline-input,
 .v2-select-target,
 .v2-select-option,
-.v2-accordion-target {
+.v2-accordion-target,
+.v2-control,
+.v2-control-thumb,
+.v2-control-track,
+.v2-control-segment {
   transition:
     background-color var(--v2-duration-moderate-01) var(--v2-easing-productive),
     border-color var(--v2-duration-moderate-01) var(--v2-easing-productive),
@@ -19,7 +23,17 @@
     stroke var(--v2-duration-moderate-01) var(--v2-easing-productive),
     color var(--v2-duration-moderate-01) var(--v2-easing-productive),
     fill var(--v2-duration-moderate-01) var(--v2-easing-productive);
+}
 
+.v2-action,
+.v2-button,
+.v2-icon-button,
+.v2-tool-button,
+.v2-inline-input,
+.v2-select-target,
+.v2-select-option,
+.v2-control-segment,
+.v2-accordion-target {
   border-color: transparent;
   border-width: var(--v2-01);
   border-style: solid;

@@ -85,7 +85,7 @@
   }
 
   &-intro-box {
-    flex: 1;
+    flex: 1 0 50%;
 
     @media (min-width: 80em) {
       height: 300px;
@@ -105,12 +105,13 @@
   }
 
   &-intro-banner .v2-text {
-    font-size: var(--v2-font-size-07);
+    font-size: var(--v2-font-size-06);
     font-weight: var(--v2-font-weight-reg);
     line-height: var(--v2-line-height-md);
 
     @media (min-width: 80em) {
-      font-size: var(--v2-font-size-08);
+      font-size: var(--v2-font-size-06);
+      max-width: 90%;
     }
   }
 

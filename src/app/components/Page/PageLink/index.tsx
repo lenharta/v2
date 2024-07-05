@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { Icon, IconProps, Label, UnstyledLink } from '@/core';
+import { Icon, IconProps, UnstyledLink } from '@/core';
 import { Theme } from '@/types';
 
 interface PageLinkProps extends Partial<Omit<Router.LinkProps, 'children'>> {

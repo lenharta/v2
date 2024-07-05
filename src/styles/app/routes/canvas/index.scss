@@ -7,6 +7,14 @@
   min-height: 300px;
 }
 
+.v2-canvas-control-default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  flex-direction: column;
+}
+
 .v2-canvas-accordion-default {
   width: 100%;
   display: flex;

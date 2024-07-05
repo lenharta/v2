@@ -17,11 +17,11 @@ interface AccordionThemeProps {
     | undefined;
 }
 
-interface AccordionItemContext {
+interface AccordionItemContext extends AccordionThemeProps {
   value: string;
 }
 
-interface AccordionContext<V extends boolean = false> {
+interface AccordionContext<V extends boolean = false> extends AccordionThemeProps {
   disabled?: boolean | undefined;
   children?: React.ReactNode | undefined;
   trapFocus?: boolean | undefined;
@@ -34,7 +34,7 @@ interface AccordionContext<V extends boolean = false> {
   isValueActive: (value: string) => boolean;
 }
 
-interface AccordionProps<V extends boolean = false> {
+interface AccordionProps<V extends boolean = false> extends AccordionThemeProps {
   value: AccordionValue<V>;
   multiple?: V | undefined;
   disabled?: boolean | undefined;
@@ -46,14 +46,14 @@ interface AccordionProps<V extends boolean = false> {
   onValueChange: (value: AccordionValue<V>) => void;
 }
 
-interface AccordionItemProps {
+interface AccordionItemProps extends AccordionThemeProps {
   value: string;
   children?: React.ReactNode | undefined;
   disabled?: boolean | undefined;
   className?: string | undefined;
 }
 
-interface AccordionPanelProps {
+interface AccordionPanelProps extends AccordionThemeProps {
   children?: React.ReactNode | undefined;
   className?: string | undefined;
 }

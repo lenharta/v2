@@ -1,11 +1,37 @@
-import { Core } from '@/types';
+import { Core, Theme } from '@/types';
+import { IconProps } from '../Icon';
 
 type ControlPosition = Record<'height' | 'width' | 'left' | 'top', number>;
+
+interface ControlThemeProps {
+  variant?:
+    | 'base-default'
+    | 'base-elevated'
+    | 'accent-default'
+    | 'accent-elevated'
+    | 'accent-tonal'
+    | 'accent-ghost'
+    | `${Theme.Color}-tonal`
+    | `${Theme.Color}-ghost`
+    | `${Theme.Color}-default`
+    | `${Theme.Color}-elevated`
+    | undefined;
+}
 
 interface UseControlPositionProps {
   initialPosition: ControlPosition;
   currentValue: string;
 }
+
+type ControlItem = Core.Item & {
+  icon?: Partial<IconProps> | undefined;
+  iconPosition?: 'end' | 'start' | undefined;
+};
+
+type ControlItemParsed = Core.ItemParsed & {
+  icon?: Partial<IconProps> | undefined;
+  iconPosition?: 'end' | 'start' | undefined;
+};
 
 interface UseControlPositionReturn {
   refs: Record<string, HTMLElement | null>;
@@ -15,18 +41,18 @@ interface UseControlPositionReturn {
   setElementRefs: (element: HTMLElement | null, key: string) => void;
 }
 
-interface ControlProps {
+interface ControlProps extends ControlThemeProps {
   value: string;
-  items: Core.Item[];
+  items: ControlItem[];
   onItemChange: (value: string) => void;
   className?: string | undefined;
   trapFocus?: boolean | undefined;
   orientation?: Core.Orientation | undefined;
 }
 
-interface ControlSegmentProps {
+interface ControlSegmentProps extends ControlThemeProps {
   refs: Record<string, HTMLElement | null>;
-  item: Core.ItemParsed;
+  item: ControlItemParsed;
   value: string;
   trapFocus: boolean;
   orientation?: Core.Orientation | undefined;
@@ -36,7 +62,7 @@ interface ControlSegmentProps {
   setElementRefs: (element: HTMLElement | null, key: string) => void;
 }
 
-interface ControlThumbProps {
+interface ControlThumbProps extends ControlThemeProps {
   style?: React.CSSProperties | undefined;
   className?: string | undefined;
   transitionEasing: React.CSSProperties['transitionTimingFunction'];
@@ -44,7 +70,7 @@ interface ControlThumbProps {
   transitionDuration: React.CSSProperties['transitionDuration'];
 }
 
-interface ControlTrackProps {
+interface ControlTrackProps extends ControlThemeProps {
   className?: string | undefined;
   orientation: Core.Orientation | undefined;
 }

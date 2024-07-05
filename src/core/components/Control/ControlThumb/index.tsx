@@ -13,6 +13,7 @@ type ControlThumbFactory = Factory.Config<{
 const ControlThumb = createFactory<ControlThumbFactory>((props, ref) => {
   const {
     style,
+    variant,
     children,
     className,
     transitionEasing,
@@ -33,7 +34,7 @@ const ControlThumb = createFactory<ControlThumbFactory>((props, ref) => {
   return (
     <div
       ref={ref}
-      className={clsx('v2-control-thumb', className)}
+      className={clsx('v2-control-thumb', `v2-control-thumb--${variant}`, className)}
       {...thumbStyles}
       {...forwardedProps}
     >

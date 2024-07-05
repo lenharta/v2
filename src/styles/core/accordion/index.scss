@@ -1,8 +1,13 @@
 .v2-accordion {
   width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--v2-gap-xxs);
 
   &-item {
+    width: 100%;
     display: block;
 
     &:not([data-active='true']) .v2-icon {
@@ -11,6 +16,15 @@
 
     &[data-active='true'] .v2-icon {
       rotate: -90deg;
+    }
+
+    [data-prefers-dir='rtl'] & {
+      &:not([data-active='true']) .v2-icon {
+        rotate: 180deg;
+      }
+      &[data-active='true'] .v2-icon {
+        rotate: 270deg;
+      }
     }
   }
 
@@ -35,11 +49,9 @@
     align-items: var(--v2-accordion-target-align, center);
     justify-content: var(--v2-accordion-target-justify, center);
     padding-inline: var(--v2-accordion-target-spacing-x, var(--v2-accordion-target-spacing-x-sm));
-    font-weight: var(--v2-font-weight-reg);
     font-size: var(--v2-accordion-target-font-size, var(--v2-accordion-target-font-size-sm));
     line-height: var(--v2-accordion-target-height, var(--v2-accordion-target-height-sm));
-
-    // border: solid 2px orange;
+    font-weight: var(--v2-font-weight-reg);
   }
 
   &-target-layout .v2-icon {
@@ -52,9 +64,9 @@
   &-target-layout {
     width: 100%;
     display: flex;
-    gap: var(--v2-accordion-target-spacing-x, var(--v2-accordion-target-spacing-x-sm));
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    gap: var(--v2-accordion-target-spacing-x, var(--v2-accordion-target-spacing-x-sm));
 
     [data-prefers-dir='rtl'] & {
       flex-direction: row-reverse;
@@ -62,6 +74,8 @@
   }
 
   &-panel {
+    width: 100%;
+    display: block;
   }
 
   &-target {

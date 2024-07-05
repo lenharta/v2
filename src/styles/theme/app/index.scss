@@ -22,7 +22,7 @@ body,
 
 .v2-side-nav {
   &-target[data-selected] .v2-icon {
-    fill: var(--c-accent-icon-max);
+    fill: var(--c-accent-icon-max) !important;
   }
 
   &-tooltip-layout {
@@ -35,6 +35,10 @@ body,
   &-tooltip::after {
     background-color: var(--c-accent);
   }
+}
+
+.v2-company-logo {
+  fill: var(--c-base-text-low);
 }
 
 .v2-overview {
@@ -83,6 +87,10 @@ body,
 
   &-resume-list-item-text {
     color: var(--c-base-text-low);
+  }
+
+  &-brands-item {
+    background-color: var(--c-base-surface-1-enabled);
   }
 }
 

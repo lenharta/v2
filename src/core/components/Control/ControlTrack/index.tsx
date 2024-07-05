@@ -11,11 +11,11 @@ type ControlTrackFactory = Factory.Config<{
 }>;
 
 const ControlTrack = createFactory<ControlTrackFactory>((props, ref) => {
-  const { orientation, children, className, ...forwardedProps } = props;
+  const { orientation, children, className, variant, ...forwardedProps } = props;
   return (
     <Group
       ref={ref}
-      className={clsx('v2-control-track', className)}
+      className={clsx('v2-control-track', `v2-control-track--${variant}`, className)}
       orientation={orientation}
       {...forwardedProps}
     >
