@@ -69,9 +69,9 @@
     display: flex;
     flex-direction: column;
 
-    @media (min-width: 80em) {
-      flex-direction: row;
-    }
+    // @media (min-width: 80em) {
+    //   flex-direction: row;
+    // }
   }
 
   &-resume-banner {
@@ -80,21 +80,23 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding-inline: var(--v2-gutter);
-    padding-block: calc(var(--v2-gutter) * 3);
+    padding-block: var(--v2-gutter);
 
     [data-prefers-dir='rtl'] & {
       align-items: flex-end;
     }
 
+    @media (min-width: 60em) {
+      padding-block: var(--v2-gutter);
+    }
     @media (min-width: 80em) {
-      width: 40%;
       padding-block: var(--v2-gutter);
     }
   }
 
   &-resume-banner-subtitle {
     font-size: var(--v2-font-size-06);
-    font-weight: var(--v2-font-weight-lgt);
+    font-weight: var(--v2-font-weight-reg);
     line-height: var(--v2-line-height-md);
   }
 
@@ -111,8 +113,15 @@
   }
 
   &-resume-banner .v2-button {
-    width: 75%;
     margin-top: var(--v2-gutter);
+    width: 100%;
+
+    @media (min-width: 60em) {
+      width: 50%;
+    }
+    @media (min-width: 80em) {
+      width: 33%;
+    }
   }
 
   &-resume-banner-title-line-1,
@@ -122,26 +131,26 @@
 
   &-resume-list {
     gap: var(--v2-gap-xxs);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
 
+    @media (min-width: 60em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
     @media (min-width: 80em) {
-      width: 60%;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   &-resume-list-item {
     padding-block: calc(var(--v2-gutter) * 1.5);
     padding-inline: var(--v2-gutter);
-
-    @media (min-width: 80em) {
-      padding-block: calc(var(--v2-gutter) / 1.5);
-    }
   }
 
   &-resume-list-item-location {
     font-size: var(--v2-font-size-03);
-    font-weight: var(--v2-font-weight-lgt);
+    font-weight: var(--v2-font-weight-reg);
     line-height: var(--v2-line-height-md);
   }
 
@@ -150,6 +159,7 @@
     font-weight: var(--v2-font-weight-reg);
     line-height: var(--v2-line-height-xs);
     margin-top: calc(var(--v2-gutter) / 3);
+    letter-spacing: -0.08;
   }
 
   &-resume-list-item-text {
@@ -157,5 +167,32 @@
     font-weight: var(--v2-font-weight-reg);
     line-height: var(--v2-line-height-md);
     margin-top: calc(var(--v2-gutter) / 3.5);
+  }
+
+  &-brands-layout {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: calc(var(--v2-gutter) * 2);
+    margin-top: var(--v2-gutter);
+    gap: var(--v2-gap-xxs);
+
+    @media (min-width: 40em) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: 60em) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &-brands-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+
+    svg {
+      max-width: 128px;
+    }
   }
 }

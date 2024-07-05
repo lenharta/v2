@@ -12,19 +12,23 @@ type AccordionPanelFactory = Factory.Config<{
 }>;
 
 const AccordionPanel = createFactory<AccordionPanelFactory>((props, ref) => {
-  const { className, children, ...forwardedProps } = props;
+  const { className, children, variant, ...forwardedProps } = props;
 
   const ctx = useAccordionContext();
-  const { value } = useAccordionItemContext();
+  const ctxItem = useAccordionItemContext();
 
   return (
     <Disclosure
-      id={ctx.getPanelId(value)}
+      id={ctx.getPanelId(ctxItem.value)}
       ref={ref}
       role="region"
-      isOpen={ctx.isValueActive(value)}
-      className={clsx('v2-accordion-panel', className)}
-      aria-labelledby={ctx.getTargetId(value)}
+      isOpen={ctx.isValueActive(ctxItem.value)}
+      className={clsx(
+        'v2-accordion-panel',
+        `v2-accordion-panel--${variant || ctxItem.variant || ctx.variant || 'base-default'}`,
+        className
+      )}
+      aria-labelledby={ctx.getTargetId(ctxItem.value)}
       {...forwardedProps}
     >
       {children}

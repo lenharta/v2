@@ -5,6 +5,7 @@ import { PageHero } from './PageHero';
 import { PageSection } from './PageSection';
 import { Footer } from '../Footer';
 import { PageIntro } from './PageIntro';
+import { PageHeadline } from './PageHeadline';
 
 interface PageProps {
   children?: React.ReactNode | undefined;
@@ -16,6 +17,7 @@ type PageFactory = React.FC<PageProps> & {
   Hero: typeof PageHero;
   Intro: typeof PageIntro;
   Section: typeof PageSection;
+  Headline: typeof PageHeadline;
 };
 
 const Page: PageFactory = (props) => {
@@ -32,5 +34,6 @@ Page.Link = PageLink;
 Page.Hero = PageHero;
 Page.Intro = PageIntro;
 Page.Section = PageSection;
+Page.Headline = PageHeadline;
 Page.displayName = '@v2/Page';
 export { Page, type PageProps };

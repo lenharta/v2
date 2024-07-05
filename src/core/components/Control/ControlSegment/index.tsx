@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { UnstyledButton } from '@/core';
+import { Icon, UnstyledButton } from '@/core';
 import { createEventCallback, createKeyDownGroup } from '@/utils';
 import { ControlSegmentProps } from '../types';
 import { ATTRIBUTES } from '../Control';
@@ -18,6 +18,7 @@ const ControlSegment = createFactory<ControlSegmentFactory>((props, ref) => {
     refs,
     item,
     value,
+    variant,
     trackRef,
     className,
     trapFocus,
@@ -46,22 +47,36 @@ const ControlSegment = createFactory<ControlSegmentFactory>((props, ref) => {
     },
   });
 
+  const iconPosition = item.iconPosition || 'end';
+
   return (
     <UnstyledButton
       ref={ref}
       value={item.value}
       readOnly={item.readOnly}
       disabled={item.disabled}
-      selected={item.value === value}
-      className={clsx('v2-control-segment', className)}
+      selected={!!(item.value === value) || undefined}
+      className={clsx('v2-control-segment', `v2-control-segment--${variant}`, className)}
       onKeyDown={onKeyDown}
       onClick={onClick}
       {...ATTRIBUTES.child.prop}
       {...forwardedProps}
     >
-      <span className="v2-control-segment-inner">
-        <div className="v2-control-segment-label">{item.label}</div>
-      </span>
+      <div className="v2-control-segment-layout">
+        {item.icon && iconPosition === 'start' && (
+          <div data-position="start">
+            <Icon {...item.icon} />
+          </div>
+        )}
+
+        {item.label}
+
+        {item.icon && iconPosition === 'end' && (
+          <div data-position="end">
+            <Icon {...item.icon} />
+          </div>
+        )}
+      </div>
     </UnstyledButton>
   );
 });

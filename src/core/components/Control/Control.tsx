@@ -23,6 +23,7 @@ const Control: ControlFactory = (props) => {
   const {
     items,
     value,
+    variant = 'base-default',
     className,
     trapFocus = false,
     orientation = 'horizontal',
@@ -37,8 +38,13 @@ const Control: ControlFactory = (props) => {
   });
 
   return (
-    <div className={clsx('v2-control', className)}>
-      <Control.Track ref={trackRef} orientation={orientation} {...ATTRIBUTES.parent.prop}>
+    <div className={clsx('v2-control', `v2-control--${variant}`, className)}>
+      <Control.Track
+        ref={trackRef}
+        variant={variant}
+        orientation={orientation}
+        {...ATTRIBUTES.parent.prop}
+      >
         {data.map((item) => (
           <Control.Segment
             key={item.value}
@@ -47,6 +53,7 @@ const Control: ControlFactory = (props) => {
             item={item}
             value={value}
             update={update}
+            variant={variant}
             trackRef={trackRef}
             trapFocus={trapFocus}
             orientation={orientation}
@@ -57,6 +64,7 @@ const Control: ControlFactory = (props) => {
 
         <Control.Thumb
           ref={thumbRef}
+          variant={variant}
           transitionEasing="ease"
           transitionDuration="250ms"
           transitionProperty="transform"

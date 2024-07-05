@@ -12,9 +12,9 @@ function parseItem(
 
   if ('value' in item && !('label' in item)) {
     return {
+      ...item,
       value: item.value.toString(),
       label: item.value.toString(),
-      disabled: item.disabled,
     };
   }
 

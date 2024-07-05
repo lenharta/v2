@@ -25,26 +25,30 @@ const AccordionTarget = createFactory<AccordionTargetFactory>((props, ref) => {
   } = props;
 
   const ctx = useAccordionContext();
-  const { value } = useAccordionItemContext();
+  const ctxItem = useAccordionItemContext();
 
-  const handleChange = () => ctx.onValueChange(value);
+  const handleChange = () => ctx.onValueChange(ctxItem.value);
   const handleClick = createEventCallback(onClick, handleChange);
 
   const contentProps = {
     className: 'v2-accordion-target-content',
-    'data-active': ctx.isValueActive(value),
+    'data-active': ctx.isValueActive(ctxItem.value),
   };
 
   return (
     <UnstyledButton
       ref={ref}
-      id={ctx.getTargetId(value)}
+      id={ctx.getTargetId(ctxItem.value)}
       onClick={handleClick}
       disabled={disabled || ctx.disabled}
-      aria-controls={ctx.getPanelId(value)}
-      aria-expanded={ctx.isValueActive(value)}
-      data-expanded={ctx.isValueActive(value)}
-      className={clsx('v2-accordion-target', `v2-accordion-target--${variant}`, className)}
+      aria-controls={ctx.getPanelId(ctxItem.value)}
+      aria-expanded={ctx.isValueActive(ctxItem.value)}
+      data-expanded={ctx.isValueActive(ctxItem.value)}
+      className={clsx(
+        'v2-accordion-target',
+        `v2-accordion-target--${variant || ctxItem.variant || ctx.variant || 'base-default'}`,
+        className
+      )}
       {...forwardedProps}
     >
       <div className="v2-accordion-target-layout">

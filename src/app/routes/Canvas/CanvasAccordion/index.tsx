@@ -19,17 +19,22 @@ const CanvasAccordionDefault: React.FC<{}> = ({}) => {
   const [openItem, setOpenItem] = React.useState<string | null>(null);
   return (
     <div className="v2-canvas-accordion-default">
-      <Accordion value={openItem} onValueChange={setOpenItem} chevronRotation={true}>
+      <Accordion
+        value={openItem}
+        variant="accent-elevated"
+        onValueChange={setOpenItem}
+        chevronRotation={true}
+      >
         <Accordion.Item value="item-1">
-          <Accordion.Target variant="accent-tonal">Item 1</Accordion.Target>
+          <Accordion.Target>Item 1</Accordion.Target>
           <CanvasAccordionPanelContent />
         </Accordion.Item>
         <Accordion.Item value="item-2">
-          <Accordion.Target variant="accent-elevated">Item 2</Accordion.Target>
+          <Accordion.Target>Item 2</Accordion.Target>
           <CanvasAccordionPanelContent />
         </Accordion.Item>
         <Accordion.Item value="item-3">
-          <Accordion.Target variant="accent-elevated">Item 3</Accordion.Target>
+          <Accordion.Target>Item 3</Accordion.Target>
           <CanvasAccordionPanelContent />
         </Accordion.Item>
       </Accordion>

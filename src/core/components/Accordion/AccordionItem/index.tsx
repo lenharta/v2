@@ -11,7 +11,7 @@ type AccordionItemFactory = Factory.Config<{
 }>;
 
 const AccordionItem = createFactory<AccordionItemFactory>((props, ref) => {
-  const { value, children, className, ...forwardedProps } = props;
+  const { value, variant, children, className, ...forwardedProps } = props;
 
   const ctx = useAccordionContext();
 
@@ -28,7 +28,9 @@ const AccordionItem = createFactory<AccordionItemFactory>((props, ref) => {
       {...optionalProps}
       {...forwardedProps}
     >
-      <AccordionItemProvider value={{ value }}>{children}</AccordionItemProvider>
+      <AccordionItemProvider value={{ value, variant: variant || ctx.variant }}>
+        {children}
+      </AccordionItemProvider>
     </div>
   );
 });
