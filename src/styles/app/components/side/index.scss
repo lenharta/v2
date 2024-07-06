@@ -8,6 +8,7 @@
     position: fixed;
     display: block;
     width: calc(var(--v2-action) + var(--s-02));
+    z-index: 1000;
 
     &-layout {
       height: 100%;

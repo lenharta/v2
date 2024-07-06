@@ -1,8 +1,10 @@
 .v2-action,
-.v2-button,
-.v2-accordion-target,
 .v2-action--base-defualt,
+.v2-button,
 .v2-button--base-defualt,
+.v2-tabs-item,
+.v2-tabs-item--base-default,
+.v2-accordion-target,
 .v2-accordion-target--base-defualt {
   &:not([data-disabled]),
   &:not([data-readonly]) {
@@ -28,6 +30,7 @@
 
 .v2-action--base-elevated,
 .v2-button--base-elevated,
+.v2-tabs-item--base-elevated,
 .v2-accordion-target--base-elevated {
   &:not([data-disabled]),
   &:not([data-readonly]) {
@@ -52,12 +55,15 @@
 }
 
 .v2-action,
-.v2-button,
-.v2-accordion-target,
 .v2-action--base-defualt,
 .v2-action--base-elevated,
+.v2-button,
 .v2-button--base-defualt,
 .v2-button--base-elevated,
+.v2-tabs-item,
+.v2-tabs-item--base-default,
+.v2-tabs-item--base-elevated,
+.v2-accordion-target,
 .v2-accordion-target--base-defualt,
 .v2-accordion-target--base-elevated {
   &:not([data-disabled]) .v2-icon,
@@ -80,6 +86,7 @@
 
 .v2-action--accent-default,
 .v2-button--accent-default,
+.v2-tabs-item--accent-default,
 .v2-accordion-target--accent-default {
   &:not([data-disabled]),
   &:not([data-readonly]) {
@@ -105,6 +112,7 @@
 
 .v2-action--accent-elevated,
 .v2-button--accent-elevated,
+.v2-tabs-item--accent-elevated,
 .v2-accordion-target--accent-elevated {
   &:not([data-disabled]),
   &:not([data-readonly]) {
@@ -130,6 +138,7 @@
 
 .v2-action--accent-tonal,
 .v2-button--accent-tonal,
+.v2-tabs-item--accent-tonal,
 .v2-accordion-target--accent-tonal {
   &:not([data-disabled]),
   &:not([data-readonly]) {
@@ -155,6 +164,7 @@
 
 .v2-action--accent-ghost,
 .v2-button--accent-ghost,
+.v2-tabs-item--accent-ghost,
 .v2-accordion-target--accent-ghost {
   &:not([data-disabled]),
   &:not([data-readonly]) {
@@ -186,6 +196,10 @@
 .v2-button--accent-tonal,
 .v2-button--accent-default,
 .v2-button--accent-elevated,
+.v2-tabs-item--accent-ghost,
+.v2-tabs-item--accent-tonal,
+.v2-tabs-item--accent-default,
+.v2-tabs-item--accent-elevated,
 .v2-accordion-target--accent-ghost,
 .v2-accordion-target--accent-tonal,
 .v2-accordion-target--accent-default,
@@ -206,6 +220,51 @@
   &:not([data-readonly])[data-selected] .v2-icon {
     fill: var(--c-accent-icon-max);
   }
+}
+
+.v2-tabs-item--base-default::before,
+.v2-tabs-item--base-elevated::before {
+  [data-orientation='horizontal'] & {
+    border-bottom-color: var(--c-base-text-min);
+  }
+}
+.v2-tabs-item--base-default[data-selected]::before,
+.v2-tabs-item--base-elevated[data-selected]::before {
+  [data-orientation='horizontal'] & {
+    border-bottom-color: var(--c-base-text-min);
+  }
+}
+
+.v2-tabs-item--accent-tonal::before,
+.v2-tabs-item--accent-ghost::before,
+.v2-tabs-item--accent-default::before,
+.v2-tabs-item--accent-elevated::before {
+  [data-orientation='horizontal'] & {
+    border-bottom-color: var(--c-accent-text-min);
+  }
+}
+
+.v2-tabs-item--accent-tonal[data-selected]::before,
+.v2-tabs-item--accent-ghost[data-selected]::before,
+.v2-tabs-item--accent-default[data-selected]::before,
+.v2-tabs-item--accent-elevated[data-selected]::before {
+  [data-orientation='horizontal'] & {
+    border-bottom-color: var(--c-accent-text-med);
+  }
+}
+
+.v2-divider::after,
+.v2-divider::before {
+  border-top-color: rgba(var(--c-rgb-contrast), 0.12);
+}
+
+.v2-divider svg,
+.v2-divider .v2-icon {
+  fill: rgba(var(--c-rgb-contrast), 0.4);
+}
+
+.v2-divider-label {
+  color: rgba(var(--c-rgb-contrast), 0.4);
 }
 
 .v2-action-spacer--base-default {

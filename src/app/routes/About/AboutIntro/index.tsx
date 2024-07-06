@@ -5,7 +5,7 @@ const AboutIntro: React.FC<{}> = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
-        text="With extensive experience in building large-scale component libraries that drive seamless user experiences across diverse industries. I have had the opportunity to work with Fortune 500 financial corporations, global real estate development firms, and award-winning creative marketing agencies, where I have delivered high-quality, scalable solutions."
+        text="Specializing in building large-scale component libraries, I've had the opportunity to work with Fortune 500 financial corporations, global real estate development firms, and award-winning creative marketing agencies."
         links={[
           {
             value: '/projects',
@@ -26,3 +26,9 @@ const AboutIntro: React.FC<{}> = ({}) => {
 };
 
 export { AboutIntro };
+
+// Specializing in building large-scale component libraries that
+// drive seamless user experiences across diverse industries. I have had
+// the opportunity to work with Fortune 500 financial corporations, global
+// real estate development firms, and award-winning creative marketing agencies,
+// where I have delivered high-quality, scalable solutions.

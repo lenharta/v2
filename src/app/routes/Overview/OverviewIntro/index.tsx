@@ -5,7 +5,7 @@ const OverviewIntro: React.FC<{}> = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
-        text="Based in the United States, I am actively searching for roles within a team of talented engineers dedicated to driving innovation, promoting transformative thinking, and making impactful contributions to the industry."
+        text="Creative developer based in the United States, actively seeking a role within a team of talented engineers that drive innovation, promote transformative thinking, and make impactful contributions to the industry."
         links={[
           {
             value: '/about',
