@@ -19,8 +19,8 @@ const Overview: OverviewFactory = ({}) => (
     <Overview.Hero />
     <Overview.Intro />
     <Overview.Stats />
-    <Overview.Resume />
     <Overview.Brands />
+    <Overview.Resume />
   </Page>
 );
 

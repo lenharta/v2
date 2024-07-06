@@ -54,7 +54,7 @@ body,
 }
 
 .v2-page-headline-title {
-  color: var(--c-accent-text-min);
+  color: var(--c-accent-text-med);
 }
 
 .v2-page-headline-layout::before {
@@ -252,7 +252,7 @@ body,
   }
 
   &-stats-card-value {
-    color: var(--c-accent-text-min);
+    color: var(--c-accent-text-med);
   }
 
   &-stats-card-title {
@@ -267,11 +267,11 @@ body,
     color: var(--c-accent-text-med);
   }
   &-resume-banner-title-line-1 {
-    color: var(--c-base-text-low);
+    color: var(--c-base-text-med);
   }
 
   &-resume-banner-title-line-2 {
-    color: var(--c-base-text-med);
+    color: var(--c-accent-text-max);
   }
 
   &-resume-list-item {
@@ -295,7 +295,39 @@ body,
   }
 
   &-brands-item {
-    background-color: var(--c-base-surface-1-enabled);
+    &:not([data-disabled]),
+    &:not([data-readonly]) {
+      background-color: var(--c-base-surface-1-enabled);
+    }
+
+    &:not([data-disabled]):hover,
+    &:not([data-readonly]):hover {
+      background-color: var(--c-base-surface-1-hovered);
+    }
+
+    &:not([data-disabled]):hover .v2-company-logo,
+    &:not([data-readonly]):hover .v2-company-logo {
+      fill: var(--c-base-text-med);
+    }
+
+    &:not([data-disabled]):active,
+    &:not([data-readonly]):active {
+      background-color: var(--c-base-surface-1-pressed);
+    }
+
+    &:not([data-disabled]):active .v2-company-logo,
+    &:not([data-readonly]):active .v2-company-logo {
+      fill: var(--c-base-text-max);
+    }
+  }
+
+  &-brands-banner .v2-text,
+  &-brands-banner .v2-title {
+    color: var(--c-base-text-med);
+  }
+
+  &-brands-banner .v2-title span {
+    color: var(--c-accent-text-max);
   }
 }
 

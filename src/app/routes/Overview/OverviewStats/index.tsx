@@ -30,7 +30,7 @@ const data = [
 
 const OverviewStats: React.FC<{}> = ({}) => (
   <Page.Section>
-    <Page.Headline id="overview-stats" order={1} title={`Numbers & Figures`} />
+    <Page.Headline id="overview-stats" order={1} title={`Overview`} />
     <div className="v2-overview-stats-layout">
       {data.map((item) => (
         <div className="v2-overview-stats-card" key={item.id} id={item.id}>
@@ -50,7 +50,3 @@ const OverviewStats: React.FC<{}> = ({}) => (
 );
 
 export { OverviewStats };
-
-//
-
-// Teamwork & collaboration.

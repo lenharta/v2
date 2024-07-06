@@ -28,18 +28,15 @@ const Divider = createFactory<DividerFactory>((props, ref) => {
       className={clsx('v2-divider', `v2-divider--decoration-${decoration}`, className)}
       {...forwardedProps}
     >
-      <div className="v2-divider-content">
+      <div
+        className="v2-divider-content"
+        data-position={labelPosition}
+        data-with-icon={!!icon || undefined}
+        data-with-label={!!label || undefined}
+      >
         {icon && iconPosition === 'start' && icon}
 
-        {label && (
-          <span
-            className="v2-divider-label"
-            data-position={labelPosition}
-            data-with-icon={!!icon || undefined}
-          >
-            {label}
-          </span>
-        )}
+        {label && <span className="v2-divider-label">{label}</span>}
 
         {icon && iconPosition === 'end' && icon}
       </div>

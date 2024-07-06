@@ -8,6 +8,8 @@ import { CanvasButton } from './CanvasButton';
 import { CanvasAction } from './CanvasAction';
 import { CanvasControl } from './CanvasControl';
 import { CanvasAccordion } from './CanvasAccordion';
+import { CanvasDivider } from './CanvasDivider';
+import { CanvasColors } from './CanvasColors';
 
 type CanvasFactory = React.FC<{}> & {
   Hero: typeof CanvasHero;
@@ -15,6 +17,8 @@ type CanvasFactory = React.FC<{}> & {
   Table: typeof CanvasTable;
   Action: typeof CanvasAction;
   Button: typeof CanvasButton;
+  Colors: typeof CanvasColors;
+  Divider: typeof CanvasDivider;
   Control: typeof CanvasControl;
   Accordion: typeof CanvasAccordion;
 };
@@ -26,8 +30,10 @@ const Canvas: CanvasFactory = ({}) => (
     <Canvas.Table />
     <Canvas.Action />
     <Canvas.Button />
+    <Canvas.Divider />
     <Canvas.Control />
     <Canvas.Accordion />
+    <Canvas.Colors />
   </Page>
 );
 
@@ -36,6 +42,8 @@ Canvas.Tabs = CanvasTabs;
 Canvas.Table = CanvasTable;
 Canvas.Action = CanvasAction;
 Canvas.Button = CanvasButton;
+Canvas.Colors = CanvasColors;
+Canvas.Divider = CanvasDivider;
 Canvas.Control = CanvasControl;
 Canvas.Accordion = CanvasAccordion;
 Canvas.displayName = '@v2/Canvas.Route';

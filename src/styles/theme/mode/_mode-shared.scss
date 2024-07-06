@@ -7,13 +7,18 @@
 
   --c-base-text-max: rgba(var(--c-rgb-contrast), 0.99);
   --c-base-text-med: rgba(var(--c-rgb-contrast), 0.87);
-  --c-base-text-min: rgba(var(--c-rgb-contrast), 0.65);
-  --c-base-text-low: rgba(var(--c-rgb-contrast), 0.43);
+  --c-base-text-low: rgba(var(--c-rgb-contrast), 0.65);
+  --c-base-text-min: rgba(var(--c-rgb-contrast), 0.43);
 
   --c-base-icon-max: rgba(var(--c-rgb-contrast), 0.99);
   --c-base-icon-med: rgba(var(--c-rgb-contrast), 0.87);
-  --c-base-icon-min: rgba(var(--c-rgb-contrast), 0.65);
-  --c-base-icon-low: rgba(var(--c-rgb-contrast), 0.43);
+  --c-base-icon-low: rgba(var(--c-rgb-contrast), 0.65);
+  --c-base-icon-min: rgba(var(--c-rgb-contrast), 0.43);
+
+  --c-base-border-max: rgba(var(--c-rgb-contrast), 0.27);
+  --c-base-border-med: rgba(var(--c-rgb-contrast), 0.22);
+  --c-base-border-low: rgba(var(--c-rgb-contrast), 0.17);
+  --c-base-border-min: rgba(var(--c-rgb-contrast), 0.12);
 
   --c-base-surface-enabled: transparent;
   --c-base-surface-hovered: rgba(var(--c-rgb-contrast), var(--c-base-surface-hovered-s));
@@ -35,13 +40,18 @@
 
   --c-accent-text-max: rgba(var(--c-rgb-accent), 0.99);
   --c-accent-text-med: rgba(var(--c-rgb-accent), 0.87);
-  --c-accent-text-min: rgba(var(--c-rgb-accent), 0.65);
-  --c-accent-text-low: rgba(var(--c-rgb-accent), 0.43);
+  --c-accent-text-low: rgba(var(--c-rgb-accent), 0.65);
+  --c-accent-text-min: rgba(var(--c-rgb-accent), 0.43);
 
   --c-accent-icon-max: rgba(var(--c-rgb-accent), 0.99);
   --c-accent-icon-med: rgba(var(--c-rgb-accent), 0.87);
-  --c-accent-icon-min: rgba(var(--c-rgb-accent), 0.65);
-  --c-accent-icon-low: rgba(var(--c-rgb-accent), 0.43);
+  --c-accent-icon-low: rgba(var(--c-rgb-accent), 0.65);
+  --c-accent-icon-min: rgba(var(--c-rgb-accent), 0.43);
+
+  --c-accent-border-max: rgba(var(--c-rgb-accent), 0.27);
+  --c-accent-border-med: rgba(var(--c-rgb-accent), 0.22);
+  --c-accent-border-low: rgba(var(--c-rgb-accent), 0.17);
+  --c-accent-border-min: rgba(var(--c-rgb-accent), 0.12);
 
   --c-accent-surface-enabled: transparent;
   --c-accent-surface-hovered: rgba(var(--c-rgb-accent), var(--c-accent-surface-hovered-s));
