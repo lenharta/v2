@@ -31,16 +31,14 @@ const data = [
 const OverviewResume: React.FC<{}> = ({}) => {
   return (
     <Page.Section>
+      <Page.Headline id="overview-experience" order={2} title={`Experience`} />
       <div className="v2-overview-resume-layout">
         <div className="v2-overview-resume-banner">
-          <Text variant="accent-max" className="v2-overview-resume-banner-subtitle">
-            Proven Track Record
-          </Text>
           <Title className="v2-overview-resume-banner-title" h3>
             <span className="v2-overview-resume-banner-title-line-1">From Startups to</span>
             <span className="v2-overview-resume-banner-title-line-2">Titans Of Industries.</span>
           </Title>
-          <Button size="xs" variant="accent-elevated" iconRight={{ name: 'arrow-east' }}>
+          <Button size="xs" variant="accent-tonal" iconRight={{ name: 'arrow-east' }}>
             See Resume
           </Button>
         </div>

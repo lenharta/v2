@@ -7,18 +7,28 @@ interface PageHeadlineProps {
   title: string;
 }
 
+function formatOrder(value: number) {
+  if (value < 10) {
+    return ['0', value, '.'].join('');
+  } else {
+    return [value, '.'].join('');
+  }
+}
+
 const PageHeadline: React.FC<PageHeadlineProps> = (props) => {
   const { id, order, title } = props;
   return (
-    <header className="v2-page-headline">
+    <React.Fragment>
       <a href={id} aria-label={title} />
-      <div className="v2-page-headline-layout">
-        <Text className="v2-page-headline-order">{order}</Text>
-        <Title className="v2-page-headline-title" h2>
-          {title}
-        </Title>
-      </div>
-    </header>
+      <header className="v2-page-headline" id={id}>
+        <div className="v2-page-headline-layout">
+          <Text className="v2-page-headline-order">{formatOrder(order)}</Text>
+          <Title className="v2-page-headline-title" h2>
+            {title}
+          </Title>
+        </div>
+      </header>
+    </React.Fragment>
   );
 };
 

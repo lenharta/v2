@@ -34,6 +34,7 @@ const SideNavTarget: React.FC<SideNavTargetProps> = (props) => {
       transitionProps={transitionProps}
       placement="right"
       behavior="hover"
+      zIndex={10000}
     >
       <Floating.Target>
         <Action
