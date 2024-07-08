@@ -14,7 +14,7 @@ const SelectTarget = createFactory<SelectTargetFactory>((props, ref) => {
 
   return (
     <Floating.Target>
-      <UnstyledButton ref={ref} className={clsx('v2-select-option', className)} {...forwardedProps}>
+      <UnstyledButton ref={ref} className={clsx('v2-select-target', className)} {...forwardedProps}>
         {value || placeholder}
       </UnstyledButton>
     </Floating.Target>

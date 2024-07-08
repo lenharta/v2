@@ -12,12 +12,35 @@ body,
   color: var(--c-base-text-med);
 }
 
+span.accent {
+  color: var(--c-accent);
+}
+
 .v2-icon {
   fill: var(--c-base-text-med);
 }
 
 .v2-footer {
-  background-color: var(--c-base-surface-1-enabled);
+  &-links {
+    background-color: var(--c-base-surface-enabled);
+  }
+
+  &-links-group-item {
+    color: var(--c-base-text-low);
+  }
+  &-links-group-item:hover {
+    color: var(--c-base-text-med);
+  }
+  &-links-group-item:active {
+    color: var(--c-base-text-max);
+  }
+  &-links-group-item::before {
+    background-color: var(--c-accent-text-med);
+  }
+  &-links-group-item::after {
+    // background-color: var(--c-accent-text-med);
+    background-color: var(--c-base);
+  }
 }
 
 .v2-side-nav {
@@ -329,6 +352,36 @@ body,
   &-brands-banner .v2-title span {
     color: var(--c-accent-text-max);
   }
+
+  &-highlight-tabs-panel {
+    background-color: var(--c-base-surface-1-enabled);
+  }
+}
+
+.v2-logo--default-max {
+  color: var(--c-base-icon-max);
+}
+.v2-logo--default-med {
+  color: var(--c-base-icon-med);
+}
+.v2-logo--default-low {
+  color: var(--c-base-icon-low);
+}
+.v2-logo--default-min {
+  color: var(--c-base-icon-min);
+}
+
+.v2-logo--accent-max {
+  color: var(--c-accent-icon-max);
+}
+.v2-logo--accent-med {
+  color: var(--c-accent-icon-med);
+}
+.v2-logo--accent-low {
+  color: var(--c-accent-icon-low);
+}
+.v2-logo--accent-min {
+  color: var(--c-accent-icon-min);
 }
 
 // @supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {

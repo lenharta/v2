@@ -1,0 +1,21 @@
+.v2-elements {
+  &-gallery-layout {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: var(--v2-gutter);
+    margin-inline: var(--v2-gutter);
+    gap: var(--v2-gutter);
+  }
+
+  &-gallery-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-gallery-item {
+    display: inline-flex;
+    margin-top: calc(var(--v2-gutter) / 4);
+  }
+}

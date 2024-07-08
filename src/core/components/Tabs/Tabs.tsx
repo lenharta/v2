@@ -31,24 +31,26 @@ const Tabs: TabsFactory = (props) => {
   const getPanelId: (v: string) => string = (v: string) => `tabs${uid}panel:${v}`;
 
   return (
-    <TabsProvider
-      value={{
-        value,
-        variant: variant || 'base-default',
-        loading,
-        disabled,
-        readOnly,
-        orientation: orientation || 'horizontal',
-        keyboardActivated: keyboardActivated || false,
-        keyboardOptions,
-        onValueChange,
-        getPanelId,
-        getItemId,
-        getListId,
-      }}
-    >
-      <React.Fragment>{children}</React.Fragment>
-    </TabsProvider>
+    <div className="v2-tabs" data-orientation={orientation}>
+      <TabsProvider
+        value={{
+          value,
+          variant: variant || 'base-default',
+          loading,
+          disabled,
+          readOnly,
+          orientation: orientation || 'horizontal',
+          keyboardActivated: keyboardActivated || false,
+          keyboardOptions,
+          onValueChange,
+          getPanelId,
+          getItemId,
+          getListId,
+        }}
+      >
+        {children}
+      </TabsProvider>
+    </div>
   );
 };
 

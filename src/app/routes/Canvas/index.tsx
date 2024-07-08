@@ -10,6 +10,7 @@ import { CanvasControl } from './CanvasControl';
 import { CanvasAccordion } from './CanvasAccordion';
 import { CanvasDivider } from './CanvasDivider';
 import { CanvasColors } from './CanvasColors';
+import { CanvasSelect } from './CanvasSelect';
 
 type CanvasFactory = React.FC<{}> & {
   Hero: typeof CanvasHero;
@@ -17,6 +18,7 @@ type CanvasFactory = React.FC<{}> & {
   Table: typeof CanvasTable;
   Action: typeof CanvasAction;
   Button: typeof CanvasButton;
+  Select: typeof CanvasSelect;
   Colors: typeof CanvasColors;
   Divider: typeof CanvasDivider;
   Control: typeof CanvasControl;
@@ -28,6 +30,7 @@ const Canvas: CanvasFactory = ({}) => (
     <Canvas.Hero />
     <Canvas.Tabs />
     <Canvas.Table />
+    <Canvas.Select />
     <Canvas.Action />
     <Canvas.Button />
     <Canvas.Divider />
@@ -40,6 +43,7 @@ const Canvas: CanvasFactory = ({}) => (
 Canvas.Hero = CanvasHero;
 Canvas.Tabs = CanvasTabs;
 Canvas.Table = CanvasTable;
+Canvas.Select = CanvasSelect;
 Canvas.Action = CanvasAction;
 Canvas.Button = CanvasButton;
 Canvas.Colors = CanvasColors;

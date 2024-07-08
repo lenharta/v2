@@ -1,4 +1,5 @@
 export * from './use-click-outside';
+export * from './use-clxss-name';
 export * from './use-did-update';
 export * from './use-disclosure';
 export * from './use-event-listener';

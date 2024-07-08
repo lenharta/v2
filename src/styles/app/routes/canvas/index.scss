@@ -96,16 +96,20 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: var(--v2-gutter);
 }
 
 .v2-canvas-tabs-layout {
+  width: 100%;
   display: block;
-  max-width: 700px;
+  max-width: 900px;
+  border: solid 2px var(--c-base-border-min);
 }
 
 .v2-canvas-tabs-content {
+  width: 100%;
   display: block;
-  max-width: 700px;
+  max-width: 900px;
   padding-block: var(--v2-06);
   padding-inline: var(--v2-06);
 }
@@ -121,4 +125,16 @@
   font-weight: var(--v2-font-weight-reg);
   line-height: var(--v2-line-height-md);
   margin-bottom: var(--v2-03);
+}
+
+.v2-canvas-select-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v2-canvas-select-layout {
+  display: flex;
+  max-width: 800px;
 }
