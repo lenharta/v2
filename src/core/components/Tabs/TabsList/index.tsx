@@ -5,6 +5,7 @@ import { Divider, DividerProps } from '@/core';
 import { useTabsContext } from '../context';
 import { TabsListProps } from '../types';
 import { TABS_SELECTORS } from '../constants';
+import React from 'react';
 
 type TabsListFactory = Factory.Config<{
   ref: HTMLDivElement;
@@ -28,22 +29,21 @@ const TabsList = createFactory<TabsListFactory>((props, ref) => {
     : {};
 
   return (
-    <div
-      id={ctx.getListId()}
-      ref={ref}
-      role="tablist"
-      className={clsx('v2-tabs-list', className)}
-      data-orientation={ctx.orientation}
-      aria-orientation={ctx.orientation}
-      {...TABS_SELECTORS.list.prop}
-      {...forwardedProps}
-    >
-      <div className="v2-tabs-list-layout">
-        <>{children}</>
+    <React.Fragment>
+      <div
+        id={ctx.getListId()}
+        ref={ref}
+        role="tablist"
+        className={clsx('v2-tabs-list', className)}
+        data-orientation={ctx.orientation}
+        aria-orientation={ctx.orientation}
+        {...TABS_SELECTORS.list.prop}
+        {...forwardedProps}
+      >
+        {children}
       </div>
-
       {isDivided && <Divider {...isDividedProps} />}
-    </div>
+    </React.Fragment>
   );
 });
 

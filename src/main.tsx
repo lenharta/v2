@@ -40,6 +40,56 @@ const browserRouter = ReactRouter.createBrowserRouter([
       {
         path: '/elements',
         element: <Routes.Elements />,
+        children: [
+          {
+            index: true,
+            element: <Routes.Elements.Root />,
+          },
+          {
+            path: '/elements/action',
+            element: <Routes.Elements.Action />,
+          },
+          {
+            path: '/elements/button',
+            element: <Routes.Elements.Button />,
+          },
+          {
+            path: '/elements/text',
+            element: <Routes.Elements.Text />,
+          },
+          {
+            path: '/elements/title',
+            element: <Routes.Elements.Title />,
+          },
+          {
+            path: '/elements/label',
+            element: <Routes.Elements.Label />,
+          },
+          {
+            path: '/elements/control',
+            element: <Routes.Elements.Control />,
+          },
+          {
+            path: '/elements/select',
+            element: <Routes.Elements.Select />,
+          },
+          {
+            path: '/elements/divider',
+            element: <Routes.Elements.Divider />,
+          },
+          {
+            path: '/elements/group',
+            element: <Routes.Elements.Group />,
+          },
+          {
+            path: '/elements/stack',
+            element: <Routes.Elements.Stack />,
+          },
+          {
+            path: '/elements/accordion',
+            element: <Routes.Elements.Accordion />,
+          },
+        ],
       },
       {
         path: '/articles',

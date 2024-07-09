@@ -10,6 +10,11 @@
     display: flex;
     height: 100%;
     width: 100%;
+    transform: scaleX(1);
+
+    [data-prefers-dir='rtl'] & {
+      transform: scaleX(-1);
+    }
   }
 
   &--size-xxs {

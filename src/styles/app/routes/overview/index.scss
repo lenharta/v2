@@ -106,7 +106,7 @@
 
   &-resume-list-item-location {
     font-size: var(--v2-font-size-03);
-    font-weight: var(--v2-font-weight-reg);
+    font-weight: var(--v2-font-weight-med);
     line-height: var(--v2-line-height-sm);
   }
 
@@ -186,10 +186,6 @@
 }
 
 @media (min-width: 40em) {
-  .v2-overview {
-    &-hero-title {
-    }
-  }
 }
 
 @media (min-width: 60em) {
@@ -238,6 +234,4 @@
 }
 
 @media (min-width: 100em) {
-  .v2-overview {
-  }
 }

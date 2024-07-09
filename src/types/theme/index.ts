@@ -4,6 +4,10 @@ export declare namespace Theme {
   export type Status = 'info' | 'error' | 'success' | `warning`;
   export type Orientation = 'vertical' | 'horizontal';
 
+  export type Emphasis = 'max' | 'med' | 'low' | 'min';
+  export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  export type HeadingProps = Partial<{ [K in HeadingLevel]: boolean }>;
+
   export type SizeCompact = 'sm' | 'md' | 'lg';
   export type SizeRegular = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   export type SizeExpanded = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';

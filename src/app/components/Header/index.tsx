@@ -31,8 +31,15 @@ const Header: HeaderFactory = ({}) => {
 
           <Action
             value="/canvas"
+            icon={{ name: 'arrow-northeast-square' }}
             onClick={(event) => navigate(event.currentTarget.value)}
             aria-label="go to canvas page"
+          />
+          <Action
+            value="/settings"
+            icon={{ name: 'gear' }}
+            onClick={(event) => navigate(event.currentTarget.value)}
+            aria-label="go to settings page"
           />
         </Action.Group>
       </div>

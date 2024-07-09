@@ -46,17 +46,12 @@ export declare namespace Core {
     items: (ItemParsed | ItemGroupParsed)[];
   };
 
-  export type LinkItem = {
-    icon?: IconProps['name'] | undefined;
-    value: string;
-    label: string;
-  };
-
-  export type LinkItemGroup = {
-    group: string;
-    label: string;
-    items: LinkItem[];
-  };
+  interface ItemStateProps {
+    loading?: boolean | undefined;
+    disabled?: boolean | undefined;
+    readOnly?: boolean | undefined;
+    selected?: boolean | undefined;
+  }
 
   export type ContentProps = {
     leftContent?: React.ReactNode | undefined;
@@ -73,4 +68,32 @@ export declare namespace Core {
     styles?: React.CSSProperties | undefined;
     media?: InlineMediaQuery[] | undefined;
   };
+
+  /// REFACTOR ABOVE THIS LINE ----------------------------------------------------------
+
+  interface Name {
+    middle?: string | undefined;
+    first: string;
+    last: string;
+  }
+
+  interface Location {
+    city: { name: string; code: string };
+    state: { name: string; code: string };
+  }
+
+  interface ItemIconProp {
+    icon: Partial<IconProps & { position: 'start' | 'end' }>;
+  }
+
+  interface LinkItem extends Partial<ItemIconProp> {
+    value: string | number | readonly string[];
+    label: string;
+    key: string;
+  }
+
+  interface LinkGroup extends Partial<ItemIconProp> {
+    group: LinkItem;
+    items: LinkItem[];
+  }
 }

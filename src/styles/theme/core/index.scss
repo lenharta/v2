@@ -227,11 +227,18 @@
   [data-orientation='horizontal'] & {
     border-bottom-color: var(--c-base-text-min);
   }
+  [data-orientation='vertical'] & {
+    border-left-color: var(--c-base-text-min);
+  }
 }
+
 .v2-tabs-item--base-default[data-selected]::before,
 .v2-tabs-item--base-elevated[data-selected]::before {
   [data-orientation='horizontal'] & {
     border-bottom-color: var(--c-base-text-min);
+  }
+  [data-orientation='vertical'] & {
+    border-left-color: var(--c-base-text-min);
   }
 }
 
@@ -242,6 +249,9 @@
   [data-orientation='horizontal'] & {
     border-bottom-color: var(--c-accent-text-min);
   }
+  [data-orientation='vertical'] & {
+    border-left-color: var(--c-accent-text-min);
+  }
 }
 
 .v2-tabs-item--accent-tonal[data-selected]::before,
@@ -250,6 +260,9 @@
 .v2-tabs-item--accent-elevated[data-selected]::before {
   [data-orientation='horizontal'] & {
     border-bottom-color: var(--c-accent-text-med);
+  }
+  [data-orientation='vertical'] & {
+    border-left-color: var(--c-accent-text-med);
   }
 }
 

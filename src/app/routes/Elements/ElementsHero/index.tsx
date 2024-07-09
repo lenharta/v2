@@ -1,10 +1,17 @@
 import { Page } from '@/app';
 import { Title } from '@/core';
 
-const ElementsHero: React.FC<{}> = ({}) => (
-  <Page.Hero>
-    <Title h1>Elements</Title>
-  </Page.Hero>
-);
+type ElementsHeroProps = {
+  title: string;
+};
+
+const ElementsHero: React.FC<ElementsHeroProps> = (props) => {
+  const { title } = props;
+  return (
+    <Page.Hero>
+      <Title h1>{title}</Title>
+    </Page.Hero>
+  );
+};
 
 export { ElementsHero };

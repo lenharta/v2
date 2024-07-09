@@ -5,7 +5,7 @@ const ElementsIntro: React.FC<{}> = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis obcaecati corrupti dolor architecto? Soluta voluptatum aliquam cupiditate culpa molestiae animi perferendis reprehenderit possimus, assumenda dolore magnam. Eum dolorum cumque quo!"
+        text="This portfolio is built entirely with custom components, without relying on external libraries. I take pride in crafting highly reusable components that integrate seamlessly into any development or design system. Explore the ecosystem below!"
         links={[
           {
             value: '/articles',
