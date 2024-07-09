@@ -30,21 +30,41 @@ export declare namespace App {
     label: RouteKeyLookup<string>;
   };
 
-  type MetaLocation = {
-    state: { name: string; code: string };
-    city: string;
-  };
-
+  type MetaLocationKey = 'ny' | 'nc';
   type MetaSocialKey = 'x' | 'npm' | 'github' | 'linkedin' | 'codesandbox' | 'stackoverflow';
+  type MetaSocialMap<T> = Record<MetaSocialKey, T>;
 
-  type MetaSocialSite = {
-    key: MetaSocialKey;
-    name: string;
+  type MetaLocationNY = {
+    state: { name: 'New York'; code: 'NY' };
+    city: { name: 'New York'; code: '999999' };
+    key: 'ny';
   };
 
-  type MetaSocialAccount = {
-    site: { key: MetaSocialKey; name: string };
-    link: string;
-    user: string;
+  type MetaLocationNC = {
+    state: { name: 'North Carolina'; code: 'NC' };
+    city: { name: 'Winston-Salem'; code: '999999' };
+    key: 'nc';
+  };
+
+  type MetaMap = {
+    owner: {
+      email: { user: string; provider: string };
+      name: { last: string; first: string; middle: string };
+      desc: string;
+      site: string;
+      repo: string;
+      title: string;
+    };
+    location: {
+      nc: App.MetaLocationNC;
+      ny: App.MetaLocationNY;
+    };
+    social: {
+      key: App.MetaSocialMap<App.MetaSocialKey>;
+      site: App.MetaSocialMap<string>;
+      user: App.MetaSocialMap<string>;
+      link: App.MetaSocialMap<string>;
+      keys: App.MetaSocialKey[];
+    };
   };
 }

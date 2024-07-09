@@ -1,112 +1,112 @@
 import * as React from 'react';
-import { Logo, ROUTE } from '@/app';
-import { Text, Title } from '@/core';
-import { FooterLinkGroup } from './FooterLinkGroup';
+import { FooterMeta } from './FooterMeta';
+import { FooterMenu } from './FooterMenu';
+import { META, ROUTE } from '@/app/constants';
 
 interface FooterProps {}
 
 type FooterFactory = React.FC<FooterProps> & {
-  LinkGroup: typeof FooterLinkGroup;
+  Meta: typeof FooterMeta;
+  Menu: typeof FooterMenu;
+};
+
+const FOOTER_CONNECT_MENU = {
+  group: {
+    key: 'footer_group:connect',
+    label: 'Connect',
+    value: 'connect',
+  },
+  items: [
+    {
+      key: 'footer_item:connect:github',
+      value: META.social.link.github,
+      label: META.social.site.github,
+    },
+    {
+      key: 'footer_item:connect:linkedin',
+      value: META.social.link.linkedin,
+      label: META.social.site.linkedin,
+    },
+    {
+      key: 'footer_item:connect:x',
+      value: META.social.link.x,
+      label: META.social.site.x,
+    },
+    {
+      key: 'footer_item:connect:npm',
+      value: META.social.link.npm,
+      label: META.social.site.npm,
+    },
+    {
+      key: 'footer_item:connect:codesandbox',
+      value: META.social.link.codesandbox,
+      label: META.social.site.codesandbox,
+    },
+    {
+      key: 'footer_item:connect:stackoverflow',
+      value: META.social.link.stackoverflow,
+      label: META.social.site.stackoverflow,
+    },
+  ],
+};
+
+const FOOTER_PAGES_MENU = {
+  group: {
+    key: 'footer_group:pages',
+    label: 'Pages',
+    value: 'pages',
+  },
+  items: [
+    {
+      key: 'footer_item:pages:home',
+      label: ROUTE.label.home,
+      value: ROUTE.link.home,
+    },
+    {
+      key: 'footer_item:pages:about',
+      label: ROUTE.label.about,
+      value: ROUTE.link.about,
+    },
+    {
+      key: 'footer_item:pages:stack',
+      label: ROUTE.label.stack,
+      value: ROUTE.link.stack,
+    },
+    {
+      key: 'footer_item:pages:projects',
+      label: ROUTE.label.projects,
+      value: ROUTE.link.projects,
+    },
+    {
+      key: 'footer_item:pages:articles',
+      label: ROUTE.label.articles,
+      value: ROUTE.link.articles,
+    },
+    {
+      key: 'footer_item:pages:elements',
+      label: ROUTE.label.elements,
+      value: ROUTE.link.elements,
+    },
+    {
+      key: 'footer_item:pages:settings',
+      label: ROUTE.label.settings,
+      value: ROUTE.link.settings,
+    },
+  ],
 };
 
 const Footer: FooterFactory = ({}) => {
   return (
     <footer className="v2-footer">
       <div className="v2-footer-layout">
-        <div className="v2-footer-meta">
-          <Logo variant="accent-low" size="md" />
-          <div className="v2-footer-meta-layout">
-            <Title className="v2-footer-meta-name" h4>
-              Andrew Lenhart
-            </Title>
-            <Text className="v2-footer-meta-location">Winston-Salem, North Carolina</Text>
-            <Text className="v2-footer-meta-email">andrew.code21@gmail.com</Text>
-            <Text className="v2-footer-meta-handle">@lenharta</Text>
-          </div>
-        </div>
-        <div className="v2-footer-links">
-          <Footer.LinkGroup
-            group={{ id: 'footer:nav:group', label: 'Portfolio' }}
-            items={[
-              {
-                id: `footer:nav:item:${ROUTE.key.home}`,
-                label: ROUTE.label.home,
-                value: ROUTE.link.home,
-              },
-              {
-                id: `footer:nav:item:${ROUTE.key.about}`,
-                label: ROUTE.label.about,
-                value: ROUTE.link.about,
-              },
-              {
-                id: `footer:nav:item:${ROUTE.key.stack}`,
-                label: ROUTE.label.stack,
-                value: ROUTE.link.stack,
-              },
-              {
-                id: `footer:nav:item:${ROUTE.key.projects}`,
-                label: ROUTE.label.projects,
-                value: ROUTE.link.projects,
-              },
-              {
-                id: `footer:nav:item:${ROUTE.key.articles}`,
-                label: ROUTE.label.articles,
-                value: ROUTE.link.articles,
-              },
-              {
-                id: `footer:nav:item:${ROUTE.key.elements}`,
-                label: ROUTE.label.elements,
-                value: ROUTE.link.elements,
-              },
-            ]}
-          />
-
-          {/* <Footer.LinkGroup
-            group={{ id: 'footer:group:connect ', label: 'Connect' }}
-            items={[
-              {
-                id: `footer:connect:item:${META_MAP.social}`,
-                value: SOCIAL.link.github,
-                label: SOCIAL.label.github,
-              },
-              {
-                id: `footer:connect:item:${SOCIAL.key.twitterx}`,
-                value: SOCIAL.link.twitterx,
-                label: SOCIAL.label.twitterx,
-              },
-              {
-                id: `footer:connect:item:${SOCIAL.key.linkedin}`,
-                value: SOCIAL.link.linkedin,
-                label: SOCIAL.label.linkedin,
-              },
-              {
-                id: `footer:connect:item:${SOCIAL.key.instagram}`,
-                value: SOCIAL.link.instagram,
-                label: SOCIAL.label.instagram,
-              },
-              {
-                id: `footer:connect:item:${SOCIAL.key.codesandbox}`,
-                value: SOCIAL.link.codesandbox,
-                label: SOCIAL.label.codesandbox,
-              },
-              {
-                id: `footer:connect:item:${SOCIAL.key.npm}`,
-                value: SOCIAL.link.npm,
-                label: SOCIAL.label.npm,
-              },
-              {
-                id: `footer:connect:item:${SOCIAL.key.stackoverflow}`,
-                value: SOCIAL.link.stackoverflow,
-                label: SOCIAL.label.stackoverflow,
-              },
-            ]}
-          /> */}
-        </div>
+        <Footer.Meta />
+        <Footer.Menu data={[FOOTER_PAGES_MENU, FOOTER_CONNECT_MENU]} />
       </div>
     </footer>
   );
 };
 
-Footer.LinkGroup = FooterLinkGroup;
-Footer.displayName = '@v2/App.Footer';
+Footer.Meta = FooterMeta;
+Footer.Menu = FooterMenu;
+Footer.displayName = '@v2/Footer';
 export { Footer, type FooterProps, type FooterFactory };
