@@ -5,7 +5,7 @@ const StackIntro: React.FC<{}> = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis obcaecati corrupti dolor architecto? Soluta voluptatum aliquam cupiditate culpa molestiae animi perferendis reprehenderit possimus, assumenda dolore magnam. Eum dolorum cumque quo!"
+        text="Explore the core technologies and tools I utilize to craft scalable, responsive web applications. From JavaScript frameworks to CSS preprocessors, see the foundation of my front-end development skills."
         links={[
           {
             value: '/elements',

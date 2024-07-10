@@ -32,7 +32,7 @@ function useItemLinkComponent(props: Partial<FooterMenuItemProps>) {
 }
 
 const FooterMenuItem: React.FC<FooterMenuItemProps> = (props) => {
-  const { key, type = 'internal', label, value, icon, ...rootProps } = props;
+  const { id, type = 'internal', label, value, icon, ...rootProps } = props;
 
   const { Component, ComponentProps } = useItemLinkComponent({ type, value });
 
@@ -51,7 +51,7 @@ const FooterMenuItem: React.FC<FooterMenuItemProps> = (props) => {
 
   return (
     <li className="v2-footer-menu-item" {...rootProps}>
-      <Component className="v2-footer-menu-link" id={key} aria-label={label} {...ComponentProps}>
+      <Component className="v2-footer-menu-link" id={id} aria-label={label} {...ComponentProps}>
         {isIconStart && <Icon {...iconProps} />}
         <div>{label}</div>
         {isIconEnd && <Icon {...iconProps} />}

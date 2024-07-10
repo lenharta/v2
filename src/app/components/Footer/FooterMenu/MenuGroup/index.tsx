@@ -12,7 +12,7 @@ type FooterMenuGroupFactory = React.FC<FooterMenuGroupProps>;
 const FooterMenuGroup: FooterMenuGroupFactory = (props) => {
   const { group, children } = props;
   return (
-    <div className="v2-footer-menu-group">
+    <div className="v2-footer-menu-group" id={group.id}>
       <Divider label={group.label || group.value} />
       <ul>{children}</ul>
     </div>

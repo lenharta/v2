@@ -5,7 +5,7 @@ const ArticlesIntro: React.FC<{}> = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis obcaecati corrupti dolor architecto? Soluta voluptatum aliquam cupiditate culpa molestiae animi perferendis reprehenderit possimus, assumenda dolore magnam. Eum dolorum cumque quo!"
+        text="Explore insightful articles covering front-end development trends, tips, and best practices. Gain valuable insights into modern web technologies and stay updated with industry news and innovations."
         links={[
           {
             value: '/contact',

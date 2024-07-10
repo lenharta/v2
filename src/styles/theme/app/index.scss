@@ -22,7 +22,8 @@ span.accent {
 
 .v2-footer {
   &-meta-logo svg {
-    stroke: rgba(var(--c-rgb-accent), 0.12);
+    stroke: rgba(var(--c-rgb-accent), 0.16);
+    stroke-width: 2px;
     fill: none;
   }
 
