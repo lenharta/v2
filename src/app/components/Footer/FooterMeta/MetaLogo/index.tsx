@@ -4,8 +4,8 @@ const MetaLogo: React.FC<{}> = ({}) => (
   <Logo
     variant="default-min"
     className="v2-footer-meta-logo"
-    height="var(--v2-footer-meta-logo-size)"
-    width="var(--v2-footer-meta-logo-size)"
+    height="var(--v2-footer-meta-logo-height)"
+    width="var(--v2-footer-meta-logo-width)"
   />
 );
 

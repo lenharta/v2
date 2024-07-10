@@ -87,9 +87,9 @@ export declare namespace Core {
   }
 
   interface LinkItem extends Partial<ItemIconProp> {
+    id: string;
     value: string | number | readonly string[];
     label: string;
-    key: string;
   }
 
   interface LinkGroup extends Partial<ItemIconProp> {

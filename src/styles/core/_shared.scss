@@ -76,6 +76,33 @@
   }
 }
 
+.v2-table-td,
+.v2-table-th {
+  direction: ltr;
+  text-align: left;
+
+  [data-prefers-dir='rtl'] & {
+    text-align: right;
+    direction: rtl;
+  }
+
+  &:where([data-truncate]) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &:where([data-truncate='start']) {
+    direction: rtl;
+    text-align: right;
+
+    [data-prefers-dir='rtl'] & {
+      direction: ltr;
+      text-align: left;
+    }
+  }
+}
+
 .v2-accordion-target .v2-icon {
   transition:
     transform var(--v2-duration-slow-01) var(--v2-easing-expressive),

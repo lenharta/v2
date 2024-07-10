@@ -1,48 +1,88 @@
-import { Core } from '@/types';
+import { META, ROUTE } from '@/app';
 
-export const FOOTER_META = {
-  name: { first: 'Andrew', last: 'Lenhart' },
-  email: { user: 'andrew.code21', provider: '@gmail.com' },
-  social: { github: { site: 'GitHub', user: '@lenharta', link: 'https://github.com/lenharta' } },
-  location: { state: { code: 'NC', name: 'North Carolina' }, city: 'Winston-Salem' },
-};
-
-export const FOOTER_PAGE_LINKS: Core.LinkGroup = {
+const FOOTER_CONNECT_MENU = {
   group: {
-    key: 'footer_group:pages',
-    label: 'Pages',
-    value: 'pages',
+    id: 'footer_group:connect',
+    label: 'Connect',
+    value: 'connect',
   },
   items: [
     {
-      key: 'footer_item:home',
-      label: 'Home',
-      value: '/',
+      id: 'footer_item:connect:github',
+      value: META.social.link.github,
+      label: META.social.site.github,
     },
     {
-      key: 'footer_item:about',
-      label: 'About',
-      value: '/about',
+      id: 'footer_item:connect:linkedin',
+      value: META.social.link.linkedin,
+      label: META.social.site.linkedin,
     },
     {
-      key: 'footer_item:stack',
-      label: 'Stack',
-      value: '/stack',
+      id: 'footer_item:connect:x',
+      value: META.social.link.x,
+      label: META.social.site.x,
     },
     {
-      key: 'footer_item:projects',
-      label: 'Projects',
-      value: '/projects',
+      id: 'footer_item:connect:npm',
+      value: META.social.link.npm,
+      label: META.social.site.npm,
     },
     {
-      key: 'footer_item:articless',
-      label: 'Articles',
-      value: '/articles',
+      id: 'footer_item:connect:codesandbox',
+      value: META.social.link.codesandbox,
+      label: META.social.site.codesandbox,
     },
     {
-      key: 'footer_item:elements',
-      label: 'Elements',
-      value: '/elements',
+      id: 'footer_item:connect:stackoverflow',
+      value: META.social.link.stackoverflow,
+      label: META.social.site.stackoverflow,
     },
   ],
 };
+
+const FOOTER_PROJECT_MENU = {
+  group: {
+    id: 'footer_group:project',
+    label: 'Project',
+    value: 'project',
+  },
+  items: [
+    {
+      id: 'footer_item:project:home',
+      label: ROUTE.label.home,
+      value: ROUTE.link.home,
+    },
+    {
+      id: 'footer_item:project:about',
+      label: ROUTE.label.about,
+      value: ROUTE.link.about,
+    },
+    {
+      id: 'footer_item:project:stack',
+      label: ROUTE.label.stack,
+      value: ROUTE.link.stack,
+    },
+    {
+      id: 'footer_item:project:projects',
+      label: ROUTE.label.projects,
+      value: ROUTE.link.projects,
+    },
+    {
+      id: 'footer_item:project:articles',
+      label: ROUTE.label.articles,
+      value: ROUTE.link.articles,
+    },
+    {
+      id: 'footer_item:project:elements',
+      label: ROUTE.label.elements,
+      value: ROUTE.link.elements,
+    },
+    {
+      id: 'footer_item:project:settings',
+      label: ROUTE.label.settings,
+      value: ROUTE.link.settings,
+    },
+  ],
+};
+
+export { FOOTER_CONNECT_MENU, FOOTER_PROJECT_MENU };

@@ -17,9 +17,13 @@ const FooterMenu: FooterMenuFactory = (props) => {
   return (
     <div className="v2-footer-menu">
       {(data || []).map(({ group, items, icon }) => (
-        <FooterMenu.Group key={group.key} group={group} icon={icon}>
-          {(items || []).map(({ key, ...item }) => (
-            <FooterMenu.Item key={[group.key, key].join(':')} {...item} />
+        <FooterMenu.Group key={group.id} group={group} icon={icon}>
+          {(items || []).map(({ id, ...item }) => (
+            <FooterMenu.Item
+              key={[group.id, id].join(':')}
+              id={[group.id, id].join(':')}
+              {...item}
+            />
           ))}
         </FooterMenu.Group>
       ))}

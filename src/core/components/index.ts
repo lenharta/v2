@@ -14,6 +14,7 @@ export * from './InlineInput';
 export * from './Label';
 export * from './Select';
 export * from './Stack';
+export * from './Table';
 export * from './Tabs';
 export * from './Text';
 export * from './Title';

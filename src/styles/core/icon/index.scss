@@ -6,15 +6,24 @@
   width: var(--v2-icon-width, var(--v2-icon-width-sm));
   height: var(--v2-icon-height, var(--v2-icon-height-sm));
 
-  svg {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    transform: scaleX(1);
+  [data-prefers-dir='ltr'] & {
+    &:not([data-icon-name='rtl']),
+    &:not([data-icon-name='ltr']) {
+      transform: scaleX(1);
+    }
+  }
 
-    [data-prefers-dir='rtl'] & {
+  [data-prefers-dir='rtl'] & {
+    &:not([data-icon-name='rtl']),
+    &:not([data-icon-name='ltr']) {
       transform: scaleX(-1);
     }
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: flex;
   }
 
   &--size-xxs {

@@ -5,7 +5,7 @@ const ProjectsIntro: React.FC<{}> = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis obcaecati corrupti dolor architecto? Soluta voluptatum aliquam cupiditate culpa molestiae animi perferendis reprehenderit possimus, assumenda dolore magnam. Eum dolorum cumque quo!"
+        text="Discover a collection of my front-end development projects, featuring diverse web applications and creative solutions. Each project showcases my technical skills, problem-solving abilities, and commitment to excellence."
         links={[
           {
             value: '/stack',

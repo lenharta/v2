@@ -138,3 +138,24 @@
   display: flex;
   max-width: 800px;
 }
+
+.v2-canvas-table-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v2-canvas-table-layout {
+  margin-inline: auto;
+  flex-direction: column;
+  padding-block: calc(var(--v2-gutter) * 2);
+}
+
+.v2-canvas-table-root {
+  color: var(--c-base-text-low);
+
+  .v2-table-tr > .v2-table-td:first-of-type {
+    color: var(--c-base-text-max);
+  }
+}

@@ -540,6 +540,17 @@
   }
 }
 
+.v2-table-body {
+  &:where(tr) {
+    &:where([data-row-striped='odd']):nth-of-type(odd) {
+      background-color: var(--c-base-surface-1-enabled);
+    }
+    &:where([data-row-striped='even']):nth-of-type(even) {
+      background-color: var(--c-base-surface-1-enabled);
+    }
+  }
+}
+
 $theme-colors: (
   'red',
   'orange',
