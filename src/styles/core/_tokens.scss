@@ -28,7 +28,7 @@
   --v2-card-width-lg: calc(var(--v2-unit) * 120); // 240px
 
   --v2-page-width-min: calc(var(--v2-unit) * 160); // 320px
-  --v2-page-width-max: calc(var(--v2-unit) * 960); // 1920px
+  --v2-page-width-max: 100em;
 
   --v2-radius-xs: calc(var(--v2-unit) * 2); // 4px
   --v2-radius-sm: calc(var(--v2-unit) * 4); // 8px

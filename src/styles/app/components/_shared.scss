@@ -23,7 +23,8 @@ body,
 
 .v2-page-link,
 .v2-overview-brands-item,
-.v2-footer-meta-handle {
+.v2-footer-meta-handle,
+.v2-stack-table td[data-table-column='link'] {
   transition:
     background-color var(--v2-duration-moderate-01) var(--v2-easing-productive),
     border-color var(--v2-duration-moderate-01) var(--v2-easing-productive),

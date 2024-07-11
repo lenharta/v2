@@ -16,7 +16,6 @@ const Icon = createFactory<IconFactory>((props, ref) => {
     type = 'outline',
     name = 'shape-circle',
     fill,
-    style,
     alpha,
     children,
     className,
@@ -25,12 +24,12 @@ const Icon = createFactory<IconFactory>((props, ref) => {
 
   const theme = fill
     ? {
-        fill: `rgba(var(--c-rgb-${fill}), ${alpha || 1})`,
+        color: `rgba(var(--c-rgb-${fill}), ${alpha || 1})`,
       }
     : {};
 
   return (
-    <div className={clsx('v2-icon', `v2-icon--size-${size}`, className)}>
+    <div className={clsx('v2-icon', `v2-icon--size-${size}`, className)} style={{ ...theme }}>
       <svg
         ref={ref}
         xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +37,7 @@ const Icon = createFactory<IconFactory>((props, ref) => {
         height="16"
         viewBox="0 0 16 16"
         className="v2-icon-vector"
-        style={{ ...style, ...theme }}
+        fill="currentColor"
         data-icon-name={name}
         {...forwardedProps}
       >

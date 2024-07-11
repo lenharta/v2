@@ -3,336 +3,336 @@
     {
       "id": "javascript",
       "type": "language",
-      "title": "JavaScript",
+      "name": "JavaScript",
       "desc": "A high-level, versatile programming language primarily used for web development.",
       "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
     },
     {
       "id": "typescript",
       "type": "language",
-      "title": "TypeScript",
+      "name": "TypeScript",
       "desc": "A typed superset of JavaScript that compiles to plain JavaScript.",
       "link": "https://www.typescriptlang.org/"
     },
     {
       "id": "nodejs",
       "type": "runtime",
-      "title": "Node.js",
+      "name": "Node.js",
       "desc": "A JavaScript runtime built on Chrome's V8 JavaScript engine for building server-side applications.",
       "link": "https://nodejs.org/"
     },
     {
       "id": "sass",
       "type": "language",
-      "title": "Sass",
+      "name": "Sass",
       "desc": "A preprocessor scripting language that is interpreted or compiled into CSS.",
       "link": "https://sass-lang.com/"
     },
     {
       "id": "css3",
       "type": "language",
-      "title": "CSS3",
+      "name": "CSS3",
       "desc": "The latest evolution of the Cascading Style Sheets language used for styling web pages.",
       "link": "https://developer.mozilla.org/en-US/docs/Web/CSS"
     },
     {
       "id": "html5",
       "type": "language",
-      "title": "HTML5",
+      "name": "HTML5",
       "desc": "The latest version of Hypertext Markup Language, the standard language for creating web pages.",
       "link": "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"
     },
     {
       "id": "expressjs",
       "type": "framework",
-      "title": "Express.js",
+      "name": "Express.js",
       "desc": "A minimal and flexible Node.js web application framework that provides robust features for web and mobile applications.",
       "link": "https://expressjs.com/"
     },
     {
       "id": "vite",
       "type": "tool",
-      "title": "Vite",
+      "name": "Vite",
       "desc": "A fast build tool and development server for modern web projects, featuring hot module replacement.",
       "link": "https://vitejs.dev/"
     },
     {
       "id": "vitest",
       "type": "testing",
-      "title": "Vitest",
+      "name": "Vitest",
       "desc": "A fast and simple test runner for Vite projects.",
       "link": "https://vitest.dev/"
     },
     {
       "id": "react",
       "type": "framework",
-      "title": "React",
+      "name": "React",
       "desc": "A JavaScript library for building user interfaces, maintained by Facebook and a community of developers.",
       "link": "https://reactjs.org/"
     },
     {
       "id": "angular",
       "type": "framework",
-      "title": "Angular",
+      "name": "Angular",
       "desc": "A platform for building mobile and desktop web applications, developed and maintained by Google.",
       "link": "https://angular.io/"
     },
     {
       "id": "vue",
       "type": "framework",
-      "title": "Vue",
+      "name": "Vue",
       "desc": "A progressive JavaScript framework for building user interfaces, designed to be incrementally adoptable.",
       "link": "https://vuejs.org/"
     },
     {
       "id": "nextjs",
       "type": "framework",
-      "title": "Next.js",
+      "name": "Next.js",
       "desc": "A React framework with hybrid static and server-side rendering, TypeScript support, smart bundling, route pre-fetching, and more.",
       "link": "https://nextjs.org/"
     },
     {
       "id": "tailwindcss",
       "type": "framework",
-      "title": "Tailwind CSS",
+      "name": "Tailwind CSS",
       "desc": "Tailwind CSS is an open-source CSS framework.",
       "link": "https://tailwindcss.com/"
     },
     {
       "id": "git",
       "type": "versioning",
-      "title": "Git",
+      "name": "Git",
       "desc": "A distributed version-control system for tracking changes in source code during software development.",
       "link": "https://git-scm.com/"
     },
     {
       "id": "gitlab",
       "type": "devops",
-      "title": "GitLab",
+      "name": "GitLab",
       "desc": "A web-based DevOps lifecycle tool that provides a Git repository manager providing wiki, issue-tracking, and CI/CD pipeline features.",
       "link": "https://about.gitlab.com/"
     },
     {
       "id": "github",
       "type": "versioning",
-      "title": "GitHub",
+      "name": "GitHub",
       "desc": "A platform for version control and collaboration, allowing multiple people to work on projects simultaneously.",
       "link": "https://github.com/"
     },
     {
       "id": "mocha",
       "type": "testing",
-      "title": "Mocha",
+      "name": "Mocha",
       "desc": "A feature-rich JavaScript test framework running on Node.js, making asynchronous testing simple and fun.",
       "link": "https://mochajs.org/"
     },
     {
       "id": "jest",
       "type": "testing",
-      "title": "Jest",
+      "name": "Jest",
       "desc": "A delightful JavaScript testing framework with a focus on simplicity.",
       "link": "https://jestjs.io/"
     },
     {
       "id": "gulp",
       "type": "tool",
-      "title": "Gulp",
+      "name": "Gulp",
       "desc": "A toolkit for automating painful or time-consuming tasks in your development workflow.",
       "link": "https://gulpjs.com/"
     },
     {
       "id": "markdown",
       "type": "language",
-      "title": "Markdown",
+      "name": "Markdown",
       "desc": "A lightweight markup language with plain-text formatting syntax, designed to be easy to read and write.",
       "link": "https://daringfireball.net/projects/markdown/"
     },
     {
       "id": "mdx",
       "type": "language",
-      "title": "MDX",
+      "name": "MDX",
       "desc": "A format that lets you seamlessly write JSX in your Markdown documents.",
       "link": "https://mdxjs.com/"
     },
     {
       "id": "storybook",
       "type": "tool",
-      "title": "Storybook",
+      "name": "Storybook",
       "desc": "An open source tool for developing UI components in isolation for React, Vue, and Angular.",
       "link": "https://storybook.js.org/"
     },
     {
       "id": "stylex",
       "type": "tool",
-      "title": "StyleX",
+      "name": "StyleX",
       "desc": "StyleX is a simple, easy-to-use JavaScript syntax and compiler for styling web apps that was developed by Meta.",
       "link": "https://stylexjs.com/"
     },
     {
       "id": "mysql",
       "type": "database",
-      "title": "MySQL",
+      "name": "MySQL",
       "desc": "An open-source relational database management system based on Structured Query Language (SQL).",
       "link": "https://www.mysql.com/"
     },
     {
       "id": "graphql",
       "type": "language",
-      "title": "GraphQL",
+      "name": "GraphQL",
       "desc": "A query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.",
       "link": "https://graphql.org/"
     },
     {
       "id": "webpack",
       "type": "tool",
-      "title": "Webpack",
+      "name": "Webpack",
       "desc": "A static module bundler for modern JavaScript applications.",
       "link": "https://webpack.js.org/"
     },
     {
       "id": "babel",
       "type": "tool",
-      "title": "Babel",
+      "name": "Babel",
       "desc": "A JavaScript compiler that transforms ES6+ code into a backwards-compatible version of JavaScript in current and older browsers or environments.",
       "link": "https://babeljs.io/"
     },
     {
       "id": "jenkins",
       "type": "devops",
-      "title": "Jenkins",
+      "name": "Jenkins",
       "desc": "An open-source automation server that enables developers to reliably build, test, and deploy their software.",
       "link": "https://www.jenkins.io/"
     },
     {
       "id": "docker",
       "type": "devops",
-      "title": "Docker",
+      "name": "Docker",
       "desc": "A set of platform-as-a-service products that use OS-level virtualization to deliver software in packages called containers.",
       "link": "https://www.docker.com/"
     },
     {
       "id": "kubernetes",
       "type": "devops",
-      "title": "Kubernetes",
+      "name": "Kubernetes",
       "desc": "An open-source container-orchestration system for automating application deployment, scaling, and management.",
       "link": "https://kubernetes.io/"
     },
     {
       "id": "figma",
       "type": "design",
-      "title": "Figma",
+      "name": "Figma",
       "desc": "A web-based UI design and prototyping tool.",
       "link": "https://www.figma.com/"
     },
     {
       "id": "jquery",
       "type": "framework",
-      "title": "jQuery",
+      "name": "jQuery",
       "desc": "A JavaScript framework that facilitates the readability and the manipulation of HTML DOM elements, event handling, animations, and AJAX calls.",
       "link": "https://jquery.com/"
     },
     {
       "id": "contentful",
       "type": "tool",
-      "title": "Contentful",
+      "name": "Contentful",
       "desc": "Contentful is a Headless CMS that provides all the tools and capabilities to drive your content management and delivery.",
       "link": "https://www.happycog.com/experience/contentful-cms-development"
     },
     {
       "id": "styledcomponents",
       "type": "tool",
-      "title": "Styled Components",
+      "name": "Styled Components",
       "desc": "Styled-components is a popular library for React and React Native that allows you to use component-level styles in your application",
       "link": "https://styled-components.com/"
     },
     {
       "id": "notion",
       "type": "productivity",
-      "title": "Notion",
+      "name": "Notion",
       "desc": "An all-in-one workspace for notes, tasks, databases, and collaboration.",
       "link": "https://www.notion.so/"
     },
     {
       "id": "adobexd",
       "type": "design",
-      "title": "Adobe XD",
+      "name": "Adobe XD",
       "desc": "Vector design tool for web and mobile applications, developed and published by Adobe Inc.",
       "link": "https://www.adobe.com/products/xd/learn/get-started/what-is-adobe-xd-used-for.html"
     },
     {
       "id": "jira",
       "type": "productivity",
-      "title": "Jira",
+      "name": "Jira",
       "desc": "A proprietary issue tracking product developed by Atlassian that allows bug tracking and agile project management.",
       "link": "https://www.atlassian.com/software/jira"
     },
     {
       "id": "miro",
       "type": "productivity",
-      "title": "Miro",
+      "name": "Miro",
       "desc": "Digital collaboration platform designed to facilitate remote and distributed team communication and project management.",
       "link": "https://miro.com/"
     },
     {
       "id": "firebase",
       "type": "cloud",
-      "title": "Firebase",
+      "name": "Firebase",
       "desc": "A platform developed by Google for creating mobile and web applications.",
       "link": "https://firebase.google.com/"
     },
     {
       "id": "gsap",
       "type": "tool",
-      "title": "GSAP",
+      "name": "GSAP",
       "desc": "A JavaScript library for creating high-performance animations that work in all major browsers.",
       "link": "https://greensock.com/gsap/"
     },
     {
       "id": "framer",
       "type": "design",
-      "title": "Framer",
+      "name": "Framer",
       "desc": "A design tool for creating interactive prototypes and animations.",
       "link": "https://www.framer.com/"
     },
     {
       "id": "vscode",
       "type": "editor",
-      "title": "Visual Studio",
+      "name": "Visual Studio",
       "desc": "A source-code editor developed by Microsoft for Windows, Linux, and macOS.",
       "link": "https://code.visualstudio.com/"
     },
     {
       "id": "axios",
       "type": "tool",
-      "title": "Axios",
+      "name": "Axios",
       "desc": "A promise-based HTTP client for the browser and Node.js.",
       "link": "https://axios-http.com/"
     },
     {
       "id": "redux",
       "type": "tool",
-      "title": "Redux",
+      "name": "Redux",
       "desc": "A predictable state container for JavaScript apps, often used with React.",
       "link": "https://redux.js.org/"
     },
     {
       "id": "xstate",
       "type": "tool",
-      "title": "XState",
+      "name": "XState",
       "desc": "A library for creating, interpreting, and executing finite state machines and statecharts in JavaScript.",
       "link": "https://xstate.js.org/"
     },
     {
       "id": "jotai",
       "type": "tool",
-      "title": "Jotai",
+      "name": "Jotai",
       "desc": "A primitive and flexible state management library for React.",
       "link": "https://jotai.org/"
     },
     {
       "id": "gatsby",
       "type": "framework",
-      "title": "Gatsby",
+      "name": "Gatsby",
       "desc": "A React-based open source framework for creating websites and apps.",
       "link": "https://www.gatsbyjs.com/"
     }
