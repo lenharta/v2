@@ -39,17 +39,7 @@ const StackTableHead = createFactory<StackTableHeadFactory>((props, ref) => {
       <tr className="v2-stack-table-head-row">
         <td
           tabIndex={0}
-          onClick={() => toggleOrder('type')}
-          className="v2-stack-table-head-cell"
-          data-table-column="type"
-          data-table-control
-        >
-          <span>Type</span>
-          <Icon name={getControlIcon('type')} />
-        </td>
-
-        <td
-          tabIndex={0}
+          onKeyDown={(event) => event.code === 'Enter' && toggleOrder('name')}
           onClick={() => toggleOrder('name')}
           className="v2-stack-table-head-cell"
           data-table-column="name"
@@ -57,6 +47,18 @@ const StackTableHead = createFactory<StackTableHeadFactory>((props, ref) => {
         >
           <span>Name</span>
           <Icon name={getControlIcon('name')} />
+        </td>
+
+        <td
+          tabIndex={0}
+          onKeyDown={(event) => event.code === 'Enter' && toggleOrder('type')}
+          onClick={() => toggleOrder('type')}
+          className="v2-stack-table-head-cell"
+          data-table-column="type"
+          data-table-control
+        >
+          <span>Type</span>
+          <Icon name={getControlIcon('type')} />
         </td>
 
         <td className="v2-stack-table-head-cell" data-table-column="desc">

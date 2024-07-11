@@ -31,8 +31,8 @@ function useStackTable<T extends StackItem = StackItem>(data: T[]) {
     setState((current) => {
       const clone = [...current];
       clone.sort((a, b) => {
-        if ((a[prop] as string).toLowerCase() < (b[prop] as string).toLowerCase()) return -1;
-        if ((a[prop] as string).toLowerCase() > (b[prop] as string).toLowerCase()) return 1;
+        if ((a[prop] as string).toLowerCase() < (b[prop] as string).toLowerCase()) return 1;
+        if ((a[prop] as string).toLowerCase() > (b[prop] as string).toLowerCase()) return -1;
         return 0;
       });
       return clone;
@@ -45,8 +45,8 @@ function useStackTable<T extends StackItem = StackItem>(data: T[]) {
     setState((current) => {
       const clone = [...current];
       clone.sort((a, b) => {
-        if ((a[prop] as string).toLowerCase() < (b[prop] as string).toLowerCase()) return 1;
-        if ((a[prop] as string).toLowerCase() > (b[prop] as string).toLowerCase()) return -1;
+        if ((a[prop] as string).toLowerCase() < (b[prop] as string).toLowerCase()) return -1;
+        if ((a[prop] as string).toLowerCase() > (b[prop] as string).toLowerCase()) return 1;
         return 0;
       });
       return clone;

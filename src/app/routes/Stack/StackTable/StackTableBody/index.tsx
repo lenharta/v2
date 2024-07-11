@@ -2,6 +2,7 @@ import { Factory, Theme } from '@/types';
 import { createFactory } from '@/factory';
 import { StackItem } from '../types';
 import { Icon } from '@/core';
+import { capitalizeString } from '@/utils';
 
 type StackTableBodyProps = {
   data?: StackItem[] | undefined;
@@ -21,12 +22,18 @@ const StackTableBody = createFactory<StackTableBodyFactory>((props, ref) => {
       {(data || []).map((item) => {
         return (
           <tr className="v2-stack-table-body-row" key={item.value}>
-            <td className="v2-stack-table-body-cell" data-table-column="type">
-              <Icon name="shape-circle" type="fill" fill={getAccentColor(item.type)} />
-            </td>
-
             <td className="v2-stack-table-body-cell" data-table-column="name">
               {item.name}
+            </td>
+
+            <td className="v2-stack-table-body-cell" data-table-column="type">
+              <span
+                children={capitalizeString(item.type)}
+                style={{
+                  backgroundColor: `rgba(var(--c-rgb-${getAccentColor(item.type)}), 0.05)`,
+                  color: `rgba(var(--c-rgb-${getAccentColor(item.type)}), 1)`,
+                }}
+              />
             </td>
 
             <td className="v2-stack-table-body-cell" data-table-column="desc">
