@@ -417,14 +417,6 @@ span.accent {
     color: var(--c-accent-text-max);
   }
 
-  &-body-row:nth-of-type(even) > td.v2-stack-table-body-cell {
-    background-color: var(--c-base-surface-1-enabled);
-  }
-
-  &-body-row:nth-of-type(odd) > td.v2-stack-table-body-cell {
-    background-color: var(--c-base);
-  }
-
   &-body-cell[data-table-column='name'],
   &-body-cell[data-table-column='desc'] {
     color: var(--c-base-text-low);
@@ -445,8 +437,13 @@ span.accent {
   &-head-cell[data-table-control]:hover {
     background-color: var(--c-base-surface-1-hovered);
   }
+
   &-head-cell[data-table-control]:active {
     background-color: var(--c-base-surface-1-pressed);
+  }
+
+  &-body-row {
+    border-bottom-color: var(--c-base-surface-1-enabled);
   }
 }
 

@@ -11,6 +11,7 @@ import { CanvasAccordion } from './CanvasAccordion';
 import { CanvasDivider } from './CanvasDivider';
 import { CanvasColors } from './CanvasColors';
 import { CanvasSelect } from './CanvasSelect';
+import { CanvasSnippet } from './CanvasSnippet';
 
 type CanvasFactory = React.FC<{}> & {
   Hero: typeof CanvasHero;
@@ -22,12 +23,14 @@ type CanvasFactory = React.FC<{}> & {
   Colors: typeof CanvasColors;
   Divider: typeof CanvasDivider;
   Control: typeof CanvasControl;
+  Snippet: typeof CanvasSnippet;
   Accordion: typeof CanvasAccordion;
 };
 
 const Canvas: CanvasFactory = ({}) => (
   <Page>
     <Canvas.Hero />
+    <Canvas.Snippet />
     <Canvas.Tabs />
     <Canvas.Table />
     <Canvas.Select />
@@ -44,6 +47,7 @@ Canvas.Hero = CanvasHero;
 Canvas.Tabs = CanvasTabs;
 Canvas.Table = CanvasTable;
 Canvas.Select = CanvasSelect;
+Canvas.Snippet = CanvasSnippet;
 Canvas.Action = CanvasAction;
 Canvas.Button = CanvasButton;
 Canvas.Colors = CanvasColors;
