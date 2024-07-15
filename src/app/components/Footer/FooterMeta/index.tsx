@@ -15,12 +15,7 @@ type FooterMetaFactory = React.FC<{}> & {
 const FooterMeta: FooterMetaFactory = ({}) => (
   <div className="v2-footer-meta">
     <FooterMeta.Handle />
-    <FooterMeta.Logo />
-    {/* <div className="v2-footer-meta-layout">
-      <FooterMeta.Name />
-      <FooterMeta.Location />
-      <FooterMeta.Email />
-    </div> */}
+    {/* <FooterMeta.Logo /> */}
   </div>
 );
 

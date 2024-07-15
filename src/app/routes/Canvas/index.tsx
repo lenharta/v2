@@ -11,7 +11,7 @@ import { CanvasAccordion } from './CanvasAccordion';
 import { CanvasDivider } from './CanvasDivider';
 import { CanvasColors } from './CanvasColors';
 import { CanvasSelect } from './CanvasSelect';
-import { CanvasSnippet } from './CanvasSnippet';
+import { CanvasCheckbox } from './CanvasCheckbox';
 
 type CanvasFactory = React.FC<{}> & {
   Hero: typeof CanvasHero;
@@ -23,14 +23,14 @@ type CanvasFactory = React.FC<{}> & {
   Colors: typeof CanvasColors;
   Divider: typeof CanvasDivider;
   Control: typeof CanvasControl;
-  Snippet: typeof CanvasSnippet;
+  Checkbox: typeof CanvasCheckbox;
   Accordion: typeof CanvasAccordion;
 };
 
 const Canvas: CanvasFactory = ({}) => (
   <Page>
     <Canvas.Hero />
-    <Canvas.Snippet />
+    <Canvas.Checkbox />
     <Canvas.Tabs />
     <Canvas.Table />
     <Canvas.Select />
@@ -47,12 +47,12 @@ Canvas.Hero = CanvasHero;
 Canvas.Tabs = CanvasTabs;
 Canvas.Table = CanvasTable;
 Canvas.Select = CanvasSelect;
-Canvas.Snippet = CanvasSnippet;
 Canvas.Action = CanvasAction;
 Canvas.Button = CanvasButton;
 Canvas.Colors = CanvasColors;
-Canvas.Divider = CanvasDivider;
 Canvas.Control = CanvasControl;
+Canvas.Divider = CanvasDivider;
+Canvas.Checkbox = CanvasCheckbox;
 Canvas.Accordion = CanvasAccordion;
 Canvas.displayName = '@v2/Canvas.Route';
 export { Canvas };

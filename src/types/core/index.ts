@@ -20,6 +20,18 @@ export declare namespace Core {
   export type ScrollToOptions = ScrollToPosition & ScrollOptions;
   export type ScrollToPosition = { left?: number; top?: number };
 
+  export type CodeLanguageProps = {
+    bash?: boolean | undefined;
+    css?: boolean | undefined;
+    html?: boolean | undefined;
+    ts?: boolean | undefined;
+    tsx?: boolean | undefined;
+    js?: boolean | undefined;
+    json?: boolean | undefined;
+    jsx?: boolean | undefined;
+    scss?: boolean | undefined;
+  };
+
   export type ViableRef<T> = React.Ref<T> | undefined;
 
   export type Item = {
@@ -96,4 +108,9 @@ export declare namespace Core {
     group: LinkItem;
     items: LinkItem[];
   }
+
+  export type GenericStore<T extends Record<string, any>> = {
+    dispatch: React.Dispatch<React.SetStateAction<T>>;
+    state: T;
+  };
 }

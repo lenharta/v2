@@ -1,6 +1,7 @@
 export * from './Accordion';
 export * from './Action';
 export * from './Button';
+export * from './Checkbox';
 export * from './Chip';
 export * from './Control';
 export * from './Disclosure';

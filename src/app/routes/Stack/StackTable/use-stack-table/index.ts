@@ -74,10 +74,6 @@ function useStackTable<T extends StackItem = StackItem>(data: T[]) {
     return STACK_TABLE_CATEGORY_COLORS[type];
   };
 
-  React.useEffect(() => {
-    console.log(state);
-  }, [state]);
-
   return {
     state,
     order,

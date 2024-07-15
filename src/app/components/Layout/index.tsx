@@ -1,11 +1,9 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { StoreProvider } from '@/app/store';
-import { codeThemeDark, codeThemeLight, ShikiProvider } from '@/app/shiki';
-
-import { Side } from '../Side';
-import { Main } from '../Main';
+import { StoreProvider } from '@/app';
 import { Header } from '../Header';
+import { Main } from '../Main';
+import { Side } from '../Side';
 
 interface LayoutProps {
   children?: React.ReactNode | undefined;
@@ -17,29 +15,16 @@ type LayoutFactory = React.FC<LayoutProps> & {
   Header: typeof Header;
 };
 
-async function loadShiki() {
-  const { getHighlighter } = await import('shikiji');
-
-  const shiki = await getHighlighter({
-    langs: ['tsx', 'scss', 'html', 'bash', 'json'],
-    themes: [codeThemeLight, codeThemeDark],
-  });
-
-  return shiki;
-}
-
 const Layout: LayoutFactory = ({}) => {
   return (
     <StoreProvider>
-      <ShikiProvider loadShiki={loadShiki}>
-        <div className="v2-layout">
-          <Layout.Header />
-          <Layout.Side />
-          <Layout.Main>
-            <Router.Outlet />
-          </Layout.Main>
-        </div>
-      </ShikiProvider>
+      <div className="v2-layout">
+        <Layout.Header />
+        <Layout.Side />
+        <Layout.Main>
+          <Router.Outlet />
+        </Layout.Main>
+      </div>
     </StoreProvider>
   );
 };
