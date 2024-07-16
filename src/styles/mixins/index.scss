@@ -1,0 +1,43 @@
+@mixin interactive-outline {
+  border-color: transparent;
+  border-width: var(--v2-01);
+  border-style: solid;
+
+  outline-color: transparent;
+  outline-width: var(--v2-01);
+  outline-style: solid;
+  outline-offset: unset;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &:not([data-disabled], [data-loading], [data-readOnly]),
+  &:not([data-disabled], [data-loading], [data-readOnly]):hover,
+  &:not([data-disabled], [data-loading], [data-readOnly]):active,
+  &:not([data-disabled], [data-loading], [data-readOnly])[data-selected] {
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    cursor: default;
+  }
+
+  &[data-readonly] {
+    cursor: default;
+  }
+
+  &[data-loading] {
+    cursor: wait;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+    outline-offset: 0;
+  }
+
+  &:focus:focus-visible {
+    outline-color: var(--c-focus);
+    outline-offset: -2px;
+  }
+}

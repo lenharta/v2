@@ -1,0 +1,143 @@
+.v2-toggle {
+  --v2-toggle-height-xs: 16px;
+  --v2-toggle-height-sm: 20px;
+  --v2-toggle-height-md: 24px;
+  --v2-toggle-height-lg: 30px;
+  --v2-toggle-height-xl: 36px;
+
+  --v2-toggle-width-xs: 32px;
+  --v2-toggle-width-sm: 38px;
+  --v2-toggle-width-md: 46px;
+  --v2-toggle-width-lg: 56px;
+  --v2-toggle-width-xl: 72px;
+
+  --v2-toggle-thumb-size-xs: 12px;
+  --v2-toggle-thumb-size-sm: 14px;
+  --v2-toggle-thumb-size-md: 18px;
+  --v2-toggle-thumb-size-lg: 22px;
+  --v2-toggle-thumb-size-xl: 28px;
+
+  --v2-toggle-label-font-size-xs: 5px;
+  --v2-toggle-label-font-size-sm: 6px;
+  --v2-toggle-label-font-size-md: 7px;
+  --v2-toggle-label-font-size-lg: 9px;
+  --v2-toggle-label-font-size-xl: 11px;
+
+  --v2-toggle-track-padding-xs: 1px;
+  --v2-toggle-track-padding-sm: 2px;
+  --v2-toggle-track-padding-md: 2px;
+  --v2-toggle-track-padding-lg: 3px;
+  --v2-toggle-track-padding-xl: 3px;
+
+  --v2-toggle-width: var(--v2-toggle-width-sm);
+  --v2-toggle-height: var(--v2-toggle-height-sm);
+  --v2-toggle-radius: var(--v2-radius-rd);
+  --v2-toggle-thumb-size: var(--v2-toggle-thumb-size-sm);
+  --v2-toggle-track-padding: var(--v2-toggle-track-padding-sm);
+  --v2-toggle-label-font-size: var(--v2-toggle-label-font-size-sm);
+
+  --v2-toggle-track-bdr: inherit;
+  --v2-toggle-track-bgd: inherit;
+  --v2-toggle-track-clr: inherit;
+
+  --v2-toggle-thumb-bdr: inherit;
+  --v2-toggle-thumb-bgd: inherit;
+  --v2-toggle-thumb-clr: inherit;
+
+  position: relative;
+
+  input {
+    cursor: var(--v2-toggle-cursor, pointer);
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    position: absolute;
+    appearance: none;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+
+  &-track {
+    -webkit-tap-highlight-color: transparent;
+    order: var(--v2-toggle-order, 1);
+    z-index: 0;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+    appearance: none;
+    margin: 0;
+    width: var(--v2-toggle-width);
+    height: var(--v2-toggle-height);
+    display: flex;
+    align-items: center;
+    font-size: var(--v2-toggle-label-font-size);
+    font-weight: 600;
+    line-height: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--v2-toggle-radius);
+    border-color: var(--c-toggle-track-bdr);
+    background-color: var(--c-toggle-track-bgd);
+  }
+
+  &-thumb {
+    z-index: 2;
+    display: flex;
+    position: absolute;
+    width: var(--v2-toggle-thumb-size);
+    height: var(--v2-toggle-thumb-size);
+    inset-inline-start: var(--v2-toggle-thumb-start, var(--v2-toggle-track-padding));
+    transition: inset-inline-start 150ms ease;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--v2-toggle-radius);
+    border-color: var(--c-toggle-thumb-bdr);
+    background-color: var(--c-toggle-thumb-bgd);
+
+    & > * {
+      margin: auto;
+    }
+
+    &[data-checked] {
+      --v2-toggle-thumb-start: calc(
+        100% - var(--v2-toggle-thumb-size) - var(--v2-toggle-track-padding)
+      );
+    }
+  }
+
+  &--xs {
+    --v2-toggle-width: var(--v2-toggle-width-xs);
+    --v2-toggle-height: var(--v2-toggle-height-xs);
+    --v2-toggle-thumb-size: var(--v2-toggle-thumb-size-xs);
+    --v2-toggle-track-padding: var(--v2-toggle-track-padding-xs);
+  }
+  &--sm {
+    --v2-toggle-width: var(--v2-toggle-width-sm);
+    --v2-toggle-height: var(--v2-toggle-height-sm);
+    --v2-toggle-thumb-size: var(--v2-toggle-thumb-size-sm);
+    --v2-toggle-track-padding: var(--v2-toggle-track-padding-sm);
+  }
+  &--md {
+    --v2-toggle-width: var(--v2-toggle-width-md);
+    --v2-toggle-height: var(--v2-toggle-height-md);
+    --v2-toggle-thumb-size: var(--v2-toggle-thumb-size-md);
+    --v2-toggle-track-padding: var(--v2-toggle-track-padding-md);
+  }
+  &--lg {
+    --v2-toggle-width: var(--v2-toggle-width-lg);
+    --v2-toggle-height: var(--v2-toggle-height-lg);
+    --v2-toggle-thumb-size: var(--v2-toggle-thumb-size-lg);
+    --v2-toggle-track-padding: var(--v2-toggle-track-padding-lg);
+  }
+  &--xl {
+    --v2-toggle-width: var(--v2-toggle-width-xl);
+    --v2-toggle-height: var(--v2-toggle-height-xl);
+    --v2-toggle-thumb-size: var(--v2-toggle-thumb-size-xl);
+    --v2-toggle-track-padding: var(--v2-toggle-track-padding-xl);
+  }
+}

@@ -1,0 +1,17 @@
+.v2-demo {
+  display: block;
+
+  &-directory-layout {
+    display: grid;
+    place-content: start;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+    padding-inline: var(--v2-gutter);
+    margin-top: var(--v2-gutter);
+
+    @media (min-width: 60em) {
+      gap: var(--v2-gutter);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

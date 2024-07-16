@@ -1,0 +1,69 @@
+[data-prefers-color-mode='light'] {
+  --c-root-base: rgba(var(--c-rgb-base), 1);
+  --c-root-text: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-toggle-thumb-bgd-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bgd-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-toggle-thumb-bdr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bdr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bdr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bdr-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-toggle-track-bgd-enabled-default: transparent;
+  --c-toggle-track-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.06);
+  --c-toggle-track-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.12);
+  --c-toggle-track-bgd-checked-default: rgba(var(--c-rgb-contrast), 0.18);
+
+  --c-toggle-track-bdr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-track-bdr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-track-bdr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-track-bdr-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-button-bgd-enabled-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-button-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.03);
+  --c-button-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.04);
+  --c-button-bgd-selected-default: rgba(var(--c-rgb-contrast), 0.04);
+
+  --c-button-bdr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-bdr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-bdr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-bdr-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-button-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-selected-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  // --c-base-surface-enabled-s: 0;
+  // --c-base-surface-hovered-s: 0.04;
+  // --c-base-surface-pressed-s: 0.08;
+  // --c-base-surface-selected-s: 0.08;
+
+  // --c-base-surface-1-enabled-s: 0.04;
+  // --c-base-surface-1-hovered-s: 0.08;
+  // --c-base-surface-1-pressed-s: 0.1;
+  // --c-base-surface-1-selected-s: 0.1;
+
+  // --c-base-surface-2-enabled-s: 0.08;
+  // --c-base-surface-2-hovered-s: 0.1;
+  // --c-base-surface-2-pressed-s: 0.12;
+  // --c-base-surface-2-selected-s: 0.12;
+
+  // --c-accent-surface-enabled-s: 0;
+  // --c-accent-surface-hovered-s: 0.06;
+  // --c-accent-surface-pressed-s: 0.09;
+  // --c-accent-surface-selected-s: 0.09;
+
+  // --c-accent-surface-1-enabled-s: 0.12;
+  // --c-accent-surface-1-hovered-s: 0.15;
+  // --c-accent-surface-1-pressed-s: 0.18;
+  // --c-accent-surface-1-selected-s: 0.18;
+
+  // --c-accent-surface-2-enabled-s: 0.15;
+  // --c-accent-surface-2-hovered-s: 0.18;
+  // --c-accent-surface-2-pressed-s: 0.21;
+  // --c-accent-surface-2-selected-s: 0.21;
+}

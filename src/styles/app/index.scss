@@ -1,5 +1,10 @@
-@forward 'fonts';
-@forward 'reset';
-@forward 'tokens';
-@forward 'components';
-@forward 'routes';
+@forward './Canvas';
+@forward './Footer';
+@forward './Header';
+@forward './Layout';
+@forward './Logo';
+@forward './Main';
+@forward './Menu';
+@forward './Page';
+@forward './shared';
+@forward './Side';

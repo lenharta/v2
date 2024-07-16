@@ -26,6 +26,7 @@
       "@/utils/*": ["./src/utils/*"],
       "@/tests/*": ["./src/tests/*"],
       "@/types/*": ["./src/types/*"],
+      "@/routes/*": ["./src/routes/*"],
       "@/factory/*": ["./src/factory/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/hooks/*": ["./src/hooks/*"],

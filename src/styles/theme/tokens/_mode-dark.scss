@@ -1,0 +1,92 @@
+[data-prefers-color-mode='dark'] {
+  // ==================================================================================
+  // APP
+  // ==================================================================================
+
+  --c-root-bgd: rgba(var(--c-rgb-base), 1);
+  --c-root-clr: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-canvas-bgd: rgba(var(--c-rgb-base), 1);
+  --c-canvas-bdr: rgba(var(--c-rgb-contrast), 0.16);
+  --c-canvas-clr: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-canvas-controls-bgd: rgba(var(--c-rgb-contrast), 0.01);
+  --c-canvas-controls-clr: rgba(var(--c-rgb-contrast), 0.87);
+
+  // ==================================================================================
+  // CORE
+  // ==================================================================================
+
+  --c-toggle-thumb-bgd-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bgd-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-toggle-thumb-bdr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bdr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bdr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bdr-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-toggle-track-bgd-enabled-default: transparent;
+  --c-toggle-track-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.04);
+  --c-toggle-track-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.08);
+  --c-toggle-track-bgd-checked-default: rgba(var(--c-rgb-contrast), 0.12);
+
+  --c-toggle-track-bdr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-track-bdr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-track-bdr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-track-bdr-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-button-bgd-enabled-default: transparent;
+  --c-button-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.04);
+  --c-button-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.08);
+  --c-button-bgd-selected-default: rgba(var(--c-rgb-contrast), 0.12);
+
+  --c-button-bdr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-bdr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-bdr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-bdr-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-button-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-selected-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-button-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-button-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.08);
+  --c-button-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.12);
+  --c-button-bgd-selected-elevated: rgba(var(--c-rgb-contrast), 0.16);
+
+  --c-button-bdr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-bdr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-bdr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-bdr-checked-elevated: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-button-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-selected-elevated: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-select-box-bgd-enabled: rgba(var(--c-rgb-base), 1);
+  --c-select-box-clr-enabled: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-select-target-bgd-enabled-default: transparent;
+  --c-select-target-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-select-target-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.04);
+  --c-select-target-bgd-selected-default: rgba(var(--c-rgb-contrast), 0.04);
+
+  --c-select-target-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-select-target-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.89);
+  --c-select-target-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.93);
+  --c-select-target-clr-selected-default: rgba(var(--c-rgb-contrast), 0.99);
+
+  --c-select-target-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.02);
+  --c-select-target-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-select-target-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.06);
+  --c-select-target-bgd-selected-elevated: rgba(var(--c-rgb-contrast), 0.06);
+
+  --c-select-target-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-select-target-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.89);
+  --c-select-target-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.93);
+  --c-select-target-clr-selected-elevated: rgba(var(--c-rgb-contrast), 0.99);
+}

@@ -15,6 +15,7 @@ const InlineInput = createPolymorphicFactory<InlineInputFactory>((props, ref) =>
     label,
     message,
     checked,
+    selected,
     disabled,
     readOnly,
     children,
@@ -26,18 +27,21 @@ const InlineInput = createPolymorphicFactory<InlineInputFactory>((props, ref) =>
   return (
     <div
       ref={ref}
-      data-checked={!!checked}
-      data-disabled={!!disabled}
-      data-readonly={!!readOnly}
       className={clsx('v2-inline-input', className)}
+      data-selected={!!selected || undefined}
+      data-disabled={!!disabled || undefined}
+      data-readonly={!!readOnly || undefined}
+      data-checked={!!checked || undefined}
       {...forwardedProps}
     >
-      {children}
+      <div className="v2-inline-input-layout">
+        {children}
 
-      <div className="v2-inline-input-content">
-        <Label className="v2-inline-input-label">{label}</Label>
-        {error && <Text className="v2-inline-input-error">{error}</Text>}
-        {message && <Text className="v2-inline-input-message">{message}</Text>}
+        <div className="v2-inline-input-content">
+          <Label className="v2-inline-input-label">{label}</Label>
+          {error && <Text className="v2-inline-input-error">{error}</Text>}
+          {message && <Text className="v2-inline-input-message">{message}</Text>}
+        </div>
       </div>
     </div>
   );
