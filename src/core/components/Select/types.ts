@@ -1,6 +1,14 @@
 import { FloatingProps, TransitionProps, UnstyledButtonProps } from '@/core';
 
-interface SelectThemeProps {}
+interface SelectThemeProps {
+  variant?:
+    | 'default'
+    | 'elevated'
+    | 'default-accent'
+    | 'elevated-accent'
+    | 'tonal-accent'
+    | undefined;
+}
 
 interface SelectItem {
   value: string;
@@ -28,6 +36,7 @@ interface SelectProps extends SelectThemeProps {
   data: SelectItem[];
   isOpen: boolean;
   value?: string | undefined;
+  label?: string | undefined;
   width?: FloatingProps['width'] | undefined;
   zIndex?: FloatingProps['zIndex'] | undefined;
   offset?: FloatingProps['offset'] | undefined;
@@ -40,6 +49,7 @@ interface SelectProps extends SelectThemeProps {
   placementDependencies?: FloatingProps['placementDependencies'] | undefined;
   clickOutsideIgnoreRefs?: FloatingProps['clickOutsideIgnoreRefs'] | undefined;
   closeOnClickOutside?: FloatingProps['closeOnClickOutside'] | undefined;
+  closeOnOptionClick?: boolean | undefined;
   closeOnEscape?: FloatingProps['closeOnEscape'] | undefined;
   onPlacementChange?: FloatingProps['onPlacementChange'] | undefined;
   onOpenChange: (isOpen: boolean) => void;

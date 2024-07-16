@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DURATION, EASING, TransitionProps, Floating } from '@/core';
+import { DURATION, EASING, TransitionProps, Floating, Label } from '@/core';
 import { SelectBox } from './SelectBox';
 import { SelectProps } from './types';
 import { SelectOption } from './SelectOption';
@@ -41,11 +41,13 @@ const Select: SelectFactory = (props) => {
   const {
     dir = 'ltr',
     data,
+    label,
     value,
     width = 'target',
     isOpen,
     offset = 0,
     zIndex = 300,
+    variant,
     disabled,
     strategy = 'absolute',
     placement = 'bottom-start',
@@ -53,6 +55,7 @@ const Select: SelectFactory = (props) => {
     placeholder = 'Select...',
     transitionProps,
     closeOnEscape = true,
+    closeOnOptionClick = true,
     closeOnClickOutside = true,
     clickOutsideIgnoreRefs,
     placementDependencies,
@@ -90,14 +93,17 @@ const Select: SelectFactory = (props) => {
       onClose={onClose}
       onOpen={onOpen}
     >
+      {label && <Label component="div">{label}</Label>}
       <Select.Target
+        variant={variant}
         placeholder={placeholder}
         value={(labels[value as any] as any)?.label || undefined}
       />
 
-      <Select.Box>
+      <Select.Box variant={variant}>
         {data.map((item) => (
           <Select.Option
+            variant={variant}
             key={item.value}
             label={item.label}
             value={item.value}
@@ -105,8 +111,13 @@ const Select: SelectFactory = (props) => {
             readOnly={item.readOnly}
             selected={item.value === value || undefined}
             onClick={() => {
-              if (disabled || item.disabled || item.readOnly) return;
-              onChange?.(item.value);
+              if (!disabled || !item.disabled || !item.readOnly) {
+                if (closeOnOptionClick) {
+                  onOpenChange(false);
+                  onClose?.();
+                }
+                onChange?.(item.value);
+              }
             }}
           />
         ))}

@@ -10,11 +10,15 @@ type SelectBoxFactory = Factory.Config<{
 }>;
 
 const SelectBox = createFactory<SelectBoxFactory>((props, ref) => {
-  const { children, className, ...forwardedProps } = props;
+  const { variant, children, className, ...forwardedProps } = props;
 
   return (
     <Floating.Box>
-      <div ref={ref} className={clsx('v2-select-box', className)} {...forwardedProps}>
+      <div
+        ref={ref}
+        className={clsx('v2-select-box', { [`v2-select-box--${variant}`]: variant }, className)}
+        {...forwardedProps}
+      >
         {children}
       </div>
     </Floating.Box>

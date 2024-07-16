@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { Text, Title, IconButton, Transition, DURATION, EASING } from '@/core';
+import { Text, Title, IconBtn, Transition, DURATION, EASING } from '@/core';
 import { ToastProps } from './types';
 
 type ToastFactory = Factory.Config<{
@@ -72,7 +72,11 @@ const Toast = createFactory<ToastFactory>((props, ref) => {
               {title}
             </Title>
 
-            <IconButton onClick={onClose} icon="close-x-large" className="v2-toast-close" />
+            <IconBtn
+              icon={{ name: 'close-x-large' }}
+              className="v2-toast-close"
+              onClick={onClose}
+            />
           </div>
           <Text className="v2-toast-text">{text}</Text>
         </div>

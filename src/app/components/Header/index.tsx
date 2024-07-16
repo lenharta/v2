@@ -30,10 +30,10 @@ const Header: HeaderFactory = ({}) => {
           <Action.Spacer grow />
 
           <Action
-            value="/canvas"
+            value="/demo"
             icon={{ name: 'arrow-northeast-square' }}
             onClick={(event) => navigate(event.currentTarget.value)}
-            aria-label="go to canvas page"
+            aria-label="go to demo page"
           />
           <Action
             value="/settings"

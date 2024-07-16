@@ -10,7 +10,8 @@ type SelectOptionFactory = Factory.Config<{
 }>;
 
 const SelectOption = createFactory<SelectOptionFactory>((props, ref) => {
-  const { label, value, disabled, readOnly, selected, className, ...forwardedProps } = props;
+  const { label, value, variant, disabled, readOnly, selected, className, ...forwardedProps } =
+    props;
 
   return (
     <UnstyledButton
@@ -19,7 +20,7 @@ const SelectOption = createFactory<SelectOptionFactory>((props, ref) => {
       disabled={disabled}
       readOnly={readOnly}
       selected={selected}
-      className={clsx('v2-select-option', className)}
+      className={clsx('v2-select-option', { [`v2-select-option--${variant}`]: variant }, className)}
       {...forwardedProps}
     >
       {label}

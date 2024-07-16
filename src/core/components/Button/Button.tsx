@@ -55,21 +55,31 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
       selected={selected}
       className={clsx(
         'v2-button',
-        `v2-button--size-${size || ctx.size || 'sm'}`,
+        `v2-button--${size || ctx.size || 'sm'}`,
+        `v2-button--${variant || ctx.variant || 'default'}`,
         `v2-button--align-${align || ctx.align || 'center'}`,
         `v2-button--justify-${justify || ctx.justify || 'center'}`,
-        `v2-button--${variant || ctx.variant || 'base-elevated'}`,
         className
       )}
       {...forwardedProps}
       {...contextProps}
     >
       <span className="v2-button-layout">
-        {iconLeft && <Icon name={iconLeft.name} data-position="left" />}
+        {iconLeft && (
+          <span className="v2-button-section" data-position="left">
+            <Icon name={iconLeft.name} />
+          </span>
+        )}
 
-        {children}
+        <span className="v2-button-label" data-loading={loading}>
+          {children}
+        </span>
 
-        {iconRight && <Icon name={iconRight.name} data-position="right" />}
+        {iconRight && (
+          <span className="v2-button-section" data-position="right">
+            <Icon name={iconRight.name} />
+          </span>
+        )}
       </span>
     </UnstyledButton>
   );

@@ -4,22 +4,24 @@ import * as Router from 'react-router-dom';
 import { Icon, IconProps, UnstyledLink } from '@/core';
 import { Theme } from '@/types';
 
+// default - transparent, inherit
+// elevated - surface
+
 interface PageLinkProps extends Partial<Omit<Router.LinkProps, 'children'>> {
   to?: string | undefined;
   icon?: Partial<IconProps> | undefined;
   label?: string | undefined;
   className?: string | undefined;
   variant?:
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent-default'
-    | 'accent-elevated'
-    | 'accent-tonal'
-    | 'accent-ghost'
-    | `${Theme.Color}-tonal`
-    | `${Theme.Color}-ghost`
-    | `${Theme.Color}-default`
-    | `${Theme.Color}-elevated`
+    | 'text-default'
+    | 'ghost-default'
+    | 'elevated-default'
+    | 'text-accent'
+    | 'ghost-accent'
+    | 'elevated-accent'
+    | `text-${Theme.Color}`
+    | `ghost-${Theme.Color}`
+    | `elevated-${Theme.Color}`
     | undefined;
 }
 

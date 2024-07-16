@@ -6,16 +6,12 @@ interface ButtonThemeProps {
   align?: 'start' | 'end' | 'center' | undefined;
   justify?: 'start' | 'end' | 'center' | undefined;
   variant?:
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent-default'
-    | 'accent-elevated'
-    | 'accent-tonal'
-    | 'accent-ghost'
-    | `${Theme.Color}-tonal`
-    | `${Theme.Color}-ghost`
-    | `${Theme.Color}-default`
-    | `${Theme.Color}-elevated`
+    | 'default'
+    | 'elevated'
+    | 'default-accent'
+    | 'elevated-accent'
+    | `default-${Theme.Color}`
+    | `elevated-${Theme.Color}`
     | undefined;
 }
 

@@ -1,7 +1,31 @@
-import { UnstyledButtonProps } from '@/core';
+import { Theme } from '@/types';
+import { GroupProps, InlineInputProps } from '@/core';
 
-interface ToggleThemeProps {}
+interface ToggleThemeProps {
+  size?: Theme.SizeRegular | undefined;
+  variant?:
+    | 'ghost'
+    | 'default'
+    | 'elevated'
+    | 'ghost-accent'
+    | 'default-accent'
+    | 'elevated-accent'
+    | undefined;
+}
 
-interface ToggleProps extends UnstyledButtonProps, ToggleThemeProps {}
+interface ToggleProps extends InlineInputProps, ToggleThemeProps {
+  checked?: boolean | undefined;
+  value?: string | undefined;
+}
 
-export type { ToggleProps, ToggleThemeProps };
+interface ToggleGroupProps extends GroupProps {
+  onChange: (value: string[]) => void;
+  value: string[];
+}
+
+interface ToggleContext extends GroupProps {
+  onChange: (value: string[]) => void;
+  value: string[];
+}
+
+export type { ToggleProps, ToggleGroupProps, ToggleContext, ToggleThemeProps };
