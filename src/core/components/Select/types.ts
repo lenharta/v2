@@ -1,13 +1,8 @@
 import { FloatingProps, TransitionProps, UnstyledButtonProps } from '@core';
+import { Theme } from '@types';
 
 interface SelectThemeProps {
-  variant?:
-    | 'default'
-    | 'elevated'
-    | 'default-accent'
-    | 'elevated-accent'
-    | 'tonal-accent'
-    | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 interface SelectItem {

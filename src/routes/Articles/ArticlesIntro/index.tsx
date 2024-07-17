@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Page } from '@app';
+import { Page } from '@app/components';
 
 const ArticlesIntro: React.FC<{}> = ({}) => {
   return (
@@ -10,13 +10,13 @@ const ArticlesIntro: React.FC<{}> = ({}) => {
           {
             value: '/contact',
             label: 'Contact Me',
-            variant: 'accent-tonal',
+            variant: 'elevated',
             icon: { name: 'arrow-northeast' },
           },
           {
             value: '/elements',
             label: 'Elements',
-            variant: 'accent-elevated',
+            variant: 'elevated',
             icon: { name: 'arrow-west' },
           },
         ]}

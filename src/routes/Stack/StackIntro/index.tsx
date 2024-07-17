@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Page } from '@app';
+import { Page } from '@app/components';
 
 const StackIntro: React.FC<{}> = ({}) => {
   return (
@@ -10,13 +10,13 @@ const StackIntro: React.FC<{}> = ({}) => {
           {
             value: '/elements',
             label: 'Elements',
-            variant: 'accent-tonal',
+            variant: 'elevated',
             icon: { name: 'arrow-northeast' },
           },
           {
             value: '/projects',
             label: 'Projects',
-            variant: 'accent-elevated',
+            variant: 'elevated',
             icon: { name: 'arrow-west' },
           },
         ]}

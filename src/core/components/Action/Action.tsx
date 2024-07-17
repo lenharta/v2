@@ -53,11 +53,7 @@ const Action = createFactory<ActionFactory>((props, ref) => {
       readOnly={!!readOnly || undefined}
       disabled={!!disabled || undefined}
       selected={!!selected || undefined}
-      className={clsx(
-        'v2-action',
-        `v2-action--${variant || ctx.variant || 'base-elevated'}`,
-        className
-      )}
+      className={clsx('v2-action', `v2-action--${variant || ctx.variant || 'elevated'}`, className)}
       {...forwardedProps}
       {...contextProps}
     >

@@ -3,18 +3,7 @@ import { Core, Theme } from '@types';
 type AccordionValue<V> = V extends true ? string[] : string | null;
 
 interface AccordionThemeProps {
-  variant?:
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent-default'
-    | 'accent-elevated'
-    | 'accent-tonal'
-    | 'accent-ghost'
-    | `${Theme.Color}-tonal`
-    | `${Theme.Color}-ghost`
-    | `${Theme.Color}-default`
-    | `${Theme.Color}-elevated`
-    | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 interface AccordionItemContext extends AccordionThemeProps {

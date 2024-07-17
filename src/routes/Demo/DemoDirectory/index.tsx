@@ -1,9 +1,8 @@
+import * as React from 'react';
 import { Page } from '@app';
 import { Divider, Stack, UnstyledLink } from '@core';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { DemoIntro } from '../DemoIntro';
 import { DemoHero } from '../DemoHero';
+import { DemoIntro } from '../DemoIntro';
 
 interface DirectoryGroupProps {
   group: {
