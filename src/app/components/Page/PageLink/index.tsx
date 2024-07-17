@@ -12,17 +12,7 @@ interface PageLinkProps extends Partial<Omit<Router.LinkProps, 'children'>> {
   icon?: Partial<IconProps> | undefined;
   label?: string | undefined;
   className?: string | undefined;
-  variant?:
-    | 'text-default'
-    | 'ghost-default'
-    | 'elevated-default'
-    | 'text-accent'
-    | 'ghost-accent'
-    | 'elevated-accent'
-    | `text-${Theme.Color}`
-    | `ghost-${Theme.Color}`
-    | `elevated-${Theme.Color}`
-    | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 const PageLink: React.FC<PageLinkProps> & {} = (props) => {

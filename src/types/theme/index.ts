@@ -35,12 +35,12 @@ export declare namespace Theme {
   type SchemeSurface = `${SchemeColor}-${SchemeVariant}`;
 
   type Variant =
-    | 'base'
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent'
-    | 'accent-default'
-    | 'accent-elevated';
+    | 'default'
+    | 'elevated'
+    | 'default-accent'
+    | 'elevated-accent'
+    | `default-${Color}`
+    | `elevated-${Color}`;
 
   export type Interaction =
     | 'enabled'

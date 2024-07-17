@@ -9,18 +9,7 @@ interface PageIntroProps {
     value: string;
     label: string;
     icon?: Partial<IconProps> | undefined;
-    variant?:
-      | 'base-default'
-      | 'base-elevated'
-      | 'accent-default'
-      | 'accent-elevated'
-      | 'accent-tonal'
-      | 'accent-ghost'
-      | `${Theme.Color}-tonal`
-      | `${Theme.Color}-ghost`
-      | `${Theme.Color}-default`
-      | `${Theme.Color}-elevated`
-      | undefined;
+    variant?: Theme.Variant | undefined;
   }>[];
 }
 
@@ -41,7 +30,7 @@ const PageIntro: PageIntroFactory = (props) => {
               key={item.value}
               label={item.label}
               icon={{ ...item.icon, name: item.icon?.name || 'arrow-northeast' }}
-              variant={item.variant || 'base-elevated'}
+              variant={item.variant || 'elevated'}
             />
           ))}
         </nav>

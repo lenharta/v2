@@ -10,13 +10,13 @@ const StackIntro: React.FC<{}> = ({}) => {
           {
             value: '/elements',
             label: 'Elements',
-            variant: 'accent-tonal',
+            variant: 'elevated',
             icon: { name: 'arrow-northeast' },
           },
           {
             value: '/projects',
             label: 'Projects',
-            variant: 'accent-elevated',
+            variant: 'elevated',
             icon: { name: 'arrow-west' },
           },
         ]}

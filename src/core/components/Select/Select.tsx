@@ -47,7 +47,7 @@ const Select: SelectFactory = (props) => {
     isOpen,
     offset = 0,
     zIndex = 300,
-    variant,
+    variant = 'default',
     disabled,
     strategy = 'absolute',
     placement = 'bottom-start',
