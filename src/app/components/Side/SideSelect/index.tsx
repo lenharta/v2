@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Store } from '@/types';
-import { getNextIndex, getPrevIndex } from '@/utils';
-import { Action, Floating, IconProps } from '@/core';
+import { Store } from '@types';
+import { getNextIndex, getPrevIndex } from '@utils';
+import { Action, Floating, IconProps } from '@core';
 
 interface SideSelectProps {
   group: { value: string; label: string; icon: Partial<IconProps> };

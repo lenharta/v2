@@ -1,5 +1,5 @@
-import { Page } from '@/app';
-import { Title } from '@/core';
+import { Page } from '@app';
+import { Title } from '@core';
 
 const ContactHero: React.FC<{}> = ({}) => (
   <Page.Hero>

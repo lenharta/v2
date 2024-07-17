@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Button } from '@/core';
+import { Button } from '@core';
 import { DemoHero } from '../DemoHero';
-import { Canvas } from '@/app';
+import { Canvas } from '@app';
 
 type DemoButtonFactory = React.FC<{}> & {
   Canvas: React.FC<{}>;

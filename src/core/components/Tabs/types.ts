@@ -1,5 +1,5 @@
-import { Theme } from '@/types';
-import { IconProps, DividerProps } from '@/core';
+import { Theme } from '@types';
+import { IconProps, DividerProps } from '@core';
 
 type TabsThemeVariant =
   | 'base-default'

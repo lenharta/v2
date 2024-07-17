@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DURATION, EASING, TransitionProps, Floating, Label } from '@/core';
+import { DURATION, EASING, TransitionProps, Floating, Label } from '@core';
 import { SelectBox } from './SelectBox';
 import { SelectProps } from './types';
 import { SelectOption } from './SelectOption';

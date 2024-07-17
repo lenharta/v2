@@ -1,7 +1,7 @@
-import { Icon } from '@/core';
-import { createFactory } from '@/factory';
-import { Factory, Theme } from '@/types';
-import { capitalizeString } from '@/utils';
+import { Icon } from '@core';
+import { createFactory } from '@factory';
+import { Factory, Theme } from '@types';
+import { capitalizeString } from '@utils';
 import { StackItem } from '../types';
 
 type StackTableBodyProps = {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toggle } from '@/core';
+import { Toggle } from '@core';
 import { DemoHero } from '../DemoHero';
 
 type DemoToggleFactory = React.FC<{}> & {

@@ -1,6 +1,6 @@
-import { Toggle } from '@/core';
+import { Toggle } from '@core';
 import { CanvasControlToggleProps } from '../types';
-import { capitalizeString } from '@/utils';
+import { capitalizeString } from '@utils';
 
 const CanvasControlToggle = (props: CanvasControlToggleProps) => {
   const { prop, value, onChange } = props;

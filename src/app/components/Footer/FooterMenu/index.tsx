@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Core } from '@/types';
+import { Core } from '@types';
 import { FooterMenuItem } from './MenuItem';
 import { FooterMenuGroup } from './MenuGroup';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Page } from '@/app';
+import { Page } from '@app';
 import { DemoHero } from './DemoHero';
 import { DemoIntro } from './DemoIntro';
 

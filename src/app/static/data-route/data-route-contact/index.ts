@@ -1,4 +1,4 @@
-import { Static } from '@/types';
+import { Static } from '@types';
 
 const ROUTE_MAP_CONTACT_META: Static.RouteMeta = {
   tags: 'route/page/contact/social/email/phone',

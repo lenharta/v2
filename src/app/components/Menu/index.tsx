@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Action } from '@/core';
+import { Action } from '@core';
 
 interface MenuProps {}
 

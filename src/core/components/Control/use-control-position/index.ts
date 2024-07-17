@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { cssTransform, valueToPixel } from '@/utils';
+import { cssTransform, valueToPixel } from '@utils';
 import { ControlPosition, UseControlPositionProps, UseControlPositionReturn } from '../types';
 
 function useControlPosition(props: UseControlPositionProps): UseControlPositionReturn {

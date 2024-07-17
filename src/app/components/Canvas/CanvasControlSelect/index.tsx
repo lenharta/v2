@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Select } from '@/core';
-import { capitalizeString } from '@/utils';
+import { Select } from '@core';
+import { capitalizeString } from '@utils';
 import {
   CanvasControlSelectData,
   CanvasControlSelectProps,

@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { createEventCallback } from '@/utils';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
+import { createEventCallback } from '@utils';
 
 import { ImageProps } from './types';
 

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { InlineInput } from '@/core';
-import { createFactory } from '@/factory';
+import { Factory } from '@types';
+import { InlineInput } from '@core';
+import { createFactory } from '@factory';
 import { CheckboxProps } from './types';
 import { CheckboxGroup } from './CheckboxGroup';
 import { CheckboxIndicator } from './CheckboxIndicator';

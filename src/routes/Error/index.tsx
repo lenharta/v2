@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Page } from '@/app';
+import { Page } from '@app';
 import { ErrorHero } from './ErrorHero';
 import { ErrorBanner } from './ErrorBanner';
 

@@ -1,4 +1,4 @@
-import { Theme } from '@/types';
+import { Theme } from '@types';
 
 interface TextProps extends Theme.TypographyProps {
   span?: boolean | undefined;

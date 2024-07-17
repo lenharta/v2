@@ -1,5 +1,5 @@
-import { META } from '@/app';
-import { Title } from '@/core';
+import { META } from '@data';
+import { Title } from '@core';
 
 const MetaName: React.FC<{}> = ({}) => (
   <Title className="v2-footer-meta-name" data-type="name" h4>

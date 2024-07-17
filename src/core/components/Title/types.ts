@@ -1,4 +1,4 @@
-import { Theme } from '@/types';
+import { Theme } from '@types';
 
 interface TitleProps extends Theme.TypographyProps {
   h1?: boolean | undefined;

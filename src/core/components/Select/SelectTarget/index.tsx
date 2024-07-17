@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { Floating, UnstyledButton, SelectTargetProps, useFloatingContext } from '@/core';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
+import { Floating, UnstyledButton, SelectTargetProps, useFloatingContext } from '@core';
 
 type SelectTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;

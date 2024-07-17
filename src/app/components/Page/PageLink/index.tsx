@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { Icon, IconProps, UnstyledLink } from '@/core';
-import { Theme } from '@/types';
+import { Icon, IconProps, UnstyledLink } from '@core';
+import { Theme } from '@types';
 
 // default - transparent, inherit
 // elevated - surface

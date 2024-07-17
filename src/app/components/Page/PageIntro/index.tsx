@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Page } from '@/app';
-import { Theme } from '@/types';
-import { IconProps, Text } from '@/core';
+import { Page } from '@app';
+import { Theme } from '@types';
+import { IconProps, Text } from '@core';
 
 interface PageIntroProps {
   text: string;

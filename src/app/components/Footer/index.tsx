@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FooterMeta } from './FooterMeta';
 import { FooterMenu } from './FooterMenu';
-import { FOOTER_CONNECT_MENU, FOOTER_PROJECT_MENU } from './constants';
+import { FOOTER_CONNECT_MENU, FOOTER_PROJECT_MENU } from '@data';
 
 interface FooterProps {}
 

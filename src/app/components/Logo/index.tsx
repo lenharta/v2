@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useClxss } from '@/hooks';
-import { Factory, Theme } from '@/types';
-import { createPolymorphicFactory } from '@/factory';
+import { useClxss } from '@hooks';
+import { Factory, Theme } from '@types';
+import { createPolymorphicFactory } from '@factory';
 
 interface LogoThemeProps {
   size?: Theme.SizeExpanded | undefined;

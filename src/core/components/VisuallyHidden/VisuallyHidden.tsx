@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
+import { Factory } from '@types';
 import { VisuallyHiddenProps } from './types';
-import { createPolymorphicFactory } from '@/factory';
+import { createPolymorphicFactory } from '@factory';
 
 type VisuallyHiddenFactory = Factory.Config<{
   ref: HTMLDivElement;

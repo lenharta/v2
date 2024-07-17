@@ -1,5 +1,5 @@
-import { Page } from '@/app';
-import { Button, Text, Title } from '@/core';
+import { Page } from '@app';
+import { Button, Text, Title } from '@core';
 import { OVERVIEW_EXPERIENCE_DATA } from '../data';
 
 interface OverviewExperienceProps {}

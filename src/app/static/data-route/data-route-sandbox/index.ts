@@ -1,4 +1,4 @@
-import { Static } from '@/types';
+import { Static } from '@types';
 
 const ROUTE_MAP_SANDBOX_META: Static.RouteMeta = {
   tags: 'route/page/demo/library/tokens/components/site/story/stories/examples',

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { StackProps } from '@/core';
-import { createPolymorphicFactory } from '@/factory';
+import { Factory } from '@types';
+import { StackProps } from '@core';
+import { createPolymorphicFactory } from '@factory';
 
 type StackFactory = Factory.Config<{
   ref: HTMLDivElement;

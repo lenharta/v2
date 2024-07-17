@@ -1,4 +1,4 @@
-import { Core } from '@/types';
+import { Core } from '@types';
 import { assignRef } from '../assign-ref';
 
 /** A utility function that merges multiple refs */

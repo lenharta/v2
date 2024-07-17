@@ -1,4 +1,4 @@
-import { Floating, Text } from '@/core';
+import { Floating, Text } from '@core';
 
 interface SideNavTooltipProps {
   label: string;

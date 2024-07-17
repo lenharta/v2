@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { Theme } from '@/types';
-import { Action, IconProps } from '@/core';
-import { useDispatch, useStore } from '@/app';
+import { Theme } from '@types';
+import { Action, IconProps } from '@core';
+import { useDispatch, useStore } from '@app';
 import { SideSelect } from './SideSelect';
 import { SideNav } from './SideNav';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getScrollPosition } from '@/utils';
+import { getScrollPosition } from '@utils';
 
 interface ScrollPosition {
   x: number;

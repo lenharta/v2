@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { StoreProvider } from '@/app';
+import { StoreProvider } from '@app';
 import { Header } from '../Header';
 import { Main } from '../Main';
 import { Side } from '../Side';

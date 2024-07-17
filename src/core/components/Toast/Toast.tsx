@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { Text, Title, IconBtn, Transition, DURATION, EASING } from '@/core';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
+import { Text, Title, IconBtn, Transition, DURATION, EASING } from '@core';
 import { ToastProps } from './types';
 
 type ToastFactory = Factory.Config<{

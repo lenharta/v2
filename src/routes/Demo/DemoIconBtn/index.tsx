@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IconBtn } from '@/core';
+import { IconBtn } from '@core';
 import { DemoHero } from '../DemoHero';
-import { Canvas } from '@/app';
+import { Canvas } from '@app';
 
 type DemoIconBtnFactory = React.FC<{}> & {
   Canvas: React.FC<{}>;
