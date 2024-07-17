@@ -41,7 +41,7 @@ const TabsItem = createFactory<TabsItemFactory>((props, ref) => {
       selected={!!(ctx.value === value) || undefined}
       className={clsx(
         'v2-tabs-item',
-        `v2-tabs-item--${variant || ctx.variant || 'base-default'}`,
+        `v2-tabs-item--${variant || ctx.variant || 'default'}`,
         className
       )}
       onClick={(event) => ctx.onValueChange(event.currentTarget.value)}

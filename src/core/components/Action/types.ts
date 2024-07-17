@@ -4,18 +4,7 @@ import { Theme } from '@types';
 interface ActionThemeProps {
   accent?: boolean | undefined;
   elevated?: boolean | undefined;
-  variant?:
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent-default'
-    | 'accent-elevated'
-    | 'accent-tonal'
-    | 'accent-ghost'
-    | `${Theme.Color}-tonal`
-    | `${Theme.Color}-ghost`
-    | `${Theme.Color}-default`
-    | `${Theme.Color}-elevated`
-    | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 interface ActionProps extends UnstyledButtonProps, ActionThemeProps {

@@ -25,7 +25,7 @@ const AccordionPanel = createFactory<AccordionPanelFactory>((props, ref) => {
       isOpen={ctx.isValueActive(ctxItem.value)}
       className={clsx(
         'v2-accordion-panel',
-        `v2-accordion-panel--${variant || ctxItem.variant || ctx.variant || 'base-default'}`,
+        `v2-accordion-panel--${variant || ctxItem.variant || ctx.variant || 'default'}`,
         className
       )}
       aria-labelledby={ctx.getTargetId(ctxItem.value)}

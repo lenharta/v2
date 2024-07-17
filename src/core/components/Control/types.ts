@@ -4,18 +4,7 @@ import { IconProps } from '../Icon';
 type ControlPosition = Record<'height' | 'width' | 'left' | 'top', number>;
 
 interface ControlThemeProps {
-  variant?:
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent-default'
-    | 'accent-elevated'
-    | 'accent-tonal'
-    | 'accent-ghost'
-    | `${Theme.Color}-tonal`
-    | `${Theme.Color}-ghost`
-    | `${Theme.Color}-default`
-    | `${Theme.Color}-elevated`
-    | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 interface UseControlPositionProps {

@@ -1,5 +1,3 @@
-import { ToggleProps } from '@core';
-
 type CanvasControlType = 'toggle' | 'segment' | 'string' | 'select';
 
 type CanvasControl<

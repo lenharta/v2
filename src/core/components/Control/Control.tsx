@@ -23,7 +23,7 @@ const Control: ControlFactory = (props) => {
   const {
     items,
     value,
-    variant = 'base-default',
+    variant = 'default',
     className,
     trapFocus = false,
     orientation = 'horizontal',

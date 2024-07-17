@@ -12,21 +12,11 @@ interface PageLinkProps extends Partial<Omit<Router.LinkProps, 'children'>> {
   icon?: Partial<IconProps> | undefined;
   label?: string | undefined;
   className?: string | undefined;
-  variant?:
-    | 'text-default'
-    | 'ghost-default'
-    | 'elevated-default'
-    | 'text-accent'
-    | 'ghost-accent'
-    | 'elevated-accent'
-    | `text-${Theme.Color}`
-    | `ghost-${Theme.Color}`
-    | `elevated-${Theme.Color}`
-    | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 const PageLink: React.FC<PageLinkProps> & {} = (props) => {
-  const { to = '/', icon, label, variant = 'base-elevated', className, ...forwardedProps } = props;
+  const { to = '/', icon, label, variant = 'elevated', className, ...forwardedProps } = props;
 
   if (!label && !forwardedProps['aria-label']) {
     console.warn('[@v2/Page.Link]: programmer must provvide aria-label for accessibility purposes');
