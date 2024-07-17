@@ -16,7 +16,7 @@ interface PageLinkProps extends Partial<Omit<Router.LinkProps, 'children'>> {
 }
 
 const PageLink: React.FC<PageLinkProps> & {} = (props) => {
-  const { to = '/', icon, label, variant = 'base-elevated', className, ...forwardedProps } = props;
+  const { to = '/', icon, label, variant = 'elevated', className, ...forwardedProps } = props;
 
   if (!label && !forwardedProps['aria-label']) {
     console.warn('[@v2/Page.Link]: programmer must provvide aria-label for accessibility purposes');

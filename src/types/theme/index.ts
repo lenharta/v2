@@ -34,7 +34,7 @@ export declare namespace Theme {
   type SchemeVariant = 'default' | 'elevated';
   type SchemeSurface = `${SchemeColor}-${SchemeVariant}`;
 
-  type Variant =
+  export type Variant =
     | 'default'
     | 'elevated'
     | 'default-accent'

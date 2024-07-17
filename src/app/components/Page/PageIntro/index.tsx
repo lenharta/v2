@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Page } from '@app';
 import { Theme } from '@types';
 import { IconProps, Text } from '@core';
+import { PageLink } from '../PageLink';
 
 interface PageIntroProps {
   text: string;
@@ -25,7 +25,7 @@ const PageIntro: PageIntroFactory = (props) => {
         </div>
         <nav className="v2-page-intro-box v2-page-intro-links">
           {(links || []).map((item) => (
-            <Page.Link
+            <PageLink
               to={item.value}
               key={item.value}
               label={item.label}

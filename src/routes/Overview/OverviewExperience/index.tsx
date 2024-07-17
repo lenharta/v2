@@ -1,4 +1,4 @@
-import { Page } from '@app';
+import { Page } from '@app/components';
 import { Button, Text, Title } from '@core';
 import { OVERVIEW_EXPERIENCE_DATA } from '../data';
 

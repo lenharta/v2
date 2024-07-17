@@ -4,8 +4,8 @@ import * as ReactRouter from 'react-router-dom';
 
 import './styles/index.scss';
 
-import { Layout } from '@app/components';
-import * as Routes from '@routes';
+import { Layout } from './app';
+import * as Routes from './routes';
 
 const browserRouter = ReactRouter.createBrowserRouter([
   {

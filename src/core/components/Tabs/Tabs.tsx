@@ -35,7 +35,7 @@ const Tabs: TabsFactory = (props) => {
       <TabsProvider
         value={{
           value,
-          variant: variant || 'base-default',
+          variant: variant || 'default',
           loading,
           disabled,
           readOnly,
