@@ -12,13 +12,13 @@ const OverviewIntro: OverviewIntroFactory = ({}) => {
           {
             value: `/about`,
             label: `Learn More`,
-            variant: `elevated`,
+            variant: `elevated-accent`,
             icon: { name: `arrow-northeast` },
           },
           {
             value: `/contact`,
             label: `Contact Me `,
-            variant: `elevated`,
+            variant: `elevated-accent`,
             icon: { name: `arrow-east` },
           },
         ]}

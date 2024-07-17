@@ -27,15 +27,26 @@ const Control: ControlFactory = (props) => {
     className,
     trapFocus = false,
     orientation = 'horizontal',
-    onItemChange,
+    defaultValue,
+    onItemChange: controlledChange,
   } = props;
+
+  const [uncontrolledValue, uncontrolledChange] = React.useState(defaultValue || items[0].value);
 
   const data = React.useMemo(() => parseItemData(items) as Core.ItemParsed[], [items]);
 
   const { refs, thumbRef, trackRef, setElementRefs, update } = useControlPosition({
     initialPosition: { height: 0, width: 0, left: 0, top: 0 },
-    currentValue: value,
+    currentValue: value || uncontrolledValue,
   });
+
+  const handleChange = React.useCallback(
+    (v: string) => {
+      if (!controlledChange) return uncontrolledChange(v);
+      return controlledChange(v);
+    },
+    [controlledChange, uncontrolledChange]
+  );
 
   return (
     <div className={clsx('v2-control', `v2-control--${variant}`, className)}>
@@ -51,13 +62,13 @@ const Control: ControlFactory = (props) => {
             ref={(node) => setElementRefs(node, item.value)}
             refs={refs}
             item={item}
-            value={value}
+            value={value || uncontrolledValue}
             update={update}
             variant={variant}
             trackRef={trackRef}
             trapFocus={trapFocus}
             orientation={orientation}
-            onItemChange={onItemChange}
+            onItemChange={handleChange}
             setElementRefs={setElementRefs}
           />
         ))}

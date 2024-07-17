@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { CanvasProps } from './types';
+import { CanvasDisplay } from './CanvasDisplay';
+import { CanvasControls } from './CanvasControls';
 import { CanvasControlToggle } from './CanvasControlToggle';
 import { CanvasControlSelect } from './CanvasControlSelect';
 
@@ -37,10 +39,8 @@ function Canvas({ children, controls }: CanvasProps) {
   return (
     <div className="v2-canvas">
       <div className="v2-canvas-layout">
-        <div className="v2-canvas-display">
-          <React.Fragment>{React.cloneElement(children as JSX.Element, state)}</React.Fragment>
-        </div>
-        <div className="v2-canvas-controls">{items}</div>
+        <CanvasDisplay children={children} state={state} />
+        <CanvasControls>{items}</CanvasControls>
       </div>
     </div>
   );

@@ -5,9 +5,13 @@ interface DemoHeroProps {
   title?: string | undefined;
 }
 
-const DemoHero: React.FC<DemoHeroProps> = ({ title = 'Demo' }) => (
+const DemoHero: React.FC<DemoHeroProps> = ({ title }) => (
   <Page.Hero>
-    <Title h1>{title}</Title>
+    {title && (
+      <Title h1 className="v2-demo-title">
+        Demo | <span>{title}</span>
+      </Title>
+    )}
   </Page.Hero>
 );
 

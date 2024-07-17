@@ -45,8 +45,10 @@ const browserRouter = ReactRouter.createBrowserRouter([
           { path: '/demo/toggle', element: <Routes.Demo.Toggle /> },
           { path: '/demo/button', element: <Routes.Demo.Button /> },
           { path: '/demo/action', element: <Routes.Demo.Action /> },
+          { path: '/demo/control', element: <Routes.Demo.Control /> },
           { path: '/demo/icon-btn', element: <Routes.Demo.IconBtn /> },
           { path: '/demo/tool-btn', element: <Routes.Demo.ToolBtn /> },
+          { path: '/demo/checkbox', element: <Routes.Demo.Checkbox /> },
         ],
       },
       {

@@ -14,5 +14,10 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: var(--v2-04);
+
+    .v2-label {
+      font-weight: var(--v2-font-weight-med);
+      font-family: var(--v2-font-family);
+    }
   }
 }

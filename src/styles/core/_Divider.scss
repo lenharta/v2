@@ -32,6 +32,7 @@
     height: var(--v2-divider-size, var(--v2-divider-size-sm));
     border-top-width: var(--v2-divider-size, var(--v2-divider-size-sm));
     border-top-style: var(--v2-divider-decoration, var(--v2-divider-decoration-solid));
+    border-top-color: var(--c-divider-bgd);
   }
 
   [data-prefers-dir='rtl'] & {
@@ -54,6 +55,7 @@
     line-height: 1;
     direction: ltr;
     text-align: left;
+    color: var(--c-divider-clr);
 
     [data-prefers-dir='rtl'] & {
       text-align: right;

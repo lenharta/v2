@@ -28,7 +28,7 @@
   box-sizing: border-box;
 
   width: auto;
-  cursor: pointer;
+  cursor: var(--v2-button-cursor, pointer);
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -41,8 +41,38 @@
   padding-inline: var(--v2-button-padding-x, var(--v2-button-padding-x-sm));
 
   color: var(--c-button-clr);
-  border-color: var(--c-button-bdr);
   background-color: var(--c-button-bgd);
+  border: solid var(--v2-01) transparent;
+  outline: solid var(--v2-01) transparent;
+
+  &:not([data-disabled], [data-loading], [data-readOnly]),
+  &:not([data-disabled], [data-loading], [data-readOnly]):hover,
+  &:not([data-disabled], [data-loading], [data-readOnly]):active,
+  &:not([data-disabled], [data-loading], [data-readOnly])[data-selected] {
+    --v2-button-cursor: pointer;
+  }
+
+  &[data-disabled] {
+    --v2-button-cursor: default;
+  }
+
+  &[data-readonly] {
+    --v2-button-cursor: default;
+  }
+
+  &[data-loading] {
+    --v2-button-cursor: wait;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+    outline-offset: 0;
+  }
+
+  &:focus:focus-visible {
+    outline-color: var(--c-focus);
+    outline-offset: var(--v2-01);
+  }
 
   &:where([data-block]) {
     width: 100%;

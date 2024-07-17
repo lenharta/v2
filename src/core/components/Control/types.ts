@@ -31,9 +31,10 @@ interface UseControlPositionReturn {
 }
 
 interface ControlProps extends ControlThemeProps {
-  value: string;
+  value?: string | undefined;
   items: ControlItem[];
-  onItemChange: (value: string) => void;
+  defaultValue?: string | undefined;
+  onItemChange?: ((value: string) => void) | undefined;
   className?: string | undefined;
   trapFocus?: boolean | undefined;
   orientation?: Core.Orientation | undefined;

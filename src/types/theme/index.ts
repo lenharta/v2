@@ -40,7 +40,11 @@ export declare namespace Theme {
     | 'default-accent'
     | 'elevated-accent'
     | `default-${Color}`
-    | `elevated-${Color}`;
+    | `elevated-${Color}`
+    | 'default-accent-tonal'
+    | 'elevated-accent-tonal'
+    | `default-${Color}-tonal`
+    | `elevated-${Color}-tonal`;
 
   export type Interaction =
     | 'enabled'

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Factory } from '@types';
 import { createFactory } from '@factory';
-import { Floating, UnstyledButton, SelectTargetProps, useFloatingContext } from '@core';
+import { Floating, UnstyledButton, SelectTargetProps, useFloatingContext, Icon } from '@core';
 
 type SelectTargetFactory = Factory.Config<{
   ref: HTMLButtonElement;
@@ -26,7 +26,10 @@ const SelectTarget = createFactory<SelectTargetFactory>((props, ref) => {
         )}
         {...forwardedProps}
       >
-        {value || placeholder}
+        <div className="v2-select-target-layout">
+          {value || placeholder}
+          <Icon name={ctx.isOpen ? 'chevron-contract' : 'chevron-south'} />
+        </div>
       </UnstyledButton>
     </Floating.Target>
   );

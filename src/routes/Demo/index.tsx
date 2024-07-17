@@ -10,7 +10,9 @@ import { DemoButton } from './DemoButton';
 import { DemoAction } from './DemoAction';
 import { DemoToolBtn } from './DemoToolBtn';
 import { DemoIconBtn } from './DemoIconBtn';
+import { DemoCheckbox } from './DemoCheckbox';
 import { DemoDirectory } from './DemoDirectory';
+import { DemoControl } from './DemoControl';
 
 type DemoFactory = React.FC<{}> & {
   Hero: typeof DemoHero;
@@ -18,8 +20,10 @@ type DemoFactory = React.FC<{}> & {
   Toggle: typeof DemoToggle;
   Button: typeof DemoButton;
   Action: typeof DemoAction;
+  Control: typeof DemoControl;
   ToolBtn: typeof DemoToolBtn;
   IconBtn: typeof DemoIconBtn;
+  Checkbox: typeof DemoCheckbox;
   Directory: typeof DemoDirectory;
 };
 
@@ -34,8 +38,10 @@ Demo.Intro = DemoIntro;
 Demo.Toggle = DemoToggle;
 Demo.Button = DemoButton;
 Demo.Action = DemoAction;
+Demo.Control = DemoControl;
 Demo.ToolBtn = DemoToolBtn;
 Demo.IconBtn = DemoIconBtn;
+Demo.Checkbox = DemoCheckbox;
 Demo.Directory = DemoDirectory;
 Demo.displayName = '@v2/Demo.Route';
 export { Demo };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Select } from '@core';
+import { Divider, Select } from '@core';
 import { capitalizeString } from '@utils';
 import {
   CanvasControlSelectData,
@@ -25,11 +25,11 @@ const CanvasControlSelect: React.FC<CanvasControlSelectProps> = (props) => {
 
   return (
     <div className="v2-canvas-select">
+      <Divider label={capitalizeString(prop)} />
       <Select
         data={parseSelectData(data)}
         value={value}
         isOpen={isOpen}
-        label={capitalizeString(prop)}
         placeholder={capitalizeString(prop)}
         onOpenChange={onOpenChange}
         onChange={handleChange}

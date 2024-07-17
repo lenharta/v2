@@ -39,6 +39,7 @@ const Toggle = createFactory<ToggleFactory>((props, ref) => {
       )}
     >
       <input
+        tabIndex={0}
         role="switch"
         type="checkbox"
         checked={checked}

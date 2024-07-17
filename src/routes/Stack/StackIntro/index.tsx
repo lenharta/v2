@@ -8,15 +8,15 @@ const StackIntro: React.FC<{}> = ({}) => {
         text="Explore the core technologies and tools I utilize to craft scalable, responsive web applications. From JavaScript frameworks to CSS preprocessors, see the foundation of my front-end development skills."
         links={[
           {
-            value: '/elements',
-            label: 'Elements',
-            variant: 'elevated',
+            value: '/demo',
+            label: 'Demo',
+            variant: 'elevated-accent',
             icon: { name: 'arrow-northeast' },
           },
           {
             value: '/projects',
             label: 'Projects',
-            variant: 'elevated',
+            variant: 'elevated-accent',
             icon: { name: 'arrow-west' },
           },
         ]}

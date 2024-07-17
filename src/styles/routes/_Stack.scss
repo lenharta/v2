@@ -11,6 +11,7 @@
 }
 
 .v2-stack-table {
+  padding-inline: var(--v2-gutter);
   width: 100%;
   display: block;
   max-width: 100em;
@@ -140,7 +141,7 @@
 
   &-head-cell[data-table-column='type'],
   &-body-cell[data-table-column='type'] {
-    width: 25%;
+    width: 33%;
 
     @media (min-width: 60em) {
       width: 10%;
@@ -149,7 +150,7 @@
 
   &-head-cell[data-table-column='name'],
   &-body-cell[data-table-column='name'] {
-    width: 55%;
+    width: 33%;
 
     @media (min-width: 60em) {
       width: 20%;
@@ -168,7 +169,7 @@
 
   &-head-cell[data-table-column='docs'],
   &-body-cell[data-table-column='docs'] {
-    width: 20%;
+    width: auto;
 
     @media (min-width: 60em) {
       width: 10%;

@@ -4,6 +4,7 @@ import { SelectBox } from './SelectBox';
 import { SelectProps } from './types';
 import { SelectOption } from './SelectOption';
 import { SelectTarget } from './SelectTarget';
+import clsx from 'clsx';
 
 const defaultTransition: Partial<TransitionProps> = {
   duration: DURATION['moderate-01'],
@@ -101,26 +102,28 @@ const Select: SelectFactory = (props) => {
       />
 
       <Select.Box variant={variant}>
-        {data.map((item) => (
-          <Select.Option
-            variant={variant}
-            key={item.value}
-            label={item.label}
-            value={item.value}
-            disabled={item.disabled}
-            readOnly={item.readOnly}
-            selected={item.value === value || undefined}
-            onClick={() => {
-              if (!disabled || !item.disabled || !item.readOnly) {
-                if (closeOnOptionClick) {
-                  onOpenChange(false);
-                  onClose?.();
+        <div className={clsx('v2-select-list', { [`v2-select-list--${variant}`]: variant })}>
+          {data.map((item) => (
+            <Select.Option
+              variant={variant}
+              key={item.value}
+              label={item.label}
+              value={item.value}
+              disabled={item.disabled}
+              readOnly={item.readOnly}
+              selected={item.value === value || undefined}
+              onClick={() => {
+                if (!disabled || !item.disabled || !item.readOnly) {
+                  if (closeOnOptionClick) {
+                    onOpenChange(false);
+                    onClose?.();
+                  }
+                  onChange?.(item.value);
                 }
-                onChange?.(item.value);
-              }
-            }}
-          />
-        ))}
+              }}
+            />
+          ))}
+        </div>
       </Select.Box>
     </Floating>
   );

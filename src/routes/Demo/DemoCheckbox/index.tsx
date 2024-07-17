@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Button } from '@core';
+import { Button, Checkbox } from '@core';
 import { DemoHero } from '../DemoHero';
 import { Canvas } from '@app';
 
-type DemoButtonFactory = React.FC<{}> & {
+type DemoCheckboxFactory = React.FC<{}> & {
   Canvas: React.FC<{}>;
 };
 
-const DemoButtonCanvas: DemoButtonFactory['Canvas'] = (props) => {
+const DemoCheckboxCanvas: DemoCheckboxFactory['Canvas'] = (props) => {
   const {} = props;
   return (
     <Canvas
@@ -33,31 +33,29 @@ const DemoButtonCanvas: DemoButtonFactory['Canvas'] = (props) => {
             { label: 'elevated', value: 'elevated' },
             { label: 'default-accent', value: 'default-accent' },
             { label: 'elevated-accent', value: 'elevated-accent' },
-            { label: 'default-accent-tonal', value: 'default-accent-tonal' },
-            { label: 'elevated-accent-tonal', value: 'elevated-accent-tonal' },
           ],
         },
-
-        { type: 'toggle', prop: 'selected', initialValue: false },
+        { type: 'toggle', prop: 'checked', initialValue: false },
+        { type: 'toggle', prop: 'mixed', initialValue: false },
         { type: 'toggle', prop: 'readOnly', initialValue: false },
         { type: 'toggle', prop: 'disabled', initialValue: false },
       ]}
     >
-      <Button>Button</Button>
+      <Checkbox label="Label" />
     </Canvas>
   );
 };
 
-const DemoButton: DemoButtonFactory = (props) => {
+const DemoCheckbox: DemoCheckboxFactory = (props) => {
   const {} = props;
   return (
     <React.Fragment>
-      <DemoHero title="Button" />
-      <DemoButton.Canvas />
+      <DemoHero title="Checkbox" />
+      <DemoCheckbox.Canvas />
     </React.Fragment>
   );
 };
 
-DemoButton.Canvas = DemoButtonCanvas;
-DemoButton.displayName = '@v2/Demo.Button';
-export { DemoButton };
+DemoCheckbox.Canvas = DemoCheckboxCanvas;
+DemoCheckbox.displayName = '@v2/Demo.Button';
+export { DemoCheckbox };

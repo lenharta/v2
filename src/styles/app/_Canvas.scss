@@ -9,10 +9,11 @@
     flex-direction: column;
     border-width: var(--v2-01);
     border-style: solid;
-    border-radius: var(--v2-radius-lg);
+    // border-radius: var(--v2-radius-sm);
     color: var(--c-canvas-clr);
     border-color: var(--c-canvas-bdr);
     background-color: var(--c-canvas-bgd);
+    min-height: 500px;
 
     @media (min-width: 60em) {
       flex-direction: row;
@@ -22,9 +23,8 @@
   &-select {
     max-width: 320px;
 
-    .v2-label {
-      line-height: 1;
-      margin-bottom: var(--v2-03);
+    .v2-divider {
+      margin-bottom: var(--v2-04);
     }
 
     .v2-select-target {
@@ -52,6 +52,8 @@
 
     @media (min-width: 60em) {
       flex: 1 1 40%;
+      border-left-style: solid;
+      border-left-width: var(--v2-01);
     }
   }
 

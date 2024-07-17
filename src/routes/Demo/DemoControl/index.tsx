@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Button } from '@core';
+import { Control } from '@core';
 import { DemoHero } from '../DemoHero';
 import { Canvas } from '@app';
 
-type DemoButtonFactory = React.FC<{}> & {
+type DemoControlFactory = React.FC<{}> & {
   Canvas: React.FC<{}>;
 };
 
-const DemoButtonCanvas: DemoButtonFactory['Canvas'] = (props) => {
+const DemoControlCanvas: DemoControlFactory['Canvas'] = (props) => {
   const {} = props;
   return (
     <Canvas
@@ -33,31 +33,34 @@ const DemoButtonCanvas: DemoButtonFactory['Canvas'] = (props) => {
             { label: 'elevated', value: 'elevated' },
             { label: 'default-accent', value: 'default-accent' },
             { label: 'elevated-accent', value: 'elevated-accent' },
-            { label: 'default-accent-tonal', value: 'default-accent-tonal' },
-            { label: 'elevated-accent-tonal', value: 'elevated-accent-tonal' },
           ],
         },
-
-        { type: 'toggle', prop: 'selected', initialValue: false },
         { type: 'toggle', prop: 'readOnly', initialValue: false },
         { type: 'toggle', prop: 'disabled', initialValue: false },
       ]}
     >
-      <Button>Button</Button>
+      <Control
+        defaultValue="option-1"
+        items={[
+          { value: 'option-1', label: 'Segment 1' },
+          { value: 'option-2', label: 'Segment 2' },
+          { value: 'option-3', label: 'Segment 3' },
+        ]}
+      />
     </Canvas>
   );
 };
 
-const DemoButton: DemoButtonFactory = (props) => {
+const DemoControl: DemoControlFactory = (props) => {
   const {} = props;
   return (
     <React.Fragment>
-      <DemoHero title="Button" />
-      <DemoButton.Canvas />
+      <DemoHero title="Control" />
+      <DemoControl.Canvas />
     </React.Fragment>
   );
 };
 
-DemoButton.Canvas = DemoButtonCanvas;
-DemoButton.displayName = '@v2/Demo.Button';
-export { DemoButton };
+DemoControl.Canvas = DemoControlCanvas;
+DemoControl.displayName = '@v2/Demo.Control';
+export { DemoControl };
