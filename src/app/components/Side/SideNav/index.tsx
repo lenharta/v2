@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { IconProps } from '@/core';
+import { IconProps } from '@core';
 import { SideNavTarget } from './SideNavTarget';
 import { SideNavTooltip } from './SideNavTooltip';
 

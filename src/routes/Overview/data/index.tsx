@@ -9,7 +9,7 @@ import {
   CompanyLogoJeffries,
   CompanyLogoMclaren,
   CompanyLogoWalmart,
-} from '@/core';
+} from '@core';
 
 const OVERVIEW_BRANDS_DATA = [
   {

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createPolymorphicFactory } from '@/factory';
-import { Text, Label, InlineInputProps } from '@/core';
+import { Factory } from '@types';
+import { createPolymorphicFactory } from '@factory';
+import { Text, Label, InlineInputProps } from '@core';
 
 type InlineInputFactory = Factory.Config<{
   ref: HTMLDivElement;

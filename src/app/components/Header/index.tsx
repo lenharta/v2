@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { Action } from '@/core';
-import { useStore } from '@/app/store';
+import { Action } from '@core';
+import { useStore } from '@app/store';
 
 interface HeaderProps {}
 

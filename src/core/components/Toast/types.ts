@@ -1,4 +1,4 @@
-import { TransitionProps } from '@/core';
+import { TransitionProps } from '@core';
 
 interface ToastProps extends Partial<TransitionProps> {
   mounted: boolean;

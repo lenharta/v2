@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { InlineInput } from '@/core';
+import { Factory } from '@types';
+import { InlineInput } from '@core';
 import { ToggleProps } from './types';
-import { createFactory } from '@/factory';
+import { createFactory } from '@factory';
 
 type ToggleFactory = Factory.Config<{
   comp: 'input';

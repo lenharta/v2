@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useDidUpdate } from '@/hooks';
+import { useDidUpdate } from '@hooks';
 import { useFloating as useFloatingPayload, UseFloatingReturn } from '@floating-ui/react';
 import { UseFloatingOptions } from '../types';
 import { useFloatingUpdate } from '../use-floating-update';

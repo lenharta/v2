@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createPolymorphicFactory } from '@/factory';
+import { Factory } from '@types';
+import { createPolymorphicFactory } from '@factory';
 import { TextProps } from './types';
 
 type TextFactory = Factory.Config<{

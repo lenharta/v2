@@ -1,4 +1,4 @@
-import { Static } from '@/types';
+import { Static } from '@types';
 
 const ROUTE_MAP_PROJECTS_META: Static.RouteMeta = {
   tags: 'route/page/project/app/demo/showcase',

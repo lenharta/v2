@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useStorage } from '@/hooks';
-import { Store, Theme } from '@/types';
-import { createRandomString, objectKeys } from '@/utils';
+import { useStorage } from '@hooks';
+import { Store, Theme } from '@types';
+import { createRandomString, objectKeys } from '@utils';
 import { DEFAULT_STORE, THEME_ATTRIBUTE_MAP } from '../constants';
 import { DispatchContext, StoreContext } from '../context';
 

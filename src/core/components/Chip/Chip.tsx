@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { UnstyledButton } from '@/core';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
+import { UnstyledButton } from '@core';
 import { ChipGroup } from './ChipGroup';
 import { ChipProps } from './types';
 

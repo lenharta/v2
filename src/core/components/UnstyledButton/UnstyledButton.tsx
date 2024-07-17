@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
 import { UnstyledButtonProps } from './types';
 
 type UnstyledButtonFactory = Factory.Config<{

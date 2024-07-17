@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
 
 import { Icon } from '../Icon/Icon';
 import { ToolBtnProps } from './types';

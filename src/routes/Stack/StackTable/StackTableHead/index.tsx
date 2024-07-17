@@ -1,7 +1,7 @@
-import { Factory } from '@/types';
+import { Factory } from '@types';
 import { StackItem } from '../types';
-import { createFactory } from '@/factory';
-import { Icon, IconProps } from '@/core';
+import { createFactory } from '@factory';
+import { Icon, IconProps } from '@core';
 
 type StackTableHeadProps = {
   order?: 'ascending' | 'descending' | undefined;

@@ -1,4 +1,4 @@
-import { I18n } from '@/types';
+import { I18n } from '@types';
 
 const DATA_I18N_LOCATIONS_UNITED_STATES: I18n.UnitedStatesRegion[] = [
   { label: 'Alabama', value: 'AL' },

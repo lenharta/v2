@@ -1,4 +1,4 @@
-import { IconProps } from '@/core';
+import { IconProps } from '@core';
 
 export declare namespace Core {
   export type CSS = React.CSSProperties;

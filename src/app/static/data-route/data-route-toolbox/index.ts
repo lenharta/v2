@@ -1,4 +1,4 @@
-import { Static } from '@/types';
+import { Static } from '@types';
 
 const ROUTE_MAP_TOOLBOX_META: Static.RouteMeta = {
   tags: 'route/page/tools/stack/tech/technology/javascript/typescript/react/html/css/scss/sass',

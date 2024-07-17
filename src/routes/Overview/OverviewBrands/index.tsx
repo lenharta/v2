@@ -1,5 +1,5 @@
-import { Page } from '@/app';
-import { Text, Title } from '@/core';
+import { Page } from '@app';
+import { Text, Title } from '@core';
 import { OVERVIEW_BRANDS_DATA } from '../data';
 
 interface OverviewBrandsBannerProps {

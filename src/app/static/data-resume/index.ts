@@ -1,4 +1,4 @@
-import { Static } from '@/types';
+import { Static } from '@types';
 
 const DATA_RESUME_LOCATION_MAP_DORAN_JONES: Static.ResumeItem['location'] = {
   state: { label: 'New York', value: 'NY' },

@@ -1,4 +1,4 @@
-import { FloatingProps, TransitionProps, UnstyledButtonProps } from '@/core';
+import { FloatingProps, TransitionProps, UnstyledButtonProps } from '@core';
 
 interface SelectThemeProps {
   variant?:

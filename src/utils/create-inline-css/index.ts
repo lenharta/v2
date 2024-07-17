@@ -1,4 +1,4 @@
-import { camelToKebabCase } from '@/utils';
+import { camelToKebabCase } from '@utils';
 
 const formatCssKey = (key?: string | number | symbol) => {
   return camelToKebabCase(String(key));

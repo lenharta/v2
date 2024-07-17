@@ -1,5 +1,5 @@
-import { Page } from '@/app';
-import { Text, Title } from '@/core';
+import { Page } from '@app';
+import { Text, Title } from '@core';
 import { OVERVIEW_STATS_DATA } from '../data';
 
 type OverviewStatsFactory = React.FC<{}> & {};

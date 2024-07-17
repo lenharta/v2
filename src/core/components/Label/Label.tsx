@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createPolymorphicFactory } from '@/factory';
+import { Factory } from '@types';
+import { createPolymorphicFactory } from '@factory';
 import { LabelProps } from './types';
 
 type LabelFactory = Factory.Config<{

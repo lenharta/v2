@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Page } from '@/app';
+import { Page } from '@app';
 import { ProjectsHero } from './ProjectsHero';
 import { ProjectsIntro } from './ProjectsIntro';
 

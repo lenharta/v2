@@ -1,5 +1,5 @@
-import { META } from '@/app';
-import { Text } from '@/core';
+import { META } from '@data';
+import { Text } from '@core';
 
 const MetaLocation: React.FC<{}> = ({}) => (
   <Text className="v2-footer-meta-location" data-type="location">

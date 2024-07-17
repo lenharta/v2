@@ -1,4 +1,5 @@
-import { META, ROUTE } from '@/app';
+import { META } from './meta';
+import { ROUTE } from './route';
 
 const FOOTER_CONNECT_MENU = {
   group: {

@@ -1,4 +1,4 @@
-import { Theme } from '@/types';
+import { Theme } from '@types';
 
 const THEME_VALUE_MAP: {
   dir: Theme.Dir[];

@@ -1,5 +1,5 @@
-import { Page } from '@/app';
-import { Divider, Stack, UnstyledLink } from '@/core';
+import { Page } from '@app';
+import { Divider, Stack, UnstyledLink } from '@core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { DemoIntro } from '../DemoIntro';

@@ -1,4 +1,4 @@
-import { Logo } from '@/app';
+import { Logo } from '@app';
 
 const MetaLogo: React.FC<{}> = ({}) => (
   <Logo

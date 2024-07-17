@@ -1,4 +1,4 @@
-import { Static } from '@/types';
+import { Static } from '@types';
 
 const ROUTE_MAP_CANVAS_META = {
   tags: 'route/page/canvas/construction/devleopment',

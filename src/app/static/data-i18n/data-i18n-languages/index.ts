@@ -1,4 +1,4 @@
-import { I18n } from '@/types';
+import { I18n } from '@types';
 
 const DATA_I18N_LANGUAGES: I18n.Language[] = [
   { label: 'Arabic', value: 'ar' },

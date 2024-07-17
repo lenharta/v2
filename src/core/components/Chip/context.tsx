@@ -1,4 +1,4 @@
-import { createSafeContext } from '@/utils';
+import { createSafeContext } from '@utils';
 import { ChipContext } from './types';
 
 const [ChipProvider, useChipContext] = createSafeContext<ChipContext>(
