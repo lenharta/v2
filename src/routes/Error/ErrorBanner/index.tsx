@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
 
-import { Page } from '@app';
+import { Page } from '@app/components';
 import { Text, Title } from '@core';
 
 type ErrorBannerFactory = React.FC<{}> & {};

@@ -1,4 +1,4 @@
-import { Page } from '@app';
+import { Page } from '@app/components';
 import { ArticlesHero } from './ArticlesHero';
 import { ArticlesIntro } from './ArticlesIntro';
 

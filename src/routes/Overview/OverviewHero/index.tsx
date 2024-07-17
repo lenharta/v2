@@ -1,4 +1,4 @@
-import { Page } from '@app';
+import { Page } from '@app/components';
 import { Title } from '@core';
 
 type OverviewHeroFactory = React.FC<{}> & {
