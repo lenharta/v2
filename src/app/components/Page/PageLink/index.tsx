@@ -1,30 +1,22 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { Icon, IconProps, UnstyledLink } from '@/core';
-import { Theme } from '@/types';
+import { Icon, IconProps, UnstyledLink } from '@core';
+import { Theme } from '@types';
+
+// default - transparent, inherit
+// elevated - surface
 
 interface PageLinkProps extends Partial<Omit<Router.LinkProps, 'children'>> {
   to?: string | undefined;
   icon?: Partial<IconProps> | undefined;
   label?: string | undefined;
   className?: string | undefined;
-  variant?:
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent-default'
-    | 'accent-elevated'
-    | 'accent-tonal'
-    | 'accent-ghost'
-    | `${Theme.Color}-tonal`
-    | `${Theme.Color}-ghost`
-    | `${Theme.Color}-default`
-    | `${Theme.Color}-elevated`
-    | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 const PageLink: React.FC<PageLinkProps> & {} = (props) => {
-  const { to = '/', icon, label, variant = 'base-elevated', className, ...forwardedProps } = props;
+  const { to = '/', icon, label, variant = 'elevated', className, ...forwardedProps } = props;
 
   if (!label && !forwardedProps['aria-label']) {
     console.warn('[@v2/Page.Link]: programmer must provvide aria-label for accessibility purposes');

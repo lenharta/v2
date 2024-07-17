@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { Action } from '@/core';
-import { useStore } from '@/app/store';
+import { Action } from '@core';
+import { useStore } from '@app/store';
 
 interface HeaderProps {}
 
@@ -30,10 +30,10 @@ const Header: HeaderFactory = ({}) => {
           <Action.Spacer grow />
 
           <Action
-            value="/canvas"
+            value="/demo"
             icon={{ name: 'arrow-northeast-square' }}
             onClick={(event) => navigate(event.currentTarget.value)}
-            aria-label="go to canvas page"
+            aria-label="go to demo page"
           />
           <Action
             value="/settings"

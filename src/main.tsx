@@ -4,8 +4,8 @@ import * as ReactRouter from 'react-router-dom';
 
 import './styles/index.scss';
 
-import { Layout } from '@/app/components';
-import * as Routes from '@/app/routes';
+import { Layout } from './app';
+import * as Routes from './routes';
 
 const browserRouter = ReactRouter.createBrowserRouter([
   {
@@ -38,66 +38,22 @@ const browserRouter = ReactRouter.createBrowserRouter([
         element: <Routes.Contact />,
       },
       {
-        path: '/elements',
-        element: <Routes.Elements />,
+        path: '/demo',
+        element: <Routes.Demo />,
         children: [
-          {
-            index: true,
-            element: <Routes.Elements.Root />,
-          },
-          {
-            path: '/elements/action',
-            element: <Routes.Elements.Action />,
-          },
-          {
-            path: '/elements/button',
-            element: <Routes.Elements.Button />,
-          },
-          {
-            path: '/elements/text',
-            element: <Routes.Elements.Text />,
-          },
-          {
-            path: '/elements/title',
-            element: <Routes.Elements.Title />,
-          },
-          {
-            path: '/elements/label',
-            element: <Routes.Elements.Label />,
-          },
-          {
-            path: '/elements/control',
-            element: <Routes.Elements.Control />,
-          },
-          {
-            path: '/elements/select',
-            element: <Routes.Elements.Select />,
-          },
-          {
-            path: '/elements/divider',
-            element: <Routes.Elements.Divider />,
-          },
-          {
-            path: '/elements/group',
-            element: <Routes.Elements.Group />,
-          },
-          {
-            path: '/elements/stack',
-            element: <Routes.Elements.Stack />,
-          },
-          {
-            path: '/elements/accordion',
-            element: <Routes.Elements.Accordion />,
-          },
+          { index: true, element: <Routes.Demo.Directory /> },
+          { path: '/demo/toggle', element: <Routes.Demo.Toggle /> },
+          { path: '/demo/button', element: <Routes.Demo.Button /> },
+          { path: '/demo/action', element: <Routes.Demo.Action /> },
+          { path: '/demo/control', element: <Routes.Demo.Control /> },
+          { path: '/demo/icon-btn', element: <Routes.Demo.IconBtn /> },
+          { path: '/demo/tool-btn', element: <Routes.Demo.ToolBtn /> },
+          { path: '/demo/checkbox', element: <Routes.Demo.Checkbox /> },
         ],
       },
       {
         path: '/articles',
         element: <Routes.Articles />,
-      },
-      {
-        path: '/canvas',
-        element: <Routes.Canvas />,
       },
     ],
   },

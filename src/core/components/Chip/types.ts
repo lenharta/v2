@@ -1,4 +1,4 @@
-import { UnstyledButtonProps, GroupProps } from '@/core';
+import { UnstyledButtonProps, GroupProps } from '@core';
 
 interface ChipThemeProps {}
 

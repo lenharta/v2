@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { Icon, UnstyledButton } from '@/core';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
+import { Icon, UnstyledButton } from '@core';
 import { TabsItemProps } from '../types';
 import { useTabsContext } from '../context';
-import { createKeyDownGroup } from '@/utils';
+import { createKeyDownGroup } from '@utils';
 import { TABS_SELECTORS } from '../constants';
 
 type TabsItemFactory = Factory.Config<{
@@ -41,7 +41,7 @@ const TabsItem = createFactory<TabsItemFactory>((props, ref) => {
       selected={!!(ctx.value === value) || undefined}
       className={clsx(
         'v2-tabs-item',
-        `v2-tabs-item--${variant || ctx.variant || 'base-default'}`,
+        `v2-tabs-item--${variant || ctx.variant || 'default'}`,
         className
       )}
       onClick={(event) => ctx.onValueChange(event.currentTarget.value)}

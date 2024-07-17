@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
 import { useActionContext } from '../context';
 import { ActionSpacerProps } from '../types';
 
@@ -22,7 +22,7 @@ const ActionSpacer = createFactory<ActionSpacerFactory>((props, ref) => {
       data-grow={!!grow || undefined}
       className={clsx(
         'v2-action-spacer',
-        `v2-action-spacer--${ctx.variant || 'base-elevated'}`,
+        `v2-action-spacer--${ctx.variant || 'elevated'}`,
         className
       )}
       {...forwardedProps}

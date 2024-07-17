@@ -1,21 +1,10 @@
-import { Core, Theme } from '@/types';
+import { Core, Theme } from '@types';
 import { IconProps } from '../Icon';
 
 type ControlPosition = Record<'height' | 'width' | 'left' | 'top', number>;
 
 interface ControlThemeProps {
-  variant?:
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent-default'
-    | 'accent-elevated'
-    | 'accent-tonal'
-    | 'accent-ghost'
-    | `${Theme.Color}-tonal`
-    | `${Theme.Color}-ghost`
-    | `${Theme.Color}-default`
-    | `${Theme.Color}-elevated`
-    | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 interface UseControlPositionProps {
@@ -42,9 +31,10 @@ interface UseControlPositionReturn {
 }
 
 interface ControlProps extends ControlThemeProps {
-  value: string;
+  value?: string | undefined;
   items: ControlItem[];
-  onItemChange: (value: string) => void;
+  defaultValue?: string | undefined;
+  onItemChange?: ((value: string) => void) | undefined;
   className?: string | undefined;
   trapFocus?: boolean | undefined;
   orientation?: Core.Orientation | undefined;

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { StoreProvider } from '@/app/store';
-
-import { Side } from '../Side';
-import { Main } from '../Main';
+import { StoreProvider } from '@app';
 import { Header } from '../Header';
+import { Main } from '../Main';
+import { Side } from '../Side';
 
 interface LayoutProps {
   children?: React.ReactNode | undefined;

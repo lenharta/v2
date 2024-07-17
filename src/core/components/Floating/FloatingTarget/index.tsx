@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Factory } from '@/types';
-import { useMergeRefs } from '@/hooks';
-import { createFactory } from '@/factory';
-import { createEventCallback } from '@/utils';
+import { Factory } from '@types';
+import { useMergeRefs } from '@hooks';
+import { createFactory } from '@factory';
+import { createEventCallback } from '@utils';
 import { useFloatingContext } from '../context';
 import { FloatingTargetProps } from '../types';
 

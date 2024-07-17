@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { Disclosure, DisclosureProps } from '@/core';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
+import { Disclosure, DisclosureProps } from '@core';
 import { AccordionPanelProps } from '../types';
 import { useAccordionContext, useAccordionItemContext } from '../context';
 
@@ -25,7 +25,7 @@ const AccordionPanel = createFactory<AccordionPanelFactory>((props, ref) => {
       isOpen={ctx.isValueActive(ctxItem.value)}
       className={clsx(
         'v2-accordion-panel',
-        `v2-accordion-panel--${variant || ctxItem.variant || ctx.variant || 'base-default'}`,
+        `v2-accordion-panel--${variant || ctxItem.variant || ctx.variant || 'default'}`,
         className
       )}
       aria-labelledby={ctx.getTargetId(ctxItem.value)}

@@ -1,22 +1,11 @@
-import { Theme } from '@/types';
-import { UnstyledButtonProps, GroupProps, IconProps } from '@/core';
+import { Theme } from '@types';
+import { UnstyledButtonProps, GroupProps, IconProps } from '@core';
 
 interface ButtonThemeProps {
   size?: Theme.SizeExpanded | undefined;
   align?: 'start' | 'end' | 'center' | undefined;
   justify?: 'start' | 'end' | 'center' | undefined;
-  variant?:
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent-default'
-    | 'accent-elevated'
-    | 'accent-tonal'
-    | 'accent-ghost'
-    | `${Theme.Color}-tonal`
-    | `${Theme.Color}-ghost`
-    | `${Theme.Color}-default`
-    | `${Theme.Color}-elevated`
-    | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 interface ButtonProps extends UnstyledButtonProps, ButtonThemeProps {

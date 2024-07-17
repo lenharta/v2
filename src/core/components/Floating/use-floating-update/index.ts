@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { autoUpdate } from '@floating-ui/react';
-import { useDidUpdate } from '@/hooks';
+import { useDidUpdate } from '@hooks';
 import { UseFloatingConfig } from '../types';
 
 const useFloatingUpdate = (config: UseFloatingConfig) => {

@@ -1,0 +1,90 @@
+@use '../mixins' as mixins;
+
+:root {
+  --v2-select-item-height-xs: 34px;
+  --v2-select-item-height-sm: 40px;
+  --v2-select-item-height-md: 46px;
+  --v2-select-item-height-lg: 54px;
+  --v2-select-item-height-xl: 64px;
+
+  --v2-select-item-font-size-xs: 12px;
+  --v2-select-item-font-size-sm: 14px;
+  --v2-select-item-font-size-md: 16px;
+  --v2-select-item-font-size-lg: 17px;
+  --v2-select-item-font-size-xl: 18px;
+
+  --v2-select-item-spacing-x-xs: calc(var(--v2-unit) * 8);
+  --v2-select-item-spacing-x-sm: calc(var(--v2-unit) * 10);
+  --v2-select-item-spacing-x-md: calc(var(--v2-unit) * 10);
+  --v2-select-item-spacing-x-lg: calc(var(--v2-unit) * 12);
+  --v2-select-item-spacing-x-xl: calc(var(--v2-unit) * 12);
+}
+
+.v2-select {
+  &-target,
+  &-option {
+    @include mixins.interactive-outline;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--v2-select-item-height, var(--v2-select-item-height-sm));
+    font-size: var(--v2-select-item-font-size, var(--v2-select-item-font-size-sm));
+    padding-inline: var(--v2-select-item-spacing-x, var(--v2-select-item-spacing-x-sm));
+  }
+
+  &-target {
+    position: relative;
+    color: var(--c-select-target-clr);
+    background-color: var(--c-select-target-bgd);
+
+    .v2-icon {
+      width: var(--v2-select-item-font-size);
+      height: var(--v2-select-item-font-size);
+    }
+  }
+
+  &-target::before {
+    content: '';
+    position: absolute;
+    height: var(--v2-01);
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &-target-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-option {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--c-select-option-clr);
+    background-color: var(--c-select-option-bgd);
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--v2-01);
+    border-style: solid;
+    border-width: var(--v2-01);
+    border-color: var(--c-select-list-bdr, transparent);
+    background-color: var(--c-select-list-bgd);
+  }
+
+  &-box {
+    color: var(--c-select-box-clr);
+    background-color: var(--c-select-box-bgd);
+  }
+}

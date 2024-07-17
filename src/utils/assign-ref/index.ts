@@ -1,5 +1,5 @@
 import React from 'react';
-import { Core } from '@/types';
+import { Core } from '@types';
 
 /** A utility function that assigns a singular ref */
 

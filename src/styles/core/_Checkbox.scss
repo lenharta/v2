@@ -1,0 +1,15 @@
+.v2-checkbox {
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+
+  input {
+    z-index: 1;
+    appearance: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+}

@@ -1,4 +1,4 @@
-import { Static } from '@/types';
+import { Static } from '@types';
 
 const ROUTE_MAP_HOMEPAGE_META: Static.RouteMeta = {
   tags: 'route/page/home/homepage/overview/index/intro',

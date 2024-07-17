@@ -1,22 +1,57 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { UnstyledButton } from '@/core';
+import { Factory } from '@types';
+import { InlineInput } from '@core';
 import { ToggleProps } from './types';
+import { createFactory } from '@factory';
 
 type ToggleFactory = Factory.Config<{
-  ref: HTMLButtonElement;
-  comp: 'button';
+  comp: 'input';
+  omits: 'size';
   props: ToggleProps;
+  ref: HTMLInputElement;
 }>;
 
 const Toggle = createFactory<ToggleFactory>((props, ref) => {
-  const { children, className, ...forwardedProps } = props;
+  const {
+    size,
+    disabled,
+    readOnly,
+    checked,
+    variant,
+    label,
+    className,
+    onChange,
+    ...forwardedProps
+  } = props;
 
   return (
-    <UnstyledButton ref={ref} className={clsx('v2-toggle', className)} {...forwardedProps}>
-      {children}
-    </UnstyledButton>
+    <InlineInput
+      ref={ref}
+      label={label}
+      checked={checked}
+      disabled={disabled}
+      readOnly={readOnly}
+      className={clsx(
+        'v2-toggle',
+        { [`v2-toggle--${size}`]: size },
+        { [`v2-toggle--${variant}`]: variant },
+        className
+      )}
+    >
+      <input
+        tabIndex={0}
+        role="switch"
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+        className="v2-toggle-input"
+        {...forwardedProps}
+      />
+
+      <span className="v2-toggle-track">
+        <div className="v2-toggle-thumb" data-checked={!!checked || undefined} />
+      </span>
+    </InlineInput>
   );
 });
 

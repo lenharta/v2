@@ -1,4 +1,4 @@
-import { Theme } from '@/types';
+import { Theme } from '@types';
 
 interface LabelThemeProps extends Theme.TypographyProps {
   variant?:

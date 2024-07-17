@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { Icon, UnstyledButton } from '@/core';
-import { createEventCallback, createKeyDownGroup } from '@/utils';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
+import { Icon, UnstyledButton } from '@core';
+import { createEventCallback, createKeyDownGroup } from '@utils';
 import { ControlSegmentProps } from '../types';
 import { ATTRIBUTES } from '../Control';
 

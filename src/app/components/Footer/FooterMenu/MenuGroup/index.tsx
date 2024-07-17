@@ -1,5 +1,5 @@
-import { Core } from '@/types';
-import { Divider } from '@/core';
+import { Core } from '@types';
+import { Divider } from '@core';
 
 interface FooterMenuGroupProps extends Omit<Core.LinkGroup, 'items'> {
   children?: React.ReactNode | undefined;

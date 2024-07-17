@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { Action, DURATION, EASING, Floating, IconProps } from '@/core';
+import { Action, DURATION, EASING, Floating, IconProps } from '@core';
 
 interface SideNavTargetProps {
   label: string;

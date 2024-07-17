@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { Theme } from '@/types';
-import { Action, IconProps } from '@/core';
-import { useDispatch, useStore } from '@/app';
+import { Theme } from '@types';
+import { Action, IconProps } from '@core';
+import { useDispatch, useStore } from '@app';
 import { SideSelect } from './SideSelect';
 import { SideNav } from './SideNav';
 
@@ -51,8 +51,8 @@ const Side: SideFactory = ({}) => {
                 icon: { type: store.icons, name: 'code-slash', size: 'md' },
               },
               {
-                value: '/elements',
-                label: 'Elements',
+                value: '/demo',
+                label: 'Demo',
                 icon: { type: store.icons, name: 'layers', size: 'md' },
               },
               {
@@ -60,11 +60,6 @@ const Side: SideFactory = ({}) => {
                 label: 'Articles',
                 icon: { type: store.icons, name: 'collection', size: 'md' },
               },
-              // {
-              //   value: '/settings',
-              //   label: 'Settings',
-              //   icon: { type: store.icons, name: 'gear', size: 'md' },
-              // },
             ]}
           />
 

@@ -1,5 +1,5 @@
-import { META } from '@/app';
-import { Text } from '@/core';
+import { Text } from '@core';
+import { META } from '@data';
 
 const MetaEmail: React.FC<{}> = ({}) => (
   <Text className="v2-footer-meta-email" data-type="email">

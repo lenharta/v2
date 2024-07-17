@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Page } from '@/app';
-import { Theme } from '@/types';
-import { IconProps, Text } from '@/core';
+import { Theme } from '@types';
+import { IconProps, Text } from '@core';
+import { PageLink } from '../PageLink';
 
 interface PageIntroProps {
   text: string;
@@ -9,18 +9,7 @@ interface PageIntroProps {
     value: string;
     label: string;
     icon?: Partial<IconProps> | undefined;
-    variant?:
-      | 'base-default'
-      | 'base-elevated'
-      | 'accent-default'
-      | 'accent-elevated'
-      | 'accent-tonal'
-      | 'accent-ghost'
-      | `${Theme.Color}-tonal`
-      | `${Theme.Color}-ghost`
-      | `${Theme.Color}-default`
-      | `${Theme.Color}-elevated`
-      | undefined;
+    variant?: Theme.Variant | undefined;
   }>[];
 }
 
@@ -36,12 +25,12 @@ const PageIntro: PageIntroFactory = (props) => {
         </div>
         <nav className="v2-page-intro-box v2-page-intro-links">
           {(links || []).map((item) => (
-            <Page.Link
+            <PageLink
               to={item.value}
               key={item.value}
               label={item.label}
               icon={{ ...item.icon, name: item.icon?.name || 'arrow-northeast' }}
-              variant={item.variant || 'base-elevated'}
+              variant={item.variant || 'elevated'}
             />
           ))}
         </nav>

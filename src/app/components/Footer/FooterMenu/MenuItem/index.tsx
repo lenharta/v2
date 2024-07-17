@@ -1,6 +1,6 @@
 import * as Router from 'react-router-dom';
-import { Core } from '@/types';
-import { Icon } from '@/core';
+import { Core } from '@types';
+import { Icon } from '@core';
 
 interface FooterMenuItemProps extends Core.LinkItem {
   type?: 'internal' | 'external' | undefined;

@@ -1,4 +1,4 @@
-import { Core } from '@/types';
+import { Core } from '@types';
 
 interface FooterProps {}
 

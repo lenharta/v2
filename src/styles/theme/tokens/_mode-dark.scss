@@ -1,0 +1,258 @@
+[data-prefers-color-mode='dark'] {
+  /// =====================================================================================
+  /// APP
+  /// =====================================================================================
+
+  --c-root-bgd: rgba(var(--c-rgb-base), 1);
+  --c-root-clr: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-root-clr-max: rgba(var(--c-rgb-contrast), 0.97);
+  --c-root-clr-med: rgba(var(--c-rgb-contrast), 0.87);
+  --c-root-clr-low: rgba(var(--c-rgb-contrast), 0.67);
+  --c-root-clr-min: rgba(var(--c-rgb-contrast), 0.37);
+
+  --c-accent-clr-max: rgba(var(--c-rgb-accent), 0.97);
+  --c-accent-clr-med: rgba(var(--c-rgb-accent), 0.87);
+  --c-accent-clr-low: rgba(var(--c-rgb-accent), 0.67);
+  --c-accent-clr-min: rgba(var(--c-rgb-accent), 0.37);
+
+  --c-canvas-bgd: rgba(var(--c-rgb-base), 1);
+  --c-canvas-bdr: rgba(var(--c-rgb-contrast), 0.08);
+  --c-canvas-clr: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-canvas-controls-bgd: rgba(var(--c-rgb-contrast), 0.03);
+  --c-canvas-controls-bdr: rgba(var(--c-rgb-contrast), 0.08);
+  --c-canvas-controls-clr: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-page-intro-banner-bgd: rgba(var(--c-rgb-contrast), 0.03);
+  --c-page-intro-banner-clr: rgba(var(--c-rgb-contrast), 0.7);
+
+  /// =====================================================================================
+  /// CORE
+  /// =====================================================================================
+
+  /// CORE/TOGGLE
+  /// =====================================================================================
+
+  --c-toggle-thumb-bgd-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bgd-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-toggle-thumb-bdr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bdr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bdr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-thumb-bdr-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-toggle-track-bgd-enabled-default: transparent;
+  --c-toggle-track-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.04);
+  --c-toggle-track-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.08);
+  --c-toggle-track-bgd-checked-default: rgba(var(--c-rgb-contrast), 0.12);
+
+  --c-toggle-track-bdr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-track-bdr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-track-bdr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toggle-track-bdr-checked-default: rgba(var(--c-rgb-contrast), 0.87);
+
+  /// CORE/BUTTON
+  /// =====================================================================================
+
+  --c-button-bgd-enabled-default: transparent;
+  --c-button-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-button-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.03);
+  --c-button-bgd-selected-default: rgba(var(--c-rgb-contrast), 0.03);
+
+  --c-button-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.76);
+  --c-button-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.93);
+  --c-button-clr-selected-default: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-button-bgd-enabled-default-accent: var(--c-button-bgd-enabled-default);
+  --c-button-bgd-hovered-default-accent: var(--c-button-bgd-hovered-default);
+  --c-button-bgd-pressed-default-accent: var(--c-button-bgd-pressed-default);
+  --c-button-bgd-selected-default-accent: var(--c-button-bgd-selected-default);
+
+  --c-button-clr-enabled-default-accent: rgba(var(--c-rgb-accent), 0.76);
+  --c-button-clr-hovered-default-accent: rgba(var(--c-rgb-accent), 0.87);
+  --c-button-clr-pressed-default-accent: rgba(var(--c-rgb-accent), 0.93);
+  --c-button-clr-selected-default-accent: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-button-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.03);
+  --c-button-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-button-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.05);
+  --c-button-bgd-selected-elevated: rgba(var(--c-rgb-contrast), 0.05);
+
+  --c-button-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.76);
+  --c-button-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-button-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.93);
+  --c-button-clr-selected-elevated: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-button-bgd-enabled-elevated-accent: var(--c-button-bgd-enabled-elevated);
+  --c-button-bgd-hovered-elevated-accent: var(--c-button-bgd-hovered-elevated);
+  --c-button-bgd-pressed-elevated-accent: var(--c-button-bgd-pressed-elevated);
+  --c-button-bgd-selected-elevated-accent: var(--c-button-bgd-selected-elevated);
+
+  --c-button-clr-enabled-elevated-accent: rgba(var(--c-rgb-accent), 0.76);
+  --c-button-clr-hovered-elevated-accent: rgba(var(--c-rgb-accent), 0.87);
+  --c-button-clr-pressed-elevated-accent: rgba(var(--c-rgb-accent), 0.93);
+  --c-button-clr-selected-elevated-accent: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-button-bgd-enabled-default-accent-tonal: transparent;
+  --c-button-bgd-hovered-default-accent-tonal: rgba(var(--c-rgb-accent), 0.07);
+  --c-button-bgd-pressed-default-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+  --c-button-bgd-selected-default-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+
+  --c-button-clr-enabled-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-button-clr-hovered-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-button-clr-pressed-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-button-clr-selected-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+
+  --c-button-bgd-enabled-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.07);
+  --c-button-bgd-hovered-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+  --c-button-bgd-pressed-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.12);
+  --c-button-bgd-selected-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.12);
+
+  --c-button-clr-enabled-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-button-clr-hovered-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-button-clr-pressed-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-button-clr-selected-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+
+  /// CORE/ACTION
+  /// =====================================================================================
+
+  --c-action-bgd-enabled-default: transparent;
+  --c-action-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-action-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.03);
+  --c-action-bgd-selected-default: rgba(var(--c-rgb-contrast), 0.03);
+
+  --c-action-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.76);
+  --c-action-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-action-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.93);
+  --c-action-clr-selected-default: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-action-bgd-enabled-default-accent: var(--c-action-bgd-enabled-default);
+  --c-action-bgd-hovered-default-accent: var(--c-action-bgd-hovered-default);
+  --c-action-bgd-pressed-default-accent: var(--c-action-bgd-pressed-default);
+  --c-action-bgd-selected-default-accent: var(--c-action-bgd-selected-default);
+
+  --c-action-clr-enabled-default-accent: rgba(var(--c-rgb-accent), 0.76);
+  --c-action-clr-hovered-default-accent: rgba(var(--c-rgb-accent), 0.87);
+  --c-action-clr-pressed-default-accent: rgba(var(--c-rgb-accent), 0.93);
+  --c-action-clr-selected-default-accent: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-action-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.03);
+  --c-action-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-action-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.05);
+  --c-action-bgd-selected-elevated: rgba(var(--c-rgb-contrast), 0.05);
+
+  --c-action-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.76);
+  --c-action-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-action-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.93);
+  --c-action-clr-selected-elevated: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-action-bgd-enabled-elevated-accent: var(--c-action-bgd-enabled-elevated);
+  --c-action-bgd-hovered-elevated-accent: var(--c-action-bgd-hovered-elevated);
+  --c-action-bgd-pressed-elevated-accent: var(--c-action-bgd-pressed-elevated);
+  --c-action-bgd-selected-elevated-accent: var(--c-action-bgd-selected-elevated);
+
+  --c-action-clr-enabled-elevated-accent: rgba(var(--c-rgb-accent), 0.76);
+  --c-action-clr-hovered-elevated-accent: rgba(var(--c-rgb-accent), 0.87);
+  --c-action-clr-pressed-elevated-accent: rgba(var(--c-rgb-accent), 0.93);
+  --c-action-clr-selected-elevated-accent: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-action-bgd-enabled-default-accent-tonal: transparent;
+  --c-action-bgd-hovered-default-accent-tonal: rgba(var(--c-rgb-accent), 0.07);
+  --c-action-bgd-pressed-default-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+  --c-action-bgd-selected-default-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+
+  --c-action-clr-enabled-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-action-clr-hovered-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-action-clr-pressed-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-action-clr-selected-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+
+  --c-action-bgd-enabled-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.07);
+  --c-action-bgd-hovered-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+  --c-action-bgd-pressed-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.12);
+  --c-action-bgd-selected-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.12);
+
+  --c-action-clr-enabled-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-action-clr-hovered-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-action-clr-pressed-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-action-clr-selected-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+
+  /// CORE/SELECT
+  /// =====================================================================================
+
+  --c-select-box-bgd-enabled: rgba(var(--c-rgb-base), 1);
+
+  --c-select-list-bgd-enabled-default: rgba(var(--c-rgb-contrast), 0);
+  --c-select-list-bdr-enabled-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-select-list-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.02);
+  --c-select-list-bdr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.02);
+
+  --c-select-target-bgd-enabled-default: transparent;
+  --c-select-target-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.01);
+  --c-select-target-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-select-target-bgd-selected-default: rgba(var(--c-rgb-contrast), 0.03);
+
+  --c-select-target-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.76);
+  --c-select-target-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-select-target-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.93);
+  --c-select-target-clr-selected-default: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-select-target-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.03);
+  --c-select-target-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-select-target-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.05);
+  --c-select-target-bgd-selected-elevated: rgba(var(--c-rgb-contrast), 0.06);
+
+  --c-select-target-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.76);
+  --c-select-target-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-select-target-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.93);
+  --c-select-target-clr-selected-elevated: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-select-option-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.02);
+  --c-select-option-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.03);
+  --c-select-option-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-select-option-bgd-selected-elevated: rgba(var(--c-rgb-contrast), 0.04);
+
+  --c-select-option-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.76);
+  --c-select-option-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-select-option-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.93);
+  --c-select-option-clr-selected-elevated: rgba(var(--c-rgb-contrast), 0.93);
+
+  /// CORE/CONTROL
+  /// =====================================================================================
+
+  --c-control-segment-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-control-segment-bgd-enabled-default: transparent;
+
+  --c-control-segment-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-control-segment-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.02);
+
+  --c-control-segment-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-control-segment-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.03);
+
+  --c-control-segment-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-control-segment-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.02);
+
+  --c-control-segment-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-control-segment-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.02);
+
+  --c-control-segment-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-control-segment-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.02);
+
+  --c-control-thumb-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-control-thumb-bgd-enabled-default: rgba(var(--c-rgb-contrast), 0.03);
+
+  --c-control-thumb-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-control-thumb-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.02);
+
+  /// CORE/DIVIDER
+  /// =====================================================================================
+
+  --c-divider-clr-default: rgba(var(--c-rgb-contrast), 0.32);
+  --c-divider-bgd-default: rgba(var(--c-rgb-contrast), 0.32);
+
+  --c-divider-clr-elevated: rgba(var(--c-rgb-contrast), 0.24);
+  --c-divider-bgd-elevated: rgba(var(--c-rgb-contrast), 0.24);
+}

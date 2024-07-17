@@ -1,4 +1,4 @@
-import { Core } from '@/types';
+import { Core } from '@types';
 import { cssObjectToString } from '../css-object-to-string';
 
 function stylesToString({ selector, styles, media }: Core.InlineStyle) {

@@ -1,7 +1,7 @@
-import { Transition } from '@/core';
-import { useMergeRefs } from '@/hooks';
-import { Core, Factory } from '@/types';
-import { createFactory } from '@/factory';
+import { Transition } from '@core';
+import { useMergeRefs } from '@hooks';
+import { Core, Factory } from '@types';
+import { createFactory } from '@factory';
 import { FloatingBoxProps } from '../types';
 import { useFloatingContext } from '../context';
 

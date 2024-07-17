@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { createEventCallback } from '@/utils';
-import { Icon, UnstyledButton } from '@/core';
+import { Factory } from '@types';
+import { createFactory } from '@factory';
+import { createEventCallback } from '@utils';
+import { Icon, UnstyledButton } from '@core';
 import { AccordionTargetProps } from '../types';
 import { useAccordionContext, useAccordionItemContext } from '../context';
 
@@ -46,7 +46,7 @@ const AccordionTarget = createFactory<AccordionTargetFactory>((props, ref) => {
       data-expanded={ctx.isValueActive(ctxItem.value)}
       className={clsx(
         'v2-accordion-target',
-        `v2-accordion-target--${variant || ctxItem.variant || ctx.variant || 'base-default'}`,
+        `v2-accordion-target--${variant || ctxItem.variant || ctx.variant || 'default'}`,
         className
       )}
       {...forwardedProps}

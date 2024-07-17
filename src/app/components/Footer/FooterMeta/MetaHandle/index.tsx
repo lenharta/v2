@@ -1,4 +1,4 @@
-import { META } from '@/app';
+import { META } from '@data';
 
 const MetaHandle: React.FC<{}> = ({}) => (
   <a className="v2-footer-meta-handle" href={META.social.link.github}>

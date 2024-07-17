@@ -1,20 +1,8 @@
-import { Theme } from '@/types';
-import { IconProps, DividerProps } from '@/core';
-
-type TabsThemeVariant =
-  | 'base-default'
-  | 'base-elevated'
-  | 'accent-default'
-  | 'accent-elevated'
-  | 'accent-tonal'
-  | 'accent-ghost'
-  | `${Theme.Color}-tonal`
-  | `${Theme.Color}-ghost`
-  | `${Theme.Color}-default`
-  | `${Theme.Color}-elevated`;
+import { Theme } from '@types';
+import { IconProps, DividerProps } from '@core';
 
 interface TabsThemeProps {
-  variant?: TabsThemeVariant | undefined;
+  variant?: Theme.Variant | undefined;
 }
 
 interface TabsKeyDownOptions {

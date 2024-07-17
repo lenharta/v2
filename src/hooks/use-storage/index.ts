@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { JSONDeserialize, JSONSerialize } from '@/utils';
+import { JSONDeserialize, JSONSerialize } from '@utils';
 
 interface UseStorageOptions {
   type?: 'localStorage' | 'sessionStorage';

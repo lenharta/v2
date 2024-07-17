@@ -34,13 +34,17 @@ export declare namespace Theme {
   type SchemeVariant = 'default' | 'elevated';
   type SchemeSurface = `${SchemeColor}-${SchemeVariant}`;
 
-  type Variant =
-    | 'base'
-    | 'base-default'
-    | 'base-elevated'
-    | 'accent'
-    | 'accent-default'
-    | 'accent-elevated';
+  export type Variant =
+    | 'default'
+    | 'elevated'
+    | 'default-accent'
+    | 'elevated-accent'
+    | `default-${Color}`
+    | `elevated-${Color}`
+    | 'default-accent-tonal'
+    | 'elevated-accent-tonal'
+    | `default-${Color}-tonal`
+    | `elevated-${Color}-tonal`;
 
   export type Interaction =
     | 'enabled'

@@ -1,0 +1,1301 @@
+// =======================================================================================
+// CORE
+// =======================================================================================
+
+// CORE/BUTTON
+// =======================================================================================
+
+.v2-button:not([data-disabled]),
+.v2-button:not([data-readonly]),
+.v2-button--default:not([data-disabled]),
+.v2-button--default:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-enabled-default);
+  --c-button-clr: var(--c-button-clr-enabled-default);
+}
+
+.v2-button:hover:not([data-disabled]),
+.v2-button:hover:not([data-readonly]),
+.v2-button--default:hover:not([data-disabled]),
+.v2-button--default:hover:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-hovered-default);
+  --c-button-clr: var(--c-button-clr-hovered-default);
+}
+
+.v2-button:active:not([data-disabled]),
+.v2-button:active:not([data-readonly]),
+.v2-button--default:active:not([data-disabled]),
+.v2-button--default:active:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-pressed-default);
+  --c-button-clr: var(--c-button-clr-pressed-default);
+}
+
+.v2-button[data-selected]:not([data-disabled]),
+.v2-button[data-selected]:not([data-readonly]),
+.v2-button--default[data-selected]:not([data-disabled]),
+.v2-button--default[data-selected]:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-selected-default);
+  --c-button-clr: var(--c-button-clr-selected-default);
+}
+
+.v2-button--elevated:not([data-disabled]),
+.v2-button--elevated:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-enabled-elevated);
+  --c-button-clr: var(--c-button-clr-enabled-elevated);
+}
+
+.v2-button--elevated:hover:not([data-disabled]),
+.v2-button--elevated:hover:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-hovered-elevated);
+  --c-button-clr: var(--c-button-clr-hovered-elevated);
+}
+
+.v2-button--elevated:active:not([data-disabled]),
+.v2-button--elevated:active:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-pressed-elevated);
+  --c-button-clr: var(--c-button-clr-pressed-elevated);
+}
+
+.v2-button--elevated[data-selected]:not([data-disabled]),
+.v2-button--elevated[data-selected]:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-selected-elevated);
+  --c-button-clr: var(--c-button-clr-selected-elevated);
+}
+
+.v2-button--default-accent:not([data-disabled]),
+.v2-button--default-accent:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-enabled-default-accent);
+  --c-button-clr: var(--c-button-clr-enabled-default-accent);
+}
+
+.v2-button--default-accent:hover:not([data-disabled]),
+.v2-button--default-accent:hover:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-hovered-default-accent);
+  --c-button-clr: var(--c-button-clr-hovered-default-accent);
+}
+
+.v2-button--default-accent:active:not([data-disabled]),
+.v2-button--default-accent:active:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-pressed-default-accent);
+  --c-button-clr: var(--c-button-clr-pressed-default-accent);
+}
+
+.v2-button--default-accent[data-selected]:not([data-disabled]),
+.v2-button--default-accent[data-selected]:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-selected-default-accent);
+  --c-button-clr: var(--c-button-clr-selected-default-accent);
+}
+
+.v2-button--elevated-accent:not([data-disabled]),
+.v2-button--elevated-accent:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-enabled-elevated-accent);
+  --c-button-clr: var(--c-button-clr-enabled-elevated-accent);
+}
+
+.v2-button--elevated-accent:hover:not([data-disabled]),
+.v2-button--elevated-accent:hover:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-hovered-elevated-accent);
+  --c-button-clr: var(--c-button-clr-hovered-elevated-accent);
+}
+
+.v2-button--elevated-accent:active:not([data-disabled]),
+.v2-button--elevated-accent:active:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-pressed-elevated-accent);
+  --c-button-clr: var(--c-button-clr-pressed-elevated-accent);
+}
+
+.v2-button--elevated-accent[data-selected]:not([data-disabled]),
+.v2-button--elevated-accent[data-selected]:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-selected-elevated-accent);
+  --c-button-clr: var(--c-button-clr-selected-elevated-accent);
+}
+
+.v2-button--default-accent-tonal:not([data-disabled]),
+.v2-button--default-accent-tonal:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-enabled-default-accent-tonal);
+  --c-button-clr: var(--c-button-clr-enabled-default-accent-tonal);
+}
+
+.v2-button--default-accent-tonal:hover:not([data-disabled]),
+.v2-button--default-accent-tonal:hover:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-hovered-default-accent-tonal);
+  --c-button-clr: var(--c-button-clr-hovered-default-accent-tonal);
+}
+
+.v2-button--default-accent-tonal:active:not([data-disabled]),
+.v2-button--default-accent-tonal:active:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-pressed-default-accent-tonal);
+  --c-button-clr: var(--c-button-clr-pressed-default-accent-tonal);
+}
+
+.v2-button--default-accent-tonal[data-selected]:not([data-disabled]),
+.v2-button--default-accent-tonal[data-selected]:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-selected-default-accent-tonal);
+  --c-button-clr: var(--c-button-clr-selected-default-accent-tonal);
+}
+
+.v2-button--elevated-accent-tonal:not([data-disabled]),
+.v2-button--elevated-accent-tonal:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-enabled-elevated-accent-tonal);
+  --c-button-clr: var(--c-button-clr-enabled-elevated-accent-tonal);
+}
+
+.v2-button--elevated-accent-tonal:hover:not([data-disabled]),
+.v2-button--elevated-accent-tonal:hover:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-hovered-elevated-accent-tonal);
+  --c-button-clr: var(--c-button-clr-hovered-elevated-accent-tonal);
+}
+
+.v2-button--elevated-accent-tonal:active:not([data-disabled]),
+.v2-button--elevated-accent-tonal:active:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-pressed-elevated-accent-tonal);
+  --c-button-clr: var(--c-button-clr-pressed-elevated-accent-tonal);
+}
+
+.v2-button--elevated-accent-tonal[data-selected]:not([data-disabled]),
+.v2-button--elevated-accent-tonal[data-selected]:not([data-readonly]) {
+  --c-button-bgd: var(--c-button-bgd-selected-elevated-accent-tonal);
+  --c-button-clr: var(--c-button-clr-selected-elevated-accent-tonal);
+}
+
+// CORE/ACTION
+// =======================================================================================
+
+.v2-action:not([data-disabled]),
+.v2-action:not([data-readonly]),
+.v2-action--default:not([data-disabled]),
+.v2-action--default:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-enabled-default);
+  --c-action-clr: var(--c-action-clr-enabled-default);
+}
+
+.v2-action:hover:not([data-disabled]),
+.v2-action:hover:not([data-readonly]),
+.v2-action--default:hover:not([data-disabled]),
+.v2-action--default:hover:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-hovered-default);
+  --c-action-clr: var(--c-action-clr-hovered-default);
+}
+
+.v2-action:active:not([data-disabled]),
+.v2-action:active:not([data-readonly]),
+.v2-action--default:active:not([data-disabled]),
+.v2-action--default:active:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-pressed-default);
+  --c-action-clr: var(--c-action-clr-pressed-default);
+}
+
+.v2-action[data-selected]:not([data-disabled]),
+.v2-action[data-selected]:not([data-readonly]),
+.v2-action--default[data-selected]:not([data-disabled]),
+.v2-action--default[data-selected]:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-selected-default);
+  --c-action-clr: var(--c-action-clr-selected-default);
+}
+
+.v2-action--elevated:not([data-disabled]),
+.v2-action--elevated:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-enabled-elevated);
+  --c-action-clr: var(--c-action-clr-enabled-elevated);
+}
+
+.v2-action--elevated:hover:not([data-disabled]),
+.v2-action--elevated:hover:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-hovered-elevated);
+  --c-action-clr: var(--c-action-clr-hovered-elevated);
+}
+
+.v2-action--elevated:active:not([data-disabled]),
+.v2-action--elevated:active:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-pressed-elevated);
+  --c-action-clr: var(--c-action-clr-pressed-elevated);
+}
+
+.v2-action--elevated[data-selected]:not([data-disabled]),
+.v2-action--elevated[data-selected]:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-selected-elevated);
+  --c-action-clr: var(--c-action-clr-selected-elevated);
+}
+
+.v2-action--default-accent:not([data-disabled]),
+.v2-action--default-accent:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-enabled-default-accent);
+  --c-action-clr: var(--c-action-clr-enabled-default-accent);
+}
+
+.v2-action--default-accent:hover:not([data-disabled]),
+.v2-action--default-accent:hover:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-hovered-default-accent);
+  --c-action-clr: var(--c-action-clr-hovered-default-accent);
+}
+
+.v2-action--default-accent:active:not([data-disabled]),
+.v2-action--default-accent:active:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-pressed-default-accent);
+  --c-action-clr: var(--c-action-clr-pressed-default-accent);
+}
+
+.v2-action--default-accent[data-selected]:not([data-disabled]),
+.v2-action--default-accent[data-selected]:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-selected-default-accent);
+  --c-action-clr: var(--c-action-clr-selected-default-accent);
+}
+
+.v2-action--elevated-accent:not([data-disabled]),
+.v2-action--elevated-accent:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-enabled-elevated-accent);
+  --c-action-clr: var(--c-action-clr-enabled-elevated-accent);
+}
+
+.v2-action--elevated-accent:hover:not([data-disabled]),
+.v2-action--elevated-accent:hover:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-hovered-elevated-accent);
+  --c-action-clr: var(--c-action-clr-hovered-elevated-accent);
+}
+
+.v2-action--elevated-accent:active:not([data-disabled]),
+.v2-action--elevated-accent:active:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-pressed-elevated-accent);
+  --c-action-clr: var(--c-action-clr-pressed-elevated-accent);
+}
+
+.v2-action--elevated-accent[data-selected]:not([data-disabled]),
+.v2-action--elevated-accent[data-selected]:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-selected-elevated-accent);
+  --c-action-clr: var(--c-action-clr-selected-elevated-accent);
+}
+
+.v2-action--default-accent-tonal:not([data-disabled]),
+.v2-action--default-accent-tonal:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-enabled-default-accent-tonal);
+  --c-action-clr: var(--c-action-clr-enabled-default-accent-tonal);
+}
+
+.v2-action--default-accent-tonal:hover:not([data-disabled]),
+.v2-action--default-accent-tonal:hover:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-hovered-default-accent-tonal);
+  --c-action-clr: var(--c-action-clr-hovered-default-accent-tonal);
+}
+
+.v2-action--default-accent-tonal:active:not([data-disabled]),
+.v2-action--default-accent-tonal:active:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-pressed-default-accent-tonal);
+  --c-action-clr: var(--c-action-clr-pressed-default-accent-tonal);
+}
+
+.v2-action--default-accent-tonal[data-selected]:not([data-disabled]),
+.v2-action--default-accent-tonal[data-selected]:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-selected-default-accent-tonal);
+  --c-action-clr: var(--c-action-clr-selected-default-accent-tonal);
+}
+
+.v2-action--elevated-accent-tonal:not([data-disabled]),
+.v2-action--elevated-accent-tonal:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-enabled-elevated-accent-tonal);
+  --c-action-clr: var(--c-action-clr-enabled-elevated-accent-tonal);
+}
+
+.v2-action--elevated-accent-tonal:hover:not([data-disabled]),
+.v2-action--elevated-accent-tonal:hover:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-hovered-elevated-accent-tonal);
+  --c-action-clr: var(--c-action-clr-hovered-elevated-accent-tonal);
+}
+
+.v2-action--elevated-accent-tonal:active:not([data-disabled]),
+.v2-action--elevated-accent-tonal:active:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-pressed-elevated-accent-tonal);
+  --c-action-clr: var(--c-action-clr-pressed-elevated-accent-tonal);
+}
+
+.v2-action--elevated-accent-tonal[data-selected]:not([data-disabled]),
+.v2-action--elevated-accent-tonal[data-selected]:not([data-readonly]) {
+  --c-action-bgd: var(--c-action-bgd-selected-elevated-accent-tonal);
+  --c-action-clr: var(--c-action-clr-selected-elevated-accent-tonal);
+}
+
+.v2-action-spacer,
+.v2-action-spacer--default {
+  --c-action-bgd: var(--c-action-bgd-enabled-default);
+}
+
+.v2-action-spacer--elevated {
+  --c-action-bgd: var(--c-action-bgd-enabled-elevated);
+}
+
+// CORE/TOGGLE
+// =======================================================================================
+
+.v2-toggle:not([data-disabled]) .v2-toggle-thumb,
+.v2-toggle:not([data-readonly]) .v2-toggle-thumb,
+.v2-toggle--default:not([data-disabled]) .v2-toggle-thumb,
+.v2-toggle--default:not([data-readonly]) .v2-toggle-thumb {
+  --c-toggle-thumb-bdr: var(--c-toggle-thumb-bdr-enabled-default);
+  --c-toggle-thumb-bgd: var(--c-toggle-thumb-bgd-enabled-default);
+}
+
+.v2-toggle:hover:not([data-disabled]) .v2-toggle-thumb,
+.v2-toggle:hover:not([data-readonly]) .v2-toggle-thumb,
+.v2-toggle--default:hover:not([data-disabled]) .v2-toggle-thumb,
+.v2-toggle--default:hover:not([data-readonly]) .v2-toggle-thumb {
+  --c-toggle-thumb-bdr: var(--c-toggle-thumb-bdr-hovered-default);
+  --c-toggle-thumb-bgd: var(--c-toggle-thumb-bgd-hovered-default);
+}
+
+.v2-toggle:active:not([data-disabled]) .v2-toggle-thumb,
+.v2-toggle:active:not([data-readonly]) .v2-toggle-thumb,
+.v2-toggle--default:active:not([data-disabled]) .v2-toggle-thumb,
+.v2-toggle--default:active:not([data-readonly]) .v2-toggle-thumb {
+  --c-toggle-thumb-bdr: var(--c-toggle-thumb-bdr-pressed-default);
+  --c-toggle-thumb-bgd: var(--c-toggle-thumb-bgd-pressed-default);
+}
+
+.v2-toggle[data-checked]:not([data-disabled]) .v2-toggle-thumb,
+.v2-toggle[data-checked]:not([data-readonly]) .v2-toggle-thumb,
+.v2-toggle--default[data-checked]:not([data-disabled]) .v2-toggle-thumb,
+.v2-toggle--default[data-checked]:not([data-readonly]) .v2-toggle-thumb {
+  --c-toggle-thumb-bdr: var(--c-toggle-thumb-bdr-checked-default);
+  --c-toggle-thumb-bgd: var(--c-toggle-thumb-bgd-checked-default);
+}
+
+.v2-toggle:not([data-disabled]) .v2-toggle-track,
+.v2-toggle:not([data-readonly]) .v2-toggle-track,
+.v2-toggle--default:not([data-disabled]) .v2-toggle-track,
+.v2-toggle--default:not([data-readonly]) .v2-toggle-track {
+  --c-toggle-track-bdr: var(--c-toggle-track-bdr-enabled-default);
+  --c-toggle-track-bgd: var(--c-toggle-track-bgd-enabled-default);
+}
+
+.v2-toggle:hover:not([data-disabled]) .v2-toggle-track,
+.v2-toggle:hover:not([data-readonly]) .v2-toggle-track,
+.v2-toggle--default:hover:not([data-disabled]) .v2-toggle-track,
+.v2-toggle--default:hover:not([data-readonly]) .v2-toggle-track {
+  --c-toggle-track-bdr: var(--c-toggle-track-bdr-hovered-default);
+  --c-toggle-track-bgd: var(--c-toggle-track-bgd-hovered-default);
+}
+
+.v2-toggle:active:not([data-disabled]) .v2-toggle-track,
+.v2-toggle:active:not([data-readonly]) .v2-toggle-track,
+.v2-toggle--default:active:not([data-disabled]) .v2-toggle-track,
+.v2-toggle--default:active:not([data-readonly]) .v2-toggle-track {
+  --c-toggle-track-bdr: var(--c-toggle-track-bdr-pressed-default);
+  --c-toggle-track-bgd: var(--c-toggle-track-bgd-pressed-default);
+}
+
+.v2-toggle[data-checked]:not([data-disabled]) .v2-toggle-track,
+.v2-toggle[data-checked]:not([data-readonly]) .v2-toggle-track,
+.v2-toggle--default[data-checked]:not([data-disabled]) .v2-toggle-track,
+.v2-toggle--default[data-checked]:not([data-readonly]) .v2-toggle-track {
+  --c-toggle-track-bdr: var(--c-toggle-track-bdr-checked-default);
+  --c-toggle-track-bgd: var(--c-toggle-track-bgd-checked-default);
+}
+
+// CORE/SELECT
+// =======================================================================================
+
+.v2-select-box:not([data-disabled]),
+.v2-select-box:not([data-readonly]) {
+  --c-select-box-bgd: var(--c-select-box-bgd-enabled);
+}
+
+.v2-select-list:not([data-disabled]),
+.v2-select-list:not([data-readonly]),
+.v2-select-list--default:not([data-disabled]),
+.v2-select-list--default:not([data-readonly]) {
+  --c-select-list-bgd: var(--c-select-list-bgd-enabled-default);
+  --c-select-list-bdr: var(--c-select-list-bdr-enabled-default);
+}
+
+.v2-select-list--elevated:not([data-disabled]),
+.v2-select-list--elevated:not([data-readonly]) {
+  --c-select-list-bgd: var(--c-select-list-bgd-enabled-elevated);
+  --c-select-list-bdr: var(--c-select-list-bdr-enabled-elevated);
+}
+
+.v2-select-target:not([data-disabled]),
+.v2-select-target:not([data-readonly]),
+.v2-select-target--default:not([data-disabled]),
+.v2-select-target--default:not([data-readonly]) {
+  --c-select-target-bgd: var(--c-select-target-bgd-enabled-default);
+  --c-select-target-bdr: var(--c-select-target-bdr-enabled-default);
+  --c-select-target-clr: var(--c-select-target-clr-enabled-default);
+}
+
+.v2-select-target:hover:not([data-disabled]),
+.v2-select-target:hover:not([data-readonly]),
+.v2-select-target--default:hover:not([data-disabled]),
+.v2-select-target--default:hover:not([data-readonly]) {
+  --c-select-target-bgd: var(--c-select-target-bgd-hovered-default);
+  --c-select-target-bdr: var(--c-select-target-bdr-hovered-default);
+  --c-select-target-clr: var(--c-select-target-clr-hovered-default);
+}
+
+.v2-select-target:active:not([data-disabled]),
+.v2-select-target:active:not([data-readonly]),
+.v2-select-target--default:active:not([data-disabled]),
+.v2-select-target--default:active:not([data-readonly]) {
+  --c-select-target-bgd: var(--c-select-target-bgd-pressed-default);
+  --c-select-target-bdr: var(--c-select-target-bdr-pressed-default);
+  --c-select-target-clr: var(--c-select-target-clr-pressed-default);
+}
+
+.v2-select-target[data-selected]:not([data-disabled]),
+.v2-select-target[data-selected]:not([data-readonly]),
+.v2-select-target--default[data-selected]:not([data-disabled]),
+.v2-select-target--default[data-selected]:not([data-readonly]) {
+  --c-select-target-bgd: var(--c-select-target-bgd-selected-default);
+  --c-select-target-bdr: var(--c-select-target-bdr-selected-default);
+  --c-select-target-clr: var(--c-select-target-clr-selected-default);
+}
+
+.v2-select-target--elevated:not([data-disabled]),
+.v2-select-target--elevated:not([data-readonly]) {
+  --c-select-target-bgd: var(--c-select-target-bgd-enabled-elevated);
+  --c-select-target-bdr: var(--c-select-target-bdr-enabled-elevated);
+  --c-select-target-clr: var(--c-select-target-clr-enabled-elevated);
+}
+
+.v2-select-target--elevated:hover:not([data-disabled]),
+.v2-select-target--elevated:hover:not([data-readonly]) {
+  --c-select-target-bgd: var(--c-select-target-bgd-hovered-elevated);
+  --c-select-target-bdr: var(--c-select-target-bdr-hovered-elevated);
+  --c-select-target-clr: var(--c-select-target-clr-hovered-elevated);
+}
+
+.v2-select-target--elevated:active:not([data-disabled]),
+.v2-select-target--elevated:active:not([data-readonly]) {
+  --c-select-target-bgd: var(--c-select-target-bgd-pressed-elevated);
+  --c-select-target-bdr: var(--c-select-target-bdr-pressed-elevated);
+  --c-select-target-clr: var(--c-select-target-clr-pressed-elevated);
+}
+
+.v2-select-target--elevated[data-selected]:not([data-disabled]),
+.v2-select-target--elevated[data-selected]:not([data-readonly]) {
+  --c-select-target-bgd: var(--c-select-target-bgd-selected-elevated);
+  --c-select-target-bdr: var(--c-select-target-bdr-selected-elevated);
+  --c-select-target-clr: var(--c-select-target-clr-selected-elevated);
+}
+
+.v2-select-option:not([data-disabled]),
+.v2-select-option:not([data-readonly]),
+.v2-select-option--default:not([data-disabled]),
+.v2-select-option--default:not([data-readonly]) {
+  --c-select-option-bgd: var(--c-select-option-bgd-enabled-default);
+  --c-select-option-bdr: var(--c-select-option-bdr-enabled-default);
+  --c-select-option-clr: var(--c-select-option-clr-enabled-default);
+}
+
+.v2-select-option:hover:not([data-disabled]),
+.v2-select-option:hover:not([data-readonly]),
+.v2-select-option--default:hover:not([data-disabled]),
+.v2-select-option--default:hover:not([data-readonly]) {
+  --c-select-option-bgd: var(--c-select-option-bgd-hovered-default);
+  --c-select-option-bdr: var(--c-select-option-bdr-hovered-default);
+  --c-select-option-clr: var(--c-select-option-clr-hovered-default);
+}
+
+.v2-select-option:active:not([data-disabled]),
+.v2-select-option:active:not([data-readonly]),
+.v2-select-option--default:active:not([data-disabled]),
+.v2-select-option--default:active:not([data-readonly]) {
+  --c-select-option-bgd: var(--c-select-option-bgd-pressed-default);
+  --c-select-option-bdr: var(--c-select-option-bdr-pressed-default);
+  --c-select-option-clr: var(--c-select-option-clr-pressed-default);
+}
+
+.v2-select-option[data-selected]:not([data-disabled]),
+.v2-select-option[data-selected]:not([data-readonly]),
+.v2-select-option--default[data-selected]:not([data-disabled]),
+.v2-select-option--default[data-selected]:not([data-readonly]) {
+  --c-select-option-bgd: var(--c-select-option-bgd-selected-default);
+  --c-select-option-bdr: var(--c-select-option-bdr-selected-default);
+  --c-select-option-clr: var(--c-select-option-clr-selected-default);
+}
+
+.v2-select-option--elevated:not([data-disabled]),
+.v2-select-option--elevated:not([data-readonly]) {
+  --c-select-option-bgd: var(--c-select-option-bgd-enabled-elevated);
+  --c-select-option-bdr: var(--c-select-option-bdr-enabled-elevated);
+  --c-select-option-clr: var(--c-select-option-clr-enabled-elevated);
+}
+
+.v2-select-option--elevated:hover:not([data-disabled]),
+.v2-select-option--elevated:hover:not([data-readonly]) {
+  --c-select-option-bgd: var(--c-select-option-bgd-hovered-elevated);
+  --c-select-option-bdr: var(--c-select-option-bdr-hovered-elevated);
+  --c-select-option-clr: var(--c-select-option-clr-hovered-elevated);
+}
+
+.v2-select-option--elevated:active:not([data-disabled]),
+.v2-select-option--elevated:active:not([data-readonly]) {
+  --c-select-option-bgd: var(--c-select-option-bgd-pressed-elevated);
+  --c-select-option-bdr: var(--c-select-option-bdr-pressed-elevated);
+  --c-select-option-clr: var(--c-select-option-clr-pressed-elevated);
+}
+
+.v2-select-option--elevated[data-selected]:not([data-disabled]),
+.v2-select-option--elevated[data-selected]:not([data-readonly]) {
+  --c-select-option-bgd: var(--c-select-option-bgd-selected-elevated);
+  --c-select-option-bdr: var(--c-select-option-bdr-selected-elevated);
+  --c-select-option-clr: var(--c-select-option-clr-selected-elevated);
+}
+
+// CORE/CONTROL
+// =======================================================================================
+
+.v2-control-segment:not([data-disabled]),
+.v2-control-segment--default:not([data-disabled]) {
+  --c-control-segment-clr: var(--c-control-segment-clr-enabled-default);
+  --c-control-segment-bgd: var(--c-control-segment-bgd-enabled-default);
+}
+
+.v2-control-segment:not([data-disabled]):hover,
+.v2-control-segment--default:not([data-disabled]):hover {
+  --c-control-segment-clr: var(--c-control-segment-clr-hovered-default);
+  --c-control-segment-bgd: var(--c-control-segment-bgd-hovered-default);
+}
+
+.v2-control-segment:not([data-disabled]):active,
+.v2-control-segment--default:not([data-disabled]):active {
+  --c-control-segment-clr: var(--c-control-segment-clr-pressed-default);
+  --c-control-segment-bgd: var(--c-control-segment-bgd-pressed-default);
+}
+
+.v2-control-segment:not([data-disabled])[data-selected],
+.v2-control-segment--default:not([data-disabled])[data-selected] {
+  --c-control-segment-clr: var(--c-control-segment-clr-selected-default);
+  --c-control-segment-bgd: var(--c-control-segment-bgd-selected-default);
+}
+
+.v2-control-thumb:not([data-disabled]),
+.v2-control-thumb--default:not([data-disabled]) {
+  --c-control-thumb-clr: var(--c-control-thumb-clr-enabled-default);
+  --c-control-thumb-bgd: var(--c-control-thumb-bgd-enabled-default);
+}
+
+/// DIVIDER
+/// =======================================================================================
+
+.v2-divider,
+.v2-divider--default {
+  --c-divider-clr: var(--c-divider-clr-default);
+  --c-divider-bgd: var(--c-divider-bgd-default);
+}
+
+.v2-divider--elevated {
+  --c-divider-clr: var(--c-divider-clr-elevated);
+  --c-divider-bgd: var(--c-divider-bgd-elevated);
+}
+
+// .v2-control-thumb:not([data-disabled]):hover,
+// .v2-control-thumb--default:not([data-disabled]):hover {
+//   --c-control-thumb-clr: var(--c-control-thumb-clr-hovered-default);
+//   --c-control-thumb-bgd: var(--c-control-thumb-bgd-hovered-default);
+// }
+
+// .v2-control-thumb:not([data-disabled]):active,
+// .v2-control-thumb--default:not([data-disabled]):active {
+//   --c-control-thumb-clr: var(--c-control-thumb-clr-pressed-default);
+//   --c-control-thumb-bgd: var(--c-control-thumb-bgd-pressed-default);
+// }
+
+// .v2-control-thumb:not([data-disabled])[data-selected],
+// .v2-control-thumb--default:not([data-disabled])[data-selected] {
+//   --c-control-thumb-clr: var(--c-control-thumb-clr-selected-default);
+//   --c-control-thumb-bgd: var(--c-control-thumb-bgd-selected-default);
+// }
+
+// .v2-action,
+// .v2-action--base-defualt,
+// .v2-button,
+// .v2-button--base-defualt,
+// .v2-tabs-item,
+// .v2-tabs-item--base-default,
+// .v2-accordion-target,
+// .v2-accordion-target--base-defualt {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-enabled);
+//     color: var(--c-base-text-med);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-base-surface-hovered);
+//     color: var(--c-base-text-med);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-base-surface-pressed);
+//     color: var(--c-base-text-max);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-base-surface-selected);
+//     color: var(--c-base-text-max);
+//   }
+// }
+
+// .v2-action--base-elevated,
+// .v2-button--base-elevated,
+// .v2-tabs-item--base-elevated,
+// .v2-accordion-target--base-elevated {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-1-enabled);
+//     color: var(--c-base-text-med);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-base-surface-1-hovered);
+//     color: var(--c-base-text-med);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-base-surface-1-pressed);
+//     color: var(--c-base-text-max);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-base-surface-1-selected);
+//     color: var(--c-base-text-max);
+//   }
+// }
+
+// .v2-action,
+// .v2-action--base-defualt,
+// .v2-action--base-elevated,
+// .v2-button,
+// .v2-button--base-defualt,
+// .v2-button--base-elevated,
+// .v2-tabs-item,
+// .v2-tabs-item--base-default,
+// .v2-tabs-item--base-elevated,
+// .v2-accordion-target,
+// .v2-accordion-target--base-defualt,
+// .v2-accordion-target--base-elevated {
+//   &:not([data-disabled]) .v2-icon,
+//   &:not([data-readonly]) .v2-icon {
+//     fill: var(--c-base-icon-med);
+//   }
+//   &:not([data-disabled]):hover .v2-icon,
+//   &:not([data-readonly]):hover .v2-icon {
+//     fill: var(--c-base-icon-med);
+//   }
+//   &:not([data-disabled]):active .v2-icon,
+//   &:not([data-readonly]):active .v2-icon {
+//     fill: var(--c-base-icon-max);
+//   }
+//   &:not([data-disabled])[data-selected] .v2-icon,
+//   &:not([data-readonly])[data-selected] .v2-icon {
+//     fill: var(--c-base-icon-max);
+//   }
+// }
+
+// .v2-action--accent-default,
+// .v2-button--accent-default,
+// .v2-tabs-item--accent-default,
+// .v2-accordion-target--accent-default {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-enabled);
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-base-surface-hovered);
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-base-surface-pressed);
+//     color: var(--c-accent-text-max);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-base-surface-selected);
+//     color: var(--c-accent-text-max);
+//   }
+// }
+
+// .v2-action--accent-elevated,
+// .v2-button--accent-elevated,
+// .v2-tabs-item--accent-elevated,
+// .v2-accordion-target--accent-elevated {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-1-enabled);
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-base-surface-1-hovered);
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-base-surface-1-pressed);
+//     color: var(--c-accent-text-max);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-base-surface-1-selected);
+//     color: var(--c-accent-text-max);
+//   }
+// }
+
+// .v2-action--accent-tonal,
+// .v2-button--accent-tonal,
+// .v2-tabs-item--accent-tonal,
+// .v2-accordion-target--accent-tonal {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-accent-surface-1-enabled);
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-accent-surface-1-hovered);
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-accent-surface-1-pressed);
+//     color: var(--c-accent-text-max);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-accent-surface-1-selected);
+//     color: var(--c-accent-text-max);
+//   }
+// }
+
+// .v2-action--accent-ghost,
+// .v2-button--accent-ghost,
+// .v2-tabs-item--accent-ghost,
+// .v2-accordion-target--accent-ghost {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-enabled);
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-accent-surface-hovered);
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-accent-surface-pressed);
+//     color: var(--c-accent-text-max);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-accent-surface-selected);
+//     color: var(--c-accent-text-max);
+//   }
+// }
+
+// .v2-action--accent-ghost,
+// .v2-action--accent-tonal,
+// .v2-action--accent-default,
+// .v2-action--accent-elevated,
+// .v2-button--accent-ghost,
+// .v2-button--accent-tonal,
+// .v2-button--accent-default,
+// .v2-button--accent-elevated,
+// .v2-tabs-item--accent-ghost,
+// .v2-tabs-item--accent-tonal,
+// .v2-tabs-item--accent-default,
+// .v2-tabs-item--accent-elevated,
+// .v2-accordion-target--accent-ghost,
+// .v2-accordion-target--accent-tonal,
+// .v2-accordion-target--accent-default,
+// .v2-accordion-target--accent-elevated {
+//   &:not([data-disabled]) .v2-icon,
+//   &:not([data-readonly]) .v2-icon {
+//     fill: var(--c-accent-icon-med);
+//   }
+//   &:not([data-disabled]):hover .v2-icon,
+//   &:not([data-readonly]):hover .v2-icon {
+//     fill: var(--c-accent-icon-med);
+//   }
+//   &:not([data-disabled]):active .v2-icon,
+//   &:not([data-readonly]):active .v2-icon {
+//     fill: var(--c-accent-icon-max);
+//   }
+//   &:not([data-disabled])[data-selected] .v2-icon,
+//   &:not([data-readonly])[data-selected] .v2-icon {
+//     fill: var(--c-accent-icon-max);
+//   }
+// }
+
+// .v2-tabs-item--base-default::before,
+// .v2-tabs-item--base-elevated::before {
+//   [data-orientation='horizontal'] & {
+//     border-bottom-color: var(--c-base-text-min);
+//   }
+//   [data-orientation='vertical'] & {
+//     border-left-color: var(--c-base-text-min);
+//   }
+// }
+
+// .v2-tabs-item--base-default[data-selected]::before,
+// .v2-tabs-item--base-elevated[data-selected]::before {
+//   [data-orientation='horizontal'] & {
+//     border-bottom-color: var(--c-base-text-min);
+//   }
+//   [data-orientation='vertical'] & {
+//     border-left-color: var(--c-base-text-min);
+//   }
+// }
+
+// .v2-tabs-item--accent-tonal::before,
+// .v2-tabs-item--accent-ghost::before,
+// .v2-tabs-item--accent-default::before,
+// .v2-tabs-item--accent-elevated::before {
+//   [data-orientation='horizontal'] & {
+//     border-bottom-color: var(--c-accent-text-min);
+//   }
+//   [data-orientation='vertical'] & {
+//     border-left-color: var(--c-accent-text-min);
+//   }
+// }
+
+// .v2-tabs-item--accent-tonal[data-selected]::before,
+// .v2-tabs-item--accent-ghost[data-selected]::before,
+// .v2-tabs-item--accent-default[data-selected]::before,
+// .v2-tabs-item--accent-elevated[data-selected]::before {
+//   [data-orientation='horizontal'] & {
+//     border-bottom-color: var(--c-accent-text-med);
+//   }
+//   [data-orientation='vertical'] & {
+//     border-left-color: var(--c-accent-text-med);
+//   }
+// }
+
+// .v2-divider::after,
+// .v2-divider::before {
+//   border-top-color: rgba(var(--c-rgb-contrast), 0.12);
+// }
+
+// .v2-divider svg,
+// .v2-divider .v2-icon {
+//   fill: rgba(var(--c-rgb-contrast), 0.4);
+// }
+
+// .v2-divider-label {
+//   color: rgba(var(--c-rgb-contrast), 0.4);
+// }
+
+// .v2-action-spacer--base-default {
+//   background-color: var(--c-base-surface-enabled);
+// }
+
+// .v2-action-spacer--base-elevated {
+//   background-color: var(--c-base-surface-1-enabled);
+// }
+
+// .v2-action-spacer--accent-ghost {
+//   background-color: var(--c-base-surface-enabled);
+// }
+
+// .v2-action-spacer--accent-default {
+//   background-color: var(--c-base-surface-enabled);
+// }
+
+// .v2-action-spacer--accent-elevated {
+//   background-color: var(--c-base-surface-1-enabled);
+// }
+
+// .v2-action-spacer--accent-tonal {
+//   background-color: var(--c-accent-surface-1-enabled);
+// }
+
+// .v2-accordion-panel--base-default {
+//   background-color: var(--c-base-surface-enabled);
+// }
+
+// .v2-accordion-panel--base-elevated {
+//   background-color: var(--c-base-surface-1-enabled);
+// }
+
+// .v2-accordion-panel--accent-default {
+//   background-color: var(--c-base-surface-enabled);
+// }
+
+// .v2-accordion-panel--accent-elevated {
+//   background-color: var(--c-base-surface-1-enabled);
+// }
+
+// .v2-accordion-panel--accent-tonal {
+//   background-color: var(--c-accent-surface-1-enabled);
+// }
+
+// .v2-accordion-panel--accent-ghost {
+//   background-color: var(--c-base-surface-enabled);
+// }
+
+// .v2-control-segment,
+// .v2-control-segment--base-default,
+// .v2-control-segment--base-elevated {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     color: var(--c-base-text-med);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     color: var(--c-base-text-med);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     color: var(--c-base-text-max);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     color: var(--c-base-text-max);
+//   }
+// }
+
+// .v2-control-segment,
+// .v2-control-segment--base-default,
+// .v2-control-segment--base-elevated {
+//   &:not([data-disabled]) .v2-icon,
+//   &:not([data-readonly]) .v2-icon {
+//     fill: var(--c-base-text-med);
+//   }
+//   &:not([data-disabled]):hover .v2-icon,
+//   &:not([data-readonly]):hover .v2-icon {
+//     fill: var(--c-base-text-med);
+//   }
+//   &:not([data-disabled]):active .v2-icon,
+//   &:not([data-readonly]):active .v2-icon {
+//     fill: var(--c-base-text-max);
+//   }
+//   &:not([data-disabled])[data-selected] .v2-icon,
+//   &:not([data-readonly])[data-selected] .v2-icon {
+//     fill: var(--c-base-text-max);
+//   }
+// }
+
+// .v2-control-segment--accent-tonal,
+// .v2-control-segment--accent-ghost,
+// .v2-control-segment--accent-default,
+// .v2-control-segment--accent-elevated {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     color: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     color: var(--c-accent-text-max);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     color: var(--c-accent-text-max);
+//   }
+// }
+
+// .v2-control-segment--accent-tonal,
+// .v2-control-segment--accent-ghost,
+// .v2-control-segment--accent-default,
+// .v2-control-segment--accent-elevated {
+//   &:not([data-disabled]) .v2-icon,
+//   &:not([data-readonly]) .v2-icon {
+//     fill: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):hover .v2-icon,
+//   &:not([data-readonly]):hover .v2-icon {
+//     fill: var(--c-accent-text-med);
+//   }
+//   &:not([data-disabled]):active .v2-icon,
+//   &:not([data-readonly]):active .v2-icon {
+//     fill: var(--c-accent-text-max);
+//   }
+//   &:not([data-disabled])[data-selected] .v2-icon,
+//   &:not([data-readonly])[data-selected] .v2-icon {
+//     fill: var(--c-accent-text-max);
+//   }
+// }
+
+// .v2-control-thumb--base-default,
+// .v2-control-thumb--base-elevated {
+//   background-color: var(--c-base-surface-2-enabled);
+// }
+
+// .v2-control-thumb--accent-ghost,
+// .v2-control-thumb--accent-tonal,
+// .v2-control-thumb--accent-default,
+// .v2-control-thumb--accent-elevated {
+//   background-color: var(--c-accent-surface-1-enabled);
+// }
+
+// .v2-control-segment--base-default {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-enabled);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-base-surface-hovered);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-base-surface-pressed);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-base-surface-enabled);
+//   }
+// }
+
+// .v2-control-segment--base-elevated {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-1-enabled);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-base-surface-1-hovered);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-base-surface-1-pressed);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-base-surface-enabled);
+//   }
+// }
+
+// .v2-control-segment--accent-default {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-enabled);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-base-surface-hovered);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-base-surface-pressed);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-base-surface-enabled);
+//   }
+// }
+
+// .v2-control-segment--accent-elevated {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-1-enabled);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-base-surface-1-hovered);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-base-surface-1-pressed);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-base-surface-1-enabled);
+//   }
+// }
+
+// .v2-control-segment--accent-tonal {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-accent-surface-1-enabled);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-accent-surface-1-hovered);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-accent-surface-1-pressed);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-accent-surface-1-enabled);
+//   }
+// }
+
+// .v2-control-segment--accent-ghost {
+//   &:not([data-disabled]),
+//   &:not([data-readonly]) {
+//     background-color: var(--c-base-surface-enabled);
+//   }
+//   &:not([data-disabled]):hover,
+//   &:not([data-readonly]):hover {
+//     background-color: var(--c-accent-surface-hovered);
+//   }
+//   &:not([data-disabled]):active,
+//   &:not([data-readonly]):active {
+//     background-color: var(--c-accent-surface-pressed);
+//   }
+//   &:not([data-disabled])[data-selected],
+//   &:not([data-readonly])[data-selected] {
+//     background-color: var(--c-accent-surface-enabled);
+//   }
+// }
+
+// .v2-table-body {
+//   &:where(tr) {
+//     &:where([data-row-striped='odd']):nth-of-type(odd) {
+//       background-color: var(--c-base-surface-1-enabled);
+//     }
+//     &:where([data-row-striped='even']):nth-of-type(even) {
+//       background-color: var(--c-base-surface-1-enabled);
+//     }
+//   }
+// }
+
+// $theme-colors: (
+//   'red',
+//   'orange',
+//   'yellow',
+//   'green',
+//   'mint',
+//   'teal',
+//   'cyan',
+//   'blue',
+//   'indigo',
+//   'purple',
+//   'pink',
+//   'brown'
+// );
+
+// @each $color in $theme-colors {
+//   .v2-control-segment--#{$color}-tonal,
+//   .v2-control-segment--#{$color}-ghost,
+//   .v2-control-segment--#{$color}-default,
+//   .v2-control-segment--#{$color}-elevated {
+//     &:not([data-disabled]),
+//     &:not([data-readonly]) {
+//       color: var(--c-#{$color}-text-med);
+//     }
+//     &:not([data-disabled]):hover,
+//     &:not([data-readonly]):hover {
+//       color: var(--c-#{$color}-text-med);
+//     }
+//     &:not([data-disabled]):active,
+//     &:not([data-readonly]):active {
+//       color: var(--c-#{$color}-text-max);
+//     }
+//     &:not([data-disabled])[data-selected],
+//     &:not([data-readonly])[data-selected] {
+//       color: var(--c-#{$color}-text-max);
+//     }
+//   }
+
+//   .v2-control-segment--#{$color}-tonal,
+//   .v2-control-segment--#{$color}-ghost,
+//   .v2-control-segment--#{$color}-default,
+//   .v2-control-segment--#{$color}-elevated {
+//     &:not([data-disabled]) .v2-icon,
+//     &:not([data-readonly]) .v2-icon {
+//       fill: var(--c-#{$color}-text-med);
+//     }
+//     &:not([data-disabled]):hover .v2-icon,
+//     &:not([data-readonly]):hover .v2-icon {
+//       fill: var(--c-#{$color}-text-med);
+//     }
+//     &:not([data-disabled]):active .v2-icon,
+//     &:not([data-readonly]):active .v2-icon {
+//       fill: var(--c-#{$color}-text-max);
+//     }
+//     &:not([data-disabled])[data-selected] .v2-icon,
+//     &:not([data-readonly])[data-selected] .v2-icon {
+//       fill: var(--c-#{$color}-text-max);
+//     }
+//   }
+
+//   .v2-control-thumb--#{$color}-ghost,
+//   .v2-control-thumb--#{$color}-tonal,
+//   .v2-control-thumb--#{$color}-default,
+//   .v2-control-thumb--#{$color}-elevated {
+//     background-color: var(--c-#{$color}-surface-1-enabled);
+//   }
+
+//   .v2-control-segment--#{$color}-default {
+//     &:not([data-disabled]),
+//     &:not([data-readonly]) {
+//       background-color: var(--c-base-surface-enabled);
+//     }
+//     &:not([data-disabled]):hover,
+//     &:not([data-readonly]):hover {
+//       background-color: var(--c-base-surface-hovered);
+//     }
+//     &:not([data-disabled]):active,
+//     &:not([data-readonly]):active {
+//       background-color: var(--c-base-surface-pressed);
+//     }
+//     &:not([data-disabled])[data-selected],
+//     &:not([data-readonly])[data-selected] {
+//       background-color: var(--c-base-surface-enabled);
+//     }
+//   }
+
+//   .v2-control-segment--#{$color}-elevated {
+//     &:not([data-disabled]),
+//     &:not([data-readonly]) {
+//       background-color: var(--c-base-surface-1-enabled);
+//     }
+//     &:not([data-disabled]):hover,
+//     &:not([data-readonly]):hover {
+//       background-color: var(--c-base-surface-1-hovered);
+//     }
+//     &:not([data-disabled]):active,
+//     &:not([data-readonly]):active {
+//       background-color: var(--c-base-surface-1-pressed);
+//     }
+//     &:not([data-disabled])[data-selected],
+//     &:not([data-readonly])[data-selected] {
+//       background-color: var(--c-base-surface-1-enabled);
+//     }
+//   }
+
+//   .v2-control-segment--#{$color}-tonal {
+//     &:not([data-disabled]),
+//     &:not([data-readonly]) {
+//       background-color: var(--c-#{$color}-surface-1-enabled);
+//     }
+//     &:not([data-disabled]):hover,
+//     &:not([data-readonly]):hover {
+//       background-color: var(--c-#{$color}-surface-1-hovered);
+//     }
+//     &:not([data-disabled]):active,
+//     &:not([data-readonly]):active {
+//       background-color: var(--c-#{$color}-surface-1-pressed);
+//     }
+//     &:not([data-disabled])[data-selected],
+//     &:not([data-readonly])[data-selected] {
+//       background-color: var(--c-#{$color}-surface-1-enabled);
+//     }
+//   }
+
+//   .v2-control-segment--#{$color}-ghost {
+//     &:not([data-disabled]),
+//     &:not([data-readonly]) {
+//       background-color: var(--c-base-surface-enabled);
+//     }
+//     &:not([data-disabled]):hover,
+//     &:not([data-readonly]):hover {
+//       background-color: var(--c-#{$color}-surface-hovered);
+//     }
+//     &:not([data-disabled]):active,
+//     &:not([data-readonly]):active {
+//       background-color: var(--c-#{$color}-surface-pressed);
+//     }
+//     &:not([data-disabled])[data-selected],
+//     &:not([data-readonly])[data-selected] {
+//       background-color: var(--c-#{$color}-surface-enabled);
+//     }
+//   }
+// }

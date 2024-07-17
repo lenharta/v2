@@ -1,8 +1,8 @@
 import React from 'react';
-import { Factory } from '@/types';
+import { Factory } from '@types';
 import { flushSync } from 'react-dom';
-import { createFactory } from '@/factory';
-import { useDidUpdate, useMergeRefs } from '@/hooks';
+import { createFactory } from '@factory';
+import { useDidUpdate, useMergeRefs } from '@hooks';
 
 import { DisclosureProps } from './types';
 import { getElementHeight } from './get-element-height';
