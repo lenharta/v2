@@ -881,7 +881,7 @@
   --c-control-thumb-bgd: var(--c-control-thumb-bgd-enabled-default);
 }
 
-/// DIVIDER
+/// CORE/DIVIDER
 /// =======================================================================================
 
 .v2-divider,
@@ -893,4 +893,97 @@
 .v2-divider--elevated {
   --c-divider-clr: var(--c-divider-clr-elevated);
   --c-divider-bgd: var(--c-divider-bgd-elevated);
+}
+
+/// CORE/ACCORDION
+/// =======================================================================================
+
+.v2-accordion--default .v2-accordion-target:not([data-disabled]) {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-enabled-default);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-enabled-default);
+}
+
+.v2-accordion--default .v2-accordion-target:not([data-disabled]):hover {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-hovered-default);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-hovered-default);
+}
+
+.v2-accordion--default .v2-accordion-target:not([data-disabled]):active {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-pressed-default);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-pressed-default);
+}
+
+.v2-accordion--elevated .v2-accordion-target:not([data-disabled]) {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-enabled-elevated);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-enabled-elevated);
+}
+
+.v2-accordion--elevated .v2-accordion-target:not([data-disabled]):hover {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-hovered-elevated);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-hovered-elevated);
+}
+
+.v2-accordion--elevated .v2-accordion-target:not([data-disabled]):active {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-pressed-elevated);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-pressed-elevated);
+}
+
+.v2-accordion--accent-default .v2-accordion-target:not([data-disabled]) {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-enabled-accent-default);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-enabled-accent-default);
+}
+
+.v2-accordion--accent-default .v2-accordion-target:not([data-disabled]):hover {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-hovered-accent-default);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-hovered-accent-default);
+}
+
+.v2-accordion--accent-default .v2-accordion-target:not([data-disabled]):active {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-pressed-accent-default);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-pressed-accent-default);
+}
+
+.v2-accordion--accent-elevated .v2-accordion-target:not([data-disabled]) {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-enabled-accent-elevated);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-enabled-accent-elevated);
+}
+
+.v2-accordion--accent-elevated .v2-accordion-target:not([data-disabled]):hover {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-hovered-accent-elevated);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-hovered-accent-elevated);
+}
+
+.v2-accordion--accent-elevated .v2-accordion-target:not([data-disabled]):active {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-pressed-accent-elevated);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-pressed-accent-elevated);
+}
+
+.v2-accordion--accent-default-tonal .v2-accordion-target:not([data-disabled]) {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-enabled-accent-default-tonal);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-enabled-accent-default-tonal);
+}
+
+.v2-accordion--accent-default-tonal .v2-accordion-target:not([data-disabled]):hover {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-hovered-accent-default-tonal);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-hovered-accent-default-tonal);
+}
+
+.v2-accordion--accent-default-tonal .v2-accordion-target:not([data-disabled]):active {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-pressed-accent-default-tonal);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-pressed-accent-default-tonal);
+}
+
+.v2-accordion--accent-elevated-tonal .v2-accordion-target:not([data-disabled]) {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-enabled-accent-elevated-tonal);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-enabled-accent-elevated-tonal);
+}
+
+.v2-accordion--accent-elevated-tonal .v2-accordion-target:not([data-disabled]):hover {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-hovered-accent-elevated-tonal);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-hovered-accent-elevated-tonal);
+}
+
+.v2-accordion--accent-elevated-tonal .v2-accordion-target:not([data-disabled]):active {
+  --c-accordion-target-bgd: var(--c-accordion-target-bgd-pressed-accent-elevated-tonal);
+  --c-accordion-target-clr: var(--c-accordion-target-clr-pressed-accent-elevated-tonal);
 }

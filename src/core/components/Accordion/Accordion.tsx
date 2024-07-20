@@ -9,7 +9,7 @@ import { AccordionItem } from './AccordionItem';
 const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multiple>) => {
   const {
     value,
-    variant,
+    variant = 'default',
     children,
     multiple = false,
     trapFocus = false,
@@ -42,7 +42,7 @@ const Accordion = <Multiple extends boolean = false>(props: AccordionProps<Multi
   };
 
   return (
-    <div id={getRootId()} className={clsx('v2-accordion', className)}>
+    <div id={getRootId()} className={clsx('v2-accordion', `v2-accordion--${variant}`, className)}>
       <AccordionProvider
         value={{
           variant,
