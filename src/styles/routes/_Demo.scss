@@ -7,7 +7,8 @@
     grid-template-rows: auto;
     grid-template-columns: repeat(1, 1fr);
     padding-inline: var(--v2-gutter);
-    margin-top: calc(var(--v2-gutter) * 1.5);
+    margin-block: var(--v2-gutter);
+
     gap: var(--v2-01);
 
     @media (min-width: 50em) {
@@ -42,6 +43,7 @@
   &-directory-card-body {
     padding-inline: var(--v2-06);
     padding-block: var(--v2-08);
+    padding-inline: calc(var(--v2-gutter) / 2);
 
     .v2-title {
       font-size: var(--v2-font-size-07);

@@ -24,7 +24,7 @@ const items: DemoDirectoryItem[] = [
     path: '/demo/action',
     banner: 'Action',
     title: 'Action',
-    summary: `A UI shell button used for navigation and primary controls. It integrates seamlessly into the application's layout, providing intuitive access to key actions and features.`,
+    summary: `A user-interface shell button used for navigation and primary controls. It integrates seamlessly into the application's layout, providing intuitive access to key actions and features.`,
   },
   {
     id: 'demo:iconbtn',
@@ -73,7 +73,7 @@ const items: DemoDirectoryItem[] = [
 const DemoDirectory: DemoDirectoryFactory = ({}) => {
   return (
     <React.Fragment>
-      <DemoHero />
+      <DemoHero title="Directory" />
       <DemoIntro />
       <Page.Section className="v2-demo-directory">
         <div className="v2-demo-directory-layout">

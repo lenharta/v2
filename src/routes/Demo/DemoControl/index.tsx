@@ -1,15 +1,34 @@
 import * as React from 'react';
 import { Control } from '@core';
 import { DemoHero } from '../DemoHero';
-import { Canvas } from '@app';
+import { Canvas, Page } from '@app';
 
-type DemoControlFactory = React.FC<{}> & {
-  Canvas: React.FC<{}>;
-};
+const DemoControlHero: React.FC<{}> = ({}) => <DemoHero title="Control" />;
 
-const DemoControlCanvas: DemoControlFactory['Canvas'] = (props) => {
-  const {} = props;
-  return (
+const DemoControlIntro: React.FC<{}> = ({}) => (
+  <Page.Section>
+    <Page.Intro
+      text="A versatile component for selectable options, similar to a content switcher. It allows users to switch between different views or modes, enhancing navigation and usability within the application."
+      links={[
+        {
+          value: '/demo/button',
+          label: 'Button',
+          variant: 'elevated-accent-tonal',
+          icon: { name: 'arrow-northeast' },
+        },
+        {
+          value: '/demo',
+          label: 'Back To Directory',
+          variant: 'elevated-accent',
+          icon: { name: 'arrow-west' },
+        },
+      ]}
+    />
+  </Page.Section>
+);
+
+const DemoControlCanvas: React.FC<{}> = ({}) => (
+  <Page.Section>
     <Canvas
       controls={[
         {
@@ -48,19 +67,25 @@ const DemoControlCanvas: DemoControlFactory['Canvas'] = (props) => {
         ]}
       />
     </Canvas>
-  );
+  </Page.Section>
+);
+
+type DemoControlFactory = React.FC<{}> & {
+  Hero: typeof DemoControlHero;
+  Intro: typeof DemoControlIntro;
+  Canvas: typeof DemoControlCanvas;
 };
 
-const DemoControl: DemoControlFactory = (props) => {
-  const {} = props;
-  return (
-    <React.Fragment>
-      <DemoHero title="Control" />
-      <DemoControl.Canvas />
-    </React.Fragment>
-  );
-};
+const DemoControl: DemoControlFactory = ({}) => (
+  <React.Fragment>
+    <DemoControl.Hero />
+    <DemoControl.Intro />
+    <DemoControl.Canvas />
+  </React.Fragment>
+);
 
+DemoControl.Hero = DemoControlHero;
+DemoControl.Intro = DemoControlIntro;
 DemoControl.Canvas = DemoControlCanvas;
 DemoControl.displayName = '@v2/Demo.Control';
 export { DemoControl };

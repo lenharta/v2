@@ -6,6 +6,7 @@ interface ButtonThemeProps {
   align?: 'start' | 'end' | 'center' | undefined;
   justify?: 'start' | 'end' | 'center' | undefined;
   variant?: Theme.Variant | undefined;
+  fullWidth?: boolean | undefined;
 }
 
 interface ButtonProps extends UnstyledButtonProps, ButtonThemeProps {

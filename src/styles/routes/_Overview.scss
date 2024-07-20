@@ -59,6 +59,10 @@
     line-height: var(--v2-line-height-sm);
   }
 
+  &-experience-banner .v2-button-layout {
+    justify-content: space-between;
+  }
+
   &-experience-layout {
     display: grid;
     place-content: start;

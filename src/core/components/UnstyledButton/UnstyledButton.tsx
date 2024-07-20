@@ -17,14 +17,14 @@ const UnstyledButton = createFactory<UnstyledButtonFactory>((props, ref) => {
     <button
       ref={ref}
       className={clsx('v2-button-u', className)}
-      aria-busy={loading}
-      aria-selected={selected}
-      aria-disabled={disabled}
-      aria-readonly={readOnly}
-      data-readonly={readOnly}
-      data-disabled={disabled}
-      data-selected={selected}
-      data-loading={loading}
+      aria-busy={!!loading || undefined}
+      aria-selected={!!selected || undefined}
+      aria-disabled={!!disabled || undefined}
+      aria-readonly={!!readOnly || undefined}
+      data-readonly={!!readOnly || undefined}
+      data-disabled={!!disabled || undefined}
+      data-selected={!!selected || undefined}
+      data-loading={!!loading || undefined}
       onClick={(event) => {
         if (!disabled && !readOnly && !loading) {
           onClick?.(event);

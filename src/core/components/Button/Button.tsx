@@ -28,6 +28,7 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
     selected,
     children,
     iconLeft,
+    fullWidth,
     iconRight,
     className,
     ...forwardedProps
@@ -53,6 +54,7 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
       readOnly={readOnly}
       disabled={disabled}
       selected={selected}
+      data-block={!!fullWidth || undefined}
       className={clsx(
         'v2-button',
         `v2-button--${size || ctx.size || 'sm'}`,

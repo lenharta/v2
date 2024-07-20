@@ -29,7 +29,7 @@ const Icon = createFactory<IconFactory>((props, ref) => {
     : {};
 
   return (
-    <div className={clsx('v2-icon', `v2-icon--size-${size}`, className)} style={{ ...theme }}>
+    <div style={{ ...theme }} className={clsx('v2-icon', `v2-icon--size-${size}`, className)}>
       <svg
         ref={ref}
         xmlns="http://www.w3.org/2000/svg"
