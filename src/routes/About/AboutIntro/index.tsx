@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Page } from '@app/components';
 
-const AboutIntro: React.FC<{}> = ({}) => {
+const AboutIntro: React.FC<{}> & {} = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
@@ -10,7 +10,7 @@ const AboutIntro: React.FC<{}> = ({}) => {
           {
             value: '/projects',
             label: 'Projects',
-            variant: 'elevated-accent',
+            variant: 'elevated-accent-tonal',
             icon: { name: 'arrow-northeast' },
           },
           {
@@ -25,10 +25,5 @@ const AboutIntro: React.FC<{}> = ({}) => {
   );
 };
 
+AboutIntro.displayName = '@v2/About.Intro';
 export { AboutIntro };
-
-// Specializing in building large-scale component libraries that
-// drive seamless user experiences across diverse industries. I have had
-// the opportunity to work with Fortune 500 financial corporations, global
-// real estate development firms, and award-winning creative marketing agencies,
-// where I have delivered high-quality, scalable solutions.

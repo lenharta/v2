@@ -11,9 +11,8 @@
   &-layout {
     display: flex;
     flex-direction: column;
-    padding-block: var(--v2-gutter);
     margin-inline: var(--v2-gutter);
-    gap: var(--v2-gutter);
+    margin-bottom: calc(var(--v2-gutter) * 2);
 
     [data-prefers-dir='rtl'] & {
       align-items: flex-end;
@@ -23,6 +22,7 @@
   &-meta {
     display: flex;
     flex-direction: column;
+    padding-block: var(--v2-gutter);
 
     [data-prefers-dir='rtl'] & {
       justify-content: flex-start;

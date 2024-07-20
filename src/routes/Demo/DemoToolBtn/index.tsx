@@ -1,15 +1,34 @@
 import * as React from 'react';
 import { ToolBtn } from '@core';
 import { DemoHero } from '../DemoHero';
-import { Canvas } from '@app';
+import { Canvas, Page } from '@app';
 
-type DemoToolBtnFactory = React.FC<{}> & {
-  Canvas: React.FC<{}>;
-};
+const DemoToolBtnHero: React.FC<{}> = ({}) => <DemoHero title="Icon Button" />;
 
-const DemoToolBtnCanvas: DemoToolBtnFactory['Canvas'] = (props) => {
-  const {} = props;
-  return (
+const DemoToolBtnIntro: React.FC<{}> = ({}) => (
+  <Page.Section>
+    <Page.Intro
+      text="A compact, rounded button featuring only an icon. Ideal for minimalist designs, it provides quick access to functions without the need for descriptive text, maintaining a clean interface."
+      links={[
+        {
+          value: '/demo/checkbox',
+          label: 'Checkbox',
+          variant: 'elevated-accent-tonal',
+          icon: { name: 'arrow-northeast' },
+        },
+        {
+          value: '/demo',
+          label: 'Go Back',
+          variant: 'elevated-accent',
+          icon: { name: 'arrow-west' },
+        },
+      ]}
+    />
+  </Page.Section>
+);
+
+const DemoToolBtnCanvas: React.FC<{}> = ({}) => (
+  <Page.Section>
     <Canvas
       controls={[
         {
@@ -27,35 +46,42 @@ const DemoToolBtnCanvas: DemoToolBtnFactory['Canvas'] = (props) => {
         {
           type: 'select',
           prop: 'variant',
-          initialValue: 'default',
+          initialValue: 'elevated-accent-tonal',
           data: [
             { label: 'default', value: 'default' },
             { label: 'elevated', value: 'elevated' },
             { label: 'default-accent', value: 'default-accent' },
             { label: 'elevated-accent', value: 'elevated-accent' },
+            { label: 'default-accent-tonal', value: 'default-accent-tonal' },
+            { label: 'elevated-accent-tonal', value: 'elevated-accent-tonal' },
           ],
         },
-
         { type: 'toggle', prop: 'selected', initialValue: false },
         { type: 'toggle', prop: 'readOnly', initialValue: false },
         { type: 'toggle', prop: 'disabled', initialValue: false },
       ]}
     >
-      <ToolBtn />
+      <ToolBtn icon={{ name: 'close-x-circle' }} />
     </Canvas>
-  );
+  </Page.Section>
+);
+
+type DemoToolBtnFactory = React.FC<{}> & {
+  Hero: typeof DemoToolBtnHero;
+  Intro: typeof DemoToolBtnIntro;
+  Canvas: typeof DemoToolBtnCanvas;
 };
 
-const DemoToolBtn: DemoToolBtnFactory = (props) => {
-  const {} = props;
-  return (
-    <React.Fragment>
-      <DemoHero title="Demo | ToolBtn" />
-      <DemoToolBtn.Canvas />
-    </React.Fragment>
-  );
-};
+const DemoToolBtn: DemoToolBtnFactory = ({}) => (
+  <React.Fragment>
+    <DemoToolBtn.Hero />
+    <DemoToolBtn.Intro />
+    <DemoToolBtn.Canvas />
+  </React.Fragment>
+);
 
+DemoToolBtn.Hero = DemoToolBtnHero;
+DemoToolBtn.Intro = DemoToolBtnIntro;
 DemoToolBtn.Canvas = DemoToolBtnCanvas;
 DemoToolBtn.displayName = '@v2/Demo.ToolBtn';
 export { DemoToolBtn };

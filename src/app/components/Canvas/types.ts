@@ -1,4 +1,6 @@
-type CanvasControlType = 'toggle' | 'segment' | 'string' | 'select';
+import { Theme } from '@types';
+
+type CanvasControlType = 'toggle' | 'segmented' | 'string' | 'select' | 'color';
 
 type CanvasControl<
   T extends CanvasControlType = CanvasControlType,
@@ -32,11 +34,50 @@ type CanvasControlSelectProps = {
   onChange: (value: string) => void;
 };
 
-type CanvasControlOptions = CanvasControlToggleOptions | CanvasControlSelectOptions;
+type CanvasControlSegmentedItem = {
+  value: string;
+  label: string;
+};
+
+type CanvasControlSegmentedData = (string | CanvasControlSegmentedItem)[];
+
+type CanvasControlSegmentedOptions = CanvasControl<
+  'segmented',
+  { data: CanvasControlSegmentedData; initialValue: string }
+>;
+
+type CanvasControlSegmentedProps = {
+  data: CanvasControlSegmentedData;
+  prop: string;
+  value: string;
+  onChange: (value: string) => void;
+};
+
+type CanvasControlColorProps = {};
+
+type CanvasControlColorSwatchProps = {};
+
+type CanvasControlOptions =
+  | CanvasControlToggleOptions
+  | CanvasControlSelectOptions
+  | CanvasControlSegmentedOptions;
 
 interface CanvasProps {
   children: React.ReactNode;
   controls: CanvasControlOptions[];
+}
+
+interface CanvasControlsProps {
+  children: React.ReactNode;
+  displayState: CanvasDisplayState;
+  setDisplayState: (prop: keyof CanvasDisplayState, value: any) => void;
+}
+
+interface CanvasDisplayState {
+  dir: Theme.Dir;
+  mode: Theme.Mode;
+  accent: Theme.Color;
+  contrast: 'yes' | 'no';
 }
 
 export type {
@@ -50,4 +91,10 @@ export type {
   CanvasControlSelectData,
   CanvasControlSelectOptions,
   CanvasControlSelectProps,
+  CanvasControlSegmentedItem,
+  CanvasControlSegmentedData,
+  CanvasControlSegmentedOptions,
+  CanvasControlSegmentedProps,
+  CanvasDisplayState,
+  CanvasControlsProps,
 };

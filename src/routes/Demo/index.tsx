@@ -5,6 +5,7 @@ import { Page } from '@app/components';
 import { DemoHero } from './DemoHero';
 import { DemoIntro } from './DemoIntro';
 
+import { DemoRadio } from './DemoRadio';
 import { DemoToggle } from './DemoToggle';
 import { DemoButton } from './DemoButton';
 import { DemoAction } from './DemoAction';
@@ -17,6 +18,7 @@ import { DemoControl } from './DemoControl';
 type DemoFactory = React.FC<{}> & {
   Hero: typeof DemoHero;
   Intro: typeof DemoIntro;
+  Radio: typeof DemoRadio;
   Toggle: typeof DemoToggle;
   Button: typeof DemoButton;
   Action: typeof DemoAction;
@@ -35,6 +37,7 @@ const Demo: DemoFactory = ({}) => (
 
 Demo.Hero = DemoHero;
 Demo.Intro = DemoIntro;
+Demo.Radio = DemoRadio;
 Demo.Toggle = DemoToggle;
 Demo.Button = DemoButton;
 Demo.Action = DemoAction;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Page } from '@app/components';
 
-const ProjectsIntro: React.FC<{}> = ({}) => {
+const ProjectsIntro: React.FC<{}> & {} = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
@@ -10,7 +10,7 @@ const ProjectsIntro: React.FC<{}> = ({}) => {
           {
             value: '/stack',
             label: 'Stack',
-            variant: 'elevated-accent',
+            variant: 'elevated-accent-tonal',
             icon: { name: 'arrow-northeast' },
           },
           {

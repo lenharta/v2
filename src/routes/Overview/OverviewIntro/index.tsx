@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Page } from '@app/components';
 
-type OverviewIntroFactory = React.FC<{}> & {};
-
-const OverviewIntro: OverviewIntroFactory = ({}) => {
+const OverviewIntro: React.FC<{}> & {} = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
@@ -12,7 +10,7 @@ const OverviewIntro: OverviewIntroFactory = ({}) => {
           {
             value: `/about`,
             label: `Learn More`,
-            variant: `elevated-accent`,
+            variant: `elevated-accent-tonal`,
             icon: { name: `arrow-northeast` },
           },
           {

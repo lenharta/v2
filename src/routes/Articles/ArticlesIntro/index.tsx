@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Page } from '@app/components';
 
-const ArticlesIntro: React.FC<{}> = ({}) => {
+const ArticlesIntro: React.FC<{}> & {} = ({}) => {
   return (
     <Page.Section>
       <Page.Intro
@@ -10,7 +10,7 @@ const ArticlesIntro: React.FC<{}> = ({}) => {
           {
             value: '/contact',
             label: 'Contact Me',
-            variant: 'elevated-accent',
+            variant: 'elevated-accent-tonal',
             icon: { name: 'arrow-northeast' },
           },
           {

@@ -42,6 +42,7 @@ const browserRouter = ReactRouter.createBrowserRouter([
         element: <Routes.Demo />,
         children: [
           { index: true, element: <Routes.Demo.Directory /> },
+          { path: '/demo/radio', element: <Routes.Demo.Radio /> },
           { path: '/demo/toggle', element: <Routes.Demo.Toggle /> },
           { path: '/demo/button', element: <Routes.Demo.Button /> },
           { path: '/demo/action', element: <Routes.Demo.Action /> },

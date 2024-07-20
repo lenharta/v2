@@ -29,10 +29,12 @@ const StackTableBody = createFactory<StackTableBodyFactory>((props, ref) => {
             <td className="v2-stack-table-body-cell" data-table-column="type">
               <span
                 children={capitalizeString(item.type)}
-                style={{
-                  backgroundColor: `rgba(var(--c-rgb-${getAccentColor(item.type)}), 0.05)`,
-                  color: `rgba(var(--c-rgb-${getAccentColor(item.type)}), 1)`,
-                }}
+                style={
+                  {
+                    // backgroundColor: `rgba(var(--c-rgb-${getAccentColor(item.type)}), 0.05)`,
+                    // color: `rgba(var(--c-rgb-${getAccentColor(item.type)}), 1)`,
+                  }
+                }
               />
             </td>
 

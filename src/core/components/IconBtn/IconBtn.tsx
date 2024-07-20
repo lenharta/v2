@@ -13,9 +13,13 @@ type IconBtnFactory = Factory.Config<{
 }>;
 
 const IconBtn = createFactory<IconBtnFactory>((props, ref) => {
-  const { icon, className, ...forwardedProps } = props;
+  const { icon, size = 'sm', variant = 'default', className, ...forwardedProps } = props;
   return (
-    <UnstyledButton ref={ref} className={clsx('v2-icon-btn', className)} {...forwardedProps}>
+    <UnstyledButton
+      ref={ref}
+      className={clsx('v2-iconbtn', `v2-iconbtn--${size}`, `v2-iconbtn--${variant}`, className)}
+      {...forwardedProps}
+    >
       <Icon {...icon} />
     </UnstyledButton>
   );

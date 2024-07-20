@@ -1,6 +1,7 @@
 .v2-canvas {
   width: 100%;
   display: block;
+  padding-top: var(--v2-gutter);
   padding-inline: var(--v2-gutter);
 
   &-layout {
@@ -9,27 +10,48 @@
     flex-direction: column;
     border-width: var(--v2-01);
     border-style: solid;
-    // border-radius: var(--v2-radius-sm);
     color: var(--c-canvas-clr);
     border-color: var(--c-canvas-bdr);
     background-color: var(--c-canvas-bgd);
     min-height: 500px;
 
     @media (min-width: 60em) {
-      flex-direction: row;
+      flex-direction: row-reverse;
     }
   }
 
-  &-select {
-    max-width: 320px;
+  &-color,
+  &-select,
+  &-segmented {
+    width: 100%;
 
     .v2-divider {
       margin-bottom: var(--v2-04);
     }
 
     .v2-select-target {
-      width: 320px;
+      width: 100%;
     }
+  }
+
+  &-color-item {
+    width: var(--v2-08);
+    height: var(--v2-08);
+    border-radius: var(--v2-02);
+    position: relative;
+  }
+
+  &-color-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--v2-01);
+  }
+
+  &-color-icon {
+    position: absolute;
+    bottom: var(--v2-02);
+    right: var(--v2-02);
   }
 
   &-controls {
@@ -40,33 +62,62 @@
     justify-content: flex-start;
     flex-direction: column;
     padding-inline: var(--v2-06);
-    padding-block: var(--v2-06);
-
+    padding-block: var(--v2-08);
     color: var(--c-canvas-controls-clr);
     border-color: var(--c-canvas-controls-bdr);
     background-color: var(--c-canvas-controls-bgd);
+    min-width: 400px;
 
     .v2-toggle {
       --v2-toggle-order: 0;
     }
 
     @media (min-width: 60em) {
-      flex: 1 1 40%;
-      border-left-style: solid;
-      border-left-width: var(--v2-01);
+      flex: 0 1;
+      border-right-style: solid;
+      border-right-width: var(--v2-01);
     }
   }
 
   &-display {
-    flex: 1 1 60%;
+    flex: 1 0;
+    width: 100%;
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-height: 300px;
-
     color: var(--c-canvas-display-clr);
     border-color: var(--c-canvas-display-bdr);
     background-color: var(--c-canvas-display-bgd);
+    min-height: 500px;
+
+    @media (min-width: 60em) {
+      min-height: 300px;
+    }
+
+    &-actions {
+      padding: 0;
+      position: absolute;
+      width: calc(100% - calc(var(--v2-01) * 2));
+      left: var(--v2-01);
+
+      @media (max-width: 60em) {
+        bottom: var(--v2-01);
+      }
+      @media (min-width: 60em) {
+        top: var(--v2-01);
+      }
+    }
+
+    &-container {
+      padding: var(--v2-gutter);
+      flex: 1 0 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 400px;
+    }
   }
 }
