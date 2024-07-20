@@ -140,7 +140,7 @@
 
   &-head-cell[data-table-column='type'],
   &-body-cell[data-table-column='type'] {
-    width: 33%;
+    width: 40%;
 
     @media (min-width: 60em) {
       width: 15%;
@@ -149,7 +149,7 @@
 
   &-head-cell[data-table-column='name'],
   &-body-cell[data-table-column='name'] {
-    width: 33%;
+    width: 40%;
 
     @media (min-width: 60em) {
       width: 15%;
@@ -168,7 +168,7 @@
 
   &-head-cell[data-table-column='docs'],
   &-body-cell[data-table-column='docs'] {
-    width: auto;
+    width: 20%;
 
     @media (min-width: 60em) {
       width: 10%;

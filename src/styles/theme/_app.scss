@@ -225,6 +225,18 @@ body,
   color: var(--c-accent-clr-max);
 }
 
+.v2-about-timeline-section-chronology,
+.v2-about-timeline-section-header,
+.v2-about-timeline-section-content {
+  border-left-style: solid;
+  border-left-width: var(--v2-line-size);
+  border-left-color: var(--c-about-timeline-track);
+}
+
+.v2-about-timeline-section-role span {
+  color: var(--c-accent-clr-max);
+}
+
 .v2-side-nav {
   &-target[data-selected] .v2-icon {
     color: var(--c-accent-clr-max) !important;

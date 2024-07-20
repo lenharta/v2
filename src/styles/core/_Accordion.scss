@@ -53,6 +53,9 @@
     font-size: var(--v2-accordion-target-font-size, var(--v2-accordion-target-font-size-sm));
     line-height: var(--v2-accordion-target-height, var(--v2-accordion-target-height-sm));
     font-weight: var(--v2-font-weight-reg);
+
+    background-color: var(--c-accordion-target-bgd);
+    color: var(--c-accordion-target-clr);
   }
 
   &-target-layout .v2-icon {

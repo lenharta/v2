@@ -58,9 +58,10 @@ const TimelineSection = (props: TimelineSectionProps) => {
         <Text className="v2-about-timeline-section-chronology-year">{year}</Text>
       </div>
       <div className="v2-about-timeline-section-header">
-        <Title h3 className="v2-about-timeline-section-role" children={role} />
-        <Text className="v2-about-timeline-section-company" children={company} />
         <Text className="v2-about-timeline-section-location" children={location} />
+        <Title h3 className="v2-about-timeline-section-role">
+          {role} | <span>{company}</span>
+        </Title>
       </div>
       <div className="v2-about-timeline-section-content">{children}</div>
     </Page.Section>
@@ -71,7 +72,7 @@ const TimelineAccordion = (props: { data: { id: string; title: string; text: str
   const [value, onChange] = React.useState<string | null>(null);
   return (
     <div className="v2-about-timeline-accordion">
-      <Accordion value={value} onValueChange={onChange}>
+      <Accordion value={value} onValueChange={onChange} variant="elevated">
         {props.data.map((item) => (
           <Accordion.Item
             className="v2-about-timeline-accordion-item"

@@ -27,6 +27,11 @@
   --c-page-intro-banner-bgd: rgba(var(--c-rgb-contrast), 0.03);
   --c-page-intro-banner-clr: rgba(var(--c-rgb-contrast), 0.7);
 
+  --c-page-headline-clr: rgba(var(--c-rgb-contrast), 0.12);
+
+  --c-stack-table-head-cell-bgd: rgba(var(--c-rgb-contrast), 0.05);
+  --c-stack-table-body-cell-bgd: rgba(var(--c-rgb-contrast), 0.03);
+
   /// =====================================================================================
   /// CORE
   /// =====================================================================================
@@ -180,6 +185,132 @@
   --c-action-clr-pressed-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
   --c-action-clr-selected-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
 
+  /// CORE/ICONBTN
+  /// =====================================================================================
+
+  --c-iconbtn-bgd-enabled-default: transparent;
+  --c-iconbtn-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-iconbtn-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.03);
+  --c-iconbtn-bgd-selected-default: rgba(var(--c-rgb-contrast), 0.03);
+
+  --c-iconbtn-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.76);
+  --c-iconbtn-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-iconbtn-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.93);
+  --c-iconbtn-clr-selected-default: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-iconbtn-bgd-enabled-default-accent: var(--c-iconbtn-bgd-enabled-default);
+  --c-iconbtn-bgd-hovered-default-accent: var(--c-iconbtn-bgd-hovered-default);
+  --c-iconbtn-bgd-pressed-default-accent: var(--c-iconbtn-bgd-pressed-default);
+  --c-iconbtn-bgd-selected-default-accent: var(--c-iconbtn-bgd-selected-default);
+
+  --c-iconbtn-clr-enabled-default-accent: rgba(var(--c-rgb-accent), 0.76);
+  --c-iconbtn-clr-hovered-default-accent: rgba(var(--c-rgb-accent), 0.87);
+  --c-iconbtn-clr-pressed-default-accent: rgba(var(--c-rgb-accent), 0.93);
+  --c-iconbtn-clr-selected-default-accent: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-iconbtn-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.03);
+  --c-iconbtn-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-iconbtn-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.05);
+  --c-iconbtn-bgd-selected-elevated: rgba(var(--c-rgb-contrast), 0.05);
+
+  --c-iconbtn-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.76);
+  --c-iconbtn-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-iconbtn-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.93);
+  --c-iconbtn-clr-selected-elevated: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-iconbtn-bgd-enabled-elevated-accent: var(--c-iconbtn-bgd-enabled-elevated);
+  --c-iconbtn-bgd-hovered-elevated-accent: var(--c-iconbtn-bgd-hovered-elevated);
+  --c-iconbtn-bgd-pressed-elevated-accent: var(--c-iconbtn-bgd-pressed-elevated);
+  --c-iconbtn-bgd-selected-elevated-accent: var(--c-iconbtn-bgd-selected-elevated);
+
+  --c-iconbtn-clr-enabled-elevated-accent: rgba(var(--c-rgb-accent), 0.76);
+  --c-iconbtn-clr-hovered-elevated-accent: rgba(var(--c-rgb-accent), 0.87);
+  --c-iconbtn-clr-pressed-elevated-accent: rgba(var(--c-rgb-accent), 0.93);
+  --c-iconbtn-clr-selected-elevated-accent: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-iconbtn-bgd-enabled-default-accent-tonal: transparent;
+  --c-iconbtn-bgd-hovered-default-accent-tonal: rgba(var(--c-rgb-accent), 0.07);
+  --c-iconbtn-bgd-pressed-default-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+  --c-iconbtn-bgd-selected-default-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+
+  --c-iconbtn-clr-enabled-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-iconbtn-clr-hovered-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-iconbtn-clr-pressed-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-iconbtn-clr-selected-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+
+  --c-iconbtn-bgd-enabled-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.07);
+  --c-iconbtn-bgd-hovered-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+  --c-iconbtn-bgd-pressed-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.12);
+  --c-iconbtn-bgd-selected-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.12);
+
+  --c-iconbtn-clr-enabled-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-iconbtn-clr-hovered-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-iconbtn-clr-pressed-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-iconbtn-clr-selected-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+
+  /// CORE/TOOLBTN
+  /// =====================================================================================
+
+  --c-toolbtn-bgd-enabled-default: transparent;
+  --c-toolbtn-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-toolbtn-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.03);
+  --c-toolbtn-bgd-selected-default: rgba(var(--c-rgb-contrast), 0.03);
+
+  --c-toolbtn-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.76);
+  --c-toolbtn-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toolbtn-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.93);
+  --c-toolbtn-clr-selected-default: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-toolbtn-bgd-enabled-default-accent: var(--c-toolbtn-bgd-enabled-default);
+  --c-toolbtn-bgd-hovered-default-accent: var(--c-toolbtn-bgd-hovered-default);
+  --c-toolbtn-bgd-pressed-default-accent: var(--c-toolbtn-bgd-pressed-default);
+  --c-toolbtn-bgd-selected-default-accent: var(--c-toolbtn-bgd-selected-default);
+
+  --c-toolbtn-clr-enabled-default-accent: rgba(var(--c-rgb-accent), 0.76);
+  --c-toolbtn-clr-hovered-default-accent: rgba(var(--c-rgb-accent), 0.87);
+  --c-toolbtn-clr-pressed-default-accent: rgba(var(--c-rgb-accent), 0.93);
+  --c-toolbtn-clr-selected-default-accent: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-toolbtn-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.03);
+  --c-toolbtn-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-toolbtn-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.05);
+  --c-toolbtn-bgd-selected-elevated: rgba(var(--c-rgb-contrast), 0.05);
+
+  --c-toolbtn-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.76);
+  --c-toolbtn-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.87);
+  --c-toolbtn-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.93);
+  --c-toolbtn-clr-selected-elevated: rgba(var(--c-rgb-contrast), 0.93);
+
+  --c-toolbtn-bgd-enabled-elevated-accent: var(--c-toolbtn-bgd-enabled-elevated);
+  --c-toolbtn-bgd-hovered-elevated-accent: var(--c-toolbtn-bgd-hovered-elevated);
+  --c-toolbtn-bgd-pressed-elevated-accent: var(--c-toolbtn-bgd-pressed-elevated);
+  --c-toolbtn-bgd-selected-elevated-accent: var(--c-toolbtn-bgd-selected-elevated);
+
+  --c-toolbtn-clr-enabled-elevated-accent: rgba(var(--c-rgb-accent), 0.76);
+  --c-toolbtn-clr-hovered-elevated-accent: rgba(var(--c-rgb-accent), 0.87);
+  --c-toolbtn-clr-pressed-elevated-accent: rgba(var(--c-rgb-accent), 0.93);
+  --c-toolbtn-clr-selected-elevated-accent: rgba(var(--c-rgb-accent), 0.93);
+
+  --c-toolbtn-bgd-enabled-default-accent-tonal: transparent;
+  --c-toolbtn-bgd-hovered-default-accent-tonal: rgba(var(--c-rgb-accent), 0.07);
+  --c-toolbtn-bgd-pressed-default-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+  --c-toolbtn-bgd-selected-default-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+
+  --c-toolbtn-clr-enabled-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-toolbtn-clr-hovered-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-toolbtn-clr-pressed-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-toolbtn-clr-selected-default-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+
+  --c-toolbtn-bgd-enabled-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.07);
+  --c-toolbtn-bgd-hovered-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.09);
+  --c-toolbtn-bgd-pressed-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.12);
+  --c-toolbtn-bgd-selected-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.12);
+
+  --c-toolbtn-clr-enabled-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-toolbtn-clr-hovered-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-toolbtn-clr-pressed-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+  --c-toolbtn-clr-selected-elevated-accent-tonal: rgba(var(--c-rgb-accent), 0.99);
+
   /// CORE/SELECT
   /// =====================================================================================
 
@@ -255,4 +386,25 @@
 
   --c-divider-clr-elevated: rgba(var(--c-rgb-contrast), 0.24);
   --c-divider-bgd-elevated: rgba(var(--c-rgb-contrast), 0.24);
+
+  /// CORE/ACCORDION
+  /// =====================================================================================
+
+  --c-accordion-target-bgd-enabled-default: transparent;
+  --c-accordion-target-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-accordion-target-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.03);
+  --c-accordion-target-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.02);
+  --c-accordion-target-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.03);
+  --c-accordion-target-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-accordion-target-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.67);
 }

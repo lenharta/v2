@@ -3,6 +3,21 @@
   /// APP
   /// =====================================================================================
 
+  --c-bgd: rgba(var(--c-rgb-base), 1);
+  --c-clr: rgba(var(--c-rgb-contrast), 0.87);
+
+  --c-bgd-surface-1: rgba(var(--c-rgb-contrast), 0.02);
+  --c-bgd-surface-1-enabled: rgba(var(--c-rgb-contrast), 0.02);
+  --c-bgd-surface-1-hovered: rgba(var(--c-rgb-contrast), 0.03);
+  --c-bgd-surface-1-pressed: rgba(var(--c-rgb-contrast), 0.04);
+  --c-bgd-surface-1-selected: rgba(var(--c-rgb-contrast), 0.05);
+
+  --c-bgd-surface-accent-1: rgba(var(--c-rgb-contrast), 0.02);
+  --c-bgd-surface-accent-1-enabled: rgba(var(--c-rgb-contrast), 0.02);
+  --c-bgd-surface-accent-1-hovered: rgba(var(--c-rgb-contrast), 0.03);
+  --c-bgd-surface-accent-1-pressed: rgba(var(--c-rgb-contrast), 0.04);
+  --c-bgd-surface-accent-1-selected: rgba(var(--c-rgb-contrast), 0.05);
+
   --c-root-bgd: rgba(var(--c-rgb-base), 1);
   --c-root-clr: rgba(var(--c-rgb-contrast), 0.87);
 
@@ -386,4 +401,25 @@
 
   --c-divider-clr-elevated: rgba(var(--c-rgb-contrast), 0.24);
   --c-divider-bgd-elevated: rgba(var(--c-rgb-contrast), 0.24);
+
+  /// CORE/DIVIDER
+  /// =====================================================================================
+
+  --c-accordion-target-bgd-enabled-default: transparent;
+  --c-accordion-target-clr-enabled-default: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-hovered-default: rgba(var(--c-rgb-contrast), 0.02);
+  --c-accordion-target-clr-hovered-default: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-pressed-default: rgba(var(--c-rgb-contrast), 0.03);
+  --c-accordion-target-clr-pressed-default: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-enabled-elevated: rgba(var(--c-rgb-contrast), 0.02);
+  --c-accordion-target-clr-enabled-elevated: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-hovered-elevated: rgba(var(--c-rgb-contrast), 0.03);
+  --c-accordion-target-clr-hovered-elevated: rgba(var(--c-rgb-contrast), 0.67);
+
+  --c-accordion-target-bgd-pressed-elevated: rgba(var(--c-rgb-contrast), 0.04);
+  --c-accordion-target-clr-pressed-elevated: rgba(var(--c-rgb-contrast), 0.67);
 }
