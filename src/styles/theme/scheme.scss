@@ -1,0 +1,174 @@
+@mixin root {
+  color: var(--c-text);
+  background-color: var(--c-root);
+}
+
+@mixin elevation-00 {
+  background-color: var(--c-elevation-00);
+}
+
+@mixin elevation-01 {
+  background-color: var(--c-elevation-01);
+}
+
+@mixin elevation-02 {
+  background-color: var(--c-elevation-02);
+}
+
+@mixin elevation-03 {
+  background-color: var(--c-elevation-03);
+}
+
+@mixin elevation-04 {
+  background-color: var(--c-elevation-04);
+}
+
+@mixin surface-default {
+  background-color: var(--c-surface-default-enabled);
+  color: var(--c-on-surface-default-enabled);
+}
+
+@mixin surface-default-interactive {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--c-surface-default-enabled);
+    color: var(--c-on-surface-default-enabled);
+
+    &:hover {
+      background-color: var(--c-surface-default-hovered);
+      color: var(--c-on-surface-default-hovered);
+    }
+    &:active {
+      background-color: var(--c-surface-default-pressed);
+      color: var(--c-on-surface-default-pressed);
+    }
+    &[data-selected] {
+      background-color: var(--c-surface-default-selected);
+      color: var(--c-on-surface-default-selected);
+    }
+  }
+}
+
+@mixin surface-default-accent {
+  background-color: var(--c-surface-default-accent-enabled);
+  color: var(--c-on-surface-default-accent-enabled);
+}
+
+@mixin surface-default-accent-interactive {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--c-surface-default-accent-enabled);
+    color: var(--c-on-surface-default-accent-enabled);
+
+    &:hover {
+      background-color: var(--c-surface-default-accent-hovered);
+      color: var(--c-on-surface-default-accent-hovered);
+    }
+    &:active {
+      background-color: var(--c-surface-default-accent-pressed);
+      color: var(--c-on-surface-default-accent-pressed);
+    }
+    &[data-selected] {
+      background-color: var(--c-surface-default-accent-selected);
+      color: var(--c-on-surface-default-accent-selected);
+    }
+  }
+}
+
+@mixin surface-default-accent-tonal {
+  background-color: var(--c-surface-default-accent-tonal-enabled);
+  color: var(--c-on-surface-default-accent-tonal-enabled);
+}
+
+@mixin surface-default-accent-tonal-interactive {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--c-surface-default-accent-tonal-enabled);
+    color: var(--c-on-surface-default-accent-tonal-enabled);
+
+    &:hover {
+      background-color: var(--c-surface-default-accent-tonal-hovered);
+      color: var(--c-on-surface-default-accent-tonal-hovered);
+    }
+    &:active {
+      background-color: var(--c-surface-default-accent-tonal-pressed);
+      color: var(--c-on-surface-default-accent-tonal-pressed);
+    }
+    &[data-selected] {
+      background-color: var(--c-surface-default-accent-tonal-selected);
+      color: var(--c-on-surface-default-accent-tonal-selected);
+    }
+  }
+}
+
+@mixin surface-elevated {
+  background-color: var(--c-surface-elevated-enabled);
+  color: var(--c-on-surface-elevated-enabled);
+}
+
+@mixin surface-elevated-interactive {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--c-surface-elevated-enabled);
+    color: var(--c-on-surface-elevated-enabled);
+
+    &:hover {
+      background-color: var(--c-surface-elevated-hovered);
+      color: var(--c-on-surface-elevated-hovered);
+    }
+    &:active {
+      background-color: var(--c-surface-elevated-pressed);
+      color: var(--c-on-surface-elevated-pressed);
+    }
+    &[data-selected] {
+      background-color: var(--c-surface-elevated-selected);
+      color: var(--c-on-surface-elevated-selected);
+    }
+  }
+}
+
+@mixin surface-elevated-accent {
+  background-color: var(--c-surface-elevated-accent-enabled);
+  color: var(--c-on-surface-elevated-accent-enabled);
+}
+
+@mixin surface-elevated-accent-interactive {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--c-surface-elevated-accent-enabled);
+    color: var(--c-on-surface-elevated-accent-enabled);
+
+    &:hover {
+      background-color: var(--c-surface-elevated-accent-hovered);
+      color: var(--c-on-surface-elevated-accent-hovered);
+    }
+    &:active {
+      background-color: var(--c-surface-elevated-accent-pressed);
+      color: var(--c-on-surface-elevated-accent-pressed);
+    }
+    &[data-selected] {
+      background-color: var(--c-surface-elevated-accent-selected);
+      color: var(--c-on-surface-elevated-accent-selected);
+    }
+  }
+}
+
+@mixin surface-elevated-accent-tonal {
+  background-color: var(--c-surface-elevated-accent-tonal-enabled);
+  color: var(--c-on-surface-elevated-accent-tonal-enabled);
+}
+
+@mixin surface-elevated-accent-tonal-interactive {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--c-surface-elevated-accent-tonal-enabled);
+    color: var(--c-on-surface-elevated-accent-tonal-enabled);
+
+    &:hover {
+      background-color: var(--c-surface-elevated-accent-tonal-hovered);
+      color: var(--c-on-surface-elevated-accent-tonal-hovered);
+    }
+    &:active {
+      background-color: var(--c-surface-elevated-accent-tonal-pressed);
+      color: var(--c-on-surface-elevated-accent-tonal-pressed);
+    }
+    &[data-selected] {
+      background-color: var(--c-surface-elevated-accent-tonal-selected);
+      color: var(--c-on-surface-elevated-accent-tonal-selected);
+    }
+  }
+}

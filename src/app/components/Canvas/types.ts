@@ -53,9 +53,9 @@ type CanvasControlSegmentedProps = {
   onChange: (value: string) => void;
 };
 
-type CanvasControlColorProps = {};
+// type CanvasControlColorProps = {};
 
-type CanvasControlColorSwatchProps = {};
+// type CanvasControlColorSwatchProps = {};
 
 type CanvasControlOptions =
   | CanvasControlToggleOptions

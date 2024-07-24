@@ -1,0 +1,84 @@
+@use '../scheme' as scheme;
+
+.v2-action--default,
+.v2-button--default {
+  @include scheme.surface-default-interactive;
+}
+
+.v2-action--elevated,
+.v2-button--elevated {
+  @include scheme.surface-elevated-interactive;
+}
+
+.v2-action--default-accent,
+.v2-button--default-accent {
+  @include scheme.surface-default-accent-interactive;
+}
+
+.v2-action--elevated-accent,
+.v2-button--elevated-accent {
+  @include scheme.surface-elevated-accent-interactive;
+}
+
+.v2-action--default-accent-tonal,
+.v2-button--default-accent-tonal {
+  @include scheme.surface-default-accent-tonal-interactive;
+}
+
+.v2-action--elevated-accent-tonal,
+.v2-button--elevated-accent-tonal {
+  @include scheme.surface-elevated-accent-tonal-interactive;
+}
+
+.v2-action-spacer--default,
+.v2-button-spacer--default {
+  @include scheme.surface-default;
+}
+
+.v2-action-spacer--elevated,
+.v2-button-spacer--elevated {
+  @include scheme.surface-elevated;
+}
+
+.v2-action-spacer--default-accent,
+.v2-button-spacer--default-accent {
+  @include scheme.surface-default-accent;
+}
+
+.v2-action-spacer--elevated-accent,
+.v2-button-spacer--elevated-accent {
+  @include scheme.surface-elevated-accent;
+}
+
+.v2-action-spacer--default-accent-tonal,
+.v2-button-spacer--default-accent-tonal {
+  @include scheme.surface-default-accent-tonal;
+}
+
+.v2-action-spacer--elevated-accent-tonal,
+.v2-button-spacer--elevated-accent-tonal {
+  @include scheme.surface-elevated-accent-tonal;
+}
+
+.v2-select-box {
+  background-color: var(--c-root);
+}
+
+// .v2-chip--default {
+//   @include scheme.
+// }
+// .v2-chip--elevated {
+//   @include scheme.
+// }
+// .v2-chip--default-accent {
+//   @include scheme.
+// }
+// .v2-chip--elevated-accent {
+//   @include scheme.
+// }
+// .v2-chip--default-accent-tonal {
+//   @include scheme.
+// }
+// .v2-chip--elevated-accent-tonal {
+//   @include scheme.
+// }

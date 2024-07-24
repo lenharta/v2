@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Page } from '@app/components';
+import { Page } from '@app';
 import { AboutHero } from './AboutHero';
 import { AboutIntro } from './AboutIntro';
-import { Accordion, Icon, IconProps, Tabs, Text, Title, UnstyledButton } from '@core';
+import { Accordion, Text, Title } from '@core';
 
 interface TimelineSectionProps {
   year: string;
@@ -10,45 +10,7 @@ interface TimelineSectionProps {
   company: string;
   location: string;
   children: React.ReactNode;
-  // onChange?: (value: string) => void;
-  // value: string;
 }
-
-interface TimelineTaskCardProps {
-  id: string;
-  text: string;
-  title: string;
-}
-
-const TimelineTaskCard = (props: TimelineTaskCardProps) => {
-  const { title, text } = props;
-  return (
-    <div className="v2-about-timeline-task-card">
-      <Text className="v2-about-timeline-task-card-title" children={title} />
-      <Text className="v2-about-timeline-task-card-text" children={text} />
-    </div>
-  );
-};
-
-interface TimelineTaskListProps {
-  items: TimelineTaskCardProps[];
-}
-
-const TimelineTaskList = (props: TimelineTaskListProps) => {
-  const { items } = props;
-  return (
-    <div className="v2-about-timeline-task-list">
-      {/* <Title h4 className="v2-about-timeline-task-list-title">
-        Responsibilities
-      </Title> */}
-      <div className="v2-about-timeline-task-list-cards">
-        {items.map((item) => (
-          <TimelineTaskCard key={item.id} {...item} />
-        ))}
-      </div>
-    </div>
-  );
-};
 
 const TimelineSection = (props: TimelineSectionProps) => {
   const { year, company, location, role, children } = props;

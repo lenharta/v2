@@ -24,8 +24,6 @@ const SVGProps: React.JSX.IntrinsicElements['svg'] = {
   fill: 'currentColor',
   xmlns: 'http://www.w3.org/2000/svg',
   viewBox: '0 0 500 430',
-  // height: '430',
-  // width: '500',
 };
 
 const Logo = createPolymorphicFactory<LogoFactory>((props, ref) => {

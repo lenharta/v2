@@ -16,7 +16,7 @@ const UnstyledButton = createFactory<UnstyledButtonFactory>((props, ref) => {
   return (
     <button
       ref={ref}
-      className={clsx('v2-button-u', className)}
+      className={clsx('v2-button-unstyled', className)}
       aria-busy={!!loading || undefined}
       aria-selected={!!selected || undefined}
       aria-disabled={!!disabled || undefined}
