@@ -5,19 +5,21 @@ import { Page } from '@app/components';
 import { DemoHero } from './DemoHero';
 import { DemoIntro } from './DemoIntro';
 
+import { DemoChip } from './DemoChip';
 import { DemoRadio } from './DemoRadio';
 import { DemoToggle } from './DemoToggle';
 import { DemoButton } from './DemoButton';
 import { DemoAction } from './DemoAction';
 import { DemoToolBtn } from './DemoToolBtn';
 import { DemoIconBtn } from './DemoIconBtn';
+import { DemoControl } from './DemoControl';
 import { DemoCheckbox } from './DemoCheckbox';
 import { DemoDirectory } from './DemoDirectory';
-import { DemoControl } from './DemoControl';
 
 type DemoFactory = React.FC<{}> & {
   Hero: typeof DemoHero;
   Intro: typeof DemoIntro;
+  Chip: typeof DemoChip;
   Radio: typeof DemoRadio;
   Toggle: typeof DemoToggle;
   Button: typeof DemoButton;
@@ -37,6 +39,7 @@ const Demo: DemoFactory = ({}) => (
 
 Demo.Hero = DemoHero;
 Demo.Intro = DemoIntro;
+Demo.Chip = DemoChip;
 Demo.Radio = DemoRadio;
 Demo.Toggle = DemoToggle;
 Demo.Button = DemoButton;

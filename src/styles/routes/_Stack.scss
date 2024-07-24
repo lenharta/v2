@@ -57,8 +57,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    min-height: var(--v2-action);
     padding-inline: var(--v2-04);
+    min-height: var(--v2-action);
 
     direction: ltr;
     text-align: left;
@@ -101,14 +101,10 @@
   &-head-cell {
     width: 100%;
     flex-grow: 1;
-    font-size: var(--v2-font-size-03);
-    font-weight: var(--v2-font-weight-med);
-    line-height: var(--v2-line-height-sm);
-    font-family: var(--v2-font-family);
 
     .v2-icon {
-      height: var(--v2-font-size-03);
       width: var(--v2-font-size-03);
+      height: var(--v2-font-size-03);
     }
   }
 
@@ -119,22 +115,14 @@
   &-body-cell {
     width: 100%;
     flex-grow: 1;
-    font-size: var(--v2-font-size-03);
-    font-weight: var(--v2-font-weight-reg);
-    line-height: var(--v2-line-height-sm);
-    font-family: var(--v2-font-family);
   }
 
   &-body-cell[data-table-column='type'] {
     span {
-      padding-block: var(--v2-01);
-      padding-inline: var(--v2-03);
       border: solid 1px currentColor;
       border-radius: 4px;
-      font-size: var(--v2-font-size-01);
-      font-family: var(--v2-font-family);
-      line-height: var(--v2-line-height-md);
-      letter-spacing: 0.24px;
+      padding-block: var(--v2-01);
+      padding-inline: var(--v2-03);
     }
   }
 

@@ -38,10 +38,15 @@ const browserRouter = ReactRouter.createBrowserRouter([
         element: <Routes.Contact />,
       },
       {
+        path: '/sandbox',
+        element: <Routes.Sandbox />,
+      },
+      {
         path: '/demo',
         element: <Routes.Demo />,
         children: [
           { index: true, element: <Routes.Demo.Directory /> },
+          { path: '/demo/chip', element: <Routes.Demo.Chip /> },
           { path: '/demo/radio', element: <Routes.Demo.Radio /> },
           { path: '/demo/toggle', element: <Routes.Demo.Toggle /> },
           { path: '/demo/button', element: <Routes.Demo.Button /> },

@@ -18,7 +18,6 @@
 
   &-timeline-section {
     padding-inline: var(--v2-gutter);
-    color: var(--c-root-clr-low);
   }
 
   &-timeline-section-chronology {
@@ -26,16 +25,11 @@
     position: relative;
     padding-left: calc(var(--v2-gutter) / 2);
     padding-block: calc(var(--v2-gutter) / 2);
-    color: var(--c-accent-clr-max);
 
     &-year {
       top: 8px;
       left: calc(var(--v2-gutter) / 2);
       position: absolute;
-      font-size: 20px;
-      font-family: var(--v2-font-family);
-      font-weight: var(--v2-font-weight-bld);
-      line-height: var(--v2-line-height-xxs);
     }
 
     &::after,
@@ -53,7 +47,6 @@
       border-style: solid;
       border-width: var(--v2-01);
       border-color: var(--c-about-timeline-track);
-      background-color: var(--c-root-bgd);
     }
 
     &::after {
@@ -61,7 +54,6 @@
       left: -14px;
       width: 20px;
       height: 20px;
-      background-color: var(--c-accent-clr-max);
     }
   }
 
@@ -79,58 +71,35 @@
     padding-bottom: calc(var(--v2-gutter) * 2);
 
     .v2-text {
-      font-size: var(--v2-font-size-04);
-      font-family: var(--v2-font-family);
-      font-weight: var(--v2-font-weight-med);
-      line-height: var(--v2-line-height-lg);
       max-width: 60em;
     }
   }
 
   &-timeline-section-role {
     padding-top: calc(var(--v2-gutter) / 2);
-    font-size: var(--v2-font-size-10);
-    font-family: var(--v2-font-family);
-    font-weight: var(--v2-font-weight-med);
-    line-height: var(--v2-line-height-xs);
-    color: var(--c-root-clr-max);
   }
 
   &-timeline-section-company {
     padding-top: calc(var(--v2-gutter) / 2);
-    font-size: var(--v2-font-size-05);
-    font-family: var(--v2-font-family);
-    font-weight: var(--v2-font-weight-med);
-    line-height: var(--v2-line-height-xs);
-    color: var(--c-accent-clr-max);
   }
 
   &-timeline-section-location {
     padding-top: var(--v2-10);
-    font-size: var(--v2-font-size-04);
-    font-family: var(--v2-font-family);
-    font-weight: var(--v2-font-weight-med);
-    line-height: var(--v2-line-height-xs);
   }
 
   &-timeline-task-list-title {
     padding-top: calc(var(--v2-gutter) / 2);
     padding-bottom: calc(var(--v2-gutter) / 2);
-    font-size: var(--v2-font-size-05);
-    font-family: var(--v2-font-family);
-    font-weight: var(--v2-font-weight-reg);
-    line-height: var(--v2-line-height-xs);
-    color: var(--c-accent-clr-max);
   }
 
   &-timeline-task-list-cards {
+    gap: var(--v2-01);
     display: grid;
     place-content: start;
     grid-template-rows: auto;
     grid-template-columns: repeat(1, 1fr);
-    max-width: 80em;
-    gap: var(--v2-01);
     margin-top: calc(var(--v2-gutter) / 2);
+    max-width: 80em;
 
     @media (min-width: 40em) {
       grid-template-columns: repeat(2, 1fr);
@@ -142,55 +111,34 @@
   }
 
   &-timeline-task-card {
+    gap: calc(var(--v2-gutter) / 3);
     display: flex;
     min-height: 250px;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: calc(var(--v2-gutter) / 3);
-    padding-block: calc(var(--v2-gutter) / 1.5);
     padding-inline: calc(var(--v2-gutter) / 2);
-    background-color: rgba(var(--c-rgb-contrast), 0.03);
+    padding-block: calc(var(--v2-gutter) / 1.5);
   }
 
   &-timeline-task-card-title {
-    font-size: var(--v2-font-size-05) !important;
-    font-family: var(--v2-font-family);
-    font-weight: var(--v2-font-weight-reg);
-    line-height: var(--v2-line-height-xs);
-    color: var(--c-accent-clr-max);
+    display: block;
   }
 
   &-timeline-task-card-text {
-    font-size: var(--v2-font-size-04);
-    font-family: var(--v2-font-family);
-    font-weight: var(--v2-font-weight-reg);
-    line-height: var(--v2-line-height-lg);
     max-width: 60em;
   }
 
   &-timeline-accordion {
     display: flex;
-    gap: var(--v2-01);
     flex-direction: column;
     margin-block: calc(var(--v2-gutter) / 2);
     max-width: 60em;
+    gap: var(--v2-01);
   }
-
-  // &-timeline-accordion-target,
-  // &-timeline-accordion-panel {
-  //   background-color: rgba(var(--c-rgb-contrast), 0.03);
-  // }
-
-  // &-timeline-accordion-target:hover {
-  //   background-color: rgba(var(--c-rgb-contrast), 0.04);
-  // }
-  // &-timeline-accordion-target[data-selected] {
-  //   color: var(--c-accent-clr-max);
-  // }
 
   &-timeline-accordion-panel {
     padding-block: calc(var(--v2-gutter) / 4);
-    padding: calc(var(--v2-gutter) / 2.5);
+    padding-inline: calc(var(--v2-gutter) / 2.5);
   }
 }

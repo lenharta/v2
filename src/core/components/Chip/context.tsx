@@ -1,8 +1,8 @@
-import { createSafeContext } from '@utils';
+import * as React from 'react';
 import { ChipContext } from './types';
 
-const [ChipProvider, useChipContext] = createSafeContext<ChipContext>(
-  '[@v2/core/Chip]: could not locate component in context tree.'
-);
+const ChipGroupContext = React.createContext({} as ChipContext);
+const ChipGroupProvider = ChipGroupContext.Provider;
+const useChipContext = () => React.useContext(ChipGroupContext);
 
-export { ChipProvider, useChipContext };
+export { ChipGroupContext, ChipGroupProvider, useChipContext };

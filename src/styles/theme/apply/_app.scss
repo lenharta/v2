@@ -1,0 +1,33 @@
+@use '../scheme' as scheme;
+@use '../transition' as transition;
+
+html {
+  @include scheme.root;
+  @include transition.colors;
+}
+
+body {
+  @include scheme.root;
+  @include transition.colors;
+}
+
+.v2-side {
+  @include scheme.root;
+  @include transition.colors;
+}
+
+.v2-header {
+  @include scheme.root;
+  @include transition.colors;
+}
+
+.v2-canvas,
+.v2-canvas-display {
+  @include scheme.root;
+  @include transition.colors;
+}
+
+.v2-canvas-controls {
+  @include scheme.elevation-01;
+  @include transition.colors;
+}

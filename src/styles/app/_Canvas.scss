@@ -8,11 +8,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    border-width: var(--v2-01);
-    border-style: solid;
-    color: var(--c-canvas-clr);
-    border-color: var(--c-canvas-bdr);
-    background-color: var(--c-canvas-bgd);
     min-height: 500px;
 
     @media (min-width: 60em) {
@@ -64,9 +59,6 @@
     flex-direction: column;
     padding-inline: var(--v2-06);
     padding-block: var(--v2-08);
-    color: var(--c-canvas-controls-clr);
-    border-color: var(--c-canvas-controls-bdr);
-    background-color: var(--c-canvas-controls-bgd);
     min-width: 400px;
 
     .v2-toggle {
@@ -75,8 +67,6 @@
 
     @media (min-width: 60em) {
       flex: 0 1;
-      border-right-style: solid;
-      border-right-width: var(--v2-01);
     }
   }
 
@@ -88,9 +78,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: var(--c-canvas-display-clr);
-    border-color: var(--c-canvas-display-bdr);
-    background-color: var(--c-canvas-display-bgd);
     min-height: 500px;
 
     @media (min-width: 60em) {

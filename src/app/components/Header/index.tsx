@@ -30,11 +30,12 @@ const Header: HeaderFactory = ({}) => {
           <Action.Spacer grow />
 
           <Action
-            value="/demo"
+            value="/sandbox"
             icon={{ name: 'arrow-northeast-square' }}
             onClick={(event) => navigate(event.currentTarget.value)}
-            aria-label="go to demo page"
+            aria-label="go to sandbox page"
           />
+
           <Action
             value="/settings"
             icon={{ name: 'gear' }}
@@ -47,5 +48,5 @@ const Header: HeaderFactory = ({}) => {
   );
 };
 
-Header.displayName = '@v2/.Header';
+Header.displayName = '@v2/Header';
 export { Header, type HeaderProps, type HeaderFactory };
