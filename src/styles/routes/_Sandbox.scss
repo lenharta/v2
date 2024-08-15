@@ -1,0 +1,10 @@
+@use '../theme/mixins/border' as border;
+
+.sandbox-demo-border {
+  width: 150px;
+  height: 150px;
+
+  &--sm {
+    @include border.generate('default', 'lg', 'none', 'solid');
+  }
+}
