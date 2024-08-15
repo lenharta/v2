@@ -1,47 +1,22 @@
-[data-prefers-color-accent='red'] {
-  --c-rgb-accent: var(--c-rgb-red);
-}
+@use '../mixins/mode' as mode;
 
-[data-prefers-color-accent='orange'] {
-  --c-rgb-accent: var(--c-rgb-orange);
-}
+$color-map-accent-rgb: (
+  'red': 'var(--c-rgb-red)',
+  'orange': 'var(--c-rgb-orange)',
+  'yellow': 'var(--c-rgb-yellow)',
+  'green': 'var(--c-rgb-green)',
+  'mint': 'var(--c-rgb-mint)',
+  'teal': 'var(--c-rgb-teal)',
+  'cyan': 'var(--c-rgb-cyan)',
+  'blue': 'var(--c-rgb-blue)',
+  'indigo': 'var(--c-rgb-indigo)',
+  'purple': 'var(--c-rgb-purple)',
+  'pink': 'var(--c-rgb-pink)',
+  'brown': 'var(--c-rgb-brown)',
+);
 
-[data-prefers-color-accent='yellow'] {
-  --c-rgb-accent: var(--c-rgb-yellow);
-}
-
-[data-prefers-color-accent='green'] {
-  --c-rgb-accent: var(--c-rgb-green);
-}
-
-[data-prefers-color-accent='mint'] {
-  --c-rgb-accent: var(--c-rgb-mint);
-}
-
-[data-prefers-color-accent='teal'] {
-  --c-rgb-accent: var(--c-rgb-teal);
-}
-
-[data-prefers-color-accent='cyan'] {
-  --c-rgb-accent: var(--c-rgb-cyan);
-}
-
-[data-prefers-color-accent='blue'] {
-  --c-rgb-accent: var(--c-rgb-blue);
-}
-
-[data-prefers-color-accent='indigo'] {
-  --c-rgb-accent: var(--c-rgb-indigo);
-}
-
-[data-prefers-color-accent='purple'] {
-  --c-rgb-accent: var(--c-rgb-purple);
-}
-
-[data-prefers-color-accent='pink'] {
-  --c-rgb-accent: var(--c-rgb-pink);
-}
-
-[data-prefers-color-accent='brown'] {
-  --c-rgb-accent: var(--c-rgb-brown);
+@each $accent-color, $accent-token in $color-map-accent-rgb {
+  @include mode.accent($accent-color) {
+    --c-rgb-accent: #{$accent-token};
+  }
 }

@@ -1,0 +1,120 @@
+$border-map: (
+  'color': (
+    'min': 'var(--v2-color-border-min)',
+    'low': 'var(--v2-color-border-low)',
+    'med': 'var(--v2-color-border-med)',
+    'hgh': 'var(--v2-color-border-hgh)',
+    'max': 'var(--v2-color-border-max)',
+    'info': 'var(--v2-color-border-info)',
+    'warn': 'var(--v2-color-border-warn)',
+    'error': 'var(--v2-color-border-error)',
+    'default': 'var(--v2-color-border-default)',
+    'success': 'var(--v2-color-border-success)',
+    'transparent': 'var(--v2-color-border-transparent)',
+  ),
+  'radius': (
+    'none': 'var(--v2-border-radius-none)',
+    'sm': 'var(--v2-border-radius-sm)',
+    'md': 'var(--v2-border-radius-md)',
+    'lg': 'var(--v2-border-radius-lg)',
+    'xl': 'var(--v2-border-radius-xl)',
+    'rd': 'var(--v2-border-radius-rd)',
+  ),
+  'width': (
+    'none': 'var(--v2-border-width-none)',
+    'sm': 'var(--v2-border-width-sm)',
+    'md': 'var(--v2-border-width-md)',
+    'lg': 'var(--v2-border-width-lg)',
+    'xl': 'var(--v2-border-width-xl)',
+  ),
+  'style': (
+    'solid': 'var(--v2-border-style-solid)',
+    'dotted': 'var(--v2-border-style-dotted)',
+    'dashed': 'var(--v2-border-style-dashed)',
+  ),
+);
+
+$token-map: (
+  'border': (
+    'color': (
+      'primary-01': 'var(--v2-border-color-primary-01)',
+      'primary-02': 'var(--v2-border-color-primary-02)',
+      'primary-03': 'var(--v2-border-color-primary-03)',
+      'primary-04': 'var(--v2-border-color-primary-04)',
+      'primary-05': 'var(--v2-border-color-primary-05)',
+      'secondary-01': 'var(--v2-border-color-secondary-01)',
+      'secondary-02': 'var(--v2-border-color-secondary-02)',
+      'secondary-03': 'var(--v2-border-color-secondary-03)',
+      'secondary-04': 'var(--v2-border-color-secondary-04)',
+      'secondary-05': 'var(--v2-border-color-secondary-05)',
+      'transparent': 'var(--v2-transparent)',
+    ),
+    'radius': (
+      'xs': 'var(--v2-border-radius-xs)',
+      'sm': 'var(--v2-border-radius-sm)',
+      'md': 'var(--v2-border-radius-md)',
+      'lg': 'var(--v2-border-radius-lg)',
+      'xl': 'var(--v2-border-radius-xl)',
+      'rd': 'var(--v2-border-radius-rd)',
+    ),
+    'style': (
+      'solid': 'var(--v2-border-style-solid)',
+      'dotted': 'var(--v2-border-style-dotted)',
+      'dashed': 'var(--v2-border-style-dashed)',
+    ),
+    'width': (
+      'xs': 'var(--v2-border-width-xs)',
+      'sm': 'var(--v2-border-width-sm)',
+      'md': 'var(--v2-border-width-md)',
+      'lg': 'var(--v2-border-width-lg)',
+      'xl': 'var(--v2-border-width-xl)',
+    ),
+  ),
+
+  'border-color-none': 'var(--v2-border-color-none)',
+  'border-color-primary-01': 'var(--v2-border-color-primary-01)',
+  'border-color-primary-02': 'var(--v2-border-color-primary-02)',
+  'border-color-primary-03': 'var(--v2-border-color-primary-03)',
+  'border-color-primary-04': 'var(--v2-border-color-primary-04)',
+  'border-color-primary-05': 'var(--v2-border-color-primary-05)',
+  'border-color-secondary-01': 'var(--v2-border-color-secondary-01)',
+  'border-color-secondary-02': 'var(--v2-border-color-secondary-02)',
+  'border-color-secondary-03': 'var(--v2-border-color-secondary-03)',
+  'border-color-secondary-04': 'var(--v2-border-color-secondary-04)',
+  'border-color-secondary-05': 'var(--v2-border-color-secondary-05)',
+  'border-color-tertiary-01': 'var(--v2-border-color-tertiary-01)',
+  'border-color-tertiary-02': 'var(--v2-border-color-tertiary-02)',
+  'border-color-tertiary-03': 'var(--v2-border-color-tertiary-03)',
+  'border-color-tertiary-04': 'var(--v2-border-color-tertiary-04)',
+  'border-color-tertiary-05': 'var(--v2-border-color-tertiary-05)',
+);
+
+@function get-border-token($category, $token) {
+  @return map-get(map-get($border-map, $category), $token);
+}
+
+@function get-border-style($key: 'solid') {
+  @return get-border-token('style', $key);
+}
+
+@function get-border-radius($key: 'none') {
+  @return get-border-token('radius', $key);
+}
+
+@function get-border-width($key: 'sm') {
+  @return get-border-token('width', $key);
+}
+
+@function get-border-color($key: 'default') {
+  @return get-border-token('color', $key);
+}
+
+@mixin generate($color: 'default', $width: 'sm', $radius: 'none', $style: 'solid') {
+  border-style: #{get-border-style($style)};
+  border-width: #{get-border-width($width)};
+  border-color: #{get-border-color($color)};
+  border-radius: #{get-border-radius($radius)};
+}
+
+@mixin focus {
+}

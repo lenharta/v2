@@ -1,84 +1,127 @@
+@use '../focus' as focus;
 @use '../scheme' as scheme;
+@use '../transition' as transition;
 
-.v2-action--default,
-.v2-button--default {
-  @include scheme.surface-default-interactive;
+// CORE | BUTTON
+// =================================================================================
+
+.v2-button {
+  @include focus.border;
+  @include focus.outline;
+  @include transition.colors-interactive;
+
+  &--default {
+    @include scheme.surface-default-interactive(true);
+  }
+  &--elevated {
+    @include scheme.surface-elevated-interactive(true);
+  }
+  &--default-accent {
+    @include scheme.surface-default-accent-interactive(true);
+  }
+  &--elevated-accent {
+    @include scheme.surface-elevated-accent-interactive(true);
+  }
+  &--default-accent-tonal {
+    @include scheme.surface-default-accent-tonal-interactive(true);
+  }
+  &--elevated-accent-tonal {
+    @include scheme.surface-elevated-accent-tonal-interactive(true);
+  }
+
+  &-spacer {
+    @include transition.colors;
+
+    &--default {
+      @include scheme.surface-default;
+    }
+    &--elevated {
+      @include scheme.surface-elevated;
+    }
+    &--default-accent {
+      @include scheme.surface-default-accent;
+    }
+    &--elevated-accent {
+      @include scheme.surface-elevated-accent;
+    }
+    &--default-accent-tonal {
+      @include scheme.surface-default-accent-tonal;
+    }
+    &--elevated-accent-tonal {
+      @include scheme.surface-elevated-accent-tonal;
+    }
+  }
 }
 
-.v2-action--elevated,
-.v2-button--elevated {
-  @include scheme.surface-elevated-interactive;
+// CORE | ACTION
+// =================================================================================
+
+.v2-action {
+  @include focus.border;
+  @include focus.outline;
+  @include transition.colors-interactive;
+
+  &--default {
+    @include scheme.surface-default-interactive(true);
+  }
+  &--elevated {
+    @include scheme.surface-elevated-interactive(true);
+  }
+  &--default-accent {
+    @include scheme.surface-default-accent-interactive(true);
+  }
+  &--elevated-accent {
+    @include scheme.surface-elevated-accent-interactive(true);
+  }
+  &--default-accent-tonal {
+    @include scheme.surface-default-accent-tonal-interactive(true);
+  }
+  &--elevated-accent-tonal {
+    @include scheme.surface-elevated-accent-tonal-interactive(true);
+  }
+
+  &-spacer {
+    @include transition.colors;
+
+    &--default {
+      @include scheme.surface-default;
+    }
+    &--elevated {
+      @include scheme.surface-elevated;
+    }
+    &--default-accent {
+      @include scheme.surface-default-accent;
+    }
+    &--elevated-accent {
+      @include scheme.surface-elevated-accent;
+    }
+    &--default-accent-tonal {
+      @include scheme.surface-default-accent-tonal;
+    }
+    &--elevated-accent-tonal {
+      @include scheme.surface-elevated-accent-tonal;
+    }
+  }
 }
 
-.v2-action--default-accent,
-.v2-button--default-accent {
-  @include scheme.surface-default-accent-interactive;
+// CORE | ACCORDION
+// =================================================================================
+
+.v2-accordion {
+  &-target {
+    @include transition.colors-interactive;
+  }
 }
 
-.v2-action--elevated-accent,
-.v2-button--elevated-accent {
-  @include scheme.surface-elevated-accent-interactive;
-}
+// CORE | SELECT
+// =================================================================================
 
-.v2-action--default-accent-tonal,
-.v2-button--default-accent-tonal {
-  @include scheme.surface-default-accent-tonal-interactive;
-}
+.v2-select {
+  &-box {
+    @include transition.colors;
+  }
 
-.v2-action--elevated-accent-tonal,
-.v2-button--elevated-accent-tonal {
-  @include scheme.surface-elevated-accent-tonal-interactive;
+  &-target {
+    @include transition.colors-interactive;
+  }
 }
-
-.v2-action-spacer--default,
-.v2-button-spacer--default {
-  @include scheme.surface-default;
-}
-
-.v2-action-spacer--elevated,
-.v2-button-spacer--elevated {
-  @include scheme.surface-elevated;
-}
-
-.v2-action-spacer--default-accent,
-.v2-button-spacer--default-accent {
-  @include scheme.surface-default-accent;
-}
-
-.v2-action-spacer--elevated-accent,
-.v2-button-spacer--elevated-accent {
-  @include scheme.surface-elevated-accent;
-}
-
-.v2-action-spacer--default-accent-tonal,
-.v2-button-spacer--default-accent-tonal {
-  @include scheme.surface-default-accent-tonal;
-}
-
-.v2-action-spacer--elevated-accent-tonal,
-.v2-button-spacer--elevated-accent-tonal {
-  @include scheme.surface-elevated-accent-tonal;
-}
-
-.v2-select-box {
-  background-color: var(--c-root);
-}
-
-// .v2-chip--default {
-//   @include scheme.
-// }
-// .v2-chip--elevated {
-//   @include scheme.
-// }
-// .v2-chip--default-accent {
-//   @include scheme.
-// }
-// .v2-chip--elevated-accent {
-//   @include scheme.
-// }
-// .v2-chip--default-accent-tonal {
-//   @include scheme.
-// }
-// .v2-chip--elevated-accent-tonal {
-//   @include scheme.
-// }

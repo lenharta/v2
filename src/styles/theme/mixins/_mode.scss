@@ -1,0 +1,17 @@
+@mixin theme($value: 'dark') {
+  :root [data-prefers-color-mode='#{$value}'] {
+    @content;
+  }
+}
+
+@mixin accent($value: 'red') {
+  :root [data-prefers-color-accent='#{$value}'] {
+    @content;
+  }
+}
+
+@mixin contrast($value: 'yes') {
+  :root [data-prefers-color-contrast='#{$value}'] {
+    @content;
+  }
+}

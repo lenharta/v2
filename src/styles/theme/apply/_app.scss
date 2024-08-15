@@ -1,3 +1,4 @@
+@use '../focus' as focus;
 @use '../scheme' as scheme;
 @use '../transition' as transition;
 
@@ -21,6 +22,11 @@ body {
   @include transition.colors;
 }
 
+.v2-page-intro-banner {
+  @include scheme.elevation-01;
+  @include transition.colors;
+}
+
 .v2-canvas,
 .v2-canvas-display {
   @include scheme.root;
@@ -30,4 +36,62 @@ body {
 .v2-canvas-controls {
   @include scheme.elevation-01;
   @include transition.colors;
+}
+
+.v2-side-select-drawer {
+  @include scheme.root;
+  @include transition.colors;
+}
+
+.v2-side .v2-action[data-selected] svg {
+  color: var(--c-accent);
+}
+
+.v2-page-link {
+  @include focus.border;
+  @include focus.outline;
+  @include transition.colors-interactive;
+
+  border-width: var(--v2-page-link-border-width, var(--v2-01));
+  border-color: var(--v2-page-link-border-color, transparent);
+  border-style: var(--v2-page-link-border-style, solid);
+
+  outline-width: var(--v2-page-link-outline-width, none);
+  outline-color: var(--v2-page-link-outline-color, transparent);
+  outline-style: var(--v2-page-link-outline-style, solid);
+  outline-offset: var(--v2-page-link-outline-offset, none);
+
+  &:focus:not(:focus-visible) {
+    --v2-page-link-outline-color: transparent;
+    --v2-page-link-outline-offset: none;
+  }
+
+  &:focus:focus-visible {
+    --v2-page-link-outline-color: var(--c-focus);
+    --v2-page-link-outline-offset: calc(var(--v2-01) * -1);
+  }
+}
+
+.v2-page-link--default {
+  @include scheme.surface-default-interactive;
+}
+
+.v2-page-link--elevated {
+  @include scheme.surface-elevated-interactive;
+}
+
+.v2-page-link--default-accent {
+  @include scheme.surface-default-accent-interactive;
+}
+
+.v2-page-link--elevated-accent {
+  @include scheme.surface-elevated-accent-interactive;
+}
+
+.v2-page-link--default-accent-tonal {
+  @include scheme.surface-default-accent-tonal-interactive;
+}
+
+.v2-page-link--elevated-accent-tonal {
+  @include scheme.surface-elevated-accent-tonal-interactive;
 }
