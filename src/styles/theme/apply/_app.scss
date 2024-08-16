@@ -1,97 +1,157 @@
-@use '../focus' as focus;
-@use '../scheme' as scheme;
-@use '../transition' as transition;
-
 html {
-  @include scheme.root;
-  @include transition.colors;
+  background-color: var(--v2-color-background-01);
+  color: var(--v2-color-text-med);
 }
 
 body {
-  @include scheme.root;
-  @include transition.colors;
-}
-
-.v2-side {
-  @include scheme.root;
-  @include transition.colors;
+  background-color: var(--v2-color-background-01);
+  color: var(--v2-color-text-med);
 }
 
 .v2-header {
-  @include scheme.root;
-  @include transition.colors;
+  background-color: var(--v2-color-background-01);
 }
 
-.v2-page-intro-banner {
-  @include scheme.elevation-01;
-  @include transition.colors;
+.v2-header-logo svg {
+  color: var(--v2-color-accent);
 }
 
-.v2-canvas,
-.v2-canvas-display {
-  @include scheme.root;
-  @include transition.colors;
+.v2-header-spacer {
+  background-color: var(--v2-color-background-02);
 }
 
-.v2-canvas-controls {
-  @include scheme.elevation-01;
-  @include transition.colors;
+.v2-header-action {
+  background-color: var(--v2-color-background-02);
+}
+
+.v2-side {
+  background-color: var(--v2-color-background-01);
+}
+
+.v2-side-spacer {
+  background-color: var(--v2-color-background-02);
 }
 
 .v2-side-select-drawer {
-  @include scheme.root;
-  @include transition.colors;
+  background-color: var(--v2-color-background-01);
+  color: var(--v2-color-text-med);
 }
 
-.v2-side .v2-action[data-selected] svg {
-  color: var(--c-accent);
-}
-
-.v2-page-link {
-  @include focus.border;
-  @include focus.outline;
-  @include transition.colors-interactive;
-
-  border-width: var(--v2-page-link-border-width, var(--v2-01));
-  border-color: var(--v2-page-link-border-color, transparent);
-  border-style: var(--v2-page-link-border-style, solid);
-
-  outline-width: var(--v2-page-link-outline-width, none);
-  outline-color: var(--v2-page-link-outline-color, transparent);
-  outline-style: var(--v2-page-link-outline-style, solid);
-  outline-offset: var(--v2-page-link-outline-offset, none);
-
-  &:focus:not(:focus-visible) {
-    --v2-page-link-outline-color: transparent;
-    --v2-page-link-outline-offset: none;
-  }
-
-  &:focus:focus-visible {
-    --v2-page-link-outline-color: var(--c-focus);
-    --v2-page-link-outline-offset: calc(var(--v2-01) * -1);
+.v2-side-nav-target,
+.v2-side-select-target,
+.v2-side-select-drawer-item {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--v2-color-background-02);
+    color: var(--v2-color-text-med);
   }
 }
 
-.v2-page-link--default {
-  @include scheme.surface-default-interactive;
+.v2-side-nav-target:hover,
+.v2-side-select-target:hover,
+.v2-side-select-drawer-item:hover {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--v2-color-background-02-hovered);
+    color: var(--v2-color-text-med);
+  }
 }
 
-.v2-page-link--elevated {
-  @include scheme.surface-elevated-interactive;
+.v2-side-nav-target:active,
+.v2-side-select-target:active,
+.v2-side-select-drawer-item:active {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--v2-color-background-02-pressed);
+    color: var(--v2-color-text-med);
+  }
 }
 
-.v2-page-link--default-accent {
-  @include scheme.surface-default-accent-interactive;
+.v2-side-nav-target[data-selected],
+.v2-side-select-target[data-selected],
+.v2-side-select-drawer-item[data-selected] {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--v2-color-background-02-selected);
+    color: var(--v2-color-text-med);
+  }
 }
 
-.v2-page-link--elevated-accent {
-  @include scheme.surface-elevated-accent-interactive;
+.v2-side-nav-target[data-selected] {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    color: var(--v2-color-accent);
+  }
 }
 
-.v2-page-link--default-accent-tonal {
-  @include scheme.surface-default-accent-tonal-interactive;
+.v2-page-link--tonal--default {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--v2-color-background-02);
+    color: var(--v2-color-text-med);
+  }
 }
 
-.v2-page-link--elevated-accent-tonal {
-  @include scheme.surface-elevated-accent-tonal-interactive;
+.v2-page-link--tonal--default:hover {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--v2-color-background-02-hovered);
+    color: var(--v2-color-text-med);
+  }
+}
+
+.v2-page-link--tonal--default:active {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--v2-color-background-02-pressed);
+    color: var(--v2-color-text-med);
+  }
+}
+
+.v2-page-link--tonal--default[data-selected] {
+  &:not([data-disabled], [data-loading], [data-readonly]) {
+    background-color: var(--v2-color-background-02-selected);
+    color: var(--v2-color-text-med);
+  }
+}
+
+[data-color-scheme='red'],
+[data-color-scheme='red'] svg {
+  color: hsl(var(--v2-hue-red), 60%);
+}
+[data-color-scheme='orange'],
+[data-color-scheme='orange'] svg {
+  color: hsl(var(--v2-hue-orange), 60%);
+}
+[data-color-scheme='yellow'],
+[data-color-scheme='yellow'] svg {
+  color: hsl(var(--v2-hue-yellow), 60%);
+}
+[data-color-scheme='green'],
+[data-color-scheme='green'] svg {
+  color: hsl(var(--v2-hue-green), 60%);
+}
+[data-color-scheme='mint'],
+[data-color-scheme='mint'] svg {
+  color: hsl(var(--v2-hue-mint), 60%);
+}
+[data-color-scheme='teal'],
+[data-color-scheme='teal'] svg {
+  color: hsl(var(--v2-hue-teal), 60%);
+}
+[data-color-scheme='cyan'],
+[data-color-scheme='cyan'] svg {
+  color: hsl(var(--v2-hue-cyan), 60%);
+}
+[data-color-scheme='blue'],
+[data-color-scheme='blue'] svg {
+  color: hsl(var(--v2-hue-blue), 60%);
+}
+[data-color-scheme='indigo'],
+[data-color-scheme='indigo'] svg {
+  color: hsl(var(--v2-hue-indigo), 60%);
+}
+[data-color-scheme='purple'],
+[data-color-scheme='purple'] svg {
+  color: hsl(var(--v2-hue-purple), 60%);
+}
+[data-color-scheme='pink'],
+[data-color-scheme='pink'] svg {
+  color: hsl(var(--v2-hue-pink), 60%);
+}
+[data-color-scheme='brown'],
+[data-color-scheme='brown'] svg {
+  color: hsl(var(--v2-hue-brown), 60%);
 }

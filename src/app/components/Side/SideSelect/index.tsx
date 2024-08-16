@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Store } from '@types';
 import { getNextIndex, getPrevIndex } from '@utils';
 import { Action, Floating, IconProps } from '@core';
+import clsx from 'clsx';
 
 interface SideSelectProps {
   group: { value: string; label: string; icon: Partial<IconProps> };
@@ -16,7 +17,7 @@ interface SideSelectProps {
 type SideSelectFactory = React.FC<SideSelectProps>;
 
 const SideSelect: SideSelectFactory = (props) => {
-  const { group, items, name, onOpen, onClose, dispatch } = props;
+  const { group, items, name, store, onOpen, onClose, dispatch } = props;
 
   const [isOpen, setOpen] = React.useState(false);
   const drawerRef = React.useRef<HTMLDivElement>(null);
@@ -54,6 +55,8 @@ const SideSelect: SideSelectFactory = (props) => {
           icon={group.icon}
           aria-label={group.label}
           selected={isOpen || undefined}
+          className="v2-side-select-target"
+          {...(name === 'accent' ? { 'data-icon-scheme': store.accent } : {})}
         />
       </Floating.Target>
 
@@ -66,7 +69,9 @@ const SideSelect: SideSelectFactory = (props) => {
                 icon={item.icon}
                 value={item.value}
                 onClick={handleOptionClick}
+                className="v2-side-select-drawer-item"
                 selected={group.value === item.value || undefined}
+                {...(name === 'accent' ? { 'data-icon-scheme': item.value } : {})}
                 aria-label={item.label}
                 data-v2-side-select-option
                 onKeyDown={(event) => {

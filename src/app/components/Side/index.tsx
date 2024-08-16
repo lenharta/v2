@@ -63,7 +63,7 @@ const Side: SideFactory = ({}) => {
             ]}
           />
 
-          <Action.Spacer grow />
+          <Action.Spacer grow className="v2-side-spacer" />
 
           <Side.Select
             name="accent"
@@ -78,62 +78,62 @@ const Side: SideFactory = ({}) => {
               {
                 value: 'red',
                 label: 'red',
-                icon: { type: 'fill', fill: 'red' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'orange',
                 label: 'orange',
-                icon: { type: 'fill', fill: 'orange' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'yellow',
                 label: 'yellow',
-                icon: { type: 'fill', fill: 'yellow' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'green',
                 label: 'green',
-                icon: { type: 'fill', fill: 'green' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'mint',
                 label: 'mint',
-                icon: { type: 'fill', fill: 'mint' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'teal',
                 label: 'teal',
-                icon: { type: 'fill', fill: 'teal' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'cyan',
                 label: 'cyan',
-                icon: { type: 'fill', fill: 'cyan' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'blue',
                 label: 'blue',
-                icon: { type: 'fill', fill: 'blue' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'indigo',
                 label: 'indigo',
-                icon: { type: 'fill', fill: 'indigo' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'purple',
                 label: 'purple',
-                icon: { type: 'fill', fill: 'purple' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'pink',
                 label: 'pink',
-                icon: { type: 'fill', fill: 'pink' },
+                icon: { type: 'fill' },
               },
               {
                 value: 'brown',
                 label: 'brown',
-                icon: { type: 'fill', fill: 'brown' },
+                icon: { type: 'fill' },
               },
             ]}
           />
@@ -189,7 +189,7 @@ const Side: SideFactory = ({}) => {
             ]}
           />
 
-          <Action.Spacer />
+          <Action.Spacer className="v2-side-spacer" />
         </Action.Group>
       </div>
     </aside>

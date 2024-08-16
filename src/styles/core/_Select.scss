@@ -1,5 +1,3 @@
-@use '../mixins' as mixins;
-
 :root {
   --v2-select-item-height-xs: 34px;
   --v2-select-item-height-sm: 40px;
@@ -23,8 +21,6 @@
 .v2-select {
   &-target,
   &-option {
-    @include mixins.interactive-outline;
-
     width: 100%;
     display: flex;
     align-items: center;
