@@ -18,7 +18,7 @@ const Header: HeaderFactory = ({}) => {
           <Action
             value="/"
             onClick={(event) => navigate(event.currentTarget.value)}
-            className="v2-header-logo"
+            className="v2-header-action v2-header-logo"
             aria-label="go home"
             icon={{
               name: 'logo-v2',
@@ -27,13 +27,14 @@ const Header: HeaderFactory = ({}) => {
             }}
           />
 
-          <Action.Spacer grow />
+          <Action.Spacer grow className="v2-header-spacer" />
 
           <Action
             value="/sandbox"
             icon={{ name: 'arrow-northeast-square' }}
             onClick={(event) => navigate(event.currentTarget.value)}
             aria-label="go to sandbox page"
+            className="v2-header-action"
           />
 
           <Action
@@ -41,6 +42,7 @@ const Header: HeaderFactory = ({}) => {
             icon={{ name: 'gear' }}
             onClick={(event) => navigate(event.currentTarget.value)}
             aria-label="go to settings page"
+            className="v2-header-action"
           />
         </Action.Group>
       </div>

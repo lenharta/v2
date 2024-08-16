@@ -1,0 +1,90 @@
+[data-prefers-color-mode='light'] {
+  --v2-hue-red: 6, 100%;
+  --v2-hue-orange: 45, 100%;
+  --v2-hue-yellow: 54, 100%;
+  --v2-hue-green: 141, 100%;
+  --v2-hue-mint: 168, 60%;
+  --v2-hue-teal: 191, 80%;
+  --v2-hue-cyan: 199, 100%;
+  --v2-hue-blue: 210, 100%;
+  --v2-hue-indigo: 236, 100%;
+  --v2-hue-purple: 270, 70%;
+  --v2-hue-pink: 342, 100%;
+  --v2-hue-brown: 30, 25%;
+  --v2-hue-gray: 0, 0%;
+
+  --v2-hsl-red: var(--v2-hue-red), 50%;
+  --v2-hsl-orange: var(--v2-hue-orange), 50%;
+  --v2-hsl-yellow: var(--v2-hue-yellow), 45%;
+  --v2-hsl-green: var(--v2-hue-green), 50%;
+  --v2-hsl-mint: var(--v2-hue-mint), 50%;
+  --v2-hsl-teal: var(--v2-hue-teal), 60%;
+  --v2-hsl-cyan: var(--v2-hue-cyan), 65%;
+  --v2-hsl-blue: var(--v2-hue-blue), 50%;
+  --v2-hsl-indigo: var(--v2-hue-indigo), 60%;
+  --v2-hsl-purple: var(--v2-hue-purple), 60%;
+  --v2-hsl-pink: var(--v2-hue-pink), 60%;
+  --v2-hsl-brown: var(--v2-hue-brown), 60%;
+  --v2-hsl-gray: var(--v2-hue-gray), 55%;
+
+  --v2-hue-root: 245, 1%;
+  --v2-hue-link: 210, 99%;
+  --v2-hue-focus: 210, 60%;
+
+  --v2-hsl-link: var(--v2-hue-link), 50%;
+  --v2-hsl-text: var(--v2-hue-root), 0%;
+  --v2-hsl-label: var(--v2-hue-root), 55%;
+  --v2-hsl-focus: var(--v2-hue-focus), 60%;
+  --v2-hsl-separator: var(--v2-hue-root), 80%;
+  --v2-hsl-placeholder: var(--v2-hue-root), 70%;
+
+  --v2-hsl-background-01: var(--v2-hue-root), 99%;
+  --v2-hsl-background-01-hovered: var(--v2-hue-root), 97%;
+  --v2-hsl-background-01-pressed: var(--v2-hue-root), 95%;
+  --v2-hsl-background-01-selected: var(--v2-hue-root), 97%;
+
+  --v2-hsl-background-02: var(--v2-hue-root), 97%;
+  --v2-hsl-background-02-hovered: var(--v2-hue-root), 95%;
+  --v2-hsl-background-02-pressed: var(--v2-hue-root), 93%;
+  --v2-hsl-background-02-selected: var(--v2-hue-root), 95%;
+
+  --v2-hsl-background-03: var(--v2-hue-root), 95%;
+  --v2-hsl-background-03-hovered: var(--v2-hue-root), 93%;
+  --v2-hsl-background-03-pressed: var(--v2-hue-root), 91%;
+  --v2-hsl-background-03-selected: var(--v2-hue-root), 93%;
+
+  --v2-hsl-background-04: var(--v2-hue-root), 93%;
+  --v2-hsl-background-04-hovered: var(--v2-hue-root), 91%;
+  --v2-hsl-background-04-pressed: var(--v2-hue-root), 88%;
+  --v2-hsl-background-04-selected: var(--v2-hue-root), 91%;
+
+  &[data-prefers-color-contrast='yes'] {
+    --v2-hue-red: 6, 76%;
+    --v2-hue-orange: 45, 100%;
+    --v2-hue-yellow: 54, 100%;
+    --v2-hue-green: 141, 50%;
+    --v2-hue-mint: 168, 50%;
+    --v2-hue-teal: 191, 70%;
+    --v2-hue-cyan: 199, 100%;
+    --v2-hue-blue: 210, 100%;
+    --v2-hue-indigo: 236, 80%;
+    --v2-hue-purple: 270, 60%;
+    --v2-hue-pink: 342, 75%;
+    --v2-hue-brown: 30, 30%;
+    --v2-hue-gray: 0, 0%;
+
+    --v2-hsl-red: var(--v2-hue-red), 50%;
+    --v2-hsl-orange: var(--v2-hue-orange), 40%;
+    --v2-hsl-yellow: var(--v2-hue-yellow), 40%;
+    --v2-hsl-green: var(--v2-hue-green), 40%;
+    --v2-hsl-mint: var(--v2-hue-mint), 60%;
+    --v2-hsl-teal: var(--v2-hue-teal), 50%;
+    --v2-hsl-cyan: var(--v2-hue-cyan), 45%;
+    --v2-hsl-blue: var(--v2-hue-blue), 40%;
+    --v2-hsl-indigo: var(--v2-hue-indigo), 45%;
+    --v2-hsl-purple: var(--v2-hue-purple), 45%;
+    --v2-hsl-pink: var(--v2-hue-pink), 50%;
+    --v2-hsl-brown: var(--v2-hue-brown), 50%;
+    --v2-hsl-gray: var(--v2-hue-gray), 45%;
+  }
+}
