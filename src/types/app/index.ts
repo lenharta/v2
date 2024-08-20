@@ -67,4 +67,13 @@ export declare namespace App {
       keys: App.MetaSocialKey[];
     };
   };
+
+  export type CareerMeta = {
+    id: string;
+    role: { value: string; title: string; text: string };
+    company: { value: string; title: string; text: string };
+    employment: { value: string; start: string; end?: string | undefined };
+    location: { value: string; city: string; state: string };
+    tasks: { value: string; title: string; text: string }[];
+  };
 }

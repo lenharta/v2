@@ -15,10 +15,10 @@
       grid-template-columns: repeat(2, 1fr);
     }
     @media (min-width: 60em) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
     @media (min-width: 80em) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -27,6 +27,13 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
+
+    .v2-title {
+      font-size: var(--v2-font-size-01);
+    }
+    .v2-text {
+      margin-top: calc(var(--v2-gutter) / 3);
+    }
   }
 
   &-directory-card-header {
@@ -39,10 +46,6 @@
   &-directory-card-body {
     padding-block: var(--v2-08);
     padding-inline: var(--v2-06);
-
-    .v2-text {
-      margin-top: calc(var(--v2-gutter) / 3);
-    }
   }
 
   &-directory-card svg {

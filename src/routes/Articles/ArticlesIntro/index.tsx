@@ -10,13 +10,13 @@ const ArticlesIntro: React.FC<{}> & {} = ({}) => {
           {
             value: '/contact',
             label: 'Contact Me',
-            variant: 'elevated-accent-tonal',
+            variant: 'tonal-default',
             icon: { name: 'arrow-northeast' },
           },
           {
             value: '/demo',
             label: 'Demo',
-            variant: 'elevated-accent',
+            variant: 'tonal-default',
             icon: { name: 'arrow-west' },
           },
         ]}

@@ -10,13 +10,13 @@ const OverviewIntro: React.FC<{}> & {} = ({}) => {
           {
             value: `/about`,
             label: `Learn More`,
-            variant: `elevated-accent-tonal`,
+            variant: `tonal-default`,
             icon: { name: `arrow-northeast` },
           },
           {
             value: `/contact`,
             label: `Contact Me `,
-            variant: `elevated-accent`,
+            variant: `tonal-default`,
             icon: { name: `arrow-east` },
           },
         ]}
