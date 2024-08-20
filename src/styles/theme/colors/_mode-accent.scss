@@ -1,59 +1,143 @@
-[data-prefers-color-accent='red'] {
-  --v2-hue-accent: var(--v2-hue-red);
-  --v2-hsl-accent: var(--v2-hsl-red);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='red'] {
+  --v2-color-accent: hsl(var(--v2-hsl-red-4));
 }
 
-[data-prefers-color-accent='orange'] {
-  --v2-hue-accent: var(--v2-hue-orange);
-  --v2-hsl-accent: var(--v2-hsl-orange);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='orange'] {
+  --v2-color-accent: hsl(var(--v2-hsl-orange-4));
 }
 
-[data-prefers-color-accent='yellow'] {
-  --v2-hue-accent: var(--v2-hue-yellow);
-  --v2-hsl-accent: var(--v2-hsl-yellow);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='yellow'] {
+  --v2-color-accent: hsl(var(--v2-hsl-yellow-4));
 }
 
-[data-prefers-color-accent='green'] {
-  --v2-hue-accent: var(--v2-hue-green);
-  --v2-hsl-accent: var(--v2-hsl-green);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='green'] {
+  --v2-color-accent: hsl(var(--v2-hsl-green-4));
 }
 
-[data-prefers-color-accent='mint'] {
-  --v2-hue-accent: var(--v2-hue-mint);
-  --v2-hsl-accent: var(--v2-hsl-mint);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='mint'] {
+  --v2-color-accent: hsl(var(--v2-hsl-mint-4));
 }
 
-[data-prefers-color-accent='teal'] {
-  --v2-hue-accent: var(--v2-hue-teal);
-  --v2-hsl-accent: var(--v2-hsl-teal);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='teal'] {
+  --v2-color-accent: hsl(var(--v2-hsl-teal-4));
 }
 
-[data-prefers-color-accent='cyan'] {
-  --v2-hue-accent: var(--v2-hue-cyan);
-  --v2-hsl-accent: var(--v2-hsl-cyan);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='cyan'] {
+  --v2-color-accent: hsl(var(--v2-hsl-cyan-4));
 }
 
-[data-prefers-color-accent='blue'] {
-  --v2-hue-accent: var(--v2-hue-blue);
-  --v2-hsl-accent: var(--v2-hsl-blue);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='blue'] {
+  --v2-color-accent: hsl(var(--v2-hsl-blue-4));
 }
 
-[data-prefers-color-accent='indigo'] {
-  --v2-hue-accent: var(--v2-hue-indigo);
-  --v2-hsl-accent: var(--v2-hsl-indigo);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='indigo'] {
+  --v2-color-accent: hsl(var(--v2-hsl-indigo-4));
 }
 
-[data-prefers-color-accent='purple'] {
-  --v2-hue-accent: var(--v2-hue-purple);
-  --v2-hsl-accent: var(--v2-hsl-purple);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='purple'] {
+  --v2-color-accent: hsl(var(--v2-hsl-purple-4));
 }
 
-[data-prefers-color-accent='pink'] {
-  --v2-hue-accent: var(--v2-hue-pink);
-  --v2-hsl-accent: var(--v2-hsl-pink);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='pink'] {
+  --v2-color-accent: hsl(var(--v2-hsl-pink-4));
 }
 
-[data-prefers-color-accent='brown'] {
-  --v2-hue-accent: var(--v2-hue-brown);
-  --v2-hsl-accent: var(--v2-hsl-brown);
+[data-prefers-color-mode='dim'][data-prefers-color-accent='brown'] {
+  --v2-color-accent: hsl(var(--v2-hsl-brown-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='red'] {
+  --v2-color-accent: hsl(var(--v2-hsl-red-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='orange'] {
+  --v2-color-accent: hsl(var(--v2-hsl-orange-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='yellow'] {
+  --v2-color-accent: hsl(var(--v2-hsl-yellow-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='green'] {
+  --v2-color-accent: hsl(var(--v2-hsl-green-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='mint'] {
+  --v2-color-accent: hsl(var(--v2-hsl-mint-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='teal'] {
+  --v2-color-accent: hsl(var(--v2-hsl-teal-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='cyan'] {
+  --v2-color-accent: hsl(var(--v2-hsl-cyan-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='blue'] {
+  --v2-color-accent: hsl(var(--v2-hsl-blue-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='indigo'] {
+  --v2-color-accent: hsl(var(--v2-hsl-indigo-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='purple'] {
+  --v2-color-accent: hsl(var(--v2-hsl-purple-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='pink'] {
+  --v2-color-accent: hsl(var(--v2-hsl-pink-4));
+}
+
+[data-prefers-color-mode='dark'][data-prefers-color-accent='brown'] {
+  --v2-color-accent: hsl(var(--v2-hsl-brown-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='red'] {
+  --v2-color-accent: hsl(var(--v2-hsl-red-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='orange'] {
+  --v2-color-accent: hsl(var(--v2-hsl-orange-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='yellow'] {
+  --v2-color-accent: hsl(var(--v2-hsl-yellow-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='green'] {
+  --v2-color-accent: hsl(var(--v2-hsl-green-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='mint'] {
+  --v2-color-accent: hsl(var(--v2-hsl-mint-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='teal'] {
+  --v2-color-accent: hsl(var(--v2-hsl-teal-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='cyan'] {
+  --v2-color-accent: hsl(var(--v2-hsl-cyan-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='blue'] {
+  --v2-color-accent: hsl(var(--v2-hsl-blue-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='indigo'] {
+  --v2-color-accent: hsl(var(--v2-hsl-indigo-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='purple'] {
+  --v2-color-accent: hsl(var(--v2-hsl-purple-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='pink'] {
+  --v2-color-accent: hsl(var(--v2-hsl-pink-4));
+}
+
+[data-prefers-color-mode='light'][data-prefers-color-accent='brown'] {
+  --v2-color-accent: hsl(var(--v2-hsl-brown-4));
 }
