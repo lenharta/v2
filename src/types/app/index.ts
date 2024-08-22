@@ -76,4 +76,75 @@ export declare namespace App {
     location: { value: string; city: string; state: string };
     tasks: { value: string; title: string; text: string }[];
   };
+
+  export type TechGroup =
+    | 'backend'
+    | 'build'
+    | 'database'
+    | 'design'
+    | 'framework'
+    | 'integration'
+    | 'language'
+    | 'library'
+    | 'testing'
+    | 'tool'
+    | 'version';
+
+  export type Tech =
+    | 'typescript'
+    | 'javascript'
+    | 'react'
+    | 'nextjs'
+    | 'html'
+    | 'css'
+    | 'sass'
+    | 'nodejs'
+    | 'expressjs'
+    | 'vuejs'
+    | 'angular'
+    | 'vite'
+    | 'vitest'
+    | 'tailwindcss'
+    | 'git'
+    | 'gitlab'
+    | 'github'
+    | 'mocha'
+    | 'jest'
+    | 'gulp'
+    | 'markdown'
+    | 'mdx'
+    | 'storybook'
+    | 'stylex'
+    | 'mysql'
+    | 'graphql'
+    | 'webpack'
+    | 'babel'
+    | 'jenkins'
+    | 'docker'
+    | 'kubernetes'
+    | 'figma'
+    | 'jquery'
+    | 'contentful'
+    | 'styledcomponents'
+    | 'notion'
+    | 'adobexd'
+    | 'jira'
+    | 'miro'
+    | 'firebase'
+    | 'gsap'
+    | 'vscode'
+    | 'axios'
+    | 'redux'
+    | 'xstate'
+    | 'jotai'
+    | 'gatsby';
+
+  export type TechItem = {
+    site: string;
+    image: any;
+    label: string;
+    value: string;
+    group: TechGroup;
+    details: string;
+  };
 }
