@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { FooterMeta } from './FooterMeta';
 import { FooterMenu } from './FooterMenu';
-import { FOOTER_CONNECT_MENU, FOOTER_PROJECT_MENU } from '@data';
 
 interface FooterProps {}
 
@@ -15,7 +14,7 @@ const Footer: FooterFactory = ({}) => {
     <footer className="v2-footer">
       <div className="v2-footer-layout">
         <Footer.Meta />
-        <Footer.Menu data={[FOOTER_PROJECT_MENU, FOOTER_CONNECT_MENU]} />
+        <Footer.Menu data={[]} />
       </div>
     </footer>
   );

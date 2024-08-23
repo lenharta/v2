@@ -15,7 +15,6 @@ type FooterMetaFactory = React.FC<{}> & {
 const FooterMeta: FooterMetaFactory = ({}) => (
   <div className="v2-footer-meta">
     <FooterMeta.Handle />
-    {/* <FooterMeta.Logo /> */}
   </div>
 );
 

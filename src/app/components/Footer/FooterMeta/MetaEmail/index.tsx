@@ -3,8 +3,7 @@ import { META } from '@data';
 
 const MetaEmail: React.FC<{}> = ({}) => (
   <Text className="v2-footer-meta-email" data-type="email">
-    <span>{META.owner.email.user}</span>
-    <span>{META.owner.email.provider}</span>
+    <span>{META.owner.email}</span>
   </Text>
 );
 

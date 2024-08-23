@@ -1,9 +1,9 @@
 import { META } from '@data';
 
 const MetaHandle: React.FC<{}> = ({}) => (
-  <a className="v2-footer-meta-handle" href={META.social.link.github}>
+  <a className="v2-footer-meta-handle" href={META.social.github.url}>
     <span>
-      {META.social.user.github}, {new Date().getFullYear()}
+      {META.social.github.username}, {new Date().getFullYear()}
     </span>
   </a>
 );
