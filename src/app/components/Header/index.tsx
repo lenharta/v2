@@ -9,7 +9,7 @@ type HeaderFactory = React.FC<HeaderProps> & {};
 
 const Header: HeaderFactory = ({}) => {
   const store = useStore();
-  const location = Router.useLocation();
+  // const location = Router.useLocation();
   const navigate = Router.useNavigate();
 
   return (
@@ -21,7 +21,6 @@ const Header: HeaderFactory = ({}) => {
             icon={{ name: 'logo-v2', type: store.icons, fill: 'accent' }}
             onClick={(event) => navigate(event.currentTarget.value)}
             className="v2-header-action v2-header-logo"
-            selected={location.pathname === '/'}
             aria-label="go home"
           />
 
@@ -31,7 +30,6 @@ const Header: HeaderFactory = ({}) => {
             value="/sandbox"
             icon={{ name: 'arrow-northeast-square' }}
             onClick={(event) => navigate(event.currentTarget.value)}
-            selected={location.pathname === '/sandbox'}
             aria-label="go to sandbox page"
             className="v2-header-action"
           />
@@ -40,7 +38,6 @@ const Header: HeaderFactory = ({}) => {
             value="/settings"
             icon={{ name: 'gear' }}
             onClick={(event) => navigate(event.currentTarget.value)}
-            selected={location.pathname === '/settings'}
             aria-label="go to settings page"
             className="v2-header-action"
           />

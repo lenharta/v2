@@ -12,3 +12,6 @@ LICENSE
 
 
 **/*reset.scss
+src/types
+src/data/config/meta.ts
+src/data/config/route.ts
