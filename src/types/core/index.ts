@@ -1,6 +1,8 @@
 import { IconProps } from '@core';
 
 export declare namespace Core {
+  export type Extend<P = {}, O = {}> = O & Omit<P, keyof O>;
+
   export type CSS = React.CSSProperties;
   export type Axis = 'x' | 'y';
   export type Side = 'bottom' | 'right' | 'left' | 'top';
@@ -20,17 +22,13 @@ export declare namespace Core {
   export type ScrollToOptions = ScrollToPosition & ScrollOptions;
   export type ScrollToPosition = { left?: number; top?: number };
 
-  export type CodeLanguageProps = {
-    bash?: boolean | undefined;
-    css?: boolean | undefined;
-    html?: boolean | undefined;
-    ts?: boolean | undefined;
-    tsx?: boolean | undefined;
-    js?: boolean | undefined;
-    json?: boolean | undefined;
-    jsx?: boolean | undefined;
-    scss?: boolean | undefined;
-  };
+  export type CodeLanguage = 'js' | 'jsx' | 'ts' | 'tsx' | 'html' | 'css' | 'scss' | 'json' | 'bash'; 
+  export type CodeLanguageProps = Partial<Record<CodeLanguage, boolean>>
+
+  export type Element = React.ElementType | React.JSXElementConstructor<any>;
+  export type ElementRef<T extends Element> = { ref: React.ComponentPropsWithRef<T>['ref'] };
+  export type ElementProps<T extends Element> = React.ComponentPropsWithoutRef<T>;
+  export type BaseProps<T extends Element, P = {}> = Extend<ElementProps<T>, P>;
 
   export type ViableRef<T> = React.Ref<T> | undefined;
 
@@ -113,4 +111,25 @@ export declare namespace Core {
     dispatch: React.Dispatch<React.SetStateAction<T>>;
     state: T;
   };
-}
+
+  export type Clxss<K extends string = string> = Record<K, string>;
+  
+  export type ClxssPrefixFunc = (suffix: string) => string;
+  
+  export type ClxssPrefixOptions = { prefixer: ClxssPrefixFunc; isPrefix: boolean; prefix: string }
+  
+  export type ClxssOptions = ClxssPrefixOptions & { rootKey: string };
+
+  export type ClxssProps<K extends string> = { classNames: Partial<Clxss<K>>; className: string }
+
+  export function useClxss<K extends string>(init: Clxss<K>, props: Partial<ClxssProps<K> & ClxssOptions>): Clxss<K>;
+
+  export function getClxssKeys<K extends string>(init: Clxss<K>): K[]
+
+  export function parseClxssOptions(options: Partial<ClxssOptions>): ClxssOptions;
+  
+  export function resolveClxssNames<K extends string>(init: Clxss<K>, classNames?: Partial<Clxss<K>>): Clxss<K>;
+
+  // export function reduceClxssNames<K extends string>(cb: (previous: Clxss<K>, update: Clxss<K>) => U, initialValue: U): U;
+
+};
