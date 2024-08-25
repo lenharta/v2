@@ -1,64 +1,146 @@
-import { Core } from '@types';
+export {};
 
-const SETTINGS = { isPrefix: true, rootKey: 'root', prefix: 'v2-' };
+// const SETTINGS = { isPrefix: true, rootKey: 'root', prefix: 'v2-' };
+// function getAutoPrefix(prefix: string): Core.PrefixFunction {
+//   return (suffix) => {
+//     if (suffix.includes(prefix)) return suffix;
+//     return [prefix, suffix].join('');
+//   };
+// }
 
-function getAutoPrefix(prefix: string): Core.ClxssPrefixFunc {
-  return (suffix) => {
-    if (suffix.includes(prefix)) return suffix;
-    return [prefix, suffix].join('');
-  };
-}
+// const getClassKeys = <K extends string>(o: Core.ClassNames<K>): K[] => Object.keys(o) as K[];
 
-const getClxssKeys = <K extends string>(o: Core.Clxss<K>): K[] => Object.keys(o) as K[];
+// const parseClassOptions = (opts: Partial<Core.ClassOptions>): Core.ClassOptions => ({
+//   prefix: opts.prefix || SETTINGS.prefix,
+//   rootKey: opts.rootKey || SETTINGS.rootKey,
+//   isPrefix: opts.isPrefix || SETTINGS.isPrefix,
+//   prefixer: opts.prefixer || getAutoPrefix(opts.prefix || SETTINGS.prefix),
+// });
 
-const parseClxssOptions = (options: Partial<Core.ClxssOptions>): Core.ClxssOptions => ({
-  prefix: options.prefix || SETTINGS.prefix,
-  rootKey: options.rootKey || SETTINGS.rootKey,
-  isPrefix: options.isPrefix || SETTINGS.isPrefix,
-  prefixer: options.prefixer || getAutoPrefix(options.prefix || SETTINGS.prefix),
-});
+// // const parseClassName = (...payload: (string | undefined)[]) => {
+// //   return clsx(
+// //     payload.map((clxss) => {
+// //       if (!clxss) return;
 
-function resolveClxsses<K extends string>(
-  defaults: Core.Clxss<K>,
-  override: Partial<Core.Clxss<K>>
-): Core.Clxss<K> {
-  return getClxssKeys(defaults).reduce(
-    (prev, key) => ({ ...prev, [key]: override?.[key] || defaults[key] }),
-    {} as Core.Clxss<K>
-  );
-}
+// //       if (Array.isArray(clxss)) {
+// //         if (!opts.prefix || clxss.includes(opts.prefix)) return clxss;
+// //       }
 
-function useClxssMiddleware<K extends string>(options: Core.ClxssOptions) {
-  return {
-    resolve(init: Core.Clxss<K>, classNames: Partial<Core.Clxss<K>> | undefined) {
-      return (Object.keys(init) as K[]).reduce(
-        (prev, key) => ({ ...prev, [key]: classNames?.[key] || init[key] }),
-        {} as Core.Clxss<K>
-      );
-    },
+// //       if (!clxss.includes)
+// //         if (clxss !== undefined && !clxss.includes(opts.prefix)) {
+// //           return !opts.isPrefix ? clxss : opts.prefixer(clxss);
+// //         }
+// //       return;
+// //     })
+// //   );
+// // };
 
-    mergeValue(obj: Core.Clxss<K>, payload: string) {
-      return (Object.keys(obj) as K[]).reduce(
-        (prev, key) => ({ ...prev, [key]: payload }),
-        {} as Core.Clxss<K>
-      );
-    },
+// // 'button button--default button--sm'
 
-    parsePayload(payload: string[]): string[] {
-      return payload.map((className) => {
-        return !options.isPrefix ? className : options.prefixer(className);
-      });
-    },
-  };
-}
+// const parseClassPayload: typeof Core.parseClassPayload = (payload, options) => {
+//   if (!payload) return;
 
-export const useClxss: typeof Core.useClxss = (init, props) => {
-  const { classNames, className, ...options } = props;
+//   const result: string[] = [];
 
-  const middleware = useClxssMiddleware(parseClxssOptions(options));
+//   const classList: string[] = payload.split(' ');
 
-  return middleware.resolve(init, classNames);
-};
+//   if (!!(options.prefix && options.prefixer)) {
+//     for (const c in classList) {
+//       if (c.includes(options.prefix)) {
+//         result.push(c);
+//       }
+//       result.push(options.prefixer(c));
+//     }
+//     return result.join(' ');
+//   }
+
+//   for (const c in classList) {
+//     result.push(c);
+//   }
+//   return result.join(' ');
+// };
+
+// const parseClassPayloadPrefixed = (payload: string | undefined, prefixer: Core.PrefixFunction) => {
+//   if (!payload) return;
+
+//   const items: string[] = payload.split(' ');
+//   const result: string[] = [];
+
+//   for (const item in items) {
+//     result.push(prefixer(item));
+//   }
+//   return result.join(' ');
+// };
+
+// const parseClassNamePayload = <T extends string | undefined>(options: Core.ClassOptions) => {
+//   return (...classList: T[]) => {
+//     const result: string[] = [];
+
+//     if (options.isPrefix) {
+//       for (const c in classList) {
+//         if (c !== undefined && !c.includes(options.prefix)) {
+//           result.push(options.prefixer(c));
+//         }
+//       }
+//       return result;
+//     }
+
+//     for (const c in classList) {
+//       if (c !== undefined) {
+//         result.push(c);
+//       }
+//     }
+//     return result;
+//   };
+// };
+
+// const resolveClassNames: typeof Core.resolveClassNames = (config, props, opts) => {
+//   return getClassKeys(config).reduce(
+//     (prev, key) => ({
+//       ...prev,
+//       [key]: clsx(
+//         props.classNames?.[key] || config[key],
+//         key === opts.rootKey ? props.className : undefined
+//       ),
+//     }),
+//     config
+//   );
+// };
+
+// export const useClassNames = <K extends string>(
+//   config: Core.ClassNames<K>,
+//   props: Partial<Core.ClassProps<K>>
+// ) => {
+//   const { classNames, className, ...options } = props;
+
+//   const opts = parseClassOptions(options);
+
+//   return resolveClassNames(config, { className, classNames }, opts);
+// };
+
+// function useClxssMiddlewares<K extends string>(options: Core.ClxssOptions) {
+//   return {
+//     resolve(init: Core.Clxss<K>, classNames: Partial<Core.Clxss<K>> | undefined) {
+//       return (Object.keys(init) as K[]).reduce(
+//         (prev, key) => ({ ...prev, [key]: classNames?.[key] || init[key] }),
+//         {} as Core.Clxss<K>
+//       );
+//     },
+
+//     mergeValue(obj: Core.Clxss<K>, payload: string) {
+//       return (Object.keys(obj) as K[]).reduce(
+//         (prev, key) => ({ ...prev, [key]: payload }),
+//         {} as Core.Clxss<K>
+//       );
+//     },
+
+//     parsePayload(payload: string[]): string[] {
+//       return payload.map((className) => {
+//         return !options.isPrefix ? className : options.prefixer(className);
+//       });
+//     },
+//   };
+// }
 
 // function useClassNameMiddleware<T extends Record<string, string>>(options: ClassOptions) {
 //   const keys = (init: T): (keyof T)[] => {

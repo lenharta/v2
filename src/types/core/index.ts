@@ -112,24 +112,17 @@ export declare namespace Core {
     state: T;
   };
 
-  export type Clxss<K extends string = string> = Record<K, string>;
+  export type PrefixFunction = (suffix: string) => string;
   
-  export type ClxssPrefixFunc = (suffix: string) => string;
+  export type PrefixOptions = { prefixer: PrefixFunction; isPrefix: boolean; prefix: string }
+
+  export type ClassNames<K extends string = string> = Record<K, string>;
   
-  export type ClxssPrefixOptions = { prefixer: ClxssPrefixFunc; isPrefix: boolean; prefix: string }
-  
-  export type ClxssOptions = ClxssPrefixOptions & { rootKey: string };
+  export type ClassOptions = PrefixOptions & { rootKey: string };
 
-  export type ClxssProps<K extends string> = { classNames: Partial<Clxss<K>>; className: string }
+  export type ClassProps<K extends string> = { classNames: Partial<ClassNames<K>>; className: string };
 
-  export function useClxss<K extends string>(init: Clxss<K>, props: Partial<ClxssProps<K> & ClxssOptions>): Clxss<K>;
+  export function parseClassPayload(payload: string | undefined, options: { prefix: string; prefixer: Core.PrefixFunction }): string | undefined;
 
-  export function getClxssKeys<K extends string>(init: Clxss<K>): K[]
-
-  export function parseClxssOptions(options: Partial<ClxssOptions>): ClxssOptions;
-  
-  export function resolveClxssNames<K extends string>(init: Clxss<K>, classNames?: Partial<Clxss<K>>): Clxss<K>;
-
-  // export function reduceClxssNames<K extends string>(cb: (previous: Clxss<K>, update: Clxss<K>) => U, initialValue: U): U;
-
+  export function resolveClassNames<K extends string>(config: Core.ClassNames<K>, props: Partial<Core.ClassProps<K>>, opts: Core.ClassOptions): Core.ClassNames<K>;
 };
