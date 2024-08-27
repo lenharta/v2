@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
 import { TableFootProps } from '../types';
 
 type TableFootFactory = Factory.Config<{

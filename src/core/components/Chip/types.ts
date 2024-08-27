@@ -1,6 +1,6 @@
 import React from 'react';
-import { Theme } from '@types';
-import { UnstyledButtonProps, GroupProps } from '@core';
+import { Theme } from '@/types';
+import { UnstyledButtonProps, GroupProps } from '@/core';
 
 interface ChipThemeProps {
   size?: Theme.SizeRegular | undefined;

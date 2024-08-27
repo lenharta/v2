@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useClickOutside, useEventListener } from '@hooks';
-import { TransitionProps } from '@core';
+import { useClickOutside, useEventListener } from '@/hooks';
+import { TransitionProps } from '@/core';
 import { FloatingBox } from './FloatingBox';
 import { FloatingProps } from './types';
 import { FloatingTarget } from './FloatingTarget';

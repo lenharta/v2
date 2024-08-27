@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Disclosure, DisclosureProps } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { Disclosure, DisclosureProps } from '@/core';
 import { AccordionPanelProps } from '../types';
 import { useAccordionContext, useAccordionItemContext } from '../context';
 

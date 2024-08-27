@@ -1,4 +1,4 @@
-import { Theme } from '@types';
+import { Theme } from '@/types';
 import { IconProps } from '../Icon/types';
 
 interface IconBtnThemeProps {

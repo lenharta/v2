@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Icon, UnstyledButton } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { Icon, UnstyledButton } from '@/core';
 
 import { ChipProps } from './types';
 import { ChipGroup } from './ChipGroup';

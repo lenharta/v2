@@ -1,4 +1,4 @@
-import { Store, Theme } from '@types';
+import { Store, Theme } from '@/types';
 
 const DEFAULT_STORE: Store.State = {
   dir: 'ltr',

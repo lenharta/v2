@@ -1,0 +1,143 @@
+:v2-app-root {
+  --v2-app-root-border-style: solid;
+  --v2-app-root-border-color: currentColor;
+  --v2-app-v2-app-root-border-width: 0;
+
+  --v2-app-root-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+
+  --v2-app-root-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
+    Courier New, monospace;
+
+  --v2-app-root-font-size: 16px;
+  --v2-app-root-font-weight: 400;
+  --v2-app-root-line-height: 1.5;
+  --v2-app-root-letter-spacing: initial;
+  --v2-app-root-text-rendering: optimizeLegibility;
+  --v2-app-root-moz-font-smoothing: grayscale;
+  --v2-app-root-webkit-font-smoothing: antialiased;
+  --v2-app-root-webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-width: var(--v2-app-root-border-width);
+  border-style: var(--v2-app-root-border-style);
+  border-color: var(--v2-app-root-border-color);
+}
+
+html {
+  display: block;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#root, #__next {
+  isolation: isolate;
+  display: block;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: block;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  font-size: var(--v2-app-root-font-size);
+  font-weight: var(--v2-app-root-font-weight);
+  font-family: var(--v2-app-root-font-family);
+  line-height: var(--v2-app-root-line-height);
+  letter-spacing: var(--v2-app-root-letter-spacing);
+  text-rendering: var(--v2-app-root-text-rendering);
+
+  -webkit-font-smoothing: var(--v2-app-root-webkit-font-smoothing);
+  -moz-osx-font-smoothing: var(--v2-app-root-moz-font-smoothing);
+
+  @media screen and (max-device-width: 500px) {
+    -webkit-text-size-adjust: var(--v2-app-root-webkit-text-size-adjust);
+  }
+}
+
+div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, 
+kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, 
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, 
+figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, 
+time, mark, audio, video, input, button, select, textarea, option, optgroup, 
+datalist, keygen, meter, progress, dialog, menuitem, picture, source, track, 
+wbr, data, template, slot, main, figure, figcaption, picture, time, mark, bdi,
+bdo, rp, rt, rtc, ruby, noframes, noscript, embed, object, param, video, audio, 
+source, track,canvas, map, area, math, svg, animate, animateMotion, animateTransform, 
+circle, clipPath, defs, desc, discard, ellipse, g, image, line, marker, mask, metadata, 
+path, rect, script, set, svg, switch, symbol, text, textPath, tspan, use, view  {
+  padding: 0;
+  margin: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  overflow-wrap: break-word;
+}
+
+code, kbd {
+  font-family: var(--v2-app-root-font-family-mono);
+}
+
+img, picture, video, canvas, svg {
+  height: auto;
+  display: block;
+  max-width: 100%;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  vertical-align: middle;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+svg + p {
+  cursor: default;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+select {
+  text-transform: none;
+}
+
+a {
+  color: inherit;
+  border: none;
+  background-color: inherit;
+  text-decoration: none;
+  text-transform: none;
+}
+
+button {
+  color: inherit;
+  border: none;
+  background-color: inherit;
+  text-decoration: none;
+  text-transform: none;
+}
+
+[data-respect-reduced-motion] {
+  @media (prefers-reduced-motion: reduce) {
+    [data-reduce-motion] {
+      transition: none;
+      animation: none;
+    }
+  }
+}

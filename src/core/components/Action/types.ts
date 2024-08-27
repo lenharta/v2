@@ -1,5 +1,5 @@
-import { UnstyledButtonProps, GroupProps, IconProps } from '@core';
-import { Theme } from '@types';
+import { UnstyledButtonProps, GroupProps, IconProps } from '@/core';
+import { Theme } from '@/types';
 
 interface ActionThemeProps {
   accent?: boolean | undefined;

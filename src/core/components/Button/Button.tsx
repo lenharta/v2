@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Icon, UnstyledButton } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { Icon, UnstyledButton } from '@/core';
 import { ButtonProps } from './types';
 import { ButtonGroup } from './ButtonGroup';
 import { useButtonContext } from './context';

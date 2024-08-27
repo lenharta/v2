@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { createEventCallback } from '@utils';
-import { Icon, UnstyledButton } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { createEventCallback } from '@/utils';
+import { Icon, UnstyledButton } from '@/core';
 import { AccordionTargetProps } from '../types';
 import { useAccordionContext, useAccordionItemContext } from '../context';
 

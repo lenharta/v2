@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Group } from '@core';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
+import { Group } from '@/core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
 import { ActionProvider } from '../context';
 import { ActionGroupProps } from '../types';
 

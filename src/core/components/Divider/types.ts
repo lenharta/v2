@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Core } from '@types';
+import { Core } from '@/types';
 
 interface DividerThemeProps {
   decoration?: 'solid' | 'dashed' | 'dotted' | undefined;

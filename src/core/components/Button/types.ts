@@ -1,5 +1,5 @@
-import { Theme } from '@types';
-import { UnstyledButtonProps, GroupProps, IconProps } from '@core';
+import { Theme } from '@/types';
+import { UnstyledButtonProps, GroupProps, IconProps } from '@/core';
 
 interface ButtonThemeProps {
   size?: Theme.SizeExpanded | undefined;

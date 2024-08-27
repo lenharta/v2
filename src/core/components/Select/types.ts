@@ -1,5 +1,5 @@
-import { FloatingProps, TransitionProps, UnstyledButtonProps } from '@core';
-import { Theme } from '@types';
+import { FloatingProps, TransitionProps, UnstyledButtonProps } from '@/core';
+import { Theme } from '@/types';
 
 interface SelectThemeProps {
   variant?: Theme.Variant | undefined;

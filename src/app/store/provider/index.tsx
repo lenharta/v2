@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { useStorage } from '@hooks';
-import { Store, Theme } from '@types';
-import { createRandomString, objectKeys } from '@utils';
-import { DEFAULT_STORE, THEME_ATTRIBUTE_MAP } from '../constants';
+import { useStorage } from '@/hooks';
+import { Store, Theme } from '@/types';
+import { createRandomString, objectKeys } from '@/utils';
 import { DispatchContext, StoreContext } from '../context';
+import { DEFAULT_STORE, THEME_ATTRIBUTE_MAP } from '../constants';
 
-interface ProviderProps {
+export interface StoreProviderProps {
   children: React.ReactNode;
 }
 
@@ -23,7 +23,7 @@ function useThemeUpdate(props: { theme: Theme.State; middleware: Store.Middlewar
   }, [theme, middleware]);
 }
 
-const StoreProvider = ({ children }: ProviderProps) => {
+const StoreProvider = ({ children }: StoreProviderProps) => {
   const local = useStorage<Theme.State>({ type: 'localStorage' });
   const session = useStorage<{ session: string }>({ type: 'sessionStorage' });
 

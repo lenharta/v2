@@ -1,6 +1,6 @@
 import * as Router from 'react-router-dom';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
 import { UnstyledLinkProps } from './types';
 
 type UnstyledLinkFactory = Factory.Config<{

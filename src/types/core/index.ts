@@ -1,4 +1,4 @@
-import { IconProps } from '@core';
+import { IconProps } from '@/core';
 
 export declare namespace Core {
   export type Extend<P = {}, O = {}> = O & Omit<P, keyof O>;
@@ -28,7 +28,7 @@ export declare namespace Core {
   export type Element = React.ElementType | React.JSXElementConstructor<any>;
   export type ElementRef<T extends Element> = { ref: React.ComponentPropsWithRef<T>['ref'] };
   export type ElementProps<T extends Element> = React.ComponentPropsWithoutRef<T>;
-  export type BaseProps<T extends Element, P = {}> = Extend<ElementProps<T>, P>;
+  export type BaseProps<T extends Element, P = {}> = Extend<P, ElementProps<T>>;
 
   export type ViableRef<T> = React.Ref<T> | undefined;
 

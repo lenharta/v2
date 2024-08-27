@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Floating, SelectBoxProps } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { Floating, SelectBoxProps } from '@/core';
 
 type SelectBoxFactory = Factory.Config<{
   comp: 'div';

@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
+import { Factory } from '@/types';
 import { CheckboxGroupProps } from '../types';
 import { CheckboxGroupProvider } from '../context';
-import { createPolymorphicFactory } from '@factory';
+import { createPolymorphicFactory } from '@/factory';
 
 type CheckboxGroupFactory = Factory.Config<{
   ref: HTMLDivElement;

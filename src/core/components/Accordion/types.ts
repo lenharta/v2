@@ -1,4 +1,4 @@
-import { Core, Theme } from '@types';
+import { Core, Theme } from '@/types';
 
 type AccordionValue<V> = V extends true ? string[] : string | null;
 

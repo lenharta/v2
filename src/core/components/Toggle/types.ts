@@ -1,5 +1,5 @@
-import { Theme } from '@types';
-import { GroupProps, InlineInputProps } from '@core';
+import { Theme } from '@/types';
+import { GroupProps, InlineInputProps } from '@/core';
 
 interface ToggleThemeProps {
   size?: Theme.SizeRegular | undefined;

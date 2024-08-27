@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Factory } from '@types';
+import { Factory } from '@/types';
 
 function createPolymorphicComponent<DefaultType, Props>(ui: any) {
   type PolyProps<C> = Factory.PolymorphicProps<C, Props>;

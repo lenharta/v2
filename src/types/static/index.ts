@@ -1,5 +1,5 @@
-import { I18n } from '@types';
-import { IconProps } from '@core';
+import { I18n } from '@/types';
+import { IconProps } from '@/core';
 
 export declare namespace Static {
   export type RouteId = `route:${RouteKey}`;

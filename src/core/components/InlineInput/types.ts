@@ -1,9 +1,9 @@
-interface InlineInputThemeProps {}
+export type InlineInputStatus = 'idle' | 'warning' | 'success' | 'error' | 'danger';
 
-interface InlineInputProps extends InlineInputThemeProps {
+export interface InlineInputProps {
   label?: string | undefined;
   error?: string | undefined;
-  status?: 'idle' | 'warning' | 'success' | 'error' | 'danger' | undefined;
+  status?: InlineInputStatus | undefined;
   checked?: boolean | undefined;
   disabled?: boolean | undefined;
   selected?: boolean | undefined;
@@ -11,5 +11,3 @@ interface InlineInputProps extends InlineInputThemeProps {
   loading?: boolean | undefined;
   message?: string | undefined;
 }
-
-export type { InlineInputProps, InlineInputThemeProps };

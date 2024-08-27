@@ -1,5 +1,5 @@
-import { Theme } from '@types';
-import { IconProps, DividerProps } from '@core';
+import { Theme } from '@/types';
+import { IconProps, DividerProps } from '@/core';
 
 interface TabsThemeProps {
   variant?: Theme.Variant | undefined;

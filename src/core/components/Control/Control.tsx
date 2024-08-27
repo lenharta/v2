@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Core } from '@types';
-import { parseItemData } from '@utils';
+import { Core } from '@/types';
+import { parseItemData } from '@/utils';
 import { ControlProps } from './types';
 import { ControlTrack } from './ControlTrack';
 import { ControlThumb } from './ControlThumb';

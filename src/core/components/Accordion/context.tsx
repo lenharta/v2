@@ -1,4 +1,4 @@
-import { createSafeContext } from '@utils';
+import { createSafeContext } from '@/utils';
 import { AccordionContext, AccordionItemContext } from './types';
 
 const [AccordionProvider, useAccordionContext] = createSafeContext<AccordionContext>(

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Divider, DividerProps } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { Divider, DividerProps } from '@/core';
 import { useTabsContext } from '../context';
 import { TabsListProps } from '../types';
 import { TABS_SELECTORS } from '../constants';

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
 import { AccordionItemProps } from '../types';
 import { AccordionItemProvider, useAccordionContext } from '../context';
 

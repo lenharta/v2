@@ -1,13 +1,19 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createPolymorphicFactory } from '@factory';
-import { Text, Label, InlineInputProps } from '@core';
+import { Factory } from '@/types';
+import { createPolymorphicFactory } from '@/factory';
+import { Text, Label, InlineInputProps } from '@/core';
 
 type InlineInputFactory = Factory.Config<{
   ref: HTMLDivElement;
   comp: 'div';
   props: InlineInputProps;
 }>;
+
+const css = {
+  root: 'v2-inline-input',
+  layout: 'v2-inline-input-layout',
+  content: 'v2-inline-input-content',
+};
 
 const InlineInput = createPolymorphicFactory<InlineInputFactory>((props, ref) => {
   const {
@@ -27,20 +33,19 @@ const InlineInput = createPolymorphicFactory<InlineInputFactory>((props, ref) =>
   return (
     <div
       ref={ref}
-      className={clsx('v2-inline-input', className)}
-      data-selected={!!selected || undefined}
-      data-disabled={!!disabled || undefined}
-      data-readonly={!!readOnly || undefined}
-      data-checked={!!checked || undefined}
+      className={clsx(css.content, className)}
+      data-selected={selected}
+      data-disabled={disabled}
+      data-readonly={readOnly}
+      data-checked={checked}
       {...forwardedProps}
     >
       <div className="v2-inline-input-layout">
         {children}
-
         <div className="v2-inline-input-content">
-          <Label className="v2-inline-input-label">{label}</Label>
-          {error && <Text className="v2-inline-input-error">{error}</Text>}
-          {message && <Text className="v2-inline-input-message">{message}</Text>}
+          <Label>{label}</Label>
+          {error && <Text data-error={!!error}>{error}</Text>}
+          {message && <Text>{message}</Text>}
         </div>
       </div>
     </div>

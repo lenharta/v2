@@ -1,6 +1,6 @@
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Icon, IconProps } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { Icon, IconProps } from '@/core';
 import { CheckboxIndicatorProps, CheckboxProps, CheckboxShape, CheckboxState } from '../types';
 
 type CheckboxIndicatorFactory = Factory.Config<{

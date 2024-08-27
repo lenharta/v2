@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Icon, UnstyledButton } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { Icon, UnstyledButton } from '@/core';
 
 import { ActionProps } from './types';
 import { ActionGroup } from './ActionGroup';

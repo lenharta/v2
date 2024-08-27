@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
 import { ControlThumbProps } from '../types';
 
 type ControlThumbFactory = Factory.Config<{

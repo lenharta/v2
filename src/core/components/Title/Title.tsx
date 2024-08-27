@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createPolymorphicFactory } from '@factory';
+import { Factory } from '@/types';
+import { createPolymorphicFactory } from '@/factory';
 import { TitleProps } from './types';
-import { objectKeys } from '@utils';
+import { objectKeys } from '@/utils';
 
 type TitleFactory = Factory.Config<{
   ref: HTMLHeadingElement;
@@ -25,38 +25,12 @@ function findComponent(props: TitleElementProps) {
 }
 
 const Title = createPolymorphicFactory<TitleFactory>((props, ref) => {
-  const {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    lead,
-    size,
-    weight,
-    variant,
-    children,
-    className,
-    component,
-    ...forwardedProps
-  } = props;
+  const { h1, h2, h3, h4, h5, h6, children, className, component, ...forwardedProps } = props;
 
   let Component = findComponent({ h1, h2, h3, h4, h5, h6, component });
 
   return (
-    <Component
-      ref={ref}
-      className={clsx(
-        'v2-title',
-        { [`v2-title--${variant}`]: variant !== undefined },
-        { [`v2-title--size-${size}`]: size !== undefined },
-        { [`v2-title--lead-${lead}`]: lead !== undefined },
-        { [`v2-title--weight-${weight}`]: weight !== undefined },
-        className
-      )}
-      {...forwardedProps}
-    >
+    <Component ref={ref} className={clsx('v2-title', className)} {...forwardedProps}>
       {children}
     </Component>
   );

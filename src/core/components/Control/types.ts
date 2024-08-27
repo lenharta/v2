@@ -1,4 +1,4 @@
-import { Core, Theme } from '@types';
+import { Core, Theme } from '@/types';
 import { IconProps } from '../Icon';
 
 type ControlPosition = Record<'height' | 'width' | 'left' | 'top', number>;

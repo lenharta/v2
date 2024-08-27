@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Theme } from '@types';
-import { TransitionProps } from '@core';
+import { Theme } from '@/types';
+import { TransitionProps } from '@/core';
 
 type FloatingDir = Theme.Dir;
 type FloatingSide = 'bottom' | 'right' | 'left' | 'top';

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { UnstyledButton, SelectOptionProps } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { UnstyledButton, SelectOptionProps } from '@/core';
 
 type SelectOptionFactory = Factory.Config<{
   ref: HTMLButtonElement;

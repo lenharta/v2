@@ -1,4 +1,4 @@
-import { Theme } from '@types';
+import { Theme } from '@/types';
 
 interface StackProps {
   gap?: 'unset' | Theme.SizeExpanded | undefined;

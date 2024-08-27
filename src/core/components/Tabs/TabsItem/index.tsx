@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Icon, UnstyledButton } from '@core';
+import { Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { Icon, UnstyledButton } from '@/core';
 import { TabsItemProps } from '../types';
 import { useTabsContext } from '../context';
-import { createKeyDownGroup } from '@utils';
+import { createKeyDownGroup } from '@/utils';
 import { TABS_SELECTORS } from '../constants';
 
 type TabsItemFactory = Factory.Config<{
