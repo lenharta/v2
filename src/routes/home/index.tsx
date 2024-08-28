@@ -1,4 +1,4 @@
-import { Text, Title } from '@/core';
+import { Button, Text, Title } from '@/core';
 import { Hero, Main, Page, PageProps } from '@/app';
 
 export interface HomeRouteProps extends PageProps {}
@@ -22,6 +22,7 @@ export const Home: HomeRouteComponent = (props) => {
           itaque minima eos commodi quisquam a corrupti tempora earum quod dolorem sapiente
           possimus? Harum ducimus architecto similique iusto.
         </Text>
+        <Button>Button</Button>
       </Main>
     </Page>
   );

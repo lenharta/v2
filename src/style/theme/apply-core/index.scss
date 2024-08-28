@@ -1,0 +1,171 @@
+.v2-button {
+  &:not([data-loading]),
+  &:not([data-readonly]),
+  &:not([data-disabled]) {
+    background-color: var(--v2-color-button-background);
+    border-color: var(--v2-color-button-border);
+    color: var(--v2-color-button-text);
+
+    svg {
+      color: var(--v2-color-button-icon);
+    }
+
+    &:hover,
+    &[data-selected] {
+      --v2-color-button-background: #fff;
+      --v2-color-button-border: #fff;
+      --v2-color-button-text: #fff;
+      --v2-color-button-icon: #fff;
+    }
+  }
+
+  &[data-loading] {
+    --v2-color-button-background: #fff;
+    --v2-color-button-border: #fff;
+    --v2-color-button-text: #fff;
+    --v2-color-button-icon: #fff;
+  }
+  &[data-readonly] {
+    --v2-color-button-background: #fff;
+    --v2-color-button-border: #fff;
+    --v2-color-button-text: #fff;
+    --v2-color-button-icon: #fff;
+  }
+  &[data-disabled] {
+    --v2-color-button-background: #fff;
+    --v2-color-button-border: #fff;
+    --v2-color-button-text: #fff;
+    --v2-color-button-icon: #fff;
+  }
+}
+
+// $config-prefix: 'v2-core';
+
+// @mixin prefix($name, $prefix: $config-prefix) {
+//   .#{$prefix}-#{$name} {
+//     @content;
+//   }
+// }
+
+// $MODE-DIM: 'dim';
+// $MODE-DARK: 'dark';
+// $MODE-LIGHT: 'light';
+
+// $ACCENT-YELLOW: 'yellow';
+// $ACCENT-ORANGE: 'orange';
+// $ACCENT-RED: 'red';
+// $ACCENT-MAGENTA: 'magenta';
+// $ACCENT-PURPLE: 'purple';
+// $ACCENT-BLUE: 'blue';
+// $ACCENT-CYAN: 'cyan';
+// $ACCENT-TEAL: 'teal';
+// $ACCENT-GREEN: 'green';
+// $ACCENT-COOLGREY: 'coolgrey';
+// $ACCENT-GREY: 'grey';
+// $ACCENT-WARMGREY: 'warmgrey';
+
+// $COLOR-NEUTRAL: 'neutral';
+// $COLOR-CONTRAST: 'contrast';
+
+// $COLOR-YELLOW: 'yellow';
+// $COLOR-ORANGE: 'orange';
+// $COLOR-RED: 'red';
+// $COLOR-MAGENTA: 'magenta';
+// $COLOR-PURPLE: 'purple';
+// $COLOR-BLUE: 'blue';
+// $COLOR-CYAN: 'cyan';
+// $COLOR-TEAL: 'teal';
+// $COLOR-GREEN: 'green';
+// $COLOR-COOLGREY: 'coolgrey';
+// $COLOR-GREY: 'grey';
+// $COLOR-WARMGREY: 'warmgrey';
+
+// $ATTRIBUTE-MODE: 'data-prefers-color-mode';
+// $ATTRIBUTE-ACCENT: 'data-prefers-color-accent';
+
+// $MODES: ($config-mode-light, $config-mode-dark, $config-mode-dim);
+
+// $COLORS: ($COLOR-YELLOW);
+
+// $ACCENTS: (
+//   $COLOR-YELLOW,
+//   $COLOR-ORANGE,
+//   $COLOR-RED,
+//   $COLOR-MAGENTA,
+//   $COLOR-PURPLE,
+//   $COLOR-BLUE,
+//   $COLOR-CYAN,
+//   $COLOR-TEAL,
+//   $COLOR-GREEN,
+//   $COLOR-COOLGREY,
+//   $COLOR-GREY,
+//   $COLOR-WARMGREY
+// );
+
+// @mixin mode-scheme($value: $scheme-dark, $attribute: $scheme-attribute) {
+//   [#{$scheme-attribute}='#{$scheme}'] {
+//     @content;
+//   }
+// }
+
+// @mixin mode-accent($accent: $accent-blue) {
+// }
+
+// .v2-button {
+//   background-color: var(--v2-color-button-background);
+//   outline-color: var(--v2-color-button-outline);
+//   border-color: var(--v2-color-button-border);
+//   color: var(--v2-color-button-text);
+// }
+
+// .v2-checkbox {
+//   background-color: var(--v2-color-checkbox-background);
+//   outline-color: var(--v2-color-checkbox-outline);
+//   border-color: var(--v2-color-checkbox-border);
+//   color: var(--v2-color-checkbox-text);
+// }
+
+// .v2-checkbox {
+//   &:not([data-loading]),
+//   &:not([data-readonly]),
+//   &:not([data-disabled]) {
+//     svg {
+//       color: var(--v2-color-checkbox-icon);
+//     }
+
+//     &:hover,
+//     &[data-selected] {
+//       --v2-color-checkbox-background: #fff;
+//       --v2-color-checkbox-border: #fff;
+//       --v2-color-checkbox-text: #fff;
+//       --v2-color-checkbox-icon: #fff;
+//     }
+//   }
+
+//   &:focus(:focus-visible) {
+//     --v2-color-checkbox-outline: transparent;
+//   }
+
+//   &:focus:not(:focus-visible) {
+//     --v2-color-checkbox-outline: transparent;
+//   }
+
+//   &[data-loading] {
+//     --v2-color-checkbox-background: #fff;
+//     --v2-color-checkbox-border: #fff;
+//     --v2-color-checkbox-text: #fff;
+//     --v2-color-checkbox-icon: #fff;
+//   }
+//   &[data-readonly] {
+//     --v2-color-checkbox-background: #fff;
+//     --v2-color-checkbox-border: #fff;
+//     --v2-color-checkbox-text: #fff;
+//     --v2-color-checkbox-icon: #fff;
+//   }
+//   &[data-disabled] {
+//     --v2-color-checkbox-background: #fff;
+//     --v2-color-checkbox-border: #fff;
+//     --v2-color-checkbox-text: #fff;
+//     --v2-color-checkbox-icon: #fff;
+//   }
+// }

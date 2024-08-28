@@ -1,0 +1,85 @@
+@layer token-colors {
+  [data-prefers-color-mode='dim'] {
+    --v2-color-text-0: hsla(var(--v2-hue-slate), 99%, 0.99);
+    --v2-color-text-1: hsla(var(--v2-hue-slate), 99%, 0.87);
+    --v2-color-text-2: hsla(var(--v2-hue-slate), 99%, 0.65);
+    --v2-color-text-3: hsla(var(--v2-hue-slate), 99%, 0.43);
+
+    --v2-color-label-0: hsla(var(--v2-hue-slate), 99%, 0.99);
+    --v2-color-label-1: hsla(var(--v2-hue-slate), 99%, 0.87);
+    --v2-color-label-2: hsla(var(--v2-hue-slate), 99%, 0.65);
+    --v2-color-label-3: hsla(var(--v2-hue-slate), 99%, 0.43);
+
+    --v2-color-background-0: hsl(var(--v2-hue-slate), 12%);
+    --v2-color-background-1: hsl(var(--v2-hue-slate), 15%);
+    --v2-color-background-2: hsl(var(--v2-hue-slate), 18%);
+    --v2-color-background-3: hsl(var(--v2-hue-slate), 21%);
+    --v2-color-background-4: hsl(var(--v2-hue-slate), 24%);
+
+    --v2-color-background-0-hovered: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-background-1-hovered: hsl(var(--v2-hue-slate), 13%);
+    --v2-color-background-2-hovered: hsl(var(--v2-hue-slate), 16%);
+    --v2-color-background-3-hovered: hsl(var(--v2-hue-slate), 19%);
+    --v2-color-background-4-hovered: hsl(var(--v2-hue-slate), 22%);
+
+    --v2-color-button-0-enabled: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-1-enabled: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-2-enabled: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-3-enabled: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-4-enabled: hsl(var(--v2-hue-slate), 10%);
+
+    --v2-color-button-0-hovered: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-1-hovered: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-2-hovered: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-3-hovered: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-4-hovered: hsl(var(--v2-hue-slate), 10%);
+
+    --v2-color-button-0-pressed: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-1-pressed: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-2-pressed: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-3-pressed: hsl(var(--v2-hue-slate), 10%);
+    --v2-color-button-4-pressed: hsl(var(--v2-hue-slate), 10%);
+
+    [data-container-scheme='secondary'] {
+      --v2-color-text-0: hsla(var(--v2-hue-slate), 01%, 0.99);
+      --v2-color-text-1: hsla(var(--v2-hue-slate), 01%, 0.87);
+      --v2-color-text-2: hsla(var(--v2-hue-slate), 01%, 0.65);
+      --v2-color-text-3: hsla(var(--v2-hue-slate), 01%, 0.43);
+
+      --v2-color-label-0: hsla(var(--v2-hue-slate), 01%, 0.99);
+      --v2-color-label-1: hsla(var(--v2-hue-slate), 01%, 0.87);
+      --v2-color-label-2: hsla(var(--v2-hue-slate), 01%, 0.65);
+      --v2-color-label-3: hsla(var(--v2-hue-slate), 01%, 0.43);
+
+      --v2-color-background-0: hsl(var(--v2-hue-slate), 99%);
+      --v2-color-background-1: hsl(var(--v2-hue-slate), 99%);
+      --v2-color-background-2: hsl(var(--v2-hue-slate), 96%);
+      --v2-color-background-3: hsl(var(--v2-hue-slate), 93%);
+      --v2-color-background-4: hsl(var(--v2-hue-slate), 90%);
+
+      --v2-color-background-0-hovered: hsl(var(--v2-hue-slate), 99%);
+      --v2-color-background-1-hovered: hsl(var(--v2-hue-slate), 96%);
+      --v2-color-background-2-hovered: hsl(var(--v2-hue-slate), 93%);
+      --v2-color-background-3-hovered: hsl(var(--v2-hue-slate), 90%);
+      --v2-color-background-4-hovered: hsl(var(--v2-hue-slate), 87%);
+
+      --v2-color-button-0-enabled: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-1-enabled: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-2-enabled: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-3-enabled: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-4-enabled: hsl(var(--v2-hue-slate), 10%);
+
+      --v2-color-button-0-hovered: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-1-hovered: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-2-hovered: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-3-hovered: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-4-hovered: hsl(var(--v2-hue-slate), 10%);
+
+      --v2-color-button-0-pressed: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-1-pressed: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-2-pressed: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-3-pressed: hsl(var(--v2-hue-slate), 10%);
+      --v2-color-button-4-pressed: hsl(var(--v2-hue-slate), 10%);
+    }
+  }
+}

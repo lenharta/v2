@@ -8,3 +8,4 @@ export * from './Main';
 export * from './Menu';
 export * from './Page';
 export * from './Section';
+export * from './Side';

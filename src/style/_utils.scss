@@ -1,0 +1,25 @@
+@use 'config' as config;
+
+@include dir($value: 'ltr') {
+  [#{config.$dir-attribute}='#{$value}'] {
+    @content;
+  }
+}
+
+@include mode($value: 'dark') {
+  [#{config.$mode-attribute}='#{$value}'] {
+    @content;
+  }
+}
+
+@include accent($value: 'blue') {
+  [#{config.$accent-attribute}='#{$value}'] {
+    @content;
+  }
+}
+
+@include contrast($value: 'no') {
+  [#{config.$contrast-attribute}='#{$value}'] {
+    @content;
+  }
+}

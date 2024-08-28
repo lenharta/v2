@@ -2,15 +2,9 @@ import * as React from 'react';
 import * as Router from 'react-router-dom';
 import { StoreProvider } from '@/app';
 
-const css = {
-  root: 'v2-app-layout',
-};
-
 export interface LayoutProps {}
 
-export interface LayoutComponents {}
-
-export interface LayoutComponent extends LayoutComponents {
+export interface LayoutComponent {
   (props: LayoutProps): React.ReactNode;
   displayName: string;
 }
@@ -18,9 +12,7 @@ export interface LayoutComponent extends LayoutComponents {
 export const Layout: LayoutComponent = ({}) => {
   return (
     <StoreProvider>
-      <div className={css.root}>
-        <Router.Outlet />
-      </div>
+      <Router.Outlet />
     </StoreProvider>
   );
 };
