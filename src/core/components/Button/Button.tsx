@@ -1,46 +1,34 @@
 import clsx from 'clsx';
-
-import { Factory } from '@/types';
+import { Core, Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { mergeProps } from '@/core/utils';
-import { Icon, UnstyledButton } from '@/core/components';
-
-import { ButtonIconProps, ButtonProps } from './types';
+import { createEventCallback } from '@/utils';
+import { Icon, UnstyledButton } from '@/core';
 import { ButtonGroup } from './ButtonGroup';
-import { useButtonContext } from './context';
+import { useButtonContext } from './ButtonContext';
 
-type ButtonFactory = Factory.Config<{
+export type ButtonComponents = {
+  Group: typeof ButtonGroup;
+};
+
+export type ButtonFactory = Factory.Config<{
   ref: HTMLButtonElement;
-  comp: typeof UnstyledButton;
-  props: ButtonProps;
-  comps: {
-    Group: typeof ButtonGroup;
-  };
+  props: Core.ButtonProps;
+  comps: ButtonComponents;
+  comp: 'button';
 }>;
 
-const css = {
+const css: Record<'root' | 'label' | 'layout' | 'section', string> = {
   root: 'v2-button',
   label: 'v2-button-label',
   layout: 'v2-button-layout',
   section: 'v2-button-section',
 };
 
-const defaultProps: ButtonProps = {
-  size: 'sm',
-  align: 'center',
-  justify: 'center',
-  variant: 'default',
-};
-
-const Button = createFactory<ButtonFactory>((props, ref) => {
-  const context = useButtonContext();
-
+export const Button = createFactory<ButtonFactory>((props, ref) => {
   const {
-    size,
-    align,
+    size = 'md',
     value,
-    justify,
-    variant,
+    variant = 'default',
     loading,
     disabled,
     readOnly,
@@ -50,34 +38,55 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
     fullWidth,
     iconRight,
     className,
+    onChange,
     ...forwardedProps
-  } = mergeProps(props, defaultProps, context);
+  } = props;
+
+  const context = useButtonContext();
+
+  const contextClassNames = context
+    ? [`${css.root}--${size || context.size}`, `${css.root}--${variant || context.variant}`]
+    : [];
+
+  const handleChange = () => {
+    if (
+      !(loading || context.loading) &&
+      !(readOnly || context.readOnly) &&
+      !(disabled || context.disabled)
+    ) {
+      if (!value || !context.value) {
+        console.error('[@/core/Action]: A value must be provided to Action -or- Action.Context');
+      } else {
+        context.onValueChange?.(value || context.value);
+      }
+    }
+  };
 
   const contextProps = context
     ? {
-        'data-orientation': context.orientation,
+        selected: selected || value === context.value || undefined,
+        disabled: disabled || context.disabled || undefined,
+        readOnly: readOnly || context.readOnly || undefined,
+        loading: loading || context.loading || undefined,
         'aria-orientation': context.orientation,
+        'data-orientation': context.orientation,
+        'data-block': fullWidth || context.fullWidth || undefined,
       }
-    : {};
+    : {
+        selected: selected || undefined,
+        disabled: disabled || undefined,
+        readOnly: readOnly || undefined,
+        loading: loading || undefined,
+        'data-block': fullWidth || undefined,
+      };
 
   return (
     <UnstyledButton
       {...forwardedProps}
       {...contextProps}
+      className={clsx(css.root, ...contextClassNames, className)}
+      onChange={createEventCallback(onChange, handleChange)}
       ref={ref}
-      loading={loading}
-      readOnly={readOnly}
-      disabled={disabled}
-      selected={selected}
-      data-block={fullWidth}
-      className={clsx(
-        css.root,
-        `${css.root}--${size}`,
-        `${css.root}--${align}`,
-        `${css.root}--${justify}`,
-        `${css.root}--${variant}`,
-        className
-      )}
     >
       <span className={css.layout}>
         {iconLeft && (
@@ -104,4 +113,3 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
 
 Button.Group = ButtonGroup;
 Button.displayName = '@v2/Button';
-export { Button };

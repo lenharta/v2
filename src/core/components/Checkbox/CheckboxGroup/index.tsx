@@ -1,14 +1,19 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { CheckboxGroupProps } from '../types';
-import { CheckboxGroupProvider } from '../context';
+import { Core, Factory } from '@/types';
 import { createPolymorphicFactory } from '@/factory';
+import { CheckboxProvider } from '../CheckboxContext';
 
-type CheckboxGroupFactory = Factory.Config<{
+export type CheckboxGroupCSS = Core.CSS<'root'>;
+
+export type CheckboxGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
-  props: CheckboxGroupProps;
+  props: Core.CheckboxGroupProps;
   comp: 'div';
 }>;
+
+const css: CheckboxGroupCSS = {
+  root: 'v2-checkbox-group',
+};
 
 const CheckboxGroup = createPolymorphicFactory<CheckboxGroupFactory>((props, ref) => {
   const {
@@ -16,7 +21,6 @@ const CheckboxGroup = createPolymorphicFactory<CheckboxGroupFactory>((props, ref
     shape,
     children,
     className,
-    orientation = 'horizontal',
     component: Component = 'div',
     onChange,
     ...forwardedProps
@@ -31,10 +35,10 @@ const CheckboxGroup = createPolymorphicFactory<CheckboxGroupFactory>((props, ref
   };
 
   return (
-    <Component ref={ref} className={clsx('v2-checkbox-group', className)} {...forwardedProps}>
-      <CheckboxGroupProvider value={{ value, onChange: handleChange, shape }}>
+    <Component ref={ref} className={clsx(css.root, className)} {...forwardedProps}>
+      <CheckboxProvider value={{ value, onChange: handleChange, shape }}>
         {children}
-      </CheckboxGroupProvider>
+      </CheckboxProvider>
     </Component>
   );
 });

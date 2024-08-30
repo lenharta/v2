@@ -1,30 +1,34 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { InlineInput } from '@/core';
-import { createFactory } from '@/factory';
-import { CheckboxProps } from './types';
-import { CheckboxGroup } from './CheckboxGroup';
-import { CheckboxIndicator } from './CheckboxIndicator';
-import { useCheckboxContext } from './context';
 import React from 'react';
+import { InlineInput } from '@/core';
+import { Core, Factory } from '@/types';
+import { createFactory } from '@/factory';
+import { CheckboxIcon } from './CheckboxIcon';
+import { CheckboxGroup } from './CheckboxGroup';
+import { useCheckboxContext } from './CheckboxContext';
 
-type CheckboxFactory = Factory.Config<{
-  ref: HTMLInputElement;
-  comp: 'input';
-  props: CheckboxProps;
-  comps: {
-    Group: typeof CheckboxGroup;
-    Indicator: typeof CheckboxIndicator;
-  };
-}>;
-
-type AriaChecked = React.JSX.IntrinsicElements['input']['aria-checked'];
-
-function findAriaChecked(checked: boolean | undefined, mixed?: boolean | undefined): AriaChecked {
+export function getAriaChecked(checked?: boolean, mixed?: boolean): Core.AriaChecked {
   return !!checked && !!mixed ? 'mixed' : !!checked && !mixed ? 'true' : 'false';
 }
 
-const Checkbox = createFactory<CheckboxFactory>((props, ref) => {
+export interface CheckboxComponents {
+  Icon: typeof CheckboxIcon;
+  Group: typeof CheckboxGroup;
+}
+
+export type CheckboxFactory = Factory.Config<{
+  ref: HTMLInputElement;
+  comp: 'input';
+  props: Core.CheckboxProps;
+  comps: CheckboxComponents;
+}>;
+
+const css: Core.CheckboxCssObject = {
+  root: 'v2-checkbox',
+  input: 'v2-checkbox-input',
+};
+
+export const Checkbox = createFactory<CheckboxFactory>((props, ref) => {
   const {
     icon,
     label,
@@ -34,17 +38,17 @@ const Checkbox = createFactory<CheckboxFactory>((props, ref) => {
     readOnly,
     disabled,
     className,
-    wrapperProps,
+    // wrapperProps,
     ...forwardedProps
   } = props;
 
-  const ctx = useCheckboxContext();
+  const context = useCheckboxContext();
 
-  const contextProps = ctx
+  const contextProps = context
     ? {
-        checked: ctx.value.includes(forwardedProps.value as string),
+        checked: context.value.includes(forwardedProps.value as string),
         onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-          ctx.onChange?.(event.currentTarget.value);
+          context.onChange?.(event.currentTarget.value);
           forwardedProps.onChange?.(event);
         },
       }
@@ -52,28 +56,27 @@ const Checkbox = createFactory<CheckboxFactory>((props, ref) => {
 
   return (
     <InlineInput
-      role="checkbox"
-      label={label}
+      className={clsx(css.root, className)}
       loading={loading}
-      selected={contextProps.checked || checked || undefined}
-      readOnly={readOnly}
       disabled={disabled}
-      className={clsx('v2-checkbox', className)}
-      {...wrapperProps}
+      readOnly={readOnly}
+      selected={contextProps.checked || checked || undefined}
+      label={label}
+      role="checkbox"
+      // {...wrapperProps}
     >
       <input
         ref={ref}
         type="checkbox"
         checked={contextProps.checked || checked || undefined}
         onChange={forwardedProps.onChange}
-        className="v2-checkbox-input"
-        aria-checked={findAriaChecked(contextProps.checked || checked || undefined, mixed)}
+        className={css.input}
+        aria-checked={getAriaChecked(contextProps.checked || checked || undefined, mixed)}
         {...forwardedProps}
         {...contextProps}
       />
 
-      <Checkbox.Indicator
-        className="v2-checkbox-indicator"
+      <Checkbox.Icon
         checked={contextProps.checked || checked || undefined}
         mixed={mixed}
         icon={icon}
@@ -82,7 +85,6 @@ const Checkbox = createFactory<CheckboxFactory>((props, ref) => {
   );
 });
 
+Checkbox.Icon = CheckboxIcon;
 Checkbox.Group = CheckboxGroup;
-Checkbox.Indicator = CheckboxIndicator;
 Checkbox.displayName = '@v2/Checkbox';
-export { Checkbox };

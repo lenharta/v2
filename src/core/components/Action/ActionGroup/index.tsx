@@ -33,14 +33,12 @@ export const ActionGroup = createPolymorphicFactory<ActionGroupFactory>((props, 
     <Group
       {...forwardedProps}
       className={clsx(css.root, className)}
-      component={component}
       orientation={orientation}
+      component={component}
       gap={gap}
       ref={ref}
     >
-      <ActionProvider
-        value={{ gap, value, disabled, loading, readOnly, orientation, onValueChange }}
-      >
+      <ActionProvider value={{ value, disabled, loading, readOnly, orientation, onValueChange }}>
         {children}
       </ActionProvider>
     </Group>
