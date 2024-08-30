@@ -8,7 +8,7 @@ export * from './create-random-string/create-random-string';
 export * from './create-safe-context/create-safe-context';
 export * from './css-object-to-string/css-object-to-string';
 export * from './css-transform/css-transform';
-export * from './filter-object/filter-object';
+export * from './filter-empty-obj/filter-empty-obj';
 export * from './filter-props/filter-props';
 export * from './get-element-index/get-element-index';
 export * from './get-scroll-position/get-scroll-position';

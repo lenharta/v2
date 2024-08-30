@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ButtonContextValue } from './types';
 
-const ButtonContext = React.createContext({} as ButtonContextValue);
-const ButtonProvider = ButtonContext.Provider;
-const useButtonContext = () => React.useContext(ButtonContext);
+export const ButtonContext = React.createContext({} as ButtonContextValue);
 
-export { ButtonContext, ButtonProvider, useButtonContext };
+export const ButtonProvider = ButtonContext.Provider;
+
+export const useButtonContext = () => React.useContext(ButtonContext);

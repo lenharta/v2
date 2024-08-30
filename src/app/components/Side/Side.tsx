@@ -16,7 +16,7 @@ export interface SideComponents {
 }
 
 export interface SideComponent extends SideComponents {
-  (props: Core.BaseProps<'div', SideProps>): React.ReactNode;
+  (props: Core.ComponentProps<'div', SideProps>): React.ReactNode;
   displayName: string;
 }
 

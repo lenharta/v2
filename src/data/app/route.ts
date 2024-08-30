@@ -1,4 +1,4 @@
-export const ROUTE_ERROR = {
+export const ROUTE_CONFIG_ERROR = {
   routeId: 'route:error',
   pathname: '/error',
   metadata: {
@@ -7,7 +7,7 @@ export const ROUTE_ERROR = {
   },
 };
 
-export const ROUTE_HOME = {
+export const ROUTE_CONFIG_HOME = {
   routeId: 'route:home',
   pathname: '/',
   meta: {
@@ -16,7 +16,7 @@ export const ROUTE_HOME = {
   },
 };
 
-export const ROUTE_ABOUT = {
+export const ROUTE_CONFIG_ABOUT = {
   routeId: 'route:about',
   pathname: '/about',
   metadata: {
@@ -25,7 +25,7 @@ export const ROUTE_ABOUT = {
   },
 };
 
-export const ROUTE_ARTICLES = {
+export const ROUTE_CONFIG_ARTICLES = {
   routeId: 'route:articles',
   pathname: '/articles',
   metadata: {
@@ -34,7 +34,7 @@ export const ROUTE_ARTICLES = {
   },
 };
 
-export const ROUTE_DESIGN = {
+export const ROUTE_CONFIG_DESIGN = {
   routeId: 'route:design',
   pathname: '/design',
   metadata: {
@@ -43,7 +43,7 @@ export const ROUTE_DESIGN = {
   },
 };
 
-export const ROUTE_PROJECTS = {
+export const ROUTE_CONFIG_PROJECTS = {
   routeId: 'route:projects',
   pathname: '/projects',
   metadata: {
@@ -52,7 +52,7 @@ export const ROUTE_PROJECTS = {
   },
 };
 
-export const ROUTE_SANDBOX = {
+export const ROUTE_CONFIG_SANDBOX = {
   routeId: 'route:sandbox',
   pathname: '/sandbox',
   metadata: {
@@ -61,11 +61,22 @@ export const ROUTE_SANDBOX = {
   },
 };
 
-export const ROUTE_SETTINGS = {
+export const ROUTE_CONFIG_SETTINGS = {
   routeId: 'route:settings',
   pathname: '/settings',
   metadata: {
     title: 'v2 | Settings',
     description: 'Settings page for the current iteration of my development portfolio.',
   },
+};
+
+export const ROUTE_CONFIG = {
+  error: ROUTE_CONFIG_ERROR,
+  home: ROUTE_CONFIG_HOME,
+  about: ROUTE_CONFIG_ABOUT,
+  articles: ROUTE_CONFIG_ARTICLES,
+  design: ROUTE_CONFIG_DESIGN,
+  projects: ROUTE_CONFIG_PROJECTS,
+  sandbox: ROUTE_CONFIG_SANDBOX,
+  settings: ROUTE_CONFIG_SETTINGS,
 };

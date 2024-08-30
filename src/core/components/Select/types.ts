@@ -1,9 +1,5 @@
-import { FloatingProps, TransitionProps, UnstyledButtonProps } from '@/core';
 import { Theme } from '@/types';
-
-interface SelectThemeProps {
-  variant?: Theme.Variant | undefined;
-}
+import { FloatingProps, TransitionProps, UnstyledButtonProps } from '@/core';
 
 interface SelectItem {
   value: string;
@@ -12,21 +8,21 @@ interface SelectItem {
   readOnly?: boolean | undefined;
 }
 
-interface SelectTargetProps extends SelectThemeProps {
+interface SelectTargetProps extends Partial<Theme.SelectProps> {
   value?: string | undefined;
   placeholder: string;
 }
 
-interface SelectOptionProps extends UnstyledButtonProps, SelectThemeProps {
+interface SelectOptionProps extends UnstyledButtonProps, Partial<Theme.SelectProps> {
   label: string;
   value?: string | undefined;
 }
 
-interface SelectBoxProps extends SelectThemeProps {
+interface SelectBoxProps extends Partial<Theme.SelectProps> {
   children: React.ReactNode;
 }
 
-interface SelectProps extends SelectThemeProps {
+interface SelectProps extends Partial<Theme.SelectProps> {
   dir?: FloatingProps['dir'] | undefined;
   data: SelectItem[];
   isOpen: boolean;

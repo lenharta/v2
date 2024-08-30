@@ -1,8 +1,7 @@
-import * as React from 'react';
-import { Theme } from '@/types';
+import React from 'react';
 import { TransitionProps } from '@/core';
 
-type FloatingDir = Theme.Dir;
+type FloatingDir = 'ltr' | 'rtl';
 type FloatingSide = 'bottom' | 'right' | 'left' | 'top';
 type FloatingAlign = 'start' | 'end';
 type FloatingWidth = 'target' | React.CSSProperties['width'] | null;

@@ -21,7 +21,6 @@ export * from './Text';
 export * from './Title';
 export * from './Toast';
 export * from './Toggle';
-export * from './ToolBtn';
 export * from './Transition';
 export * from './UnstyledButton';
 export * from './UnstyledLink';

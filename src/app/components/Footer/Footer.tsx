@@ -11,7 +11,7 @@ export interface FooterProps {}
 export interface FooterComponents {}
 
 export interface FooterComponent extends FooterComponents {
-  (props: Core.BaseProps<'footer', FooterProps>): React.ReactNode;
+  (props: Core.ComponentProps<'footer', FooterProps>): React.ReactNode;
   displayName: string;
 }
 

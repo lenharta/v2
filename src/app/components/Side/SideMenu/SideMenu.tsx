@@ -11,7 +11,7 @@ export interface SideMenuProps {}
 export interface SideMenuComponents {}
 
 export interface SideMenuComponent extends SideMenuComponents {
-  (props: Core.BaseProps<'div', SideMenuProps>): React.ReactNode;
+  (props: Core.ComponentProps<'div', SideMenuProps>): React.ReactNode;
   displayName: string;
 }
 

@@ -11,7 +11,7 @@ export interface SectionProps {}
 export interface SectionComponents {}
 
 export interface SectionComponent extends SectionComponents {
-  (props: Core.BaseProps<'section', SectionProps>): React.ReactNode;
+  (props: Core.ComponentProps<'section', SectionProps>): React.ReactNode;
   displayName: string;
 }
 

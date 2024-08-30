@@ -1,8 +1,11 @@
 import clsx from 'clsx';
+
 import { Factory } from '@/types';
 import { createFactory } from '@/factory';
-import { Icon, UnstyledButton } from '@/core';
-import { ButtonProps } from './types';
+import { mergeProps } from '@/core/utils';
+import { Icon, UnstyledButton } from '@/core/components';
+
+import { ButtonIconProps, ButtonProps } from './types';
 import { ButtonGroup } from './ButtonGroup';
 import { useButtonContext } from './context';
 
@@ -15,11 +18,27 @@ type ButtonFactory = Factory.Config<{
   };
 }>;
 
+const css = {
+  root: 'v2-button',
+  label: 'v2-button-label',
+  layout: 'v2-button-layout',
+  section: 'v2-button-section',
+};
+
+const defaultProps: ButtonProps = {
+  size: 'sm',
+  align: 'center',
+  justify: 'center',
+  variant: 'default',
+};
+
 const Button = createFactory<ButtonFactory>((props, ref) => {
+  const context = useButtonContext();
+
   const {
     size,
-    value,
     align,
+    value,
     justify,
     variant,
     loading,
@@ -32,55 +51,51 @@ const Button = createFactory<ButtonFactory>((props, ref) => {
     iconRight,
     className,
     ...forwardedProps
-  } = props;
+  } = mergeProps(props, defaultProps, context);
 
-  const ctx = useButtonContext();
-
-  const contextProps = ctx
+  const contextProps = context
     ? {
-        loading: !!ctx.loading || !!loading || undefined,
-        disabled: !!ctx.disabled || !!disabled || undefined,
-        readOnly: !!ctx.readOnly || !!readOnly || undefined,
-        selected: (!!ctx.value && value === ctx.value) || !!selected || undefined,
-        'data-orientation': ctx.orientation,
-        'aria-orientation': ctx.orientation,
+        'data-orientation': context.orientation,
+        'aria-orientation': context.orientation,
       }
     : {};
 
   return (
     <UnstyledButton
+      {...forwardedProps}
+      {...contextProps}
       ref={ref}
       loading={loading}
       readOnly={readOnly}
       disabled={disabled}
       selected={selected}
-      data-block={!!fullWidth || undefined}
+      data-block={fullWidth}
       className={clsx(
-        'v2-button',
-        `v2-button--${size || ctx.size || 'sm'}`,
-        `v2-button--${variant || ctx.variant || 'default'}`,
-        `v2-button--align-${align || ctx.align || 'center'}`,
-        `v2-button--justify-${justify || ctx.justify || 'center'}`,
+        css.root,
+        `${css.root}--${size}`,
+        `${css.root}--${align}`,
+        `${css.root}--${justify}`,
+        `${css.root}--${variant}`,
         className
       )}
-      {...forwardedProps}
-      {...contextProps}
     >
-      <span className="v2-button-layout">
+      <span className={css.layout}>
         {iconLeft && (
-          <span className="v2-button-section" data-position="left">
-            <Icon name={iconLeft.name} />
-          </span>
+          <div className={css.section} data-position="left">
+            <Icon {...iconLeft} />
+          </div>
         )}
 
-        <span className="v2-button-label" data-loading={loading}>
-          {children}
-        </span>
+        {children && (
+          <div className={css.label} data-loading={loading}>
+            {children}
+          </div>
+        )}
 
         {iconRight && (
-          <span className="v2-button-section" data-position="right">
-            <Icon name={iconRight.name} />
-          </span>
+          <div className={css.section} data-position="right">
+            <Icon {...iconRight} />
+          </div>
         )}
       </span>
     </UnstyledButton>

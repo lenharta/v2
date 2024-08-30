@@ -1,256 +1,250 @@
-export declare namespace I18n {
-  export type UnitedStatesRegion = {
-    label: UnitedStatesRegionName;
-    value: UnitedStatesRegionCode;
-  };
+export namespace I18N {
+  export enum LANGUAGE_NAME {
+    Arabic = 'Arabic',
+    Azerbaijani = 'Azerbaijani',
+    Belarusian = 'Belarusian',
+    Bulgarian = 'Bulgarian',
+    Bengali = 'Bengali',
+    Bosnian = 'Bosnian',
+    Catalan = 'Catalan',
+    Czech = 'Czech',
+    Welsh = 'Welsh',
+    Danish = 'Danish',
+    German = 'German',
+    Greek = 'Greek',
+    English = 'English',
+    Spanish = 'Spanish',
+    Estonian = 'Estonian',
+    Persian = 'Persian',
+    Finnish = 'Finnish',
+    French = 'French',
+    Irish = 'Irish',
+    Galician = 'Galician',
+    Gujarati = 'Gujarati',
+    Hebrew = 'Hebrew',
+    Hindi = 'Hindi',
+    Croatian = 'Croatian',
+    Hungarian = 'Hungarian',
+    Armenian = 'Armenian',
+    Indonesian = 'Indonesian',
+    Icelandic = 'Icelandic',
+    Italian = 'Italian',
+    Japanese = 'Japanese',
+    Georgian = 'Georgian',
+    Kazakh = 'Kazakh',
+    Khmer = 'Khmer',
+    Kannada = 'Kannada',
+    Korean = 'Korean',
+    Kyrgyz = 'Kyrgyz',
+    Lithuanian = 'Lithuanian',
+    Latvian = 'Latvian',
+    Macedonian = 'Macedonian',
+    Malayalam = 'Malayalam',
+    Mongolian = 'Mongolian',
+    Marathi = 'Marathi',
+    Malay = 'Malay',
+    Burmese = 'Burmese',
+    Nepali = 'Nepali',
+    Dutch = 'Dutch',
+    Norwegian = 'Norwegian',
+    Punjabi = 'Punjabi',
+    Polish = 'Polish',
+    Portuguese = 'Portuguese',
+    Romanian = 'Romanian',
+    Russian = 'Russian',
+    Sinhala = 'Sinhala',
+    Slovak = 'Slovak',
+    Slovenian = 'Slovenian',
+    Albanian = 'Albanian',
+    Serbian = 'Serbian',
+    Swedish = 'Swedish',
+    Swahili = 'Swahili',
+    Tamil = 'Tamil',
+    Telugu = 'Telugu',
+    Thai = 'Thai',
+    Turkish = 'Turkish',
+    Ukrainian = 'Ukrainian',
+    Urdu = 'Urdu',
+    Uzbek = 'Uzbek',
+    Vietnamese = 'Vietnamese',
+    Chinese = 'Chinese',
+  }
 
-  export type Language = {
-    value: LanguageCode;
-    label: LanguageName;
-  };
+  export enum LANGUAGE_CODE {
+    Arabic = 'ar',
+    Azerbaijani = 'az',
+    Belarusian = 'be',
+    Bulgarian = 'bg',
+    Bengali = 'bn',
+    Bosnian = 'bs',
+    Catalan = 'ca',
+    Czech = 'cs',
+    Welsh = 'cy',
+    Danish = 'da',
+    German = 'de',
+    Greek = 'el',
+    English = 'en',
+    Spanish = 'es',
+    Estonian = 'et',
+    Persian = 'fa',
+    Finnish = 'fi',
+    French = 'fr',
+    Irish = 'ga',
+    Galician = 'gl',
+    Gujarati = 'gu',
+    Hebrew = 'he',
+    Hindi = 'hi',
+    Croatian = 'hr',
+    Hungarian = 'hu',
+    Armenian = 'hy',
+    Indonesian = 'id',
+    Icelandic = 'is',
+    Italian = 'it',
+    Japanese = 'ja',
+    Georgian = 'ka',
+    Kazakh = 'kk',
+    Khmer = 'km',
+    Kannada = 'kn',
+    Korean = 'ko',
+    Kyrgyz = 'ky',
+    Lithuanian = 'lt',
+    Latvian = 'lv',
+    Macedonian = 'mk',
+    Malayalam = 'ml',
+    Mongolian = 'mn',
+    Marathi = 'mr',
+    Malay = 'ms',
+    Burmese = 'my',
+    Nepali = 'ne',
+    Dutch = 'nl',
+    Norwegian = 'no',
+    Punjabi = 'pa',
+    Polish = 'pl',
+    Portuguese = 'pt',
+    Romanian = 'ro',
+    Russian = 'ru',
+    Sinhala = 'si',
+    Slovak = 'sk',
+    Slovenian = 'sl',
+    Albanian = 'sq',
+    Serbian = 'sr',
+    Swedish = 'sv',
+    Swahili = 'sw',
+    Tamil = 'ta',
+    Telugu = 'te',
+    Thai = 'th',
+    Turkish = 'tr',
+    Ukrainian = 'uk',
+    Urdu = 'ur',
+    Uzbek = 'uz',
+    Vietnamese = 'vi',
+    Chinese = 'zh',
+  }
 
-  export type LanguageName =
-    | 'Arabic'
-    | 'Azerbaijani'
-    | 'Belarusian'
-    | 'Bulgarian'
-    | 'Bengali'
-    | 'Bosnian'
-    | 'Catalan'
-    | 'Czech'
-    | 'Welsh'
-    | 'Danish'
-    | 'German'
-    | 'Greek'
-    | 'English'
-    | 'Spanish'
-    | 'Estonian'
-    | 'Persian'
-    | 'Finnish'
-    | 'French'
-    | 'Irish'
-    | 'Galician'
-    | 'Gujarati'
-    | 'Hebrew'
-    | 'Hindi'
-    | 'Croatian'
-    | 'Hungarian'
-    | 'Armenian'
-    | 'Indonesian'
-    | 'Icelandic'
-    | 'Italian'
-    | 'Japanese'
-    | 'Georgian'
-    | 'Kazakh'
-    | 'Khmer'
-    | 'Kannada'
-    | 'Korean'
-    | 'Kyrgyz'
-    | 'Lithuanian'
-    | 'Latvian'
-    | 'Macedonian'
-    | 'Malayalam'
-    | 'Mongolian'
-    | 'Marathi'
-    | 'Malay'
-    | 'Burmese'
-    | 'Nepali'
-    | 'Dutch'
-    | 'Norwegian'
-    | 'Punjabi'
-    | 'Polish'
-    | 'Portuguese'
-    | 'Romanian'
-    | 'Russian'
-    | 'Sinhala'
-    | 'Slovak'
-    | 'Slovenian'
-    | 'Albanian'
-    | 'Serbian'
-    | 'Swedish'
-    | 'Swahili'
-    | 'Tamil'
-    | 'Telugu'
-    | 'Thai'
-    | 'Turkish'
-    | 'Ukrainian'
-    | 'Urdu'
-    | 'Uzbek'
-    | 'Vietnamese'
-    | 'Chinese';
 
-  export type LanguageCode =
-    | 'af'
-    | 'ar'
-    | 'az'
-    | 'be'
-    | 'bg'
-    | 'bn'
-    | 'bs'
-    | 'ca'
-    | 'cs'
-    | 'cy'
-    | 'da'
-    | 'de'
-    | 'el'
-    | 'en'
-    | 'es'
-    | 'et'
-    | 'fa'
-    | 'fi'
-    | 'fr'
-    | 'ga'
-    | 'gl'
-    | 'gu'
-    | 'he'
-    | 'hi'
-    | 'hr'
-    | 'hu'
-    | 'hy'
-    | 'id'
-    | 'is'
-    | 'it'
-    | 'ja'
-    | 'ka'
-    | 'kk'
-    | 'km'
-    | 'kn'
-    | 'ko'
-    | 'ky'
-    | 'lt'
-    | 'lv'
-    | 'mk'
-    | 'ml'
-    | 'mn'
-    | 'mr'
-    | 'ms'
-    | 'my'
-    | 'ne'
-    | 'nl'
-    | 'no'
-    | 'pa'
-    | 'pl'
-    | 'pt'
-    | 'ro'
-    | 'ru'
-    | 'si'
-    | 'sk'
-    | 'sl'
-    | 'sq'
-    | 'sr'
-    | 'sv'
-    | 'sw'
-    | 'ta'
-    | 'te'
-    | 'th'
-    | 'tr'
-    | 'uk'
-    | 'ur'
-    | 'uz'
-    | 'vi'
-    | 'zh';
+  export enum US_REGION_CODE {
+    Alabama = 'AL',
+    Alaska = 'AK',
+    Arizona = 'AZ',
+    Arkansas = 'AR',
+    California = 'CA',
+    Colorado = 'CO',
+    Connecticut = 'CT',
+    Delaware = 'DE',
+    Florida = 'FL',
+    Georgia = 'GA',
+    Hawaii = 'HI',
+    Idaho = 'ID',
+    Illinois = 'IL',
+    Indiana = 'IN',
+    Iowa = 'IA',
+    Kansas = 'KS',
+    Kentucky = 'KY',
+    Louisiana = 'LA',
+    Maine = 'ME',
+    Maryland = 'MD',
+    Massachusetts = 'MA',
+    Michigan = 'MI',
+    Minnesota = 'MN',
+    Mississippi = 'MS',
+    Missouri = 'MO',
+    Montana = 'MT',
+    Nebraska = 'NE',
+    Nevada = 'NV',
+    NewHampshire = 'NH',
+    NewJersey = 'NJ',
+    NewMexico = 'NM',
+    NewYork = 'NY',
+    NorthCarolina = 'NC',
+    NorthDakota = 'ND',
+    Ohio = 'OH',
+    Oklahoma = 'OK',
+    Oregon = 'OR',
+    Pennsylvania = 'PA',
+    RhodeIsland = 'RI',
+    SouthCarolina = 'SC',
+    SouthDakota = 'SD',
+    Tennessee = 'TN',
+    Texas = 'TX',
+    Utah = 'UT',
+    Vermont = 'VT',
+    Virginia = 'VA',
+    Washington = 'WA',
+    WestVirginia = 'WV',
+    Wisconsin = 'WI',
+    Wyoming = 'WY',
+  }
 
-  export type UnitedStatesRegionName =
-    | 'Alabama'
-    | 'Alaska'
-    | 'Arizona'
-    | 'Arkansas'
-    | 'California'
-    | 'Colorado'
-    | 'Connecticut'
-    | 'Delaware'
-    | 'Florida'
-    | 'Georgia'
-    | 'Hawaii'
-    | 'Idaho'
-    | 'Illinois'
-    | 'Indiana'
-    | 'Iowa'
-    | 'Kansas'
-    | 'Kentucky'
-    | 'Louisiana'
-    | 'Maine'
-    | 'Maryland'
-    | 'Massachusetts'
-    | 'Michigan'
-    | 'Minnesota'
-    | 'Mississippi'
-    | 'Missouri'
-    | 'Montana'
-    | 'Nebraska'
-    | 'Nevada'
-    | 'New Hampshire'
-    | 'New Jersey'
-    | 'New Mexico'
-    | 'New York'
-    | 'North Carolina'
-    | 'North Dakota'
-    | 'Ohio'
-    | 'Oklahoma'
-    | 'Oregon'
-    | 'Pennsylvania'
-    | 'Rhode Island'
-    | 'South Carolina'
-    | 'South Dakota'
-    | 'Tennessee'
-    | 'Texas'
-    | 'Utah'
-    | 'Vermont'
-    | 'Virginia'
-    | 'Washington'
-    | 'West Virginia'
-    | 'Wisconsin'
-    | 'Wyoming';
-
-  export type UnitedStatesRegionCode =
-    | 'AL'
-    | 'AK'
-    | 'AZ'
-    | 'AR'
-    | 'CA'
-    | 'CO'
-    | 'CT'
-    | 'DE'
-    | 'FL'
-    | 'GA'
-    | 'HI'
-    | 'ID'
-    | 'IL'
-    | 'IN'
-    | 'IA'
-    | 'KS'
-    | 'KY'
-    | 'LA'
-    | 'ME'
-    | 'MD'
-    | 'MA'
-    | 'MI'
-    | 'MN'
-    | 'MS'
-    | 'MO'
-    | 'MT'
-    | 'NE'
-    | 'NV'
-    | 'NH'
-    | 'NJ'
-    | 'NM'
-    | 'NY'
-    | 'NC'
-    | 'ND'
-    | 'OH'
-    | 'OK'
-    | 'OR'
-    | 'PA'
-    | 'RI'
-    | 'SC'
-    | 'SD'
-    | 'TN'
-    | 'TX'
-    | 'UT'
-    | 'VT'
-    | 'VA'
-    | 'WA'
-    | 'WV'
-    | 'WI'
-    | 'WY';
+  export enum US_REGION_NAME {
+    Alabama = 'Alabama',
+    Alaska = 'Alaska',
+    Arizona = 'Arizona',
+    Arkansas = 'Arkansas',
+    California = 'California',
+    Colorado = 'Colorado',
+    Connecticut = 'Connecticut',
+    Delaware = 'Delaware',
+    Florida = 'Florida',
+    Georgia = 'Georgia',
+    Hawaii = 'Hawaii',
+    Idaho = 'Idaho',
+    Illinois = 'Illinois',
+    Indiana = 'Indiana',
+    Iowa = 'Iowa',
+    Kansas = 'Kansas',
+    Kentucky = 'Kentucky',
+    Louisiana = 'Louisiana',
+    Maine = 'Maine',
+    Maryland = 'Maryland',
+    Massachusetts = 'Massachusetts',
+    Michigan = 'Michigan',
+    Minnesota = 'Minnesota',
+    Mississippi = 'Mississippi',
+    Missouri = 'Missouri',
+    Montana = 'Montana',
+    Nebraska = 'Nebraska',
+    Nevada = 'Nevada',
+    NewHampshire = 'New Hampshire',
+    NewJersey = 'New Jersey',
+    NewMexico = 'New Mexico',
+    NewYork = 'New York',
+    NorthCarolina = 'North Carolina',
+    NorthDakota = 'North Dakota',
+    Ohio = 'Ohio',
+    Oklahoma = 'Oklahoma',
+    Oregon = 'Oregon',
+    Pennsylvania = 'Pennsylvania',
+    RhodeIsland = 'Rhode Island',
+    SouthCarolina = 'South Carolina',
+    SouthDakota = 'South Dakota',
+    Tennessee = 'Tennessee',
+    Texas = 'Texas',
+    Utah = 'Utah',
+    Vermont = 'Vermont',
+    Virginia = 'Virginia',
+    Washington = 'Washington',
+    WestVirginia = 'West Virginia',
+    Wisconsin = 'Wisconsin',
+    Wyoming = 'Wyoming',
+  }
 }

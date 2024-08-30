@@ -1,3 +1,3 @@
 export * from './types';
-export * from './context';
 export * from './Action';
+export * from './context';

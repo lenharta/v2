@@ -1,13 +1,14 @@
-import { filterObject } from '../filter-object/filter-object';
+import { objectKeys } from '../object-keys/object-keys';
 
-function filterProps<T extends Record<string, any>, K extends keyof T>(obj: T) {
-  return (Object.keys(obj) as K[]).reduce(
-    (prev, curr) => ({
+export function filterProps<T extends Record<string, any>>(
+  payload: Partial<T>,
+  fallback: T
+): { [K in keyof T]-?: T[K] } {
+  return objectKeys(fallback).reduce(
+    (prev, key) => ({
       ...prev,
-      ...filterObject<T, K>(obj, curr),
+      ...{ [key]: payload?.[key] || fallback[key] },
     }),
-    {}
+    {} as { [K in keyof T]-?: T[K] }
   );
 }
-
-export { filterProps };

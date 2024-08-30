@@ -15,7 +15,7 @@ export interface HeadlineProps {
 export interface HeadlineComponents {}
 
 export interface HeadlineComponent extends HeadlineComponents {
-  (props: Core.BaseProps<'div', HeadlineProps>): React.ReactNode;
+  (props: Core.ComponentProps<'div', HeadlineProps>): React.ReactNode;
   displayName: string;
 }
 

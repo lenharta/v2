@@ -1,45 +1,44 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
+import { Core, Factory } from '@/types';
 import { createFactory } from '@/factory';
 import { ICON_MAP } from './library';
-import { IconProps } from './types';
+import { mergeProps } from '@/core/utils';
 
 type IconFactory = Factory.Config<{
   ref: SVGSVGElement;
   comp: 'svg';
-  props: IconProps;
+  props: Core.IconComponentProps;
 }>;
 
-const Icon = createFactory<IconFactory>((props, ref) => {
-  const {
-    size = 'sm',
-    type = 'outline',
-    name = 'shape-circle',
-    fill,
-    alpha,
-    children,
-    className,
-    ...forwardedProps
-  } = props;
+const defaultProps: Core.IconComponentProps = {
+  type: 'outline',
+  name: 'shape-circle',
+  fill: 'currentColor',
+};
 
-  const theme = fill
-    ? {
-        color: `rgba(var(--c-rgb-${fill}), ${alpha || 1})`,
-      }
-    : {};
+const css: Record<'root' | 'vector', string> = {
+  root: 'v2-icon',
+  vector: 'v2-icon-vector',
+};
+
+export const Icon = createFactory<IconFactory>((props, ref) => {
+  const { name, type, fill, children, className, rootProps, ...forwardedProps } = mergeProps(
+    props,
+    defaultProps
+  );
+
+  // const fillToken = fill;
 
   return (
-    <div style={{ ...theme }} className={clsx('v2-icon', `v2-icon--size-${size}`, className)}>
+    <div className={clsx(css.root, className)} {...rootProps}>
       <svg
+        {...forwardedProps}
         ref={ref}
         xmlns="http://www.w3.org/2000/svg"
         width="16"
         height="16"
         viewBox="0 0 16 16"
-        className="v2-icon-vector"
-        fill="currentColor"
         data-icon-name={name}
-        {...forwardedProps}
       >
         {ICON_MAP[type][name]}
       </svg>
@@ -48,4 +47,3 @@ const Icon = createFactory<IconFactory>((props, ref) => {
 });
 
 Icon.displayName = '@v2/Icon';
-export { Icon };

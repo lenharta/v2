@@ -11,7 +11,7 @@ export interface BrandProps {}
 export interface BrandComponents {}
 
 export interface BrandComponent extends BrandComponents {
-  (props: Core.BaseProps<'svg', BrandProps>): React.ReactNode;
+  (props: Core.ComponentProps<'svg', BrandProps>): React.ReactNode;
   displayName: string;
 }
 

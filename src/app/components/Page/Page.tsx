@@ -11,7 +11,7 @@ export interface PageProps {}
 export interface PageComponents {}
 
 export interface PageComponent extends PageComponents {
-  (props: Core.BaseProps<'div', PageProps>): React.ReactNode;
+  (props: Core.ComponentProps<'div', PageProps>): React.ReactNode;
   displayName: string;
 }
 

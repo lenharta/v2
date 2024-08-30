@@ -11,7 +11,7 @@ export interface MenuDisplayProps {}
 export interface MenuDisplayComponents {}
 
 export interface MenuDisplayComponent extends MenuDisplayComponents {
-  (props: Core.BaseProps<'aside', MenuDisplayProps>): React.ReactNode;
+  (props: Core.ComponentProps<'aside', MenuDisplayProps>): React.ReactNode;
   displayName: string;
 }
 

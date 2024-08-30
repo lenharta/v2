@@ -1,16 +1,14 @@
+import { filterEmptyObj } from '../filter-empty-obj/filter-empty-obj';
 import { filterProps } from '../filter-props/filter-props';
 
-function mergeProps<T extends Record<string, any>>(config: {
+export function mergeProps<T extends Record<string, any>>(config: {
   props: T;
-  ctx: T | null;
+  context?: any | null;
   defaultProps: T;
-}) {
-  const { props, ctx, defaultProps } = config;
-  return {
-    ...defaultProps,
-    ...(!ctx ? { ...props } : {}),
-    ...(ctx ? { ...filterProps(ctx), ...filterProps(props) } : {}),
-  };
+}): { [K in keyof T]-?: T[K] } {
+  const { props, context, defaultProps } = config;
+  return filterEmptyObj({
+    ...filterProps(props, defaultProps),
+    ...(context ? filterProps(props, context) : {}),
+  });
 }
-
-export { mergeProps };

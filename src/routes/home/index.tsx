@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, Text, Title } from '@/core';
 import { Hero, Main, Page, PageProps } from '@/app';
 
@@ -11,6 +12,8 @@ export interface HomeRouteComponent extends HomeRouteComponents {
 }
 
 export const Home: HomeRouteComponent = (props) => {
+  const groupRef = React.useRef<HTMLDivElement>(null);
+
   return (
     <Page {...props}>
       <Hero>
@@ -22,7 +25,13 @@ export const Home: HomeRouteComponent = (props) => {
           itaque minima eos commodi quisquam a corrupti tempora earum quod dolorem sapiente
           possimus? Harum ducimus architecto similique iusto.
         </Text>
-        <Button>Button</Button>
+        <Button.Group ref={groupRef}>
+          <Button>Button</Button>
+          <Button>Button</Button>
+          <Button>Button</Button>
+          <Button>Button</Button>
+          <Button>Button</Button>
+        </Button.Group>
       </Main>
     </Page>
   );

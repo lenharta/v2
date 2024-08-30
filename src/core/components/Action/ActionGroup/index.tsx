@@ -1,40 +1,46 @@
 import clsx from 'clsx';
 import { Group } from '@/core';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { ActionProvider } from '../context';
-import { ActionGroupProps } from '../types';
+import { Core, Factory } from '@/types';
+import { createPolymorphicFactory } from '@/factory';
+import { ActionProvider } from '../ActionContext';
 
-type ActionGroupFactory = Factory.Config<{
+export type ActionGroupFactory = Factory.Config<{
   ref: HTMLDivElement;
+  props: Core.ActionGroupProps;
   comp: 'div';
-  props: ActionGroupProps;
 }>;
 
-const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
+const css: Record<'root', string> = {
+  root: 'v2-action-group',
+};
+
+export const ActionGroup = createPolymorphicFactory<ActionGroupFactory>((props, ref) => {
   const {
     gap,
-    icon,
     value,
-    variant,
     loading,
-    disabled,
     readOnly,
+    disabled,
     children,
     className,
+    component = 'div',
     orientation = 'horizontal',
+    onValueChange,
     ...forwardedProps
   } = props;
 
   return (
     <Group
-      ref={ref}
-      gap={gap}
-      className={clsx('v2-action-group', className)}
-      orientation={orientation}
       {...forwardedProps}
+      className={clsx(css.root, className)}
+      component={component}
+      orientation={orientation}
+      gap={gap}
+      ref={ref}
     >
-      <ActionProvider value={{ icon, value, disabled, loading, variant, readOnly, orientation }}>
+      <ActionProvider
+        value={{ gap, value, disabled, loading, readOnly, orientation, onValueChange }}
+      >
         {children}
       </ActionProvider>
     </Group>
@@ -42,4 +48,3 @@ const ActionGroup = createFactory<ActionGroupFactory>((props, ref) => {
 });
 
 ActionGroup.displayName = '@v2/Action.Group';
-export { ActionGroup };

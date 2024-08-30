@@ -11,7 +11,7 @@ export interface MenuTargetProps {}
 export interface MenuTargetComponents {}
 
 export interface MenuTargetComponent extends MenuTargetComponents {
-  (props: Core.BaseProps<'button', MenuTargetProps>): React.ReactNode;
+  (props: Core.ComponentProps<'button', MenuTargetProps>): React.ReactNode;
   displayName: string;
 }
 

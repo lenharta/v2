@@ -1,1 +1,1 @@
-export const APP_RESUME_DATA = [] as const;
+export const DATA_APP_RESUME = [] as const;

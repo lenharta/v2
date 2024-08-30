@@ -1,4 +1,4 @@
-import { I18n } from '../i18n';
+import { I18N } from '../i18n';
 import { Theme } from '../theme';
 
 export declare namespace Store {
@@ -11,7 +11,7 @@ export declare namespace Store {
 
   export type State = Theme.State & {
     nonce: () => string;
-    lang: I18n.LanguageCode;
+    lang: I18N.LANGUAGE_CODE;
     error?: boolean | undefined;
     session?: string | undefined;
     loading?: boolean | undefined;

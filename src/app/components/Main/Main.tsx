@@ -11,7 +11,7 @@ export interface MainProps {}
 export interface MainComponents {}
 
 export interface MainComponent extends MainComponents {
-  (props: Core.BaseProps<'main', MainProps>): React.ReactNode;
+  (props: Core.ComponentProps<'main', MainProps>): React.ReactNode;
   displayName: string;
 }
 

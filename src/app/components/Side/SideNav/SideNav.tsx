@@ -11,7 +11,7 @@ export interface SideNavProps {}
 export interface SideNavComponents {}
 
 export interface SideNavComponent extends SideNavComponents {
-  (props: Core.BaseProps<'nav', SideNavProps>): React.ReactNode;
+  (props: Core.ComponentProps<'nav', SideNavProps>): React.ReactNode;
   displayName: string;
 }
 

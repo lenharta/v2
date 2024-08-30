@@ -11,7 +11,7 @@ export interface HeroProps {}
 export interface HeroComponents {}
 
 export interface HeroComponent extends HeroComponents {
-  (props: Core.BaseProps<'section', HeroProps>): React.ReactNode;
+  (props: Core.ComponentProps<'section', HeroProps>): React.ReactNode;
   displayName: string;
 }
 

@@ -11,7 +11,7 @@ export interface HeaderProps {}
 export interface HeaderComponents {}
 
 export interface HeaderComponent extends HeaderComponents {
-  (props: Core.BaseProps<'header', HeaderProps>): React.ReactNode;
+  (props: Core.ComponentProps<'header', HeaderProps>): React.ReactNode;
   displayName: string;
 }
 

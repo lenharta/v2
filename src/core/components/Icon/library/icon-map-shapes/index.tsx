@@ -20,7 +20,7 @@ const ICON_MAP_SHAPES_SHARED = {
   ['shape-pentagon-half']: <React.Fragment></React.Fragment>,
 };
 
-const ICON_MAP_SHAPES_FILLED = {
+export const ICON_MAP_SHAPES_FILLED = {
   ...ICON_MAP_SHAPES_SHARED,
   ['shape-circle']: (
     <React.Fragment>
@@ -41,7 +41,7 @@ const ICON_MAP_SHAPES_FILLED = {
   ['shape-pentagon']: <React.Fragment></React.Fragment>,
 };
 
-const ICON_MAP_SHAPES_OUTLINED = {
+export const ICON_MAP_SHAPES_OUTLINED = {
   ...ICON_MAP_SHAPES_SHARED,
   ['shape-circle']: (
     <React.Fragment>
@@ -61,5 +61,3 @@ const ICON_MAP_SHAPES_OUTLINED = {
   ['shape-octagon']: <React.Fragment></React.Fragment>,
   ['shape-pentagon']: <React.Fragment></React.Fragment>,
 };
-
-export { ICON_MAP_SHAPES_FILLED, ICON_MAP_SHAPES_OUTLINED };
