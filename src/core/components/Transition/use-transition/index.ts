@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Core } from '@/types';
 import { useDidUpdate } from '@/hooks';
-import { TransitionOptions, TransitionStatus, UseTransitionReturn } from '../types';
 
-function useTransition(props: TransitionOptions): UseTransitionReturn {
+export function useTransition(props: Core.TransitionOptions): Core.UseTransitionReturn {
   const {
     mounted,
     duration,
@@ -19,10 +19,11 @@ function useTransition(props: TransitionOptions): UseTransitionReturn {
   const frameRef = React.useRef(-1);
   const timeoutRef = React.useRef<number>(-1);
 
-  const initialStatus: TransitionStatus = mounted ? 'entered' : 'exited';
+  const initialStatus: Core.TransitionStatus = mounted ? 'entered' : 'exited';
   const initialDuration: typeof duration = reducedMotion ? 0 : duration;
 
-  const [transitionStatus, setTransitionStatus] = React.useState<TransitionStatus>(initialStatus);
+  const [transitionStatus, setTransitionStatus] =
+    React.useState<Core.TransitionStatus>(initialStatus);
   const [transitionDuration, setTransitionDuration] = React.useState(initialDuration);
 
   const onStateChange = (shouldMount: boolean) => {
@@ -77,5 +78,3 @@ function useTransition(props: TransitionOptions): UseTransitionReturn {
     transitionTimingFunction: timingFunction || 'ease',
   };
 }
-
-export { useTransition };

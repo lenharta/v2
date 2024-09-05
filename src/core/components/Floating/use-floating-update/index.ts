@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { Core } from '@/types';
 import { autoUpdate } from '@floating-ui/react';
 import { useDidUpdate } from '@/hooks';
-import { UseFloatingConfig } from '../types';
 
-const useFloatingUpdate = (config: UseFloatingConfig) => {
+const useFloatingUpdate = (config: Core.UseFloatingConfig) => {
   const { floating, open, placement, placementDependencies } = config;
   const [delayedUpdate, setDelayedUpdate] = React.useState(0);
 

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { TableProps } from './types';
+import { Core } from '@/types';
+import { TableTh } from './TableTh';
+import { TableTr } from './TableTr';
+import { TableTd } from './TableTd';
 import { TableRoot } from './TableRoot';
 import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
 import { TableFoot } from './TableFoot';
-import { TableTh } from './TableTh';
-import { TableTr } from './TableTr';
-import { TableTd } from './TableTd';
 
-type TableFactory = React.FC<TableProps> & {
+type TableFactory = React.FC<Core.TableProps> & {
   Tr: typeof TableTr;
   Td: typeof TableTd;
   Th: typeof TableTh;
@@ -18,11 +18,17 @@ type TableFactory = React.FC<TableProps> & {
   Root: typeof TableRoot;
 };
 
-const Table: TableFactory = (props) => {
-  const { data, className, rowBorder, rowStriped, stickyHeader } = props;
-
+export const Table: TableFactory = ({
+  data,
+  className,
+  rowBorder,
+  rowStriped,
+  stickyHeader,
+  ...props
+}) => {
   return (
     <Table.Root
+      {...props}
       className={className}
       rowBorder={rowBorder}
       rowStriped={rowStriped}
@@ -71,4 +77,3 @@ Table.Foot = TableFoot;
 Table.Head = TableHead;
 Table.Root = TableRoot;
 Table.displayName = '@v2/Table.Renderer';
-export { Table };

@@ -1,16 +1,15 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { ControlThumbProps } from '../types';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
 
-type ControlThumbFactory = Factory.Config<{
+export type ControlThumbFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: ControlThumbProps;
+  props: Core.ControlThumbProps;
+  element: 'div';
 }>;
 
-const ControlThumb = createFactory<ControlThumbFactory>((props, ref) => {
+export const ControlThumb = PolymorphicComponent<ControlThumbFactory>((props, ref) => {
   const {
     style,
     variant,
@@ -44,4 +43,3 @@ const ControlThumb = createFactory<ControlThumbFactory>((props, ref) => {
 });
 
 ControlThumb.displayName = '@v2/Control.Thumb';
-export { ControlThumb };

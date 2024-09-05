@@ -1,66 +1,41 @@
 import clsx from 'clsx';
-import * as React from 'react';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
+import { Core } from '@/types';
+import { Component } from '@/factory';
 import { Icon, UnstyledButton } from '@/core';
-
-import { ChipProps } from './types';
+import { useChipContext } from './ChipContext';
 import { ChipGroup } from './ChipGroup';
-import { useChipContext } from './context';
 
-type ChipFactory = Factory.Config<{
+export type ChipFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: ChipProps;
-  comps: {
+  props: Core.ChipProps;
+  element: 'div';
+  elements: {
     Group: typeof ChipGroup;
   };
 }>;
 
-const Chip = createFactory<ChipFactory>((props, ref) => {
-  const {
-    size,
-    value,
-    variant,
-    loading,
-    readOnly,
-    disabled,
-    children,
-    className,
-    ...forwardedProps
-  } = props;
+const Chip = Component<ChipFactory>(
+  (
+    { size, value, variant, children, className, isLoading, isReadonly, isDisabled, ...props },
+    ref
+  ) => {
+    const context = useChipContext();
 
-  const ctx = useChipContext();
+    const classNames = clsx(
+      'v2-chip',
+      `v2-chip--${size || context.size || 'sm'}`,
+      `v2-chip--${variant || context.variant || 'default'}`,
+      className
+    );
 
-  // const contextProps = ctx
-  //   ? {
-  //       onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
-  //         if (disabled || readOnly || ctx.disabled || ctx.readOnly) {
-  //           ctx.onChange?.(event);
-  //         }
-  //       },
-  //     }
-  //   : {};
-
-  const contextProps = ctx ? {} : {};
-
-  return (
-    <div
-      ref={ref}
-      className={clsx(
-        'v2-chip',
-        `v2-chip--${size || ctx.size || 'sm'}`,
-        `v2-chip--${variant || ctx.variant || 'default'}`,
-        className
-      )}
-      {...forwardedProps}
-      {...contextProps}
-    >
-      <div className="v2-chip-label">{children}</div>
-      <UnstyledButton className="v2-chip-close" children={<Icon name="close-x-circle" />} />
-    </div>
-  );
-});
+    return (
+      <div {...props} ref={ref} className={classNames}>
+        <div className="v2-chip-label">{children}</div>
+        <UnstyledButton className="v2-chip-close" children={<Icon name="close-x-circle" />} />
+      </div>
+    );
+  }
+);
 
 Chip.Group = ChipGroup;
 Chip.displayName = '@v2/Chip';

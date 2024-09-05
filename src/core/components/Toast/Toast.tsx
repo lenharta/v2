@@ -1,89 +1,90 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { Text, Title, IconBtn, Transition, DURATION, EASING } from '@/core';
-import { ToastProps } from './types';
+import { Core } from '@/types';
+import { Component } from '@/factory';
+import { Text, Title, IconButton, Transition, DURATION, EASING } from '@/core';
 
-type ToastFactory = Factory.Config<{
+export type ToastFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: ToastProps;
+  props: Core.ToastProps;
+  element: 'div';
 }>;
 
-const Toast = createFactory<ToastFactory>((props, ref) => {
-  const {
-    mounted,
-    icon,
-    text,
-    title,
-    style,
-    zIndex,
-    offset,
-    duration,
-    className,
-    transition,
-    timingFunction,
-    exitDuration,
-    keepMounted,
-    onEntered,
-    onExited,
-    onEnter,
-    onExit,
-    onClose,
-    ...forwardedProps
-  } = props;
+const Toast = Component<ToastFactory>(
+  (
+    {
+      mounted,
+      icon,
+      text,
+      title,
+      style,
+      zIndex,
+      offset,
+      duration,
+      className,
+      transition,
+      timingFunction,
+      exitDuration,
+      keepMounted,
+      onEntered,
+      onExited,
+      onEnter,
+      onExit,
+      onClose,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <Transition
+        mounted={mounted}
+        duration={duration || DURATION['moderate-02']}
+        timingFunction={timingFunction || EASING['expressive']}
+        exitDuration={exitDuration}
+        keepMounted={keepMounted}
+        onEntered={onEntered}
+        onExited={onExited}
+        onEnter={onEnter}
+        onExit={onExit}
+        transition={{
+          transitionProperty: transition?.transitionProperty || 'opacity, transform',
+          common: transition?.common || { transformOrigin: 'right' },
+          out: transition?.out || { opacity: 0, transform: 'scaleX(0)' },
+          in: transition?.in || { opacity: 1, transform: 'scaleX(1)' },
+        }}
+      >
+        {(transitionStyles) => (
+          <div
+            {...props}
+            className={clsx('v2-toast', className)}
+            style={{
+              ...style,
+              ...transitionStyles,
+              top: offset?.x || 32,
+              bottom: offset?.y || 32,
+              zIndex,
+            }}
+            ref={ref}
+          >
+            <div className="v2-toast-header">
+              {icon}
 
-  const toastStyles: React.CSSProperties = {
-    ...style,
-    bottom: offset?.y || 32,
-    right: offset?.x || 32,
-    zIndex,
-  };
+              <Title className="v2-toast-title" h3>
+                {title}
+              </Title>
 
-  return (
-    <Transition
-      mounted={mounted}
-      duration={duration || DURATION['moderate-02']}
-      timingFunction={timingFunction || EASING['expressive']}
-      exitDuration={exitDuration}
-      keepMounted={keepMounted}
-      onEntered={onEntered}
-      onExited={onExited}
-      onEnter={onEnter}
-      onExit={onExit}
-      transition={{
-        transitionProperty: transition?.transitionProperty || 'opacity, transform',
-        common: transition?.common || { transformOrigin: 'right' },
-        out: transition?.out || { opacity: 0, transform: 'scaleX(0)' },
-        in: transition?.in || { opacity: 1, transform: 'scaleX(1)' },
-      }}
-    >
-      {(transitionStyles) => (
-        <div
-          ref={ref}
-          className={clsx('v2-toast', className)}
-          style={{ ...toastStyles, ...transitionStyles }}
-          {...forwardedProps}
-        >
-          <div className="v2-toast-header">
-            {icon}
-
-            <Title className="v2-toast-title" h3>
-              {title}
-            </Title>
-
-            <IconBtn
-              icon={{ name: 'close-x-large' }}
-              className="v2-toast-close"
-              onClick={onClose}
-            />
+              <IconButton
+                icon={{ name: 'close-x-lg' }}
+                className="v2-toast-close"
+                onClick={onClose}
+              />
+            </div>
+            <Text className="v2-toast-text">{text}</Text>
           </div>
-          <Text className="v2-toast-text">{text}</Text>
-        </div>
-      )}
-    </Transition>
-  );
-});
+        )}
+      </Transition>
+    );
+  }
+);
 
 Toast.displayName = '@v2/Toast';
 export { Toast };

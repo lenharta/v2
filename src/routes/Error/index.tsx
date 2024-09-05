@@ -1,14 +1,13 @@
+import React from 'react';
 import { Text, Title } from '@/core';
 import { Hero, Main, Page, PageProps } from '@/app';
 
-export interface ErrorRouteProps extends PageProps {}
+export type ErrorRouteProps = PageProps & {};
 
-export interface ErrorRouteComponents {}
-
-export interface ErrorRouteComponent extends ErrorRouteComponents {
+export type ErrorRouteComponent = {
   (props: ErrorRouteProps): React.ReactNode;
-  displayName: string;
-}
+  displayName?: string;
+};
 
 export const Error: ErrorRouteComponent = (props) => {
   return (

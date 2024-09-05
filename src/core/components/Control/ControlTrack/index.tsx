@@ -1,28 +1,28 @@
 import clsx from 'clsx';
+import { Core } from '@/types';
 import { Group } from '@/core';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { ControlTrackProps } from '../types';
+import { Component } from '@/factory';
 
-type ControlTrackFactory = Factory.Config<{
-  comp: 'div';
+export type ControlTrackFactory = Core.Factory<{
   ref: HTMLDivElement;
-  props: ControlTrackProps;
+  props: Core.ControlTrackProps;
+  element: 'div';
 }>;
 
-const ControlTrack = createFactory<ControlTrackFactory>((props, ref) => {
-  const { orientation, children, className, variant, ...forwardedProps } = props;
-  return (
-    <Group
-      ref={ref}
-      className={clsx('v2-control-track', `v2-control-track--${variant}`, className)}
-      orientation={orientation}
-      {...forwardedProps}
-    >
-      {children}
-    </Group>
-  );
-});
+const ControlTrack = Component<ControlTrackFactory>(
+  ({ gap, variant = 'default', children, className, orientation, ...props }, ref) => {
+    return (
+      <Group
+        {...props}
+        orientation={orientation}
+        className={clsx('v2-control-track', `v2-control-track--${variant}`, className)}
+        ref={ref}
+      >
+        {children}
+      </Group>
+    );
+  }
+);
 
 ControlTrack.displayName = '@v2/Control.Track';
 export { ControlTrack };

@@ -1,19 +1,18 @@
 import * as React from 'react';
-import { useClickOutside, useEventListener } from '@/hooks';
-import { TransitionProps } from '@/core';
+import { Core } from '@/types';
 import { FloatingBox } from './FloatingBox';
-import { FloatingProps } from './types';
 import { FloatingTarget } from './FloatingTarget';
-import { FloatingProvider } from './context';
+import { FloatingProvider } from './FloatingContext';
 import { useFloatingElement } from './use-floating-element';
 import { getFloatingPlacement } from './get-floating-placement';
+import { useClickOutside, useEventListener } from '@/hooks';
 
-type FloatingFactory = React.FC<FloatingProps> & {
+export type FloatingFactory = React.FC<Core.FloatingProps> & {
   Target: typeof FloatingTarget;
   Box: typeof FloatingBox;
 };
 
-const Floating: FloatingFactory = (props) => {
+export const Floating: FloatingFactory = (props) => {
   const {
     dir = 'ltr',
     width = 'max-content',
@@ -85,7 +84,7 @@ const Floating: FloatingFactory = (props) => {
     [floating.payload.refs.setFloating]
   );
 
-  const transition: Partial<TransitionProps> = !transitionProps
+  const transition: Partial<Core.TransitionProps> = !transitionProps
     ? {
         duration: 159,
         transition: {
@@ -130,4 +129,3 @@ const Floating: FloatingFactory = (props) => {
 Floating.Box = FloatingBox;
 Floating.Target = FloatingTarget;
 Floating.displayName = '@v2/Floating.Root';
-export { Floating };

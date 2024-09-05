@@ -27,7 +27,7 @@ export type DisclosureFactory = Core.Factory<{
   element: 'div';
 }>;
 
-const Disclosure = Component<DisclosureFactory>(
+export const Disclosure = Component<DisclosureFactory>(
   (
     {
       style,
@@ -127,4 +127,3 @@ const Disclosure = Component<DisclosureFactory>(
 );
 
 Disclosure.displayName = '@v2/Disclosure';
-export { Disclosure };

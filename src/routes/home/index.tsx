@@ -2,14 +2,12 @@ import React from 'react';
 import { Button, Text, Title } from '@/core';
 import { Hero, Main, Page, PageProps } from '@/app';
 
-export interface HomeRouteProps extends PageProps {}
+export type HomeRouteProps = PageProps & {};
 
-export interface HomeRouteComponents {}
-
-export interface HomeRouteComponent extends HomeRouteComponents {
+export type HomeRouteComponent = {
   (props: HomeRouteProps): React.ReactNode;
-  displayName: string;
-}
+  displayName?: string;
+};
 
 export const Home: HomeRouteComponent = (props) => {
   const groupRef = React.useRef<HTMLDivElement>(null);

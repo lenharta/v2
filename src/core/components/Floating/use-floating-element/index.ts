@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { Core } from '@/types';
 import { useDidUpdate } from '@/hooks';
-import { useFloating as useFloatingPayload, UseFloatingReturn } from '@floating-ui/react';
-import { UseFloatingOptions } from '../types';
 import { useFloatingUpdate } from '../use-floating-update';
 import { getFloatingMiddleware } from '../get-floating-middleware';
+import { useFloating as useFloatingPayload, UseFloatingReturn } from '@floating-ui/react';
 
-const useFloatingElement = <E extends Element = Element>(options: UseFloatingOptions) => {
+export const useFloatingElement = <E extends Element = Element>(
+  options: Core.UseFloatingOptions
+) => {
   const onClose = React.useCallback(() => {
     if (options.open) {
       options.onChange?.(false);
@@ -61,5 +63,3 @@ const useFloatingElement = <E extends Element = Element>(options: UseFloatingOpt
     onClose,
   };
 };
-
-export { useFloatingElement };

@@ -1,48 +1,37 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { TabsPanelProps } from '../types';
-import { useTabsContext } from '../context';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
+import { useTabsContext } from '../TabsContext';
 
-type TabsPanelFactory = Factory.Config<{
+export type TabsPanelFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: TabsPanelProps;
+  props: Core.TabsPanelProps;
+  element: 'div';
 }>;
 
-const TabsPanel = createFactory<TabsPanelFactory>((props, ref) => {
-  const { value, style, className, keepMounted, children, ...forwardedProps } = props;
+export const TabsPanel = PolymorphicComponent<TabsPanelFactory>(
+  ({ value, style, className, keepMounted, children, ...props }, ref) => {
+    const ctx = useTabsContext();
 
-  const ctx = useTabsContext();
+    const isSelected = !!(ctx.value === value) || undefined;
 
-  const isSelected = !!(ctx.value === value) || undefined;
+    const isMounted = isSelected && !!keepMounted;
 
-  const isMounted = isSelected && !!keepMounted;
+    if (!isSelected && !keepMounted) return null;
 
-  if (!isSelected && !keepMounted) {
-    return null;
+    return (
+      <div
+        {...props}
+        id={ctx.getPanelId(value)}
+        style={{ ...style, ...(isMounted ? { display: 'none' } : {}) }}
+        className={clsx('v2-tabs-panel', className)}
+        role="tabpanel"
+        ref={ref}
+      >
+        {children}
+      </div>
+    );
   }
-
-  return (
-    <div
-      id={ctx.getPanelId(value)}
-      ref={ref}
-      role="tabpanel"
-      className={clsx('v2-tabs-panel', className)}
-      style={{
-        ...style,
-        ...(isMounted
-          ? {
-              display: 'none',
-            }
-          : {}),
-      }}
-      {...forwardedProps}
-    >
-      {children}
-    </div>
-  );
-});
+);
 
 TabsPanel.displayName = '@v2/Tabs.Panel';
-export { TabsPanel };

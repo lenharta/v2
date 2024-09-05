@@ -1,23 +1,21 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createPolymorphicFactory } from '@/factory';
-import { LabelProps } from './types';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
 
-type LabelFactory = Factory.Config<{
+export type LabelFactory = Core.Factory<{
   ref: HTMLLabelElement;
-  comp: 'label';
-  props: LabelProps;
+  props: Core.LabelProps;
+  element: 'label';
 }>;
 
-const Label = createPolymorphicFactory<LabelFactory>((props, ref) => {
-  const { children, className, component: Component = 'label', ...forwardedProps } = props;
-
-  return (
-    <Component ref={ref} className={clsx('v2-label', className)} {...forwardedProps}>
-      {children}
-    </Component>
-  );
-});
+export const Label = PolymorphicComponent<LabelFactory>(
+  ({ children, className, component: Component = 'label', ...props }, ref) => {
+    return (
+      <Component {...props} ref={ref} className={clsx('v2-label', className)}>
+        {children}
+      </Component>
+    );
+  }
+);
 
 Label.displayName = '@v2/Label';
-export { Label };

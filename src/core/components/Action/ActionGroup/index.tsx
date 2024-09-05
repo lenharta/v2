@@ -15,11 +15,11 @@ export const ActionGroup = PolymorphicComponent<ActionGroupFactory>(
     {
       gap,
       value,
-      loading,
-      readOnly,
-      disabled,
       children,
       className,
+      isLoading,
+      isReadonly,
+      isDisabled,
       component = 'div',
       orientation = 'horizontal',
       onValueChange,
@@ -36,7 +36,9 @@ export const ActionGroup = PolymorphicComponent<ActionGroupFactory>(
         gap={gap}
         ref={ref}
       >
-        <ActionProvider value={{ value, disabled, loading, readOnly, orientation, onValueChange }}>
+        <ActionProvider
+          value={{ value, isDisabled, isLoading, isReadonly, orientation, onValueChange }}
+        >
           {children}
         </ActionProvider>
       </Group>

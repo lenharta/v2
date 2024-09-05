@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ChipContext } from './types';
+import { Core } from '@/types';
 
-const ChipGroupContext = React.createContext({} as ChipContext);
+const ChipGroupContext = React.createContext({} as Core.ChipContext);
 const ChipGroupProvider = ChipGroupContext.Provider;
 const useChipContext = () => React.useContext(ChipGroupContext);
 

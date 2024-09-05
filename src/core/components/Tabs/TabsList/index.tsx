@@ -1,51 +1,48 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { Divider, DividerProps } from '@/core';
-import { useTabsContext } from '../context';
-import { TabsListProps } from '../types';
+import { Core } from '@/types';
+import { Divider } from '@/core';
+import { Component } from '@/factory';
+import { useTabsContext } from '../TabsContext';
 import { TABS_SELECTORS } from '../constants';
-import React from 'react';
 
-type TabsListFactory = Factory.Config<{
+export type TabsListFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: TabsListProps;
+  props: Core.TabsListProps;
+  element: 'div';
 }>;
 
-const TabsList = createFactory<TabsListFactory>((props, ref) => {
-  const { withDivider, dividerProps, children, className, ...forwardedProps } = props;
+export const TabsList = Component<TabsListFactory>(
+  ({ withDivider, dividerProps, children, className, ...props }, ref) => {
+    const ctx = useTabsContext();
 
-  const ctx = useTabsContext();
+    const isDivided = !!withDivider || !!dividerProps;
 
-  const isDivided = !!withDivider || !!dividerProps;
+    const isDividedProps: Partial<Core.DividerProps> = isDivided
+      ? {
+          ...dividerProps,
+          decoration: dividerProps?.decoration || 'solid',
+          label: ctx.getListId(),
+        }
+      : {};
 
-  const isDividedProps: Partial<DividerProps> = isDivided
-    ? {
-        ...dividerProps,
-        decoration: dividerProps?.decoration || 'solid',
-        label: ctx.getListId(),
-      }
-    : {};
-
-  return (
-    <React.Fragment>
-      <div
-        id={ctx.getListId()}
-        ref={ref}
-        role="tablist"
-        className={clsx('v2-tabs-list', className)}
-        data-orientation={ctx.orientation}
-        aria-orientation={ctx.orientation}
-        {...TABS_SELECTORS.list.prop}
-        {...forwardedProps}
-      >
-        {children}
-      </div>
-      {isDivided && <Divider {...isDividedProps} />}
-    </React.Fragment>
-  );
-});
+    return (
+      <>
+        <div
+          id={ctx.getListId()}
+          ref={ref}
+          role="tablist"
+          className={clsx('v2-tabs-list', className)}
+          data-orientation={ctx.orientation}
+          aria-orientation={ctx.orientation}
+          {...TABS_SELECTORS.list.prop}
+          {...props}
+        >
+          {children}
+        </div>
+        {isDivided && <Divider {...isDividedProps} />}
+      </>
+    );
+  }
+);
 
 TabsList.displayName = '@v2/Tabs.List';
-export { TabsList };

@@ -1,22 +1,19 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { TableHeadProps } from '../types';
+import { Core } from '@/types';
+import { Component } from '@/factory';
 
-type TableHeadFactory = Factory.Config<{
+export type TableHeadFactory = Core.Factory<{
   ref: HTMLTableSectionElement;
-  comp: 'thead';
-  props: TableHeadProps;
+  props: Core.TableHeadProps;
+  element: 'thead';
 }>;
 
-const TableHead = createFactory<TableHeadFactory>((props, ref) => {
-  const { children, className, ...forwardedProps } = props;
+export const TableHead = Component<TableHeadFactory>(({ children, className, ...props }, ref) => {
   return (
-    <thead ref={ref} className={clsx('v2-table-head', className)} {...forwardedProps}>
+    <thead ref={ref} className={clsx('v2-table-head', className)} {...props}>
       {children}
     </thead>
   );
 });
 
 TableHead.displayName = '@v2/Table.Head';
-export { TableHead };

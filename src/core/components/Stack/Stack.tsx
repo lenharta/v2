@@ -1,35 +1,27 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { StackProps } from '@/core';
-import { createPolymorphicFactory } from '@/factory';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
 
-type StackFactory = Factory.Config<{
+export type StackFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: StackProps;
+  props: Core.StackProps;
+  element: 'div';
 }>;
 
-const Stack = createPolymorphicFactory<StackFactory>((props, ref) => {
-  const {
-    gap = 'unset',
-    children,
-    className,
-    component: Component = 'div',
-    ...forwardedProps
-  } = props;
-
-  return (
-    <Component
-      ref={ref}
-      className={clsx('v2-stack', `v2-stack--gap-${gap}`, className)}
-      data-orientation="vertical"
-      aria-orientation="vertical"
-      {...forwardedProps}
-    >
-      {children}
-    </Component>
-  );
-});
+export const Stack = PolymorphicComponent<StackFactory>(
+  ({ gap = 'unset', children, className, component: Component = 'div', ...props }, ref) => {
+    return (
+      <Component
+        ref={ref}
+        className={clsx('v2-stack', `v2-stack--gap-${gap}`, className)}
+        data-orientation="vertical"
+        aria-orientation="vertical"
+        {...props}
+      >
+        {children}
+      </Component>
+    );
+  }
+);
 
 Stack.displayName = '@v2/Stack';
-export { Stack };

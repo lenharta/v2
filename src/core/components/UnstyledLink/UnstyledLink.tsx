@@ -1,23 +1,21 @@
 import * as Router from 'react-router-dom';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { UnstyledLinkProps } from './types';
+import { Component } from '@/factory';
+import { Core } from '@/types';
 
-type UnstyledLinkFactory = Factory.Config<{
+export type UnstyledLinkFactory = Core.Factory<{
   ref: HTMLAnchorElement;
-  comp: 'a';
-  props: UnstyledLinkProps;
+  props: Core.UnstyledLinkProps & Partial<Router.LinkProps>;
+  element: 'a';
 }>;
 
-const UnstyledLink = createFactory<UnstyledLinkFactory>((props, ref) => {
-  const { to = '/', children, ...forwardedProps } = props;
-
-  return (
-    <Router.Link ref={ref} to={to} {...forwardedProps}>
-      {children}
-    </Router.Link>
-  );
-});
+export const UnstyledLink = Component<UnstyledLinkFactory>(
+  ({ to = '/', children, component: Component = Router.Link, ...props }, ref) => {
+    return (
+      <Router.Link ref={ref} to={to} {...props}>
+        {children}
+      </Router.Link>
+    );
+  }
+);
 
 UnstyledLink.displayName = '@v2/Unstyled.Link';
-export { UnstyledLink };

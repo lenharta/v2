@@ -10,8 +10,8 @@ export type SideNavFactory = Core.Factory<{
   element: 'nav';
 }>;
 
-export const SideNav = Component<SideNavFactory>(({ children, className, ...props }) => (
-  <nav className={clsx('v2-side-nav', className)} {...props}>
+export const SideNav = Component<SideNavFactory>(({ children, className, ...props }, ref) => (
+  <nav {...props} ref={ref} className={clsx('v2-side-nav', className)}>
     {children}
   </nav>
 ));

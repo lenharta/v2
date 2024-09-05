@@ -1,14 +1,13 @@
+import React from 'react';
 import { Text, Title } from '@/core';
 import { Hero, Main, Page, PageProps } from '@/app';
 
-export interface WorkspaceRouteProps extends PageProps {}
+export type WorkspaceRouteProps = PageProps & {};
 
-export interface WorkspaceRouteComponents {}
-
-export interface WorkspaceRouteComponent extends WorkspaceRouteComponents {
+export type WorkspaceRouteComponent = {
   (props: WorkspaceRouteProps): React.ReactNode;
-  displayName: string;
-}
+  displayName?: string;
+};
 
 export const Workspace: WorkspaceRouteComponent = (props) => {
   return (

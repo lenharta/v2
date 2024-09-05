@@ -8,30 +8,29 @@ export type GroupFactory = Core.Factory<{
   element: 'div';
 }>;
 
-export const Group = PolymorphicComponent<GroupFactory>((props, ref) => {
-  const {
-    gap,
-    children,
-    className,
-    orientation = 'horizontal',
-    component: Component = 'div',
-    ...otherProps
-  } = props;
-
-  const accessibleProps = {
-    'aria-orientation': orientation,
-  };
-
-  return (
-    <Component
-      {...otherProps}
-      {...accessibleProps}
-      className={clsx('v2-group', `v2-group--gap-${gap}`, className)}
-      ref={ref}
-    >
-      {children}
-    </Component>
-  );
-});
+export const Group = PolymorphicComponent<GroupFactory>(
+  (
+    {
+      gap,
+      children,
+      className,
+      orientation = 'horizontal',
+      component: Component = 'div',
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <Component
+        {...props}
+        aria-orientation={orientation}
+        className={clsx('v2-group', `v2-group--gap-${gap}`, className)}
+        ref={ref}
+      >
+        {children}
+      </Component>
+    );
+  }
+);
 
 Group.displayName = '@v2/Group';

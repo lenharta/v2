@@ -13,7 +13,7 @@ export type SideComponent = Core.NamedComponent & {
 };
 
 export const Side: SideComponent = ({ children, className, ...props }) => (
-  <div className={clsx('v2-side', className)} {...props}>
+  <div {...props} className={clsx('v2-side', className)}>
     {children}
   </div>
 );

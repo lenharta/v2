@@ -1,75 +1,83 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { Icon, UnstyledButton } from '@/core';
-import { TabsItemProps } from '../types';
-import { useTabsContext } from '../context';
+import { Core } from '@/types';
+import { Component } from '@/factory';
 import { createKeyDownGroup } from '@/utils';
+import { Icon, UnstyledButton } from '@/core';
+import { useTabsContext } from '../TabsContext';
 import { TABS_SELECTORS } from '../constants';
 
-type TabsItemFactory = Factory.Config<{
-  comp: 'button';
+export type TabsItemFactory = Core.Factory<{
   ref: HTMLButtonElement;
-  props: TabsItemProps;
+  props: Core.TabsItemProps;
+  element: 'button';
 }>;
 
-const TabsItem = createFactory<TabsItemFactory>((props, ref) => {
-  const {
-    value,
-    variant,
-    className,
-    children,
-    disabled,
-    readOnly,
-    loading,
-    iconLeft,
-    iconRight,
-    onKeyDown,
-    ...forwardedProps
-  } = props;
+export const TabsItem = Component<TabsItemFactory>(
+  (
+    {
+      value,
+      variant,
+      children,
+      className,
+      isLoading,
+      isDisabled,
+      isReadonly,
+      iconRight,
+      iconLeft,
+      onKeyDown,
+      ...props
+    },
+    ref
+  ) => {
+    const context = useTabsContext();
 
-  const ctx = useTabsContext();
+    const classNames = clsx(
+      'v2-tabs-item',
+      `v2-tabs-item--${variant || context.variant || 'default'}`,
+      className
+    );
 
-  return (
-    <UnstyledButton
-      id={ctx.getItemId(value)}
-      ref={ref}
-      value={value}
-      loading={!!loading || !!ctx.loading || undefined}
-      readOnly={!!readOnly || !!ctx.readOnly || undefined}
-      disabled={!!disabled || !!ctx.disabled || undefined}
-      selected={!!(ctx.value === value) || undefined}
-      className={clsx(
-        'v2-tabs-item',
-        `v2-tabs-item--${variant || ctx.variant || 'default'}`,
-        className
-      )}
-      onClick={(event) => ctx.onValueChange(event.currentTarget.value)}
-      onKeyDown={createKeyDownGroup({
-        loop: ctx.keyboardOptions?.loop,
-        orientation: ctx.orientation,
-        childSelector: TABS_SELECTORS.item.key,
-        parentSelector: TABS_SELECTORS.list.key,
-        preventDefault: ctx.keyboardOptions?.preventDefault,
-        onKeyDown: (event) => {
-          ctx.keyboardOptions?.onKeyDown?.(event);
-          onKeyDown?.(event);
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+      props.onClick?.(event);
+      context.onValueChange(event.currentTarget.value);
+    };
 
-          // if (ctx.keyboardActivated) {
-          //   ctx.onValueChange(event.currentTarget.value)
-          // }
-        },
-      })}
-      {...TABS_SELECTORS.item.prop}
-      {...forwardedProps}
-    >
-      <div className="v2-tabs-item-layout">
-        {iconLeft && <Icon {...iconLeft} />}
-        {children}
-        {iconRight && <Icon {...iconRight} />}
-      </div>
-    </UnstyledButton>
-  );
-});
+    const handleKeyDown = createKeyDownGroup({
+      loop: context.keyboardOptions?.loop,
+      orientation: context.orientation,
+      childSelector: TABS_SELECTORS.item.key,
+      parentSelector: TABS_SELECTORS.list.key,
+      preventDefault: context.keyboardOptions?.preventDefault,
+      onKeyDown: (event) => {
+        context.keyboardOptions?.onKeyDown?.(event);
+        onKeyDown?.(event);
+      },
+    });
 
-export { TabsItem };
+    return (
+      <UnstyledButton
+        {...props}
+        {...TABS_SELECTORS.item.prop}
+        id={context.getItemId(value)}
+        ref={ref}
+        value={value}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        className={classNames}
+        data-loading={isLoading || context.isLoading}
+        data-disabled={isDisabled || context.isDisabled}
+        data-readonly={isReadonly || context.isReadonly}
+        data-selected={!!(context.value === value)}
+      >
+        <div className="v2-tabs-item-layout">
+          {iconLeft && <Icon {...iconLeft} />}
+
+          <div className="v2-tabs-item">{children}</div>
+
+          {iconRight && <Icon {...iconRight} />}
+        </div>
+      </UnstyledButton>
+    );
+  }
+);

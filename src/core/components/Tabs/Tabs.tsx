@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { Core } from '@/types';
 import { TabsItem } from './TabsItem';
 import { TabsList } from './TabsList';
 import { TabsPanel } from './TabsPanel';
-import { TabsProps } from './types';
-import { TabsProvider } from './context';
+import { TabsProvider } from './TabsContext';
 
-type TabsFactory = React.FC<TabsProps> & {
+type TabsFactory = React.FC<Core.TabsProps> & {
   Item: typeof TabsItem;
   List: typeof TabsList;
   Panel: typeof TabsPanel;
@@ -15,9 +15,9 @@ const Tabs: TabsFactory = (props) => {
   const {
     value,
     variant,
-    loading,
-    disabled,
-    readOnly,
+    isLoading,
+    isDisabled,
+    isReadonly,
     children,
     orientation,
     keyboardActivated,
@@ -36,9 +36,9 @@ const Tabs: TabsFactory = (props) => {
         value={{
           value,
           variant: variant || 'default',
-          loading,
-          disabled,
-          readOnly,
+          isLoading,
+          isDisabled,
+          isReadonly,
           orientation: orientation || 'horizontal',
           keyboardActivated: keyboardActivated || false,
           keyboardOptions,

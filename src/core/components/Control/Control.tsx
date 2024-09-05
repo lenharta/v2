@@ -2,24 +2,18 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { Core } from '@/types';
 import { parseItemData } from '@/utils';
-import { ControlProps } from './types';
 import { ControlTrack } from './ControlTrack';
 import { ControlThumb } from './ControlThumb';
 import { ControlSegment } from './ControlSegment';
 import { useControlPosition } from './use-control-position';
 
-const ATTRIBUTES = {
-  parent: { key: '[data-core-control-track]', prop: { 'data-core-control-track': true } },
-  child: { key: '[data-core-control-segment]', prop: { 'data-core-control-segment': true } },
-};
-
-type ControlFactory = React.FC<ControlProps> & {
+type ControlFactory = React.FC<Core.ControlProps> & {
   Thumb: typeof ControlThumb;
   Track: typeof ControlTrack;
   Segment: typeof ControlSegment;
 };
 
-const Control: ControlFactory = (props) => {
+export const Control: ControlFactory = (props) => {
   const {
     items,
     value,
@@ -50,12 +44,7 @@ const Control: ControlFactory = (props) => {
 
   return (
     <div className={clsx('v2-control', `v2-control--${variant}`, className)}>
-      <Control.Track
-        ref={trackRef}
-        variant={variant}
-        orientation={orientation}
-        {...ATTRIBUTES.parent.prop}
-      >
+      <Control.Track ref={trackRef} variant={variant} orientation={orientation} data-control-track>
         {data.map((item) => (
           <Control.Segment
             key={item.value}
@@ -89,4 +78,3 @@ Control.Thumb = ControlThumb;
 Control.Track = ControlTrack;
 Control.Segment = ControlSegment;
 Control.displayName = '@v2/Control';
-export { Control, ATTRIBUTES };

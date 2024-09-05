@@ -1,29 +1,27 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { VisuallyHiddenProps } from './types';
-import { createPolymorphicFactory } from '@/factory';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
 
-type VisuallyHiddenFactory = Factory.Config<{
+export type VisuallyHiddenFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: VisuallyHiddenProps;
+  props: Core.VisuallyHiddenProps;
+  element: 'div';
 }>;
 
-const HIDDEN_STYLE: React.CSSProperties = {
+export const HIDDEN_STYLE: React.CSSProperties = {
   visibility: 'hidden',
   position: 'fixed',
 };
 
-const VisuallyHidden = createPolymorphicFactory<VisuallyHiddenFactory>((props, ref) => {
-  const { style, className, ...forwardedProps } = props;
-  return (
-    <div
-      ref={ref}
-      style={{ ...style, ...HIDDEN_STYLE }}
-      className={clsx('v2-visuallyhidden', className)}
-      {...forwardedProps}
-    />
-  );
-});
-
-export { VisuallyHidden, HIDDEN_STYLE };
+export const VisuallyHidden = PolymorphicComponent<VisuallyHiddenFactory>(
+  ({ style, className, ...props }, ref) => {
+    return (
+      <div
+        {...props}
+        className={clsx('v2-visuallyhidden', className)}
+        style={{ ...style, ...HIDDEN_STYLE }}
+        ref={ref}
+      />
+    );
+  }
+);

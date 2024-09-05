@@ -1,16 +1,15 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createPolymorphicFactory } from '@/factory';
-import { TextProps } from './types';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
 
-type TextFactory = Factory.Config<{
+export type TextFactory = Core.Factory<{
   ref: HTMLParagraphElement;
-  comp: 'p';
-  omits: 'color';
-  props: TextProps;
+  props: Core.TextProps;
+  element: 'p';
+  excluded: 'color';
 }>;
 
-const Text = createPolymorphicFactory<TextFactory>((props, ref) => {
+export const Text = PolymorphicComponent<TextFactory>((props, ref) => {
   const { span, children, className, component = 'p', ...forwardedProps } = props;
 
   let Component: 'p' | 'span' = component;
@@ -25,4 +24,3 @@ const Text = createPolymorphicFactory<TextFactory>((props, ref) => {
 });
 
 Text.displayName = '@v2/Text';
-export { Text };

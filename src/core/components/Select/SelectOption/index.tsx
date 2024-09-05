@@ -1,32 +1,36 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { UnstyledButton, SelectOptionProps } from '@/core';
+import { Core } from '@/types';
+import { Component } from '@/factory';
+import { UnstyledButton } from '@/core';
 
-type SelectOptionFactory = Factory.Config<{
+export type SelectOptionFactory = Core.Factory<{
   ref: HTMLButtonElement;
-  comp: 'button';
-  props: SelectOptionProps;
+  props: Core.SelectOptionProps;
+  element: 'button';
 }>;
 
-const SelectOption = createFactory<SelectOptionFactory>((props, ref) => {
-  const { label, value, variant, disabled, readOnly, selected, className, ...forwardedProps } =
-    props;
-
-  return (
-    <UnstyledButton
-      ref={ref}
-      value={value}
-      disabled={disabled}
-      readOnly={readOnly}
-      selected={selected}
-      className={clsx('v2-select-option', { [`v2-select-option--${variant}`]: variant }, className)}
-      {...forwardedProps}
-    >
-      {label}
-    </UnstyledButton>
-  );
-});
+export const SelectOption = Component<SelectOptionFactory>(
+  ({ label, value, variant, isReadonly, isDisabled, isSelected, className, ...props }, ref) => {
+    const classNames = clsx(
+      'v2-select-option',
+      { [`v2-select-option--${variant}`]: variant },
+      className
+    );
+    return (
+      <UnstyledButton
+        {...props}
+        aria-selected={!!isSelected}
+        data-selected={!!isSelected}
+        isDisabled={!!isDisabled}
+        isReadonly={!!isReadonly}
+        className={classNames}
+        value={value}
+        ref={ref}
+      >
+        {label}
+      </UnstyledButton>
+    );
+  }
+);
 
 SelectOption.displayName = '@v2/Select.Option';
-export { SelectOption };

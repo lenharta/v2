@@ -1,6 +1,6 @@
 import clsx from 'clsx';
+import { Icon } from '@/core';
 import { Core } from '@/types';
-import { Icon, UnstyledButton } from '@/core';
 import { PolymorphicComponent } from '@/factory';
 import { useButtonContext } from './ButtonContext';
 import { ButtonGroup } from './ButtonGroup';
@@ -8,7 +8,8 @@ import { ButtonGroup } from './ButtonGroup';
 export type ButtonFactory = Core.Factory<{
   ref: HTMLButtonElement;
   props: Core.ButtonProps;
-  element: typeof UnstyledButton;
+  element: 'button';
+  excluded: 'disabled';
   elements: {
     Group: typeof ButtonGroup;
   };
@@ -17,25 +18,29 @@ export type ButtonFactory = Core.Factory<{
 export const Button = PolymorphicComponent<ButtonFactory>(
   (
     {
-      size = 'sm',
+      size,
       value,
-      variant = 'default',
+      variant,
       children,
+      iconLeft,
+      iconRight,
+      fullWidth,
       className,
       isLoading,
       isDisabled,
       isReadonly,
       isSelected,
-      fullWidth,
-      iconRight,
-      iconLeft,
+      component: Component = 'button',
       onChange,
-      component: Component = UnstyledButton,
       ...props
     },
     ref
   ) => {
     const context = useButtonContext();
+    const loading = isLoading || context.isLoading;
+    const disabled = isDisabled || context.isDisabled;
+    const readonly = isReadonly || context.isReadonly;
+    const selected = isSelected || context.value === value;
 
     const handleChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
       event.stopPropagation();
@@ -43,7 +48,7 @@ export const Button = PolymorphicComponent<ButtonFactory>(
 
       if (!value) return;
 
-      if (!(isLoading || isReadonly || isDisabled)) {
+      if (!(loading || disabled || readonly)) {
         if (typeof value !== 'string') {
           console.error('[@v2/core/Action]: value must be provided to Action or ActionGroup');
         } else {
@@ -52,24 +57,26 @@ export const Button = PolymorphicComponent<ButtonFactory>(
       }
     };
 
-    const contextProps = !context
-      ? { isSelected, isDisabled, isReadonly, isLoading }
-      : {
-          'aria-orientation': context.orientation,
-          isSelected: isSelected || value === context.value,
-          isDisabled,
-          isReadonly,
-          isLoading,
-        };
+    const classNames = clsx(
+      'v2-button',
+      `v2-button--${size || context.size || 'md'}`,
+      `v2-button--${variant || context.variant || 'default'}`,
+      className
+    );
 
     return (
       <Component
         {...props}
-        {...contextProps}
-        data-block={!!fullWidth}
-        className={clsx('v2-button', `v2-button--${size}`, `v2-button--${variant}`, className)}
-        onChange={handleChange}
         ref={ref}
+        value={value}
+        onChange={handleChange}
+        className={classNames}
+        data-loading={loading}
+        data-disabled={disabled}
+        data-readonly={readonly}
+        data-selected={selected}
+        aria-selected={selected}
+        data-block={!!fullWidth}
       >
         <span className="v2-button-layout">
           {iconLeft && (
@@ -78,11 +85,7 @@ export const Button = PolymorphicComponent<ButtonFactory>(
             </div>
           )}
 
-          {children && (
-            <div className="v2-button-label" data-isLoading={isLoading}>
-              {children}
-            </div>
-          )}
+          {children && <div className="v2-button-label">{children}</div>}
 
           {iconRight && (
             <div className="v2-button-section" data-position="right">

@@ -4,13 +4,13 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import * as ReactRouterDOM from 'react-router-dom';
 
-import { Layout } from './app';
+import { RootLayout } from './app';
 import * as ROUTES from './routes';
 
 const ROUTER = ReactRouterDOM.createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <RootLayout />,
     errorElement: <ROUTES.Error />,
     children: [
       {

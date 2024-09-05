@@ -1,4 +1,6 @@
-export const DEFAULT_STORE = {
+import { Store } from '@/types';
+
+export const DEFAULT_STORE: Store.State = {
   dir: 'ltr',
   lang: 'en',
   mode: 'dark',

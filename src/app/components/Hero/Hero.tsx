@@ -8,12 +8,11 @@ export type HeroFactory = Core.Factory<{
   ref: HTMLDivElement;
   props: HeroProps;
   element: 'section';
-  excluded: 'children';
 }>;
 
 export const Hero = Component<HeroFactory>(
-  ({ component: Component = 'section', className, ...props }) => (
-    <Component {...props} className={clsx('v2-hero', className)}>
+  ({ component: Component = 'section', className, ...props }, ref) => (
+    <Component {...props} ref={ref} className={clsx('v2-hero', className)}>
       <span>Hero</span>
     </Component>
   )

@@ -1,65 +1,64 @@
+import * as React from 'react';
+import { Core } from '@/types';
+import { Component } from '@/factory';
 import { Transition } from '@/core';
 import { useMergeRefs } from '@/hooks';
-import { Core, Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { FloatingBoxProps } from '../types';
-import { useFloatingContext } from '../context';
+import { useFloatingContext } from '../FloatingContext';
 
-type FloatingBoxFactory = Factory.Config<{
+export type FloatingBoxFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: FloatingBoxProps;
+  props: Core.FloatingBoxProps;
+  element: 'div';
 }>;
 
-const FloatingBox = createFactory<FloatingBoxFactory>((props, ref) => {
-  const { className, style, children, ...forwardedProps } = props;
+export const FloatingBox = Component<FloatingBoxFactory>(
+  ({ className, style, children, ...props }, ref) => {
+    const ctx = useFloatingContext();
+    const refs = useMergeRefs(ref, ctx.floating);
 
-  const ctx = useFloatingContext();
-  const refs = useMergeRefs(ref, ctx.floating);
+    if (ctx.disabled) return null;
 
-  if (ctx.disabled) return null;
+    const contextProps = ctx
+      ? {
+          id: ctx.getBoxId(),
+          'aria-labelledby': ctx.getBoxId(),
+        }
+      : {};
 
-  const contextProps = ctx
-    ? {
-        id: ctx.getBoxId(),
-        'aria-labelledby': ctx.getBoxId(),
-      }
-    : {};
+    const contextStyles = ctx
+      ? {
+          top: ctx.y ?? 0,
+          left: ctx.x ?? 0,
+          width: ctx.width === 'target' ? undefined : (ctx.width as React.CSSProperties['width']),
+          zIndex: ctx.zIndex,
+        }
+      : {};
 
-  const contextStyles = ctx
-    ? {
-        top: ctx.y ?? 0,
-        left: ctx.x ?? 0,
-        width: ctx.width === 'target' ? undefined : (ctx.width as Core.CSS['width']),
-        zIndex: ctx.zIndex,
-      }
-    : {};
-
-  return (
-    <Transition {...ctx.transitionProps} mounted={ctx.isOpen}>
-      {(transitionStyles) => (
-        <div
-          ref={refs}
-          role="dialog"
-          tabIndex={-1}
-          style={{
-            ...style,
-            ...contextStyles,
-            ...transitionStyles,
-            position: 'absolute',
-            boxSizing: 'border-box',
-            padding: 0,
-            margin: 0,
-          }}
-          {...forwardedProps}
-          {...contextProps}
-        >
-          {children}
-        </div>
-      )}
-    </Transition>
-  );
-});
+    return (
+      <Transition {...ctx.transitionProps} mounted={ctx.isOpen}>
+        {(transitionStyles) => (
+          <div
+            {...props}
+            {...contextProps}
+            ref={refs}
+            role="dialog"
+            tabIndex={-1}
+            style={{
+              ...style,
+              ...contextStyles,
+              ...transitionStyles,
+              position: 'absolute',
+              boxSizing: 'border-box',
+              padding: 0,
+              margin: 0,
+            }}
+          >
+            {children}
+          </div>
+        )}
+      </Transition>
+    );
+  }
+);
 
 FloatingBox.displayName = '@v2/Floating.Box';
-export { FloatingBox, type FloatingBoxProps };

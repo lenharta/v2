@@ -9,7 +9,10 @@ export interface StoreProviderProps {
   children: React.ReactNode;
 }
 
-function useThemeUpdate(props: { theme: Theme.State; middleware: Store.Middleware<Theme.State> }) {
+export function useThemeUpdate(props: {
+  theme: Theme.State;
+  middleware: Store.Middleware<Theme.State>;
+}) {
   const { theme, middleware } = props;
 
   React.useEffect(() => {
@@ -23,7 +26,7 @@ function useThemeUpdate(props: { theme: Theme.State; middleware: Store.Middlewar
   }, [theme, middleware]);
 }
 
-const StoreProvider = ({ children }: StoreProviderProps) => {
+export const StoreProvider = ({ children }: StoreProviderProps) => {
   const local = useStorage<Theme.State>({ type: 'localStorage' });
   const session = useStorage<{ session: string }>({ type: 'sessionStorage' });
 
@@ -80,5 +83,3 @@ const StoreProvider = ({ children }: StoreProviderProps) => {
     </StoreContext.Provider>
   );
 };
-
-export { StoreProvider };

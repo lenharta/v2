@@ -12,8 +12,8 @@ export type FooterFactory = Core.Factory<{
 }>;
 
 export const Footer = Component<FooterFactory>(
-  ({ component: Component = 'footer', className, ...props }) => (
-    <Component {...props} className={clsx('v2-footer', className)}>
+  ({ component: Component = 'footer', className, ...props }, ref) => (
+    <Component {...props} ref={ref} className={clsx('v2-footer', className)}>
       <span>Footer</span>
     </Component>
   )

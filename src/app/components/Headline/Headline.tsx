@@ -19,9 +19,9 @@ export type HeadlineFactory = Core.Factory<{
 }>;
 
 export const Headline = Component<HeadlineFactory>(
-  ({ component: Component = 'div', className, hash, text, title, ...props }) => {
+  ({ component: Component = 'div', className, hash, text, title, ...props }, ref) => {
     return (
-      <Component {...props} className={clsx('v2-headline', className)}>
+      <Component {...props} ref={ref} className={clsx('v2-headline', className)}>
         <Title>{title}</Title>
         <Text>{text}</Text>
       </Component>

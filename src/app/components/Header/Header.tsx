@@ -12,8 +12,8 @@ export type HeaderFactory = Core.Factory<{
 }>;
 
 export const Header = Component<HeaderFactory>(
-  ({ component: Component = 'header', className, ...props }) => (
-    <Component {...props} className={clsx('v2-header', className)}>
+  ({ component: Component = 'header', className, ...props }, ref) => (
+    <Component {...props} ref={ref} className={clsx('v2-header', className)}>
       <span>Header</span>
     </Component>
   )

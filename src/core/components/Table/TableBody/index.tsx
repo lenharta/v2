@@ -1,22 +1,19 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { TableBodyProps } from '../types';
+import { Core } from '@/types';
+import { Component } from '@/factory';
 
-type TableBodyFactory = Factory.Config<{
+export type TableBodyFactory = Core.Factory<{
   ref: HTMLTableSectionElement;
-  comp: 'tbody';
-  props: TableBodyProps;
+  props: Core.TableBodyProps;
+  element: 'tbody';
 }>;
 
-const TableBody = createFactory<TableBodyFactory>((props, ref) => {
-  const { children, className, ...forwardedProps } = props;
+export const TableBody = Component<TableBodyFactory>(({ children, className, ...props }, ref) => {
   return (
-    <tbody ref={ref} className={clsx('v2-table-body', className)} {...forwardedProps}>
+    <tbody ref={ref} className={clsx('v2-table-body', className)} {...props}>
       {children}
     </tbody>
   );
 });
 
 TableBody.displayName = '@v2/Table.Body';
-export { TableBody };
