@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface MenuContextValue {}
+export type MenuContextValue = {};
 
 export const MenuContext = React.createContext({} as MenuContextValue);
 

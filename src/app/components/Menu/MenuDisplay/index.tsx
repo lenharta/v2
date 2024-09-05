@@ -1,27 +1,20 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Core } from '@/types';
-
-const css = {
-  root: 'v2-menu-display',
-};
+import { Component } from '@/factory';
 
 export interface MenuDisplayProps {}
 
-export interface MenuDisplayComponents {}
+export type MenuFactory = Core.Factory<{
+  ref: HTMLDivElement;
+  props: MenuDisplayProps;
+  element: 'aside';
+  excluded: 'children';
+}>;
 
-export interface MenuDisplayComponent extends MenuDisplayComponents {
-  (props: Core.ComponentProps<'aside', MenuDisplayProps>): React.ReactNode;
-  displayName: string;
-}
-
-export const MenuDisplay: MenuDisplayComponent = (props) => {
-  const { className, children, ...otherProps } = props;
-  return (
-    <aside className={clsx(css.root, className)} {...otherProps}>
-      {children}
-    </aside>
-  );
-};
+export const MenuDisplay = Component<MenuFactory>(({ className, ...props }, ref) => (
+  <aside {...props} ref={ref} className={clsx('v2-menu-display', className)}>
+    <span>Menu Display</span>
+  </aside>
+));
 
 MenuDisplay.displayName = '@v2/Menu.Display';

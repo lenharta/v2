@@ -1,27 +1,22 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Core } from '@/types';
+import { Component } from '@/factory';
 
-const css = {
-  root: 'v2-app-header',
-};
+export type HeaderProps = {};
 
-export interface HeaderProps {}
+export type HeaderFactory = Core.Factory<{
+  ref: HTMLDivElement;
+  props: HeaderProps;
+  element: 'header';
+  excluded: 'children';
+}>;
 
-export interface HeaderComponents {}
+export const Header = Component<HeaderFactory>(
+  ({ component: Component = 'header', className, ...props }) => (
+    <Component {...props} className={clsx('v2-header', className)}>
+      <span>Header</span>
+    </Component>
+  )
+);
 
-export interface HeaderComponent extends HeaderComponents {
-  (props: Core.ComponentProps<'header', HeaderProps>): React.ReactNode;
-  displayName: string;
-}
-
-export const Header: HeaderComponent = (props) => {
-  const { children, className, ...otherProps } = props;
-  return (
-    <header className={clsx(css.root, className)} {...otherProps}>
-      {children}
-    </header>
-  );
-};
-
-Header.displayName = '@v2/App.Header';
+Header.displayName = '@v2/Header';

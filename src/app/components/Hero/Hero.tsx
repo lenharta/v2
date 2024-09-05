@@ -1,27 +1,22 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Core } from '@/types';
+import { Component } from '@/factory';
 
-const css = {
-  root: 'v2-app-hero',
-};
+export type HeroProps = {};
 
-export interface HeroProps {}
+export type HeroFactory = Core.Factory<{
+  ref: HTMLDivElement;
+  props: HeroProps;
+  element: 'section';
+  excluded: 'children';
+}>;
 
-export interface HeroComponents {}
+export const Hero = Component<HeroFactory>(
+  ({ component: Component = 'section', className, ...props }) => (
+    <Component {...props} className={clsx('v2-hero', className)}>
+      <span>Hero</span>
+    </Component>
+  )
+);
 
-export interface HeroComponent extends HeroComponents {
-  (props: Core.ComponentProps<'section', HeroProps>): React.ReactNode;
-  displayName: string;
-}
-
-export const Hero: HeroComponent = (props) => {
-  const { children, className, ...otherProps } = props;
-  return (
-    <section className={clsx(css.root, className)} {...otherProps}>
-      {children}
-    </section>
-  );
-};
-
-Hero.displayName = '@v2/App.Hero';
+Hero.displayName = '@v2/Hero';

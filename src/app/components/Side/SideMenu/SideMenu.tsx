@@ -1,27 +1,19 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Core } from '@/types';
+import { Component } from '@/factory';
 
-const css = {
-  root: 'v2-app-side-menu',
-};
+export type SideMenuProps = {};
 
-export interface SideMenuProps {}
+export type SideMenuFactory = Core.Factory<{
+  ref: HTMLDivElement;
+  props: SideMenuProps;
+  element: 'div';
+}>;
 
-export interface SideMenuComponents {}
+export const SideMenu = Component<SideMenuFactory>(({ children, className, ...props }, ref) => (
+  <div {...props} ref={ref} className={clsx('v2-side-menu', className)}>
+    {children}
+  </div>
+));
 
-export interface SideMenuComponent extends SideMenuComponents {
-  (props: Core.ComponentProps<'div', SideMenuProps>): React.ReactNode;
-  displayName: string;
-}
-
-export const SideMenu: SideMenuComponent = (props) => {
-  const { children, className, ...otherProps } = props;
-  return (
-    <div className={clsx(css.root, className)} {...otherProps}>
-      {children}
-    </div>
-  );
-};
-
-SideMenu.displayName = '@v2/App.Side.Menu';
+SideMenu.displayName = '@v2/Side.Menu';

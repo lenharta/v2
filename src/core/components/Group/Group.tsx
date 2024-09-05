@@ -1,34 +1,33 @@
 import clsx from 'clsx';
-import { Core, Factory } from '@/types';
-import { createPolymorphicFactory } from '@/factory';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
 
-export type GroupFactory = Factory.Config<{
+export type GroupFactory = Core.Factory<{
   ref: HTMLDivElement;
-  props: Core.GroupComponentProps;
-  comp: 'div';
+  props: Core.GroupProps;
+  element: 'div';
 }>;
 
-const css: Record<'root', string> = {
-  root: 'v2-group',
-};
-
-export const Group = createPolymorphicFactory<GroupFactory>((props, ref) => {
+export const Group = PolymorphicComponent<GroupFactory>((props, ref) => {
   const {
     gap,
     children,
     className,
     orientation = 'horizontal',
     component: Component = 'div',
-    ...forwardedProps
+    ...otherProps
   } = props;
+
+  const accessibleProps = {
+    'aria-orientation': orientation,
+  };
 
   return (
     <Component
-      {...forwardedProps}
+      {...otherProps}
+      {...accessibleProps}
+      className={clsx('v2-group', `v2-group--gap-${gap}`, className)}
       ref={ref}
-      className={clsx(css.root, `${css.root}--gap-${gap}`, className)}
-      data-orientation={orientation}
-      aria-orientation={orientation}
     >
       {children}
     </Component>

@@ -1,34 +1,23 @@
 import clsx from 'clsx';
 import React from 'react';
 import { Core } from '@/types';
-import { SideMenu } from './SideMenu/SideMenu';
 import { SideNav } from './SideNav/SideNav';
+import { SideMenu } from './SideMenu/SideMenu';
 
-const css = {
-  root: 'v2-app-side',
-};
+export type SideProps = {};
 
-export interface SideProps {}
-
-export interface SideComponents {
-  Nav: typeof SideNav;
-  Menu: typeof SideMenu;
-}
-
-export interface SideComponent extends SideComponents {
+export type SideComponent = Core.NamedComponent & {
   (props: Core.ComponentProps<'div', SideProps>): React.ReactNode;
-  displayName: string;
-}
-
-export const Side: SideComponent = (props) => {
-  const { children, className, ...otherProps } = props;
-  return (
-    <div className={clsx(css.root, className)} {...otherProps}>
-      {children}
-    </div>
-  );
+  Menu: typeof SideMenu;
+  Nav: typeof SideNav;
 };
+
+export const Side: SideComponent = ({ children, className, ...props }) => (
+  <div className={clsx('v2-side', className)} {...props}>
+    {children}
+  </div>
+);
 
 Side.Nav = SideNav;
 Side.Menu = SideMenu;
-Side.displayName = '@v2/App.Side';
+Side.displayName = '@v2/Side';

@@ -1,33 +1,33 @@
 import clsx from 'clsx';
-import { Core, Factory } from '@/types';
-import { createPolymorphicFactory } from '@/factory';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
 import { CheckboxProvider } from '../CheckboxContext';
+import { Group } from '../../Group';
 
-export type CheckboxGroupCSS = Core.CSS<'root'>;
-
-export type CheckboxGroupFactory = Factory.Config<{
+export type CheckboxGroupFactory = Core.Factory<{
   ref: HTMLDivElement;
   props: Core.CheckboxGroupProps;
-  comp: 'div';
+  element: typeof Group;
 }>;
 
-const css: CheckboxGroupCSS = {
-  root: 'v2-checkbox-group',
-};
-
-const CheckboxGroup = createPolymorphicFactory<CheckboxGroupFactory>((props, ref) => {
+export const CheckboxGroup = PolymorphicComponent<CheckboxGroupFactory>((props, ref) => {
   const {
-    value = [],
+    gap,
     shape,
+    value = [],
     children,
     className,
+    isLoading,
+    isReadonly,
+    isDisabled,
+    orientation,
+    onValueChange,
     component: Component = 'div',
-    onChange,
-    ...forwardedProps
+    ...otherProps
   } = props;
 
   const handleChange = (itemValue: string) => {
-    return onChange?.(
+    return onValueChange?.(
       value.includes(itemValue)
         ? value.filter((stateItem) => stateItem !== itemValue)
         : [...value, itemValue]
@@ -35,8 +35,24 @@ const CheckboxGroup = createPolymorphicFactory<CheckboxGroupFactory>((props, ref
   };
 
   return (
-    <Component ref={ref} className={clsx(css.root, className)} {...forwardedProps}>
-      <CheckboxProvider value={{ value, onChange: handleChange, shape }}>
+    <Component
+      {...otherProps}
+      className={clsx('v2-checkbox-group', className)}
+      orientation={orientation}
+      gap={gap}
+      ref={ref}
+    >
+      <CheckboxProvider
+        value={{
+          onValueChange: handleChange,
+          orientation,
+          isDisabled,
+          isReadonly,
+          isLoading,
+          value,
+          gap,
+        }}
+      >
         {children}
       </CheckboxProvider>
     </Component>
@@ -44,4 +60,3 @@ const CheckboxGroup = createPolymorphicFactory<CheckboxGroupFactory>((props, ref
 });
 
 CheckboxGroup.displayName = '@v2/Checkbox.Group';
-export { CheckboxGroup };

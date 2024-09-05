@@ -1,13 +1,15 @@
 import React from 'react';
+import { Core } from '@/types';
 import { MenuTarget } from './MenuTarget';
 import { MenuDisplay } from './MenuDisplay';
 import { MenuProvider } from './MenuContext';
 
-export interface MenuProps {}
+export type MenuProps = {};
 
-export type MenuComponent = React.FC<MenuProps> & {
-  Target: typeof MenuTarget;
+export type MenuComponent = Core.NamedComponent & {
+  (props: MenuProps): React.ReactNode;
   Display: typeof MenuDisplay;
+  Target: typeof MenuTarget;
 };
 
 export const Menu: MenuComponent = ({}) => {

@@ -1,86 +1,75 @@
 import clsx from 'clsx';
-import { Core, Factory } from '@/types';
-import { createFactory } from '@/factory';
+import { Core } from '@/types';
+import { Component } from '@/factory';
+import { mergeProps } from '@/core/utils';
 import { Icon, UnstyledButton } from '@/core';
-import { ActionGroup } from './ActionGroup';
-import { ActionSpacer } from './ActionSpacer';
 import { useActionContext } from './ActionContext';
-import { createEventCallback } from '@/utils';
+import { ActionSpacer } from './ActionSpacer';
+import { ActionGroup } from './ActionGroup';
 
-export interface ActionComponents {
-  Group: typeof ActionGroup;
-  Spacer: typeof ActionSpacer;
-}
-
-export type ActionFactory = Factory.Config<{
+export type ActionFactory = Core.Factory<{
   ref: HTMLButtonElement;
   props: Core.ActionProps;
-  comps: ActionComponents;
-  omits: 'children';
-  comp: 'button';
+  element: 'button';
+  excluded: 'children';
+  elements: {
+    Group: typeof ActionGroup;
+    Spacer: typeof ActionSpacer;
+  };
 }>;
 
-const css: Record<'root', string> = {
-  root: 'v2-action',
-};
+export const Action = Component<ActionFactory>((props, ref) => {
+  const context = useActionContext();
 
-export const Action = createFactory<ActionFactory>((props, ref) => {
   const {
-    size = 'md',
-    icon = { type: 'outline' },
+    size,
+    icon,
     value,
-    variant = 'default',
+    variant,
     loading,
     disabled,
     readOnly,
+    onChange,
     selected,
     className,
-    onChange,
-    ...forwardedProps
-  } = props;
+    ...otherProps
+  } = mergeProps(props, context, {
+    icon: { type: 'outline' },
+    variant: 'default',
+    size: 'md',
+  });
 
-  const context = useActionContext();
+  const handleChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    onChange?.(event);
 
-  const contextClassNames = context
-    ? [`${css.root}--${size || context.size}`, `${css.root}--${variant || context.variant}`]
-    : [];
+    if (!value) return;
 
-  const handleChange = () => {
-    if (
-      !(loading || context.loading) &&
-      !(readOnly || context.readOnly) &&
-      !(disabled || context.disabled)
-    ) {
-      if (!value || !context.value) {
-        console.error('[@/core/Action]: A value must be provided to Action -or- Action.Context');
+    if (!(loading || readOnly || disabled)) {
+      if (typeof value !== 'string') {
+        console.error('[@v2/core/Action]: value must be provided to Action or ActionGroup');
       } else {
-        context.onValueChange?.(value || context.value);
+        context.onValueChange?.(value);
       }
     }
   };
 
-  const contextProps = context
-    ? {
-        selected: selected || value === context.value || undefined,
-        disabled: disabled || context.disabled || undefined,
-        readOnly: readOnly || context.readOnly || undefined,
-        loading: loading || context.loading || undefined,
-        'data-orientation': context.orientation,
-        'aria-orientation': context.orientation,
-      }
+  const contextProps = !context
+    ? { selected, disabled, readOnly, loading }
     : {
-        selected: selected || undefined,
-        disabled: disabled || undefined,
-        readOnly: readOnly || undefined,
-        loading: loading || undefined,
+        'aria-orientation': context.orientation,
+        selected: selected || context.value === value,
+        disabled,
+        readOnly,
+        loading,
       };
 
   return (
     <UnstyledButton
-      {...forwardedProps}
+      {...otherProps}
       {...contextProps}
-      className={clsx(css.root, contextClassNames, className)}
-      onChange={createEventCallback(onChange, handleChange)}
+      className={clsx('v2-action', `v2-action--${size}`, `v2-action--${variant}`, className)}
+      onChange={handleChange}
       value={value}
       ref={ref}
     >

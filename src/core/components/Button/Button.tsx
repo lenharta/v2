@@ -1,115 +1,99 @@
 import clsx from 'clsx';
-import { Core, Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { createEventCallback } from '@/utils';
+import { Core } from '@/types';
 import { Icon, UnstyledButton } from '@/core';
-import { ButtonGroup } from './ButtonGroup';
+import { PolymorphicComponent } from '@/factory';
 import { useButtonContext } from './ButtonContext';
+import { ButtonGroup } from './ButtonGroup';
 
-export type ButtonComponents = {
-  Group: typeof ButtonGroup;
-};
-
-export type ButtonFactory = Factory.Config<{
+export type ButtonFactory = Core.Factory<{
   ref: HTMLButtonElement;
   props: Core.ButtonProps;
-  comps: ButtonComponents;
-  comp: 'button';
+  element: typeof UnstyledButton;
+  elements: {
+    Group: typeof ButtonGroup;
+  };
 }>;
 
-const css: Record<'root' | 'label' | 'layout' | 'section', string> = {
-  root: 'v2-button',
-  label: 'v2-button-label',
-  layout: 'v2-button-layout',
-  section: 'v2-button-section',
-};
+export const Button = PolymorphicComponent<ButtonFactory>(
+  (
+    {
+      size = 'sm',
+      value,
+      variant = 'default',
+      children,
+      className,
+      isLoading,
+      isDisabled,
+      isReadonly,
+      isSelected,
+      fullWidth,
+      iconRight,
+      iconLeft,
+      onChange,
+      component: Component = UnstyledButton,
+      ...props
+    },
+    ref
+  ) => {
+    const context = useButtonContext();
 
-export const Button = createFactory<ButtonFactory>((props, ref) => {
-  const {
-    size = 'md',
-    value,
-    variant = 'default',
-    loading,
-    disabled,
-    readOnly,
-    selected,
-    children,
-    iconLeft,
-    fullWidth,
-    iconRight,
-    className,
-    onChange,
-    ...forwardedProps
-  } = props;
+    const handleChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+      onChange?.(event);
 
-  const context = useButtonContext();
+      if (!value) return;
 
-  const contextClassNames = context
-    ? [`${css.root}--${size || context.size}`, `${css.root}--${variant || context.variant}`]
-    : [];
-
-  const handleChange = () => {
-    if (
-      !(loading || context.loading) &&
-      !(readOnly || context.readOnly) &&
-      !(disabled || context.disabled)
-    ) {
-      if (!value || !context.value) {
-        console.error('[@/core/Action]: A value must be provided to Action -or- Action.Context');
-      } else {
-        context.onValueChange?.(value || context.value);
+      if (!(isLoading || isReadonly || isDisabled)) {
+        if (typeof value !== 'string') {
+          console.error('[@v2/core/Action]: value must be provided to Action or ActionGroup');
+        } else {
+          context.onValueChange?.(value);
+        }
       }
-    }
-  };
+    };
 
-  const contextProps = context
-    ? {
-        selected: selected || value === context.value || undefined,
-        disabled: disabled || context.disabled || undefined,
-        readOnly: readOnly || context.readOnly || undefined,
-        loading: loading || context.loading || undefined,
-        'aria-orientation': context.orientation,
-        'data-orientation': context.orientation,
-        'data-block': fullWidth || context.fullWidth || undefined,
-      }
-    : {
-        selected: selected || undefined,
-        disabled: disabled || undefined,
-        readOnly: readOnly || undefined,
-        loading: loading || undefined,
-        'data-block': fullWidth || undefined,
-      };
+    const contextProps = !context
+      ? { isSelected, isDisabled, isReadonly, isLoading }
+      : {
+          'aria-orientation': context.orientation,
+          isSelected: isSelected || value === context.value,
+          isDisabled,
+          isReadonly,
+          isLoading,
+        };
 
-  return (
-    <UnstyledButton
-      {...forwardedProps}
-      {...contextProps}
-      className={clsx(css.root, ...contextClassNames, className)}
-      onChange={createEventCallback(onChange, handleChange)}
-      ref={ref}
-    >
-      <span className={css.layout}>
-        {iconLeft && (
-          <div className={css.section} data-position="left">
-            <Icon {...iconLeft} />
-          </div>
-        )}
+    return (
+      <Component
+        {...props}
+        {...contextProps}
+        data-block={!!fullWidth}
+        className={clsx('v2-button', `v2-button--${size}`, `v2-button--${variant}`, className)}
+        onChange={handleChange}
+        ref={ref}
+      >
+        <span className="v2-button-layout">
+          {iconLeft && (
+            <div className="v2-button-section" data-position="left">
+              <Icon {...iconLeft} />
+            </div>
+          )}
 
-        {children && (
-          <div className={css.label} data-loading={loading}>
-            {children}
-          </div>
-        )}
+          {children && (
+            <div className="v2-button-label" data-isLoading={isLoading}>
+              {children}
+            </div>
+          )}
 
-        {iconRight && (
-          <div className={css.section} data-position="right">
-            <Icon {...iconRight} />
-          </div>
-        )}
-      </span>
-    </UnstyledButton>
-  );
-});
+          {iconRight && (
+            <div className="v2-button-section" data-position="right">
+              <Icon {...iconRight} />
+            </div>
+          )}
+        </span>
+      </Component>
+    );
+  }
+);
 
 Button.Group = ButtonGroup;
 Button.displayName = '@v2/Button';

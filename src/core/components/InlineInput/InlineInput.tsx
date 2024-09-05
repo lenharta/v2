@@ -1,56 +1,51 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createPolymorphicFactory } from '@/factory';
-import { Text, Label, InlineInputProps } from '@/core';
+import { Core } from '@/types';
+import { Text, Label } from '@/core';
+import { PolymorphicComponent } from '@/factory';
 
-type InlineInputFactory = Factory.Config<{
+export type InlineInputFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: InlineInputProps;
+  props: Core.InlineInputProps;
+  element: 'div';
 }>;
 
-const css = {
-  root: 'v2-inline-input',
-  layout: 'v2-inline-input-layout',
-  content: 'v2-inline-input-content',
-};
-
-const InlineInput = createPolymorphicFactory<InlineInputFactory>((props, ref) => {
+export const InlineInput = PolymorphicComponent<InlineInputFactory>((props, ref) => {
   const {
-    error,
     label,
+    error,
+    status,
     message,
-    checked,
-    selected,
-    disabled,
-    readOnly,
     children,
     className,
+    isLoading,
+    isDisabled,
+    isReadonly,
     component: Component = 'div',
-    ...forwardedProps
+    ...otherProps
   } = props;
 
+  const dataProps = {
+    'data-status': status,
+    'data-loading': !!isLoading,
+    'data-disabled': !!isDisabled,
+    'data-readonly': !!isReadonly,
+  };
+
   return (
-    <div
+    <Component
+      {...otherProps}
+      {...dataProps}
+      className={clsx('v2-inline-input', className)}
       ref={ref}
-      className={clsx(css.content, className)}
-      data-selected={selected}
-      data-disabled={disabled}
-      data-readonly={readOnly}
-      data-checked={checked}
-      {...forwardedProps}
     >
-      <div className="v2-inline-input-layout">
-        {children}
-        <div className="v2-inline-input-content">
-          <Label>{label}</Label>
-          {error && <Text data-error={!!error}>{error}</Text>}
-          {message && <Text>{message}</Text>}
-        </div>
+      {children}
+      <div className="v2-inline-input-content">
+        <Label>{label}</Label>
+        {message && <Text>{message}</Text>}
+        {error && <Text data-error={!!error}>{error}</Text>}
       </div>
-    </div>
+    </Component>
   );
 });
 
 InlineInput.displayName = '@v2/InlineInput';
-export { InlineInput };

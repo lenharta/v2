@@ -1,27 +1,22 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Core } from '@/types';
+import { Component } from '@/factory';
 
-const css = {
-  root: 'v2-app-page',
-};
+export type FooterProps = {};
 
-export interface FooterProps {}
+export type FooterFactory = Core.Factory<{
+  ref: HTMLDivElement;
+  props: FooterProps;
+  element: 'footer';
+  excluded: 'children';
+}>;
 
-export interface FooterComponents {}
+export const Footer = Component<FooterFactory>(
+  ({ component: Component = 'footer', className, ...props }) => (
+    <Component {...props} className={clsx('v2-footer', className)}>
+      <span>Footer</span>
+    </Component>
+  )
+);
 
-export interface FooterComponent extends FooterComponents {
-  (props: Core.ComponentProps<'footer', FooterProps>): React.ReactNode;
-  displayName: string;
-}
-
-export const Footer: FooterComponent = (props) => {
-  const { children, className, ...otherProps } = props;
-  return (
-    <footer className={clsx(css.root, className)} {...otherProps}>
-      {children}
-    </footer>
-  );
-};
-
-Footer.displayName = '@v2/App.Footer';
+Footer.displayName = '@v2/Footer';

@@ -1,40 +1,44 @@
 import clsx from 'clsx';
-import { Factory } from '@/types';
-import { createFactory } from '@/factory';
-import { Disclosure, DisclosureProps } from '@/core';
-import { AccordionPanelProps } from '../types';
-import { useAccordionContext, useAccordionItemContext } from '../context';
+import { Core } from '@/types';
+import { Component } from '@/factory';
+import { Disclosure } from '@/core';
+import { useAccordionRootCTX, useAccordionItemCTX } from '../AccordionContext';
 
-type AccordionPanelFactory = Factory.Config<{
+type AccordionPanelFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: AccordionPanelProps & Partial<DisclosureProps>;
+  props: Core.AccordionPanelProps & Partial<Core.DisclosureProps>;
+  element: 'div';
 }>;
 
-const AccordionPanel = createFactory<AccordionPanelFactory>((props, ref) => {
-  const { className, children, variant, ...forwardedProps } = props;
+const AccordionPanel = Component<AccordionPanelFactory>(
+  ({ className, children, variant, ...props }, ref) => {
+    const rootContext = useAccordionRootCTX();
+    const itemContext = useAccordionItemCTX();
+    const itemVariant = variant || itemContext.variant || rootContext.variant;
 
-  const ctx = useAccordionContext();
-  const ctxItem = useAccordionItemContext();
+    const contextProps = {
+      id: rootContext.getPanelId(itemContext.value),
+      isOpen: rootContext.isValueActive(itemContext.value) ? true : false,
+      'aria-labelledby': rootContext.getTargetId(itemContext.value),
+    };
 
-  return (
-    <Disclosure
-      id={ctx.getPanelId(ctxItem.value)}
-      ref={ref}
-      role="region"
-      isOpen={ctx.isValueActive(ctxItem.value)}
-      className={clsx(
-        'v2-accordion-panel',
-        `v2-accordion-panel--${variant || ctxItem.variant || ctx.variant || 'default'}`,
-        className
-      )}
-      aria-labelledby={ctx.getTargetId(ctxItem.value)}
-      {...forwardedProps}
-    >
-      {children}
-    </Disclosure>
-  );
-});
+    return (
+      <Disclosure
+        {...props}
+        {...contextProps}
+        ref={ref}
+        role="region"
+        className={clsx(
+          'v2-accordion-panel',
+          `v2-accordion-panel--${itemVariant || 'default'}`,
+          className
+        )}
+      >
+        {children}
+      </Disclosure>
+    );
+  }
+);
 
 AccordionPanel.displayName = '@v2/Accordion.Panel';
 export { AccordionPanel };

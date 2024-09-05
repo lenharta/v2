@@ -1,27 +1,19 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Core } from '@/types';
+import { Component } from '@/factory';
 
-const css = {
-  root: 'v2-app-side-nav',
-};
+export type SideNavProps = {};
 
-export interface SideNavProps {}
+export type SideNavFactory = Core.Factory<{
+  ref: HTMLDivElement;
+  props: SideNavProps;
+  element: 'nav';
+}>;
 
-export interface SideNavComponents {}
+export const SideNav = Component<SideNavFactory>(({ children, className, ...props }) => (
+  <nav className={clsx('v2-side-nav', className)} {...props}>
+    {children}
+  </nav>
+));
 
-export interface SideNavComponent extends SideNavComponents {
-  (props: Core.ComponentProps<'nav', SideNavProps>): React.ReactNode;
-  displayName: string;
-}
-
-export const SideNav: SideNavComponent = (props) => {
-  const { children, className, ...otherProps } = props;
-  return (
-    <nav className={clsx(css.root, className)} {...otherProps}>
-      {children}
-    </nav>
-  );
-};
-
-SideNav.displayName = '@v2/App.Side.Nav';
+SideNav.displayName = '@v2/Side.Nav';

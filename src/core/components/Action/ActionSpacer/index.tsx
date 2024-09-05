@@ -1,36 +1,28 @@
 import clsx from 'clsx';
-import { Core, Factory } from '@/types';
-import { createFactory } from '@/factory';
+import { Core } from '@/types';
+import { Component } from '@/factory';
+import { mergeProps } from '@/core/utils';
 import { useActionContext } from '../ActionContext';
 
-export type ActionSpacerFactory = Factory.Config<{
+export type ActionSpacerFactory = Core.Factory<{
   ref: HTMLDivElement;
   props: Core.ActionSpacerProps;
-  omits: 'children';
-  comp: 'div';
+  excluded: 'children';
+  element: 'div';
 }>;
 
-const css: Record<'root', string> = {
-  root: 'v2-action-spacer',
-};
-
-export const ActionSpacer = createFactory<ActionSpacerFactory>((props, ref) => {
-  const { className, grow, variant = 'default', ...forwardedProps } = props;
-
+export const ActionSpacer = Component<ActionSpacerFactory>((props, ref) => {
   const context = useActionContext();
 
-  const contextClassNames = !context
-    ? [`${css.root}--${variant}`]
-    : [`${css.root}--${variant || context.variant}`];
+  const { variant, className, grow, ...otherProps } = mergeProps(props, context, {
+    variant: 'default',
+  });
 
-  return (
-    <div
-      {...forwardedProps}
-      className={clsx(css.root, ...contextClassNames, className)}
-      data-grow={!!grow || undefined}
-      ref={ref}
-    />
-  );
+  const dataProps = { 'data-grow': !!grow };
+
+  const classNames = clsx('v2-action-spacer', `v2-action-spacer--${variant}`, className);
+
+  return <div {...otherProps} {...dataProps} className={classNames} ref={ref} />;
 });
 
 ActionSpacer.displayName = '@v2/Action.Spacer';

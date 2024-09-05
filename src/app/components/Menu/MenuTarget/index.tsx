@@ -1,27 +1,22 @@
 import clsx from 'clsx';
-import React from 'react';
 import { Core } from '@/types';
-
-const css = {
-  root: 'v2-menu-target',
-};
+import { PolymorphicComponent } from '@/factory';
 
 export interface MenuTargetProps {}
 
-export interface MenuTargetComponents {}
+export type MenuTargetFactory = Core.Factory<{
+  ref: HTMLButtonElement;
+  props: MenuTargetProps;
+  element: 'button';
+}>;
 
-export interface MenuTargetComponent extends MenuTargetComponents {
-  (props: Core.ComponentProps<'button', MenuTargetProps>): React.ReactNode;
-  displayName: string;
-}
-
-export const MenuTarget: MenuTargetComponent = (props) => {
-  const { className, children, ...otherProps } = props;
+export const MenuTarget = PolymorphicComponent<MenuTargetFactory>((props, ref) => {
+  const { children, className, component: Component = 'button' } = props;
   return (
-    <button className={clsx(css.root, className)} {...otherProps}>
+    <Component {...props} ref={ref} className={clsx('v2-menu-target', className)}>
       {children}
-    </button>
+    </Component>
   );
-};
+});
 
 MenuTarget.displayName = '@v2/Menu.Target';
