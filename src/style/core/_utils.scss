@@ -1,0 +1,34 @@
+@mixin button-reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // outline-color: transparent;
+  // outline-width: var(--v2-unit);
+  // outline-style: solid;
+
+  &:focus(:focus-visible) {
+    // outline-offset: calc(var(--v2-unit) * 1);
+    outline-color: var(--v2-color-focus);
+  }
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+}
+
+@mixin button-cursor {
+  &:not([data-loading]),
+  &:not([data-readonly]),
+  &:not([data-disabled]) {
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+  &[data-readonly] {
+    cursor: default;
+  }
+  &[data-loading] {
+    cursor: wait;
+  }
+}

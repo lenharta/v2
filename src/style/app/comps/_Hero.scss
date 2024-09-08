@@ -1,5 +1,27 @@
-@use '../../config' as config;
+.v2-hero {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-inline: var(--v2-gutter);
+  padding-block: calc(var(--v2-gutter) * 2);
 
-.#{config.$prefix}-app-hero {
-  display: block;
+  height: calc(var(--v2-gutter) * 24);
+
+  @media (min-width: 40em) {
+    height: calc(var(--v2-gutter) * 20);
+  }
+
+  @media (min-width: 50em) {
+    height: calc(var(--v2-gutter) * 16);
+  }
+
+  @media (min-width: 60em) {
+    height: calc(var(--v2-gutter) * 12);
+  }
+
+  .v2-title {
+    font-size: var(--v2-font-size-10);
+    line-height: var(--v2-line-height-01);
+  }
 }

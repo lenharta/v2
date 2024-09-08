@@ -1,7 +1,55 @@
 @use '../../config' as *;
+@use '../utils' as utils;
 
 .#{$prefix}-button {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  @include utils.button-reset;
+  @include utils.button-cursor;
+
+  --v2-button-height-xs: 2rem;
+  --v2-button-height-sm: 2.5rem;
+  --v2-button-height-md: 3rem;
+  --v2-button-height-lg: 3.5rem;
+  --v2-button-height-xl: 4rem;
+
+  --v2-button-spacing-x-xs: 1rem;
+  --v2-button-spacing-x-sm: 1rem;
+  --v2-button-spacing-x-md: 1rem;
+  --v2-button-spacing-x-lg: 1rem;
+  --v2-button-spacing-x-xl: 1rem;
+
+  height: var(--v2-button-height, var(--v2-button-height-xs));
+  padding-inline: var(--v2-button-spacing-x, var(--v2-button-spacing-x-xs));
+  outline-width: var(--v2-unit);
+  outline-color: transparent;
+  outline-style: solid;
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+
+  &:focus:focus-visible {
+    outline-color: var(--v2-color-focus);
+    outline-offset: calc(var(--v2-unit) * -1);
+  }
+
+  &--xs {
+    --v2-button-height: var(--v2-button-height-xs);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-xs);
+  }
+  &--sm {
+    --v2-button-height: var(--v2-button-height-sm);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-sm);
+  }
+  &--md {
+    --v2-button-height: var(--v2-button-height-md);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-md);
+  }
+  &--lg {
+    --v2-button-height: var(--v2-button-height-lg);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-lg);
+  }
+  &--xl {
+    --v2-button-height: var(--v2-button-height-xl);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-xl);
+  }
 }

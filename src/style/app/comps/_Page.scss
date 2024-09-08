@@ -1,6 +1,12 @@
-@use '../../config' as config;
+@use '../utils' as utils;
 
-.#{config.$prefix}-app-page {
+.v2-page {
   display: block;
-  padding: 2rem;
+  font-family: var(--v2-font-family);
+
+  @media (min-width: 50em) {
+    height: calc(100% - var(--v2-action));
+    margin-top: var(--v2-action);
+    margin-left: var(--v2-action);
+  }
 }

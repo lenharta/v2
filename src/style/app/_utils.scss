@@ -1,0 +1,40 @@
+@mixin reset {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin button-reset {
+  border: solid var(--v2-unit) transparent;
+  outline: solid var(--v2-unit) transparent;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  &:focus(:focus-visible) {
+    outline: solid var(--v2-unit) var(--v2-color-focus);
+    outline-offset: none;
+  }
+  &:focus:not(:focus-visible) {
+    outline: solid var(--v2-unit) transparent;
+    outline-offset: calc(var(--v2-unit) * -1);
+  }
+}
+
+@mixin button-cursor {
+  &:not([data-loading]),
+  &:not([data-readonly]),
+  &:not([data-disabled]) {
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+  &[data-readonly] {
+    cursor: default;
+  }
+  &[data-loading] {
+    cursor: wait;
+  }
+}

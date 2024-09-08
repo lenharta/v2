@@ -37,10 +37,18 @@ export const Button = PolymorphicComponent<ButtonFactory>(
     ref
   ) => {
     const context = useButtonContext();
-    const loading = isLoading || context.isLoading;
-    const disabled = isDisabled || context.isDisabled;
-    const readonly = isReadonly || context.isReadonly;
-    const selected = isSelected || context.value === value;
+
+    const loading = isLoading || (context && context.isLoading);
+    const disabled = isDisabled || (context && context.isDisabled);
+    const readonly = isReadonly || (context && context.isReadonly);
+    const selected = isSelected || (context.value && value && context.value === value);
+
+    const classNames = clsx(
+      'v2-button',
+      `v2-button--${size || context.size || 'md'}`,
+      `v2-button--${variant || context.variant || 'default'}`,
+      className
+    );
 
     const handleChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
       event.stopPropagation();
@@ -57,26 +65,18 @@ export const Button = PolymorphicComponent<ButtonFactory>(
       }
     };
 
-    const classNames = clsx(
-      'v2-button',
-      `v2-button--${size || context.size || 'md'}`,
-      `v2-button--${variant || context.variant || 'default'}`,
-      className
-    );
-
     return (
       <Component
         {...props}
-        ref={ref}
-        value={value}
-        onChange={handleChange}
-        className={classNames}
         data-loading={loading}
-        data-disabled={disabled}
-        data-readonly={readonly}
         data-selected={selected}
-        aria-selected={selected}
-        data-block={!!fullWidth}
+        data-readonly={readonly}
+        data-disabled={disabled}
+        data-block={fullWidth}
+        className={classNames}
+        onChange={handleChange}
+        value={value}
+        ref={ref}
       >
         <span className="v2-button-layout">
           {iconLeft && (

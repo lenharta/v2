@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { Core } from '@/types';
 import { Component } from '@/factory';
 
-export interface MenuDisplayProps {}
+export type MenuDisplayProps = {};
 
 export type MenuFactory = Core.Factory<{
   ref: HTMLDivElement;

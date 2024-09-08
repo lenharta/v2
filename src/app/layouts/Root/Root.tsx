@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Router from 'react-router-dom';
-import { StoreProvider } from '@/app';
 import { Core } from '@/types';
+import { StoreProvider } from '@/app';
 
 export type RootLayoutProps = {};
 

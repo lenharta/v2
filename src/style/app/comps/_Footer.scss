@@ -1,5 +1,5 @@
-@use '../../config' as config;
+@use '../utils' as utils;
 
-.#{config.$prefix}-app-footer {
+.v2-footer {
   display: block;
 }

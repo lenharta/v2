@@ -11,9 +11,9 @@ export type HeroFactory = Core.Factory<{
 }>;
 
 export const Hero = Component<HeroFactory>(
-  ({ component: Component = 'section', className, ...props }, ref) => (
+  ({ children, component: Component = 'section', className, ...props }, ref) => (
     <Component {...props} ref={ref} className={clsx('v2-hero', className)}>
-      <span>Hero</span>
+      {children}
     </Component>
   )
 );

@@ -4,7 +4,87 @@ body {
   background-color: var(--v2-color-background-0);
 }
 
-.v2-app-page {
-  color: var(--v2-color-text-1);
+.v2-brand {
+  color: hsl(var(--v2-hue-accent), 60%);
+}
+
+.v2-page {
+  color: var(--v2-color-text-0);
+  background-color: var(--v2-color-background-0);
+}
+
+.v2-hero {
+  color: var(--v2-color-text-0);
   background-color: var(--v2-color-background-1);
+}
+
+.v2-side {
+  color: var(--v2-color-text-0);
+  background-color: var(--v2-color-background-0);
+
+  &-nav {
+    background-color: var(--v2-color-background-0);
+  }
+
+  &-nav-label {
+    background-color: var(--v2-color-background-2);
+  }
+
+  &-nav-label::after {
+    background-color: hsl(var(--v2-hue-accent), 60%);
+  }
+
+  &-spacer {
+    background-color: var(--v2-color-background-1);
+  }
+
+  &-menu-select {
+    background-color: var(--v2-color-background-0);
+  }
+}
+
+.v2-header {
+  color: var(--v2-color-text-0);
+  background-color: var(--v2-color-background-0);
+
+  &-spacer {
+    color: var(--v2-color-text-0);
+    background-color: var(--v2-color-background-1);
+  }
+
+  &-logo {
+    color: var(--v2-color-text-0);
+    background-color: var(--v2-color-background-1);
+  }
+
+  &-logo:hover {
+    background-color: var(--v2-color-background-1-hovered);
+  }
+
+  &-logo:active {
+    background-color: var(--v2-color-background-1-pressed);
+  }
+}
+
+.v2-home-brands {
+  &-title span {
+    color: hsl(var(--v2-hue-accent), 60%);
+  }
+  &-text {
+    color: var(--v2-color-text-2);
+  }
+  &-tile {
+    color: var(--v2-color-text-2);
+    background-color: var(--v2-color-background-1);
+  }
+
+  &-tile:hover {
+    color: var(--v2-color-text-0);
+    background-color: var(--v2-color-background-1-hovered);
+  }
+
+  &-tile:active {
+    color: var(--v2-color-text-0);
+    background-color: var(--v2-color-background-1-pressed);
+  }
 }

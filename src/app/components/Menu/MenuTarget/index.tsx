@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { Core } from '@/types';
 import { PolymorphicComponent } from '@/factory';
 
-export interface MenuTargetProps {}
+export type MenuTargetProps = {};
 
 export type MenuTargetFactory = Core.Factory<{
   ref: HTMLButtonElement;

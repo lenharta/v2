@@ -1,8 +1,7 @@
 import clsx from 'clsx';
+import { Icon } from '@/core';
 import { Core } from '@/types';
 import { Component } from '@/factory';
-import { mergeProps } from '@/core/utils';
-import { Icon, UnstyledButton } from '@/core';
 import { useActionContext } from './ActionContext';
 import { ActionSpacer } from './ActionSpacer';
 import { ActionGroup } from './ActionGroup';
@@ -11,7 +10,6 @@ export type ActionFactory = Core.Factory<{
   ref: HTMLButtonElement;
   props: Core.ActionProps;
   element: 'button';
-  excluded: 'children';
   elements: {
     Group: typeof ActionGroup;
     Spacer: typeof ActionSpacer;
@@ -25,6 +23,7 @@ export const Action = Component<ActionFactory>(
       size,
       value,
       variant,
+      children,
       isLoading,
       isDisabled,
       isReadonly,
@@ -37,10 +36,10 @@ export const Action = Component<ActionFactory>(
   ) => {
     const context = useActionContext();
 
-    const loading = isLoading || context.isLoading;
-    const disabled = isDisabled || context.isDisabled;
-    const readonly = isReadonly || context.isReadonly;
-    const selected = isSelected || context.value === value;
+    const loading = isLoading || (context && context.isLoading);
+    const disabled = isDisabled || (context && context.isDisabled);
+    const readonly = isReadonly || (context && context.isReadonly);
+    const selected = isSelected || (context.value && value && context.value === value);
 
     const handleChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
       event.stopPropagation();
@@ -75,9 +74,9 @@ export const Action = Component<ActionFactory>(
         data-disabled={disabled}
         data-readonly={readonly}
         data-selected={selected}
-        aria-selected={selected}
       >
-        <Icon {...icon} />
+        {children}
+        {!children && <Icon {...icon} />}
       </button>
     );
   }

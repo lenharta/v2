@@ -1,0 +1,38 @@
+@layer theme-tokens {
+  [data-prefers-color-accent='red'] {
+    --v2-hue-accent: var(--v2-hue-red);
+  }
+  [data-prefers-color-accent='orange'] {
+    --v2-hue-accent: var(--v2-hue-orange);
+  }
+  [data-prefers-color-accent='yellow'] {
+    --v2-hue-accent: var(--v2-hue-yellow);
+  }
+  [data-prefers-color-accent='green'] {
+    --v2-hue-accent: var(--v2-hue-green);
+  }
+  [data-prefers-color-accent='teal'] {
+    --v2-hue-accent: var(--v2-hue-teal);
+  }
+  [data-prefers-color-accent='cyan'] {
+    --v2-hue-accent: var(--v2-hue-cyan);
+  }
+  [data-prefers-color-accent='blue'] {
+    --v2-hue-accent: var(--v2-hue-blue);
+  }
+  [data-prefers-color-accent='purple'] {
+    --v2-hue-accent: var(--v2-hue-purple);
+  }
+  [data-prefers-color-accent='magenta'] {
+    --v2-hue-accent: var(--v2-hue-magenta);
+  }
+  [data-prefers-color-accent='stone'] {
+    --v2-hue-accent: var(--v2-hue-stone);
+  }
+  [data-prefers-color-accent='grey'] {
+    --v2-hue-accent: var(--v2-hue-grey);
+  }
+  [data-prefers-color-accent='slate'] {
+    --v2-hue-accent: var(--v2-hue-slate);
+  }
+}

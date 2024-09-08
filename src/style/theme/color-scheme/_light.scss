@@ -1,5 +1,7 @@
-@layer token-colors {
+@layer theme-tokens {
   [data-prefers-color-mode='light'] {
+    --v2-color-focus: hsl(220, 100%, 56%);
+
     --v2-color-text-0: var(--v2-color-grey-950);
     --v2-color-text-1: var(--v2-color-grey-850);
     --v2-color-text-2: var(--v2-color-grey-750);

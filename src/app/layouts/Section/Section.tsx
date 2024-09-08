@@ -11,7 +11,7 @@ export type SectionFactory = Core.Factory<{
 }>;
 
 export const Section = Component<SectionFactory>(({ children, className, ...props }, ref) => (
-  <section {...props} ref={ref} className={clsx('v2-Section', className)}>
+  <section {...props} ref={ref} className={clsx('v2-section', className)}>
     {children}
   </section>
 ));
