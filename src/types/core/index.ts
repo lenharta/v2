@@ -526,12 +526,17 @@ export declare namespace Core {
     onTransitionEnd?: (() => void);
   }
 
+  export type DividerSize = 'sm' | 'md' | 'lg';
+  export type DividerVariant = 'default' | 'accent' | 'accent-text';
+
   export type DividerProps = {
-    icon?: React.ReactNode | undefined;
-    label?: React.ReactNode | undefined;
-    decoration?: 'solid' | 'dashed' | 'dotted' | undefined;
-    iconPosition?: Core.Align | undefined;
-    labelPosition?: Core.Align | 'center' | undefined;
+    size?: DividerSize;
+    icon?: Partial<ICON.Props>;
+    label?: React.ReactNode;
+    variant?: DividerVariant;
+    decoration?: 'solid' | 'dashed' | 'dotted';
+    iconPosition?: Core.Align;
+    labelPosition?: Core.Align | 'center';
   }
 
   export type FloatingDir = 'ltr' | 'rtl';
@@ -543,35 +548,35 @@ export declare namespace Core {
   export type FloatingOffsetAxis = 'mainAxis' | 'crossAxis' | 'alignAxis';
   export type FloatingMiddlewareKey = 'inline' | 'shift' | 'size' | 'flip';
   
-  export type FloatingOffsetAxisProps = { [Key in FloatingOffsetAxis]?: number | undefined };
-  export type FloatingMiddlewareProps = { [Key in FloatingMiddlewareKey]?: boolean | undefined };
+  export type FloatingOffsetAxisProps = { [Key in FloatingOffsetAxis]?: number };
+  export type FloatingMiddlewareProps = { [Key in FloatingMiddlewareKey]?: boolean };
   
   export type FloatingPlacementProps = {
     value: FloatingPlacement;
-    onChange?: ((placement: FloatingPlacement) => void) | undefined;
-    dependencies?: React.DependencyList | any[] | undefined;
+    onChange?: ((placement: FloatingPlacement) => void);
+    dependencies?: React.DependencyList | any[];
   }
   
   export type FloatingProps = {
     dir?: FloatingDir;
     isOpen: boolean;
-    zIndex?: number | undefined;
+    zIndex?: number;
     children: React.ReactNode;
-    behavior?: 'click' | 'hover' | undefined;
-    disabled?: boolean | undefined;
-    placement?: FloatingPlacement | undefined;
-    placementDependencies?: React.DependencyList | any[] | undefined;
-    onPlacementChange?: ((placement: FloatingPlacement) => void) | undefined;
-    closeOnClickOutside?: boolean | undefined;
-    clickOutsideIgnoreRefs?: React.RefObject<HTMLElement>[] | undefined;
-    closeOnEscape?: boolean | undefined;
-    transitionProps?: Partial<TransitionProps> | undefined;
-    width?: FloatingWidth | undefined;
-    offset?: number | FloatingOffsetAxisProps | undefined;
-    strategy?: FloatingStrategy | undefined;
-    middleware?: FloatingMiddlewareProps | undefined;
-    onOpen?: (() => void) | undefined;
-    onClose?: (() => void) | undefined;
+    behavior?: 'click' | 'hover';
+    disabled?: boolean;
+    placement?: FloatingPlacement;
+    placementDependencies?: React.DependencyList | any[];
+    onPlacementChange?: ((placement: FloatingPlacement) => void);
+    closeOnClickOutside?: boolean;
+    clickOutsideIgnoreRefs?: React.RefObject<HTMLElement>[];
+    closeOnEscape?: boolean;
+    transitionProps?: Partial<TransitionProps>;
+    width?: FloatingWidth;
+    offset?: number | FloatingOffsetAxisProps;
+    strategy?: FloatingStrategy;
+    middleware?: FloatingMiddlewareProps;
+    onOpen?: (() => void);
+    onClose?: (() => void);
     onChange: (isOpen: boolean) => void;
   }
   
@@ -582,11 +587,11 @@ export declare namespace Core {
     zIndex: number;
     isOpen: boolean;
     behavior: 'click' | 'hover';
-    disabled?: boolean | undefined;
+    disabled?: boolean;
     placement: FloatingPlacement;
-    placementDependencies?: React.DependencyList | any[] | undefined;
-    onPlacementChange?: ((placement: FloatingPlacement) => void) | undefined;
-    transitionProps?: Partial<TransitionProps> | undefined;
+    placementDependencies?: React.DependencyList | any[];
+    onPlacementChange?: ((placement: FloatingPlacement) => void);
+    transitionProps?: Partial<TransitionProps>;
     closeOnClickOutside: boolean;
     closeOnEscape: boolean;
     onClose: () => void;
@@ -598,9 +603,9 @@ export declare namespace Core {
   }
   
   export type FloatingTargetProps = {
-    style?: React.CSSProperties | undefined;
-    refProp?: string | undefined;
-    popupType?: React.AriaAttributes['aria-haspopup'] | undefined;
+    style?: React.CSSProperties;
+    refProp?: string;
+    popupType?: React.AriaAttributes['aria-haspopup'];
     children: React.ReactElement;
   }
   
@@ -612,8 +617,8 @@ export declare namespace Core {
   export type UseFloatingConfig = {
     open: boolean;
     placement: FloatingPlacement;
-    placementDependencies?: React.DependencyList | any[] | undefined;
-    onPlacementChange?: ((placement: FloatingPlacement) => void) | undefined;
+    placementDependencies?: React.DependencyList | any[];
+    onPlacementChange?: ((placement: FloatingPlacement) => void);
     floating: {
       update: () => void;
       refs: {
@@ -625,16 +630,16 @@ export declare namespace Core {
   
   export type UseFloatingOptions = {
     open: boolean;
-    width?: FloatingWidth | undefined;
+    width?: FloatingWidth;
     offset: number | FloatingOffsetAxisProps;
-    strategy?: FloatingStrategy | undefined;
-    middleware?: FloatingMiddlewareProps | undefined;
+    strategy?: FloatingStrategy;
+    middleware?: FloatingMiddlewareProps;
     placement: FloatingPlacement;
-    placementDependencies?: React.DependencyList | any[] | undefined;
-    onPlacementChange?: ((placement: FloatingPlacement) => void) | undefined;
+    placementDependencies?: React.DependencyList | any[];
+    onPlacementChange?: ((placement: FloatingPlacement) => void);
     onChange: (isOpen: boolean) => void;
-    onClose?: (() => void) | undefined;
-    onOpen?: (() => void) | undefined;
+    onClose?: (() => void);
+    onOpen?: (() => void);
   }
 
   export type IconButtonProps = {
@@ -645,13 +650,13 @@ export declare namespace Core {
 
   export type ImageProps = {
     alt: string;
-    src?: any | undefined;
-    fit?: React.CSSProperties['objectFit'] | undefined;
-    width?: React.CSSProperties['width'] | undefined;
-    height?: React.CSSProperties['height'] | undefined;
-    radius?: React.CSSProperties['borderRadius'] | undefined;
-    fallbackSrc?: string | undefined;
-    onError?: ((event: React.SyntheticEvent<HTMLImageElement, Event>) => void) | undefined;
+    src?: any;
+    fit?: React.CSSProperties['objectFit'];
+    width?: React.CSSProperties['width'];
+    height?: React.CSSProperties['height'];
+    radius?: React.CSSProperties['borderRadius'];
+    fallbackSrc?: string;
+    onError?: ((event: React.SyntheticEvent<HTMLImageElement, Event>) => void);
   }
 
   export type LabelProps = {}
@@ -712,8 +717,8 @@ export declare namespace Core {
   }
 
   export type StackProps = {
-    gap?: 'unset' | SizeExpanded | undefined;
-    children?: React.ReactNode | undefined;
+    gap?: 'unset' | SizeExpanded;
+    children?: React.ReactNode;
   }
 
   export type TabsSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';

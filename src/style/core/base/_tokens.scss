@@ -102,6 +102,26 @@
     --v2-button-spacing-x-xl: calc(var(--v2-unit) * 8);
     --v2-button-spacing-x-xxl: calc(var(--v2-unit) * 8);
 
+    --v2-divider-size-sm: calc(var(--v2-unit) / 2);
+    --v2-divider-size-md: var(--v2-unit);
+    --v2-divider-size-lg: calc(var(--v2-unit) * 1.5);
+
+    --v2-divider-gap-sm: calc(var(--v2-unit) * 6);
+    --v2-divider-gap-md: calc(var(--v2-unit) * 7);
+    --v2-divider-gap-lg: calc(var(--v2-unit) * 8);
+
+    --v2-divider-height-sm: calc(var(--v2-unit) * 6);
+    --v2-divider-height-md: calc(var(--v2-unit) * 7);
+    --v2-divider-height-lg: calc(var(--v2-unit) * 8);
+
+    --v2-divider-font-size-sm: calc(var(--v2-unit) * 6);
+    --v2-divider-font-size-md: calc(var(--v2-unit) * 7);
+    --v2-divider-font-size-lg: calc(var(--v2-unit) * 8);
+
+    --v2-divider-decoration-solid: solid;
+    --v2-divider-decoration-dashed: dashed;
+    --v2-divider-decoration-dotted: dotted;
+
     --v2-tabs-item-height-xxs: calc(var(--v2-unit) * 16);
     --v2-tabs-item-height-xs: calc(var(--v2-unit) * 18);
     --v2-tabs-item-height-sm: calc(var(--v2-unit) * 20);

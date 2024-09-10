@@ -42,7 +42,7 @@ export const Icon = Component<IconFactory>(
     const fillColor = ICON_FILL_COLOR[fill];
 
     return (
-      <div className={clsx('v2-icon', className)} {...rootProps}>
+      <div className={clsx('v2-icon', className)} data-icon-name={name} {...rootProps}>
         <svg
           {...props}
           ref={ref}
@@ -52,7 +52,6 @@ export const Icon = Component<IconFactory>(
           height="16"
           viewBox="0 0 16 16"
           className="v2-icon-vector"
-          data-icon-name={name}
         >
           {ICON_MAP[type][name]}
         </svg>

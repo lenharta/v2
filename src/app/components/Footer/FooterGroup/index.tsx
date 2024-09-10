@@ -1,15 +1,18 @@
+import clsx from 'clsx';
+import { Core } from '@/types';
 import { Divider } from '@/core';
 import { Component } from '@/factory';
-import { Core, ICON } from '@/types';
 import { FooterItem } from '../FooterItem';
-import clsx from 'clsx';
+import * as Router from 'react-router-dom';
 
 export type FooterGroupProps = {
+  dividerProps?: Partial<Core.DividerProps>;
   group: string;
   items: {
-    icon?: Partial<ICON.Props>;
+    type?: 'internal' | 'external';
     label: string;
-    to: string;
+    value: string;
+    onClick?: (value: string) => void;
   }[];
 };
 
@@ -21,12 +24,21 @@ export type FooterGroupFactory = Core.Factory<{
 }>;
 
 export const FooterGroup = Component<FooterGroupFactory>(
-  ({ group, items, className, component: Component = 'div', ...props }, ref) => {
+  ({ group, items, dividerProps, className, component: Component = 'div', ...props }, ref) => {
+    const navigate = Router.useNavigate();
+
     return (
       <Component {...props} ref={ref} className={clsx('v2-footer-group', className)}>
-        <Divider label={group} />
+        <Divider {...dividerProps} label={group} />
+
         {items.map((item) => (
-          <FooterItem key={item.to} {...item} />
+          <FooterItem
+            key={item.value}
+            type={item.type}
+            value={item.value}
+            label={item.label}
+            onClick={navigate}
+          />
         ))}
       </Component>
     );

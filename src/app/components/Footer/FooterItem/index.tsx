@@ -1,35 +1,49 @@
 import clsx from 'clsx';
-import * as Router from 'react-router-dom';
-import { Component } from '@/factory';
-import { Core, ICON } from '@/types';
+import * as React from 'react';
 
 export type FooterItemProps = {
-  icon?: Partial<ICON.Props>;
+  type?: 'internal' | 'external';
   label: string;
-  to: string;
+  value: string;
+  onClick?: (value: string) => void;
+  className?: string;
 };
 
-export type FooterItemFactory = Core.Factory<{
-  ref: HTMLAnchorElement;
-  props: FooterItemProps;
-  element: typeof Router.Link;
-  excluded: 'children';
-}>;
+export type FooterItemComponent = {
+  (props: FooterItemProps): React.ReactNode;
+  displayName?: string;
+};
 
-export const FooterItem = Component<FooterItemFactory>(
-  ({ to = '/', label, className, component: Component = Router.Link, ...props }, ref) => {
-    return (
-      <Component
-        {...props}
-        to={to}
-        ref={ref}
-        className={clsx('v2-footer-item', className)}
-        aria-label={label}
-      >
-        {label}
-      </Component>
-    );
+export const FooterItem: FooterItemComponent = (props) => {
+  const { type = 'internal', label, value, className, onClick } = props;
+
+  let Component: React.ElementType = 'a';
+  let componentProps = {};
+
+  if (type === 'internal') {
+    Component = 'button';
+    componentProps = {
+      onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+        onClick?.(value);
+      },
+    };
   }
-);
+
+  if (type === 'external') {
+    Component = 'a';
+    componentProps = {
+      target: '__blank',
+      rel: 'noopener',
+      href: value,
+    };
+  }
+
+  return (
+    <Component className={clsx('v2-footer-item', className)} {...componentProps}>
+      {label}
+    </Component>
+  );
+};
 
 FooterItem.displayName = '@v2/Footer.Item';

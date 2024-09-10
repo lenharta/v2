@@ -18,6 +18,26 @@ const ROUTER = ReactRouterDOM.createBrowserRouter([
         element: <ROUTES.Home />,
       },
       {
+        path: '/about',
+        element: <ROUTES.About />,
+      },
+      {
+        path: '/contact',
+        element: <ROUTES.Contact />,
+      },
+      {
+        path: '/projects',
+        element: <ROUTES.Projects />,
+      },
+      {
+        path: '/sandbox',
+        element: <ROUTES.Sandbox />,
+      },
+      {
+        path: '/stack',
+        element: <ROUTES.Stack />,
+      },
+      {
         path: '/workspace',
         element: <ROUTES.Workspace />,
       },

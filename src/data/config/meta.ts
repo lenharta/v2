@@ -52,27 +52,27 @@ export enum SOCIAL_USERNAME {
   NPMJS = 'thunkworks',
   GITHUB = 'lenharta',
   TWITTER = 'thunkworks',
-  LINKEDIN = 'andrew-lenhart-06a1192a7',
+  LINKEDIN = 'andrew-lenhart',
   CODESANDBOX = 'lenharta',
-  STACKOVERFLOW = '17825807/',
+  STACKOVERFLOW = 'andrew-lenhart',
 }
 
 export enum SOCIAL_DOMAIN {
   NPMJS = 'https://www.npmjs.com/',
   GITHUB = 'https://www.github.com/',
-  TWITTER = 'https://www.codesandbox.io/',
+  TWITTER = 'https://www.x.com/',
   LINKEDIN = 'https://www.linkedin.com/',
-  CODESANDBOX = 'https://www.stackoverflow.com/',
-  STACKOVERFLOW = 'https://www.x.com/',
+  CODESANDBOX = 'https://www.codesandbox.io/',
+  STACKOVERFLOW = 'https://www.stackoverflow.com/',
 }
 
 export enum SOCIAL_PROFILE {
   NPMJS = 'https://www.npmjs.com/~thunkworks/',
   GITHUB = 'https://www.github.com/lenharta/',
-  TWITTER = 'https://www.codesandbox.io/u/lenharta/',
+  TWITTER = 'https://www.x.com/thunkworks/',
   LINKEDIN = 'https://www.linkedin.com/in/andrew-lenhart-06a1192a7/',
-  CODESANDBOX = 'https://www.stackoverflow.com/users/17825807/andrew-lenhart/',
-  STACKOVERFLOW = 'https://www.x.com/thunkworks/',
+  CODESANDBOX = 'https://www.codesandbox.io/u/lenharta/',
+  STACKOVERFLOW = 'https://www.stackoverflow.com/users/17825807/andrew-lenhart/',
 }
 
 export const META = {

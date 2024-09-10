@@ -23,9 +23,9 @@ export const Header = Component<HeaderFactory>(
     return (
       <Component {...props} ref={ref} className={clsx('v2-header', className)}>
         <span className="v2-header-inner">
-          <Header.Logo onClick={() => navigate('/workspace')} />
+          <Header.Logo onClick={() => navigate('/')} />
           <div className="v2-header-spacer" />
-          <Action icon={{ name: 'tools', fill: 'accent' }} />
+          <Action icon={{ name: 'tools', fill: 'accent' }} onClick={() => navigate('/workspace')} />
         </span>
       </Component>
     );

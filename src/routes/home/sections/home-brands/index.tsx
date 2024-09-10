@@ -76,9 +76,9 @@ export const HomeBrands = () => (
           Trusted by Market Leaders: <span>Elevating Digital Presence for Renowned Brands.</span>
         </Title>
         <Text className="v2-home-brands-banner-text">
-          Renowned brands rely on front-end development expertise to elevate their digital presence
-          with a focus on innovative design and exceptional user experience. Let's transform your
-          web experience into a powerful tool.
+          Proud to be trusted by renowned brands that rely on front-end development expertise to
+          elevate their digital presence with a focus on innovative design and exceptional user
+          experience. Let's transform your web experience into a powerful tool.
         </Text>
       </div>
       <div className="v2-home-brands-tiles">
