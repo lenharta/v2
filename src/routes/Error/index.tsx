@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+import * as Router from 'react-router-dom';
 import { Text, Title } from '@/core';
 import { Hero, Main, Page, PageProps } from '@/app';
 
@@ -10,17 +11,14 @@ export type ErrorRouteComponent = {
 };
 
 export const Error: ErrorRouteComponent = (props) => {
+  const homeLink = <Router.Link to="/">go home.</Router.Link>;
   return (
     <Page {...props}>
       <Hero>
-        <Title>Error</Title>
+        <Title>Page Error: 404</Title>
       </Hero>
       <Main>
-        <Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, accusantium aperiam, ex
-          itaque minima eos commodi quisquam a corrupti tempora earum quod dolorem sapiente
-          possimus? Harum ducimus architecto similique iusto.
-        </Text>
+        <Text>We had trouble locating the page. Try refreshing the page -or- {homeLink}</Text>
       </Main>
     </Page>
   );

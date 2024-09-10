@@ -1,21 +1,6 @@
 import * as React from 'react';
+import { ICON, Store } from '@/types';
 import { Action, Floating } from '@/core';
-import { Core, ICON, Store } from '@/types';
-
-const FLOATING_TRANSITION: Partial<Core.FloatingProps> = {
-  zIndex: 10000,
-  behavior: 'click',
-  transitionProps: {
-    duration: 200,
-    timingFunction: 'ease-in-out',
-    transition: {
-      transitionProperty: 'opacity, transform',
-      common: { transformOrigin: 'left', transitionDelay: '200ms' },
-      out: { transform: 'scaleX(0)', opacity: 0 },
-      in: { transform: 'scaleX(1)', opacity: 1 },
-    },
-  },
-};
 
 export type SideMenuTargetProps = {
   store: Store.State;
@@ -72,10 +57,26 @@ export const SideMenuTarget: SideMenuTargetComponent = (props) => {
 
   return (
     <Floating
+      dir={store.dir}
       isOpen={isOpen}
       onChange={() => setOpen((prev) => !prev)}
       placement={group === 'accent' ? 'right-start' : 'right'}
-      {...FLOATING_TRANSITION}
+      offset={{ crossAxis: group === 'accent' ? -2 : 0 }}
+      zIndex={10000}
+      behavior="click"
+      transitionProps={{
+        duration: 200,
+        timingFunction: 'ease-in-out',
+        transition: {
+          transitionProperty: 'opacity, transform',
+          common: {
+            transformOrigin: store.dir === 'ltr' ? 'left' : 'right',
+            transitionDelay: '200ms',
+          },
+          out: { transform: 'scaleX(0)', opacity: 0 },
+          in: { transform: 'scaleX(1)', opacity: 1 },
+        },
+      }}
     >
       <Floating.Target>
         <Action onClick={handleClick} icon={{ ...getGroupIconProps(), type: store.icons }} />

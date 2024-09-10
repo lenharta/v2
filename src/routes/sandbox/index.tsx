@@ -3,19 +3,19 @@ import * as Router from 'react-router-dom';
 import { Text, Title } from '@/core';
 import { Hero, Main, Page, PageProps, Section } from '@/app';
 
-export type WorkspaceRouteProps = PageProps & {};
+export type SandboxRouteProps = PageProps & {};
 
-export type WorkspaceRouteComponent = {
-  (props: WorkspaceRouteProps): React.ReactNode;
+export type SandboxRouteComponent = {
+  (props: SandboxRouteProps): React.ReactNode;
   displayName?: string;
 };
 
-export const Workspace: WorkspaceRouteComponent = (props) => {
+export const Sandbox: SandboxRouteComponent = (props) => {
   const homeLink = <Router.Link to="/">go home.</Router.Link>;
   return (
     <Page {...props}>
       <Hero>
-        <Title>Workspace</Title>
+        <Title>Sandbox</Title>
       </Hero>
       <Main>
         <Section>
@@ -29,4 +29,4 @@ export const Workspace: WorkspaceRouteComponent = (props) => {
   );
 };
 
-Workspace.displayName = '@v2/Route.Workspace';
+Sandbox.displayName = '@v2/Route.Sandbox';

@@ -15,6 +15,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    [data-prefers-dir='ltr'] & {
+      flex-direction: row;
+    }
+
+    [data-prefers-dir='rtl'] & {
+      flex-direction: row-reverse;
+    }
   }
 
   &-spacer {

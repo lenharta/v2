@@ -1,151 +1,155 @@
 html,
 body {
-  color: var(--v2-color-text-0);
-  background-color: var(--v2-color-background-0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+  background-color: hsla(var(--v2-hsl-base), 1);
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-expressive);
+  transition-duration: var(--v2-duration-slow-01);
 }
 
 .v2-brand {
-  color: var(--v2-color-accent);
+  color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
 .v2-page {
-  color: var(--v2-color-text-0);
-  background-color: var(--v2-color-background-0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
 }
 
 .v2-hero {
-  color: var(--v2-color-text-0);
-  background-color: var(--v2-color-background-1);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
 }
 
 .v2-side {
-  color: var(--v2-color-text-0);
-  background-color: var(--v2-color-background-0);
-}
-
-.v2-side-nav {
-  background-color: var(--v2-color-background-0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+  background-color: hsla(var(--v2-hsl-base), 1);
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-expressive);
+  transition-duration: var(--v2-duration-slow-01);
 }
 
 .v2-side-nav-label {
-  background-color: var(--v2-color-background-2);
+  background-color: hsla(var(--v2-hsl-base), 1);
 }
 
 .v2-side-nav-label::after {
-  background-color: var(--v2-color-accent);
+  background-color: hsla(var(--v2-hsl-accent), 1);
 }
 
 .v2-side-spacer {
-  background-color: var(--v2-color-background-1);
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
 }
 
 .v2-side-menu-select {
-  background-color: var(--v2-color-background-0);
+  background-color: hsla(var(--v2-hsl-base), 1);
 }
 
 .v2-header {
-  color: var(--v2-color-text-0);
-  background-color: var(--v2-color-background-0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+  background-color: hsla(var(--v2-hsl-base), 1);
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-expressive);
+  transition-duration: var(--v2-duration-slow-01);
 }
 
 .v2-header-spacer {
-  color: var(--v2-color-text-0);
-  background-color: var(--v2-color-background-1);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
 }
 
 .v2-header-logo {
-  color: var(--v2-color-text-0);
-  background-color: var(--v2-color-background-1);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
 
   &:hover {
-    background-color: var(--v2-color-background-1-hovered);
+    background-color: hsla(var(--v2-hsl-surface), 0.03);
   }
   &:active {
-    background-color: var(--v2-color-background-1-pressed);
+    background-color: hsla(var(--v2-hsl-surface), 0.04);
   }
 }
 
 .v2-footer {
-  color: var(--v2-color-text-3);
-  background-color: var(--v2-color-background-1);
+  color: hsla(var(--v2-hsl-surface), 0.47);
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
 }
 
 .v2-footer-item {
   &:hover {
-    color: var(--v2-color-text-2);
+    color: hsla(var(--v2-hsl-surface), 0.87);
 
     &::before {
-      background-color: var(--v2-color-accent);
+      background-color: hsla(var(--v2-hsl-accent), 1);
     }
   }
 }
 
 .v2-headline-layout::after {
-  background-color: var(--v2-color-background-2);
+  background-color: hsla(var(--v2-hsl-surface), 0.12);
 }
 
 .v2-headline-title {
-  color: var(--v2-color-accent);
+  color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
 .v2-headline-order {
-  color: var(--v2-color-background-2);
+  color: hsla(var(--v2-hsl-surface), 0.12);
 }
 
 .v2-home-hero-title-line-1 {
-  color: var(--v2-color-accent);
+  color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
 .v2-home-hero-title-line-2 {
-  color: var(--v2-color-text-0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
 }
 
 .v2-home-intro-text {
-  color: var(--v2-color-text-2);
+  color: hsla(var(--v2-hsl-surface), 0.87);
 }
 
 .v2-home-stats-card-value {
-  color: var(--v2-color-accent);
+  color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
 .v2-home-stats-card-text {
-  color: var(--v2-color-text-2);
+  color: hsla(var(--v2-hsl-surface), 0.67);
 }
 
 .v2-home-brands-banner-title span {
-  color: var(--v2-color-accent);
+  color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
 .v2-home-brands-banner-text {
-  color: var(--v2-color-text-2);
+  color: hsla(var(--v2-hsl-surface), 0.67);
 }
 
 .v2-home-brands-tile {
-  color: var(--v2-color-text-2);
-  background-color: var(--v2-color-background-1);
+  color: hsla(var(--v2-hsl-surface), 0.67);
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
   transition-timing-function: var(--v2-easing-productive);
   transition-duration: var(--v2-duration-moderate-01);
   transition-property: all;
 
   &:hover,
   &:active {
-    color: var(--v2-color-accent-text-0);
-    background-color: var(--v2-color-accent-surface-0);
+    color: hsla(var(--v2-hsl-accent), 0.97);
+    background-color: hsla(var(--v2-hsl-accent), 0.08);
   }
 }
 
 .v2-home-resume-banner-title span:nth-of-type(2) {
-  color: var(--v2-color-accent);
+  color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
 .v2-home-resume-tabs-panel-overline {
-  color: var(--v2-color-accent);
+  color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
 .v2-home-resume-tabs-panel-title {
-  color: var(--v2-color-text-0);
+  color: hsla(var(--v2-hsl-surface), 0.97);
 }
 
 .v2-home-resume-tabs-panel-text {
-  color: var(--v2-color-text-2);
+  color: hsla(var(--v2-hsl-surface), 0.67);
 }

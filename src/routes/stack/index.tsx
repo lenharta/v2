@@ -3,19 +3,19 @@ import * as Router from 'react-router-dom';
 import { Text, Title } from '@/core';
 import { Hero, Main, Page, PageProps, Section } from '@/app';
 
-export type WorkspaceRouteProps = PageProps & {};
+export type StackRouteProps = PageProps & {};
 
-export type WorkspaceRouteComponent = {
-  (props: WorkspaceRouteProps): React.ReactNode;
+export type StackRouteComponent = {
+  (props: StackRouteProps): React.ReactNode;
   displayName?: string;
 };
 
-export const Workspace: WorkspaceRouteComponent = (props) => {
+export const Stack: StackRouteComponent = (props) => {
   const homeLink = <Router.Link to="/">go home.</Router.Link>;
   return (
     <Page {...props}>
       <Hero>
-        <Title>Workspace</Title>
+        <Title>Stack</Title>
       </Hero>
       <Main>
         <Section>
@@ -29,4 +29,4 @@ export const Workspace: WorkspaceRouteComponent = (props) => {
   );
 };
 
-Workspace.displayName = '@v2/Route.Workspace';
+Stack.displayName = '@v2/Route.Stack';

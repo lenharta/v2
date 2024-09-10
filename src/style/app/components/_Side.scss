@@ -12,9 +12,16 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    bottom: calc(var(--v2-unit) * -1);
     top: var(--v2-action);
-    left: 0;
+    bottom: calc(var(--v2-unit) * -1);
+
+    [data-prefers-dir='ltr'] & {
+      left: 0;
+    }
+
+    [data-prefers-dir='rtl'] & {
+      right: 0;
+    }
 
     &-spacer {
       height: 100%;
@@ -98,7 +105,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding-inline: var(--v2-unit);
+      padding: var(--v2-unit);
       max-width: var(--v2-menu-select-item-width);
       flex-wrap: wrap;
 
