@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { Core } from '@/types';
 import { Component } from '@/factory';
 import { createKeyDownGroup } from '@/utils';
-import { Icon, Label, UnstyledButton } from '@/core';
+import { Icon, Label } from '@/core';
 import { useTabsContext } from '../TabsContext';
 import { TABS_SELECTORS } from '../constants';
 
