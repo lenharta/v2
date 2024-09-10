@@ -1,4 +1,4 @@
-import { UseFloatingOptions } from '../types';
+import { Core } from '@/types';
 import {
   size,
   flip,
@@ -10,8 +10,8 @@ import {
   UseFloatingReturn,
 } from '@floating-ui/react';
 
-function getFloatingMiddleware<E extends Element = HTMLElement>(
-  options: UseFloatingOptions,
+export function getFloatingMiddleware<E extends Element = HTMLElement>(
+  options: Core.UseFloatingOptions,
 
   getFloating: () => UseFloatingReturn<E>
 ): Middleware[] {
@@ -55,5 +55,3 @@ function getFloatingMiddleware<E extends Element = HTMLElement>(
 
   return middlewares;
 }
-
-export { getFloatingMiddleware };

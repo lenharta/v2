@@ -1,0 +1,85 @@
+@mixin reset {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin where-writing-mode {
+  text-align: left;
+  direction: ltr;
+
+  [data-prefers-dir='rtl'] & {
+    text-align: right;
+    direction: rtl;
+  }
+
+  &:where([data-truncate]) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &:where([data-truncate='start']) {
+    direction: rtl;
+    text-align: right;
+
+    [data-prefers-dir='rtl'] & {
+      direction: ltr;
+      text-align: left;
+    }
+  }
+}
+
+@mixin button-focus {
+  outline-width: var(--v2-unit);
+  outline-color: transparent;
+  outline-style: solid;
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: var(--v2-color-focus);
+    outline-offset: calc(var(--v2-unit) * -1);
+  }
+}
+
+@mixin button-cursor {
+  &:not([data-loading]),
+  &:not([data-readonly]),
+  &:not([data-disabled]) {
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+
+  &[data-readonly] {
+    cursor: default;
+  }
+
+  &[data-loading] {
+    cursor: wait;
+  }
+}
+
+@mixin link-cursor() {
+  &:not([data-loading]),
+  &:not([data-readonly]),
+  &:not([data-disabled]) {
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+
+  &[data-readonly] {
+    cursor: default;
+  }
+
+  &[data-loading] {
+    cursor: wait;
+  }
+}

@@ -15,3 +15,9 @@ LICENSE
 src/types
 src/data/config/meta.ts
 src/data/config/route.ts
+
+src/style/_data.scss
+src/style/_config.scss
+
+src/style/app/_reset.scss
+src/style/core/_reset.scss

@@ -1,4 +1,3 @@
-import { I18n } from '../i18n';
 import { Theme } from '../theme';
 
 export declare namespace Store {
@@ -11,7 +10,7 @@ export declare namespace Store {
 
   export type State = Theme.State & {
     nonce: () => string;
-    lang: I18n.LanguageCode;
+    lang: string;
     error?: boolean | undefined;
     session?: string | undefined;
     loading?: boolean | undefined;

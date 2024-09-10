@@ -1,51 +1,63 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
+import { Core } from '@/types';
 import { ICON_MAP } from './library';
-import { IconProps } from './types';
+import { Component } from '@/factory';
 
-type IconFactory = Factory.Config<{
+export type IconFactory = Core.Factory<{
   ref: SVGSVGElement;
-  comp: 'svg';
-  props: IconProps;
+  props: Core.IconComponentProps;
+  element: 'svg';
 }>;
 
-const Icon = createFactory<IconFactory>((props, ref) => {
-  const {
-    size = 'sm',
-    type = 'outline',
-    name = 'shape-circle',
-    fill,
-    alpha,
-    children,
-    className,
-    ...forwardedProps
-  } = props;
+export const ICON_FILL_COLOR = {
+  currentColor: 'currentColor',
+  accent: 'var(--v2-color-accent)',
+  yellow: 'var(--v2-color-yellow)',
+  blue: 'var(--v2-color-blue)',
+  cyan: 'var(--v2-color-cyan)',
+  green: 'var(--v2-color-green)',
+  grey: 'var(--v2-color-grey)',
+  magenta: 'var(--v2-color-magenta)',
+  orange: 'var(--v2-color-orange)',
+  purple: 'var(--v2-color-purple)',
+  red: 'var(--v2-color-red)',
+  slate: 'var(--v2-color-slate)',
+  stone: 'var(--v2-color-stone)',
+  teal: 'var(--v2-color-teal)',
+};
 
-  const theme = fill
-    ? {
-        color: `rgba(var(--c-rgb-${fill}), ${alpha || 1})`,
-      }
-    : {};
+export const Icon = Component<IconFactory>(
+  (
+    {
+      type = 'outline',
+      name = 'shape-circle',
+      fill = 'currentColor',
+      children,
+      className,
+      rootProps,
+      ...props
+    },
+    ref
+  ) => {
+    const fillColor = ICON_FILL_COLOR[fill];
 
-  return (
-    <div style={{ ...theme }} className={clsx('v2-icon', `v2-icon--size-${size}`, className)}>
-      <svg
-        ref={ref}
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        className="v2-icon-vector"
-        fill="currentColor"
-        data-icon-name={name}
-        {...forwardedProps}
-      >
-        {ICON_MAP[type][name]}
-      </svg>
-    </div>
-  );
-});
+    return (
+      <div className={clsx('v2-icon', className)} data-icon-name={name} {...rootProps}>
+        <svg
+          {...props}
+          ref={ref}
+          fill={fillColor}
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          className="v2-icon-vector"
+        >
+          {ICON_MAP[type][name]}
+        </svg>
+      </div>
+    );
+  }
+);
 
 Icon.displayName = '@v2/Icon';
-export { Icon };

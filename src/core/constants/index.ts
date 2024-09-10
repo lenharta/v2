@@ -1,4 +1,4 @@
-const DURATION = {
+export const DURATION = {
   ['fast-01']: 70,
   ['fast-02']: 110,
   ['moderate-01']: 150,
@@ -7,7 +7,7 @@ const DURATION = {
   ['slow-02']: 700,
 };
 
-const EASING = {
+export const EASING = {
   ['productive']: 'cubic-bezier(0.2, 0, 0.38, 0.9)',
   ['productive-exit']: 'cubic-bezier(0.2, 0, 1, 0.9)',
   ['productive-enter']: 'cubic-bezier(0, 0, 0.38, 0.9)',
@@ -15,5 +15,3 @@ const EASING = {
   ['expressive-exit']: 'cubic-bezier(0.4, 0.14, 1, 1)',
   ['expressive-enter']: 'cubic-bezier(0, 0, 0.3, 1)',
 };
-
-export { DURATION, EASING };

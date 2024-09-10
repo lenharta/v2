@@ -1,29 +1,33 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { CheckboxGroupProps } from '../types';
-import { CheckboxGroupProvider } from '../context';
-import { createPolymorphicFactory } from '@factory';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
+import { CheckboxProvider } from '../CheckboxContext';
+import { Group } from '../../Group';
 
-type CheckboxGroupFactory = Factory.Config<{
+export type CheckboxGroupFactory = Core.Factory<{
   ref: HTMLDivElement;
-  props: CheckboxGroupProps;
-  comp: 'div';
+  props: Core.CheckboxGroupProps;
+  element: typeof Group;
 }>;
 
-const CheckboxGroup = createPolymorphicFactory<CheckboxGroupFactory>((props, ref) => {
+export const CheckboxGroup = PolymorphicComponent<CheckboxGroupFactory>((props, ref) => {
   const {
-    value = [],
+    gap,
     shape,
+    value = [],
     children,
     className,
-    orientation = 'horizontal',
+    isLoading,
+    isReadonly,
+    isDisabled,
+    orientation,
+    onValueChange,
     component: Component = 'div',
-    onChange,
-    ...forwardedProps
+    ...otherProps
   } = props;
 
   const handleChange = (itemValue: string) => {
-    return onChange?.(
+    return onValueChange?.(
       value.includes(itemValue)
         ? value.filter((stateItem) => stateItem !== itemValue)
         : [...value, itemValue]
@@ -31,13 +35,28 @@ const CheckboxGroup = createPolymorphicFactory<CheckboxGroupFactory>((props, ref
   };
 
   return (
-    <Component ref={ref} className={clsx('v2-checkbox-group', className)} {...forwardedProps}>
-      <CheckboxGroupProvider value={{ value, onChange: handleChange, shape }}>
+    <Component
+      {...otherProps}
+      className={clsx('v2-checkbox-group', className)}
+      orientation={orientation}
+      gap={gap}
+      ref={ref}
+    >
+      <CheckboxProvider
+        value={{
+          onValueChange: handleChange,
+          orientation,
+          isDisabled,
+          isReadonly,
+          isLoading,
+          value,
+          gap,
+        }}
+      >
         {children}
-      </CheckboxGroupProvider>
+      </CheckboxProvider>
     </Component>
   );
 });
 
 CheckboxGroup.displayName = '@v2/Checkbox.Group';
-export { CheckboxGroup };

@@ -1,22 +1,19 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { TableTrProps } from '../types';
+import { Core } from '@/types';
+import { Component } from '@/factory';
 
-type TableTrFactory = Factory.Config<{
+export type TableTrFactory = Core.Factory<{
   ref: HTMLTableRowElement;
-  comp: 'tr';
-  props: TableTrProps;
+  props: Core.TableTrProps;
+  element: 'tr';
 }>;
 
-const TableTr = createFactory<TableTrFactory>((props, ref) => {
-  const { children, className, ...forwardedProps } = props;
+export const TableTr = Component<TableTrFactory>(({ children, className, ...props }, ref) => {
   return (
-    <tr ref={ref} className={clsx('v2-table-tr', className)} {...forwardedProps}>
+    <tr ref={ref} className={clsx('v2-table-tr', className)} {...props}>
       {children}
     </tr>
   );
 });
 
 TableTr.displayName = '@v2/Table.Tr';
-export { TableTr };

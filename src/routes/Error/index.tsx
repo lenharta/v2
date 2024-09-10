@@ -1,23 +1,27 @@
 import * as React from 'react';
-import { Page } from '@app/components';
-import { ErrorHero } from './ErrorHero';
-import { ErrorBanner } from './ErrorBanner';
+import * as Router from 'react-router-dom';
+import { Text, Title } from '@/core';
+import { Hero, Main, Page, PageProps } from '@/app';
 
-type ErrorFactory = React.FC<{}> & {
-  Hero: typeof ErrorHero;
-  Banner: typeof ErrorBanner;
+export type ErrorRouteProps = PageProps & {};
+
+export type ErrorRouteComponent = {
+  (props: ErrorRouteProps): React.ReactNode;
+  displayName?: string;
 };
 
-const Error: ErrorFactory = ({}) => {
+export const Error: ErrorRouteComponent = (props) => {
+  const homeLink = <Router.Link to="/">go home.</Router.Link>;
   return (
-    <Page>
-      <Error.Hero />
-      <Error.Banner />
+    <Page {...props}>
+      <Hero>
+        <Title>Page Error: 404</Title>
+      </Hero>
+      <Main>
+        <Text>We had trouble locating the page. Try refreshing the page -or- {homeLink}</Text>
+      </Main>
     </Page>
   );
 };
 
-Error.Hero = ErrorHero;
-Error.Banner = ErrorBanner;
-Error.displayName = '@v2/Error.Route';
-export { Error };
+Error.displayName = '@v2/Route.Error';

@@ -1,0 +1,106 @@
+@use '../utils' as utils;
+
+.v2-button {
+  @include utils.reset;
+  @include utils.button-focus;
+  @include utils.button-cursor;
+
+  width: auto;
+  display: inline;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  user-select: none;
+  font-weight: 600;
+  line-height: 1;
+
+  height: var(--v2-button-height);
+  padding-inline: var(--v2-button-spacing-x);
+
+  svg {
+    width: var(--v2-button-icon-size);
+    height: var(--v2-button-icon-size);
+  }
+
+  &:where([data-block]) {
+    display: block;
+    width: 100%;
+  }
+
+  &-layout {
+    gap: calc(var(--v2-button-spacing-x) * 1.5);
+    display: flex;
+    overflow: visible;
+    align-items: center;
+    justify-content: space-between;
+
+    [data-prefers-dir='rtl'] & {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &-label {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    white-space: nowrap;
+    line-height: var(--v2-line-height-01);
+    font-weight: var(--v2-font-weight-regular);
+    font-family: var(--v2-font-family);
+    font-size: var(--v2-button-font-size);
+    opacity: 1;
+
+    &:where([data-loading]) {
+      opacity: 0.2;
+    }
+  }
+
+  &--xxs {
+    --v2-button-height: var(--v2-button-height-xxs);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-xxs);
+    --v2-button-font-size: var(--v2-button-font-size-xxs);
+    --v2-button-icon-size: var(--v2-button-icon-size-xxs);
+  }
+
+  &--xs {
+    --v2-button-height: var(--v2-button-height-xs);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-xs);
+    --v2-button-font-size: var(--v2-button-font-size-xs);
+    --v2-button-icon-size: var(--v2-button-icon-size-xs);
+  }
+
+  &--sm {
+    --v2-button-height: var(--v2-button-height-sm);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-sm);
+    --v2-button-font-size: var(--v2-button-font-size-sm);
+    --v2-button-icon-size: var(--v2-button-icon-size-sm);
+  }
+
+  &--md {
+    --v2-button-height: var(--v2-button-height-md);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-md);
+    --v2-button-font-size: var(--v2-button-font-size-md);
+    --v2-button-icon-size: var(--v2-button-icon-size-md);
+  }
+
+  &--lg {
+    --v2-button-height: var(--v2-button-height-lg);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-lg);
+    --v2-button-font-size: var(--v2-button-font-size-lg);
+    --v2-button-icon-size: var(--v2-button-icon-size-lg);
+  }
+
+  &--xl {
+    --v2-button-height: var(--v2-button-height-xl);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-xl);
+    --v2-button-font-size: var(--v2-button-font-size-xl);
+    --v2-button-icon-size: var(--v2-button-icon-size-xl);
+  }
+
+  &--xxl {
+    --v2-button-height: var(--v2-button-height-xxl);
+    --v2-button-spacing-x: var(--v2-button-spacing-x-xxl);
+    --v2-button-font-size: var(--v2-button-font-size-xxl);
+    --v2-button-icon-size: var(--v2-button-icon-size-xxl);
+  }
+}

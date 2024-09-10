@@ -1,8 +1,8 @@
-import { TransitionProps } from './types';
+import { Core } from '@/types';
 import { useTransition } from './use-transition';
 import { getTransitionStyles } from './get-transition-styles';
 
-const Transition = (props: TransitionProps) => {
+const Transition = (props: Core.TransitionProps) => {
   const {
     mounted,
     duration = 250,

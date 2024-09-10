@@ -1,74 +1,86 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { createEventCallback } from '@utils';
-import { Icon, UnstyledButton } from '@core';
-import { AccordionTargetProps } from '../types';
-import { useAccordionContext, useAccordionItemContext } from '../context';
+import { Core } from '@/types';
+import { Component } from '@/factory';
+import { createEventCallback } from '@/utils';
+import { Icon, UnstyledButton } from '@/core';
+import { useAccordionRootCTX, useAccordionItemCTX } from '../AccordionContext';
 
-type AccordionTargetFactory = Factory.Config<{
+type AccordionTargetFactory = Core.Factory<{
   ref: HTMLButtonElement;
-  comp: 'button';
-  props: AccordionTargetProps;
+  props: Core.AccordionTargetProps;
+  element: 'button';
+  elements: {
+    Icon: React.FC<Core.AccordionTargetIconProps>;
+  };
 }>;
 
-const AccordionTarget = createFactory<AccordionTargetFactory>((props, ref) => {
-  const {
-    icon,
-    chevron = <Icon name="caret-west" />,
-    variant,
-    disabled,
-    children,
-    className,
-    onClick,
-    ...forwardedProps
-  } = props;
+const css = {
+  root: 'v2-accordion-target',
+  icon: 'v2-accordion-target-icon',
+  label: 'v2-accordion-target-label',
+  layout: 'v2-accordion-target-layout',
+};
 
-  const ctx = useAccordionContext();
-  const ctxItem = useAccordionItemContext();
+export const AccordionTarget = Component<AccordionTargetFactory>(
+  ({ chevron, variant = 'default', disabled, children, className, onClick, ...props }, ref) => {
+    const rootContext = useAccordionRootCTX();
+    const itemContext = useAccordionItemCTX();
 
-  const handleChange = () => ctx.onValueChange(ctxItem.value);
-  const handleClick = createEventCallback(onClick, handleChange);
+    const itemVariant = variant || itemContext.variant || rootContext.variant;
+    const handleChange = () => rootContext.onValueChange(itemContext.value);
+    const handleClick = createEventCallback(onClick, handleChange);
 
-  const contentProps = {
-    className: 'v2-accordion-target-content',
-    'data-active': ctx.isValueActive(ctxItem.value),
-  };
+    const accessibleProps = {
+      id: rootContext.getTargetId(itemContext.value),
+      disabled: disabled || rootContext.disabled || undefined,
+      'aria-expanded': rootContext.isValueActive(itemContext.value),
+      'aria-controls': rootContext.getPanelId(itemContext.value),
+    };
 
+    return (
+      <UnstyledButton
+        {...props}
+        {...accessibleProps}
+        className={clsx(css.root, `${css.root}--${itemVariant}`, className)}
+        onClick={handleClick}
+        ref={ref}
+      >
+        <span className={css.layout}>
+          <AccordionTarget.Icon
+            active={rootContext.isValueActive(itemContext.value)}
+            chevronPosition={rootContext.chevronPosition}
+            chevronRotation={rootContext.chevronRotation}
+            className={css.icon}
+            chevron={chevron}
+          />
+
+          <div className={css.label}>{children}</div>
+
+          <AccordionTarget.Icon
+            active={rootContext.isValueActive(itemContext.value)}
+            chevronPosition={rootContext.chevronPosition}
+            chevronRotation={rootContext.chevronRotation}
+            className={css.icon}
+            chevron={chevron}
+          />
+        </span>
+      </UnstyledButton>
+    );
+  }
+);
+
+AccordionTarget.Icon = ({ active, chevron, className, chevronPosition, chevronRotation }) => {
+  if (!chevronPosition) return null;
   return (
-    <UnstyledButton
-      ref={ref}
-      id={ctx.getTargetId(ctxItem.value)}
-      onClick={handleClick}
-      disabled={disabled || ctx.disabled}
-      aria-controls={ctx.getPanelId(ctxItem.value)}
-      aria-expanded={ctx.isValueActive(ctxItem.value)}
-      data-expanded={ctx.isValueActive(ctxItem.value)}
-      className={clsx(
-        'v2-accordion-target',
-        `v2-accordion-target--${variant || ctxItem.variant || ctx.variant || 'default'}`,
-        className
-      )}
-      {...forwardedProps}
+    <div
+      className={className}
+      data-active={!!active}
+      data-rotate={!!chevronRotation}
+      data-position={chevronPosition}
     >
-      <div className="v2-accordion-target-layout">
-        {ctx.chevronPosition === 'start' && (
-          <div {...contentProps} data-position="start">
-            {(ctx.chevronPosition === 'start' ? chevron : icon) ?? null}
-          </div>
-        )}
-
-        {children}
-
-        {ctx.chevronPosition === 'end' && (
-          <div {...contentProps} data-position="end">
-            {(ctx.chevronPosition === 'end' ? chevron : icon) ?? null}
-          </div>
-        )}
-      </div>
-    </UnstyledButton>
+      {chevron ?? <Icon name="caret-west" /> ?? null}
+    </div>
   );
-});
+};
 
 AccordionTarget.displayName = '@v2/Accordion.Target';
-export { AccordionTarget };

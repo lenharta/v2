@@ -93,7 +93,7 @@ const ICON_MAP_ARROWS_SHARED = {
   ),
 };
 
-const ICON_MAP_ARROWS_FILLED = {
+export const ICON_MAP_ARROWS_FILLED = {
   ...ICON_MAP_ARROWS_SHARED,
   ['arrow-east-square']: (
     <React.Fragment>
@@ -197,7 +197,7 @@ const ICON_MAP_ARROWS_FILLED = {
   ),
 };
 
-const ICON_MAP_ARROWS_OUTLINED = {
+export const ICON_MAP_ARROWS_OUTLINED = {
   ...ICON_MAP_ARROWS_SHARED,
   ['arrow-east-square']: (
     <React.Fragment>
@@ -300,5 +300,3 @@ const ICON_MAP_ARROWS_OUTLINED = {
     </React.Fragment>
   ),
 };
-
-export { ICON_MAP_ARROWS_FILLED, ICON_MAP_ARROWS_OUTLINED };

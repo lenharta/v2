@@ -1,0 +1,37 @@
+@use '../../config' as *;
+@use '../utils' as utils;
+
+.v2-action {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: var(--v2-action-button);
+  height: var(--v2-action-button);
+  outline-width: var(--v2-unit);
+  outline-color: transparent;
+  outline-style: solid;
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+
+  &:focus:focus-visible {
+    outline-color: var(--v2-color-focus);
+  }
+
+  &:not([data-loading]),
+  &:not([data-disabled]),
+  &:not([data-readonly]) {
+    cursor: pointer;
+  }
+
+  &[data-loading] {
+    cursor: wait;
+  }
+  &[data-readonly] {
+    cursor: default;
+  }
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+}

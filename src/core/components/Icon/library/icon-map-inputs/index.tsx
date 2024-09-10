@@ -6,7 +6,7 @@ const ICON_MAP_INPUTS_SHARED = {
       <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
     </React.Fragment>
   ),
-  ['close-x-large']: (
+  ['close-x-lg']: (
     <React.Fragment>
       <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
     </React.Fragment>
@@ -23,7 +23,7 @@ const ICON_MAP_INPUTS_SHARED = {
   ),
 };
 
-const ICON_MAP_INPUTS_FILLED = {
+export const ICON_MAP_INPUTS_FILLED = {
   ...ICON_MAP_INPUTS_SHARED,
   ['check-circle']: (
     <React.Fragment>
@@ -97,7 +97,7 @@ const ICON_MAP_INPUTS_FILLED = {
   ),
 };
 
-const ICON_MAP_INPUTS_OUTLINED = {
+export const ICON_MAP_INPUTS_OUTLINED = {
   ...ICON_MAP_INPUTS_SHARED,
   ['check-circle']: (
     <React.Fragment>
@@ -178,5 +178,3 @@ const ICON_MAP_INPUTS_OUTLINED = {
     </React.Fragment>
   ),
 };
-
-export { ICON_MAP_INPUTS_FILLED, ICON_MAP_INPUTS_OUTLINED };

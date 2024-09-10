@@ -1,12 +1,13 @@
+import clsx from 'clsx';
 import * as React from 'react';
-import { DURATION, EASING, TransitionProps, Floating, Label } from '@core';
-import { SelectBox } from './SelectBox';
-import { SelectProps } from './types';
+import { Core } from '@/types';
+import { Floating, Label } from '@/core/components';
+import { DURATION, EASING } from '@/core/constants';
 import { SelectOption } from './SelectOption';
 import { SelectTarget } from './SelectTarget';
-import clsx from 'clsx';
+import { SelectBox } from './SelectBox';
 
-const defaultTransition: Partial<TransitionProps> = {
+const defaultTransition: Partial<Core.TransitionProps> = {
   duration: DURATION['moderate-01'],
   transition: {
     transitionProperty: 'opacity, transform',
@@ -25,20 +26,20 @@ const defaultTransition: Partial<TransitionProps> = {
   },
 };
 
-type SelectFactory = React.FC<SelectProps> & {
+export type SelectFactory = React.FC<Core.SelectProps> & {
   Box: typeof SelectBox;
   Target: typeof SelectTarget;
   Option: typeof SelectOption;
 };
 
-function getLockupData(data: SelectProps['data']): Record<string, string> {
+export function getLockupData(data: Core.SelectProps['data']): Record<string, string> {
   return data.reduce<Record<string, string>>((acc, item) => {
     acc[(item as any).value] = item as any;
     return acc;
   }, {});
 }
 
-const Select: SelectFactory = (props) => {
+export const Select: SelectFactory = (props) => {
   const {
     dir = 'ltr',
     data,
@@ -49,9 +50,9 @@ const Select: SelectFactory = (props) => {
     offset = 0,
     zIndex = 300,
     variant = 'default',
-    disabled,
     strategy = 'absolute',
     placement = 'bottom-start',
+    isDisabled,
     middleware = { flip: true, shift: true, inline: false },
     placeholder = 'Select...',
     transitionProps,
@@ -67,7 +68,7 @@ const Select: SelectFactory = (props) => {
     onOpen,
   } = props;
 
-  const transition: Partial<TransitionProps> = transitionProps
+  const transition: Partial<Core.TransitionProps> = transitionProps
     ? transitionProps
     : defaultTransition;
 
@@ -80,7 +81,7 @@ const Select: SelectFactory = (props) => {
       zIndex={zIndex}
       offset={offset}
       isOpen={isOpen}
-      disabled={disabled}
+      disabled={isDisabled}
       strategy={strategy}
       placement={placement}
       middleware={middleware}
@@ -109,11 +110,11 @@ const Select: SelectFactory = (props) => {
               key={item.value}
               label={item.label}
               value={item.value}
-              disabled={item.disabled}
-              readOnly={item.readOnly}
-              selected={item.value === value || undefined}
+              isDisabled={item.isDisabled}
+              isReadonly={item.isReadonly}
+              isSelected={item.value === value || undefined}
               onClick={() => {
-                if (!disabled || !item.disabled || !item.readOnly) {
+                if (!isDisabled || !item.isDisabled || !item.isReadonly) {
                   if (closeOnOptionClick) {
                     onOpenChange(false);
                     onClose?.();
@@ -133,4 +134,3 @@ Select.Box = SelectBox;
 Select.Option = SelectOption;
 Select.Target = SelectTarget;
 Select.displayName = '@v2/Select';
-export { Select };

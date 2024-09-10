@@ -1,4 +1,4 @@
-import { Stack } from '@core';
+import { Stack } from '@/core';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 

@@ -1,68 +1,87 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Icon, UnstyledButton } from '@core';
-
-import { ActionProps } from './types';
-import { ActionGroup } from './ActionGroup';
+import { Icon } from '@/core';
+import { Core } from '@/types';
+import { Component } from '@/factory';
+import { useActionContext } from './ActionContext';
 import { ActionSpacer } from './ActionSpacer';
-import { useActionContext } from './context';
+import { ActionGroup } from './ActionGroup';
 
-type ActionFactory = Factory.Config<{
+export type ActionFactory = Core.Factory<{
   ref: HTMLButtonElement;
-  comp: 'button';
-  props: ActionProps;
-  omits: 'children';
-  comps: {
+  props: Core.ActionProps;
+  element: 'button';
+  elements: {
     Group: typeof ActionGroup;
     Spacer: typeof ActionSpacer;
   };
 }>;
 
-const Action = createFactory<ActionFactory>((props, ref) => {
-  const {
-    icon,
-    value,
-    variant,
-    loading,
-    disabled,
-    readOnly,
-    selected,
-    className,
-    ...forwardedProps
-  } = props;
+export const Action = Component<ActionFactory>(
+  (
+    {
+      icon,
+      size,
+      value,
+      variant,
+      children,
+      isLoading,
+      isDisabled,
+      isReadonly,
+      isSelected,
+      onChange,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const context = useActionContext();
 
-  const ctx = useActionContext();
+    const loading = isLoading || (context && context.isLoading);
+    const disabled = isDisabled || (context && context.isDisabled);
+    const readonly = isReadonly || (context && context.isReadonly);
+    const selected = isSelected || (context.value && value && context.value === value);
 
-  const contextProps = ctx
-    ? {
-        loading: !!ctx.loading || !!loading || undefined,
-        disabled: !!ctx.disabled || !!disabled || undefined,
-        readOnly: !!ctx.readOnly || !!readOnly || undefined,
-        selected: (!!ctx.value && value === ctx.value) || !!selected || undefined,
-        'data-orientation': ctx.orientation,
-        'aria-orientation': ctx.orientation,
+    const handleChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+      onChange?.(event);
+
+      if (!value) return;
+
+      if (!(loading || disabled || readonly)) {
+        if (typeof value !== 'string') {
+          console.error('[@v2/core/Action]: value must be provided to Action or ActionGroup');
+        } else {
+          context.onValueChange?.(value);
+        }
       }
-    : {};
+    };
 
-  return (
-    <UnstyledButton
-      ref={ref}
-      value={value}
-      loading={!!loading || undefined}
-      readOnly={!!readOnly || undefined}
-      disabled={!!disabled || undefined}
-      selected={!!selected || undefined}
-      className={clsx('v2-action', `v2-action--${variant || ctx.variant || 'elevated'}`, className)}
-      {...forwardedProps}
-      {...contextProps}
-    >
-      <Icon {...icon} />
-    </UnstyledButton>
-  );
-});
+    const classNames = clsx(
+      'v2-action',
+      `v2-action--${size || context.size || 'md'}`,
+      `v2-action--${variant || context.variant || 'default'}`,
+      className
+    );
+
+    return (
+      <button
+        {...props}
+        ref={ref}
+        value={value}
+        onChange={handleChange}
+        className={classNames}
+        data-loading={loading}
+        data-disabled={disabled}
+        data-readonly={readonly}
+        data-selected={selected}
+      >
+        {children}
+        {!children && <Icon {...icon} />}
+      </button>
+    );
+  }
+);
 
 Action.Group = ActionGroup;
 Action.Spacer = ActionSpacer;
 Action.displayName = '@v2/Action';
-export { Action };

@@ -1,0 +1,11 @@
+[data-prefers-color-mode='dark'] {
+  --v2-color-focus: hsl(220, 100%, 56%);
+
+  --v2-hsl-base: var(--v2-hue-grey), 07%;
+  --v2-hsl-surface: var(--v2-hue-grey), 99%;
+
+  [data-container-scheme='secondary'] {
+    --v2-hsl-base: var(--v2-hue-grey), 99%;
+    --v2-hsl-surface: var(--v2-hue-grey), 01%;
+  }
+}
