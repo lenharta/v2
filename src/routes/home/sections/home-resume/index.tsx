@@ -5,19 +5,19 @@ import { Button, Tabs, Text, Title } from '@/core';
 const headers = [
   {
     value: 'home:resume:doran',
-    label: '2024',
+    label: '2023',
   },
   {
     value: 'home:resume:antra',
-    label: '2022',
-  },
-  {
-    value: 'home:resume:pace',
     label: '2021',
   },
   {
-    value: 'home:resume:hawthorne',
+    value: 'home:resume:pace',
     label: '2020',
+  },
+  {
+    value: 'home:resume:hawthorne',
+    label: '2019',
   },
 ];
 
