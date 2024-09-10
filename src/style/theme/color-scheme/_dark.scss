@@ -1,0 +1,77 @@
+[data-prefers-color-mode='dark'] {
+  --v2-color-focus: hsl(220, 100%, 56%);
+
+  --v2-color-text-0: hsla(var(--v2-hue-grey), 99%, 0.99);
+  --v2-color-text-1: hsla(var(--v2-hue-grey), 99%, 0.87);
+  --v2-color-text-2: hsla(var(--v2-hue-grey), 99%, 0.65);
+  --v2-color-text-3: hsla(var(--v2-hue-grey), 99%, 0.43);
+
+  --v2-color-label-0: hsla(var(--v2-hue-grey), 99%, 0.99);
+  --v2-color-label-1: hsla(var(--v2-hue-grey), 99%, 0.87);
+  --v2-color-label-2: hsla(var(--v2-hue-grey), 99%, 0.65);
+  --v2-color-label-3: hsla(var(--v2-hue-grey), 99%, 0.43);
+
+  --v2-color-border-0: hsla(var(--v2-hue-grey), 30%, 0.99);
+  --v2-color-border-1: hsla(var(--v2-hue-grey), 30%, 0.87);
+  --v2-color-border-2: hsla(var(--v2-hue-grey), 30%, 0.65);
+  --v2-color-border-3: hsla(var(--v2-hue-grey), 30%, 0.43);
+
+  --v2-color-background-0: hsl(var(--v2-hue-grey), 07%);
+  --v2-color-background-1: hsl(var(--v2-hue-grey), 10%);
+  --v2-color-background-2: hsl(var(--v2-hue-grey), 13%);
+  --v2-color-background-3: hsl(var(--v2-hue-grey), 16%);
+  --v2-color-background-4: hsl(var(--v2-hue-grey), 19%);
+
+  --v2-color-background-0-hovered: hsl(var(--v2-hue-grey), 10%);
+  --v2-color-background-1-hovered: hsl(var(--v2-hue-grey), 13%);
+  --v2-color-background-2-hovered: hsl(var(--v2-hue-grey), 16%);
+  --v2-color-background-3-hovered: hsl(var(--v2-hue-grey), 19%);
+  --v2-color-background-4-hovered: hsl(var(--v2-hue-grey), 22%);
+
+  --v2-color-background-0-pressed: hsl(var(--v2-hue-grey), 12%);
+  --v2-color-background-1-pressed: hsl(var(--v2-hue-grey), 15%);
+  --v2-color-background-2-pressed: hsl(var(--v2-hue-grey), 18%);
+  --v2-color-background-3-pressed: hsl(var(--v2-hue-grey), 21%);
+  --v2-color-background-4-pressed: hsl(var(--v2-hue-grey), 24%);
+
+  --v2-color-button-0-enabled: hsl(var(--v2-hue-grey), 10%);
+  --v2-color-button-1-enabled: hsl(var(--v2-hue-grey), 13%);
+  --v2-color-button-2-enabled: hsl(var(--v2-hue-grey), 16%);
+  --v2-color-button-3-enabled: hsl(var(--v2-hue-grey), 19%);
+  --v2-color-button-4-enabled: hsl(var(--v2-hue-grey), 22%);
+
+  --v2-color-button-0-hovered: hsl(var(--v2-hue-grey), 12%);
+  --v2-color-button-1-hovered: hsl(var(--v2-hue-grey), 15%);
+  --v2-color-button-2-hovered: hsl(var(--v2-hue-grey), 18%);
+  --v2-color-button-3-hovered: hsl(var(--v2-hue-grey), 21%);
+  --v2-color-button-4-hovered: hsl(var(--v2-hue-grey), 24%);
+
+  --v2-color-button-0-pressed: hsl(var(--v2-hue-grey), 14%);
+  --v2-color-button-1-pressed: hsl(var(--v2-hue-grey), 17%);
+  --v2-color-button-2-pressed: hsl(var(--v2-hue-grey), 20%);
+  --v2-color-button-3-pressed: hsl(var(--v2-hue-grey), 23%);
+  --v2-color-button-4-pressed: hsl(var(--v2-hue-grey), 26%);
+
+  --v2-color-accent-text-0: hsla(var(--v2-hsl-accent), 0.99);
+  --v2-color-accent-text-1: hsla(var(--v2-hsl-accent), 0.87);
+  --v2-color-accent-text-2: hsla(var(--v2-hsl-accent), 0.65);
+  --v2-color-accent-text-3: hsla(var(--v2-hsl-accent), 0.43);
+
+  --v2-color-accent-surface-0: hsla(var(--v2-hsl-accent), 0.08);
+  --v2-color-accent-surface-1: hsla(var(--v2-hsl-accent), 0.16);
+  --v2-color-accent-surface-2: hsla(var(--v2-hsl-accent), 0.24);
+  --v2-color-accent-surface-3: hsla(var(--v2-hsl-accent), 0.32);
+
+  --v2-color-accent-surface-0-hovered: hsla(var(--v2-hsl-accent), 0.13);
+  --v2-color-accent-surface-1-hovered: hsla(var(--v2-hsl-accent), 0.21);
+  --v2-color-accent-surface-2-hovered: hsla(var(--v2-hsl-accent), 0.29);
+  --v2-color-accent-surface-3-hovered: hsla(var(--v2-hsl-accent), 0.37);
+
+  --v2-color-accent-surface-0-pressed: hsla(var(--v2-hsl-accent), 0.18);
+  --v2-color-accent-surface-1-pressed: hsla(var(--v2-hsl-accent), 0.26);
+  --v2-color-accent-surface-2-pressed: hsla(var(--v2-hsl-accent), 0.34);
+  --v2-color-accent-surface-3-pressed: hsla(var(--v2-hsl-accent), 0.42);
+
+  [data-container-scheme='secondary'] {
+  }
+}

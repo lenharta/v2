@@ -78,7 +78,7 @@ const ICON_MAP_OBJECTS_SHARED = {
   ),
 };
 
-const ICON_MAP_OBJECTS_FILLED = {
+export const ICON_MAP_OBJECTS_FILLED = {
   ...ICON_MAP_OBJECTS_SHARED,
   ['box']: (
     <React.Fragment>
@@ -221,7 +221,7 @@ const ICON_MAP_OBJECTS_FILLED = {
   ),
 };
 
-const ICON_MAP_OBJECTS_OUTLINED = {
+export const ICON_MAP_OBJECTS_OUTLINED = {
   ...ICON_MAP_OBJECTS_SHARED,
   ['box']: (
     <React.Fragment>
@@ -362,5 +362,3 @@ const ICON_MAP_OBJECTS_OUTLINED = {
     </React.Fragment>
   ),
 };
-
-export { ICON_MAP_OBJECTS_FILLED, ICON_MAP_OBJECTS_OUTLINED };

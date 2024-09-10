@@ -1,8 +1,11 @@
-import { FloatingDir, FloatingSide, FloatingAlign, FloatingPlacement } from '../types';
+import { Core } from '@/types';
 
-type FloatingPlacementData = [FloatingSide, FloatingAlign];
+export type FloatingPlacementData = [Core.FloatingSide, Core.FloatingAlign];
 
-function getFloatingPlacement(dir: FloatingDir, placement: FloatingPlacement): FloatingPlacement {
+export function getFloatingPlacement(
+  dir: Core.FloatingDir,
+  placement: Core.FloatingPlacement
+): Core.FloatingPlacement {
   const isInlinePlacement = placement.includes('left') || placement.includes('right');
   const isRightToLeft = dir === 'rtl';
 
@@ -17,5 +20,3 @@ function getFloatingPlacement(dir: FloatingDir, placement: FloatingPlacement): F
   }
   return placement;
 }
-
-export { getFloatingPlacement };

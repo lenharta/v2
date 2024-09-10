@@ -8,7 +8,7 @@ import { ICON_MAP_SHAPES_FILLED, ICON_MAP_SHAPES_OUTLINED } from '../icon-map-sh
 import { ICON_MAP_STATUS_FILLED, ICON_MAP_STATUS_OUTLINED } from '../icon-map-status';
 import { ICON_MAP_SYMBOLS_FILLED, ICON_MAP_SYMBOLS_OUTLINED } from '../icon-map-symbols';
 
-const ICON_MAP_FILLED = {
+export const ICON_MAP_FILLED = {
   ...ICON_MAP_ARROWS_FILLED,
   ...ICON_MAP_FILES_FILLED,
   ...ICON_MAP_INPUTS_FILLED,
@@ -20,7 +20,7 @@ const ICON_MAP_FILLED = {
   ...ICON_MAP_SYMBOLS_FILLED,
 };
 
-const ICON_MAP_OUTLINED = {
+export const ICON_MAP_OUTLINED = {
   ...ICON_MAP_ARROWS_OUTLINED,
   ...ICON_MAP_FILES_OUTLINED,
   ...ICON_MAP_INPUTS_OUTLINED,
@@ -32,9 +32,7 @@ const ICON_MAP_OUTLINED = {
   ...ICON_MAP_SYMBOLS_OUTLINED,
 };
 
-const ICON_MAP = {
+export const ICON_MAP = {
   fill: ICON_MAP_FILLED,
   outline: ICON_MAP_OUTLINED,
 };
-
-export { ICON_MAP_OUTLINED, ICON_MAP_FILLED, ICON_MAP };

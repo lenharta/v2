@@ -1,0 +1,38 @@
+@use '../utils' as utils;
+
+.v2-header {
+  font-family: var(--v2-font-family);
+  position: fixed;
+  display: block;
+  padding: var(--v2-unit);
+  z-index: 10000;
+  right: 0;
+  left: 0;
+  top: 0;
+
+  &-inner {
+    gap: var(--v2-unit);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-spacer {
+    height: var(--v2-action-button);
+    display: flex;
+    flex: 1 0;
+  }
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--v2-action-button);
+    height: var(--v2-action-button);
+
+    .v2-brand {
+      width: 1.3rem;
+      height: 1.3rem;
+    }
+  }
+}

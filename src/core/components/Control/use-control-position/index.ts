@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { cssTransform, valueToPixel } from '@utils';
-import { ControlPosition, UseControlPositionProps, UseControlPositionReturn } from '../types';
+import { Core } from '@/types';
+import { cssTransform, valueToPixel } from '@/utils';
 
-function useControlPosition(props: UseControlPositionProps): UseControlPositionReturn {
+export function useControlPosition(
+  props: Core.UseControlPositionProps
+): Core.UseControlPositionReturn {
   const trackRef = React.useRef<HTMLDivElement>(null);
   const thumbRef = React.useRef<HTMLDivElement>(null);
   const observer = React.useRef<ResizeObserver>();
 
   const [refs, setRefs] = React.useState<Record<string, HTMLElement | null>>({});
-  const [position, setPosition] = React.useState<ControlPosition>(props.initialPosition);
+  const [position, setPosition] = React.useState<Core.ControlPosition>(props.initialPosition);
 
   const setElementRefs = (segment: HTMLElement | null, key: string) => {
     refs[key] = segment;
@@ -89,5 +91,3 @@ function useControlPosition(props: UseControlPositionProps): UseControlPositionR
     update,
   };
 }
-
-export { useControlPosition };

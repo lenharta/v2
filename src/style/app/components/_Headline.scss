@@ -1,0 +1,43 @@
+.v2-headline {
+  width: 100%;
+  display: block;
+}
+
+.v2-headline-layout {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  position: relative;
+  padding-bottom: calc(var(--v2-space) / 2);
+  margin-inline: var(--v2-gutter);
+
+  &::after {
+    content: '';
+    height: var(--v2-unit);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+}
+
+.v2-headline-anchor {
+  visibility: hidden;
+}
+
+.v2-headline-title {
+  text-align: end;
+  font-size: var(--v2-font-size-05);
+  font-weight: var(--v2-font-weight-black);
+  font-family: var(--v2-font-family);
+  line-height: var(--v2-line-height-02);
+}
+
+.v2-headline-order {
+  text-align: start;
+  font-size: var(--v2-font-size-10);
+  font-weight: var(--v2-font-weight-black);
+  font-family: var(--v2-font-family);
+  line-height: var(--v2-line-height-01);
+}

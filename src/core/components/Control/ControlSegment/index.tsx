@@ -1,85 +1,83 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Icon, UnstyledButton } from '@core';
-import { createEventCallback, createKeyDownGroup } from '@utils';
-import { ControlSegmentProps } from '../types';
-import { ATTRIBUTES } from '../Control';
+import { Core } from '@/types';
+import { Icon } from '@/core/components';
+import { Component } from '@/factory';
+import { createEventCallback, createKeyDownGroup } from '@/utils';
 
-type ControlSegmentFactory = Factory.Config<{
+export type ControlSegmentFactory = Core.Factory<{
   ref: HTMLButtonElement;
-  comp: 'button';
-  props: ControlSegmentProps;
-  omits: 'children';
+  props: Core.ControlSegmentProps;
+  element: 'button';
 }>;
 
-const ControlSegment = createFactory<ControlSegmentFactory>((props, ref) => {
-  const {
-    refs,
-    item,
-    value,
-    variant,
-    trackRef,
-    className,
-    trapFocus,
-    orientation,
-    update,
-    onItemChange,
-    setElementRefs,
-    ...forwardedProps
-  } = props;
-
-  const onClick = createEventCallback(forwardedProps.onClick, (event) => {
-    onItemChange(event.currentTarget.value);
-    update(refs[item.value]!, trackRef.current!);
-  });
-
-  const onKeyDown = createKeyDownGroup({
-    loop: trapFocus,
-    orientation: orientation,
-    parentSelector: ATTRIBUTES.parent.key,
-    childSelector: ATTRIBUTES.child.key,
-    onKeyDown: (event) => {
-      if (event.code === 'Enter') {
-        onItemChange(event.currentTarget.value);
-        update(refs[item.value]!, trackRef.current!);
-      }
+export const ControlSegment = Component<ControlSegmentFactory>(
+  (
+    {
+      refs,
+      item,
+      value,
+      variant,
+      trackRef,
+      className,
+      trapFocus,
+      orientation,
+      setElementRefs,
+      onItemChange,
+      update,
+      ...props
     },
-  });
+    ref
+  ) => {
+    const iconPosition = item.iconPosition || 'end';
 
-  const iconPosition = item.iconPosition || 'end';
+    const classNames = clsx('v2-control-segment', `v2-control-segment--${variant}`, className);
 
-  return (
-    <UnstyledButton
-      ref={ref}
-      value={item.value}
-      readOnly={item.readOnly}
-      disabled={item.disabled}
-      selected={!!(item.value === value) || undefined}
-      className={clsx('v2-control-segment', `v2-control-segment--${variant}`, className)}
-      onKeyDown={onKeyDown}
-      onClick={onClick}
-      {...ATTRIBUTES.child.prop}
-      {...forwardedProps}
-    >
-      <div className="v2-control-segment-layout">
-        {item.icon && iconPosition === 'start' && (
-          <div data-position="start">
-            <Icon {...item.icon} />
-          </div>
-        )}
+    const onClick = createEventCallback(props.onClick, (event) => {
+      onItemChange(event.currentTarget.value);
+      update(refs[item.value]!, trackRef.current!);
+    });
 
-        {item.label}
+    const onKeyDown = createKeyDownGroup({
+      loop: trapFocus,
+      orientation: orientation,
+      parentSelector: 'data-control-track',
+      childSelector: 'data-control-segment',
+      onKeyDown: (event) => {
+        if (event.code === 'Enter') {
+          onItemChange(event.currentTarget.value);
+          update(refs[item.value]!, trackRef.current!);
+        }
+      },
+    });
 
-        {item.icon && iconPosition === 'end' && (
-          <div data-position="end">
-            <Icon {...item.icon} />
-          </div>
-        )}
-      </div>
-    </UnstyledButton>
-  );
-});
+    return (
+      <button
+        {...props}
+        data-control-segment
+        data-selected={!!(item.value === value)}
+        className={classNames}
+        onKeyDown={onKeyDown}
+        onClick={onClick}
+        ref={ref}
+      >
+        <div className="v2-control-segment-layout">
+          {item.icon && iconPosition === 'start' && (
+            <div className="v2-control-content" data-position="start">
+              <Icon {...item.icon} />
+            </div>
+          )}
+
+          <div className="v2-control-label">{item.label}</div>
+
+          {item.icon && iconPosition === 'end' && (
+            <div className="v2-control-content" data-position="end">
+              <Icon {...item.icon} />
+            </div>
+          )}
+        </div>
+      </button>
+    );
+  }
+);
 
 ControlSegment.displayName = '@v2/Control.Segment';
-export { ControlSegment };

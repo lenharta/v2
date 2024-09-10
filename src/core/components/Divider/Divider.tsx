@@ -1,48 +1,49 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { DividerProps } from './types';
+import { Core } from '@/types';
+import { Component } from '@/factory';
 
-type DividerFactory = Factory.Config<{
+export type DividerFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: DividerProps;
+  props: Core.DividerProps;
+  element: 'div';
 }>;
 
-const Divider = createFactory<DividerFactory>((props, ref) => {
-  const {
-    icon,
-    label,
-    decoration = 'solid',
-    iconPosition = 'start',
-    labelPosition = 'start',
-    className,
-    ...forwardedProps
-  } = props;
-
-  return (
-    <div
-      ref={ref}
-      role="separator"
-      data-position={labelPosition}
-      className={clsx('v2-divider', `v2-divider--decoration-${decoration}`, className)}
-      {...forwardedProps}
-    >
+export const Divider = Component<DividerFactory>(
+  (
+    {
+      icon,
+      label,
+      decoration = 'solid',
+      iconPosition = 'start',
+      labelPosition = 'start',
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    return (
       <div
-        className="v2-divider-content"
+        ref={ref}
+        role="separator"
         data-position={labelPosition}
-        data-with-icon={!!icon || undefined}
-        data-with-label={!!label || undefined}
+        className={clsx('v2-divider', `v2-divider--decoration-${decoration}`, className)}
+        {...props}
       >
-        {icon && iconPosition === 'start' && icon}
+        <div
+          className="v2-divider-content"
+          data-position={labelPosition}
+          data-with-icon={!!icon || undefined}
+          data-with-label={!!label || undefined}
+        >
+          {icon && iconPosition === 'start' && icon}
 
-        {label && <span className="v2-divider-label">{label}</span>}
+          {label && <span className="v2-divider-label">{label}</span>}
 
-        {icon && iconPosition === 'end' && icon}
+          {icon && iconPosition === 'end' && icon}
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
 Divider.displayName = '@v2/Divider';
-export { Divider };

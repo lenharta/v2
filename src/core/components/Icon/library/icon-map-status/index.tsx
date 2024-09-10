@@ -2,7 +2,7 @@ import React from 'react';
 
 const ICON_MAP_STATUS_SHARED = {};
 
-const ICON_MAP_STATUS_FILLED = {
+export const ICON_MAP_STATUS_FILLED = {
   ...ICON_MAP_STATUS_SHARED,
   ['status-info-circle']: (
     <React.Fragment>
@@ -56,7 +56,7 @@ const ICON_MAP_STATUS_FILLED = {
   ),
 };
 
-const ICON_MAP_STATUS_OUTLINED = {
+export const ICON_MAP_STATUS_OUTLINED = {
   ...ICON_MAP_STATUS_SHARED,
   ['status-info-circle']: (
     <React.Fragment>
@@ -119,5 +119,3 @@ const ICON_MAP_STATUS_OUTLINED = {
     </React.Fragment>
   ),
 };
-
-export { ICON_MAP_STATUS_SHARED, ICON_MAP_STATUS_FILLED, ICON_MAP_STATUS_OUTLINED };

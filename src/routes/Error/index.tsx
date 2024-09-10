@@ -1,23 +1,29 @@
-import * as React from 'react';
-import { Page } from '@app/components';
-import { ErrorHero } from './ErrorHero';
-import { ErrorBanner } from './ErrorBanner';
+import React from 'react';
+import { Text, Title } from '@/core';
+import { Hero, Main, Page, PageProps } from '@/app';
 
-type ErrorFactory = React.FC<{}> & {
-  Hero: typeof ErrorHero;
-  Banner: typeof ErrorBanner;
+export type ErrorRouteProps = PageProps & {};
+
+export type ErrorRouteComponent = {
+  (props: ErrorRouteProps): React.ReactNode;
+  displayName?: string;
 };
 
-const Error: ErrorFactory = ({}) => {
+export const Error: ErrorRouteComponent = (props) => {
   return (
-    <Page>
-      <Error.Hero />
-      <Error.Banner />
+    <Page {...props}>
+      <Hero>
+        <Title>Error</Title>
+      </Hero>
+      <Main>
+        <Text>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, accusantium aperiam, ex
+          itaque minima eos commodi quisquam a corrupti tempora earum quod dolorem sapiente
+          possimus? Harum ducimus architecto similique iusto.
+        </Text>
+      </Main>
     </Page>
   );
 };
 
-Error.Hero = ErrorHero;
-Error.Banner = ErrorBanner;
-Error.displayName = '@v2/Error.Route';
-export { Error };
+Error.displayName = '@v2/Route.Error';

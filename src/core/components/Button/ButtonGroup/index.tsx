@@ -1,57 +1,49 @@
 import clsx from 'clsx';
-import { Group } from '@core';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { ButtonProvider } from '../context';
-import { ButtonGroupProps } from '../types';
+import { Core } from '@/types';
+import { Group } from '@/core';
+import { PolymorphicComponent } from '@/factory';
+import { ButtonProvider } from '../ButtonContext';
 
-type ButtonGroupFactory = Factory.Config<{
+export type ButtonGroupFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: ButtonGroupProps;
+  props: Core.ButtonGroupProps;
+  element: 'div';
 }>;
 
-const ButtonGroup = createFactory<ButtonGroupFactory>((props, ref) => {
-  const {
-    size,
-    value,
-    align,
-    justify,
-    variant,
-    loading,
-    disabled,
-    readOnly,
-    children,
-    className,
-    orientation = 'horizontal',
-    ...forwardedProps
-  } = props;
-
-  return (
-    <Group
-      ref={ref}
-      orientation={orientation}
-      className={clsx('v2-button-group', className)}
-      {...forwardedProps}
-    >
-      <ButtonProvider
-        value={{
-          size,
-          value,
-          align,
-          justify,
-          variant,
-          loading,
-          disabled,
-          readOnly,
-          orientation,
-        }}
+export const ButtonGroup = PolymorphicComponent<ButtonGroupFactory>(
+  (
+    {
+      gap,
+      value,
+      children,
+      className,
+      isLoading,
+      isDisabled,
+      isReadonly,
+      component = 'div',
+      orientation = 'horizontal',
+      onValueChange,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <Group
+        {...props}
+        className={clsx('v2-button-group', className)}
+        orientation={orientation}
+        component={component}
+        gap={gap}
+        ref={ref}
       >
-        {children}
-      </ButtonProvider>
-    </Group>
-  );
-});
+        <ButtonProvider
+          value={{ value, isDisabled, isLoading, isReadonly, orientation, onValueChange }}
+        >
+          {children}
+        </ButtonProvider>
+      </Group>
+    );
+  }
+);
 
 ButtonGroup.displayName = '@v2/Button.Group';
-export { ButtonGroup };

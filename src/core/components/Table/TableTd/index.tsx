@@ -1,22 +1,19 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { TableTdProps } from '../types';
+import { Core } from '@/types';
+import { Component } from '@/factory';
 
-type TableTdFactory = Factory.Config<{
+export type TableTdFactory = Core.Factory<{
   ref: HTMLTableCellElement;
-  comp: 'td';
-  props: TableTdProps;
+  props: Core.TableTdProps;
+  element: 'td';
 }>;
 
-const TableTd = createFactory<TableTdFactory>((props, ref) => {
-  const { children, className, ...forwardedProps } = props;
+export const TableTd = Component<TableTdFactory>(({ children, className, ...props }, ref) => {
   return (
-    <td ref={ref} className={clsx('v2-table-td', className)} {...forwardedProps}>
+    <td ref={ref} className={clsx('v2-table-td', className)} {...props}>
       {children}
     </td>
   );
 });
 
 TableTd.displayName = '@v2/Table.Td';
-export { TableTd };

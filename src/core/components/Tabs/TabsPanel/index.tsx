@@ -1,48 +1,43 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { TabsPanelProps } from '../types';
-import { useTabsContext } from '../context';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
+import { useTabsContext } from '../TabsContext';
 
-type TabsPanelFactory = Factory.Config<{
+export type TabsPanelFactory = Core.Factory<{
   ref: HTMLDivElement;
-  comp: 'div';
-  props: TabsPanelProps;
+  props: Core.TabsPanelProps;
+  element: 'div';
 }>;
 
-const TabsPanel = createFactory<TabsPanelFactory>((props, ref) => {
-  const { value, style, className, keepMounted, children, ...forwardedProps } = props;
+export const TabsPanel = PolymorphicComponent<TabsPanelFactory>(
+  ({ variant, value, style, className, keepMounted, children, ...props }, ref) => {
+    const context = useTabsContext();
 
-  const ctx = useTabsContext();
+    const isSelected = !!(context.value === value) || undefined;
 
-  const isSelected = !!(ctx.value === value) || undefined;
+    const isMounted = isSelected && !!keepMounted;
 
-  const isMounted = isSelected && !!keepMounted;
+    if (!isSelected && !keepMounted) return null;
 
-  if (!isSelected && !keepMounted) {
-    return null;
+    const classNames = clsx(
+      'v2-tabs-panel',
+      `v2-tabs-panel--${variant || context.variant || 'default'}`,
+      className
+    );
+
+    return (
+      <div
+        {...props}
+        id={context.getPanelId(value)}
+        style={{ ...style, ...(isMounted ? { display: 'none' } : {}) }}
+        className={classNames}
+        role="tabpanel"
+        ref={ref}
+      >
+        {children}
+      </div>
+    );
   }
-
-  return (
-    <div
-      id={ctx.getPanelId(value)}
-      ref={ref}
-      role="tabpanel"
-      className={clsx('v2-tabs-panel', className)}
-      style={{
-        ...style,
-        ...(isMounted
-          ? {
-              display: 'none',
-            }
-          : {}),
-      }}
-      {...forwardedProps}
-    >
-      {children}
-    </div>
-  );
-});
+);
 
 TabsPanel.displayName = '@v2/Tabs.Panel';
-export { TabsPanel };

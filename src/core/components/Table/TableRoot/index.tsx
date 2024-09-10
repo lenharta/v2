@@ -1,25 +1,24 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { TableProvider } from '../context';
-import { TableRootProps } from '../types';
+import { Core } from '@/types';
+import { Component } from '@/factory';
+import { TableProvider } from '../TableContext';
 
-type TableRootFactory = Factory.Config<{
+export type TableRootFactory = Core.Factory<{
   ref: HTMLTableElement;
-  comp: 'table';
-  props: TableRootProps;
+  props: Core.TableRootProps;
+  element: 'table';
 }>;
 
-const TableRoot = createFactory<TableRootFactory>((props, ref) => {
-  const { children, className, rowBorder, rowStriped, stickyHeader, ...forwardedProps } = props;
-  return (
-    <TableProvider value={{ rowBorder, rowStriped, stickyHeader }}>
-      <table ref={ref} className={clsx('v2-table', className)} {...forwardedProps}>
-        {children}
-      </table>
-    </TableProvider>
-  );
-});
+export const TableRoot = Component<TableRootFactory>(
+  ({ children, className, rowBorder, rowStriped, stickyHeader, ...props }, ref) => {
+    return (
+      <TableProvider value={{ rowBorder, rowStriped, stickyHeader }}>
+        <table ref={ref} className={clsx('v2-table', className)} {...props}>
+          {children}
+        </table>
+      </TableProvider>
+    );
+  }
+);
 
 TableRoot.displayName = '@v2/Table.Root';
-export { TableRoot };

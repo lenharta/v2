@@ -1,92 +1,102 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Icon, UnstyledButton } from '@core';
-import { ButtonProps } from './types';
+import { Icon } from '@/core';
+import { Core } from '@/types';
+import { PolymorphicComponent } from '@/factory';
+import { useButtonContext } from './ButtonContext';
 import { ButtonGroup } from './ButtonGroup';
-import { useButtonContext } from './context';
 
-type ButtonFactory = Factory.Config<{
+export type ButtonFactory = Core.Factory<{
   ref: HTMLButtonElement;
-  comp: typeof UnstyledButton;
-  props: ButtonProps;
-  comps: {
+  props: Core.ButtonProps;
+  element: 'button';
+  excluded: 'disabled';
+  elements: {
     Group: typeof ButtonGroup;
   };
 }>;
 
-const Button = createFactory<ButtonFactory>((props, ref) => {
-  const {
-    size,
-    value,
-    align,
-    justify,
-    variant,
-    loading,
-    disabled,
-    readOnly,
-    selected,
-    children,
-    iconLeft,
-    fullWidth,
-    iconRight,
-    className,
-    ...forwardedProps
-  } = props;
+export const Button = PolymorphicComponent<ButtonFactory>(
+  (
+    {
+      size,
+      value,
+      variant,
+      children,
+      iconLeft,
+      iconRight,
+      fullWidth,
+      className,
+      isLoading,
+      isDisabled,
+      isReadonly,
+      isSelected,
+      component: Component = 'button',
+      onChange,
+      ...props
+    },
+    ref
+  ) => {
+    const context = useButtonContext();
 
-  const ctx = useButtonContext();
+    const loading = isLoading || (context && context.isLoading);
+    const disabled = isDisabled || (context && context.isDisabled);
+    const readonly = isReadonly || (context && context.isReadonly);
+    const selected = isSelected || (context.value && value && context.value === value);
 
-  const contextProps = ctx
-    ? {
-        loading: !!ctx.loading || !!loading || undefined,
-        disabled: !!ctx.disabled || !!disabled || undefined,
-        readOnly: !!ctx.readOnly || !!readOnly || undefined,
-        selected: (!!ctx.value && value === ctx.value) || !!selected || undefined,
-        'data-orientation': ctx.orientation,
-        'aria-orientation': ctx.orientation,
+    const classNames = clsx(
+      'v2-button',
+      `v2-button--${size || context.size || 'md'}`,
+      `v2-button--${variant || context.variant || 'default'}`,
+      className
+    );
+
+    const handleChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+      onChange?.(event);
+
+      if (!value) return;
+
+      if (!(loading || disabled || readonly)) {
+        if (typeof value !== 'string') {
+          console.error('[@v2/core/Action]: value must be provided to Action or ActionGroup');
+        } else {
+          context.onValueChange?.(value);
+        }
       }
-    : {};
+    };
 
-  return (
-    <UnstyledButton
-      ref={ref}
-      loading={loading}
-      readOnly={readOnly}
-      disabled={disabled}
-      selected={selected}
-      data-block={!!fullWidth || undefined}
-      className={clsx(
-        'v2-button',
-        `v2-button--${size || ctx.size || 'sm'}`,
-        `v2-button--${variant || ctx.variant || 'default'}`,
-        `v2-button--align-${align || ctx.align || 'center'}`,
-        `v2-button--justify-${justify || ctx.justify || 'center'}`,
-        className
-      )}
-      {...forwardedProps}
-      {...contextProps}
-    >
-      <span className="v2-button-layout">
-        {iconLeft && (
-          <span className="v2-button-section" data-position="left">
-            <Icon name={iconLeft.name} />
-          </span>
-        )}
+    return (
+      <Component
+        {...props}
+        data-loading={loading}
+        data-selected={selected}
+        data-readonly={readonly}
+        data-disabled={disabled}
+        data-block={fullWidth}
+        className={classNames}
+        onChange={handleChange}
+        value={value}
+        ref={ref}
+      >
+        <span className="v2-button-layout">
+          {iconLeft && (
+            <div className="v2-button-section" data-position="left">
+              <Icon {...iconLeft} />
+            </div>
+          )}
 
-        <span className="v2-button-label" data-loading={loading}>
-          {children}
+          <div className="v2-button-label">{children}</div>
+
+          {iconRight && (
+            <div className="v2-button-section" data-position="right">
+              <Icon {...iconRight} />
+            </div>
+          )}
         </span>
-
-        {iconRight && (
-          <span className="v2-button-section" data-position="right">
-            <Icon name={iconRight.name} />
-          </span>
-        )}
-      </span>
-    </UnstyledButton>
-  );
-});
+      </Component>
+    );
+  }
+);
 
 Button.Group = ButtonGroup;
 Button.displayName = '@v2/Button';
-export { Button };

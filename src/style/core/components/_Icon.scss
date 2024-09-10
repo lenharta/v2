@@ -1,0 +1,21 @@
+.v2-icon {
+  --v2-icon-height-xxs: 12px;
+  --v2-icon-height-xs: 14px;
+  --v2-icon-height-sm: 16px;
+  --v2-icon-height-md: 18px;
+  --v2-icon-height-lg: 20px;
+  --v2-icon-height-xl: 22px;
+  --v2-icon-height-xxl: 24px;
+
+  --v2-icon-width-xxs: var(--v2-icon-height-xxs);
+  --v2-icon-width-xs: var(--v2-icon-height-xs);
+  --v2-icon-width-sm: var(--v2-icon-height-sm);
+  --v2-icon-width-md: var(--v2-icon-height-md);
+  --v2-icon-width-lg: var(--v2-icon-height-lg);
+  --v2-icon-width-xl: var(--v2-icon-height-xl);
+  --v2-icon-width-xxl: var(--v2-icon-height-xxl);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

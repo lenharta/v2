@@ -1,0 +1,13 @@
+@use '../utils' as utils;
+
+.v2-page {
+  display: block;
+  font-family: var(--v2-font-family);
+  max-width: 100em;
+
+  @media (min-width: 50em) {
+    height: calc(100% - var(--v2-action));
+    margin-top: var(--v2-action);
+    margin-left: var(--v2-action);
+  }
+}

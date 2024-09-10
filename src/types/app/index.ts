@@ -14,6 +14,7 @@ export enum MONTH {
 }
 
 export enum ROUTE {
+  home = '/',
   about = '/about',
   sandbox = '/sandbox',
   articles = '/articles',
@@ -21,6 +22,7 @@ export enum ROUTE {
 
 export declare namespace App {
   export type ItemObject<T> = { label: string; value: T };
+
   export type ItemPayload<K , T = string> = K extends string ? Record<K, T> : never;
 
   export type DateObject = { month: string; day: string; year: string };
@@ -63,34 +65,6 @@ export declare namespace App {
   
   export type MetaLocationObject<T> = Omit<Address<T>, 'street'>; 
 
-  // export type MetaAccount = {}
-  // export type MetaSocial = {
-  //   npmjs: { };
-  //   github: MetaAccountConfig
-  //   sandbox: MetaAccountConfig
-  //   linkedin: MetaAccountConfig
-  //   overflow: MetaAccountConfig
-  //   xtwitter: MetaAccountConfig
-  // }
-
-  // export type MetaSiteConfig = { url: string; title: string; description: string }
-  // export type MetaRepoConfig = { url: string; title: string; description: string }
-
-  // export type MetaRepoObject = { url: string; value: string; username: string }
-
-  // export type MetaProfile = { url: string; value: string; username: string }
-  // export type MetaPlatform = {}
-
-  // export type MetaAccountConfig = { 
-  //   profile: { }; 
-  //   platform: { url: string; icon: string; title: string }; 
-  // };
-
-  // export type MetaLocationObjectItem = { 
-  //   city: { name: string; code: string };
-  //   state: { name: string; code: string }
-  // };
-
   export type RouteItem<P = {}> = { label: string; value: string } & P;
   
   export type RouteLocation = { pathname: string; search: string; hash: string }
@@ -121,19 +95,6 @@ export declare namespace App {
     | '/articles'
     | '/elements'
     | '/settings';
-
-  export type RouteKey_DEV_ONLY = RouteKey & 'canvas';
-  export type RoutePath_DEV_ONLY = RoutePath & '/canvas';
-
-  export type RouteKeyLookup<T> = Record<RouteKey, T>;
-  export type RoutePathLookup<T> = Record<RoutePath, T>;
-
-  export type RouteMap = {
-    key: RouteKeyLookup<RouteKey>;
-    keys: RouteKey[];
-    link: RouteKeyLookup<RoutePath>;
-    label: RouteKeyLookup<string>;
-  };
 
   export type CareerMeta = {
     id: string;

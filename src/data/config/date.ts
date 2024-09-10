@@ -1,4 +1,4 @@
-import { MONTH } from '@types';
+import { MONTH } from '@/types';
 
 export const LOOKUP_MONTH = {
   [MONTH.JAN]: { code: 'JAN', name: MONTH.JAN, days: 31 },

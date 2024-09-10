@@ -1,88 +1,115 @@
-import clsx from 'clsx';
-import { Factory } from '@types';
-import { InlineInput } from '@core';
-import { createFactory } from '@factory';
-import { CheckboxProps } from './types';
-import { CheckboxGroup } from './CheckboxGroup';
-import { CheckboxIndicator } from './CheckboxIndicator';
-import { useCheckboxContext } from './context';
 import React from 'react';
+import { Core } from '@/types';
+import { Component } from '@/factory';
+import { Icon } from '../Icon';
+import { InlineInput } from '../InlineInput';
+import { CheckboxGroup } from './CheckboxGroup';
+import { useCheckboxContext } from './CheckboxContext';
 
-type CheckboxFactory = Factory.Config<{
+export function getAriaChecked(isChecked?: boolean, isIndeterminate?: boolean): Core.AriaChecked {
+  if (!!isChecked && !!isIndeterminate) {
+    return 'mixed';
+  }
+  if (!!isChecked && !isIndeterminate) {
+    return 'true';
+  }
+  return 'false';
+}
+
+const parseCheckboxIconState: Core.ParseCheckboxIconState = (props) => {
+  let state: Core.CheckboxIconState = 'unchecked';
+  let blocking: string[] = ['isLoading', 'isDisabled', 'isReadonly'];
+
+  for (let key in props) {
+    if (blocking.includes(key)) {
+      state = 'unchecked';
+    }
+    if (key === 'isIndeterminate') {
+      state = 'mixed';
+    }
+    if (key === 'isChecked') {
+      state = 'checked';
+    }
+  }
+  return state;
+};
+
+export type CheckboxFactory = Core.Factory<{
   ref: HTMLInputElement;
-  comp: 'input';
-  props: CheckboxProps;
-  comps: {
+  props: Core.CheckboxProps;
+  element: 'input';
+  excluded: 'checked';
+  elements: {
     Group: typeof CheckboxGroup;
-    Indicator: typeof CheckboxIndicator;
   };
 }>;
 
-type AriaChecked = React.JSX.IntrinsicElements['input']['aria-checked'];
+export const Checkbox = Component<CheckboxFactory>(
+  (
+    {
+      icon,
+      error,
+      label,
+      shape = 'square',
+      status,
+      message,
+      isChecked,
+      isLoading,
+      isReadonly,
+      isDisabled,
+      isIndeterminate,
+      ...props
+    },
+    ref
+  ) => {
+    const context = useCheckboxContext();
 
-function findAriaChecked(checked: boolean | undefined, mixed?: boolean | undefined): AriaChecked {
-  return !!checked && !!mixed ? 'mixed' : !!checked && !mixed ? 'true' : 'false';
-}
+    const contextProps = !context
+      ? {
+          checked: isChecked,
+          disabled: isDisabled,
+          onChange: props.onChange,
+          'aria-checked': getAriaChecked(isChecked, isIndeterminate),
+        }
+      : {
+          disabled: context.isDisabled,
+          checked: context.value.includes(props.value),
+          'aria-checked': getAriaChecked(context.value.includes(props.value), isIndeterminate),
+          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+            context.onValueChange?.(event.currentTarget.value);
+            props.onChange?.(event);
+          },
+        };
 
-const Checkbox = createFactory<CheckboxFactory>((props, ref) => {
-  const {
-    icon,
-    label,
-    mixed,
-    checked,
-    loading,
-    readOnly,
-    disabled,
-    className,
-    wrapperProps,
-    ...forwardedProps
-  } = props;
+    const state = parseCheckboxIconState({
+      isChecked: contextProps.checked,
+      isDisabled: contextProps.disabled,
+      isReadonly: isReadonly || context.isReadonly,
+      isIndeterminate,
+    });
 
-  const ctx = useCheckboxContext();
-
-  const contextProps = ctx
-    ? {
-        checked: ctx.value.includes(forwardedProps.value as string),
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-          ctx.onChange?.(event.currentTarget.value);
-          forwardedProps.onChange?.(event);
-        },
-      }
-    : {};
-
-  return (
-    <InlineInput
-      role="checkbox"
-      label={label}
-      loading={loading}
-      selected={contextProps.checked || checked || undefined}
-      readOnly={readOnly}
-      disabled={disabled}
-      className={clsx('v2-checkbox', className)}
-      {...wrapperProps}
-    >
-      <input
-        ref={ref}
-        type="checkbox"
-        checked={contextProps.checked || checked || undefined}
-        onChange={forwardedProps.onChange}
-        className="v2-checkbox-input"
-        aria-checked={findAriaChecked(contextProps.checked || checked || undefined, mixed)}
-        {...forwardedProps}
-        {...contextProps}
-      />
-
-      <Checkbox.Indicator
-        className="v2-checkbox-indicator"
-        checked={contextProps.checked || checked || undefined}
-        mixed={mixed}
-        icon={icon}
-      />
-    </InlineInput>
-  );
-});
+    return (
+      <InlineInput
+        error={error}
+        label={label}
+        status={status}
+        message={message}
+        isLoading={isLoading}
+        isDisabled={isDisabled}
+        isReadonly={isReadonly}
+      >
+        <input
+          {...props}
+          {...contextProps}
+          className="v2-checkbox-input"
+          type="checkbox"
+          ref={ref}
+        />
+        <Icon {...icon} name={`checkbox-${state}-${shape}`} />
+      </InlineInput>
+    );
+  }
+);
 
 Checkbox.Group = CheckboxGroup;
-Checkbox.Indicator = CheckboxIndicator;
 Checkbox.displayName = '@v2/Checkbox';
-export { Checkbox };

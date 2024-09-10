@@ -1,29 +1,25 @@
 import clsx from 'clsx';
-import { Factory } from '@types';
-import { createFactory } from '@factory';
-import { Floating, SelectBoxProps } from '@core';
+import { Core } from '@/types';
+import { Floating } from '@/core';
+import { Component } from '@/factory';
 
-type SelectBoxFactory = Factory.Config<{
-  comp: 'div';
+export type SelectBoxFactory = Core.Factory<{
   ref: HTMLDivElement;
-  props: SelectBoxProps;
+  props: Core.SelectBoxProps;
+  element: 'div';
 }>;
 
-const SelectBox = createFactory<SelectBoxFactory>((props, ref) => {
-  const { variant, children, className, ...forwardedProps } = props;
-
-  return (
-    <Floating.Box>
-      <div
-        ref={ref}
-        className={clsx('v2-select-box', { [`v2-select-box--${variant}`]: variant }, className)}
-        {...forwardedProps}
-      >
-        {children}
-      </div>
-    </Floating.Box>
-  );
-});
+export const SelectBox = Component<SelectBoxFactory>(
+  ({ variant, children, className, ...props }, ref) => {
+    const classNames = clsx('v2-select-box', { [`v2-select-box--${variant}`]: variant }, className);
+    return (
+      <Floating.Box>
+        <div {...props} className={classNames} ref={ref}>
+          {children}
+        </div>
+      </Floating.Box>
+    );
+  }
+);
 
 SelectBox.displayName = '@v2/Select.Box';
-export { SelectBox };
