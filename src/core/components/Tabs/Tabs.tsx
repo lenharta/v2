@@ -4,24 +4,27 @@ import { TabsItem } from './TabsItem';
 import { TabsList } from './TabsList';
 import { TabsPanel } from './TabsPanel';
 import { TabsProvider } from './TabsContext';
+import clsx from 'clsx';
 
-type TabsFactory = React.FC<Core.TabsProps> & {
+export type TabsFactory = React.FC<Core.TabsProps> & {
   Item: typeof TabsItem;
   List: typeof TabsList;
   Panel: typeof TabsPanel;
 };
 
-const Tabs: TabsFactory = (props) => {
+export const Tabs: TabsFactory = (props) => {
   const {
+    size,
     value,
     variant,
+    children,
+    className,
     isLoading,
     isDisabled,
     isReadonly,
-    children,
     orientation,
-    keyboardActivated,
     keyboardOptions,
+    keyboardActivated,
     onValueChange,
   } = props;
 
@@ -31,11 +34,12 @@ const Tabs: TabsFactory = (props) => {
   const getPanelId: (v: string) => string = (v: string) => `tabs${uid}panel:${v}`;
 
   return (
-    <div className="v2-tabs" data-orientation={orientation}>
+    <div className={clsx('v2-tabs', className)} data-orientation={orientation}>
       <TabsProvider
         value={{
+          size,
           value,
-          variant: variant || 'default',
+          variant,
           isLoading,
           isDisabled,
           isReadonly,
@@ -58,4 +62,3 @@ Tabs.Item = TabsItem;
 Tabs.List = TabsList;
 Tabs.Panel = TabsPanel;
 Tabs.displayName = '@v2/Tabs';
-export { Tabs };

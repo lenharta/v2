@@ -716,6 +716,9 @@ export declare namespace Core {
     children?: React.ReactNode | undefined;
   }
 
+  export type TabsSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type TabsVariant ='default' | 'elevated' | 'accent' | 'accent-elevated' | 'accent-tonal'
+
   export type TabsKeyDownOptions = {
     onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
     preventDefault: boolean;
@@ -725,9 +728,11 @@ export declare namespace Core {
   };
   
   export type TabsItemProps = {
+    grow?: boolean;
+    size?: TabsSize;
     value: string;
     label?: string;
-    variant?: 'default' | 'accent';
+    variant?: TabsVariant;
     children?: React.ReactNode;
     iconLeft?: Partial<ICON.Props>;
     iconRight?: Partial<ICON.Props>;
@@ -737,6 +742,7 @@ export declare namespace Core {
   };
   
   export type TabsListProps = {
+    grow?: boolean;
     withDivider?: boolean;
     dividerProps?: DividerProps;
   };
@@ -744,13 +750,16 @@ export declare namespace Core {
   export type TabsPanelProps = {
     value: string;
     style?: React.CSSProperties;
+    variant?: TabsVariant;
     keepMounted?: boolean;
   };
-  
+
   export type TabsProps = {
+    size?: TabsSize;
     value: string;
-    variant?: 'default' | 'accent';
+    variant?: TabsVariant;
     children: React.ReactNode;
+    className?: string;
     onValueChange: (value: string) => void;
     keyboardActivated?: boolean;
     keyboardOptions?: Partial<TabsKeyDownOptions>;
@@ -761,8 +770,9 @@ export declare namespace Core {
   };
   
   export type TabsContext = {
+    size?: TabsSize;
     value: string;
-    variant?: 'default' | 'accent';
+    variant?: TabsVariant;
     getListId: () => string;
     getItemId: (v: string) => string;
     getPanelId: (v: string) => string;

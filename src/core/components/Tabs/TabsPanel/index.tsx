@@ -10,21 +10,27 @@ export type TabsPanelFactory = Core.Factory<{
 }>;
 
 export const TabsPanel = PolymorphicComponent<TabsPanelFactory>(
-  ({ value, style, className, keepMounted, children, ...props }, ref) => {
-    const ctx = useTabsContext();
+  ({ variant, value, style, className, keepMounted, children, ...props }, ref) => {
+    const context = useTabsContext();
 
-    const isSelected = !!(ctx.value === value) || undefined;
+    const isSelected = !!(context.value === value) || undefined;
 
     const isMounted = isSelected && !!keepMounted;
 
     if (!isSelected && !keepMounted) return null;
 
+    const classNames = clsx(
+      'v2-tabs-panel',
+      `v2-tabs-panel--${variant || context.variant || 'default'}`,
+      className
+    );
+
     return (
       <div
         {...props}
-        id={ctx.getPanelId(value)}
+        id={context.getPanelId(value)}
         style={{ ...style, ...(isMounted ? { display: 'none' } : {}) }}
-        className={clsx('v2-tabs-panel', className)}
+        className={classNames}
         role="tabpanel"
         ref={ref}
       >

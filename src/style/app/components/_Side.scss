@@ -5,14 +5,16 @@
   font-family: var(--v2-font-family);
 
   @media (min-width: 50em) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
     height: calc(100% - var(--v2-action));
+    z-index: 10000;
+    position: fixed;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     bottom: calc(var(--v2-unit) * -1);
-    left: 0;
     top: var(--v2-action);
+    left: 0;
 
     &-spacer {
       height: 100%;
@@ -92,14 +94,13 @@
     &-menu-select {
       --v2-menu-select-item-width: calc(var(--v2-action) * 6);
 
+      gap: var(--v2-unit);
       display: flex;
       align-items: center;
       justify-content: flex-start;
       padding-inline: var(--v2-unit);
-      gap: var(--v2-unit);
-
-      flex-wrap: wrap;
       max-width: var(--v2-menu-select-item-width);
+      flex-wrap: wrap;
 
       .v2-action {
         min-width: var(--v2-action-button);

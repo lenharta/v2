@@ -11,19 +11,19 @@ export type IconFactory = Core.Factory<{
 
 export const ICON_FILL_COLOR = {
   currentColor: 'currentColor',
-  accent: 'hsla(var(--v2-hue-accent), 60%, 1)',
-  yellow: 'hsla(var(--v2-hue-yellow), 60%, 1)',
-  blue: 'hsla(var(--v2-hue-blue), 60%, 1)',
-  cyan: 'hsla(var(--v2-hue-cyan), 60%, 1)',
-  green: 'hsla(var(--v2-hue-green), 60%, 1)',
-  grey: 'hsla(var(--v2-hue-grey), 60%, 1)',
-  magenta: 'hsla(var(--v2-hue-magenta), 60%, 1)',
-  orange: 'hsla(var(--v2-hue-orange), 60%, 1)',
-  purple: 'hsla(var(--v2-hue-purple), 60%, 1)',
-  red: 'hsla(var(--v2-hue-red), 60%, 1)',
-  slate: 'hsla(var(--v2-hue-slate), 60%, 1)',
-  stone: 'hsla(var(--v2-hue-stone), 60%, 1)',
-  teal: 'hsla(var(--v2-hue-teal), 60%, 1)',
+  accent: 'var(--v2-color-accent)',
+  yellow: 'var(--v2-color-yellow)',
+  blue: 'var(--v2-color-blue)',
+  cyan: 'var(--v2-color-cyan)',
+  green: 'var(--v2-color-green)',
+  grey: 'var(--v2-color-grey)',
+  magenta: 'var(--v2-color-magenta)',
+  orange: 'var(--v2-color-orange)',
+  purple: 'var(--v2-color-purple)',
+  red: 'var(--v2-color-red)',
+  slate: 'var(--v2-color-slate)',
+  stone: 'var(--v2-color-stone)',
+  teal: 'var(--v2-color-teal)',
 };
 
 export const Icon = Component<IconFactory>(

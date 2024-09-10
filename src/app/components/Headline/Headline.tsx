@@ -4,9 +4,9 @@ import { Component } from '@/factory';
 import { Text, Title } from '@/core';
 
 export type HeadlineProps = {
-  hash?: string;
-  text?: string;
+  href?: string;
   title?: string;
+  order?: string;
 };
 
 export type HeadlineFactory = Core.Factory<{
@@ -18,11 +18,23 @@ export type HeadlineFactory = Core.Factory<{
 }>;
 
 export const Headline = Component<HeadlineFactory>(
-  ({ component: Component = 'div', className, hash, text, title, ...props }, ref) => {
+  ({ component: Component = 'div', className, order, href, title, ...props }, ref) => {
     return (
       <Component {...props} ref={ref} className={clsx('v2-headline', className)}>
-        {title && <Title>{title}</Title>}
-        {text && <Text>{text}</Text>}
+        <span className="v2-headline-layout">
+          <a className="v2-headline-anchor" href={href} />
+
+          {order && (
+            <Text className="v2-headline-order" span>
+              {order}
+            </Text>
+          )}
+          {title && (
+            <Title className="v2-headline-title" h2>
+              {title}
+            </Title>
+          )}
+        </span>
       </Component>
     );
   }

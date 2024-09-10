@@ -1,16 +1,137 @@
-@layer theme-tokens {
-  :root {
-    --v2-hue-yellow: 50, 100%;
-    --v2-hue-blue: 210, 100%;
-    --v2-hue-cyan: 200, 100%;
-    --v2-hue-green: 150, 80%;
-    --v2-hue-grey: 0, 0%;
-    --v2-hue-magenta: 330, 100%;
-    --v2-hue-orange: 30, 100%;
-    --v2-hue-purple: 260, 100%;
-    --v2-hue-red: 0, 100%;
-    --v2-hue-slate: 210, 10%;
-    --v2-hue-stone: 0, 4%;
-    --v2-hue-teal: 180, 60%;
-  }
+[data-prefers-color-mode='dim'] {
+  --v2-shade-yellow: 70%;
+  --v2-shade-blue: 70%;
+  --v2-shade-cyan: 70%;
+  --v2-shade-green: 70%;
+  --v2-shade-grey: 70%;
+  --v2-shade-magenta: 70%;
+  --v2-shade-orange: 70%;
+  --v2-shade-purple: 78%;
+  --v2-shade-red: 74%;
+  --v2-shade-slate: 55%;
+  --v2-shade-stone: 50%;
+  --v2-shade-teal: 70%;
+}
+
+[data-prefers-color-mode='dark'] {
+  --v2-shade-yellow: 70%;
+  --v2-shade-blue: 70%;
+  --v2-shade-cyan: 70%;
+  --v2-shade-green: 70%;
+  --v2-shade-grey: 70%;
+  --v2-shade-magenta: 70%;
+  --v2-shade-orange: 65%;
+  --v2-shade-purple: 78%;
+  --v2-shade-red: 74%;
+  --v2-shade-slate: 55%;
+  --v2-shade-stone: 60%;
+  --v2-shade-teal: 70%;
+}
+
+[data-prefers-color-mode='light'] {
+  --v2-shade-yellow: 40%;
+  --v2-shade-blue: 40%;
+  --v2-shade-cyan: 45%;
+  --v2-shade-green: 40%;
+  --v2-shade-grey: 50%;
+  --v2-shade-magenta: 50%;
+  --v2-shade-orange: 40%;
+  --v2-shade-purple: 60%;
+  --v2-shade-red: 60%;
+  --v2-shade-slate: 70%;
+  --v2-shade-stone: 60%;
+  --v2-shade-teal: 40%;
+}
+
+[data-prefers-color-accent='yellow'] {
+  --v2-hue-accent: var(--v2-hue-yellow);
+  --v2-shade-accent: var(--v2-shade-yellow);
+}
+
+[data-prefers-color-accent='blue'] {
+  --v2-hue-accent: var(--v2-hue-blue);
+  --v2-shade-accent: var(--v2-shade-blue);
+}
+
+[data-prefers-color-accent='cyan'] {
+  --v2-hue-accent: var(--v2-hue-cyan);
+  --v2-shade-accent: var(--v2-shade-cyan);
+}
+
+[data-prefers-color-accent='green'] {
+  --v2-hue-accent: var(--v2-hue-green);
+  --v2-shade-accent: var(--v2-shade-green);
+}
+
+[data-prefers-color-accent='grey'] {
+  --v2-hue-accent: var(--v2-hue-grey);
+  --v2-shade-accent: var(--v2-shade-grey);
+}
+
+[data-prefers-color-accent='magenta'] {
+  --v2-hue-accent: var(--v2-hue-magenta);
+  --v2-shade-accent: var(--v2-shade-magenta);
+}
+
+[data-prefers-color-accent='orange'] {
+  --v2-hue-accent: var(--v2-hue-orange);
+  --v2-shade-accent: var(--v2-shade-orange);
+}
+
+[data-prefers-color-accent='purple'] {
+  --v2-hue-accent: var(--v2-hue-purple);
+  --v2-shade-accent: var(--v2-shade-purple);
+}
+
+[data-prefers-color-accent='red'] {
+  --v2-hue-accent: var(--v2-hue-red);
+  --v2-shade-accent: var(--v2-shade-red);
+}
+
+[data-prefers-color-accent='slate'] {
+  --v2-hue-accent: var(--v2-hue-slate);
+  --v2-shade-accent: var(--v2-shade-slate);
+}
+
+[data-prefers-color-accent='stone'] {
+  --v2-hue-accent: var(--v2-hue-stone);
+  --v2-shade-accent: var(--v2-shade-stone);
+}
+
+[data-prefers-color-accent='teal'] {
+  --v2-hue-accent: var(--v2-hue-teal);
+  --v2-shade-accent: var(--v2-shade-teal);
+}
+
+[data-prefers-color-mode='dim'],
+[data-prefers-color-mode='dark'],
+[data-prefers-color-mode='light'] {
+  --v2-hue-yellow: 50, 100%;
+  --v2-hue-blue: 210, 100%;
+  --v2-hue-cyan: 200, 100%;
+  --v2-hue-green: 150, 80%;
+  --v2-hue-grey: 0, 0%;
+  --v2-hue-magenta: 330, 100%;
+  --v2-hue-orange: 30, 100%;
+  --v2-hue-purple: 260, 100%;
+  --v2-hue-red: 0, 100%;
+  --v2-hue-slate: 210, 10%;
+  --v2-hue-stone: 0, 4%;
+  --v2-hue-teal: 180, 60%;
+
+  --v2-color-yellow: hsl(var(--v2-hue-yellow), var(--v2-shade-yellow));
+  --v2-color-blue: hsl(var(--v2-hue-blue), var(--v2-shade-blue));
+  --v2-color-cyan: hsl(var(--v2-hue-cyan), var(--v2-shade-cyan));
+  --v2-color-green: hsl(var(--v2-hue-green), var(--v2-shade-green));
+  --v2-color-grey: hsl(var(--v2-hue-grey), var(--v2-shade-grey));
+  --v2-color-magenta: hsl(var(--v2-hue-magenta), var(--v2-shade-magenta));
+  --v2-color-orange: hsl(var(--v2-hue-orange), var(--v2-shade-orange));
+  --v2-color-purple: hsl(var(--v2-hue-purple), var(--v2-shade-purple));
+  --v2-color-red: hsl(var(--v2-hue-red), var(--v2-shade-red));
+  --v2-color-slate: hsl(var(--v2-hue-slate), var(--v2-shade-slate));
+  --v2-color-stone: hsl(var(--v2-hue-stone), var(--v2-shade-stone));
+  --v2-color-teal: hsl(var(--v2-hue-teal), var(--v2-shade-teal));
+
+  --v2-hsl-accent: var(--v2-hue-accent), var(--v2-shade-accent);
+  --v2-color-accent: hsl(var(--v2-hsl-accent));
 }

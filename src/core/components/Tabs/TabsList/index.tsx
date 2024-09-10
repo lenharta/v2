@@ -12,7 +12,7 @@ export type TabsListFactory = Core.Factory<{
 }>;
 
 export const TabsList = Component<TabsListFactory>(
-  ({ withDivider, dividerProps, children, className, ...props }, ref) => {
+  ({ grow, withDivider, dividerProps, children, className, ...props }, ref) => {
     const ctx = useTabsContext();
 
     const isDivided = !!withDivider || !!dividerProps;
@@ -32,8 +32,9 @@ export const TabsList = Component<TabsListFactory>(
           ref={ref}
           role="tablist"
           className={clsx('v2-tabs-list', className)}
-          data-orientation={ctx.orientation}
           aria-orientation={ctx.orientation}
+          data-orientation={ctx.orientation}
+          data-grow={grow || undefined}
           {...TABS_SELECTORS.list.prop}
           {...props}
         >

@@ -1,16 +1,17 @@
-import { Section } from '@/app';
+// import * as Router from 'react-router-dom';
 import { Text } from '@/core';
+import { Headline, Section } from '@/app';
 
 export const HomeIntro = () => {
   return (
-    <Section className="v2-home-intro">
-      <div className="v2-home-intro-layout">
+    <>
+      <Headline className="v2-home-intro-headline" title="Intro" href="home-intro" order=".01" />
+      <Section className="v2-home-intro">
         <Text className="v2-home-intro-text">
-          Software Engineer based in the United States, actively seeking a role within a team of
-          talented engineers that drive innovation, promote transformative thinking, and make
-          impactful contributions to the industry.
+          Located in the United States, actively seeking a role within a team of talented engineers
+          that drive innovation and make impactful contributions to the industry.
         </Text>
-      </div>
-    </Section>
+      </Section>
+    </>
   );
 };

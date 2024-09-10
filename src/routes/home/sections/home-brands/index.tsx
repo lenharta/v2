@@ -1,5 +1,7 @@
-import { Section } from '@/app';
+import { Headline, Section } from '@/app';
 import {
+  Text,
+  Title,
   CompanyLogoTransunion,
   CompanyLogoMclaren,
   CompanyLogoPace,
@@ -10,8 +12,6 @@ import {
   CompanyLogoBofA,
   CompanyLogoJeffries,
   CompanyLogoBloomberg,
-  Title,
-  Text,
 } from '@/core';
 
 const data = [
@@ -68,30 +68,33 @@ const data = [
 ];
 
 export const HomeBrands = () => (
-  <Section className="v2-home-brands">
-    <div className="v2-home-brands-box">
-      <Title className="v2-home-brands-title" h3>
-        Trusted by Market Leaders: <span>Elevating Digital Presence for Renowned Brands.</span>
-      </Title>
-      <Text className="v2-home-brands-text">
-        Renowned brands rely on front-end development expertise to elevate their digital presence
-        with a focus on innovative design and exceptional user experience. Let's transform your web
-        experience into a powerful tool.
-      </Text>
-    </div>
-    <div className="v2-home-brands-box">
-      {data.map((item) => (
-        <a
-          id={item.id}
-          rel="noopener"
-          key={item.id}
-          href={item.url}
-          target="_blank"
-          className="v2-home-brands-tile"
-          children={item.logo}
-          tabIndex={0}
-        />
-      ))}
-    </div>
-  </Section>
+  <>
+    <Headline className="v2-home-brands-headline" title="Brands" href="home-brands" order=".04" />
+    <Section className="v2-home-brands">
+      <div className="v2-home-brands-banner">
+        <Title className="v2-home-brands-banner-title" h3>
+          Trusted by Market Leaders: <span>Elevating Digital Presence for Renowned Brands.</span>
+        </Title>
+        <Text className="v2-home-brands-banner-text">
+          Renowned brands rely on front-end development expertise to elevate their digital presence
+          with a focus on innovative design and exceptional user experience. Let's transform your
+          web experience into a powerful tool.
+        </Text>
+      </div>
+      <div className="v2-home-brands-tiles">
+        {data.map((item) => (
+          <a
+            id={item.id}
+            key={item.id}
+            rel="noopener"
+            href={item.url}
+            target="_blank"
+            className="v2-home-brands-tile"
+            children={item.logo}
+            tabIndex={0}
+          />
+        ))}
+      </div>
+    </Section>
+  </>
 );

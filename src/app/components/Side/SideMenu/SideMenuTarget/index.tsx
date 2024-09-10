@@ -43,6 +43,33 @@ export const SideMenuTarget: SideMenuTargetComponent = (props) => {
     setOpen((prev) => !prev);
   };
 
+  const handleItemClick = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    payload: Partial<Store.State>
+  ) => {
+    event.stopPropagation();
+    dispatch(payload);
+    setOpen(false);
+  };
+
+  const getGroupIconProps = (): Partial<ICON.Props> => {
+    if (group === 'dir') {
+      if (store[group] === 'ltr') {
+        return { name: 'text-left' };
+      }
+      if (store[group] === 'rtl') {
+        return { name: 'text-right' };
+      }
+    }
+    if (group === 'accent') {
+      return { name: 'shape-circle', fill: store[group] };
+    }
+    if (group === 'mode') {
+      return { name: `mode-${store[group]}` };
+    }
+    return {};
+  };
+
   return (
     <Floating
       isOpen={isOpen}
@@ -51,7 +78,7 @@ export const SideMenuTarget: SideMenuTargetComponent = (props) => {
       {...FLOATING_TRANSITION}
     >
       <Floating.Target>
-        <Action onClick={handleClick} />
+        <Action onClick={handleClick} icon={{ ...getGroupIconProps(), type: store.icons }} />
       </Floating.Target>
       <Floating.Box>
         <Action.Group className="v2-side-menu-select">
@@ -59,7 +86,7 @@ export const SideMenuTarget: SideMenuTargetComponent = (props) => {
             <Action
               key={item.value}
               icon={{ ...item.icon, type: store.icons }}
-              onClick={() => dispatch({ [group]: item.value })}
+              onClick={(event) => handleItemClick(event, { [group]: item.value })}
               isSelected={store[group] === item.value}
               aria-label={item.label}
             />

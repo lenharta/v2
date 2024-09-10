@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Main, Page, PageProps } from '@/app';
 import { HomeHero } from './sections/home-hero';
-import { HomeIntro } from './sections/home-intro';
 import { HomeStats } from './sections/home-stats';
+import { HomeIntro } from './sections/home-intro';
 import { HomeBrands } from './sections/home-brands';
-import { HomeExperience } from './sections/home-experience';
+import { HomeResume } from './sections/home-resume';
 
 export type HomeRouteProps = PageProps & {};
 
@@ -12,10 +12,10 @@ export type HomeRouteComponent = {
   (props: HomeRouteProps): React.ReactNode;
   displayName?: string;
   Hero: typeof HomeHero;
-  Intro: typeof HomeIntro;
   Stats: typeof HomeStats;
+  Intro: typeof HomeIntro;
   Brands: typeof HomeBrands;
-  Experience: typeof HomeExperience;
+  Resume: typeof HomeResume;
 };
 
 export const Home: HomeRouteComponent = (props) => (
@@ -24,8 +24,8 @@ export const Home: HomeRouteComponent = (props) => (
     <Main>
       <Home.Intro />
       <Home.Stats />
+      <Home.Resume />
       <Home.Brands />
-      <Home.Experience />
     </Main>
   </Page>
 );
@@ -34,5 +34,5 @@ Home.Hero = HomeHero;
 Home.Intro = HomeIntro;
 Home.Stats = HomeStats;
 Home.Brands = HomeBrands;
-Home.Experience = HomeExperience;
+Home.Resume = HomeResume;
 Home.displayName = '@v2/Route.Home';

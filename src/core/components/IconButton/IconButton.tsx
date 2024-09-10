@@ -12,9 +12,9 @@ export type IconButtonFactory = Core.Factory<{
 export const IconButton = Component<IconButtonFactory>(
   ({ icon, size = 'md', variant = 'default', className, ...props }, ref) => {
     const classNames = clsx(
-      'v2-iconbutton',
-      `v2-iconbutton--${size}`,
-      `v2-iconbutton--${variant}`,
+      'v2-icon-button',
+      `v2-icon-button--${size}`,
+      `v2-icon-button--${variant}`,
       className
     );
 

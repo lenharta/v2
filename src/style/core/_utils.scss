@@ -1,17 +1,20 @@
-@mixin button-reset {
-  margin: 0;
-  padding: 0;
+@mixin reset {
   box-sizing: border-box;
-  // outline-color: transparent;
-  // outline-width: var(--v2-unit);
-  // outline-style: solid;
+  padding: 0;
+  margin: 0;
+}
 
-  &:focus(:focus-visible) {
-    // outline-offset: calc(var(--v2-unit) * 1);
-    outline-color: var(--v2-color-focus);
-  }
+@mixin button-focus {
+  outline-width: var(--v2-unit);
+  outline-color: transparent;
+  outline-style: solid;
+
   &:focus:not(:focus-visible) {
     outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: var(--v2-color-focus);
+    outline-offset: calc(var(--v2-unit) * -1);
   }
 }
 
@@ -25,9 +28,11 @@
   &[data-disabled] {
     cursor: not-allowed;
   }
+
   &[data-readonly] {
     cursor: default;
   }
+
   &[data-loading] {
     cursor: wait;
   }

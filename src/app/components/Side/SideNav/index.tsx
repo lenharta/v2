@@ -19,27 +19,27 @@ export type SideNavData = {
 const navItems: SideNavData[] = [
   {
     uid: 'side:nav:item:a',
-    icon: { name: 'shape-circle' },
-    label: 'Home',
-    value: '/',
-  },
-  {
-    uid: 'side:nav:item:b',
-    icon: { name: 'shape-circle' },
+    icon: { name: 'person' },
     label: 'About',
     value: '/about',
   },
   {
+    uid: 'side:nav:item:b',
+    icon: { name: 'code-slash' },
+    label: 'Stack',
+    value: '/stack',
+  },
+  {
     uid: 'side:nav:item:c',
-    icon: { name: 'shape-circle' },
-    label: 'Sandbox',
-    value: '/sandbox',
+    icon: { name: 'easel' },
+    label: 'Projects',
+    value: '/projects',
   },
   {
     uid: 'side:nav:item:d',
-    icon: { name: 'shape-circle' },
-    label: 'Workspace',
-    value: '/workspace',
+    icon: { name: 'box-seam' },
+    label: 'Sandbox',
+    value: '/sandbox',
   },
 ];
 

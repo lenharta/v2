@@ -31,13 +31,6 @@
     background-color: var(--v2-color-button-0-pressed);
     color: var(--v2-color-text-0);
   }
-
-  // &[data-loading] {
-  // }
-  // &[data-readonly] {
-  // }
-  // &[data-disabled] {
-  // }
 }
 
 .v2-action {
@@ -77,4 +70,88 @@
 
 .v2-icon {
   color: var(--v2-color-text-0);
+}
+
+.v2-tabs-item--default {
+  color: var(--v2-color-label-3);
+  background-color: var(--v2-color-background-0);
+
+  &::after {
+    background-color: var(--v2-color-border-3);
+  }
+
+  &:not([data-loading]):hover,
+  &:not([data-readonly]):hover,
+  &:not([data-disabled]):hover {
+    color: var(--v2-color-label-2);
+    background-color: var(--v2-color-background-0-hovered);
+
+    &::after {
+      background-color: var(--v2-color-border-2);
+    }
+  }
+
+  &:not([data-loading]):active,
+  &:not([data-readonly]):active,
+  &:not([data-disabled]):active {
+    color: var(--v2-color-label-1);
+    background-color: var(--v2-color-background-0-pressed);
+
+    &::after {
+      background-color: var(--v2-color-border-1);
+    }
+  }
+
+  &:not([data-loading])[data-selected],
+  &:not([data-readonly])[data-selected],
+  &:not([data-disabled])[data-selected] {
+    color: var(--v2-color-label-0);
+    background-color: var(--v2-color-background-0-hovered);
+
+    &::after {
+      background-color: var(--v2-color-border-0);
+    }
+  }
+}
+
+.v2-tabs-item--accent {
+  color: var(--v2-color-label-3);
+  background-color: transparent;
+
+  &::after {
+    background-color: var(--v2-color-border-3);
+  }
+
+  &:not([data-loading]):hover,
+  &:not([data-readonly]):hover,
+  &:not([data-disabled]):hover {
+    color: var(--v2-color-label-2);
+    background-color: var(--v2-color-background-0-hovered);
+
+    &::after {
+      background-color: var(--v2-color-border-2);
+    }
+  }
+
+  &:not([data-loading]):active,
+  &:not([data-readonly]):active,
+  &:not([data-disabled]):active {
+    color: var(--v2-color-label-1);
+    background-color: var(--v2-color-background-0-pressed);
+
+    &::after {
+      background-color: var(--v2-color-border-1);
+    }
+  }
+
+  &:not([data-loading])[data-selected],
+  &:not([data-readonly])[data-selected],
+  &:not([data-disabled])[data-selected] {
+    color: var(--v2-color-accent-text-0);
+    background-color: var(--v2-color-background-0-hovered);
+
+    &::after {
+      background-color: var(--v2-color-accent-text-0);
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Core } from '@/types';
 import { Component } from '@/factory';
-import { Header, Side } from '@/app/components';
+import { Footer, Header, Side } from '@/app/components';
 
 export type PageProps = {};
 
@@ -17,6 +17,7 @@ export const Page = Component<PageFactory>(({ children, className, ...props }, r
     <Side />
     <div {...props} ref={ref} className={clsx('v2-page', className)}>
       {children}
+      <Footer />
     </div>
   </>
 ));

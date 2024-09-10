@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { Core } from '@/types';
 import { Component } from '@/factory';
 import { createKeyDownGroup } from '@/utils';
-import { Icon, UnstyledButton } from '@/core';
+import { Icon, Label, UnstyledButton } from '@/core';
 import { useTabsContext } from '../TabsContext';
 import { TABS_SELECTORS } from '../constants';
 
@@ -15,6 +15,8 @@ export type TabsItemFactory = Core.Factory<{
 export const TabsItem = Component<TabsItemFactory>(
   (
     {
+      grow,
+      size,
       value,
       variant,
       children,
@@ -33,6 +35,7 @@ export const TabsItem = Component<TabsItemFactory>(
 
     const classNames = clsx(
       'v2-tabs-item',
+      `v2-tabs-item--${size || context.size || 'md'}`,
       `v2-tabs-item--${variant || context.variant || 'default'}`,
       className
     );
@@ -56,7 +59,7 @@ export const TabsItem = Component<TabsItemFactory>(
     });
 
     return (
-      <UnstyledButton
+      <button
         {...props}
         {...TABS_SELECTORS.item.prop}
         id={context.getItemId(value)}
@@ -65,19 +68,22 @@ export const TabsItem = Component<TabsItemFactory>(
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         className={classNames}
-        data-loading={isLoading || context.isLoading}
-        data-disabled={isDisabled || context.isDisabled}
-        data-readonly={isReadonly || context.isReadonly}
-        data-selected={!!(context.value === value)}
+        data-grow={grow || undefined}
+        data-loading={isLoading || context.isLoading || undefined}
+        data-disabled={isDisabled || context.isDisabled || undefined}
+        data-readonly={isReadonly || context.isReadonly || undefined}
+        data-selected={!!(context.value === value) || undefined}
       >
-        <div className="v2-tabs-item-layout">
+        <span className="v2-tabs-item-layout">
           {iconLeft && <Icon {...iconLeft} />}
 
-          <div className="v2-tabs-item">{children}</div>
+          <Label className="v2-tabs-item-label" component="div">
+            {children}
+          </Label>
 
           {iconRight && <Icon {...iconRight} />}
-        </div>
-      </UnstyledButton>
+        </span>
+      </button>
     );
   }
 );

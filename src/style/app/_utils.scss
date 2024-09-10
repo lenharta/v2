@@ -1,27 +1,24 @@
 @mixin reset {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@mixin button-reset {
-  border: solid var(--v2-unit) transparent;
-  outline: solid var(--v2-unit) transparent;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@mixin button-focus() {
+  outline-width: var(--v2-unit);
+  outline-color: transparent;
+  outline-style: solid;
 
-  &:focus(:focus-visible) {
-    outline: solid var(--v2-unit) var(--v2-color-focus);
-    outline-offset: none;
-  }
   &:focus:not(:focus-visible) {
-    outline: solid var(--v2-unit) transparent;
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: var(--v2-color-focus);
     outline-offset: calc(var(--v2-unit) * -1);
   }
 }
 
-@mixin button-cursor {
+@mixin button-cursor() {
   &:not([data-loading]),
   &:not([data-readonly]),
   &:not([data-disabled]) {
@@ -31,9 +28,45 @@
   &[data-disabled] {
     cursor: not-allowed;
   }
+
   &[data-readonly] {
     cursor: default;
   }
+
+  &[data-loading] {
+    cursor: wait;
+  }
+}
+
+@mixin link-focus() {
+  outline-width: var(--v2-unit);
+  outline-color: transparent;
+  outline-style: solid;
+
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+  &:focus:focus-visible {
+    outline-color: var(--v2-color-focus);
+    outline-offset: calc(var(--v2-unit) * 1);
+  }
+}
+
+@mixin link-cursor() {
+  &:not([data-loading]),
+  &:not([data-readonly]),
+  &:not([data-disabled]) {
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+
+  &[data-readonly] {
+    cursor: default;
+  }
+
   &[data-loading] {
     cursor: wait;
   }

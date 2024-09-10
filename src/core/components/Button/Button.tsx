@@ -85,7 +85,7 @@ export const Button = PolymorphicComponent<ButtonFactory>(
             </div>
           )}
 
-          {children && <div className="v2-button-label">{children}</div>}
+          <div className="v2-button-label">{children}</div>
 
           {iconRight && (
             <div className="v2-button-section" data-position="right">
