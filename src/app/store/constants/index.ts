@@ -5,7 +5,7 @@ export const DEFAULT_STORE: Store.State = {
   lang: 'en',
   mode: 'dark',
   icons: 'outline',
-  accent: 'blue',
+  accent: 'green',
   contrast: 'no',
   nonce: () => '',
 } as const;

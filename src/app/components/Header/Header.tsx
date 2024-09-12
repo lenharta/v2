@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as Router from 'react-router-dom';
 import { Core } from '@/types';
-import { Action } from '@/core';
+// import { Action } from '@/core';
 import { Component } from '@/factory';
 import { HeaderLogo } from './HeaderLogo/HeaderLogo';
 
@@ -25,7 +25,7 @@ export const Header = Component<HeaderFactory>(
         <span className="v2-header-inner">
           <Header.Logo onClick={() => navigate('/')} />
           <div className="v2-header-spacer" />
-          <Action icon={{ name: 'tools', fill: 'accent' }} onClick={() => navigate('/workspace')} />
+          {/* <Action icon={{ name: 'tools', fill: 'accent' }} onClick={() => navigate('/workspace')} /> */}
         </span>
       </Component>
     );

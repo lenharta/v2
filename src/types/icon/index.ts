@@ -58,6 +58,7 @@ export namespace ICON {
   | 'arrow-northwest-circle'
   | 'arrow-southeast-circle'
   | 'arrow-southwest-circle'
+  | 'arrow-down-up'
   | 'caret-north'
   | 'caret-east'
   | 'caret-south'
