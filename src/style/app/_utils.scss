@@ -20,12 +20,12 @@
   }
 
   &:where([data-truncate='start']) {
-    direction: rtl;
     text-align: right;
+    direction: rtl;
 
     [data-prefers-dir='rtl'] & {
-      direction: ltr;
       text-align: left;
+      direction: ltr;
     }
   }
 }

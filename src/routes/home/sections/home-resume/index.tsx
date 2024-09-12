@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Headline, Section } from '@/app';
-import { Button, Tabs, Text, Title } from '@/core';
+import { Tabs, Text, Title } from '@/core';
 
 const headers = [
   {
@@ -53,7 +53,7 @@ export const HomeResume = () => {
 
   return (
     <>
-      <Headline className="v2-home-resume-headline" title="Resume" href="home-resume" order=".03" />
+      <Headline className="v2-home-resume-headline" title="Resume" href="home-resume" order=".02" />
       <Section className="v2-home-resume">
         <div className="v2-home-resume-banner">
           <Title className="v2-home-resume-banner-title" h3>
@@ -92,12 +92,12 @@ export const HomeResume = () => {
                   <>{item.description}</>
                 </Text>
 
-                <Button
+                {/* <Button
                   size="md"
                   iconRight={{ name: 'arrow-east' }}
                   className="v2-home-resume-tabs-panel-button"
                   children="Full Resume"
-                />
+                /> */}
               </div>
             </Tabs.Panel>
           ))}

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import * as Router from 'react-router-dom';
-import { Text, Title } from '@/core';
+import { Title } from '@/core';
+import { APP_TECH_DATA } from '@/data';
 import { Hero, Main, Page, PageProps, Section } from '@/app';
+import { StackTable } from './sections/stack-table';
 
 export type StackRouteProps = PageProps & {};
 
@@ -11,7 +12,6 @@ export type StackRouteComponent = {
 };
 
 export const Stack: StackRouteComponent = (props) => {
-  const homeLink = <Router.Link to="/">go home.</Router.Link>;
   return (
     <Page {...props}>
       <Hero>
@@ -19,10 +19,7 @@ export const Stack: StackRouteComponent = (props) => {
       </Hero>
       <Main>
         <Section>
-          <Text>
-            This page is currently under contruction, check back later for updates. Click here to{' '}
-            {homeLink}
-          </Text>
+          <StackTable rows={APP_TECH_DATA} />
         </Section>
       </Main>
     </Page>

@@ -69,7 +69,7 @@ const data = [
 
 export const HomeBrands = () => (
   <>
-    <Headline className="v2-home-brands-headline" title="Brands" href="home-brands" order=".04" />
+    <Headline className="v2-home-brands-headline" title="Brands" href="home-brands" order=".03" />
     <Section className="v2-home-brands">
       <div className="v2-home-brands-banner">
         <Title className="v2-home-brands-banner-title" h3>
