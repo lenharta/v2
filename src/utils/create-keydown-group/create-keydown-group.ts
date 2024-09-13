@@ -1,4 +1,4 @@
-interface KeyDownGroupOptions<T> {
+export interface KeyDownGroupOptions<T> {
   childSelector: string;
   parentSelector: string;
   onKeyDown?: ((event: React.KeyboardEvent<T>) => void) | undefined;
@@ -49,7 +49,7 @@ const getPrevIndex = <T extends Element = HTMLButtonElement>(
   return current;
 };
 
-const createKeyDownGroup = <T extends HTMLElement = HTMLButtonElement>(
+export const createKeyDownGroup = <T extends HTMLElement = HTMLButtonElement>(
   opts: KeyDownGroupOptions<T>
 ) => {
   const {
@@ -126,5 +126,3 @@ const createKeyDownGroup = <T extends HTMLElement = HTMLButtonElement>(
     fireEvents?.();
   };
 };
-
-export { createKeyDownGroup, type KeyDownGroupOptions };
