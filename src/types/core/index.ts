@@ -65,11 +65,11 @@ export declare namespace Core {
     : P;
 
   export type ComponentRenderProps<P extends FactoryPayload> = P['excluded'] extends keyof any
-    ? Omit<React.ComponentPropsWithoutRef<P['element']> & P['props'] & { component: P['element'] }, P['excluded']>
+    ? Omit<React.ComponentPropsWithoutRef<P['element']>, P['excluded']> & P['props'] & { component: P['element'] }
     : React.ComponentPropsWithoutRef<P['element']> & P['props'] & { component: P['element'] };
 
   export type ComponentReturnProps<P extends FactoryPayload> = P['excluded'] extends keyof any
-    ? Omit<React.ComponentPropsWithRef<P['element']> & P['props'], P['excluded']>
+    ? Omit<React.ComponentPropsWithRef<P['element']>, P['excluded']> & P['props']
     : React.ComponentPropsWithRef<P['element']> & P['props'];
 
   export type ComponentRenderFunction<P extends FactoryPayload> = {
@@ -349,80 +349,121 @@ export declare namespace Core {
     isReadonly?: boolean;
   }
 
-  export type CheckboxIconName = `checkbox-${CheckboxIconState}-${CheckboxIconShape}`
-  export type CheckboxIconState = 'mixed' | 'checked' | 'unchecked';
-  export type CheckboxIconShape = 'circle' | 'square';
-  
-  export type CheckboxStateProps = {
-    isChecked?: boolean;
+  export type CheckboxSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type CheckboxShape = 'circle' | 'square';
+  export type CheckboxState = 'true' | 'false' | 'mixed';
+  export type CheckboxVariant = 'default' | 'accent';
+
+  export type CheckboxProps = InlineInputProps & {
+    size?: CheckboxSize;
+    shape?: CheckboxShape;
+    variant?: CheckboxVariant;
+    mixed?: boolean;
+    value?: string;
+    checked?: boolean;
+    iconProps?: Partial<ICON.Props>;
+    rootProps?: React.ComponentPropsWithoutRef<'div'>;
+  }
+
+  export type CheckoboxGroupProps = GroupProps & {
+    value: string[];
+    onChange: (value: string[] | ((value: string[]) => string[])) => void;
+    size?: CheckboxSize;
+    shape?: CheckboxShape;
+    variant?: CheckboxVariant;
     isLoading?: boolean;
     isReadonly?: boolean;
     isDisabled?: boolean;
-    isIndeterminate?: boolean;
   }
-
-  export type CheckboxValue<Multiple = false> = Multiple extends true 
-    ? string[] 
-    : string;
-
-  export type CheckboxChangeHandler<Multiple = false> = Multiple extends true
-    ? (value: string[]) => void
-    : (event: React.ChangeEvent<HTMLInputElement>) => void;
-
-  export type CheckboxValueProps<Multiple = false> = {
-    onChange: CheckboxChangeHandler<Multiple>;
-    value: CheckboxValue<Multiple>;
-  }
-
-  export type CheckboxContext = InlineInputProps & {
+  
+  export type CheckboxContext = {
+    value: string[];
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    size?: CheckboxSize;
+    shape?: CheckboxShape;
+    variant?: CheckboxVariant;
     isLoading?: boolean;
     isReadonly?: boolean;
     isDisabled?: boolean;
     orientation?: Orientation;
-    onValueChange?: (value: string) => void;
-    shape?: CheckboxIconShape;
-    value: string[];
-    gap?: SizeGap;
-  }
+  };
 
-  export type CheckboxGroupProps = BaseInputState & GroupProps & {
-    onValueChange: (value: string[]) => void;
-    shape?: CheckboxIconShape;
-    value: string[];
-  }
 
-  export type CheckboxProps<Mulitple = false> = InlineInputProps & CheckboxStateProps & CheckboxValueProps<Mulitple> & {
-    label: string;
-    icon?: Partial<ICON.Props>;
-    shape?: CheckboxIconShape;
-  }
+
+  // export type CheckboxIconName = `checkbox-${CheckboxIconState}-${CheckboxIconShape}`
+  // export type CheckboxIconState = 'mixed' | 'checked' | 'unchecked';
+  // export type CheckboxIconShape = 'circle' | 'square';
   
-  export type CheckboxIconProps = CheckboxStateProps & {
-    icon?: Partial<ICON.Props>;
-    shape?: CheckboxIconShape;
-  }
+  // export type CheckboxStateProps = {
+  //   isChecked?: boolean;
+  //   isLoading?: boolean;
+  //   isReadonly?: boolean;
+  //   isDisabled?: boolean;
+  //   isIndeterminate?: boolean;
+  // }
 
-  export type ParseCheckboxIconState = {
-    (props: CheckboxStateProps): CheckboxIconState;
-  }
+  // export type CheckboxValue<Multiple = false> = Multiple extends true 
+  //   ? string[] 
+  //   : string;
 
-  export type ParseCheckboxIconName = {
-    (state: CheckboxIconState, shape: CheckboxIconShape): {
-      name: CheckboxIconName
-    }
-  }
+  // export type CheckboxChangeHandler<Multiple = false> = Multiple extends true
+  //   ? (value: string[]) => void
+  //   : (event: React.ChangeEvent<HTMLInputElement>) => void;
 
-  export type ParseCheckboxIconProps = {
-    (props: { 
-      icon?: Partial<ICON.Props>; 
-      state: CheckboxIconState; 
-      shape: CheckboxIconShape;
-    }): {
-      type: ICON.Type;
-      name: ICON.Name;
-      fill: ICON.Color;
-    }
-  }
+  // export type CheckboxValueProps<Multiple = false> = {
+  //   onChange: CheckboxChangeHandler<Multiple>;
+  //   value: CheckboxValue<Multiple>;
+  // }
+
+  // export type CheckboxContext = InlineInputProps & {
+  //   isLoading?: boolean;
+  //   isReadonly?: boolean;
+  //   isDisabled?: boolean;
+  //   orientation?: Orientation;
+  //   onValueChange?: (value: string) => void;
+  //   shape?: CheckboxIconShape;
+  //   value: string[];
+  //   gap?: SizeGap;
+  // }
+
+  // export type CheckboxGroupProps = BaseInputState & GroupProps & {
+  //   onValueChange: (value: string[]) => void;
+  //   shape?: CheckboxIconShape;
+  //   value: string[];
+  // }
+
+  // export type CheckboxProps<Mulitple = false> = InlineInputProps & CheckboxStateProps & CheckboxValueProps<Mulitple> & {
+  //   label: string;
+  //   icon?: Partial<ICON.Props>;
+  //   shape?: CheckboxIconShape;
+  // }
+  
+  // export type CheckboxIconProps = CheckboxStateProps & {
+  //   icon?: Partial<ICON.Props>;
+  //   shape?: CheckboxIconShape;
+  // }
+
+  // export type ParseCheckboxIconState = {
+  //   (props: CheckboxStateProps): CheckboxIconState;
+  // }
+
+  // export type ParseCheckboxIconName = {
+  //   (state: CheckboxIconState, shape: CheckboxIconShape): {
+  //     name: CheckboxIconName
+  //   }
+  // }
+
+  // export type ParseCheckboxIconProps = {
+  //   (props: { 
+  //     icon?: Partial<ICON.Props>; 
+  //     state: CheckboxIconState; 
+  //     shape: CheckboxIconShape;
+  //   }): {
+  //     type: ICON.Type;
+  //     name: ICON.Name;
+  //     fill: ICON.Color;
+  //   }
+  // }
 
   export type ChipProps = UnstyledButtonProps & {
     size?: SizeRegular;
