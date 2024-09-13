@@ -1,6 +1,14 @@
 .v2-group {
+  --v2-group-gap-xxs: calc(var(--v2-unit) * 1);
+  --v2-group-gap-xs: calc(var(--v2-unit) * 2);
+  --v2-group-gap-sm: calc(var(--v2-unit) * 4);
+  --v2-group-gap-md: calc(var(--v2-unit) * 8);
+  --v2-group-gap-lg: calc(var(--v2-unit) * 16);
+  --v2-group-gap-xl: calc(var(--v2-unit) * 32);
+  --v2-group-gap-xxl: calc(var(--v2-unit) * 64);
+
   display: flex;
-  gap: var(--v2-group-gap, var(--v2-gap-xxs));
+  gap: var(--v2-group-gap, none);
 
   &:where([data-orientation='vertical']) {
     flex-direction: column;
@@ -12,24 +20,24 @@
   }
 
   &--gap-xxs {
-    --v2-group-gap: var(--v2-gap-xxs);
+    --v2-group-gap: var(--v2-group-gap-xxs);
   }
   &--gap-xs {
-    --v2-group-gap: var(--v2-gap-xs);
+    --v2-group-gap: var(--v2-group-gap-xs);
   }
   &--gap-sm {
-    --v2-group-gap: var(--v2-gap-sm);
+    --v2-group-gap: var(--v2-group-gap-sm);
   }
   &--gap-md {
-    --v2-group-gap: var(--v2-gap-md);
+    --v2-group-gap: var(--v2-group-gap-md);
   }
   &--gap-lg {
-    --v2-group-gap: var(--v2-gap-lg);
+    --v2-group-gap: var(--v2-group-gap-lg);
   }
   &--gap-xl {
-    --v2-group-gap: var(--v2-gap-xl);
+    --v2-group-gap: var(--v2-group-gap-xl);
   }
   &--gap-xxl {
-    --v2-group-gap: var(--v2-gap-xxl);
+    --v2-group-gap: var(--v2-group-gap-xxl);
   }
 }

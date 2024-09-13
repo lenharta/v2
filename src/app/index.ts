@@ -1,3 +1,3 @@
 export * from './components';
-export * from './store';
 export * from './layouts';
+export * from './store';

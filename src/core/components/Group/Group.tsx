@@ -23,6 +23,7 @@ export const Group = PolymorphicComponent<GroupFactory>(
     return (
       <Component
         {...props}
+        data-core-group
         aria-orientation={orientation}
         className={clsx('v2-group', `v2-group--gap-${gap}`, className)}
         ref={ref}
