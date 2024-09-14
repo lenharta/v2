@@ -141,6 +141,10 @@
   grid-template-columns: repeat(2, 1fr);
   gap: var(--v2-unit);
   padding-bottom: calc(var(--v2-space) * 3);
+
+  [data-prefers-dir='rtl'] & {
+    justify-content: end;
+  }
 }
 
 .v2-home-brands-tile {

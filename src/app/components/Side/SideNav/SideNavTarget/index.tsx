@@ -55,7 +55,7 @@ export const SideNavTarget = ({ item, location, navigate }: SideNavTargetProps) 
           icon={item.icon}
           value={item.value}
           onClick={(event) => handleClick(event, item.value)}
-          isSelected={item.value === location.pathname}
+          isSelected={item.value === location.pathname || undefined}
           onMouseLeave={handleMouseLeave}
           onMouseEnter={handleMouseEnter}
           className="v2-side-nav-target"

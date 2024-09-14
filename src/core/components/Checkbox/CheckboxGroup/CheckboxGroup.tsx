@@ -39,31 +39,55 @@ const handleCheckboxFocus = <T extends HTMLDivElement = HTMLDivElement>(
       const moveFocusToLastIndex = () => nodes[nodes.length - 1]?.focus();
       const moveFocusToFirstIndex = () => nodes[0]?.focus();
 
-      event.preventDefault();
+      const Home = () => {
+        event.preventDefault();
+        moveFocusToFirstIndex();
+      };
 
-      const horizontalActions = {
-        End: () => moveFocusToLastIndex(),
-        Home: () => moveFocusToFirstIndex(),
-        ArrowUp: () => moveFocusToFirstIndex(),
-        ArrowDown: () => moveFocusToLastIndex(),
-        ArrowRight: () => moveFocusToNextIndex(),
-        ArrowLeft: () => moveFocusToPrevIndex(),
-      }[event.key];
+      const End = () => {
+        event.preventDefault();
+        moveFocusToFirstIndex();
+      };
 
-      const verticalActions = {
-        End: () => moveFocusToLastIndex(),
-        Home: () => moveFocusToFirstIndex(),
-        ArrowUp: () => moveFocusToPrevIndex(),
-        ArrowDown: () => moveFocusToNextIndex(),
-        ArrowRight: () => moveFocusToLastIndex(),
-        ArrowLeft: () => moveFocusToFirstIndex(),
-      }[event.key];
+      const ArrowUp = () => {
+        event.preventDefault();
+        if (orientation === 'horizontal') {
+          moveFocusToFirstIndex();
+        } else {
+          moveFocusToPrevIndex();
+        }
+      };
 
-      if (orientation === 'horizontal') {
-        horizontalActions?.();
-      } else {
-        verticalActions?.();
-      }
+      const ArrowDown = () => {
+        event.preventDefault();
+        if (orientation === 'horizontal') {
+          moveFocusToLastIndex();
+        } else {
+          moveFocusToNextIndex();
+        }
+      };
+
+      const ArrowRight = () => {
+        event.preventDefault();
+        if (orientation === 'horizontal') {
+          moveFocusToNextIndex();
+        } else {
+          moveFocusToLastIndex();
+        }
+      };
+
+      const ArrowLeft = () => {
+        event.preventDefault();
+        if (orientation === 'horizontal') {
+          moveFocusToPrevIndex();
+        } else {
+          moveFocusToFirstIndex();
+        }
+      };
+
+      const focusableActions = { End, Home, ArrowUp, ArrowDown, ArrowRight, ArrowLeft }[event.key];
+
+      focusableActions?.();
     }
   };
 };
@@ -73,16 +97,16 @@ export const CheckboxGroup = Component<CheckboxGroupFactory>(
     {
       gap = 'xxs',
       size,
+      value,
       shape,
       variant,
-      value,
       onChange,
-      isDisabled,
+      children,
       isLoading,
       isReadonly,
-      orientation = 'horizontal',
+      isDisabled,
       component = 'div',
-      children,
+      orientation = 'horizontal',
       ...props
     },
     ref

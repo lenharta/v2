@@ -1,69 +1,67 @@
+import * as Logo from '@/core/components/Icon/companies';
+import { Text, Title } from '@/core/components';
 import { Headline, Section } from '@/app';
-import {
-  Text,
-  Title,
-  CompanyLogoTransunion,
-  CompanyLogoMclaren,
-  CompanyLogoPace,
-  CompanyLogoCampbells,
-  CompanyLogoHawthorne,
-  CompanyLogoWalmart,
-  CompanyLogoStryker,
-  CompanyLogoBofA,
-  CompanyLogoJeffries,
-  CompanyLogoBloomberg,
-} from '@/core';
 
 const data = [
   {
     id: 'brands-company-transunion',
     url: 'https://www.transunion.com/business',
-    logo: <CompanyLogoTransunion />,
+    logo: <Logo.CompanyLogoTransunion />,
+    label: 'Transunion',
   },
   {
     id: 'brands-company-mclaren',
     url: 'https://mclarenss.com/',
-    logo: <CompanyLogoMclaren />,
+    logo: <Logo.CompanyLogoMclaren />,
+    label: 'Mclaren Solutions',
   },
   {
     id: 'brands-company-pace',
     url: 'https://www.paceco.com/',
-    logo: <CompanyLogoPace />,
+    logo: <Logo.CompanyLogoPace />,
+    label: 'Pace Communications',
   },
   {
     id: 'brands-company-campbells',
     url: 'https://www.campbellsoupcompany.com/',
-    logo: <CompanyLogoCampbells />,
+    logo: <Logo.CompanyLogoCampbells />,
+    label: 'Campbells Foods',
   },
   {
     id: 'brands-company-hawthorne',
     url: 'https://hrpliving.com/',
-    logo: <CompanyLogoHawthorne />,
+    logo: <Logo.CompanyLogoHawthorne />,
+    label: ' Hawthorne Residential Partners',
   },
   {
     id: 'brands-company-walmart',
     url: 'https://corporate.walmart.com/about',
-    logo: <CompanyLogoWalmart />,
+    logo: <Logo.CompanyLogoWalmart />,
+    label: 'Walmart',
   },
   {
     id: 'brands-company-stryker',
     url: 'https://www.stryker.com/us/en/about.html',
-    logo: <CompanyLogoStryker />,
+    logo: <Logo.CompanyLogoStryker />,
+    label: 'Stryker',
   },
   {
     id: 'brands-company-bofa',
     url: 'https://about.bankofamerica.com/en/our-company',
-    logo: <CompanyLogoBofA />,
+    logo: <Logo.CompanyLogoBofA />,
+    label: 'Bank of America',
   },
   {
     id: 'brands-company-jeffries',
     url: 'https://www.jefferies.com/about/',
-    logo: <CompanyLogoJeffries />,
+    logo: <Logo.CompanyLogoJeffries />,
+    label: 'Jeffries',
   },
   {
     id: 'brands-company-bloomberg',
     url: 'https://www.bloomberg.com/company/what-we-do/',
-    logo: <CompanyLogoBloomberg />,
+    logo: <Logo.CompanyLogoBloomberg />,
+    label: 'Bloomberg',
   },
 ];
 
@@ -82,17 +80,20 @@ export const HomeBrands = () => (
         </Text>
       </div>
       <div className="v2-home-brands-tiles">
-        {data.map((item) => (
+        {data.map(({ id, url, logo, label }) => (
           <a
-            id={item.id}
-            key={item.id}
+            id={id}
+            key={id}
             rel="noopener"
-            href={item.url}
+            href={url}
+            title={label}
             target="_blank"
             className="v2-home-brands-tile"
-            children={item.logo}
+            aria-label={label}
             tabIndex={0}
-          />
+          >
+            {logo}
+          </a>
         ))}
       </div>
     </Section>

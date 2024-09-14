@@ -8,13 +8,14 @@
   --v2-group-gap-xxl: calc(var(--v2-unit) * 64);
 
   display: flex;
+  flex-wrap: wrap;
   gap: var(--v2-group-gap, none);
 
-  &:where([data-orientation='vertical']) {
+  [data-orientation='vertical'] & {
     flex-direction: column;
     height: 100%;
   }
-  &:where([data-orientation='horizontal']) {
+  [data-orientation='horizontal'] & {
     flex-direction: row;
     width: 100%;
   }

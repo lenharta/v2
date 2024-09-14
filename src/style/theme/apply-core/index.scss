@@ -38,7 +38,7 @@
 .v2-button--default:not([data-loading]):active,
 .v2-button--default:not([data-readonly]):active,
 .v2-button--default:not([data-disabled]):active {
-  background-color: hsla(var(--v2-hsl-surface), 0.06);
+  background-color: hsla(var(--v2-hsl-surface), 0.05);
   border-color: hsla(var(--v2-hsl-surface), 0);
   color: hsla(var(--v2-hsl-surface), 0.87);
 }
@@ -82,7 +82,14 @@
 .v2-action--default:not([data-loading]):active,
 .v2-action--default:not([data-readonly]):active,
 .v2-action--default:not([data-disabled]):active {
-  background-color: hsla(var(--v2-hsl-surface), 0.06);
+  background-color: hsla(var(--v2-hsl-surface), 0.05);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-action-spacer,
+.v2-action-spacer--default {
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
   border-color: hsla(var(--v2-hsl-surface), 0);
   color: hsla(var(--v2-hsl-surface), 0.87);
 }

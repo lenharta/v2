@@ -35,12 +35,12 @@ const navItems: SideNavData[] = [
   //   label: 'Projects',
   //   value: '/projects',
   // },
-  // {
-  //   uid: 'side:nav:item:d',
-  //   icon: { name: 'box-seam' },
-  //   label: 'Sandbox',
-  //   value: '/sandbox',
-  // },
+  {
+    uid: 'side:nav:item:d',
+    icon: { name: 'box-seam' },
+    label: 'Sandbox',
+    value: '/sandbox',
+  },
 ];
 
 export type SideNavComponent = {

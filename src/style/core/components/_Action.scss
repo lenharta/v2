@@ -2,36 +2,29 @@
 @use '../utils' as utils;
 
 .v2-action {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  @include utils.reset;
+  @include utils.button-focus;
+  @include utils.button-cursor;
+
   width: var(--v2-action-button);
   height: var(--v2-action-button);
-  outline-width: var(--v2-unit);
-  outline-color: transparent;
-  outline-style: solid;
+}
 
-  &:focus:not(:focus-visible) {
-    outline-color: transparent;
+.v2-action-spacer {
+  @include utils.reset;
+
+  display: flex;
+  flex: 1 1;
+
+  [data-orientation='horizontal'] & {
+    min-width: 100%;
   }
-
-  &:focus:focus-visible {
-    outline-color: var(--v2-color-focus);
-  }
-
-  &:not([data-loading]),
-  &:not([data-disabled]),
-  &:not([data-readonly]) {
-    cursor: pointer;
+  [data-orientation='vertical'] & {
+    min-height: 100%;
   }
 
-  &[data-loading] {
-    cursor: wait;
-  }
-  &[data-readonly] {
-    cursor: default;
-  }
-  &[data-disabled] {
-    cursor: not-allowed;
+  &[data-grow] {
+    flex: 1 0;
+    display: flex;
   }
 }

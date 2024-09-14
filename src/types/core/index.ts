@@ -348,6 +348,72 @@ export declare namespace Core {
     isDisabled?: boolean;
     isReadonly?: boolean;
   }
+  
+  export type CanvasControl = 'segmented' | 'checkbox' | 'switch' | 'select' | 'color';
+
+  export type CanvasControlObject<T extends CanvasControl, P extends Record<string, any>> = P & {
+    prop: string;
+    type: T;
+  };
+
+  export type CanvasControlSwitchProps = { 
+    onChange: (value: boolean) => void; 
+    value: boolean;
+    prop: string;
+  };
+
+  export type CanvasControlSwitchOptions = CanvasControlObject<'switch', { 
+    initialValue: boolean;
+  }>;
+  
+  export type CanvasControlSelectItem = { 
+    value: string; 
+    label: string;
+  };
+  
+  export type CanvasControlSelectOptions = CanvasControlObject<'select', {
+    data: (string | CanvasControlSelectItem)[];
+    initialValue: string;
+  }>;
+  
+  export type CanvasControlSegmentedItem = { 
+    value: string; 
+    label: string;
+  };
+
+  export type CanvasControlSegmentedOptions = CanvasControlObject<'segmented', {
+    data: (string | CanvasControlSegmentedItem)[];
+    initialValue: string;
+  }>;
+
+  export type CanvasControlSegmentedProps = {
+    onChange: (value: string) => void;
+    data: (string | CanvasControlSegmentedItem)[];
+    prop: string;
+    value: string;
+  };
+
+  export type CanvasControlOptions = 
+    | CanvasControlSwitchOptions
+    | CanvasControlSelectOptions
+    | CanvasControlSegmentedOptions;
+
+  export type CanvasDisplayState = {
+    dir: 'ltr' | 'rtl';
+    mode: 'light' | 'dark' | 'dim';
+    accent: 'yellow' | 'blue' | 'cyan' | 'green' | 'grey' | 'magenta' | 'orange' | 'purple' | 'red' | 'slate' | 'stone' | 'teal';
+  }
+
+  export type CanvasProps = {
+    children: React.ReactNode;
+    controls: CanvasControlOptions[];
+  };
+
+  export type CanvasControlProps<T extends CanvasDisplayState = CanvasDisplayState> = {
+    setDisplayState: (prop: keyof T, value: any) => void;
+    displayState: T;
+    children: React.ReactNode;
+  }
 
   export type CheckboxSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   export type CheckboxShape = 'circle' | 'square';
@@ -387,83 +453,6 @@ export declare namespace Core {
     isDisabled?: boolean;
     orientation?: Orientation;
   };
-
-
-
-  // export type CheckboxIconName = `checkbox-${CheckboxIconState}-${CheckboxIconShape}`
-  // export type CheckboxIconState = 'mixed' | 'checked' | 'unchecked';
-  // export type CheckboxIconShape = 'circle' | 'square';
-  
-  // export type CheckboxStateProps = {
-  //   isChecked?: boolean;
-  //   isLoading?: boolean;
-  //   isReadonly?: boolean;
-  //   isDisabled?: boolean;
-  //   isIndeterminate?: boolean;
-  // }
-
-  // export type CheckboxValue<Multiple = false> = Multiple extends true 
-  //   ? string[] 
-  //   : string;
-
-  // export type CheckboxChangeHandler<Multiple = false> = Multiple extends true
-  //   ? (value: string[]) => void
-  //   : (event: React.ChangeEvent<HTMLInputElement>) => void;
-
-  // export type CheckboxValueProps<Multiple = false> = {
-  //   onChange: CheckboxChangeHandler<Multiple>;
-  //   value: CheckboxValue<Multiple>;
-  // }
-
-  // export type CheckboxContext = InlineInputProps & {
-  //   isLoading?: boolean;
-  //   isReadonly?: boolean;
-  //   isDisabled?: boolean;
-  //   orientation?: Orientation;
-  //   onValueChange?: (value: string) => void;
-  //   shape?: CheckboxIconShape;
-  //   value: string[];
-  //   gap?: SizeGap;
-  // }
-
-  // export type CheckboxGroupProps = BaseInputState & GroupProps & {
-  //   onValueChange: (value: string[]) => void;
-  //   shape?: CheckboxIconShape;
-  //   value: string[];
-  // }
-
-  // export type CheckboxProps<Mulitple = false> = InlineInputProps & CheckboxStateProps & CheckboxValueProps<Mulitple> & {
-  //   label: string;
-  //   icon?: Partial<ICON.Props>;
-  //   shape?: CheckboxIconShape;
-  // }
-  
-  // export type CheckboxIconProps = CheckboxStateProps & {
-  //   icon?: Partial<ICON.Props>;
-  //   shape?: CheckboxIconShape;
-  // }
-
-  // export type ParseCheckboxIconState = {
-  //   (props: CheckboxStateProps): CheckboxIconState;
-  // }
-
-  // export type ParseCheckboxIconName = {
-  //   (state: CheckboxIconState, shape: CheckboxIconShape): {
-  //     name: CheckboxIconName
-  //   }
-  // }
-
-  // export type ParseCheckboxIconProps = {
-  //   (props: { 
-  //     icon?: Partial<ICON.Props>; 
-  //     state: CheckboxIconState; 
-  //     shape: CheckboxIconShape;
-  //   }): {
-  //     type: ICON.Type;
-  //     name: ICON.Name;
-  //     fill: ICON.Color;
-  //   }
-  // }
 
   export type ChipProps = UnstyledButtonProps & {
     size?: SizeRegular;
