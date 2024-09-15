@@ -13,6 +13,8 @@ export const UnstyledButton = PolymorphicComponent<UnstyledButtonFactory>(
     {
       children,
       className,
+      isChecked,
+      isSelected,
       isLoading,
       isReadonly,
       isDisabled,
@@ -26,12 +28,16 @@ export const UnstyledButton = PolymorphicComponent<UnstyledButtonFactory>(
         {...props}
         ref={ref}
         className={clsx('v2-button-unstyled', className)}
-        aria-busy={!!isLoading}
-        aria-disabled={!!isDisabled}
-        aria-readonly={!!isReadonly}
-        data-disabled={!!isDisabled}
-        data-readonly={!!isReadonly}
-        data-loading={!!isLoading}
+        data-loading={!!isLoading || undefined}
+        data-checked={!!isChecked || undefined}
+        data-selected={!!isSelected || undefined}
+        data-disabled={!!isDisabled || undefined}
+        data-readonly={!!isReadonly || undefined}
+        aria-readonly={!!isReadonly || undefined}
+        aria-disabled={!!isDisabled || undefined}
+        aria-selected={!!isSelected || undefined}
+        aria-checked={!!isChecked || undefined}
+        aria-busy={!!isLoading || undefined}
       >
         {children}
       </Component>

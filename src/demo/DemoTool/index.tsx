@@ -142,6 +142,7 @@ export const DemoTool = (props: DemoToolProps) => {
         >
           {items.map((item) => (
             <Action
+              key={item.value}
               title={item.label}
               aria-label={item.label}
               isSelected={demo.state[prop] === item.value}

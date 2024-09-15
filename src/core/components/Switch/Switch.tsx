@@ -1,9 +1,9 @@
 import clsx from 'clsx';
+import * as React from 'react';
 import { Core } from '@/types';
 import { Component } from '@/factory';
 import { InlineInput } from '../InlineInput';
 import { useSwitchContext } from './Switch.context';
-import React from 'react';
 
 export type SwitchFactory = Core.Factory<{
   ref: HTMLInputElement;
@@ -33,39 +33,48 @@ export const Switch = Component<SwitchFactory>(
   ) => {
     const context = useSwitchContext();
 
+    const loading = isLoading || context?.isLoading || undefined;
+    const readonly = isReadonly || context?.isReadonly || undefined;
+    const disabled = isDisabled || context?.isDisabled || undefined;
+    const isChecked = checked || (value && context?.value?.includes(value)) || undefined;
+
     const contextProps = context
       ? {
-          checked: !!(value && context.value?.includes(value)) || undefined,
+          checked: (value && context.value?.includes(value)) || undefined,
           onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-            event.stopPropagation();
-            context.onChange?.(event);
-            onChange?.(event);
+            if (!loading && !readonly && !disabled) {
+              event.stopPropagation();
+              context.onChange?.(event);
+              onChange?.(event);
+              return true;
+            }
+            return false;
           },
         }
       : {
-          checked,
+          checked: !!checked,
+          'data-checked': !!checked,
+          'aria-checked': !!checked,
           onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-            event.stopPropagation();
-            if (!isLoading || !isReadonly || !isDisabled) {
+            if (!loading && !readonly && !disabled) {
+              event.stopPropagation();
               onChange?.(event);
+              return true;
             }
+            return false;
           },
         };
-
-    const inlineProps = {
-      isLoading: isLoading || !!(context && context.isLoading) || undefined,
-      isReadonly: isReadonly || !!(context && context.isReadonly) || undefined,
-      isDisabled: isDisabled || !!(context && context.isDisabled) || undefined,
-      'data-checked': checked || !!(value && context?.value?.includes(value)) || undefined,
-      'aria-checked': checked || !!(value && context?.value?.includes(value)) || undefined,
-    };
 
     return (
       <InlineInput
         {...props}
-        {...inlineProps}
         ref={ref}
         label={label}
+        isLoading={loading}
+        isReadonly={readonly}
+        isDisabled={disabled}
+        aria-checked={isChecked}
+        data-checked={isChecked}
         className={clsx(
           'v2-switch',
           `v2-switch--${size || 'sm'}`,

@@ -1,84 +1,167 @@
-// :root {
-//   --v2-select-item-height-xs: 34px;
-//   --v2-select-item-height-sm: 40px;
-//   --v2-select-item-height-md: 46px;
-//   --v2-select-item-height-lg: 54px;
-//   --v2-select-item-height-xl: 64px;
+@use '../utils' as utils;
 
-//   --v2-select-item-font-size-xs: 12px;
-//   --v2-select-item-font-size-sm: 14px;
-//   --v2-select-item-font-size-md: 16px;
-//   --v2-select-item-font-size-lg: 17px;
-//   --v2-select-item-font-size-xl: 18px;
+.v2-select {
+  &-list {
+    @include utils.reset;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--v2-unit);
+    border-width: var(--v2-unit);
+    border-color: transparent;
+    border-style: solid;
+  }
 
-//   --v2-select-item-spacing-x-xs: calc(var(--v2-unit) * 8);
-//   --v2-select-item-spacing-x-sm: calc(var(--v2-unit) * 10);
-//   --v2-select-item-spacing-x-md: calc(var(--v2-unit) * 10);
-//   --v2-select-item-spacing-x-lg: calc(var(--v2-unit) * 12);
-//   --v2-select-item-spacing-x-xl: calc(var(--v2-unit) * 12);
-// }
+  &-target,
+  &-option {
+    @include utils.reset;
+    @include utils.button-focus;
+    @include utils.button-cursor;
 
-// .v2-select {
-//   &-target,
-//   &-option {
-//     width: 100%;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     height: var(--v2-select-item-height, var(--v2-select-item-height-sm));
-//     font-size: var(--v2-select-item-font-size, var(--v2-select-item-font-size-sm));
-//     padding-inline: var(--v2-select-item-spacing-x, var(--v2-select-item-spacing-x-sm));
-//   }
+    border-width: var(--v2-unit);
+    border-color: transparent;
+    border-style: solid;
 
-//   &-target {
-//     position: relative;
-//     color: var(--c-select-target-clr);
-//     background-color: var(--c-select-target-bgd);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-//     .v2-icon {
-//       width: var(--v2-select-item-font-size);
-//       height: var(--v2-select-item-font-size);
-//     }
-//   }
+  &-target {
+    min-width: 240px;
+    height: var(--v2-select-target-height);
+    padding-inline: var(--v2-select-target-spacing-x);
+  }
 
-//   &-target::before {
-//     content: '';
-//     position: absolute;
-//     height: var(--v2-01);
-//     width: 100%;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//   }
+  &-option {
+    height: var(--v2-select-option-height);
+    padding-inline: var(--v2-select-option-spacing-x);
+  }
 
-//   &-target-layout {
-//     width: 100%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: space-between;
-//   }
+  &-target-layout,
+  &-option-layout {
+    @include utils.reset;
 
-//   &-option {
-//     width: 100%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: flex-start;
-//     color: var(--c-select-option-clr);
-//     background-color: var(--c-select-option-bgd);
-//   }
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-//   &-list {
-//     gap: var(--v2-01);
-//     padding: var(--v2-01);
-//     display: flex;
-//     flex-direction: column;
-//     background-color: var(--c-select-list-bgd);
-//   }
+  &-target-layout {
+    gap: var(--v2-select-target-gap);
+    font-size: var(--v2-select-target-font-size);
+  }
 
-//   &-box {
-//     color: var(--c-select-box-clr);
-//     background-color: var(--c-select-box-bgd);
-//   }
-// }
+  &-option-layout {
+    gap: var(--v2-select-option-gap);
+    font-size: var(--v2-select-option-font-size);
+  }
+
+  &-target .v2-icon {
+    width: var(--v2-select-target-icon-size);
+    height: var(--v2-select-target-icon-size);
+  }
+
+  &-option .v2-icon {
+    width: var(--v2-select-option-icon-size);
+    height: var(--v2-select-option-icon-size);
+  }
+
+  &--xxs {
+    --v2-select-target-gap: var(--v2-select-target-gap-xxs);
+    --v2-select-target-height: var(--v2-select-target-height-xxs);
+    --v2-select-target-spacing-x: var(--v2-select-target-spacing-x-xxs);
+    --v2-select-target-font-size: var(--v2-select-target-font-size-xxs);
+    --v2-select-target-icon-size: var(--v2-select-target-icon-size-xxs);
+    --v2-select-option-gap: var(--v2-select-option-gap-xxs);
+    --v2-select-option-height: var(--v2-select-option-height-xxs);
+    --v2-select-option-spacing-x: var(--v2-select-option-spacing-x-xxs);
+    --v2-select-option-font-size: var(--v2-select-option-font-size-xxs);
+    --v2-select-option-icon-size: var(--v2-select-option-icon-size-xxs);
+  }
+}
+
+.v2-select-list,
+.v2-select-target,
+.v2-select-option {
+  &--xs {
+    --v2-select-target-gap: var(--v2-select-target-gap-xs);
+    --v2-select-target-height: var(--v2-select-target-height-xs);
+    --v2-select-target-spacing-x: var(--v2-select-target-spacing-x-xs);
+    --v2-select-target-font-size: var(--v2-select-target-font-size-xs);
+    --v2-select-target-icon-size: var(--v2-select-target-icon-size-xs);
+    --v2-select-option-gap: var(--v2-select-option-gap-xs);
+    --v2-select-option-height: var(--v2-select-option-height-xs);
+    --v2-select-option-spacing-x: var(--v2-select-option-spacing-x-xs);
+    --v2-select-option-font-size: var(--v2-select-option-font-size-xs);
+    --v2-select-option-icon-size: var(--v2-select-option-icon-size-xs);
+  }
+
+  &--sm {
+    --v2-select-target-gap: var(--v2-select-target-gap-sm);
+    --v2-select-target-height: var(--v2-select-target-height-sm);
+    --v2-select-target-spacing-x: var(--v2-select-target-spacing-x-sm);
+    --v2-select-target-font-size: var(--v2-select-target-font-size-sm);
+    --v2-select-target-icon-size: var(--v2-select-target-icon-size-sm);
+    --v2-select-option-gap: var(--v2-select-option-gap-sm);
+    --v2-select-option-height: var(--v2-select-option-height-sm);
+    --v2-select-option-spacing-x: var(--v2-select-option-spacing-x-sm);
+    --v2-select-option-font-size: var(--v2-select-option-font-size-sm);
+    --v2-select-option-icon-size: var(--v2-select-option-icon-size-sm);
+  }
+
+  &--md {
+    --v2-select-target-gap: var(--v2-select-target-gap-md);
+    --v2-select-target-height: var(--v2-select-target-height-md);
+    --v2-select-target-spacing-x: var(--v2-select-target-spacing-x-md);
+    --v2-select-target-font-size: var(--v2-select-target-font-size-md);
+    --v2-select-target-icon-size: var(--v2-select-target-icon-size-md);
+    --v2-select-option-gap: var(--v2-select-option-gap-md);
+    --v2-select-option-height: var(--v2-select-option-height-md);
+    --v2-select-option-spacing-x: var(--v2-select-option-spacing-x-md);
+    --v2-select-option-font-size: var(--v2-select-option-font-size-md);
+    --v2-select-option-icon-size: var(--v2-select-option-icon-size-md);
+  }
+
+  &--lg {
+    --v2-select-target-gap: var(--v2-select-target-gap-lg);
+    --v2-select-target-height: var(--v2-select-target-height-lg);
+    --v2-select-target-spacing-x: var(--v2-select-target-spacing-x-lg);
+    --v2-select-target-font-size: var(--v2-select-target-font-size-lg);
+    --v2-select-target-icon-size: var(--v2-select-target-icon-size-lg);
+    --v2-select-option-gap: var(--v2-select-option-gap-lg);
+    --v2-select-option-height: var(--v2-select-option-height-lg);
+    --v2-select-option-spacing-x: var(--v2-select-option-spacing-x-lg);
+    --v2-select-option-font-size: var(--v2-select-option-font-size-lg);
+    --v2-select-option-icon-size: var(--v2-select-option-icon-size-lg);
+  }
+
+  &--xl {
+    --v2-select-target-gap: var(--v2-select-target-gap-xl);
+    --v2-select-target-height: var(--v2-select-target-height-xl);
+    --v2-select-target-spacing-x: var(--v2-select-target-spacing-x-xl);
+    --v2-select-target-font-size: var(--v2-select-target-font-size-xl);
+    --v2-select-target-icon-size: var(--v2-select-target-icon-size-xl);
+    --v2-select-option-gap: var(--v2-select-option-gap-xl);
+    --v2-select-option-height: var(--v2-select-option-height-xl);
+    --v2-select-option-spacing-x: var(--v2-select-option-spacing-x-xl);
+    --v2-select-option-font-size: var(--v2-select-option-font-size-xl);
+    --v2-select-option-icon-size: var(--v2-select-option-icon-size-xl);
+  }
+
+  &--xxl {
+    --v2-select-target-gap: var(--v2-select-target-gap-xxl);
+    --v2-select-target-height: var(--v2-select-target-height-xxl);
+    --v2-select-target-spacing-x: var(--v2-select-target-spacing-x-xxl);
+    --v2-select-target-font-size: var(--v2-select-target-font-size-xxl);
+    --v2-select-target-icon-size: var(--v2-select-target-icon-size-xxl);
+    --v2-select-option-gap: var(--v2-select-option-gap-xxl);
+    --v2-select-option-height: var(--v2-select-option-height-xxl);
+    --v2-select-option-spacing-x: var(--v2-select-option-spacing-x-xxl);
+    --v2-select-option-font-size: var(--v2-select-option-font-size-xxl);
+    --v2-select-option-icon-size: var(--v2-select-option-icon-size-xxl);
+  }
+}

@@ -5,6 +5,21 @@
   transition-duration: var(--v2-duration-moderate-01);
 }
 
+.v2-text,
+.v2-title {
+  color: hsla(var(--v2-hsl-surface), 0.87);
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-expressive);
+  transition-duration: var(--v2-duration-slow-01);
+}
+
+.v2-label {
+  color: hsla(var(--v2-hsl-surface), 0.67);
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-expressive);
+  transition-duration: var(--v2-duration-slow-01);
+}
+
 .v2-button {
   transition-property: background-color, border-color, outline-color, color, fill, stroke;
   transition-timing-function: var(--v2-easing-productive);
@@ -118,10 +133,87 @@
   color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
-.v2-switch--default:not([data-loading]),
-.v2-switch--default:not([data-readonly]),
-.v2-switch--default:not([data-disabled]) {
+.v2-select-list--default {
+  border-color: hsla(var(--v2-hsl-surface), 0.05);
+  background-color: hsla(var(--v2-hsl-base), 1);
+}
+
+.v2-select-target--default:not([data-loading]),
+.v2-select-target--default:not([data-readonly]),
+.v2-select-target--default:not([data-disabled]) {
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
+  border-color: hsla(var(--v2-hsl-surface), 0.03);
+  color: hsla(var(--v2-hsl-surface), 0.67);
+
+  .v2-icon {
+    color: hsla(var(--v2-hsl-surface), 0.67);
+  }
+
+  [data-prefers-color-mode='light'] & {
+    background-color: hsla(var(--v2-hsl-surface), 0.4);
+  }
+}
+
+.v2-select-target--default:not([data-loading]):hover,
+.v2-select-target--default:not([data-readonly]):hover,
+.v2-select-target--default:not([data-disabled]):hover {
+  background-color: hsla(var(--v2-hsl-surface), 0.04);
   color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-select-target--default:not([data-loading]):active,
+.v2-select-target--default:not([data-readonly]):active,
+.v2-select-target--default:not([data-disabled]):active {
+  background-color: hsla(var(--v2-hsl-surface), 0.05);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-select-option--default:not([data-loading]),
+.v2-select-option--default:not([data-readonly]),
+.v2-select-option--default:not([data-disabled]) {
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
+  color: hsla(var(--v2-hsl-surface), 0.67);
+
+  .v2-icon {
+    color: hsla(var(--v2-hsl-surface), 0.67);
+  }
+}
+
+.v2-select-option--default:not([data-loading]):hover,
+.v2-select-option--default:not([data-readonly]):hover,
+.v2-select-option--default:not([data-disabled]):hover {
+  background-color: hsla(var(--v2-hsl-surface), 0.04);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-select-option--default:not([data-loading]):active,
+.v2-select-option--default:not([data-readonly]):active,
+.v2-select-option--default:not([data-disabled]):active {
+  background-color: hsla(var(--v2-hsl-surface), 0.05);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-select-option--default[data-selected] {
+  background-color: hsla(var(--v2-hsl-surface), 0.04);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-switch--default:not([data-loading]) .v2-label,
+.v2-switch--default:not([data-readonly]) .v2-label,
+.v2-switch--default:not([data-disabled]) .v2-label {
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-switch--default:not([data-loading]) .v2-switch-track,
+.v2-switch--default:not([data-readonly]) .v2-switch-track,
+.v2-switch--default:not([data-disabled]) .v2-switch-track {
+  border-color: hsla(var(--v2-hsl-surface), 0.32);
+}
+
+.v2-switch--default:not([data-loading]) .v2-switch-thumb,
+.v2-switch--default:not([data-readonly]) .v2-switch-thumb,
+.v2-switch--default:not([data-disabled]) .v2-switch-thumb {
+  background-color: hsla(var(--v2-hsl-surface), 1);
 }
 
 .v2-tabs-item {
@@ -221,11 +313,4 @@
   &::after {
     background-color: hsla(var(--v2-hsl-surface), 0.32);
   }
-}
-
-.v2-text,
-.v2-title {
-  transition-property: background-color, border-color, outline-color, color, fill, stroke;
-  transition-timing-function: var(--v2-easing-expressive);
-  transition-duration: var(--v2-duration-slow-01);
 }

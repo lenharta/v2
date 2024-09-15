@@ -1,7 +1,9 @@
 import clsx from 'clsx';
+import * as React from 'react';
 import { Core } from '@/types';
 import { Floating } from '@/core';
 import { Component } from '@/factory';
+import { createKeyDownRefScope, mergeRefs } from '@/utils';
 
 export type SelectListFactory = Core.Factory<{
   ref: HTMLDivElement;
@@ -10,17 +12,27 @@ export type SelectListFactory = Core.Factory<{
 }>;
 
 export const SelectList = Component<SelectListFactory>(
-  ({ size, variant, children, className, ...props }, ref) => {
-    const classNames = clsx(
-      'v2-select-box',
-      { [`v2-select-box--${size}`]: size },
-      { [`v2-select-box--${variant}`]: variant },
-      className
-    );
+  ({ size, variant, children, className, onKeyDownCapture, ...props }, ref) => {
+    const listRef = React.useRef<HTMLDivElement>(null);
 
     return (
       <Floating.Box>
-        <div {...props} ref={ref} className={classNames}>
+        <div
+          {...props}
+          ref={mergeRefs(ref, listRef)}
+          role="listbox"
+          onKeyDownCapture={createKeyDownRefScope(listRef, {
+            onKeyDown: (event) => onKeyDownCapture?.(event),
+            orientation: 'vertical',
+            loop: false,
+          })}
+          className={clsx(
+            'v2-select-list',
+            `v2-select-list--${size || 'sm'}`,
+            `v2-select-list--${variant || 'default'}`,
+            className
+          )}
+        >
           {children}
         </div>
       </Floating.Box>

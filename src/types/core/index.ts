@@ -250,9 +250,11 @@ export declare namespace Core {
   export type UnstyledButtonProps = {
     children?: React.ReactNode;
     className?: string;
+    isChecked?: boolean;
     isLoading?: boolean;
     isReadonly?: boolean;
     isDisabled?: boolean;
+    isSelected?: boolean;
   }
 
   export type ButtonProps = UnstyledButtonProps & {
@@ -547,6 +549,13 @@ export declare namespace Core {
     className?: string;
   }
 
+  export type createKeyDownRefScopeOptions<T extends HTMLElement> = {
+    loop?: boolean;
+    nested?: boolean;
+    onKeyDown?: (event: React.KeyboardEvent<T>) => void;
+    orientation?: Core.Orientation;
+  }
+
   export interface DisclosureProps {
     style?: React.CSSProperties;
     isOpen: boolean;
@@ -691,12 +700,13 @@ export declare namespace Core {
 
   export type LabelProps = {}
 
-  export type SelectSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  export type SelectSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   export type SelectVariant = 'default' | 'accent';
 
   export type SelectItem = {
     value: string;
-    label: string;
+    label: string;    
+    isLoading?: boolean;
     isDisabled?: boolean;
     isReadonly?: boolean;
   }
@@ -704,8 +714,10 @@ export declare namespace Core {
   export type SelectTargetProps = {
     size?: SelectSize;
     variant?: SelectVariant;
+    isLoading?: boolean;
     isDisabled?: boolean;
     isReadonly?: boolean;
+    isSelected?: boolean;
     placeholder?: string;
     value?: string;
   }
@@ -714,6 +726,7 @@ export declare namespace Core {
     isDisabled?: boolean;
     isReadonly?: boolean;
     isSelected?: boolean;
+    isLoading?: boolean;
     size?: SelectSize;
     variant?: SelectVariant;
     value?: string;
@@ -730,6 +743,7 @@ export declare namespace Core {
     size?: SelectSize;
     variant?: SelectVariant;
     children: React.ReactNode;
+    keyDownOptions?: Partial<createKeyDownRefScopeOptions<HTMLDivElement>>;
   }
   
   export type SelectProps = {

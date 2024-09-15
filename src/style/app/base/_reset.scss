@@ -22,10 +22,9 @@
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  border-width: var(--v2-app-root-border-width);
-  border-style: var(--v2-app-root-border-style);
-  border-color: var(--v2-app-root-border-color);
 }
 
 html {

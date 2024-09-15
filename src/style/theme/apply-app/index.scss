@@ -9,6 +9,10 @@ body {
   transition-duration: var(--v2-duration-slow-01);
 }
 
+.v2-accent-text {
+  color: hsla(var(--v2-hsl-accent), 0.97);
+}
+
 .v2-brand {
   color: hsla(var(--v2-hsl-accent), 0.97);
 }

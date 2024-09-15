@@ -41,12 +41,13 @@ export function getLockupData(data: Core.SelectProps['data']): Record<string, st
 export const Select: SelectFactory = (props) => {
   const {
     dir = 'ltr',
+    size,
     data,
     label,
     value,
     width = 'target',
     isOpen,
-    offset = 0,
+    offset = { mainAxis: 2 },
     zIndex = 300,
     variant = 'default',
     strategy = 'absolute',
@@ -80,6 +81,7 @@ export const Select: SelectFactory = (props) => {
       zIndex={zIndex}
       offset={offset}
       isOpen={isOpen}
+      behavior="click"
       disabled={isDisabled}
       strategy={strategy}
       placement={placement}
@@ -96,6 +98,7 @@ export const Select: SelectFactory = (props) => {
     >
       {label && <Label component="div">{label}</Label>}
       <Select.Target
+        size={size}
         variant={variant}
         placeholder={placeholder}
         value={(labels[value as any] as any)?.label || undefined}
@@ -104,6 +107,7 @@ export const Select: SelectFactory = (props) => {
       <Select.List variant={variant}>
         {data.map((item) => (
           <Select.Option
+            size={size}
             variant={variant}
             key={item.value}
             label={item.label}

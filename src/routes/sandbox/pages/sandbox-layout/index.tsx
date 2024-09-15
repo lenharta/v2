@@ -14,7 +14,7 @@ export const SandboxLayout = (props: SandboxLayoutProps) => {
     <React.Fragment>
       <Hero>
         <Title h1>
-          Sandbox | <span className="accent-text">{name}</span>
+          Sandbox | <span className="v2-accent-text">{name}</span>
         </Title>
       </Hero>
       <Main>
