@@ -118,6 +118,12 @@
   color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
+.v2-switch--default:not([data-loading]),
+.v2-switch--default:not([data-readonly]),
+.v2-switch--default:not([data-disabled]) {
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
 .v2-tabs-item {
   transition-property: background-color, border-color, outline-color, color, fill, stroke;
   transition-timing-function: var(--v2-easing-productive);

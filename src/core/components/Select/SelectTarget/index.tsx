@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Core } from '@/types';
 import { Component } from '@/factory';
-import { Floating, UnstyledButton, useFloatingContext, Icon } from '@/core';
+import { Floating, useFloatingContext, Icon } from '@/core';
 
 export type SelectTargetFactory = Core.Factory<{
   ref: HTMLButtonElement;
@@ -10,28 +10,31 @@ export type SelectTargetFactory = Core.Factory<{
 }>;
 
 export const SelectTarget = Component<SelectTargetFactory>(
-  ({ value, variant, placeholder, className, ...props }, ref) => {
+  ({ size, value, variant, placeholder, className, ...props }, ref) => {
     const context = useFloatingContext();
 
-    const classNames = clsx(
-      'v2-select-target',
-      { [`v2-select-target--${variant}`]: variant },
-      className
-    );
+    const dataProps = {
+      'data-selected': context.isOpen || undefined,
+    };
 
     return (
       <Floating.Target>
-        <UnstyledButton
+        <button
           {...props}
-          data-selected={!!context.isOpen}
-          className={classNames}
+          {...dataProps}
           ref={ref}
+          className={clsx(
+            'v2-select-target',
+            { [`v2-select-target--${size}`]: size },
+            { [`v2-select-target--${variant}`]: variant },
+            className
+          )}
         >
-          <div className="v2-select-target-layout">
+          <span className="v2-select-target-layout">
             {value || placeholder}
             <Icon name={context.isOpen ? 'chevron-contract' : 'chevron-south'} />
-          </div>
-        </UnstyledButton>
+          </span>
+        </button>
       </Floating.Target>
     );
   }

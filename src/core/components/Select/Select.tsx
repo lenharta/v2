@@ -1,13 +1,12 @@
-import clsx from 'clsx';
 import * as React from 'react';
 import { Core } from '@/types';
 import { Floating, Label } from '@/core/components';
 import { DURATION, EASING } from '@/core/constants';
-import { SelectOption } from './SelectOption';
+import { SelectList } from './SelectList';
 import { SelectTarget } from './SelectTarget';
-import { SelectBox } from './SelectBox';
+import { SelectOption } from './SelectOption';
 
-const defaultTransition: Partial<Core.TransitionProps> = {
+const DEFAULT_TRANSITION: Partial<Core.TransitionProps> = {
   duration: DURATION['moderate-01'],
   transition: {
     transitionProperty: 'opacity, transform',
@@ -27,7 +26,7 @@ const defaultTransition: Partial<Core.TransitionProps> = {
 };
 
 export type SelectFactory = React.FC<Core.SelectProps> & {
-  Box: typeof SelectBox;
+  List: typeof SelectList;
   Target: typeof SelectTarget;
   Option: typeof SelectOption;
 };
@@ -70,7 +69,7 @@ export const Select: SelectFactory = (props) => {
 
   const transition: Partial<Core.TransitionProps> = transitionProps
     ? transitionProps
-    : defaultTransition;
+    : DEFAULT_TRANSITION;
 
   const labels = React.useMemo(() => getLockupData(data), [data]);
 
@@ -102,35 +101,33 @@ export const Select: SelectFactory = (props) => {
         value={(labels[value as any] as any)?.label || undefined}
       />
 
-      <Select.Box variant={variant}>
-        <div className={clsx('v2-select-list', { [`v2-select-list--${variant}`]: variant })}>
-          {data.map((item) => (
-            <Select.Option
-              variant={variant}
-              key={item.value}
-              label={item.label}
-              value={item.value}
-              isDisabled={item.isDisabled}
-              isReadonly={item.isReadonly}
-              isSelected={item.value === value || undefined}
-              onClick={() => {
-                if (!isDisabled || !item.isDisabled || !item.isReadonly) {
-                  if (closeOnOptionClick) {
-                    onOpenChange(false);
-                    onClose?.();
-                  }
-                  onChange?.(item.value);
+      <Select.List variant={variant}>
+        {data.map((item) => (
+          <Select.Option
+            variant={variant}
+            key={item.value}
+            label={item.label}
+            value={item.value}
+            isDisabled={item.isDisabled}
+            isReadonly={item.isReadonly}
+            isSelected={item.value === value || undefined}
+            onClick={() => {
+              if (!isDisabled || !item.isDisabled || !item.isReadonly) {
+                if (closeOnOptionClick) {
+                  onOpenChange(false);
+                  onClose?.();
                 }
-              }}
-            />
-          ))}
-        </div>
-      </Select.Box>
+                onChange?.(item.value);
+              }
+            }}
+          />
+        ))}
+      </Select.List>
     </Floating>
   );
 };
 
-Select.Box = SelectBox;
+Select.List = SelectList;
 Select.Option = SelectOption;
 Select.Target = SelectTarget;
 Select.displayName = '@v2/Select';

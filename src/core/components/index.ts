@@ -15,6 +15,7 @@ export * from './InlineInput';
 export * from './Label';
 export * from './Select';
 export * from './Stack';
+export * from './Switch';
 export * from './Table';
 export * from './Tabs';
 export * from './Text';

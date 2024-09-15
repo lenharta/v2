@@ -24,6 +24,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@/data/*": ["src/data/*"],
+      "@/demo/*": ["src/demo/*"],
       "@/utils/*": ["src/utils/*"],
       "@/tests/*": ["src/tests/*"],
       "@/types/*": ["src/types/*"],

@@ -691,6 +691,9 @@ export declare namespace Core {
 
   export type LabelProps = {}
 
+  export type SelectSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  export type SelectVariant = 'default' | 'accent';
+
   export type SelectItem = {
     value: string;
     label: string;
@@ -699,8 +702,11 @@ export declare namespace Core {
   }
   
   export type SelectTargetProps = {
-    variant?: 'default' | 'accent';
-    placeholder: string;
+    size?: SelectSize;
+    variant?: SelectVariant;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
+    placeholder?: string;
     value?: string;
   }
   
@@ -708,13 +714,21 @@ export declare namespace Core {
     isDisabled?: boolean;
     isReadonly?: boolean;
     isSelected?: boolean;
-    variant?: 'default' | 'accent';
+    size?: SelectSize;
+    variant?: SelectVariant;
     value?: string;
     label: string;
   }
   
   export type SelectBoxProps = {
-    variant?: 'default' | 'accent';
+    size?: SelectSize;
+    variant?: SelectVariant;
+    children: React.ReactNode;
+  }
+  
+  export type SelectListProps = {
+    size?: SelectSize;
+    variant?: SelectVariant;
     children: React.ReactNode;
   }
   
@@ -727,7 +741,8 @@ export declare namespace Core {
     width?: FloatingProps['width'];
     zIndex?: FloatingProps['zIndex'];
     offset?: FloatingProps['offset'];
-    variant?: 'default' | 'accent';
+    size?: SelectSize;
+    variant?: SelectVariant;
     strategy?: FloatingProps['strategy'];
     isDisabled?: FloatingProps['disabled'];
     placement?: FloatingProps['placement'];
@@ -749,6 +764,45 @@ export declare namespace Core {
   export type StackProps = {
     gap?: 'unset' | SizeExpanded;
     children?: React.ReactNode;
+  }
+
+  export type SwitchSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type SwitchRadius = 'squared' | 'rounded' | 'round';
+  export type SwitchVariant = 'default' | 'accent';
+
+  export type SwitchContext = {
+    value?: string[];
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
+    isLoading?: boolean;
+    variant?: SwitchVariant;
+    radius?: SwitchRadius;
+    size?: SwitchSize;
+  }
+
+  export type SwitchGroupProps = GroupProps & {
+    value: string[];
+    onChange?: (value: string[]) => void;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
+    isLoading?: boolean;
+    variant?: SwitchVariant;
+    radius?: SwitchRadius;
+    size?: SwitchSize;
+  }
+
+  export type SwitchProps = {
+    label?: string;
+    value?: string;
+    checked?: boolean;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
+    isLoading?: boolean;
+    variant?: SwitchVariant;
+    radius?: SwitchRadius;
+    size?: SwitchSize;
   }
 
   export type TabsSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';

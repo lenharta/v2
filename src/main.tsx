@@ -32,6 +32,12 @@ const ROUTER = ReactRouterDOM.createBrowserRouter([
       {
         path: '/sandbox',
         element: <ROUTES.Sandbox />,
+        children: [
+          { path: '/sandbox/action', element: <ROUTES.Sandbox.Action /> },
+          { path: '/sandbox/button', element: <ROUTES.Sandbox.Button /> },
+          { path: '/sandbox/select', element: <ROUTES.Sandbox.Select /> },
+          { path: '/sandbox/switch', element: <ROUTES.Sandbox.Switch /> },
+        ],
       },
       {
         path: '/stack',

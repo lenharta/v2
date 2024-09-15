@@ -1,0 +1,33 @@
+@use '../utils' as utils;
+
+.v2-demo-toolbar {
+  padding-block: var(--v2-unit);
+}
+
+.v2-demo-tool-drawer {
+  padding: var(--v2-unit);
+}
+
+.v2-demo-tool-accent-drawer {
+  width: calc(calc(var(--v2-action-button) * 6) + calc(var(--v2-unit) * 7));
+  height: calc(calc(var(--v2-action-button) * 2) + calc(var(--v2-unit) * 3));
+}
+
+.v2-demo-canvas {
+  @include utils.reset;
+
+  width: 100%;
+  display: block;
+  position: relative;
+  min-height: 600px;
+
+  & > div {
+    display: inline-flex;
+    position: absolute;
+    margin-block: auto;
+    margin-inline: auto;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+  }
+}
