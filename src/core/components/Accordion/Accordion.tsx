@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { Core } from '@/types';
 import { AccordionItem } from './AccordionItem';
@@ -6,14 +7,20 @@ import { AccordionTarget } from './AccordionTarget';
 import { AccordionRootProvider } from './AccordionContext';
 
 export const Accordion = <Multiple extends boolean = false>({
+  size,
   value,
-  variant = 'default',
-  children,
+  variant,
   multiple = false as Multiple,
+  children,
   trapFocus = false,
+  isLoading,
+  isReadonly,
+  isDisabled,
   chevronRotation = true,
   chevronPosition = 'end',
-  onValueChange,
+  className,
+  onChange,
+  ...props
 }: Core.AccordionProps<Multiple>) => {
   const uid = React.useId();
   const isMultiple = (multiple || false) as Multiple;
@@ -33,26 +40,30 @@ export const Accordion = <Multiple extends boolean = false>({
         ? null
         : (v as any);
 
-    onValueChange(nextValue as Core.AccordionValue<Multiple>);
+    onChange(nextValue as Core.AccordionValue<Multiple>);
   };
 
   return (
-    <React.Fragment>
-      <AccordionRootProvider
-        value={{
-          variant,
-          trapFocus,
-          chevronPosition,
-          chevronRotation,
-          onValueChange: handleChange,
-          isValueActive,
-          getTargetId,
-          getPanelId,
-        }}
-      >
+    <AccordionRootProvider
+      value={{
+        size,
+        variant,
+        trapFocus,
+        isLoading,
+        isDisabled,
+        isReadonly,
+        chevronPosition,
+        chevronRotation,
+        onChange: handleChange,
+        isValueActive,
+        getTargetId,
+        getPanelId,
+      }}
+    >
+      <div {...props} className={clsx('v2-accordion', className)}>
         {children}
-      </AccordionRootProvider>
-    </React.Fragment>
+      </div>
+    </AccordionRootProvider>
   );
 };
 

@@ -1,29 +1,30 @@
 import * as React from 'react';
-import { Title } from '@/core';
 import { APP_TECH_DATA } from '@/data';
-import { Hero, Main, Page, PageProps, Section } from '@/app';
+import { Main, Page, PageProps } from '@/app';
+
+import { StackHero } from './sections/stack-hero';
+import { StackIntro } from './sections/stack-intro';
 import { StackTable } from './sections/stack-table';
 
-export type StackRouteProps = PageProps & {};
-
-export type StackRouteComponent = {
-  (props: StackRouteProps): React.ReactNode;
-  displayName?: string;
+export type StackRouteComponent = React.FC<PageProps> & {
+  Hero: typeof StackHero;
+  Intro: typeof StackIntro;
+  Table: typeof StackTable;
 };
 
 export const Stack: StackRouteComponent = (props) => {
   return (
     <Page {...props}>
-      <Hero>
-        <Title>Stack</Title>
-      </Hero>
+      <Stack.Hero />
       <Main>
-        <Section>
-          <StackTable rows={APP_TECH_DATA} />
-        </Section>
+        <Stack.Intro />
+        <Stack.Table rows={APP_TECH_DATA} />
       </Main>
     </Page>
   );
 };
 
+Stack.Hero = StackHero;
+Stack.Intro = StackIntro;
+Stack.Table = StackTable;
 Stack.displayName = '@v2/Route.Stack';

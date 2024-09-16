@@ -106,31 +106,42 @@ body {
   color: hsla(var(--v2-hsl-surface), 0.12);
 }
 
-.v2-home-hero-title-line-1 {
+.v2-stack-table-body-cell {
+  background-color: hsl(var(--v2-hsl-surface), 0.02);
+  color: hsl(var(--v2-hsl-surface), 0.47);
+}
+
+.v2-demo-canvas {
+  background-color: hsla(var(--v2-hsl-base), 1);
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-expressive);
+  transition-duration: var(--v2-duration-slow-01);
+}
+
+.v2-demo-tool-drawer {
+  background-color: hsla(var(--v2-hsl-base), 1);
+}
+
+.v2-demo-controls-layout {
+  background-color: hsla(var(--v2-hsl-base), 1);
+  border-color: hsla(var(--v2-hsl-surface), 0.04);
+}
+
+// ROUTES | HOME
+
+.v2-home-hero-title span:nth-of-type(1) {
   color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
-.v2-home-hero-title-line-2 {
-  color: hsla(var(--v2-hsl-surface), 0.87);
-}
-
-.v2-home-intro-text {
-  color: hsla(var(--v2-hsl-surface), 0.87);
-}
-
-.v2-home-stats-card-value {
-  color: hsla(var(--v2-hsl-accent), 0.97);
-}
-
-.v2-home-stats-card-text {
+.v2-home-intro-banner {
   color: hsla(var(--v2-hsl-surface), 0.67);
 }
 
-.v2-home-brands-banner-title span {
+.v2-home-intro-card-item span.v2-text {
   color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
-.v2-home-brands-banner-text {
+.v2-home-intro-card-item .v2-text {
   color: hsla(var(--v2-hsl-surface), 0.67);
 }
 
@@ -148,19 +159,29 @@ body {
   }
 }
 
-.v2-home-resume-banner-title span:nth-of-type(2) {
+.v2-home-resume .v2-title span:nth-of-type(2) {
   color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
-.v2-home-resume-tabs-panel-overline {
+.v2-home-resume-tabs-panel span.v2-text {
+  color: hsla(var(--v2-hsl-accent), 1);
+}
+
+.v2-home-resume-tabs-panel .v2-text {
+  color: hsla(var(--v2-hsl-surface), 0.67);
+}
+
+.v2-home-brands .v2-title span {
   color: hsla(var(--v2-hsl-accent), 0.97);
 }
 
-.v2-home-resume-tabs-panel-title {
-  color: hsla(var(--v2-hsl-surface), 0.97);
+.v2-home-brands .v2-text {
+  color: hsla(var(--v2-hsl-surface), 0.67);
 }
 
-.v2-home-resume-tabs-panel-text {
+// ROUTES | STACK
+
+.v2-stack-intro .v2-text {
   color: hsla(var(--v2-hsl-surface), 0.67);
 }
 
@@ -211,84 +232,18 @@ body {
   color: hsl(var(--v2-hsl-accent), 1);
 }
 
-.v2-stack-table-body-cell {
-  background-color: hsl(var(--v2-hsl-surface), 0.02);
-  color: hsl(var(--v2-hsl-surface), 0.47);
-}
+// ROUTES | SANDBOX
 
-.v2-sandbox-canvas-display-viewer {
-  background-color: hsl(var(--v2-hsl-base), 1);
-  color: hsl(var(--v2-hsl-surface), 1);
-  transition-property: background-color, border-color, outline-color, color, fill, stroke;
-  transition-timing-function: var(--v2-easing-expressive);
-  transition-duration: var(--v2-duration-slow-01);
-}
+.v2-sandbox-directory-tile-item {
+  color: hsla(var(--v2-hsl-surface), 0.67);
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
+  transition-timing-function: var(--v2-easing-productive);
+  transition-duration: var(--v2-duration-moderate-01);
+  transition-property: all;
 
-.v2-sandbox-canvas-color-drawer {
-  background-color: hsl(var(--v2-hsl-base), 1);
-}
-.v2-sandbox-canvas-display-menu {
-  .v2-select-target,
-  .v2-select-option {
-    cursor: pointer;
-    outline-width: var(--v2-unit);
-    outline-color: transparent;
-    outline-style: solid;
-
-    &:focus:not(:focus-visible) {
-      outline-color: transparent;
-    }
-    &:focus:focus-visible {
-      outline-color: var(--v2-color-focus);
-      outline-offset: calc(var(--v2-unit) * -1);
-    }
+  &:hover,
+  &:active {
+    color: hsla(var(--v2-hsl-accent), 0.97);
+    background-color: hsla(var(--v2-hsl-accent), 0.08);
   }
-
-  .v2-select-target {
-    background-color: hsla(var(--v2-hsl-surface), 0.02);
-    border-color: hsla(var(--v2-hsl-surface), 0);
-    color: hsla(var(--v2-hsl-surface), 0.87);
-  }
-
-  .v2-select-target:hover {
-    background-color: hsla(var(--v2-hsl-surface), 0.04);
-    border-color: hsla(var(--v2-hsl-surface), 0);
-    color: hsla(var(--v2-hsl-surface), 0.87);
-  }
-
-  .v2-select-target:active {
-    background-color: hsla(var(--v2-hsl-surface), 0.05);
-    border-color: hsla(var(--v2-hsl-surface), 0);
-    color: hsla(var(--v2-hsl-surface), 0.87);
-  }
-
-  .v2-select-option {
-    background-color: hsla(var(--v2-hsl-surface), 0.02);
-    border-color: hsla(var(--v2-hsl-surface), 0);
-    color: hsla(var(--v2-hsl-surface), 0.87);
-  }
-
-  .v2-select-option:hover {
-    background-color: hsla(var(--v2-hsl-surface), 0.04);
-    border-color: hsla(var(--v2-hsl-surface), 0);
-    color: hsla(var(--v2-hsl-surface), 0.87);
-  }
-
-  .v2-select-option:active {
-    background-color: hsla(var(--v2-hsl-surface), 0.05);
-    border-color: hsla(var(--v2-hsl-surface), 0);
-    color: hsla(var(--v2-hsl-surface), 0.87);
-  }
-
-  .v2-select-box {
-    background-color: hsl(var(--v2-hsl-base), 1);
-  }
-}
-
-.v2-demo-canvas {
-  background-color: hsla(var(--v2-hsl-base), 1);
-}
-
-.v2-demo-tool-drawer {
-  background-color: hsla(var(--v2-hsl-base), 1);
 }

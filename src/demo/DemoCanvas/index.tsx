@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDemoContext } from '../Demo.context';
 
 export type DemoCanvasProps = {
@@ -6,17 +7,19 @@ export type DemoCanvasProps = {
 
 export const DemoCanvas = (props: DemoCanvasProps) => {
   const { children } = props;
-  const { state } = useDemoContext();
+  const { display, settings } = useDemoContext();
 
   const dataAttributes = {
-    'data-prefers-dir': state.dir,
-    'data-prefers-color-mode': state.mode,
-    'data-prefers-color-accent': state.accent,
+    'data-prefers-dir': display.state.dir,
+    'data-prefers-color-mode': display.state.mode,
+    'data-prefers-color-accent': display.state.accent,
   };
 
   return (
     <div className="v2-demo-canvas" {...dataAttributes}>
-      <div>{children}</div>
+      <div className="v2-demo-canvas-container">
+        {React.cloneElement(children as JSX.Element, settings.state)}
+      </div>
     </div>
   );
 };

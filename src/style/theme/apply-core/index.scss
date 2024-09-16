@@ -7,7 +7,6 @@
 
 .v2-text,
 .v2-title {
-  color: hsla(var(--v2-hsl-surface), 0.87);
   transition-property: background-color, border-color, outline-color, color, fill, stroke;
   transition-timing-function: var(--v2-easing-expressive);
   transition-duration: var(--v2-duration-slow-01);
@@ -18,6 +17,207 @@
   transition-property: background-color, border-color, outline-color, color, fill, stroke;
   transition-timing-function: var(--v2-easing-expressive);
   transition-duration: var(--v2-duration-slow-01);
+}
+
+.v2-accordion-target {
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-productive);
+  transition-duration: var(--v2-duration-moderate-01);
+}
+
+.v2-accordion-target--default:not([data-loading]),
+.v2-accordion-target--default:not([data-readonly]),
+.v2-accordion-target--default:not([data-disabled]),
+.v2-accordion-target--accent:not([data-loading]),
+.v2-accordion-target--accent:not([data-readonly]),
+.v2-accordion-target--accent:not([data-disabled]) {
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
+
+  [data-prefers-color-mode='light'] & {
+    background-color: hsla(var(--v2-hsl-surface), 0.06);
+  }
+}
+
+.v2-accordion-target--default:not([data-loading]):hover,
+.v2-accordion-target--default:not([data-readonly]):hover,
+.v2-accordion-target--default:not([data-disabled]):hover,
+.v2-accordion-target--accent:not([data-loading]):hover,
+.v2-accordion-target--accent:not([data-readonly]):hover,
+.v2-accordion-target--accent:not([data-disabled]):hover {
+  background-color: hsla(var(--v2-hsl-surface), 0.04);
+
+  [data-prefers-color-mode='light'] & {
+    background-color: hsla(var(--v2-hsl-surface), 0.08);
+  }
+}
+
+.v2-accordion-target--default:not([data-loading]):active,
+.v2-accordion-target--default:not([data-readonly]):active,
+.v2-accordion-target--default:not([data-disabled]):active,
+.v2-accordion-target--accent:not([data-loading]):active,
+.v2-accordion-target--accent:not([data-readonly]):active,
+.v2-accordion-target--accent:not([data-disabled]):active {
+  background-color: hsla(var(--v2-hsl-surface), 0.05);
+
+  [data-prefers-color-mode='light'] & {
+    background-color: hsla(var(--v2-hsl-surface), 0.09);
+  }
+}
+
+.v2-accordion-target--default:not([data-loading]) .v2-label,
+.v2-accordion-target--default:not([data-readonly]) .v2-label,
+.v2-accordion-target--default:not([data-disabled]) .v2-label,
+.v2-accordion-target--default:not([data-loading]) .v2-icon,
+.v2-accordion-target--default:not([data-readonly]) .v2-icon,
+.v2-accordion-target--default:not([data-disabled]) .v2-icon {
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-accordion-target--default:not([data-loading]):hover .v2-label,
+.v2-accordion-target--default:not([data-readonly]):hover .v2-label,
+.v2-accordion-target--default:not([data-disabled]):hover .v2-label,
+.v2-accordion-target--default:not([data-loading]):hover .v2-icon,
+.v2-accordion-target--default:not([data-readonly]):hover .v2-icon,
+.v2-accordion-target--default:not([data-disabled]):hover .v2-icon,
+.v2-accordion-target--default:not([data-loading]):active .v2-label,
+.v2-accordion-target--default:not([data-readonly]):active .v2-label,
+.v2-accordion-target--default:not([data-disabled]):active .v2-label,
+.v2-accordion-target--default:not([data-loading]):active .v2-icon,
+.v2-accordion-target--default:not([data-readonly]):active .v2-icon,
+.v2-accordion-target--default:not([data-disabled]):active .v2-icon {
+  color: hsla(var(--v2-hsl-surface), 1);
+}
+
+.v2-accordion-target--accent:not([data-loading]) .v2-label,
+.v2-accordion-target--accent:not([data-readonly]) .v2-label,
+.v2-accordion-target--accent:not([data-disabled]) .v2-label,
+.v2-accordion-target--accent:not([data-loading]) .v2-icon,
+.v2-accordion-target--accent:not([data-readonly]) .v2-icon,
+.v2-accordion-target--accent:not([data-disabled]) .v2-icon {
+  color: hsla(var(--v2-hsl-accent), 0.87);
+}
+
+.v2-accordion-target--accent:not([data-loading]):hover .v2-label,
+.v2-accordion-target--accent:not([data-readonly]):hover .v2-label,
+.v2-accordion-target--accent:not([data-disabled]):hover .v2-label,
+.v2-accordion-target--accent:not([data-loading]):hover .v2-icon,
+.v2-accordion-target--accent:not([data-readonly]):hover .v2-icon,
+.v2-accordion-target--accent:not([data-disabled]):hover .v2-icon,
+.v2-accordion-target--accent:not([data-loading]):active .v2-label,
+.v2-accordion-target--accent:not([data-readonly]):active .v2-label,
+.v2-accordion-target--accent:not([data-disabled]):active .v2-label,
+.v2-accordion-target--accent:not([data-loading]):active .v2-icon,
+.v2-accordion-target--accent:not([data-readonly]):active .v2-icon,
+.v2-accordion-target--accent:not([data-disabled]):active .v2-icon {
+  color: hsla(var(--v2-hsl-accent), 1);
+}
+
+.v2-accordion-target--default[data-disabled],
+.v2-accordion-target--default[data-disabled]:hover,
+.v2-accordion-target--default[data-disabled]:active,
+.v2-accordion-target--accent[data-disabled],
+.v2-accordion-target--accent[data-disabled]:hover,
+.v2-accordion-target--accent[data-disabled]:active {
+  background-color: hsla(var(--v2-hsl-surface), 0.24);
+
+  [data-prefers-color-mode='light'] & {
+    background-color: hsla(var(--v2-hsl-surface), 0.36);
+  }
+}
+
+.v2-accordion-target--default[data-disabled] .v2-label,
+.v2-accordion-target--default[data-disabled]:hover .v2-label,
+.v2-accordion-target--default[data-disabled]:active .v2-label,
+.v2-accordion-target--accent[data-disabled] .v2-label,
+.v2-accordion-target--accent[data-disabled]:hover .v2-label,
+.v2-accordion-target--accent[data-disabled]:active .v2-label {
+  color: hsla(var(--v2-hsl-base), 1);
+}
+
+.v2-accordion-target--default[data-disabled] .v2-icon,
+.v2-accordion-target--default[data-disabled]:hover .v2-icon,
+.v2-accordion-target--default[data-disabled]:active .v2-icon,
+.v2-accordion-target--accent[data-disabled] .v2-icon,
+.v2-accordion-target--accent[data-disabled]:hover .v2-icon,
+.v2-accordion-target--accent[data-disabled]:active .v2-icon {
+  color: hsla(var(--v2-hsl-base), 1);
+}
+
+.v2-accordion-panel {
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-expressive);
+  transition-duration: var(--v2-duration-slow-01);
+}
+
+.v2-accordion-panel--default {
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-accordion-panel--accent {
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-action {
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-productive);
+  transition-duration: var(--v2-duration-moderate-01);
+}
+
+.v2-action .v2-icon {
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-productive);
+  transition-duration: var(--v2-duration-moderate-01);
+}
+
+.v2-action--default:not([data-loading]),
+.v2-action--default:not([data-readonly]),
+.v2-action--default:not([data-disabled]) {
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-action--default:not([data-loading]):hover,
+.v2-action--default:not([data-readonly]):hover,
+.v2-action--default:not([data-disabled]):hover {
+  background-color: hsla(var(--v2-hsl-surface), 0.04);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-action--default:not([data-loading])[data-selected],
+.v2-action--default:not([data-readonly])[data-selected],
+.v2-action--default:not([data-disabled])[data-selected] {
+  background-color: hsla(var(--v2-hsl-surface), 0.04);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-action--default:not([data-loading]):active,
+.v2-action--default:not([data-readonly]):active,
+.v2-action--default:not([data-disabled]):active {
+  background-color: hsla(var(--v2-hsl-surface), 0.05);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-action--default[data-disabled],
+.v2-action--default[data-disabled]:hover,
+.v2-action--default[data-disabled]:active {
+  background-color: hsla(var(--v2-hsl-surface), 0.3);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-base), 1);
+
+  .v2-icon {
+    color: hsla(var(--v2-hsl-base), 1);
+  }
+}
+
+.v2-action-spacer,
+.v2-action-spacer--default {
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
 }
 
 .v2-button {
@@ -58,55 +258,12 @@
   color: hsla(var(--v2-hsl-surface), 0.87);
 }
 
-.v2-action {
-  transition-property: background-color, border-color, outline-color, color, fill, stroke;
-  transition-timing-function: var(--v2-easing-productive);
-  transition-duration: var(--v2-duration-moderate-01);
-
-  .v2-icon {
-    transition-property: background-color, border-color, outline-color, color, fill, stroke;
-    transition-timing-function: var(--v2-easing-productive);
-    transition-duration: var(--v2-duration-moderate-01);
-  }
-}
-
-.v2-action--default:not([data-loading]),
-.v2-action--default:not([data-readonly]),
-.v2-action--default:not([data-disabled]) {
-  background-color: hsla(var(--v2-hsl-surface), 0.02);
+.v2-button--default[data-disabled],
+.v2-button--default[data-disabled]:hover,
+.v2-button--default[data-disabled]:active {
+  background-color: hsla(var(--v2-hsl-surface), 0.3);
   border-color: hsla(var(--v2-hsl-surface), 0);
-  color: hsla(var(--v2-hsl-surface), 0.87);
-}
-
-.v2-action--default:not([data-loading]):hover,
-.v2-action--default:not([data-readonly]):hover,
-.v2-action--default:not([data-disabled]):hover {
-  background-color: hsla(var(--v2-hsl-surface), 0.04);
-  border-color: hsla(var(--v2-hsl-surface), 0);
-  color: hsla(var(--v2-hsl-surface), 0.87);
-}
-
-.v2-action--default:not([data-loading])[data-selected],
-.v2-action--default:not([data-readonly])[data-selected],
-.v2-action--default:not([data-disabled])[data-selected] {
-  background-color: hsla(var(--v2-hsl-surface), 0.04);
-  border-color: hsla(var(--v2-hsl-surface), 0);
-  color: hsla(var(--v2-hsl-surface), 0.87);
-}
-
-.v2-action--default:not([data-loading]):active,
-.v2-action--default:not([data-readonly]):active,
-.v2-action--default:not([data-disabled]):active {
-  background-color: hsla(var(--v2-hsl-surface), 0.05);
-  border-color: hsla(var(--v2-hsl-surface), 0);
-  color: hsla(var(--v2-hsl-surface), 0.87);
-}
-
-.v2-action-spacer,
-.v2-action-spacer--default {
-  background-color: hsla(var(--v2-hsl-surface), 0.02);
-  border-color: hsla(var(--v2-hsl-surface), 0);
-  color: hsla(var(--v2-hsl-surface), 0.87);
+  color: hsla(var(--v2-hsl-base), 1);
 }
 
 .v2-divider--default {
@@ -131,6 +288,44 @@
 
 .v2-divider--accent-text .v2-divider-label {
   color: hsla(var(--v2-hsl-accent), 0.97);
+}
+
+.v2-icon-button {
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-productive);
+  transition-duration: var(--v2-duration-moderate-01);
+}
+
+.v2-icon-button--default:not([data-loading]),
+.v2-icon-button--default:not([data-readonly]),
+.v2-icon-button--default:not([data-disabled]) {
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-icon-button--default:not([data-loading]):hover,
+.v2-icon-button--default:not([data-readonly]):hover,
+.v2-icon-button--default:not([data-disabled]):hover {
+  background-color: hsla(var(--v2-hsl-surface), 0.04);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-icon-button--default:not([data-loading])[data-selected],
+.v2-icon-button--default:not([data-readonly])[data-selected],
+.v2-icon-button--default:not([data-disabled])[data-selected] {
+  background-color: hsla(var(--v2-hsl-surface), 0.04);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-icon-button--default:not([data-loading]):active,
+.v2-icon-button--default:not([data-readonly]):active,
+.v2-icon-button--default:not([data-disabled]):active {
+  background-color: hsla(var(--v2-hsl-surface), 0.05);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-surface), 0.87);
 }
 
 .v2-select-list--default {
@@ -166,6 +361,18 @@
 .v2-select-target--default:not([data-disabled]):active {
   background-color: hsla(var(--v2-hsl-surface), 0.05);
   color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-select-target--default[data-disabled],
+.v2-select-target--default[data-disabled]:hover,
+.v2-select-target--default[data-disabled]:active {
+  background-color: hsla(var(--v2-hsl-surface), 0.3);
+  border-color: hsla(var(--v2-hsl-surface), 0);
+  color: hsla(var(--v2-hsl-base), 1);
+
+  .v2-icon {
+    color: hsla(var(--v2-hsl-base), 1);
+  }
 }
 
 .v2-select-option--default:not([data-loading]),

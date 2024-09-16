@@ -6,7 +6,13 @@ export const SandboxSelect: React.FC<{}> = ({}) => {
   const [value, setValue] = React.useState<string>();
   const [isOpen, onOpenChange] = React.useState(false);
   return (
-    <SandboxLayout name="Select">
+    <SandboxLayout
+      name="Select"
+      controls={[
+        { type: 'switch', initialValue: false, prop: 'isDisabled' },
+        { type: 'switch', initialValue: false, prop: 'isReadonly' },
+      ]}
+    >
       <Select
         isOpen={isOpen}
         onOpenChange={onOpenChange}

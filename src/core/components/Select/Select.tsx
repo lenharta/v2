@@ -52,7 +52,9 @@ export const Select: SelectFactory = (props) => {
     variant = 'default',
     strategy = 'absolute',
     placement = 'bottom-start',
+    isLoading,
     isDisabled,
+    isReadonly,
     middleware = { flip: true, shift: true, inline: false },
     placeholder = 'Select...',
     transitionProps,
@@ -100,6 +102,9 @@ export const Select: SelectFactory = (props) => {
       <Select.Target
         size={size}
         variant={variant}
+        isLoading={isLoading}
+        isDisabled={isDisabled}
+        isReadonly={isReadonly}
         placeholder={placeholder}
         value={(labels[value as any] as any)?.label || undefined}
       />
@@ -112,6 +117,7 @@ export const Select: SelectFactory = (props) => {
             key={item.value}
             label={item.label}
             value={item.value}
+            isLoading={isLoading}
             isDisabled={item.isDisabled}
             isReadonly={item.isReadonly}
             isSelected={item.value === value || undefined}

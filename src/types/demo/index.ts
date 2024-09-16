@@ -10,7 +10,8 @@ export declare namespace DEMO {
 
   type Dispatch = (payload: Partial<State>) => State;
 
-  type ControlType = 'switch' | 'select' |  'checkbox' | 'segmented' | 'text';
+  // type ControlType = 'switch' | 'select' |  'checkbox' | 'segmented' | 'text';
+  type ControlType = 'switch' | 'select' |  'checkbox';
 
   type ControlOption<T extends ControlType, P extends Record<string, any>> = P & {
     prop: string;
@@ -18,7 +19,30 @@ export declare namespace DEMO {
   };
 
   type ControlOptions = 
-    | ControlOptionsSelect
+    | ControlSelectOptions
+    | ControlSwitchOptions
+    | ControlCheckboxOptions;
+    // | ControlSegmentedOptions;
+
+  type ControlSwitchProps = {
+    prop: string;
+    value: boolean;
+    onChange: (value: boolean) => void;
+  };
+
+  type ControlSwitchOptions = ControlOption<'switch', {
+    initialValue: boolean;
+  }>;
+
+  type ControlCheckboxProps = {
+    prop: string;
+    value: boolean;
+    onChange: (value: boolean) => void;
+  };
+
+  type ControlCheckboxOptions = ControlOption<'checkbox', {
+    initialValue: boolean;
+  }>;
 
   type ControlSelectItem = {
     value: string;
@@ -32,11 +56,26 @@ export declare namespace DEMO {
     prop: string;
   };
   
-  type ControlOptionsSelect = ControlOption<'select', {
+  type ControlSelectOptions = ControlOption<'select', {
     data: (string | ControlSelectItem)[];
-    onChange: (value: string) => void;
-    value: string;
-    prop: string;
+    initialValue: string;
   }>;
+
+  type ControlSegmentedItem = {
+    value: string;
+    label: string;
+  }
+
+  type ControlSegmentedProps = {
+    data: (string | ControlSegmentedItem)[]
+    prop: string;
+    value: string;
+    onChange: (value: string) => void;
+  }
+
+  // type ControlSegmentedOptions = ControlOption<'segmented', {
+  //   data: (string | ControlSegmentedItem)[];
+  //   initialValue: string;
+  // }>
 
 }

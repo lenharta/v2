@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { Core } from '@/types';
 import { Component } from '@/factory';
 import { createEventCallback } from '@/utils';
-import { Icon, UnstyledButton } from '@/core';
+import { Icon, Label, UnstyledButton } from '@/core';
 import { useAccordionRootCTX, useAccordionItemCTX } from '../AccordionContext';
 
 type AccordionTargetFactory = Core.Factory<{
@@ -14,63 +14,100 @@ type AccordionTargetFactory = Core.Factory<{
   };
 }>;
 
-const css = {
-  root: 'v2-accordion-target',
-  icon: 'v2-accordion-target-icon',
-  label: 'v2-accordion-target-label',
-  layout: 'v2-accordion-target-layout',
-};
-
 export const AccordionTarget = Component<AccordionTargetFactory>(
-  ({ chevron, variant = 'default', disabled, children, className, onClick, ...props }, ref) => {
+  (
+    {
+      size,
+      variant,
+      chevron,
+      children,
+      className,
+      isLoading,
+      isReadonly,
+      isDisabled,
+      component: Component = UnstyledButton,
+      onKeyDown,
+      onClick,
+      ...props
+    },
+    ref
+  ) => {
     const rootContext = useAccordionRootCTX();
     const itemContext = useAccordionItemCTX();
 
-    const itemVariant = variant || itemContext.variant || rootContext.variant;
-    const handleChange = () => rootContext.onValueChange(itemContext.value);
-    const handleClick = createEventCallback(onClick, handleChange);
-
-    const accessibleProps = {
-      id: rootContext.getTargetId(itemContext.value),
-      disabled: disabled || rootContext.disabled || undefined,
-      'aria-expanded': rootContext.isValueActive(itemContext.value),
-      'aria-controls': rootContext.getPanelId(itemContext.value),
-    };
+    const loading = isLoading || itemContext.isLoading || rootContext.isLoading || undefined;
+    const disabled = isDisabled || itemContext.isDisabled || rootContext.isDisabled || undefined;
+    const readonly = isReadonly || itemContext.isReadonly || rootContext.isReadonly || undefined;
 
     return (
-      <UnstyledButton
+      <Component
         {...props}
-        {...accessibleProps}
-        className={clsx(css.root, `${css.root}--${itemVariant}`, className)}
-        onClick={handleClick}
         ref={ref}
+        id={rootContext.getTargetId(itemContext.value)}
+        isLoading={loading}
+        isDisabled={disabled}
+        isReadonly={readonly}
+        aria-expanded={rootContext.isValueActive(itemContext.value)}
+        aria-controls={rootContext.getPanelId(itemContext.value)}
+        onClick={createEventCallback(onClick, (event) => {
+          if (!loading && !disabled && !readonly) {
+            event.stopPropagation();
+            rootContext.onChange(itemContext.value);
+          }
+        })}
+        onKeyDown={createEventCallback(onKeyDown, (event) => {
+          if (event.key === 'Enter') {
+            event.stopPropagation();
+            event.preventDefault();
+
+            if (!loading && !disabled && !readonly) {
+              rootContext.onChange(itemContext.value);
+            }
+          }
+        })}
+        className={clsx(
+          `v2-accordion-target`,
+          `v2-accordion-target--${size || itemContext.size || rootContext.size || 'sm'}`,
+          `v2-accordion-target--${variant || itemContext.variant || rootContext.variant || 'default'}`,
+          className
+        )}
       >
-        <span className={css.layout}>
+        <span className="v2-accordion-target-layout">
           <AccordionTarget.Icon
+            position="start"
             active={rootContext.isValueActive(itemContext.value)}
             chevronPosition={rootContext.chevronPosition}
             chevronRotation={rootContext.chevronRotation}
-            className={css.icon}
+            className="v2-accordion-target-content"
             chevron={chevron}
           />
 
-          <div className={css.label}>{children}</div>
+          <Label component="div">{children}</Label>
 
           <AccordionTarget.Icon
+            position="end"
             active={rootContext.isValueActive(itemContext.value)}
             chevronPosition={rootContext.chevronPosition}
             chevronRotation={rootContext.chevronRotation}
-            className={css.icon}
+            className="v2-accordion-target-content"
             chevron={chevron}
           />
         </span>
-      </UnstyledButton>
+      </Component>
     );
   }
 );
 
-AccordionTarget.Icon = ({ active, chevron, className, chevronPosition, chevronRotation }) => {
-  if (!chevronPosition) return null;
+AccordionTarget.Icon = ({
+  active,
+  chevron,
+  position,
+  className,
+  chevronPosition,
+  chevronRotation,
+}) => {
+  if (chevronPosition === position) return null;
+  const defaultIcon = chevronPosition === 'start' ? 'caret-west' : 'caret-east';
   return (
     <div
       className={className}
@@ -78,7 +115,7 @@ AccordionTarget.Icon = ({ active, chevron, className, chevronPosition, chevronRo
       data-rotate={!!chevronRotation}
       data-position={chevronPosition}
     >
-      {chevron ?? <Icon name="caret-west" /> ?? null}
+      {chevron ?? <Icon name={defaultIcon} /> ?? null}
     </div>
   );
 };

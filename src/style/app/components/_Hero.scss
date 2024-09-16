@@ -4,12 +4,17 @@
 }
 
 .v2-hero-layout {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   height: calc(var(--v2-gutter) * 20);
-  margin-inline: var(--v2-gutter);
-  padding-block: var(--v2-gutter);
+  max-width: 80em;
+  overflow: hidden;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  margin-inline: auto;
+  padding: var(--v2-gutter);
 
   [data-prefers-dir='ltr'] & {
     align-items: flex-start;
@@ -21,6 +26,8 @@
 }
 
 .v2-hero-layout .v2-title {
+  width: 100%;
+  display: block;
   font-size: var(--v2-font-size-08);
   line-height: var(--v2-line-height-01);
 }

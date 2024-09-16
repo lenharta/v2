@@ -7,27 +7,43 @@ import { DemoCanvas } from './DemoCanvas';
 
 type DemoProps = {
   children: React.ReactNode;
+  controls: DEMO.ControlOptions[];
 };
 
 export const Demo = (props: DemoProps) => {
-  const { children } = props;
-  const store = useStore();
+  const { children, controls } = props;
 
-  const [state, setState] = React.useState<DEMO.State>({
+  const initialState = controls.reduce<Record<string, any>>((acc, control) => {
+    acc[control.prop] = control.initialValue;
+    return acc;
+  }, {});
+
+  const store = useStore();
+  const [settings, setSettings] = React.useState(initialState);
+  const [display, setDisplay] = React.useState<DEMO.State>({
     accent: store.accent,
     icons: store.icons,
     mode: store.mode,
     dir: store.dir,
   });
 
-  const dispatch = (payload: Partial<DEMO.State>) => {
-    setState((current) => ({ ...current, ...payload }));
+  const dispatchDisplay = (payload: Partial<DEMO.State>) => {
+    setDisplay((current) => ({ ...current, ...payload }));
+  };
+
+  const dispatchSettings = (field: string, value: any) => {
+    setSettings((current) => ({ ...current, [field]: value }));
   };
 
   return (
-    <DemoProvider value={{ state, dispatch }}>
+    <DemoProvider
+      value={{
+        display: { state: display, dispatch: dispatchDisplay },
+        settings: { state: settings, dispatch: dispatchSettings },
+      }}
+    >
       <div className="v2-demo">
-        <DemoToolbar />
+        <DemoToolbar controls={controls} />
         <DemoCanvas>{children}</DemoCanvas>
       </div>
     </DemoProvider>

@@ -5,8 +5,10 @@
   @include utils.button-focus;
   @include utils.button-cursor;
 
-  width: auto;
-  display: inline;
+  width: max-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -29,7 +31,7 @@
 
   &-layout {
     gap: calc(var(--v2-button-spacing-x) * 1.5);
-    display: flex;
+    display: inline-flex;
     overflow: visible;
     align-items: center;
     justify-content: space-between;
@@ -48,11 +50,6 @@
     font-weight: var(--v2-font-weight-regular);
     font-family: var(--v2-font-family);
     font-size: var(--v2-button-font-size);
-    opacity: 1;
-
-    &:where([data-loading]) {
-      opacity: 0.2;
-    }
   }
 
   &--xxs {

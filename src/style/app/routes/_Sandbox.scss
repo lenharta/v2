@@ -1,93 +1,25 @@
 @use '../utils' as utils;
 
-.v2-sandbox-canvas {
-  @include utils.reset;
-
+.v2-sandbox-directory-tile-group {
   width: 100%;
+  display: grid;
+  place-content: start;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--v2-unit);
+  margin-block: var(--v2-space);
+  padding-inline: var(--v2-gutter);
+}
+
+.v2-sandbox-directory-tile-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
-  gap: var(--v2-unit);
-  padding-block: var(--v2-unit);
+  padding: var(--v2-space);
 }
 
-.v2-sandbox-canvas-display {
-  @include utils.reset;
-
-  width: 100%;
-  display: block;
-}
-
-.v2-sandbox-canvas-display-menu {
-  @include utils.reset;
-
-  width: 100%;
-  display: block;
-
-  .v2-select-target {
-    flex: 1 1 100%;
-    height: var(--v2-action-button);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    @media (min-width: 60em) {
-      max-width: 400px;
-    }
-  }
-
-  .v2-select-target-layout {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline: var(--v2-space);
-  }
-
-  .v2-select-list {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: var(--v2-unit);
-    padding: var(--v2-unit);
-  }
-
-  .v2-select-option {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: var(--v2-action-button);
-    padding-inline: var(--v2-space);
-  }
-}
-
-.v2-sandbox-canvas-color-drawer {
-  gap: var(--v2-unit);
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  width: calc(calc(var(--v2-action-button) * 6) + calc(var(--v2-unit) * 7));
-  height: calc(calc(var(--v2-action-button) * 2) + calc(var(--v2-unit) * 3));
-}
-
-.v2-sandbox-canvas-display-viewer {
-  @include utils.reset;
-
-  width: 100%;
-  display: block;
-  position: relative;
-  min-height: 600px;
-
-  & > div {
-    display: inline-flex;
-    position: absolute;
-    margin-block: auto;
-    margin-inline: auto;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
+@media (min-width: 60em) {
+  .v2-sandbox-directory-tile-group {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { DEMO } from '@/types';
 
 export type DemoContextValue = {
-  dispatch: (payload: Partial<DEMO.State>) => void;
-  state: DEMO.State;
+  display: { state: DEMO.State; dispatch: (payload: Partial<DEMO.State>) => void };
+  settings: { state: Record<string, any>; dispatch: (field: string, value: any) => void };
 };
 
 export const DemoContext = React.createContext({} as DemoContextValue);

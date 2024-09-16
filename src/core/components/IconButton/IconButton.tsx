@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Core } from '@/types';
-import { Icon } from '@/core/components';
 import { Component } from '@/factory';
+import { Icon, UnstyledButton } from '@/core';
 
 export type IconButtonFactory = Core.Factory<{
   ref: HTMLButtonElement;
@@ -10,18 +10,43 @@ export type IconButtonFactory = Core.Factory<{
 }>;
 
 export const IconButton = Component<IconButtonFactory>(
-  ({ icon, size = 'md', variant = 'default', className, ...props }, ref) => {
-    const classNames = clsx(
-      'v2-icon-button',
-      `v2-icon-button--${size}`,
-      `v2-icon-button--${variant}`,
-      className
-    );
-
+  (
+    {
+      icon,
+      radius,
+      label,
+      size,
+      variant,
+      className,
+      isDisabled,
+      isLoading,
+      isReadonly,
+      isSelected,
+      component: Component = 'button',
+      ...props
+    },
+    ref
+  ) => {
     return (
-      <button {...props} ref={ref} className={classNames}>
-        <Icon {...icon} />
-      </button>
+      <UnstyledButton
+        {...props}
+        ref={ref}
+        isLoading={isLoading}
+        isDisabled={isDisabled}
+        isReadonly={isReadonly}
+        isSelected={isSelected}
+        className={clsx(
+          'v2-icon-button',
+          `v2-icon-button--${size || 'sm'}`,
+          `v2-icon-button--${radius || 'round'}`,
+          `v2-icon-button--${variant || 'default'}`,
+          className
+        )}
+      >
+        <span className="v2-icon-button-layout">
+          <Icon {...icon} />
+        </span>
+      </UnstyledButton>
     );
   }
 );

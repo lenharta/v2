@@ -1,14 +1,24 @@
+import { DEMO } from '@/types';
 import { Action } from '@/core';
-import { DemoTool } from '../DemoTool';
+import { useStore } from '@/app';
 
-export const DemoToolbar = () => {
+import { DemoTool } from '../DemoTool';
+import { DemoControls } from '../DemoControls';
+import { useDemoContext } from '../Demo.context';
+
+export const DemoToolbar = (props: { controls: DEMO.ControlOptions[] }) => {
+  const { controls } = props;
+  const store = useStore();
+  const { display } = useDemoContext();
+
   return (
     <Action.Group className="v2-demo-toolbar" gap="xxs">
       <DemoTool
         prop="accent"
-        css={{
-          drawer: 'v2-demo-tool-accent-drawer',
-        }}
+        store={store}
+        state={display.state}
+        dispatch={display.dispatch}
+        css={{ drawer: 'v2-demo-tool-accent-drawer' }}
         items={[
           { label: 'Red', value: 'red' },
           { label: 'Orange', value: 'orange' },
@@ -27,6 +37,9 @@ export const DemoToolbar = () => {
 
       <DemoTool
         prop="mode"
+        store={store}
+        state={display.state}
+        dispatch={display.dispatch}
         items={[
           { label: 'Light Mode', value: 'light' },
           { label: 'Dark Mode', value: 'dark' },
@@ -36,6 +49,9 @@ export const DemoToolbar = () => {
 
       <DemoTool
         prop="dir"
+        store={store}
+        state={display.state}
+        dispatch={display.dispatch}
         items={[
           { label: 'writing mode left to right', value: 'ltr' },
           { label: 'writing mode right to left', value: 'rtl' },
@@ -43,6 +59,8 @@ export const DemoToolbar = () => {
       />
 
       <Action.Spacer grow />
+
+      <DemoControls controls={controls} />
     </Action.Group>
   );
 };

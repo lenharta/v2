@@ -10,27 +10,23 @@ type AccordionPanelFactory = Core.Factory<{
   element: 'div';
 }>;
 
-const AccordionPanel = Component<AccordionPanelFactory>(
-  ({ className, children, variant, ...props }, ref) => {
+export const AccordionPanel = Component<AccordionPanelFactory>(
+  ({ className, children, variant, size, component: Component = 'div', ...props }, ref) => {
     const rootContext = useAccordionRootCTX();
     const itemContext = useAccordionItemCTX();
-    const itemVariant = variant || itemContext.variant || rootContext.variant;
-
-    const contextProps = {
-      id: rootContext.getPanelId(itemContext.value),
-      isOpen: rootContext.isValueActive(itemContext.value) ? true : false,
-      'aria-labelledby': rootContext.getTargetId(itemContext.value),
-    };
 
     return (
       <Disclosure
         {...props}
-        {...contextProps}
         ref={ref}
         role="region"
+        id={rootContext.getPanelId(itemContext.value)}
+        isOpen={rootContext.isValueActive(itemContext.value) ? true : false}
+        aria-labelledby={rootContext.getTargetId(itemContext.value)}
         className={clsx(
           'v2-accordion-panel',
-          `v2-accordion-panel--${itemVariant || 'default'}`,
+          `v2-accordion-panel--${size || itemContext.size || rootContext.size || 'sm'}`,
+          `v2-accordion-panel--${variant || itemContext.variant || rootContext.variant || 'default'}`,
           className
         )}
       >
@@ -41,4 +37,3 @@ const AccordionPanel = Component<AccordionPanelFactory>(
 );
 
 AccordionPanel.displayName = '@v2/Accordion.Panel';
-export { AccordionPanel };

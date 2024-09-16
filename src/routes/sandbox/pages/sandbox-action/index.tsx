@@ -4,7 +4,14 @@ import { SandboxLayout } from '../sandbox-layout';
 
 export const SandboxAction: React.FC<{}> = ({}) => {
   return (
-    <SandboxLayout name="Action">
+    <SandboxLayout
+      name="Action"
+      controls={[
+        { type: 'switch', initialValue: false, prop: 'isLoading' },
+        { type: 'switch', initialValue: false, prop: 'isDisabled' },
+        { type: 'switch', initialValue: false, prop: 'isReadonly' },
+      ]}
+    >
       <Action icon={{ name: 'search' }} />
     </SandboxLayout>
   );

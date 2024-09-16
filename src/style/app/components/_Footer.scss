@@ -13,7 +13,9 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  margin-inline: var(--v2-gutter);
+  margin-inline: auto;
+  padding-inline: var(--v2-gutter);
+  max-width: 80em;
 
   [data-prefers-dir='rtl'] & {
     flex-direction: row-reverse;

@@ -183,67 +183,89 @@ export declare namespace Core {
     className?: string;
   };
 
+  export type AccordionSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type AccordionVariant = 'default' | 'accent';
   export type AccordionValue<V> = V extends true ? string[] : string | null;
 
   export type AccordionItemContext = {
-    variant: 'default' | 'accent';
     value: string;
+    size?: AccordionSize;
+    variant?: AccordionVariant;
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
   }
 
   export type AccordionContext<V extends boolean = false> = {
-    variant: 'default' | 'accent';
+    size?: AccordionSize;
+    variant?: AccordionVariant;
     children?: React.ReactNode;
-    disabled?: boolean;
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
     trapFocus?: boolean;
     chevronRotation: boolean;
     chevronPosition: 'start' | 'end';
     getPanelId: (id: string) => string;
     getTargetId: (id: string) => string;
     isValueActive: (value: string) => boolean;
-    onValueChange: (value: AccordionValue<V>) => void;
+    onChange: (value: AccordionValue<V>) => void;
   }
 
   export type AccordionProps<V extends boolean = false> = {
     value: AccordionValue<V>;
-    variant?: 'default' | 'accent';
+    variant?: AccordionVariant;
+    size?: AccordionSize;
     children?: React.ReactNode;
+    className?: string;
     multiple?: V;
-    disabled?: boolean;
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
     trapFocus?: boolean;
     chevronRotation?: boolean;
     chevronPosition?: 'start' | 'end';
-    onValueChange: (value: AccordionValue<V>) => void;
+    onChange: (value: AccordionValue<V>) => void;
   }
 
   export type AccordionItemProps = {
     className?: string;
     children?: React.ReactNode;
-    disabled?: boolean;
-    variant?: 'default' | 'accent';
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
+    variant?: AccordionVariant;
+    size?: AccordionSize;
     value: string;
   }
 
   export type AccordionPanelProps = {
     className?: string;
-    children?: React.ReactNode;
-    variant?: 'default' | 'accent';
+    children?: React.ReactElement;
+    variant?: AccordionVariant;
+    size?: AccordionSize;
   }
 
   export type AccordionTargetProps = {
     trapFocus?: boolean;
     className?: string;
-    disabled?: boolean;
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
     children?: React.ReactNode;
-    variant?: 'default' | 'accent';
+    variant?: AccordionVariant;
+    size?: AccordionSize;
     chevron?: React.ReactNode;
   }
 
   export type AccordionTargetIconProps = {
+    position: 'start' | 'end';
     chevron?: React.ReactNode;
     chevronPosition?: 'start' | 'end';
     chevronRotation?: boolean;
     className?: string;
-    variant?: 'default' | 'accent';
+    variant?: AccordionVariant;
+    size?: AccordionSize;
     active?: boolean;
   }
 
@@ -681,10 +703,20 @@ export declare namespace Core {
     onOpen?: (() => void);
   }
 
+  export type IconButtonSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type IconButtonRadius = 'squared' | 'rounded' | 'round';
+  export type IconButtonVariant = 'default' | 'accent';
+
   export type IconButtonProps = {
-    size?: SizeRegular;
     icon?: Partial<ICON.Props>;
-    variant?: 'default' | 'accent';
+    size?: IconButtonSize;
+    label?: string;
+    radius?: IconButtonRadius;
+    variant?: IconButtonVariant;
+    isLoading?: boolean;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
+    isSelected?: boolean;
   }
 
   export type ImageProps = {
@@ -758,7 +790,9 @@ export declare namespace Core {
     size?: SelectSize;
     variant?: SelectVariant;
     strategy?: FloatingProps['strategy'];
-    isDisabled?: FloatingProps['disabled'];
+    isLoading?: boolean;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
     placement?: FloatingProps['placement'];
     middleware?: FloatingProps['middleware'];
     placeholder?: string;
@@ -863,7 +897,7 @@ export declare namespace Core {
     variant?: TabsVariant;
     children: React.ReactNode;
     className?: string;
-    onValueChange: (value: string) => void;
+    onChange: (value: string) => void;
     keyboardActivated?: boolean;
     keyboardOptions?: Partial<TabsKeyDownOptions>;
     orientation?: Orientation;
@@ -876,10 +910,10 @@ export declare namespace Core {
     size?: TabsSize;
     value: string;
     variant?: TabsVariant;
+    onChange: (value: string) => void;
     getListId: () => string;
     getItemId: (v: string) => string;
     getPanelId: (v: string) => string;
-    onValueChange: (value: string) => void;
     keyboardActivated?: boolean;
     keyboardOptions?: Partial<TabsKeyDownOptions>;
     orientation?: Orientation;

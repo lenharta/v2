@@ -1,108 +1,77 @@
 import * as React from 'react';
-import { Headline, Section } from '@/app';
+import { Section } from '@/app';
 import { Tabs, Text, Title } from '@/core';
 
-const headers = [
-  {
-    value: 'home:resume:doran',
-    label: '2023',
-  },
-  {
-    value: 'home:resume:antra',
-    label: '2021',
-  },
-  {
-    value: 'home:resume:pace',
-    label: '2020',
-  },
-  {
-    value: 'home:resume:hawthorne',
-    label: '2019',
-  },
-];
+type HomeResumeComponent = React.FC<{}>;
 
-const panels = [
-  {
-    title: `Doran Jones, Inc.`,
-    value: `home:resume:doran`,
-    location: `New York, New York`,
-    description: `Founded in 2010, Doran Jones, Inc. is a financial services Data Engineering and Application Development firm. Specializing in Capital Markets, Risk, and Regulatory Compliance, Doran delivers high-quality, affordable solutions that ensured compliance and mitigated risk in dynamic environments.`,
-  },
-  {
-    title: `Antra, Inc.`,
-    value: `home:resume:antra`,
-    location: `Sterling, Virginia`,
-    description: `Antra Inc. addresses the crucial gap between modern technology adoption and business growth by providing strategic solutions to seamlessly connect technology with business objectives. Antra offers a full range of IT services in a cost-effective manner, combining technical knowledge with business acumen to drive success for our clients.`,
-  },
-  {
-    title: `Pace Communications`,
-    value: `home:resume:pace`,
-    location: `Greensboro, North Carolina`,
-    description: `One of the world's leading growth marketing agencies. With deep strength in content, brand storytelling and integrated marketing, Pace designs, builds, and manages leading websites and digital story resumeeriences for global clients through custom web development and producing award-winning integrated brand narratives.`,
-  },
-  {
-    title: `Hawthorne Partners`,
-    value: `home:resume:hawthorne`,
-    location: `Greensboro, North Carolina`,
-    description: `Hawthorne Residential Partners is a privately held property management firm that provides services in the apartment industry across the Southeast and Texas. Their innovative approach includes resident web apps and portals, enhancing tenant resumeerience and operational efficiency through advanced technology solutions.`,
-  },
-];
-
-export const HomeResume = () => {
-  const [tab, setTab] = React.useState('home:resume:doran');
+export const HomeResume: HomeResumeComponent = ({}) => {
+  const [value, onChange] = React.useState('home:resume:DOR');
 
   return (
-    <>
-      <Headline className="v2-home-resume-headline" title="Resume" href="home-resume" order=".02" />
-      <Section className="v2-home-resume">
-        <div className="v2-home-resume-banner">
-          <Title className="v2-home-resume-banner-title" h3>
-            <span className="v2-home-resume-banner-title-line-1">From Startups to</span>
-            <span className="v2-home-resume-banner-title-line-2">Titans Of Industries.</span>
-          </Title>
-        </div>
+    <Section className="v2-home-resume">
+      <Title className="v2-home-resume-title" h3>
+        <span>From Startups to</span>
+        <span>Titans Of Industries.</span>
+      </Title>
 
-        <Tabs
-          value={tab}
-          onValueChange={setTab}
-          className="v2-home-resume-tabs"
-          variant="accent"
-          size="md"
-        >
-          <Tabs.List className="v2-home-resume-tabs-list" grow>
-            {headers.map((item) => (
-              <Tabs.Item className="v2-home-resume-tabs-item" value={item.value} key={item.value}>
-                {item.label}
-              </Tabs.Item>
-            ))}
-          </Tabs.List>
+      <Tabs
+        size="md"
+        variant="accent"
+        className="v2-home-resume-tabs"
+        onChange={onChange}
+        value={value}
+      >
+        <Tabs.List className="v2-home-resume-tabs-list">
+          <Tabs.Item value="home:resume:DOR">2023</Tabs.Item>
+          <Tabs.Item value="home:resume:ANT">2021</Tabs.Item>
+          <Tabs.Item value="home:resume:PAC">2020</Tabs.Item>
+          <Tabs.Item value="home:resume:HAW">2019</Tabs.Item>
+        </Tabs.List>
 
-          {panels.map((item) => (
-            <Tabs.Panel className="v2-home-resume-tabs-panel" value={item.value} key={item.value}>
-              <div className="v2-home-resume-tabs-panel-layout">
-                <Text className="v2-home-resume-tabs-panel-overline" span>
-                  <>{item.location}</>
-                </Text>
+        <Tabs.Panel className="v2-home-resume-tabs-panel" value="home:resume:DOR">
+          <Text span>New York, New York</Text>
+          <Title h3>Doran Jones, Inc.</Title>
+          <Text>
+            Founded in 2010, Doran Jones, Inc. is a financial services Data Engineering and
+            Application Development firm. Specializing in Capital Markets, Risk, and Regulatory
+            Compliance, Doran delivers high-quality, affordable solutions that ensured compliance
+            and mitigated risk in dynamic environments.
+          </Text>
+        </Tabs.Panel>
 
-                <Title className="v2-home-resume-tabs-panel-title" h3>
-                  <>{item.title}</>
-                </Title>
+        <Tabs.Panel className="v2-home-resume-tabs-panel" value="home:resume:ANT">
+          <Text span>Sterling, VA</Text>
+          <Title h3>Antra, Inc.</Title>
+          <Text>
+            Antra Inc. addresses the crucial gap between modern technology adoption and business
+            growth by providing strategic solutions to seamlessly connect technology with business
+            objectives. Antra offers a full range of IT services in a cost-effective manner,
+            combining technical knowledge with business acumen to drive success for our clients.
+          </Text>
+        </Tabs.Panel>
 
-                <Text className="v2-home-resume-tabs-panel-text">
-                  <>{item.description}</>
-                </Text>
+        <Tabs.Panel className="v2-home-resume-tabs-panel" value="home:resume:PAC">
+          <Text span>Greensboro, NC</Text>
+          <Title h3>Pace Communications</Title>
+          <Text>
+            One of the world's leading growth marketing agencies. With deep strength in content,
+            brand storytelling and integrated marketing, Pace designs, builds, and manages leading
+            websites and digital story resumeeriences for global clients through custom web
+            development and producing award-winning integrated brand narratives.
+          </Text>
+        </Tabs.Panel>
 
-                {/* <Button
-                  size="md"
-                  iconRight={{ name: 'arrow-east' }}
-                  className="v2-home-resume-tabs-panel-button"
-                  children="Full Resume"
-                /> */}
-              </div>
-            </Tabs.Panel>
-          ))}
-        </Tabs>
-      </Section>
-    </>
+        <Tabs.Panel className="v2-home-resume-tabs-panel" value="home:resume:HAW">
+          <Text span>Greensboro, NC</Text>
+          <Title h3>Hawthorne Residential</Title>
+          <Text>
+            Hawthorne Residential Partners is a privately held property management firm that
+            provides services in the apartment industry across the Southeast and Texas. Their
+            innovative approach includes resident web apps and portals, enhancing tenant
+            resumeerience and operational efficiency through advanced technology solutions.
+          </Text>
+        </Tabs.Panel>
+      </Tabs>
+    </Section>
   );
 };

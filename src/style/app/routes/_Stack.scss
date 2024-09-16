@@ -1,11 +1,19 @@
 @use '../utils' as utils;
 
+.v2-stack-intro .v2-text {
+  font-size: var(--v2-font-size-05);
+  font-weight: var(--v2-font-weight-medium);
+  line-height: var(--v2-line-height-03);
+  margin-block: calc(var(--v2-space) * 3);
+}
+
 .v2-stack-table {
   @include utils.reset;
 
   width: 100%;
   display: block;
-  // padding: calc(var(--v2-unit) / 2);
+  padding-bottom: calc(var(--v2-space) * 3);
+  padding-inline: var(--v2-gutter);
 }
 
 .v2-stack-table-head,
@@ -106,7 +114,7 @@
 .v2-stack-table-body-cell[data-table-column='category'] span {
   border-radius: 6px;
   padding-block: calc(var(--v2-unit) * 1);
-  padding-inline: calc(var(--v2-unit) * 2);
+  padding-inline: calc(var(--v2-unit) * 3);
 }
 
 .v2-stack-table-head-cell,
@@ -147,6 +155,29 @@
 
     &[data-table-column='website'] {
       flex: 1 1 40%;
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 80em) {
+  .v2-stack-table-head-cell,
+  .v2-stack-table-body-cell {
+    &[data-table-column='name'] {
+      flex: 1 0 12.5%;
+    }
+
+    &[data-table-column='category'] {
+      flex: 1 0 12.5%;
+    }
+
+    &[data-table-column='description'] {
+      flex: 1 1 45%;
+      display: flex;
+    }
+
+    &[data-table-column='website'] {
+      flex: 1 1 30%;
       width: 100%;
     }
   }

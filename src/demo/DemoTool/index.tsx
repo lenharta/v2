@@ -1,15 +1,16 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { Core, DEMO, ICON } from '@/types';
+import { Core, DEMO, ICON, Store } from '@/types';
 import { Action, DURATION, EASING, Floating } from '@/core';
-import { useDemoContext } from '../Demo.context';
-import { useStore } from '@/app';
 
 export type DemoToolProps = {
+  state: DEMO.State;
+  store: Store.State;
+  dispatch: (payload: Partial<DEMO.State>) => void;
   prop: keyof DEMO.State;
   items: { label: string; value: string }[];
-  floatingProps?: Partial<Core.FloatingProps>;
   iconProps?: Partial<ICON.Props>;
+  floatingProps?: Partial<Core.FloatingProps>;
   css?: Partial<{
     target: string;
     drawer: string;
@@ -92,10 +93,8 @@ const TARGET_LABELS: Record<keyof DEMO.State, string> = {
 };
 
 export const DemoTool = (props: DemoToolProps) => {
-  const { css, prop, items, iconProps, floatingProps } = props;
+  const { state, store, dispatch, css, prop, items, iconProps, floatingProps } = props;
 
-  const demo = useDemoContext();
-  const store = useStore();
   const [isOpen, setOpen] = React.useState(false);
 
   return (
@@ -117,7 +116,7 @@ export const DemoTool = (props: DemoToolProps) => {
           transitionProperty: 'opacity, transform',
         },
       }}
-      {...getFloatingProps(isOpen, demo.state, floatingProps)}
+      {...getFloatingProps(isOpen, state, floatingProps)}
     >
       <Floating.Target>
         <Action
@@ -127,9 +126,9 @@ export const DemoTool = (props: DemoToolProps) => {
           className={clsx('v2-demo-tool-target', css?.target)}
           icon={{
             ...iconProps,
-            type: demo.state.icons,
-            name: TOOL_ICONS[demo.state[prop]],
-            fill: prop === 'accent' ? demo.state.accent : 'currentColor',
+            type: state.icons,
+            name: TOOL_ICONS[state[prop]],
+            fill: prop === 'accent' ? state.accent : 'currentColor',
           }}
         />
       </Floating.Target>
@@ -145,14 +144,14 @@ export const DemoTool = (props: DemoToolProps) => {
               key={item.value}
               title={item.label}
               aria-label={item.label}
-              isSelected={demo.state[prop] === item.value}
+              isSelected={state[prop] === item.value}
               className={clsx('v2-demo-tool-option', css?.option)}
               onClick={() => {
-                demo.dispatch({ [prop]: item.value });
+                dispatch({ [prop]: item.value });
                 setOpen(false);
               }}
               icon={{
-                type: demo.state.icons,
+                type: state.icons,
                 name: TOOL_ICONS[item.value],
                 fill: prop === 'accent' ? (item.value as any) : 'currentColor',
               }}
