@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Demo } from '@/demo';
 import { Title } from '@/core';
 import { Hero, Main, Page, PageProps, Section } from '@/app';
 
@@ -44,9 +43,7 @@ export const Workspace: WorkspaceRouteComponent = (props) => {
         <Title>Workspace</Title>
       </Hero>
       <Main>
-        <Section>
-          <Demo />
-        </Section>
+        <Section>{/* <Demo /> */}</Section>
       </Main>
     </Page>
   );

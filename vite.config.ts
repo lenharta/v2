@@ -52,6 +52,22 @@ export default defineConfig(({ mode, command }) => {
   } else {
     return {
       plugins: [react()],
+      resolve: {
+        alias: {
+          '@/*': path.resolve(__dirname, 'src'),
+          '@/data': path.resolve(__dirname, 'src/data'),
+          '@/demo': path.resolve(__dirname, 'src/demo'),
+          '@/utils': path.resolve(__dirname, 'src/utils'),
+          '@/tests': path.resolve(__dirname, 'src/tests'),
+          '@/types': path.resolve(__dirname, 'src/types'),
+          '@/routes': path.resolve(__dirname, 'src/routes'),
+          '@/factory': path.resolve(__dirname, 'src/factory'),
+          '@/styles': path.resolve(__dirname, 'src/styles'),
+          '@/hooks': path.resolve(__dirname, 'src/hooks'),
+          '@/core': path.resolve(__dirname, 'src/core'),
+          '@/app': path.resolve(__dirname, 'src/app'),
+        },
+      },
     };
   }
 });
