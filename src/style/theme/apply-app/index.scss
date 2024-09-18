@@ -242,16 +242,20 @@ body {
 
   &-directory-tile-item {
     color: hsla(var(--v2-hsl-surface), 0.67);
-    background-color: hsla(var(--v2-hsl-surface), 0.02);
+    background-color: hsla(var(--v2-hsl-surface), 0.03);
     transition-timing-function: var(--v2-easing-productive);
     transition-duration: var(--v2-duration-moderate-01);
     transition-property: all;
+
+    [data-prefers-color-mode='light'] & {
+      background-color: hsla(var(--v2-hsl-surface), 0.06);
+    }
   }
 
   &-directory-tile-item:hover,
   &-directory-tile-item:active {
     color: hsla(var(--v2-hsl-accent), 0.97);
-    background-color: hsla(var(--v2-hsl-accent), 0.08);
+    background-color: hsla(var(--v2-hsl-accent), 0.1);
   }
 }
 
@@ -298,7 +302,7 @@ body {
 
   .v2-sandbox {
     &-layout-main {
-      background-color: hsla(var(--v2-hsl-surface), 0.06);
+      background-color: hsla(var(--v2-hsl-surface), 0.03);
     }
   }
 }
