@@ -1,0 +1,63 @@
+@use '../utils' as utils;
+
+.v2-sandbox-layout-main {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.v2-sandbox-directory-tile-group {
+  width: 100%;
+  display: grid;
+  place-content: start;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--v2-unit);
+  margin-block: calc(var(--v2-space) * 3);
+  padding-inline: var(--v2-gutter);
+}
+
+.v2-sandbox-directory-tile-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-block: calc(var(--v2-space) * 2);
+  padding-inline: calc(var(--v2-space) * 2);
+
+  border-style: solid;
+  border-color: transparent;
+  border-width: var(--v2-unit);
+}
+
+.v2-sandbox-accordion {
+  max-width: 60em;
+
+  .v2-accordion-panel .v2-text {
+    padding: var(--v2-gutter);
+  }
+}
+
+.v2-sandbox-tabs {
+  .v2-tabs-panel .v2-title {
+    margin-block: var(--v2-gutter);
+  }
+
+  &[data-orientation='vertical'] {
+    .v2-tabs-panel .v2-title {
+      margin-block: 0;
+      margin-inline: var(--v2-gutter);
+    }
+    .v2-tabs-panel .v2-text {
+      margin-inline: var(--v2-gutter);
+    }
+  }
+}
+
+@media (min-width: 60em) {
+  .v2-sandbox-directory-tile-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -183,79 +183,105 @@ export declare namespace Core {
     className?: string;
   };
 
+  export type AccordionSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type AccordionVariant = 'default' | 'accent';
   export type AccordionValue<V> = V extends true ? string[] : string | null;
 
   export type AccordionItemContext = {
-    variant: 'default' | 'accent';
     value: string;
+    size?: AccordionSize;
+    variant?: AccordionVariant;
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
   }
 
   export type AccordionContext<V extends boolean = false> = {
-    variant: 'default' | 'accent';
+    size?: AccordionSize;
+    variant?: AccordionVariant;
     children?: React.ReactNode;
-    disabled?: boolean;
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
     trapFocus?: boolean;
     chevronRotation: boolean;
     chevronPosition: 'start' | 'end';
     getPanelId: (id: string) => string;
     getTargetId: (id: string) => string;
     isValueActive: (value: string) => boolean;
-    onValueChange: (value: AccordionValue<V>) => void;
+    onChange: (value: AccordionValue<V>) => void;
   }
 
   export type AccordionProps<V extends boolean = false> = {
     value: AccordionValue<V>;
-    variant?: 'default' | 'accent';
+    variant?: AccordionVariant;
+    size?: AccordionSize;
     children?: React.ReactNode;
+    className?: string;
     multiple?: V;
-    disabled?: boolean;
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
     trapFocus?: boolean;
     chevronRotation?: boolean;
     chevronPosition?: 'start' | 'end';
-    onValueChange: (value: AccordionValue<V>) => void;
+    onChange: (value: AccordionValue<V>) => void;
   }
 
   export type AccordionItemProps = {
     className?: string;
     children?: React.ReactNode;
-    disabled?: boolean;
-    variant?: 'default' | 'accent';
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
+    variant?: AccordionVariant;
+    size?: AccordionSize;
     value: string;
   }
 
   export type AccordionPanelProps = {
     className?: string;
-    children?: React.ReactNode;
-    variant?: 'default' | 'accent';
+    children?: React.ReactElement;
+    variant?: AccordionVariant;
+    size?: AccordionSize;
   }
 
   export type AccordionTargetProps = {
     trapFocus?: boolean;
     className?: string;
-    disabled?: boolean;
+    isLoading?: boolean;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
     children?: React.ReactNode;
-    variant?: 'default' | 'accent';
+    variant?: AccordionVariant;
+    size?: AccordionSize;
     chevron?: React.ReactNode;
   }
 
   export type AccordionTargetIconProps = {
+    position: 'start' | 'end';
     chevron?: React.ReactNode;
     chevronPosition?: 'start' | 'end';
     chevronRotation?: boolean;
     className?: string;
-    variant?: 'default' | 'accent';
+    variant?: AccordionVariant;
+    size?: AccordionSize;
     active?: boolean;
   }
 
   export type UnstyledButtonProps = {
     children?: React.ReactNode;
     className?: string;
+    isChecked?: boolean;
     isLoading?: boolean;
     isReadonly?: boolean;
     isDisabled?: boolean;
+    isSelected?: boolean;
   }
 
   export type ButtonProps = UnstyledButtonProps & {
+    align?: 'start' | 'end' | 'center';
+    justify?: 'start' | 'end' | 'center';
     isSelected?: boolean;
     fullWidth?: boolean;
     iconLeft?: Partial<ICON.Props>;
@@ -266,6 +292,8 @@ export declare namespace Core {
   }
   
   export type ButtonGroupProps = {
+    align?: 'start' | 'end' | 'center';
+    justify?: 'start' | 'end' | 'center';
     isReadonly?: boolean;
     isDisabled?: boolean;
     isLoading?: boolean;
@@ -281,6 +309,8 @@ export declare namespace Core {
   }
   
   export type ButtonContext = {
+    align?: 'start' | 'end' | 'center';
+    justify?: 'start' | 'end' | 'center';
     isReadonly?: boolean;
     isDisabled?: boolean;
     isLoading?: boolean;
@@ -348,6 +378,72 @@ export declare namespace Core {
     isDisabled?: boolean;
     isReadonly?: boolean;
   }
+  
+  export type CanvasControl = 'segmented' | 'checkbox' | 'switch' | 'select' | 'color';
+
+  export type CanvasControlObject<T extends CanvasControl, P extends Record<string, any>> = P & {
+    prop: string;
+    type: T;
+  };
+
+  export type CanvasControlSwitchProps = { 
+    onChange: (value: boolean) => void; 
+    value: boolean;
+    prop: string;
+  };
+
+  export type CanvasControlSwitchOptions = CanvasControlObject<'switch', { 
+    initialValue: boolean;
+  }>;
+  
+  export type CanvasControlSelectItem = { 
+    value: string; 
+    label: string;
+  };
+  
+  export type CanvasControlSelectOptions = CanvasControlObject<'select', {
+    data: (string | CanvasControlSelectItem)[];
+    initialValue: string;
+  }>;
+  
+  export type CanvasControlSegmentedItem = { 
+    value: string; 
+    label: string;
+  };
+
+  export type CanvasControlSegmentedOptions = CanvasControlObject<'segmented', {
+    data: (string | CanvasControlSegmentedItem)[];
+    initialValue: string;
+  }>;
+
+  export type CanvasControlSegmentedProps = {
+    onChange: (value: string) => void;
+    data: (string | CanvasControlSegmentedItem)[];
+    prop: string;
+    value: string;
+  };
+
+  export type CanvasControlOptions = 
+    | CanvasControlSwitchOptions
+    | CanvasControlSelectOptions
+    | CanvasControlSegmentedOptions;
+
+  export type CanvasDisplayState = {
+    dir: 'ltr' | 'rtl';
+    mode: 'light' | 'dark' | 'dim';
+    accent: 'yellow' | 'blue' | 'cyan' | 'green' | 'grey' | 'magenta' | 'orange' | 'purple' | 'red' | 'slate' | 'stone' | 'teal';
+  }
+
+  export type CanvasProps = {
+    children: React.ReactNode;
+    controls: CanvasControlOptions[];
+  };
+
+  export type CanvasControlProps<T extends CanvasDisplayState = CanvasDisplayState> = {
+    setDisplayState: (prop: keyof T, value: any) => void;
+    displayState: T;
+    children: React.ReactNode;
+  }
 
   export type CheckboxSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   export type CheckboxShape = 'circle' | 'square';
@@ -388,83 +484,6 @@ export declare namespace Core {
     orientation?: Orientation;
   };
 
-
-
-  // export type CheckboxIconName = `checkbox-${CheckboxIconState}-${CheckboxIconShape}`
-  // export type CheckboxIconState = 'mixed' | 'checked' | 'unchecked';
-  // export type CheckboxIconShape = 'circle' | 'square';
-  
-  // export type CheckboxStateProps = {
-  //   isChecked?: boolean;
-  //   isLoading?: boolean;
-  //   isReadonly?: boolean;
-  //   isDisabled?: boolean;
-  //   isIndeterminate?: boolean;
-  // }
-
-  // export type CheckboxValue<Multiple = false> = Multiple extends true 
-  //   ? string[] 
-  //   : string;
-
-  // export type CheckboxChangeHandler<Multiple = false> = Multiple extends true
-  //   ? (value: string[]) => void
-  //   : (event: React.ChangeEvent<HTMLInputElement>) => void;
-
-  // export type CheckboxValueProps<Multiple = false> = {
-  //   onChange: CheckboxChangeHandler<Multiple>;
-  //   value: CheckboxValue<Multiple>;
-  // }
-
-  // export type CheckboxContext = InlineInputProps & {
-  //   isLoading?: boolean;
-  //   isReadonly?: boolean;
-  //   isDisabled?: boolean;
-  //   orientation?: Orientation;
-  //   onValueChange?: (value: string) => void;
-  //   shape?: CheckboxIconShape;
-  //   value: string[];
-  //   gap?: SizeGap;
-  // }
-
-  // export type CheckboxGroupProps = BaseInputState & GroupProps & {
-  //   onValueChange: (value: string[]) => void;
-  //   shape?: CheckboxIconShape;
-  //   value: string[];
-  // }
-
-  // export type CheckboxProps<Mulitple = false> = InlineInputProps & CheckboxStateProps & CheckboxValueProps<Mulitple> & {
-  //   label: string;
-  //   icon?: Partial<ICON.Props>;
-  //   shape?: CheckboxIconShape;
-  // }
-  
-  // export type CheckboxIconProps = CheckboxStateProps & {
-  //   icon?: Partial<ICON.Props>;
-  //   shape?: CheckboxIconShape;
-  // }
-
-  // export type ParseCheckboxIconState = {
-  //   (props: CheckboxStateProps): CheckboxIconState;
-  // }
-
-  // export type ParseCheckboxIconName = {
-  //   (state: CheckboxIconState, shape: CheckboxIconShape): {
-  //     name: CheckboxIconName
-  //   }
-  // }
-
-  // export type ParseCheckboxIconProps = {
-  //   (props: { 
-  //     icon?: Partial<ICON.Props>; 
-  //     state: CheckboxIconState; 
-  //     shape: CheckboxIconShape;
-  //   }): {
-  //     type: ICON.Type;
-  //     name: ICON.Name;
-  //     fill: ICON.Color;
-  //   }
-  // }
-
   export type ChipProps = UnstyledButtonProps & {
     size?: SizeRegular;
     value?: string;
@@ -498,6 +517,7 @@ export declare namespace Core {
   export type ControlPosition = Record<'height' | 'width' | 'left' | 'top', number>;
   
   export type UseControlPositionProps = {
+    orientation?: Core.Orientation;
     initialPosition: ControlPosition;
     currentValue: string;
   }
@@ -519,13 +539,17 @@ export declare namespace Core {
     update: (segment: HTMLElement | null, track: HTMLDivElement | null) => void;
     setElementRefs: (element: HTMLElement | null, key: string) => void;
   }
+
+  export type ControlSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type ControlVariant = 'default' | 'accent';
   
   export type ControlProps = {
-    value?: string;
+    grow?: boolean;
+    value: string;
+    onChange: ((value: string) => void);
     items: ControlItem[];
-    variant?: 'default' | 'accent';
-    defaultValue?: string;
-    onItemChange?: ((value: string) => void);
+    size?: ControlSize;
+    variant?: ControlVariant;
     className?: string;
     trapFocus?: boolean;
     orientation?: Core.Orientation;
@@ -535,17 +559,21 @@ export declare namespace Core {
     refs: Record<string, HTMLElement | null>;
     item: ControlItemParsed;
     value: string;
-    variant?: 'default' | 'accent';
+    grow?: boolean;
+    size?: ControlSize;
+    variant?: ControlVariant;
     trapFocus: boolean;
     orientation?: Core.Orientation;
     trackRef: React.RefObject<HTMLDivElement>;
     update: (segment: HTMLElement | null, track: HTMLDivElement | null) => void;
-    onItemChange: (value: string) => void;
+    onChange: (value: string) => void;
     setElementRefs: (element: HTMLElement | null, key: string) => void;
   }
   
   export type ControlThumbProps = {
-    variant?: 'default' | 'accent';
+    size?: ControlSize;
+    grow?: boolean;
+    variant?: ControlVariant;
     style?: React.CSSProperties;
     className?: string;
     transitionEasing: React.CSSProperties['transitionTimingFunction'];
@@ -554,8 +582,17 @@ export declare namespace Core {
   }
   
   export type ControlTrackProps = GroupProps & {
-    variant?: 'default' | 'accent';
+    size?: ControlSize;
+    grow?: boolean;
+    variant?: ControlVariant;
     className?: string;
+  }
+
+  export type createKeyDownRefScopeOptions<T extends HTMLElement> = {
+    loop?: boolean;
+    nested?: boolean;
+    onKeyDown?: (event: React.KeyboardEvent<T>) => void;
+    orientation?: Core.Orientation;
   }
 
   export interface DisclosureProps {
@@ -683,10 +720,20 @@ export declare namespace Core {
     onOpen?: (() => void);
   }
 
+  export type IconButtonSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type IconButtonRadius = 'squared' | 'rounded' | 'round';
+  export type IconButtonVariant = 'default' | 'accent';
+
   export type IconButtonProps = {
-    size?: SizeRegular;
     icon?: Partial<ICON.Props>;
-    variant?: 'default' | 'accent';
+    size?: IconButtonSize;
+    label?: string;
+    radius?: IconButtonRadius;
+    variant?: IconButtonVariant;
+    isLoading?: boolean;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
+    isSelected?: boolean;
   }
 
   export type ImageProps = {
@@ -702,16 +749,25 @@ export declare namespace Core {
 
   export type LabelProps = {}
 
+  export type SelectSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type SelectVariant = 'default' | 'accent';
+
   export type SelectItem = {
     value: string;
-    label: string;
+    label: string;    
+    isLoading?: boolean;
     isDisabled?: boolean;
     isReadonly?: boolean;
   }
   
   export type SelectTargetProps = {
-    variant?: 'default' | 'accent';
-    placeholder: string;
+    size?: SelectSize;
+    variant?: SelectVariant;
+    isLoading?: boolean;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
+    isSelected?: boolean;
+    placeholder?: string;
     value?: string;
   }
   
@@ -719,14 +775,24 @@ export declare namespace Core {
     isDisabled?: boolean;
     isReadonly?: boolean;
     isSelected?: boolean;
-    variant?: 'default' | 'accent';
+    isLoading?: boolean;
+    size?: SelectSize;
+    variant?: SelectVariant;
     value?: string;
     label: string;
   }
   
   export type SelectBoxProps = {
-    variant?: 'default' | 'accent';
+    size?: SelectSize;
+    variant?: SelectVariant;
     children: React.ReactNode;
+  }
+  
+  export type SelectListProps = {
+    size?: SelectSize;
+    variant?: SelectVariant;
+    children: React.ReactNode;
+    keyDownOptions?: Partial<createKeyDownRefScopeOptions<HTMLDivElement>>;
   }
   
   export type SelectProps = {
@@ -738,9 +804,12 @@ export declare namespace Core {
     width?: FloatingProps['width'];
     zIndex?: FloatingProps['zIndex'];
     offset?: FloatingProps['offset'];
-    variant?: 'default' | 'accent';
+    size?: SelectSize;
+    variant?: SelectVariant;
     strategy?: FloatingProps['strategy'];
-    isDisabled?: FloatingProps['disabled'];
+    isLoading?: boolean;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
     placement?: FloatingProps['placement'];
     middleware?: FloatingProps['middleware'];
     placeholder?: string;
@@ -760,6 +829,45 @@ export declare namespace Core {
   export type StackProps = {
     gap?: 'unset' | SizeExpanded;
     children?: React.ReactNode;
+  }
+
+  export type SwitchSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type SwitchRadius = 'squared' | 'rounded' | 'round';
+  export type SwitchVariant = 'default' | 'default-text' | 'accent' | 'accent-text';
+
+  export type SwitchContext = {
+    value?: string[];
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
+    isLoading?: boolean;
+    variant?: SwitchVariant;
+    radius?: SwitchRadius;
+    size?: SwitchSize;
+  }
+
+  export type SwitchGroupProps = GroupProps & {
+    value: string[];
+    onChange?: (value: string[]) => void;
+    isDisabled?: boolean;
+    isReadonly?: boolean;
+    isLoading?: boolean;
+    variant?: SwitchVariant;
+    radius?: SwitchRadius;
+    size?: SwitchSize;
+  }
+
+  export type SwitchProps = {
+    label?: string;
+    value?: string;
+    checked?: boolean;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    isReadonly?: boolean;
+    isDisabled?: boolean;
+    isLoading?: boolean;
+    variant?: SwitchVariant;
+    radius?: SwitchRadius;
+    size?: SwitchSize;
   }
 
   export type TabsSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
@@ -802,11 +910,12 @@ export declare namespace Core {
 
   export type TabsProps = {
     size?: TabsSize;
+    grow?: boolean;
     value: string;
     variant?: TabsVariant;
     children: React.ReactNode;
     className?: string;
-    onValueChange: (value: string) => void;
+    onChange: (value: string) => void;
     keyboardActivated?: boolean;
     keyboardOptions?: Partial<TabsKeyDownOptions>;
     orientation?: Orientation;
@@ -818,11 +927,12 @@ export declare namespace Core {
   export type TabsContext = {
     size?: TabsSize;
     value: string;
+    grow?: boolean;
     variant?: TabsVariant;
+    onChange: (value: string) => void;
     getListId: () => string;
     getItemId: (v: string) => string;
     getPanelId: (v: string) => string;
-    onValueChange: (value: string) => void;
     keyboardActivated?: boolean;
     keyboardOptions?: Partial<TabsKeyDownOptions>;
     orientation?: Orientation;

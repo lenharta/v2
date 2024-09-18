@@ -24,21 +24,18 @@ export const InlineInput = PolymorphicComponent<InlineInputFactory>((props, ref)
     ...otherProps
   } = props;
 
-  const dataProps = {
-    'data-status': status,
-    'data-loading': !!isLoading,
-    'data-disabled': !!isDisabled,
-    'data-readonly': !!isReadonly,
-  };
-
   return (
     <Component
       {...otherProps}
-      {...dataProps}
-      className={clsx('v2-inline-input', className)}
       ref={ref}
+      className={clsx('v2-inline-input', className)}
+      data-readonly={!!isReadonly || undefined}
+      data-disabled={!!isDisabled || undefined}
+      data-loading={!!isLoading || undefined}
+      data-status={status || undefined}
     >
       {children}
+
       <div className="v2-inline-input-content">
         <Label>{label}</Label>
         {message && <Text>{message}</Text>}

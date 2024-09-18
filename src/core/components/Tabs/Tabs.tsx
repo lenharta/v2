@@ -15,6 +15,7 @@ export type TabsFactory = React.FC<Core.TabsProps> & {
 export const Tabs: TabsFactory = (props) => {
   const {
     size,
+    grow,
     value,
     variant,
     children,
@@ -25,7 +26,7 @@ export const Tabs: TabsFactory = (props) => {
     orientation,
     keyboardOptions,
     keyboardActivated,
-    onValueChange,
+    onChange,
   } = props;
 
   const uid = React.useId();
@@ -38,6 +39,7 @@ export const Tabs: TabsFactory = (props) => {
       <TabsProvider
         value={{
           size,
+          grow,
           value,
           variant,
           isLoading,
@@ -46,10 +48,10 @@ export const Tabs: TabsFactory = (props) => {
           orientation: orientation || 'horizontal',
           keyboardActivated: keyboardActivated || false,
           keyboardOptions,
-          onValueChange,
           getPanelId,
           getItemId,
           getListId,
+          onChange,
         }}
       >
         {children}

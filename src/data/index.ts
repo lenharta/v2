@@ -9,3 +9,5 @@ export * from './config/meta';
 export * from './sample/elements';
 export * from './sample/tasks';
 export * from './sample/users';
+
+export * from './theme/hue';

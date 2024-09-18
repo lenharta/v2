@@ -43,7 +43,7 @@ export const TabsItem = Component<TabsItemFactory>(
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.stopPropagation();
       props.onClick?.(event);
-      context.onValueChange(event.currentTarget.value);
+      context.onChange(event.currentTarget.value);
     };
 
     const handleKeyDown = createKeyDownGroup({

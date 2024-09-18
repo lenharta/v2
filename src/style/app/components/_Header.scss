@@ -11,10 +11,14 @@
   top: 0;
 
   &-inner {
-    gap: var(--v2-unit);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    // min-width: 100%;
+    // width: 100%;
+    // flex: 1 1;
+    // gap: var(--v2-unit);
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    // outline: solid 2px red;
 
     [data-prefers-dir='ltr'] & {
       flex-direction: row;
@@ -25,11 +29,11 @@
     }
   }
 
-  &-spacer {
-    height: var(--v2-action-button);
-    display: flex;
-    flex: 1 0;
-  }
+  // &-spacer {
+  //   height: var(--v2-action-button);
+  //   display: flex;
+  //   flex: 1 0;
+  // }
 
   &-logo {
     display: flex;

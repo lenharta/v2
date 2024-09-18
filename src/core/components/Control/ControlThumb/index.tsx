@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import * as React from 'react';
 import { Core } from '@/types';
 import { PolymorphicComponent } from '@/factory';
 
@@ -11,6 +10,8 @@ export type ControlThumbFactory = Core.Factory<{
 
 export const ControlThumb = PolymorphicComponent<ControlThumbFactory>((props, ref) => {
   const {
+    grow,
+    size,
     style,
     variant,
     children,
@@ -18,24 +19,26 @@ export const ControlThumb = PolymorphicComponent<ControlThumbFactory>((props, re
     transitionEasing,
     transitionDuration,
     transitionProperty,
-    ...forwardedProps
+    ...otherProps
   } = props;
-
-  let thumbStyles: Record<'style', React.CSSProperties> = {
-    style: {
-      ...style,
-      transitionProperty: transitionProperty,
-      transitionDuration: transitionDuration,
-      transitionTimingFunction: transitionEasing,
-    },
-  };
 
   return (
     <div
+      {...otherProps}
       ref={ref}
-      className={clsx('v2-control-thumb', `v2-control-thumb--${variant}`, className)}
-      {...thumbStyles}
-      {...forwardedProps}
+      data-grow={grow || undefined}
+      className={clsx(
+        'v2-control-thumb',
+        `v2-control-thumb--${size || 'sm'}`,
+        `v2-control-thumb--${variant || 'default'}`,
+        className
+      )}
+      style={{
+        ...style,
+        transitionProperty: transitionProperty,
+        transitionDuration: transitionDuration,
+        transitionTimingFunction: transitionEasing,
+      }}
     >
       {children}
     </div>

@@ -15,6 +15,8 @@ export const ButtonGroup = PolymorphicComponent<ButtonGroupFactory>(
     {
       gap,
       value,
+      align,
+      justify,
       children,
       className,
       isLoading,
@@ -37,7 +39,16 @@ export const ButtonGroup = PolymorphicComponent<ButtonGroupFactory>(
         ref={ref}
       >
         <ButtonProvider
-          value={{ value, isDisabled, isLoading, isReadonly, orientation, onValueChange }}
+          value={{
+            value,
+            align,
+            justify,
+            isLoading,
+            isReadonly,
+            isDisabled,
+            orientation,
+            onValueChange,
+          }}
         >
           {children}
         </ButtonProvider>

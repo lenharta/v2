@@ -4,6 +4,7 @@ export * from './capitalize-string/capitalize-string';
 export * from './create-event-callback/create-event-callback';
 export * from './create-inline-css/create-inline-css';
 export * from './create-keydown-group/create-keydown-group';
+export * from './create-keydown-ref-scope/create-keydown-ref-scope';
 export * from './create-random-string/create-random-string';
 export * from './create-safe-context/create-safe-context';
 export * from './css-object-to-string/css-object-to-string';

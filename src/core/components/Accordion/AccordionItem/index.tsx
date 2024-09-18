@@ -10,7 +10,7 @@ export type AccordionItemFactory = Core.Factory<{
 }>;
 
 export const AccordionItem = Component<AccordionItemFactory>(
-  ({ value, variant, children, className, ...props }, ref) => {
+  ({ value, isLoading, isDisabled, isReadonly, variant, children, className, ...props }, ref) => {
     const ctx = useAccordionRootCTX();
     return (
       <div
@@ -19,7 +19,7 @@ export const AccordionItem = Component<AccordionItemFactory>(
         className={clsx('v2-accordion-item', className)}
         ref={ref}
       >
-        <AccordionItemProvider value={{ value, variant: variant || ctx.variant }}>
+        <AccordionItemProvider value={{ value, variant, isLoading, isDisabled, isReadonly }}>
           {children}
         </AccordionItemProvider>
       </div>

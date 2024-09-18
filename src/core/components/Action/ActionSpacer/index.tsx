@@ -11,19 +11,21 @@ export type ActionSpacerFactory = Core.Factory<{
 }>;
 
 export const ActionSpacer = Component<ActionSpacerFactory>(
-  ({ variant = 'default', size = 'md', className, grow, ...props }, ref) => {
+  ({ variant, size, className, grow, ...props }, ref) => {
     const context = useActionContext();
-
-    const dataProps = { 'data-grow': !!grow };
-
-    const classNames = clsx(
-      'v2-action-spacer',
-      `v2-action-spacer--${context.size || size}`,
-      `v2-action-spacer--${context.variant || variant}`,
-      className
+    return (
+      <div
+        {...props}
+        ref={ref}
+        data-gow={!!grow}
+        className={clsx(
+          'v2-action-spacer',
+          `v2-action-spacer--${context.size || size || 'sm'}`,
+          `v2-action-spacer--${context.variant || variant || 'default'}`,
+          className
+        )}
+      />
     );
-
-    return <div {...props} {...dataProps} className={classNames} ref={ref} />;
   }
 );
 

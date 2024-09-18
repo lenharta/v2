@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { Icon } from '@/core';
 import { Core } from '@/types';
 import { PolymorphicComponent } from '@/factory';
-import { useButtonContext } from './ButtonContext';
 import { ButtonGroup } from './ButtonGroup';
+import { useButtonContext } from './ButtonContext';
 
 export type ButtonFactory = Core.Factory<{
   ref: HTMLButtonElement;
@@ -20,6 +20,8 @@ export const Button = PolymorphicComponent<ButtonFactory>(
     {
       size,
       value,
+      align,
+      justify,
       variant,
       children,
       iconLeft,
@@ -47,6 +49,8 @@ export const Button = PolymorphicComponent<ButtonFactory>(
       'v2-button',
       `v2-button--${size || context.size || 'md'}`,
       `v2-button--${variant || context.variant || 'default'}`,
+      `v2-button--axis-y-${align || context.align || 'center'}`,
+      `v2-button--axis-x-${justify || context.justify || 'center'}`,
       className
     );
 
@@ -72,7 +76,7 @@ export const Button = PolymorphicComponent<ButtonFactory>(
         data-selected={selected}
         data-readonly={readonly}
         data-disabled={disabled}
-        data-block={fullWidth}
+        data-block={!!fullWidth || undefined}
         className={classNames}
         onChange={handleChange}
         value={value}

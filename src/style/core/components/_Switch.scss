@@ -1,3 +1,145 @@
+@use '../utils' as utils;
+
+.v2-switch {
+  @include utils.reset;
+
+  --v2-switch-offset: calc(var(--v2-unit) * 4);
+  --v2-switch-thumb-size: calc(calc(var(--v2-switch-height) * 0.5) - var(--v2-switch-offset));
+  --v2-switch-track-width: calc(calc(var(--v2-switch-thumb-size) * 2) + var(--v2-switch-offset));
+  --v2-switch-track-height: calc(var(--v2-switch-thumb-size) + var(--v2-switch-offset));
+
+  z-index: 0;
+  position: relative;
+  isolation: isolate;
+  justify-content: flex-start;
+  align-items: center;
+  display: inline-flex;
+  min-width: max-content;
+
+  gap: var(--v2-switch-gap);
+  height: var(--v2-switch-height);
+  padding-inline: var(--v2-switch-spacing-x);
+  font-size: var(--v2-switch-font-size);
+  font-weight: var(--v2-font-weight-medium);
+  font-family: var(--v2-font-family);
+  line-height: var(--v2-line-height-01);
+
+  [data-block] & {
+    min-width: 100%;
+  }
+
+  [data-prefers-dir='rtl'] & {
+    flex-direction: row-reverse;
+  }
+
+  &-input {
+    @include utils.reset;
+    @include utils.button-focus;
+    @include utils.button-cursor;
+
+    z-index: 2;
+    position: absolute;
+    appearance: none;
+    white-space: nowrap;
+    overflow: hidden;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+
+  &-thumb {
+    @include utils.reset;
+
+    width: var(--v2-switch-thumb-size);
+    height: var(--v2-switch-thumb-size);
+    z-index: 1;
+    position: absolute;
+    transform: translate(0%, 0%);
+    left: var(--v2-unit);
+    top: var(--v2-unit);
+
+    border-radius: var(--v2-switch-thumb-radius);
+    transition-timing-function: var(--v2-easing-productive);
+    transition-duration: var(--v2-duration-moderate-01);
+    transition-property: all;
+
+    [data-checked] & {
+      transform: translate(100%, 0%);
+    }
+  }
+
+  &-track {
+    @include utils.reset;
+
+    width: var(--v2-switch-track-width);
+    height: var(--v2-switch-track-height);
+    border-width: var(--v2-unit);
+    border-radius: var(--v2-switch-track-radius);
+    border-style: solid;
+    position: relative;
+    z-index: 0;
+  }
+
+  &--squared {
+    --v2-switch-track-radius: none;
+    --v2-switch-thumb-radius: none;
+  }
+
+  &--rounded {
+    --v2-switch-track-radius: calc(var(--v2-unit) * 4);
+    --v2-switch-thumb-radius: calc(var(--v2-unit) * 2);
+  }
+
+  &--round {
+    --v2-switch-track-radius: calc(var(--v2-unit) * 1000);
+    --v2-switch-thumb-radius: calc(var(--v2-unit) * 1000);
+  }
+
+  &--xxs {
+    --v2-switch-gap: var(--v2-switch-gap-xxs);
+    --v2-switch-height: var(--v2-switch-height-xxs);
+    --v2-switch-spacing-x: var(--v2-switch-spacing-x-xxs);
+    --v2-switch-font-size: var(--v2-switch-font-size-xxs);
+  }
+  &--xs {
+    --v2-switch-gap: var(--v2-switch-gap-xs);
+    --v2-switch-height: var(--v2-switch-height-xs);
+    --v2-switch-spacing-x: var(--v2-switch-spacing-x-xs);
+    --v2-switch-font-size: var(--v2-switch-font-size-xs);
+  }
+  &--sm {
+    --v2-switch-gap: var(--v2-switch-gap-sm);
+    --v2-switch-height: var(--v2-switch-height-sm);
+    --v2-switch-spacing-x: var(--v2-switch-spacing-x-sm);
+    --v2-switch-font-size: var(--v2-switch-font-size-sm);
+  }
+  &--md {
+    --v2-switch-gap: var(--v2-switch-gap-md);
+    --v2-switch-height: var(--v2-switch-height-md);
+    --v2-switch-spacing-x: var(--v2-switch-spacing-x-md);
+    --v2-switch-font-size: var(--v2-switch-font-size-md);
+  }
+  &--lg {
+    --v2-switch-gap: var(--v2-switch-gap-lg);
+    --v2-switch-height: var(--v2-switch-height-lg);
+    --v2-switch-spacing-x: var(--v2-switch-spacing-x-lg);
+    --v2-switch-font-size: var(--v2-switch-font-size-lg);
+  }
+  &--xl {
+    --v2-switch-gap: var(--v2-switch-gap-xl);
+    --v2-switch-height: var(--v2-switch-height-xl);
+    --v2-switch-spacing-x: var(--v2-switch-spacing-x-xl);
+    --v2-switch-font-size: var(--v2-switch-font-size-xl);
+  }
+  &--xxl {
+    --v2-switch-gap: var(--v2-switch-gap-xxl);
+    --v2-switch-height: var(--v2-switch-height-xxl);
+    --v2-switch-spacing-x: var(--v2-switch-spacing-x-xxl);
+    --v2-switch-font-size: var(--v2-switch-font-size-xxl);
+  }
+}
+
 // .v2-switch {
 //   --v2-switch-height-xs: 16px;
 //   --v2-switch-height-sm: 20px;

@@ -1,5 +1,6 @@
 export * from './app';
 export * from './core';
+export * from './demo';
 export * from './factory';
 export * from './icon';
 export * from './i18n';

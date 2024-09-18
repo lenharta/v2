@@ -6,7 +6,6 @@
   width: 100%;
   display: block;
   padding-block: calc(var(--v2-gutter) * 2);
-  margin-top: var(--v2-gutter);
 }
 
 .v2-footer-layout {
@@ -14,7 +13,9 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  margin-inline: var(--v2-gutter);
+  margin-inline: auto;
+  padding-inline: var(--v2-gutter);
+  max-width: 80em;
 
   [data-prefers-dir='rtl'] & {
     flex-direction: row-reverse;
@@ -59,9 +60,7 @@
   @include utils.where-writing-mode;
 
   display: inline-flex;
-  isolation: isolate;
   position: relative;
-  z-index: 0;
   margin-inline: calc(var(--v2-unit) * -2);
   padding-inline: calc(var(--v2-unit) * 2);
   font-size: var(--v2-font-size-02);
@@ -77,7 +76,6 @@
   }
 
   &::before {
-    z-index: 1;
     transform: scaleX(0);
     transform-origin: left;
     transition: all 400ms ease;
@@ -88,7 +86,6 @@
   }
 
   &::after {
-    z-index: 2;
     transform: scaleX(1);
     transform-origin: right;
     transition: all 400ms ease;

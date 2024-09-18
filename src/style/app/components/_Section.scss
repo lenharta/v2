@@ -1,6 +1,11 @@
 @use '../utils' as utils;
 
 .v2-section {
+  width: 100%;
   display: block;
-  max-width: 100em;
+
+  & > .v2-text,
+  & > .v2-title {
+    padding-inline: var(--v2-gutter);
+  }
 }

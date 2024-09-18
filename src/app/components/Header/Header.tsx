@@ -1,15 +1,13 @@
 import clsx from 'clsx';
 import * as Router from 'react-router-dom';
 import { Core } from '@/types';
-// import { Action } from '@/core';
+import { Action } from '@/core';
 import { Component } from '@/factory';
 import { HeaderLogo } from './HeaderLogo/HeaderLogo';
 
-export type HeaderProps = {};
-
 export type HeaderFactory = Core.Factory<{
   ref: HTMLDivElement;
-  props: HeaderProps;
+  props: {};
   element: 'header';
   excluded: 'children';
   elements: {
@@ -22,11 +20,10 @@ export const Header = Component<HeaderFactory>(
     const navigate = Router.useNavigate();
     return (
       <Component {...props} ref={ref} className={clsx('v2-header', className)}>
-        <span className="v2-header-inner">
+        <Action.Group className="v2-header-inner" gap="xxs">
           <Header.Logo onClick={() => navigate('/')} />
-          <div className="v2-header-spacer" />
-          {/* <Action icon={{ name: 'tools', fill: 'accent' }} onClick={() => navigate('/workspace')} /> */}
-        </span>
+          <Action.Spacer grow />
+        </Action.Group>
       </Component>
     );
   }

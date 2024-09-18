@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Core } from '@/types';
 import { Component } from '@/factory';
-import { UnstyledButton } from '@/core';
+import { UnstyledButton } from '../../UnstyledButton';
 
 export type SelectOptionFactory = Core.Factory<{
   ref: HTMLButtonElement;
@@ -10,24 +10,39 @@ export type SelectOptionFactory = Core.Factory<{
 }>;
 
 export const SelectOption = Component<SelectOptionFactory>(
-  ({ label, value, variant, isReadonly, isDisabled, isSelected, className, ...props }, ref) => {
-    const classNames = clsx(
-      'v2-select-option',
-      { [`v2-select-option--${variant}`]: variant },
-      className
-    );
+  (
+    {
+      size,
+      label,
+      value,
+      variant,
+      isReadonly,
+      isDisabled,
+      isSelected,
+      isLoading,
+      className,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <UnstyledButton
         {...props}
-        aria-selected={!!isSelected}
-        data-selected={!!isSelected}
-        isDisabled={!!isDisabled}
-        isReadonly={!!isReadonly}
-        className={classNames}
-        value={value}
         ref={ref}
+        role="listitem"
+        value={value}
+        isLoading={isLoading}
+        isDisabled={isDisabled}
+        isReadonly={isReadonly}
+        isSelected={isSelected}
+        className={clsx(
+          'v2-select-option',
+          `v2-select-option--${size || 'sm'}`,
+          `v2-select-option--${variant || 'default'}`,
+          className
+        )}
       >
-        {label}
+        <span className="v2-select-option-layout">{label}</span>
       </UnstyledButton>
     );
   }

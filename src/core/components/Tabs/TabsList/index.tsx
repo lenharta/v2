@@ -13,7 +13,7 @@ export type TabsListFactory = Core.Factory<{
 
 export const TabsList = Component<TabsListFactory>(
   ({ grow, withDivider, dividerProps, children, className, ...props }, ref) => {
-    const ctx = useTabsContext();
+    const context = useTabsContext();
 
     const isDivided = !!withDivider || !!dividerProps;
 
@@ -21,20 +21,20 @@ export const TabsList = Component<TabsListFactory>(
       ? {
           ...dividerProps,
           decoration: dividerProps?.decoration || 'solid',
-          label: ctx.getListId(),
+          label: context.getListId(),
         }
       : {};
 
     return (
       <>
         <div
-          id={ctx.getListId()}
+          id={context.getListId()}
           ref={ref}
           role="tablist"
           className={clsx('v2-tabs-list', className)}
-          aria-orientation={ctx.orientation}
-          data-orientation={ctx.orientation}
-          data-grow={grow || undefined}
+          aria-orientation={context.orientation}
+          data-orientation={context.orientation}
+          data-grow={grow || context.grow || undefined}
           {...TABS_SELECTORS.list.prop}
           {...props}
         >

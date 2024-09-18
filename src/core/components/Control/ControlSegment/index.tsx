@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Core } from '@/types';
-import { Icon } from '@/core/components';
+import { Icon, Label } from '@/core/components';
 import { Component } from '@/factory';
 import { createEventCallback, createKeyDownGroup } from '@/utils';
 
@@ -8,6 +8,7 @@ export type ControlSegmentFactory = Core.Factory<{
   ref: HTMLButtonElement;
   props: Core.ControlSegmentProps;
   element: 'button';
+  excluded: 'onChange';
 }>;
 
 export const ControlSegment = Component<ControlSegmentFactory>(
@@ -15,6 +16,8 @@ export const ControlSegment = Component<ControlSegmentFactory>(
     {
       refs,
       item,
+      grow,
+      size,
       value,
       variant,
       trackRef,
@@ -22,7 +25,7 @@ export const ControlSegment = Component<ControlSegmentFactory>(
       trapFocus,
       orientation,
       setElementRefs,
-      onItemChange,
+      onChange,
       update,
       ...props
     },
@@ -30,10 +33,8 @@ export const ControlSegment = Component<ControlSegmentFactory>(
   ) => {
     const iconPosition = item.iconPosition || 'end';
 
-    const classNames = clsx('v2-control-segment', `v2-control-segment--${variant}`, className);
-
     const onClick = createEventCallback(props.onClick, (event) => {
-      onItemChange(event.currentTarget.value);
+      onChange(event.currentTarget.value);
       update(refs[item.value]!, trackRef.current!);
     });
 
@@ -44,7 +45,7 @@ export const ControlSegment = Component<ControlSegmentFactory>(
       childSelector: 'data-control-segment',
       onKeyDown: (event) => {
         if (event.code === 'Enter') {
-          onItemChange(event.currentTarget.value);
+          onChange(event.currentTarget.value);
           update(refs[item.value]!, trackRef.current!);
         }
       },
@@ -53,24 +54,30 @@ export const ControlSegment = Component<ControlSegmentFactory>(
     return (
       <button
         {...props}
-        data-control-segment
-        data-selected={!!(item.value === value)}
-        className={classNames}
-        onKeyDown={onKeyDown}
-        onClick={onClick}
         ref={ref}
+        onClick={onClick}
+        onKeyDown={onKeyDown}
+        data-grow={grow || undefined}
+        data-selected={!!(item.value === value)}
+        data-control-segment
+        className={clsx(
+          'v2-control-segment',
+          `v2-control-segment--${size || 'sm'}`,
+          `v2-control-segment--${variant || 'default'}`,
+          className
+        )}
       >
         <div className="v2-control-segment-layout">
           {item.icon && iconPosition === 'start' && (
-            <div className="v2-control-content" data-position="start">
+            <div className="v2-control-segment-content" data-position="start">
               <Icon {...item.icon} />
             </div>
           )}
 
-          <div className="v2-control-label">{item.label}</div>
+          <Label className="v2-control-segment-label">{item.label}</Label>
 
           {item.icon && iconPosition === 'end' && (
-            <div className="v2-control-content" data-position="end">
+            <div className="v2-control-segment-content" data-position="end">
               <Icon {...item.icon} />
             </div>
           )}

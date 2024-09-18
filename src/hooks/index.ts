@@ -1,4 +1,5 @@
 export * from './use-click-outside/use-click-outside';
+export * from './use-count-interval/use-count-interval';
 export * from './use-did-update/use-did-update';
 export * from './use-disclosure/use-disclosure';
 export * from './use-event-listener/use-event-listener';

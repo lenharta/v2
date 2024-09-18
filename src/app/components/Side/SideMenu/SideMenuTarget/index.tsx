@@ -59,6 +59,8 @@ export const SideMenuTarget: SideMenuTargetComponent = (props) => {
     <Floating
       dir={store.dir}
       isOpen={isOpen}
+      closeOnEscape={true}
+      closeOnClickOutside={true}
       onChange={() => setOpen((prev) => !prev)}
       placement={group === 'accent' ? 'right-start' : 'right'}
       offset={{ crossAxis: group === 'accent' ? -2 : 0 }}
@@ -79,7 +81,7 @@ export const SideMenuTarget: SideMenuTargetComponent = (props) => {
       }}
     >
       <Floating.Target>
-        <Action onClick={handleClick} icon={{ ...getGroupIconProps(), type: store.icons }} />
+        <Action icon={{ ...getGroupIconProps(), type: store.icons }} onClick={handleClick} />
       </Floating.Target>
       <Floating.Box>
         <Action.Group className="v2-side-menu-select">
