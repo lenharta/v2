@@ -9,8 +9,21 @@ export const SandboxSwitch: React.FC<{}> = ({}) => {
       <SandboxLayout
         name="Switch"
         controls={[
-          { type: 'switch', initialValue: false, prop: 'isDisabled' },
-          { type: 'switch', initialValue: false, prop: 'isReadonly' },
+          {
+            type: 'switch',
+            prop: 'isLoading',
+            initialValue: false,
+          },
+          {
+            type: 'switch',
+            prop: 'isReadonly',
+            initialValue: false,
+          },
+          {
+            type: 'switch',
+            prop: 'isDisabled',
+            initialValue: false,
+          },
         ]}
       >
         <Switch

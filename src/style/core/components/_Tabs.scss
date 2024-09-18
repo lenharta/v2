@@ -1,3 +1,4 @@
+@use '../utils' as utils;
 .v2-tabs,
 .v2-tabs-list,
 .v2-tabs-panel,
@@ -15,6 +16,10 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+
+  &[data-orientation='vertical'] {
+    flex-direction: row;
+  }
 }
 
 .v2-tabs-list {
@@ -24,11 +29,17 @@
   justify-content: flex-start;
   gap: var(--v2-unit);
 
+  [data-prefers-dir='rtl'] & {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
   [data-orientation='horizontal'] & {
     flex-direction: row;
   }
   [data-orientation='vertical'] & {
     flex-direction: column;
+    width: max-content;
   }
 }
 
@@ -38,6 +49,11 @@
 }
 
 .v2-tabs-item {
+  @include utils.reset;
+  @include utils.button-focus;
+  @include utils.button-cursor;
+  @include utils.where-writing-mode;
+
   z-index: 0;
   cursor: pointer;
   position: relative;
@@ -55,18 +71,14 @@
   [data-grow] &,
   &[data-grow] {
     flex: 1 0;
+
+    [data-orientation='vertical'] & {
+      flex: none;
+    }
   }
 
-  outline-width: var(--v2-unit);
-  outline-color: transparent;
-  outline-style: solid;
-
-  &:focus:not(:focus-visible) {
-    outline-color: transparent;
-  }
-  &:focus:focus-visible {
-    outline-color: var(--v2-color-focus);
-    outline-offset: calc(var(--v2-unit) * -1);
+  [data-orientation='vertical'] & {
+    min-width: 160px;
   }
 
   &::after {

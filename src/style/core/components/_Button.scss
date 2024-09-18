@@ -6,15 +6,14 @@
   @include utils.button-cursor;
 
   width: max-content;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
+  display: flex;
   position: relative;
   overflow: hidden;
   text-align: center;
   user-select: none;
   font-weight: 600;
   line-height: 1;
+  opacity: 1;
 
   height: var(--v2-button-height);
   padding-inline: var(--v2-button-spacing-x);
@@ -25,16 +24,18 @@
   }
 
   &:where([data-block]) {
-    display: block;
     width: 100%;
   }
 
   &-layout {
-    gap: calc(var(--v2-button-spacing-x) * 1.5);
+    width: 100%;
+    height: 100%;
+    gap: var(--v2-button-gap);
     display: inline-flex;
     overflow: visible;
-    align-items: center;
-    justify-content: space-between;
+    align-items: var(--v2-button-axis-y);
+    justify-content: var(--v2-button-axis-x);
+    padding-block: var(--v2-button-spacing-x);
 
     [data-prefers-dir='rtl'] & {
       flex-direction: row-reverse;
@@ -52,7 +53,32 @@
     font-size: var(--v2-button-font-size);
   }
 
+  &--axis-x-center {
+    --v2-button-axis-x: center;
+  }
+
+  &--axis-x-start {
+    --v2-button-axis-x: flex-start;
+  }
+
+  &--axis-x-end {
+    --v2-button-axis-x: flex-end;
+  }
+
+  &--axis-y-center {
+    --v2-button-axis-y: center;
+  }
+
+  &--axis-y-start {
+    --v2-button-axis-y: flex-start;
+  }
+
+  &--axis-y-end {
+    --v2-button-axis-y: flex-end;
+  }
+
   &--xxs {
+    --v2-button-gap: var(--v2-button-gap-xxs);
     --v2-button-height: var(--v2-button-height-xxs);
     --v2-button-spacing-x: var(--v2-button-spacing-x-xxs);
     --v2-button-font-size: var(--v2-button-font-size-xxs);
@@ -60,6 +86,7 @@
   }
 
   &--xs {
+    --v2-button-gap: var(--v2-button-gap-xs);
     --v2-button-height: var(--v2-button-height-xs);
     --v2-button-spacing-x: var(--v2-button-spacing-x-xs);
     --v2-button-font-size: var(--v2-button-font-size-xs);
@@ -67,6 +94,7 @@
   }
 
   &--sm {
+    --v2-button-gap: var(--v2-button-gap-sm);
     --v2-button-height: var(--v2-button-height-sm);
     --v2-button-spacing-x: var(--v2-button-spacing-x-sm);
     --v2-button-font-size: var(--v2-button-font-size-sm);
@@ -74,6 +102,7 @@
   }
 
   &--md {
+    --v2-button-gap: var(--v2-button-gap-md);
     --v2-button-height: var(--v2-button-height-md);
     --v2-button-spacing-x: var(--v2-button-spacing-x-md);
     --v2-button-font-size: var(--v2-button-font-size-md);
@@ -81,6 +110,7 @@
   }
 
   &--lg {
+    --v2-button-gap: var(--v2-button-gap-lg);
     --v2-button-height: var(--v2-button-height-lg);
     --v2-button-spacing-x: var(--v2-button-spacing-x-lg);
     --v2-button-font-size: var(--v2-button-font-size-lg);
@@ -88,6 +118,7 @@
   }
 
   &--xl {
+    --v2-button-gap: var(--v2-button-gap-xl);
     --v2-button-height: var(--v2-button-height-xl);
     --v2-button-spacing-x: var(--v2-button-spacing-x-xl);
     --v2-button-font-size: var(--v2-button-font-size-xl);
@@ -95,6 +126,7 @@
   }
 
   &--xxl {
+    --v2-button-gap: var(--v2-button-gap-xxl);
     --v2-button-height: var(--v2-button-height-xxl);
     --v2-button-spacing-x: var(--v2-button-spacing-x-xxl);
     --v2-button-font-size: var(--v2-button-font-size-xxl);

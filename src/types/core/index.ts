@@ -280,6 +280,8 @@ export declare namespace Core {
   }
 
   export type ButtonProps = UnstyledButtonProps & {
+    align?: 'start' | 'end' | 'center';
+    justify?: 'start' | 'end' | 'center';
     isSelected?: boolean;
     fullWidth?: boolean;
     iconLeft?: Partial<ICON.Props>;
@@ -290,6 +292,8 @@ export declare namespace Core {
   }
   
   export type ButtonGroupProps = {
+    align?: 'start' | 'end' | 'center';
+    justify?: 'start' | 'end' | 'center';
     isReadonly?: boolean;
     isDisabled?: boolean;
     isLoading?: boolean;
@@ -305,6 +309,8 @@ export declare namespace Core {
   }
   
   export type ButtonContext = {
+    align?: 'start' | 'end' | 'center';
+    justify?: 'start' | 'end' | 'center';
     isReadonly?: boolean;
     isDisabled?: boolean;
     isLoading?: boolean;
@@ -511,6 +517,7 @@ export declare namespace Core {
   export type ControlPosition = Record<'height' | 'width' | 'left' | 'top', number>;
   
   export type UseControlPositionProps = {
+    orientation?: Core.Orientation;
     initialPosition: ControlPosition;
     currentValue: string;
   }
@@ -532,13 +539,17 @@ export declare namespace Core {
     update: (segment: HTMLElement | null, track: HTMLDivElement | null) => void;
     setElementRefs: (element: HTMLElement | null, key: string) => void;
   }
+
+  export type ControlSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  export type ControlVariant = 'default' | 'accent';
   
   export type ControlProps = {
-    value?: string;
+    grow?: boolean;
+    value: string;
+    onChange: ((value: string) => void);
     items: ControlItem[];
-    variant?: 'default' | 'accent';
-    defaultValue?: string;
-    onItemChange?: ((value: string) => void);
+    size?: ControlSize;
+    variant?: ControlVariant;
     className?: string;
     trapFocus?: boolean;
     orientation?: Core.Orientation;
@@ -548,17 +559,21 @@ export declare namespace Core {
     refs: Record<string, HTMLElement | null>;
     item: ControlItemParsed;
     value: string;
-    variant?: 'default' | 'accent';
+    grow?: boolean;
+    size?: ControlSize;
+    variant?: ControlVariant;
     trapFocus: boolean;
     orientation?: Core.Orientation;
     trackRef: React.RefObject<HTMLDivElement>;
     update: (segment: HTMLElement | null, track: HTMLDivElement | null) => void;
-    onItemChange: (value: string) => void;
+    onChange: (value: string) => void;
     setElementRefs: (element: HTMLElement | null, key: string) => void;
   }
   
   export type ControlThumbProps = {
-    variant?: 'default' | 'accent';
+    size?: ControlSize;
+    grow?: boolean;
+    variant?: ControlVariant;
     style?: React.CSSProperties;
     className?: string;
     transitionEasing: React.CSSProperties['transitionTimingFunction'];
@@ -567,7 +582,9 @@ export declare namespace Core {
   }
   
   export type ControlTrackProps = GroupProps & {
-    variant?: 'default' | 'accent';
+    size?: ControlSize;
+    grow?: boolean;
+    variant?: ControlVariant;
     className?: string;
   }
 
@@ -816,7 +833,7 @@ export declare namespace Core {
 
   export type SwitchSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   export type SwitchRadius = 'squared' | 'rounded' | 'round';
-  export type SwitchVariant = 'default' | 'accent';
+  export type SwitchVariant = 'default' | 'default-text' | 'accent' | 'accent-text';
 
   export type SwitchContext = {
     value?: string[];
@@ -893,6 +910,7 @@ export declare namespace Core {
 
   export type TabsProps = {
     size?: TabsSize;
+    grow?: boolean;
     value: string;
     variant?: TabsVariant;
     children: React.ReactNode;
@@ -909,6 +927,7 @@ export declare namespace Core {
   export type TabsContext = {
     size?: TabsSize;
     value: string;
+    grow?: boolean;
     variant?: TabsVariant;
     onChange: (value: string) => void;
     getListId: () => string;

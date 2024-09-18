@@ -1,36 +1,193 @@
-.v2-control {
-  --v2-control-segment-gap-xxs: calc(var(--v2-unit) * 6);
-  --v2-control-segment-gap-xs: calc(var(--v2-unit) * 7);
-  --v2-control-segment-gap-sm: calc(var(--v2-unit) * 7);
-  --v2-control-segment-gap-md: calc(var(--v2-unit) * 8);
-  --v2-control-segment-gap-lg: calc(var(--v2-unit) * 8);
-  --v2-control-segment-gap-xl: calc(var(--v2-unit) * 9);
-  --v2-control-segment-gap-xxl: calc(var(--v2-unit) * 9);
+@use '../utils' as utils;
 
-  --v2-control-segment-height-xxs: calc(var(--v2-unit) * 18);
-  --v2-control-segment-height-xs: calc(var(--v2-unit) * 22);
-  --v2-control-segment-height-sm: calc(var(--v2-unit) * 26);
-  --v2-control-segment-height-md: calc(var(--v2-unit) * 30);
-  --v2-control-segment-height-lg: calc(var(--v2-unit) * 34);
-  --v2-control-segment-height-xl: calc(var(--v2-unit) * 38);
-  --v2-control-segment-height-xxl: calc(var(--v2-unit) * 42);
+.v2-control-track {
+  @include utils.reset;
+  position: relative;
+  display: flex;
 
-  --v2-control-segment-spacing-x-xxs: calc(var(--v2-unit) * 10);
-  --v2-control-segment-spacing-x-xs: calc(var(--v2-unit) * 10);
-  --v2-control-segment-spacing-x-sm: calc(var(--v2-unit) * 12);
-  --v2-control-segment-spacing-x-md: calc(var(--v2-unit) * 12);
-  --v2-control-segment-spacing-x-lg: calc(var(--v2-unit) * 14);
-  --v2-control-segment-spacing-x-xl: calc(var(--v2-unit) * 14);
-  --v2-control-segment-spacing-x-xxl: calc(var(--v2-unit) * 16);
+  &[data-grow] {
+    width: 100%;
+  }
 
-  --v2-control-segment-font-size-xxs: calc(var(--v2-unit) * 6);
-  --v2-control-segment-font-size-xs: calc(var(--v2-unit) * 7);
-  --v2-control-segment-font-size-sm: calc(var(--v2-unit) * 7);
-  --v2-control-segment-font-size-md: calc(var(--v2-unit) * 8);
-  --v2-control-segment-font-size-lg: calc(var(--v2-unit) * 8);
-  --v2-control-segment-font-size-xl: calc(var(--v2-unit) * 9);
-  --v2-control-segment-font-size-xxl: calc(var(--v2-unit) * 9);
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
+
+.v2-control-segment {
+  @include utils.reset;
+  @include utils.button-focus;
+  @include utils.button-cursor;
+
+  width: max-content;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: 600;
+  line-height: 1;
+  opacity: 1;
+  z-index: 1;
+
+  height: var(--v2-control-segment-height);
+  padding-inline: var(--v2-control-segment-spacing-x);
+
+  &[data-grow] {
+    width: 100%;
+  }
+
+  svg {
+    width: var(--v2-control-segment-icon-size);
+    height: var(--v2-control-segment-icon-size);
+  }
+
+  .v2-label {
+    @include utils.button-cursor;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1.2;
+    font-weight: var(--v2-font-weight-regular);
+    font-family: var(--v2-font-family);
+    font-size: var(--v2-control-segment-font-size);
+    z-index: 1;
+
+    [data-grow] & {
+      justify-content: center;
+    }
+  }
+
+  &-content[data-position='end'],
+  &-content[data-position='start'] {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-layout {
+    width: 100%;
+    gap: var(--v2-control-segment-gap);
+    display: inline-flex;
+    overflow: visible;
+    align-items: var(--v2-control-segment-axis-y, center);
+    justify-content: var(--v2-control-segment-axis-x, center);
+    padding-block: var(--v2-control-segment-spacing-x);
+
+    [data-prefers-dir='rtl'] & {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &--xxs {
+    --v2-control-segment-gap: var(--v2-control-segment-gap-xxs);
+    --v2-control-segment-height: var(--v2-control-segment-height-xxs);
+    --v2-control-segment-spacing-x: var(--v2-control-segment-spacing-x-xxs);
+    --v2-control-segment-font-size: var(--v2-control-segment-font-size-xxs);
+    --v2-control-segment-icon-size: var(--v2-control-segment-icon-size-xxs);
+  }
+
+  &--xs {
+    --v2-control-segment-gap: var(--v2-control-segment-gap-xs);
+    --v2-control-segment-height: var(--v2-control-segment-height-xs);
+    --v2-control-segment-spacing-x: var(--v2-control-segment-spacing-x-xs);
+    --v2-control-segment-font-size: var(--v2-control-segment-font-size-xs);
+    --v2-control-segment-icon-size: var(--v2-control-segment-icon-size-xs);
+  }
+
+  &--sm {
+    --v2-control-segment-gap: var(--v2-control-segment-gap-sm);
+    --v2-control-segment-height: var(--v2-control-segment-height-sm);
+    --v2-control-segment-spacing-x: var(--v2-control-segment-spacing-x-sm);
+    --v2-control-segment-font-size: var(--v2-control-segment-font-size-sm);
+    --v2-control-segment-icon-size: var(--v2-control-segment-icon-size-sm);
+  }
+
+  &--md {
+    --v2-control-segment-gap: var(--v2-control-segment-gap-md);
+    --v2-control-segment-height: var(--v2-control-segment-height-md);
+    --v2-control-segment-spacing-x: var(--v2-control-segment-spacing-x-md);
+    --v2-control-segment-font-size: var(--v2-control-segment-font-size-md);
+    --v2-control-segment-icon-size: var(--v2-control-segment-icon-size-md);
+  }
+
+  &--lg {
+    --v2-control-segment-gap: var(--v2-control-segment-gap-lg);
+    --v2-control-segment-height: var(--v2-control-segment-height-lg);
+    --v2-control-segment-spacing-x: var(--v2-control-segment-spacing-x-lg);
+    --v2-control-segment-font-size: var(--v2-control-segment-font-size-lg);
+    --v2-control-segment-icon-size: var(--v2-control-segment-icon-size-lg);
+  }
+
+  &--xl {
+    --v2-control-segment-gap: var(--v2-control-segment-gap-xl);
+    --v2-control-segment-height: var(--v2-control-segment-height-xl);
+    --v2-control-segment-spacing-x: var(--v2-control-segment-spacing-x-xl);
+    --v2-control-segment-font-size: var(--v2-control-segment-font-size-xl);
+    --v2-control-segment-icon-size: var(--v2-control-segment-icon-size-xl);
+  }
+
+  &--xxl {
+    --v2-control-segment-gap: var(--v2-control-segment-gap-xxl);
+    --v2-control-segment-height: var(--v2-control-segment-height-xxl);
+    --v2-control-segment-spacing-x: var(--v2-control-segment-spacing-x-xxl);
+    --v2-control-segment-font-size: var(--v2-control-segment-font-size-xxl);
+    --v2-control-segment-icon-size: var(--v2-control-segment-icon-size-xxl);
+  }
+}
+
+.v2-control-thumb {
+  @include utils.reset;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+// --v2-control-segment-gap-xxs: calc(var(--v2-unit) * 6);
+// --v2-control-segment-gap-xs: calc(var(--v2-unit) * 7);
+// --v2-control-segment-gap-sm: calc(var(--v2-unit) * 7);
+// --v2-control-segment-gap-md: calc(var(--v2-unit) * 8);
+// --v2-control-segment-gap-lg: calc(var(--v2-unit) * 8);
+// --v2-control-segment-gap-xl: calc(var(--v2-unit) * 9);
+// --v2-control-segment-gap-xxl: calc(var(--v2-unit) * 9);
+
+// --v2-control-segment-height-xxs: calc(var(--v2-unit) * 18);
+// --v2-control-segment-height-xs: calc(var(--v2-unit) * 22);
+// --v2-control-segment-height-sm: calc(var(--v2-unit) * 26);
+// --v2-control-segment-height-md: calc(var(--v2-unit) * 30);
+// --v2-control-segment-height-lg: calc(var(--v2-unit) * 34);
+// --v2-control-segment-height-xl: calc(var(--v2-unit) * 38);
+// --v2-control-segment-height-xxl: calc(var(--v2-unit) * 42);
+
+// --v2-control-segment-spacing-x-xxs: calc(var(--v2-unit) * 10);
+// --v2-control-segment-spacing-x-xs: calc(var(--v2-unit) * 10);
+// --v2-control-segment-spacing-x-sm: calc(var(--v2-unit) * 12);
+// --v2-control-segment-spacing-x-md: calc(var(--v2-unit) * 12);
+// --v2-control-segment-spacing-x-lg: calc(var(--v2-unit) * 14);
+// --v2-control-segment-spacing-x-xl: calc(var(--v2-unit) * 14);
+// --v2-control-segment-spacing-x-xxl: calc(var(--v2-unit) * 16);
+
+// --v2-control-segment-font-size-xxs: calc(var(--v2-unit) * 6);
+// --v2-control-segment-font-size-xs: calc(var(--v2-unit) * 7);
+// --v2-control-segment-font-size-sm: calc(var(--v2-unit) * 7);
+// --v2-control-segment-font-size-md: calc(var(--v2-unit) * 8);
+// --v2-control-segment-font-size-lg: calc(var(--v2-unit) * 8);
+// --v2-control-segment-font-size-xl: calc(var(--v2-unit) * 9);
+// --v2-control-segment-font-size-xxl: calc(var(--v2-unit) * 9);
 
 // .v2-control {
 //   width: 100%;

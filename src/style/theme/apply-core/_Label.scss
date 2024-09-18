@@ -1,0 +1,6 @@
+.v2-label {
+  color: hsla(var(--v2-hsl-surface), 0.67);
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-expressive);
+  transition-duration: var(--v2-duration-slow-01);
+}

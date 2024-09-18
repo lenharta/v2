@@ -7,9 +7,27 @@ export const SandboxAction: React.FC<{}> = ({}) => {
     <SandboxLayout
       name="Action"
       controls={[
-        { type: 'switch', initialValue: false, prop: 'isLoading' },
-        { type: 'switch', initialValue: false, prop: 'isDisabled' },
-        { type: 'switch', initialValue: false, prop: 'isReadonly' },
+        {
+          type: 'switch',
+          prop: 'isLoading',
+          initialValue: false,
+        },
+        {
+          type: 'switch',
+          prop: 'isReadonly',
+          initialValue: false,
+        },
+        {
+          type: 'switch',
+          prop: 'isDisabled',
+          initialValue: false,
+        },
+        {
+          type: 'select',
+          prop: 'variant',
+          data: ['default', 'accent'],
+          initialValue: 'default',
+        },
       ]}
     >
       <Action icon={{ name: 'search' }} />

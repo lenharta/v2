@@ -17,7 +17,7 @@ export const Floating: FloatingFactory = (props) => {
     dir = 'ltr',
     width = 'max-content',
     offset = 0,
-    zIndex = 300,
+    zIndex = 999,
     isOpen,
     children,
     disabled,
@@ -65,7 +65,7 @@ export const Floating: FloatingFactory = (props) => {
   );
 
   useEventListener('keydown', (event: any) => {
-    if (event?.code === 'Escape') {
+    if (event.key === 'Escape') {
       closeOnEscape && floating.onClose();
     }
   });

@@ -37,9 +37,11 @@ const ROUTER = ReactRouterDOM.createBrowserRouter([
           { path: '/sandbox/accordion', element: <ROUTES.Sandbox.Accordion /> },
           { path: '/sandbox/action', element: <ROUTES.Sandbox.Action /> },
           { path: '/sandbox/button', element: <ROUTES.Sandbox.Button /> },
+          { path: '/sandbox/control', element: <ROUTES.Sandbox.Control /> },
           { path: '/sandbox/checkbox', element: <ROUTES.Sandbox.Checkbox /> },
           { path: '/sandbox/select', element: <ROUTES.Sandbox.Select /> },
           { path: '/sandbox/switch', element: <ROUTES.Sandbox.Switch /> },
+          { path: '/sandbox/tabs', element: <ROUTES.Sandbox.Tabs /> },
         ],
       },
       {

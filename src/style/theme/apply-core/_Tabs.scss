@@ -1,0 +1,169 @@
+.v2-tabs-item {
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-productive);
+  transition-duration: var(--v2-duration-moderate-01);
+
+  &::after {
+    transition-property: background-color, border-color, outline-color, color, fill, stroke;
+    transition-timing-function: var(--v2-easing-productive);
+    transition-duration: var(--v2-duration-moderate-01);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading]) {
+    background-color: hsla(var(--v2-hsl-surface), 0);
+    color: hsla(var(--v2-hsl-surface), 0.87);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading])::after {
+    background-color: hsla(var(--v2-hsl-surface), 0.2);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading])[data-selected]::after {
+    background-color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading]):hover {
+    background-color: hsla(var(--v2-hsl-surface), 0.03);
+    color: hsla(var(--v2-hsl-surface), 1);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading]):hover::after {
+    background-color: hsla(var(--v2-hsl-surface), 0.3);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading])[data-selected]:hover::after {
+    background-color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading]):hover .v2-icon {
+    color: hsla(var(--v2-hsl-surface), 1);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading]):hover .v2-label {
+    color: hsla(var(--v2-hsl-surface), 1);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading]):active {
+    background-color: hsla(var(--v2-hsl-surface), 0.06);
+    color: hsla(var(--v2-hsl-surface), 1);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading])[data-selected]:active::after {
+    background-color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading]):active .v2-icon {
+    color: hsla(var(--v2-hsl-surface), 1);
+  }
+
+  &--default:not([data-loading], [data-loading], [data-loading]):active .v2-label {
+    color: hsla(var(--v2-hsl-surface), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading]) {
+    background-color: hsla(var(--v2-hsl-accent), 0);
+    color: hsla(var(--v2-hsl-accent), 0.87);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading])[data-selected] {
+    background-color: hsla(var(--v2-hsl-accent), 0.1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading])[data-selected] .v2-icon {
+    color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading])[data-selected] .v2-label {
+    color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading])::after {
+    background-color: hsla(var(--v2-hsl-accent), 0.2);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading])[data-selected]::after {
+    background-color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading]):hover {
+    background-color: hsla(var(--v2-hsl-accent), 0.05);
+    color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading]):hover::after {
+    background-color: hsla(var(--v2-hsl-accent), 0.4);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading])[data-selected]:hover::after {
+    background-color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading]):hover .v2-icon {
+    color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading]):hover .v2-label {
+    color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading]):active {
+    background-color: hsla(var(--v2-hsl-accent), 0.1);
+    color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading])[data-selected]:active::after {
+    background-color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading]):active .v2-icon {
+    color: hsla(var(--v2-hsl-accent), 1);
+  }
+
+  &--accent:not([data-loading], [data-loading], [data-loading]):active .v2-label {
+    color: hsla(var(--v2-hsl-accent), 1);
+  }
+}
+
+.v2-tabs-panel {
+  &--default {
+    color: hsla(var(--v2-hsl-surface), 0.87);
+  }
+  &--accent {
+    color: hsla(var(--v2-hsl-surface), 0.87);
+  }
+}
+
+[data-prefers-color-mode='light'] {
+  .v2-tabs-item {
+    &--default:not([data-loading], [data-loading], [data-loading]) {
+      background-color: hsla(var(--v2-hsl-surface), 0);
+      color: hsla(var(--v2-hsl-surface), 0.87);
+    }
+
+    &--default:not([data-loading], [data-loading], [data-loading]):hover {
+      background-color: hsla(var(--v2-hsl-surface), 0.06);
+      color: hsla(var(--v2-hsl-surface), 1);
+    }
+
+    &--default:not([data-loading], [data-loading], [data-loading]):hover .v2-icon {
+      color: hsla(var(--v2-hsl-surface), 1);
+    }
+
+    &--default:not([data-loading], [data-loading], [data-loading]):hover .v2-label {
+      color: hsla(var(--v2-hsl-surface), 1);
+    }
+
+    &--default:not([data-loading], [data-loading], [data-loading]):active {
+      background-color: hsla(var(--v2-hsl-surface), 0.09);
+      color: hsla(var(--v2-hsl-surface), 1);
+    }
+
+    &--default:not([data-loading], [data-loading], [data-loading]):active .v2-icon {
+      color: hsla(var(--v2-hsl-surface), 1);
+    }
+
+    &--default:not([data-loading], [data-loading], [data-loading]):active .v2-label {
+      color: hsla(var(--v2-hsl-surface), 1);
+    }
+  }
+}

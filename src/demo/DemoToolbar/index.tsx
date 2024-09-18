@@ -60,7 +60,7 @@ export const DemoToolbar = (props: { controls: DEMO.ControlOptions[] }) => {
 
       <Action.Spacer grow />
 
-      <DemoControls controls={controls} />
+      <DemoControls controls={controls} store={store} />
     </Action.Group>
   );
 };

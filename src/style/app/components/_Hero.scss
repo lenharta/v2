@@ -34,18 +34,30 @@
 
 @media (min-width: 40em) {
   .v2-hero-layout {
-    height: calc(var(--v2-gutter) * 20);
+    height: calc(var(--v2-space) * 24);
   }
 }
 
 @media (min-width: 50em) {
   .v2-hero-layout {
-    height: calc(var(--v2-gutter) * 16);
+    height: calc(var(--v2-space) * 22);
   }
 }
 
 @media (min-width: 60em) {
   .v2-hero-layout {
-    height: calc(var(--v2-gutter) * 12);
+    height: calc(var(--v2-space) * 20);
+  }
+}
+
+@media (min-width: 80em) {
+  .v2-hero-layout {
+    height: calc(var(--v2-space) * 18);
+  }
+}
+
+@media (min-width: 100em) {
+  .v2-hero-layout {
+    height: calc(var(--v2-space) * 16);
   }
 }

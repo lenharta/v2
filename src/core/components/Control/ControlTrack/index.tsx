@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { Core } from '@/types';
-import { Group } from '@/core';
 import { Component } from '@/factory';
+import { createKeyDownRefScope, mergeRefs } from '@/utils';
+import React from 'react';
 
 export type ControlTrackFactory = Core.Factory<{
   ref: HTMLDivElement;
@@ -10,16 +11,29 @@ export type ControlTrackFactory = Core.Factory<{
 }>;
 
 const ControlTrack = Component<ControlTrackFactory>(
-  ({ gap, variant = 'default', children, className, orientation, ...props }, ref) => {
+  (
+    { grow, size, gap, variant, children, className, orientation = 'horizontal', ...props },
+    ref
+  ) => {
+    const elementRef = React.useRef<HTMLDivElement>(null);
     return (
-      <Group
+      <div
         {...props}
-        orientation={orientation}
-        className={clsx('v2-control-track', `v2-control-track--${variant}`, className)}
-        ref={ref}
+        ref={mergeRefs(ref, elementRef)}
+        aria-orientation={orientation}
+        data-orientation={orientation}
+        onKeyDownCapture={createKeyDownRefScope(elementRef, { orientation })}
+        data-grow={grow || undefined}
+        data-control-track
+        className={clsx(
+          'v2-control-track',
+          `v2-control-track--${size || 'sm'}`,
+          `v2-control-track--${variant || 'default'}`,
+          className
+        )}
       >
         {children}
-      </Group>
+      </div>
     );
   }
 );

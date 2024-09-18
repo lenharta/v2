@@ -3,10 +3,11 @@ import { useDemoContext } from '../Demo.context';
 
 export type DemoCanvasProps = {
   children: React.ReactNode;
+  containerStyle?: React.CSSProperties;
 };
 
 export const DemoCanvas = (props: DemoCanvasProps) => {
-  const { children } = props;
+  const { children, containerStyle } = props;
   const { display, settings } = useDemoContext();
 
   const dataAttributes = {
@@ -17,7 +18,7 @@ export const DemoCanvas = (props: DemoCanvasProps) => {
 
   return (
     <div className="v2-demo-canvas" {...dataAttributes}>
-      <div className="v2-demo-canvas-container">
+      <div className="v2-demo-canvas-container" style={containerStyle}>
         {React.cloneElement(children as JSX.Element, settings.state)}
       </div>
     </div>

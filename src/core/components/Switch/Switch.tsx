@@ -53,8 +53,6 @@ export const Switch = Component<SwitchFactory>(
         }
       : {
           checked: !!checked,
-          'data-checked': !!checked,
-          'aria-checked': !!checked,
           onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
             if (!loading && !readonly && !disabled) {
               event.stopPropagation();

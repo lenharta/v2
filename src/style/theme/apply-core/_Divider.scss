@@ -1,0 +1,25 @@
+.v2-divider {
+  &--default {
+    color: hsla(var(--v2-hsl-surface), 0.32);
+  }
+
+  &--default .v2-divider-label {
+    color: hsla(var(--v2-hsl-surface), 0.32);
+  }
+
+  &--accent {
+    color: hsla(var(--v2-hsl-accent), 0.97);
+  }
+
+  &--accent .v2-divider-label {
+    color: hsla(var(--v2-hsl-accent), 0.97);
+  }
+
+  &--accent-text {
+    color: hsla(var(--v2-hsl-surface), 0.32);
+  }
+
+  &--accent-text .v2-divider-label {
+    color: hsla(var(--v2-hsl-accent), 0.97);
+  }
+}

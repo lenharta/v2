@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import * as React from 'react';
 import { Core } from '@/types';
 import { parseItemData } from '@/utils';
@@ -14,63 +13,54 @@ type ControlFactory = React.FC<Core.ControlProps> & {
 };
 
 export const Control: ControlFactory = (props) => {
-  const {
-    items,
-    value,
-    variant = 'default',
-    className,
-    trapFocus = false,
-    orientation = 'horizontal',
-    defaultValue,
-    onItemChange: controlledChange,
-  } = props;
-
-  const [uncontrolledValue, uncontrolledChange] = React.useState(defaultValue || items[0].value);
+  const { size, grow, items, value, variant, trapFocus = false, orientation, onChange } = props;
 
   const data = React.useMemo(() => parseItemData(items) as Core.ItemParsed[], [items]);
 
   const { refs, thumbRef, trackRef, setElementRefs, update } = useControlPosition({
     initialPosition: { height: 0, width: 0, left: 0, top: 0 },
-    currentValue: value || uncontrolledValue,
+    currentValue: value,
+    orientation,
   });
 
-  const handleChange = React.useCallback(
-    (v: string) => {
-      if (!controlledChange) return uncontrolledChange(v);
-      return controlledChange(v);
-    },
-    [controlledChange, uncontrolledChange]
-  );
-
   return (
-    <div className={clsx('v2-control', `v2-control--${variant}`, className)}>
-      <Control.Track ref={trackRef} variant={variant} orientation={orientation} data-control-track>
-        {data.map((item) => (
-          <Control.Segment
-            key={item.value}
-            ref={(node) => setElementRefs(node, item.value)}
-            refs={refs}
-            item={item}
-            value={value || uncontrolledValue}
-            update={update}
-            variant={variant}
-            trackRef={trackRef}
-            trapFocus={trapFocus}
-            orientation={orientation}
-            onItemChange={handleChange}
-            setElementRefs={setElementRefs}
-          />
-        ))}
-
-        <Control.Thumb
-          ref={thumbRef}
+    <Control.Track
+      size={size}
+      grow={grow}
+      ref={trackRef}
+      variant={variant}
+      orientation={orientation}
+      data-control-track
+    >
+      {data.map((item) => (
+        <Control.Segment
+          key={item.value}
+          ref={(node) => setElementRefs(node, item.value)}
+          refs={refs}
+          size={size}
+          grow={grow}
+          item={item}
+          value={value}
+          update={update}
           variant={variant}
-          transitionEasing="ease"
-          transitionDuration="250ms"
-          transitionProperty="transform"
+          trackRef={trackRef}
+          trapFocus={trapFocus}
+          orientation={orientation}
+          setElementRefs={setElementRefs}
+          onChange={() => onChange(item.value)}
         />
-      </Control.Track>
-    </div>
+      ))}
+
+      <Control.Thumb
+        grow={grow}
+        size={size}
+        ref={thumbRef}
+        variant={variant}
+        transitionEasing="ease"
+        transitionDuration="250ms"
+        transitionProperty="transform"
+      />
+    </Control.Track>
   );
 };
 

@@ -15,6 +15,7 @@ export type TabsFactory = React.FC<Core.TabsProps> & {
 export const Tabs: TabsFactory = (props) => {
   const {
     size,
+    grow,
     value,
     variant,
     children,
@@ -38,6 +39,7 @@ export const Tabs: TabsFactory = (props) => {
       <TabsProvider
         value={{
           size,
+          grow,
           value,
           variant,
           isLoading,

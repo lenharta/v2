@@ -16,12 +16,12 @@ export const SandboxCheckbox: React.FC<{}> = ({}) => {
           },
           {
             type: 'switch',
-            prop: 'isDisabled',
+            prop: 'isReadonly',
             initialValue: false,
           },
           {
             type: 'switch',
-            prop: 'isReadonly',
+            prop: 'isDisabled',
             initialValue: false,
           },
           {

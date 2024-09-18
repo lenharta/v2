@@ -59,7 +59,7 @@ export function useControlPosition(
   React.useEffect(() => {
     if (!trackRef.current || !refs[props.currentValue]) return;
     update(refs[props.currentValue], trackRef.current);
-  }, []);
+  }, [props.orientation]);
 
   React.useEffect(() => {
     observer.current = new ResizeObserver(() => {
@@ -79,9 +79,7 @@ export function useControlPosition(
     return undefined;
   }, [trackRef.current, refs[props.currentValue]]);
 
-  React.useEffect(() => {
-    updateStyles();
-  }, [position]);
+  React.useEffect(() => updateStyles(), [position]);
 
   return {
     refs,

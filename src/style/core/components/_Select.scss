@@ -11,6 +11,8 @@
     border-width: var(--v2-unit);
     border-color: transparent;
     border-style: solid;
+    isolation: isolate;
+    z-index: 0;
   }
 
   &-target,

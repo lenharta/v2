@@ -1,0 +1,6 @@
+.v2-icon {
+  color: hsla(var(--v2-hsl-surface), 0.87);
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-productive);
+  transition-duration: var(--v2-duration-moderate-01);
+}

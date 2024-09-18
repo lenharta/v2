@@ -28,6 +28,8 @@ export const SandboxDirectory: React.FC<{}> = ({}) => {
           <SandboxDirectoryTile value="/sandbox/checkbox" label="Checkbox" />
           <SandboxDirectoryTile value="/sandbox/select" label="Select" />
           <SandboxDirectoryTile value="/sandbox/switch" label="Switch" />
+          <SandboxDirectoryTile value="/sandbox/control" label="Control" />
+          <SandboxDirectoryTile value="/sandbox/tabs" label="Tabs" />
         </Section>
       </Main>
     </React.Fragment>

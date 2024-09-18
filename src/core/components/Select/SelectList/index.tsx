@@ -40,4 +40,4 @@ export const SelectList = Component<SelectListFactory>(
   }
 );
 
-SelectList.displayName = '@v2/Select.Listbox';
+SelectList.displayName = '@v2/Select.List';

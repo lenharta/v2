@@ -8,10 +8,11 @@ import { DemoCanvas } from './DemoCanvas';
 type DemoProps = {
   children: React.ReactNode;
   controls: DEMO.ControlOptions[];
+  containerStyle?: React.CSSProperties;
 };
 
 export const Demo = (props: DemoProps) => {
-  const { children, controls } = props;
+  const { children, controls, containerStyle } = props;
 
   const initialState = controls.reduce<Record<string, any>>((acc, control) => {
     acc[control.prop] = control.initialValue;
@@ -44,7 +45,7 @@ export const Demo = (props: DemoProps) => {
     >
       <div className="v2-demo">
         <DemoToolbar controls={controls} />
-        <DemoCanvas>{children}</DemoCanvas>
+        <DemoCanvas containerStyle={containerStyle}>{children}</DemoCanvas>
       </div>
     </DemoProvider>
   );

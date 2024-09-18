@@ -29,6 +29,12 @@ const FLOATING_TRANSITION: Partial<Core.FloatingProps> = {
   },
 };
 
+const isSelected = (value: string, pathname: string) => {
+  if (pathname !== '/') {
+    return !!pathname.includes(value);
+  }
+};
+
 export const SideNavTarget = ({ item, location, navigate }: SideNavTargetProps) => {
   const [isOpen, setOpen] = React.useState(false);
 
@@ -55,7 +61,7 @@ export const SideNavTarget = ({ item, location, navigate }: SideNavTargetProps) 
           icon={item.icon}
           value={item.value}
           onClick={(event) => handleClick(event, item.value)}
-          isSelected={item.value === location.pathname || undefined}
+          isSelected={isSelected(item.value, location.pathname)}
           onMouseLeave={handleMouseLeave}
           onMouseEnter={handleMouseEnter}
           className="v2-side-nav-target"

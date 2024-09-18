@@ -1,14 +1,12 @@
 import clsx from 'clsx';
 import { Core } from '@/types';
-import { Component } from '@/factory';
-import { Brand } from '../../Brand';
+import { Brand } from '@/app/components';
 import { Action } from '@/core';
-
-export type HeaderLogoProps = {};
+import { Component } from '@/factory';
 
 export type HeaderLogoFactory = Core.Factory<{
   ref: HTMLButtonElement;
-  props: HeaderLogoProps;
+  props: {};
   element: typeof Action;
   excluded: 'children';
 }>;
