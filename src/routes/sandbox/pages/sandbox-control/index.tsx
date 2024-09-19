@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Control } from '@/core';
-import { SandboxLayout } from '../sandbox-layout';
+import { SANDBOX_META, SandboxLayout } from '../sandbox-layout';
 
 export const SandboxControl: React.FC<{}> = ({}) => {
   const [value, setValue] = React.useState('option-a');
@@ -8,6 +8,7 @@ export const SandboxControl: React.FC<{}> = ({}) => {
     <React.Fragment>
       <SandboxLayout
         name="Control"
+        href={SANDBOX_META.control}
         containerStyle={{
           maxWidth: 800,
         }}

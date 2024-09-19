@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Action } from '@/core';
-import { SandboxLayout } from '../sandbox-layout';
+import { SANDBOX_META, SandboxLayout } from '../sandbox-layout';
 
 export const SandboxAction: React.FC<{}> = ({}) => {
   return (
     <SandboxLayout
       name="Action"
+      href={SANDBOX_META.action}
       controls={[
         {
           type: 'switch',

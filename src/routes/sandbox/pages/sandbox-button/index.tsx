@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Button } from '@/core';
-import { SandboxLayout } from '../sandbox-layout';
+import { SANDBOX_META, SandboxLayout } from '../sandbox-layout';
 
 export const SandboxButton: React.FC<{}> = ({}) => {
   return (
     <SandboxLayout
       name="Button"
+      href={SANDBOX_META.button}
       containerStyle={{
         maxWidth: 400,
       }}

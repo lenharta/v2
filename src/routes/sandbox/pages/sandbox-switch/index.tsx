@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Switch } from '@/core';
-import { SandboxLayout } from '../sandbox-layout';
+import { SANDBOX_META, SandboxLayout } from '../sandbox-layout';
 
 export const SandboxSwitch: React.FC<{}> = ({}) => {
   const [checked, setChecked] = React.useState(false);
@@ -8,6 +8,7 @@ export const SandboxSwitch: React.FC<{}> = ({}) => {
     <React.Fragment>
       <SandboxLayout
         name="Switch"
+        href={SANDBOX_META.switch}
         controls={[
           {
             type: 'switch',

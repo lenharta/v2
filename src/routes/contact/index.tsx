@@ -19,7 +19,7 @@ export const Contact: ContactRouteComponent = (props) => {
       </Hero>
       <Main>
         <Section>
-          <Text>
+          <Text className="v2-construction-message">
             This page is currently under contruction, check back later for updates. Click here to{' '}
             {homeLink}
           </Text>

@@ -28,6 +28,11 @@ const ROUTER = ReactRouterDOM.createBrowserRouter([
       {
         path: '/projects',
         element: <ROUTES.Projects />,
+        children: [
+          { index: true, element: <ROUTES.Projects.Thunkworks /> },
+          { path: '/projects/tabindex', element: <ROUTES.Projects.TabIndex /> },
+          { path: '/projects/v1', element: <ROUTES.Projects.V1 /> },
+        ],
       },
       {
         path: '/sandbox',

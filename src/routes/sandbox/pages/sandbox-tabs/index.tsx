@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tabs, Text, Title } from '@/core';
-import { SandboxLayout } from '../sandbox-layout';
+import { SANDBOX_META, SandboxLayout } from '../sandbox-layout';
 
 export const SandboxTabs: React.FC<{}> = ({}) => {
   const [value, setValue] = React.useState('item-a');
@@ -9,6 +9,7 @@ export const SandboxTabs: React.FC<{}> = ({}) => {
     <React.Fragment>
       <SandboxLayout
         name="Tabs"
+        href={SANDBOX_META.tabs}
         containerStyle={{
           maxWidth: 800,
         }}

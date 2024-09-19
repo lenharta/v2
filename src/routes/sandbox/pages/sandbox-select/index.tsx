@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Select } from '@/core';
-import { SandboxLayout } from '../sandbox-layout';
+import { SANDBOX_META, SandboxLayout } from '../sandbox-layout';
 
 export const SandboxSelect: React.FC<{}> = ({}) => {
   const [value, setValue] = React.useState<string>();
@@ -8,6 +8,7 @@ export const SandboxSelect: React.FC<{}> = ({}) => {
   return (
     <SandboxLayout
       name="Select"
+      href={SANDBOX_META.select}
       containerStyle={{
         maxWidth: 300,
       }}

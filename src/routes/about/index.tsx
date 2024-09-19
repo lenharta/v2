@@ -3,23 +3,16 @@ import * as Router from 'react-router-dom';
 import { Text, Title } from '@/core';
 import { Hero, Main, Page, PageProps, Section } from '@/app';
 
-export type AboutRouteProps = PageProps & {};
-
-export type AboutRouteComponent = {
-  (props: AboutRouteProps): React.ReactNode;
-  displayName?: string;
-};
-
-export const About: AboutRouteComponent = (props) => {
+export const About: React.FC<PageProps & {}> = (props) => {
   const homeLink = <Router.Link to="/">go home.</Router.Link>;
   return (
     <Page {...props}>
       <Hero>
-        <Title>About</Title>
+        <Title h1>About</Title>
       </Hero>
       <Main>
         <Section>
-          <Text>
+          <Text className="v2-construction-message">
             This page is currently under contruction, check back later for updates. Click here to{' '}
             {homeLink}
           </Text>
