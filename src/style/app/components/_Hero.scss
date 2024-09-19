@@ -4,7 +4,7 @@
 }
 
 .v2-hero-layout {
-  height: calc(var(--v2-gutter) * 20);
+  height: calc(var(--v2-gutter) * 18);
   max-width: 80em;
   overflow: hidden;
 
@@ -34,19 +34,19 @@
 
 @media (min-width: 40em) {
   .v2-hero-layout {
-    height: calc(var(--v2-space) * 24);
+    height: calc(var(--v2-space) * 18);
   }
 }
 
 @media (min-width: 50em) {
   .v2-hero-layout {
-    height: calc(var(--v2-space) * 22);
+    height: calc(var(--v2-space) * 18);
   }
 }
 
 @media (min-width: 60em) {
   .v2-hero-layout {
-    height: calc(var(--v2-space) * 20);
+    height: calc(var(--v2-space) * 18);
   }
 }
 

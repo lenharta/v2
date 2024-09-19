@@ -181,6 +181,7 @@
   grid-template-rows: auto;
   grid-template-columns: repeat(1, 1fr);
   padding-inline: var(--v2-gutter);
+  padding-bottom: calc(var(--v2-gutter) * 2);
   margin-block: calc(var(--v2-space) * 3);
 }
 
@@ -204,5 +205,18 @@
   }
   .v2-home-brands-tile-layout {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+.v2-construction-message {
+  min-height: 50vh;
+  margin-block: var(--v2-gutter);
+  font-size: var(--v2-font-size-04);
+  font-weight: var(--v2-font-weight-medium);
+  line-height: var(--v2-line-height-03);
+  max-width: 30em;
+
+  a {
+    text-decoration: underline;
   }
 }

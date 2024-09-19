@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Accordion, Text } from '@/core';
-import { SandboxLayout } from '../sandbox-layout';
+import { SANDBOX_META, SandboxLayout } from '../sandbox-layout';
 
 export const SandboxAccordion: React.FC<{}> = ({}) => {
   const [value, setValue] = React.useState<string | null>(null);
@@ -11,12 +11,8 @@ export const SandboxAccordion: React.FC<{}> = ({}) => {
   return (
     <SandboxLayout
       name="Accordion"
+      href={SANDBOX_META.accordion}
       controls={[
-        // {
-        //   type: 'checkbox',
-        //   prop: 'multiple',
-        //   initialValue: false,
-        // },
         {
           type: 'switch',
           prop: 'isReadonly',

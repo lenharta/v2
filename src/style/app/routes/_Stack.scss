@@ -1,10 +1,11 @@
 @use '../utils' as utils;
 
 .v2-stack-intro .v2-text {
-  font-size: var(--v2-font-size-05);
+  font-size: var(--v2-font-size-04);
   font-weight: var(--v2-font-weight-medium);
   line-height: var(--v2-line-height-03);
   margin-block: calc(var(--v2-space) * 3);
+  max-width: 50em;
 }
 
 .v2-stack-table {
@@ -94,6 +95,7 @@
 .v2-stack-table-head-cell {
   align-items: center;
   justify-content: space-between;
+  min-height: 44px;
 }
 
 .v2-stack-table-head-cell[data-table-control] {
@@ -102,8 +104,8 @@
 }
 
 .v2-stack-table-head-cell .v2-icon {
-  height: var(--v2-font-size-02);
-  width: var(--v2-font-size-02);
+  height: calc(var(--v2-font-size-02) / 1.5);
+  width: calc(var(--v2-font-size-02) / 1.5);
 }
 
 .v2-stack-table-body-cell {
