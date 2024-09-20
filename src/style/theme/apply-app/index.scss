@@ -140,6 +140,8 @@ body {
   }
 
   &-brands-tile {
+    @include utils.link-focus;
+    @include utils.link-cursor;
     color: hsla(var(--v2-hsl-surface), 0.67);
     background-color: hsla(var(--v2-hsl-surface), 0.02);
     transition-timing-function: var(--v2-easing-productive);
@@ -244,6 +246,9 @@ body {
   }
 
   &-directory-tile-item {
+    @include utils.button-focus;
+    @include utils.button-cursor;
+
     color: hsla(var(--v2-hsl-surface), 0.67);
     background-color: hsla(var(--v2-hsl-surface), 0.03);
     transition-timing-function: var(--v2-easing-productive);
@@ -267,6 +272,9 @@ body {
 
   &-nav-item--internal,
   &-nav-item--external {
+    @include utils.button-focus;
+    @include utils.button-cursor;
+
     transition-timing-function: var(--v2-easing-productive);
     transition-duration: var(--v2-duration-moderate-01);
     transition-property: all;
@@ -388,6 +396,9 @@ body {
 }
 
 .v2-construction-message {
+  @include utils.reset;
+  @include utils.link-focus;
+  @include utils.link-cursor;
   color: hsla(var(--v2-hsl-surface), 0.67);
   transition-timing-function: var(--v2-easing-productive);
   transition-duration: var(--v2-duration-moderate-01);
