@@ -282,10 +282,12 @@ export declare namespace Core {
   export type ButtonProps = UnstyledButtonProps & {
     align?: 'start' | 'end' | 'center';
     justify?: 'start' | 'end' | 'center';
-    isSelected?: boolean;
     fullWidth?: boolean;
-    iconLeft?: Partial<ICON.Props>;
-    iconRight?: Partial<ICON.Props>;
+    isSelected?: boolean;
+    icon?: Partial<ICON.Props>;
+    iconPosition?: 'left' | 'right',
+    // iconLeft?: Partial<ICON.Props>;
+    // iconRight?: Partial<ICON.Props>;
     variant?: 'default' | 'accent';
     value?: string;
     size?: SizeRegular;

@@ -26,6 +26,26 @@ body {
   background-color: hsla(var(--v2-hsl-surface), 0.03);
 }
 
+.v2-menu {
+  &-target {
+    background-color: hsla(var(--v2-hsl-surface), 0.03);
+  }
+  &-target:hover {
+    background-color: hsla(var(--v2-hsl-surface), 0.06);
+  }
+  &-target:active {
+    background-color: hsla(var(--v2-hsl-surface), 0.09);
+  }
+
+  &-target-cell {
+    background-color: hsl(var(--v2-hsl-accent), 0.87);
+  }
+
+  &-display {
+    background-color: hsla(var(--v2-hsl-base), 1);
+  }
+}
+
 .v2-side {
   color: hsla(var(--v2-hsl-surface), 0.87);
   background-color: hsla(var(--v2-hsl-base), 1);
@@ -343,6 +363,18 @@ body {
     }
 
     &-spacer {
+      background-color: hsla(var(--v2-hsl-surface), 0);
+    }
+  }
+
+  .v2-menu {
+    &-target {
+      background-color: hsla(var(--v2-hsl-surface), 0);
+    }
+    &-target:hover {
+      background-color: hsla(var(--v2-hsl-surface), 0.03);
+    }
+    &-target:active {
       background-color: hsla(var(--v2-hsl-surface), 0.06);
     }
   }

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import * as Router from 'react-router-dom';
+import { Menu } from '../Menu';
 import { Core } from '@/types';
 import { Action } from '@/core';
 import { Component } from '@/factory';
@@ -23,6 +24,7 @@ export const Header = Component<HeaderFactory>(
         <Action.Group className="v2-header-inner" gap="xxs">
           <Header.Logo onClick={() => navigate('/')} />
           <Action.Spacer grow />
+          <Menu />
         </Action.Group>
       </Component>
     );

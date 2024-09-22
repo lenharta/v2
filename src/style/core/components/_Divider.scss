@@ -12,7 +12,6 @@
     height: var(--v2-divider-size);
     border-top-width: var(--v2-divider-size);
     border-top-style: var(--v2-divider-decoration);
-    border-top-color: var(--c-divider-bgd);
   }
 
   [data-prefers-dir='rtl'] & {
@@ -28,10 +27,11 @@
   }
 
   &-label {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    height: var(--v2-divider-height);
+    transform: translateY(-20%);
     font-size: var(--v2-divider-font-size) !important;
+    font-weight: var(--v2-font-weight-medium);
     line-height: 1;
     direction: ltr;
     text-align: left;
