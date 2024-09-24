@@ -1,0 +1,48 @@
+@use '../utils' as utils;
+
+.v2-about {
+  &-banner {
+    @include utils.reset;
+    font-size: var(--v2-font-size-04);
+    padding-inline: var(--v2-gutter);
+    margin-block: calc(var(--v2-space) * 4);
+  }
+
+  &-resume-section .v2-title {
+    @include utils.reset;
+    font-size: var(--v2-font-size-06);
+    margin-top: calc(var(--v2-space) * 3);
+    padding-inline: var(--v2-gutter);
+  }
+
+  &-resume-section .v2-text {
+    @include utils.reset;
+    margin-block: calc(var(--v2-space) * 2);
+    padding-inline: var(--v2-gutter);
+  }
+
+  &-resume-section span.v2-text {
+    @include utils.reset;
+    padding-inline: var(--v2-gutter);
+  }
+
+  &-resume-section .v2-accordion-target .v2-label {
+    line-height: var(--v2-line-height-04);
+  }
+
+  &-resume-list {
+    display: grid;
+    place-content: start;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+    margin-block: calc(var(--v2-gutter) * 2);
+    padding-inline: var(--v2-gutter);
+  }
+
+  &-tabs-list {
+    padding-inline: var(--v2-gutter);
+  }
+}
+
+@media (min-width: 60em) {
+}

@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { Core } from '@/types';
-import { MenuTarget } from './MenuTarget';
-import { MenuDisplay } from './MenuDisplay';
+import { useStore } from '@/app';
 import { DURATION, EASING, Floating } from '@/core';
-import { useStore } from '@/app/store';
+import { MenuDisplay } from './MenuDisplay';
+import { MenuTarget } from './MenuTarget';
 
 export type MenuProps = {};
 
@@ -14,8 +14,9 @@ export type MenuComponent = Core.NamedComponent & {
 };
 
 export const Menu: MenuComponent = ({}) => {
-  const store = useStore();
   const [isOpen, setOpen] = React.useState(false);
+  const store = useStore();
+
   return (
     <Floating
       dir={store.dir}
@@ -31,7 +32,6 @@ export const Menu: MenuComponent = ({}) => {
         mounted: isOpen,
         duration: DURATION['moderate-01'],
         timingFunction: EASING['expressive'],
-        keepMounted: true,
         transition: {
           transitionProperty: 'opacity, transform',
           common: {
