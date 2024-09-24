@@ -184,27 +184,27 @@
     transition-duration: var(--v2-duration-moderate-01);
 
     &--default:not([data-loading], [data-disabled], [data-readonly]) {
-      background-color: hsla(var(--v2-hsl-surface), 0.06);
+      background-color: hsla(var(--v2-hsl-surface), 0);
     }
 
     &--default:not([data-loading], [data-disabled], [data-readonly]):hover {
-      background-color: hsla(var(--v2-hsl-surface), 0.09);
+      background-color: hsla(var(--v2-hsl-surface), 0.05);
     }
 
     &--default:not([data-loading], [data-disabled], [data-readonly]):active {
-      background-color: hsla(var(--v2-hsl-surface), 0.12);
+      background-color: hsla(var(--v2-hsl-surface), 0.1);
     }
 
     &--accent:not([data-loading], [data-disabled], [data-readonly]) {
-      background-color: hsla(var(--v2-hsl-surface), 0.06);
+      background-color: hsla(var(--v2-hsl-surface), 0);
     }
 
     &--accent:not([data-loading], [data-disabled], [data-readonly]):hover {
-      background-color: hsla(var(--v2-hsl-surface), 0.09);
+      background-color: hsla(var(--v2-hsl-surface), 0.05);
     }
 
     &--accent:not([data-loading], [data-disabled], [data-readonly]):active {
-      background-color: hsla(var(--v2-hsl-surface), 0.12);
+      background-color: hsla(var(--v2-hsl-surface), 0.1);
     }
 
     &--default[data-loading],
@@ -263,7 +263,7 @@
 
     &-spacer--accent,
     &-spacer--default {
-      background-color: hsla(var(--v2-hsl-surface), 0.06);
+      background-color: hsla(var(--v2-hsl-surface), 0);
     }
   }
 }

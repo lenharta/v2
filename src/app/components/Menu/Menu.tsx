@@ -1,8 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { Core } from '@/types';
-import { MenuTarget } from './MenuTarget';
+import { useStore } from '@/app';
+import { DURATION, EASING, Floating } from '@/core';
 import { MenuDisplay } from './MenuDisplay';
-import { MenuProvider } from './MenuContext';
+import { MenuTarget } from './MenuTarget';
 
 export type MenuProps = {};
 
@@ -13,13 +14,37 @@ export type MenuComponent = Core.NamedComponent & {
 };
 
 export const Menu: MenuComponent = ({}) => {
+  const [isOpen, setOpen] = React.useState(false);
+  const store = useStore();
+
   return (
-    <React.Fragment>
-      <MenuProvider value={{}}>
-        <Menu.Target />
-        <Menu.Display />
-      </MenuProvider>
-    </React.Fragment>
+    <Floating
+      dir={store.dir}
+      zIndex={10000}
+      isOpen={isOpen}
+      onChange={setOpen}
+      behavior="click"
+      placement="bottom-end"
+      middleware={{ flip: false, shift: true }}
+      closeOnEscape={true}
+      closeOnClickOutside={true}
+      transitionProps={{
+        mounted: isOpen,
+        duration: DURATION['moderate-01'],
+        timingFunction: EASING['expressive'],
+        transition: {
+          transitionProperty: 'opacity, transform',
+          common: {
+            transformOrigin: store.dir === 'ltr' ? 'right' : 'left',
+          },
+          in: { transform: 'scaleX(1)', opacity: 1 },
+          out: { transform: 'scaleX(0)', opacity: 0 },
+        },
+      }}
+    >
+      <Menu.Target isOpen={isOpen} />
+      <Menu.Display />
+    </Floating>
   );
 };
 

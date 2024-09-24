@@ -12,6 +12,12 @@ export const SandboxButton: React.FC<{}> = ({}) => {
       }}
       controls={[
         {
+          type: 'segmented',
+          prop: 'iconPosition',
+          data: ['left', 'right'],
+          initialValue: 'right',
+        },
+        {
           type: 'select',
           prop: 'variant',
           data: ['default', 'accent'],
@@ -57,7 +63,7 @@ export const SandboxButton: React.FC<{}> = ({}) => {
         },
       ]}
     >
-      <Button iconRight={{ name: 'arrow-east' }}>Button</Button>
+      <Button icon={{ name: 'search' }}>Button</Button>
     </SandboxLayout>
   );
 };

@@ -17,18 +17,19 @@ export type SideNavData = {
 };
 
 const navItems: SideNavData[] = [
-  // {
-  //   uid: 'side:nav:item:a',
-  //   icon: { name: 'person' },
-  //   label: 'About',
-  //   value: '/about',
-  // },
+  {
+    uid: 'side:nav:item:a',
+    icon: { name: 'person' },
+    label: 'About',
+    value: '/about',
+  },
   {
     uid: 'side:nav:item:b',
     icon: { name: 'code-slash' },
     label: 'Stack',
     value: '/stack',
   },
+
   // {
   //   uid: 'side:nav:item:c',
   //   icon: { name: 'easel' },

@@ -23,6 +23,8 @@ export const Control: ControlFactory = (props) => {
     orientation,
   });
 
+  console.log(refs, thumbRef, trackRef, setElementRefs, update);
+
   return (
     <Control.Track
       size={size}

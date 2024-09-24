@@ -26,6 +26,72 @@ body {
   background-color: hsla(var(--v2-hsl-surface), 0.03);
 }
 
+.v2-menu {
+  &-display,
+  &-header,
+  &-footer,
+  &-nav {
+    transition-property: background-color, border-color, outline-color, color, fill, stroke;
+    transition-timing-function: var(--v2-easing-expressive);
+    transition-duration: var(--v2-duration-slow-01);
+  }
+
+  &-nav-link:hover,
+  &-nav-link:active {
+    transition-timing-function: var(--v2-easing-productive);
+    transition-duration: var(--v2-duration-moderate-01);
+    transition-property: all;
+  }
+
+  &-target {
+    background-color: hsla(var(--v2-hsl-surface), 0.03);
+  }
+
+  &-target:hover {
+    background-color: hsla(var(--v2-hsl-surface), 0.06);
+  }
+
+  &-target:active {
+    background-color: hsla(var(--v2-hsl-surface), 0.09);
+  }
+
+  &-target-cell {
+    background-color: hsl(var(--v2-hsl-accent), 0.87);
+  }
+
+  &-display {
+    background-color: hsla(var(--v2-hsl-base), 1);
+  }
+
+  &-header {
+    background-color: hsla(var(--v2-hsl-surface), 0.03);
+  }
+
+  &-header-time {
+    color: hsla(var(--v2-hsl-accent), 0.87);
+  }
+
+  &-header-greet {
+    color: hsla(var(--v2-hsl-surface), 0.87);
+  }
+
+  &-header-date {
+    color: hsla(var(--v2-hsl-surface), 0.67);
+  }
+
+  &-nav {
+    background-color: hsla(var(--v2-hsl-surface), 0.02);
+  }
+
+  &-footer {
+    background-color: hsla(var(--v2-hsl-surface), 0.02);
+  }
+
+  &-nav-link:hover {
+    color: hsla(var(--v2-hsl-accent), 0.87);
+  }
+}
+
 .v2-side {
   color: hsla(var(--v2-hsl-surface), 0.87);
   background-color: hsla(var(--v2-hsl-base), 1);
@@ -238,6 +304,32 @@ body {
   }
 }
 
+.v2-about {
+  &-banner {
+    color: hsla(var(--v2-hsl-surface), 0.87);
+  }
+
+  &-banner span {
+    color: hsl(var(--v2-hsl-accent), 1);
+  }
+
+  &-resume-section .v2-title {
+    color: hsl(var(--v2-hsl-accent), 1);
+  }
+
+  &-resume-section .v2-text {
+    color: hsla(var(--v2-hsl-surface), 0.87);
+  }
+
+  &-resume-section span.v2-text {
+    color: hsla(var(--v2-hsl-surface), 0.67);
+  }
+
+  &-resume-item {
+    color: hsla(var(--v2-hsl-surface), 0.67);
+  }
+}
+
 // ROUTES | SANDBOX
 
 .v2-sandbox {
@@ -343,6 +435,18 @@ body {
     }
 
     &-spacer {
+      background-color: hsla(var(--v2-hsl-surface), 0);
+    }
+  }
+
+  .v2-menu {
+    &-target {
+      background-color: hsla(var(--v2-hsl-surface), 0);
+    }
+    &-target:hover {
+      background-color: hsla(var(--v2-hsl-surface), 0.03);
+    }
+    &-target:active {
       background-color: hsla(var(--v2-hsl-surface), 0.06);
     }
   }

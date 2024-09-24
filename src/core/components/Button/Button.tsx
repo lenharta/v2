@@ -18,20 +18,20 @@ export type ButtonFactory = Core.Factory<{
 export const Button = PolymorphicComponent<ButtonFactory>(
   (
     {
+      icon,
       size,
       value,
       align,
       justify,
       variant,
       children,
-      iconLeft,
-      iconRight,
       fullWidth,
       className,
       isLoading,
       isDisabled,
       isReadonly,
       isSelected,
+      iconPosition = 'right',
       component: Component = 'button',
       onChange,
       ...props
@@ -83,17 +83,17 @@ export const Button = PolymorphicComponent<ButtonFactory>(
         ref={ref}
       >
         <span className="v2-button-layout">
-          {iconLeft && (
+          {iconPosition === 'left' && (
             <div className="v2-button-section" data-position="left">
-              <Icon {...iconLeft} />
+              <Icon {...icon} />
             </div>
           )}
 
           <div className="v2-button-label">{children}</div>
 
-          {iconRight && (
+          {iconPosition === 'right' && (
             <div className="v2-button-section" data-position="right">
-              <Icon {...iconRight} />
+              <Icon {...icon} />
             </div>
           )}
         </span>
