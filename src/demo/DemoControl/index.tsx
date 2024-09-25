@@ -15,8 +15,6 @@ function parseControlData(
 export const DemoControl: React.FC<DEMO.ControlSegmentedProps> = (props) => {
   const { data, onChange, prop, value } = props;
 
-  console.log(value, { onChange });
-
   return (
     <div className="v2-demo-select">
       <Divider label={prop} />
