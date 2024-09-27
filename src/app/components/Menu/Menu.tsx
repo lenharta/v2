@@ -20,11 +20,12 @@ export const Menu: MenuComponent = ({}) => {
   return (
     <Floating
       dir={store.dir}
-      zIndex={10000}
+      zIndex={12000}
       isOpen={isOpen}
       onChange={setOpen}
       behavior="click"
-      placement="bottom-end"
+      placement={store.dir === 'ltr' ? 'bottom-end' : 'bottom-start'}
+      strategy="fixed"
       middleware={{ flip: false, shift: true }}
       closeOnEscape={true}
       closeOnClickOutside={true}

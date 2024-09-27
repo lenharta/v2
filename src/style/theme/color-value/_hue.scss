@@ -135,3 +135,51 @@
   --v2-hsl-accent: var(--v2-hue-accent), var(--v2-shade-accent);
   --v2-color-accent: hsl(var(--v2-hsl-accent));
 }
+
+[data-accent-text='yellow'] {
+  color: var(--v2-color-yellow);
+}
+
+[data-accent-text='blue'] {
+  color: var(--v2-color-blue);
+}
+
+[data-accent-text='cyan'] {
+  color: var(--v2-color-cyan);
+}
+
+[data-accent-text='green'] {
+  color: var(--v2-color-green);
+}
+
+[data-accent-text='grey'] {
+  color: var(--v2-color-grey);
+}
+
+[data-accent-text='magenta'] {
+  color: var(--v2-color-magenta);
+}
+
+[data-accent-text='orange'] {
+  color: var(--v2-color-orange);
+}
+
+[data-accent-text='purple'] {
+  color: var(--v2-color-purple);
+}
+
+[data-accent-text='red'] {
+  color: var(--v2-color-red);
+}
+
+[data-accent-text='slate'] {
+  color: var(--v2-color-slate);
+}
+
+[data-accent-text='stone'] {
+  color: var(--v2-color-stone);
+}
+
+[data-accent-text='teal'] {
+  color: var(--v2-color-teal);
+}
