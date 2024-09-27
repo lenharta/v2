@@ -36,6 +36,7 @@ body {
     transition-duration: var(--v2-duration-slow-01);
   }
 
+  &-nav-link,
   &-nav-link:hover,
   &-nav-link:active {
     transition-timing-function: var(--v2-easing-productive);
@@ -80,15 +81,51 @@ body {
   }
 
   &-nav {
-    background-color: hsla(var(--v2-hsl-surface), 0.02);
+    background-color: hsla(var(--v2-hsl-surface), 0);
   }
 
   &-footer {
     background-color: hsla(var(--v2-hsl-surface), 0.02);
   }
 
-  &-nav-link:hover {
+  &-handle {
     color: hsla(var(--v2-hsl-accent), 0.87);
+    background-color: transparent;
+  }
+
+  &-nav-link {
+    color: hsla(var(--v2-hsl-surface), 0.67);
+    background-color: hsla(var(--v2-hsl-surface), 0.02);
+  }
+
+  &-nav-link:hover {
+    color: hsla(var(--v2-hsl-surface), 0.87);
+    background-color: hsla(var(--v2-hsl-surface), 0.04);
+  }
+
+  &-nav-link:hover .v2-icon {
+    color: hsla(var(--v2-hsl-surface), 0.87);
+  }
+
+  &-nav-link[data-selected] {
+    color: hsla(var(--v2-hsl-accent), 0.87);
+    background-color: hsla(var(--v2-hsl-surface), 0.04);
+  }
+
+  &-nav-link[data-selected] .v2-icon {
+    color: hsla(var(--v2-hsl-accent), 0.87);
+  }
+
+  &-controls-button {
+    background-color: hsla(var(--v2-hsl-surface), 0.02);
+  }
+
+  &-controls-button:hover {
+    background-color: hsla(var(--v2-hsl-surface), 0.04);
+  }
+
+  &-controls-button[data-selected] {
+    background-color: hsla(var(--v2-hsl-surface), 0.04);
   }
 }
 

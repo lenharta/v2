@@ -5,9 +5,7 @@ import { SideNav } from './SideNav';
 
 export type SideProps = {};
 
-export type SideComponent = {
-  (props: SideProps): React.ReactNode;
-  displayName?: string;
+export type SideComponent = React.FC<SideProps> & {
   Menu: typeof SideMenu;
   Nav: typeof SideNav;
 };

@@ -6,7 +6,7 @@
 
   @media (min-width: 50em) {
     height: calc(100% - var(--v2-action));
-    z-index: 10000;
+    z-index: 9000;
     position: fixed;
     isolation: isolate;
     display: flex;
