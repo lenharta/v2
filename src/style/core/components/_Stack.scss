@@ -14,9 +14,11 @@
   &--align-center {
     align-items: center;
   }
+
   &--align-start {
     align-items: flex-start;
   }
+
   &--align-end {
     align-items: flex-end;
   }
@@ -24,9 +26,11 @@
   &--justify-center {
     justify-content: center;
   }
+
   &--justify-start {
     justify-content: flex-start;
   }
+
   &--justify-end {
     justify-content: flex-end;
   }
@@ -34,21 +38,27 @@
   &--gap-xxs {
     --v2-stack-gap: var(--v2-stack-gap-xxs);
   }
+
   &--gap-xs {
     --v2-stack-gap: var(--v2-stack-gap-xs);
   }
+
   &--gap-sm {
     --v2-stack-gap: var(--v2-stack-gap-sm);
   }
+
   &--gap-md {
     --v2-stack-gap: var(--v2-stack-gap-md);
   }
+
   &--gap-lg {
     --v2-stack-gap: var(--v2-stack-gap-lg);
   }
+
   &--gap-xl {
     --v2-stack-gap: var(--v2-stack-gap-xl);
   }
+
   &--gap-xxl {
     --v2-stack-gap: var(--v2-stack-gap-xxl);
   }

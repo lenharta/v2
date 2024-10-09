@@ -24,13 +24,6 @@
   border-collapse: collapse;
   border: none;
 
-  // &-th,
-  // &-td,
-  // &-tr {
-  //   padding-block: var(--v2-table-spacing-y, var(--v2-table-spacing-y-xs));
-  //   padding-inline: var(--v2-table-spacing-x, var(--v2-table-spacing-x-xs));
-  // }
-
   &-tr {
     border-bottom: none;
     background-color: transparent;

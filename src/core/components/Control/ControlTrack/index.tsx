@@ -10,7 +10,7 @@ export type ControlTrackFactory = Core.Factory<{
   element: 'div';
 }>;
 
-const ControlTrack = Component<ControlTrackFactory>(
+export const ControlTrack = Component<ControlTrackFactory>(
   (
     { grow, size, gap, variant, children, className, orientation = 'horizontal', ...props },
     ref
@@ -39,4 +39,3 @@ const ControlTrack = Component<ControlTrackFactory>(
 );
 
 ControlTrack.displayName = '@v2/Control.Track';
-export { ControlTrack };

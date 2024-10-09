@@ -21,12 +21,11 @@
   --v2-border-width: calc(var(--v2-01) / 2);
   --v2-border-radius: 1000px;
 
-  height: var(--v2-chip-height, var(--v2-chip-height-xs));
-  font-size: var(--v2-chip-font-size, var(--v2-chip-font-size-xs));
-
   display: flex;
   align-items: center;
   justify-content: center;
+  height: var(--v2-chip-height, var(--v2-chip-height-xs));
+  font-size: var(--v2-chip-font-size, var(--v2-chip-font-size-xs));
 
   &-label {
     padding-inline: var(--v2-chip-label-padding-x, var(--v2-chip-label-padding-x-xs));
@@ -44,21 +43,25 @@
     --v2-chip-font-size: var(--v2-chip-font-size-xs);
     --v2-chip-label-padding-x: var(--v2-chip-label-padding-x-xs);
   }
+
   &--sm {
     --v2-chip-height: var(--v2-chip-height-sm);
     --v2-chip-font-size: var(--v2-chip-font-size-sm);
     --v2-chip-label-padding-x: var(--v2-chip-label-padding-x-sm);
   }
+
   &--md {
     --v2-chip-height: var(--v2-chip-height-md);
     --v2-chip-font-size: var(--v2-chip-font-size-md);
     --v2-chip-label-padding-x: var(--v2-chip-label-padding-x-md);
   }
+
   &--lg {
     --v2-chip-height: var(--v2-chip-height-lg);
     --v2-chip-font-size: var(--v2-chip-font-size-lg);
     --v2-chip-label-padding-x: var(--v2-chip-label-padding-x-lg);
   }
+
   &--xl {
     --v2-chip-height: var(--v2-chip-height-xl);
     --v2-chip-font-size: var(--v2-chip-font-size-xl);

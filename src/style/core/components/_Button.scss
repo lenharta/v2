@@ -1,10 +1,6 @@
 @use '../utils' as utils;
 
 .v2-button {
-  @include utils.reset;
-  @include utils.button-focus;
-  @include utils.button-cursor;
-
   width: max-content;
   display: flex;
   position: relative;

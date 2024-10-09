@@ -1,0 +1,145 @@
+@use '../utils' as utils;
+
+.v2-accordion {
+  @include utils.reset;
+}
+
+.v2-accordion-item {
+  @include utils.reset;
+}
+
+.v2-accordion-panel {
+  @include utils.reset;
+}
+
+.v2-accordion-target-layout {
+  @include utils.reset;
+}
+
+.v2-accordion-target-content {
+  @include utils.reset;
+}
+
+.v2-accordion-target {
+  @include utils.reset;
+  @include utils.button-focus;
+  @include utils.button-cursor;
+}
+
+.v2-action {
+  @include utils.reset;
+  @include utils.button-focus;
+  @include utils.button-cursor;
+}
+
+.v2-action-spacer {
+  @include utils.reset;
+}
+
+.v2-button {
+  @include utils.reset;
+  @include utils.button-focus;
+  @include utils.button-cursor;
+}
+
+.v2-button-spacer {
+  @include utils.reset;
+}
+
+.v2-checkbox {
+  @include utils.reset;
+}
+
+.v2-checkbox-input {
+  @include utils.reset;
+}
+
+.v2-checkbox-group {
+  @include utils.reset;
+}
+
+.v2-chip {
+  @include utils.reset;
+}
+
+.v2-chip-label {
+  @include utils.reset;
+}
+
+.v2-control-thumb {
+  @include utils.reset;
+}
+
+.v2-control-track {
+  @include utils.reset;
+}
+
+.v2-control-segment {
+  @include utils.reset;
+  @include utils.button-focus;
+  @include utils.button-cursor;
+}
+
+.v2-divider {
+  @include utils.reset;
+}
+
+.v2-divider-label {
+  @include utils.reset;
+}
+
+.v2-divider-content {
+  @include utils.reset;
+}
+
+.v2-floating-box {
+  @include utils.reset;
+}
+
+.v2-group {
+  @include utils.reset;
+}
+
+.v2-icon {
+  @include utils.reset;
+}
+
+.v2-iconbutton {
+  @include utils.reset;
+}
+
+.v2-label {
+  @include utils.reset;
+}
+
+.v2-radio {
+  @include utils.reset;
+}
+
+.v2-select {
+  @include utils.reset;
+}
+
+.v2-stack {
+  @include utils.reset;
+}
+
+.v2-switch {
+  @include utils.reset;
+}
+
+.v2-table {
+  @include utils.reset;
+}
+
+.v2-tabs {
+  @include utils.reset;
+}
+
+.v2-text {
+  @include utils.reset;
+}
+
+.v2-title {
+  @include utils.reset;
+}
