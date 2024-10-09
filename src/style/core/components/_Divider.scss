@@ -130,10 +130,12 @@
   &--solid::before {
     --v2-divider-decoration: solid;
   }
+
   &--dotted::after,
   &--dotted::before {
     --v2-divider-decoration: dotted;
   }
+
   &--dashed::after,
   &--dashed::before {
     --v2-divider-decoration: dashed;
@@ -144,11 +146,13 @@
     --v2-divider-size: var(--v2-divider-size-sm);
     --v2-divider-gap: var(--v2-divider-gap-sm);
   }
+
   &--md {
     --v2-divider-font-size: var(--v2-divider-font-size-md);
     --v2-divider-size: var(--v2-divider-size-md);
     --v2-divider-gap: var(--v2-divider-gap-md);
   }
+
   &--lg {
     --v2-divider-font-size: var(--v2-divider-font-size-lg);
     --v2-divider-size: var(--v2-divider-size-lg);

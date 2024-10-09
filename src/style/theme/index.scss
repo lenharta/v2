@@ -2,13 +2,11 @@
 @forward 'color-scheme';
 
 @forward 'apply-app';
-@forward 'apply-core';
 
 @forward 'apply-core/Icon';
 @forward 'apply-core/Text';
-@forward 'apply-core/Label';
 @forward 'apply-core/Title';
-
+@forward 'apply-core/Label';
 @forward 'apply-core/Accordion';
 @forward 'apply-core/Action';
 @forward 'apply-core/Button';
@@ -16,4 +14,5 @@
 @forward 'apply-core/Divider';
 @forward 'apply-core/IconButton';
 @forward 'apply-core/Select';
+@forward 'apply-core/Switch';
 @forward 'apply-core/Tabs';

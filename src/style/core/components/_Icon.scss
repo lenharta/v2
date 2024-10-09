@@ -28,6 +28,7 @@
       transform: scaleX(1);
     }
   }
+
   &[data-icon-name='text-right'] {
     [data-prefers-dir='rtl'] & {
       transform: scaleX(1);

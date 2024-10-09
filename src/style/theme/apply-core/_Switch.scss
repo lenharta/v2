@@ -1,0 +1,93 @@
+.v2-switch,
+.v2-switch-track,
+.v2-switch .v2-icon {
+  transition-property: background-color, border-color, outline-color, color, fill, stroke;
+  transition-timing-function: var(--v2-easing-productive);
+  transition-duration: var(--v2-duration-moderate-01);
+}
+
+.v2-switch--default:not([data-loading]) .v2-label,
+.v2-switch--default:not([data-readonly]) .v2-label,
+.v2-switch--default:not([data-disabled]) .v2-label {
+  color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-switch--default:not([data-loading]) .v2-switch-track,
+.v2-switch--default:not([data-readonly]) .v2-switch-track,
+.v2-switch--default:not([data-disabled]) .v2-switch-track {
+  border-color: hsla(var(--v2-hsl-surface), 0.32);
+}
+
+.v2-switch--default:not([data-loading]) .v2-switch-thumb,
+.v2-switch--default:not([data-readonly]) .v2-switch-thumb,
+.v2-switch--default:not([data-disabled]) .v2-switch-thumb {
+  background-color: hsla(var(--v2-hsl-surface), 0.87);
+}
+
+.v2-switch--default:not([data-loading]):hover .v2-label,
+.v2-switch--default:not([data-readonly]):hover .v2-label,
+.v2-switch--default:not([data-disabled]):hover .v2-label {
+  color: hsla(var(--v2-hsl-surface), 1);
+}
+
+.v2-switch--default:not([data-loading]):hover .v2-switch-track,
+.v2-switch--default:not([data-readonly]):hover .v2-switch-track,
+.v2-switch--default:not([data-disabled]):hover .v2-switch-track {
+  border-color: hsla(var(--v2-hsl-surface), 0.48);
+  background-color: hsla(var(--v2-hsl-surface), 0.02);
+}
+
+.v2-switch--default:not([data-loading]):hover .v2-switch-thumb,
+.v2-switch--default:not([data-readonly]):hover .v2-switch-thumb,
+.v2-switch--default:not([data-disabled]):hover .v2-switch-thumb {
+  background-color: hsla(var(--v2-hsl-surface), 1);
+}
+
+.v2-switch--default:not([data-loading]):active .v2-label,
+.v2-switch--default:not([data-readonly]):active .v2-label,
+.v2-switch--default:not([data-disabled]):active .v2-label {
+  color: hsla(var(--v2-hsl-surface), 1);
+}
+
+.v2-switch--default:not([data-loading]):active .v2-switch-track,
+.v2-switch--default:not([data-readonly]):active .v2-switch-track,
+.v2-switch--default:not([data-disabled]):active .v2-switch-track {
+  border-color: hsla(var(--v2-hsl-surface), 0.48);
+  background-color: hsla(var(--v2-hsl-surface), 0.04);
+}
+
+.v2-switch--default:not([data-loading]):active .v2-switch-thumb,
+.v2-switch--default:not([data-readonly]):active .v2-switch-thumb,
+.v2-switch--default:not([data-disabled]):active .v2-switch-thumb {
+  background-color: hsla(var(--v2-hsl-surface), 1);
+}
+
+.v2-switch--default[data-checked] .v2-switch-thumb,
+.v2-switch--default[data-checked]:hover .v2-switch-thumb,
+.v2-switch--default[data-checked]:active .v2-switch-thumb {
+  background-color: hsla(var(--v2-hsl-accent), 1);
+}
+
+.v2-switch--default[data-checked] .v2-switch-track,
+.v2-switch--default[data-checked]:hover .v2-switch-track,
+.v2-switch--default[data-checked]:active .v2-switch-track {
+  background-color: hsla(var(--v2-hsl-surface), 0.1);
+}
+
+.v2-switch--default[data-disabled] .v2-switch-thumb,
+.v2-switch--default[data-disabled]:hover .v2-switch-thumb,
+.v2-switch--default[data-disabled]:active .v2-switch-thumb {
+  background-color: hsla(var(--v2-hsl-surface), 0.3);
+}
+
+.v2-switch--default[data-disabled] .v2-switch-track,
+.v2-switch--default[data-disabled]:hover .v2-switch-track,
+.v2-switch--default[data-disabled]:active .v2-switch-track {
+  background-color: hsla(var(--v2-hsl-surface), 0.3);
+}
+
+.v2-switch--default[data-disabled] .v2-label,
+.v2-switch--default[data-disabled]:hover .v2-label,
+.v2-switch--default[data-disabled]:active .v2-label {
+  color: hsla(var(--v2-hsl-surface), 0.3);
+}

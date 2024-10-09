@@ -15,6 +15,7 @@
     flex-direction: column;
     height: 100%;
   }
+
   [data-orientation='horizontal'] & {
     flex-direction: row;
     width: 100%;
@@ -23,21 +24,27 @@
   &--gap-xxs {
     --v2-group-gap: var(--v2-group-gap-xxs);
   }
+
   &--gap-xs {
     --v2-group-gap: var(--v2-group-gap-xs);
   }
+
   &--gap-sm {
     --v2-group-gap: var(--v2-group-gap-sm);
   }
+
   &--gap-md {
     --v2-group-gap: var(--v2-group-gap-md);
   }
+
   &--gap-lg {
     --v2-group-gap: var(--v2-group-gap-lg);
   }
+
   &--gap-xl {
     --v2-group-gap: var(--v2-group-gap-xl);
   }
+
   &--gap-xxl {
     --v2-group-gap: var(--v2-group-gap-xxl);
   }

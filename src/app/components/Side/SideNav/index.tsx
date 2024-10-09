@@ -29,13 +29,6 @@ const navItems: SideNavData[] = [
     label: 'Stack',
     value: '/stack',
   },
-
-  // {
-  //   uid: 'side:nav:item:c',
-  //   icon: { name: 'easel' },
-  //   label: 'Projects',
-  //   value: '/projects',
-  // },
   {
     uid: 'side:nav:item:d',
     icon: { name: 'box-seam' },
